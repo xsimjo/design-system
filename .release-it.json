@@ -6,9 +6,13 @@
 		"commitMessage": "chore: release v${version}"
 	},
 	"github": {
-		"release": true
+		"release": true,
+		"tokenRef": "GITHUB_TOKEN"
 	},
 	"npm": {
 		"publish": true
+	},
+	"options": {
+		"shell": true
 	}
 }
