@@ -276,6 +276,79 @@ Each theme defines distinct visual personalities through token overrides:
 - Navigation layout (gap between items)
 - Actions area (gap between action elements)
 
+### Checkbox
+
+A form control that allows users to toggle between checked, unchecked, and indeterminate states.
+
+**Props**:
+
+- `checked`: boolean - Controlled checked state
+- `indeterminate`: boolean - Shows indeterminate state
+- `disabled`: boolean - Disables interaction
+- `error`: boolean - Shows error state
+- `size`: 'sm' | 'md' | 'lg' - Size variant (default: 'md')
+- `label`: string - Associated label text
+
+**Structure**:
+
+- Container: Root element with focus ring support
+- Input: Native checkbox (visually hidden, accessible)
+- Visual indicator: Custom checkbox box with checkmark/indeterminate icon
+- Label: Associated text label (optional but recommended)
+
+**Sizes**:
+
+- Small (`sm`): Compact size for dense forms or inline options
+- Medium (`md`): Default size for most form use cases
+- Large (`lg`): Prominent size for emphasis or touch interfaces
+
+**States**:
+
+- Default: Normal unchecked state
+- Checked: Selected state with checkmark icon
+- Indeterminate: Partial selection state (programmatically set)
+- Hover: Mouse over interaction
+- Focus: Keyboard navigation state with visible focus ring
+- Disabled: Non-interactive state (checked or unchecked)
+- Error: Invalid input state
+
+**Behavior**:
+
+- Toggles on click or spacebar
+- Indeterminate state only settable via JavaScript
+- Focus ring on keyboard focus
+- Label click toggles checkbox
+- Disabled state prevents all interaction
+- Native form submission support
+
+**Theme Variations**:
+
+Each theme defines distinct visual personalities through token overrides:
+
+- Light: Slate border on white, blue fill when checked, standard sizes (16/20/24px), smooth corners
+- Dark: Lighter borders for visibility, blue fill (500 shade), elevated shadows for depth
+- Dev: Visible borders (2px), compact sizes (14/18/22px), sharp corners, monospace font, no shadows
+
+**Accessibility**:
+
+- Native checkbox input for screen readers
+- Label association via `for` attribute or wrapping
+- `aria-checked` for checked/unchecked/mixed states
+- `aria-invalid` for error state
+- `aria-describedby` linking to error messages
+- Focus ring with 3:1 contrast ratio
+- Minimum 44x44px touch target
+- Keyboard navigation (Tab, Space)
+
+**Token Categories**:
+
+- Size variants (box size, icon size per sm/md/lg)
+- Container properties (background, border, shadow, radius per state)
+- Icon properties (color, disabled color)
+- Focus ring (width, offset, color)
+- Label properties (gap, color, typography per size)
+- Interaction (transition, cursor, opacity)
+
 ### Button
 
 A foundational interactive element supporting multiple variants, sizes, and states.
