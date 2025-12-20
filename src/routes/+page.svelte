@@ -1,10 +1,13 @@
 <script lang="ts">
 	import Button from '$lib/components/button/Button.svelte';
 	import {
+		AccordionShowcase,
 		ButtonShowcase,
 		CardShowcase,
 		CheckboxShowcase,
+		DialogShowcase,
 		InputShowcase,
+		SelectShowcase,
 		HeaderShowcase,
 		AvatarShowcase,
 		TooltipShowcase,
@@ -41,9 +44,12 @@
 	</header>
 
 	<main class="content">
+		<AccordionShowcase />
 		<ButtonShowcase />
 		<CheckboxShowcase />
+		<DialogShowcase />
 		<InputShowcase />
+		<SelectShowcase />
 		<CardShowcase />
 		<HeaderShowcase />
 		<AvatarShowcase />

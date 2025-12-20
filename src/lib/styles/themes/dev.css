@@ -310,4 +310,223 @@
 	--input-cursor-disabled: not-allowed;
 	--input-cursor-readonly: default;
 	--input-opacity-disabled: var(--opacity-50);
+
+	--select-sm-height: 28px;
+	--select-sm-padding-x: var(--space-2);
+	--select-sm-padding-y: var(--space-1);
+	--select-sm-font-size: var(--font-size-xs);
+	--select-sm-icon-size: 14px;
+	--select-sm-icon-gap: var(--space-1);
+
+	--select-md-height: 36px;
+	--select-md-padding-x: var(--space-3);
+	--select-md-padding-y: var(--space-2);
+	--select-md-font-size: var(--font-size-sm);
+	--select-md-icon-size: 16px;
+	--select-md-icon-gap: var(--space-2);
+
+	--select-lg-height: 44px;
+	--select-lg-padding-x: var(--space-4);
+	--select-lg-padding-y: var(--space-2);
+	--select-lg-font-size: var(--font-size-md);
+	--select-lg-icon-size: 20px;
+	--select-lg-icon-gap: var(--space-2);
+
+	--select-trigger-bg: var(--color-white);
+	--select-trigger-bg-disabled: var(--color-gray-100);
+	--select-trigger-bg-open: var(--color-gray-50);
+
+	--select-trigger-border: var(--color-gray-300);
+	--select-trigger-border-hover: var(--color-gray-500);
+	--select-trigger-border-focus: var(--color-gray-900);
+	--select-trigger-border-error: var(--color-red-600);
+	--select-trigger-border-disabled: var(--color-gray-200);
+	--select-trigger-border-width: var(--border-width-2);
+	--select-trigger-border-radius: var(--radius-sm);
+
+	--select-trigger-text: var(--color-gray-900);
+	--select-trigger-text-disabled: var(--color-gray-400);
+	--select-trigger-text-placeholder: var(--color-gray-400);
+
+	--select-trigger-icon-color: var(--color-gray-500);
+	--select-trigger-icon-color-disabled: var(--color-gray-300);
+
+	--select-trigger-shadow: none;
+	--select-trigger-shadow-hover: none;
+	--select-trigger-shadow-focus: none;
+	--select-trigger-shadow-error: none;
+	--select-trigger-shadow-disabled: none;
+
+	--select-focus-ring-width: 2px;
+	--select-focus-ring-offset: 1px;
+	--select-focus-ring-color: var(--color-gray-900);
+	--select-focus-ring-error: var(--color-red-600);
+
+	--select-label-color: var(--color-gray-700);
+	--select-label-color-disabled: var(--color-gray-400);
+	--select-label-color-error: var(--color-red-600);
+	--select-label-font-family: var(--font-mono);
+	--select-label-font-size-sm: var(--font-size-xs);
+	--select-label-font-size-md: var(--font-size-sm);
+	--select-label-font-size-lg: var(--font-size-md);
+	--select-label-font-weight: var(--font-weight-medium);
+	--select-label-line-height: var(--line-height-normal);
+	--select-label-gap: var(--space-1);
+
+	--select-helper-color: var(--color-gray-600);
+	--select-helper-color-error: var(--color-red-600);
+	--select-helper-font-size-sm: var(--font-size-xs);
+	--select-helper-font-size-md: var(--font-size-sm);
+	--select-helper-font-size-lg: var(--font-size-md);
+	--select-helper-gap: var(--space-1);
+
+	--select-dropdown-bg: var(--color-white);
+	--select-dropdown-border: var(--color-gray-300);
+	--select-dropdown-border-width: var(--border-width-2);
+	--select-dropdown-border-radius: var(--radius-sm);
+	--select-dropdown-shadow: none;
+	--select-dropdown-padding: var(--space-1);
+	--select-dropdown-max-height: 240px;
+	--select-dropdown-z-index: var(--z-dropdown);
+
+	--select-option-padding-x: var(--space-2);
+	--select-option-padding-y: var(--space-1);
+	--select-option-bg: transparent;
+	--select-option-bg-hover: var(--color-gray-100);
+	--select-option-bg-selected: var(--color-gray-200);
+	--select-option-bg-active: var(--color-gray-100);
+	--select-option-text: var(--color-gray-900);
+	--select-option-text-selected: var(--color-gray-900);
+	--select-option-text-disabled: var(--color-gray-400);
+	--select-option-border-radius: var(--radius-sm);
+
+	--select-option-check-size: 14px;
+	--select-option-check-color: var(--color-gray-900);
+
+	--select-empty-text: var(--color-gray-500);
+	--select-empty-padding: var(--space-3);
+
+	--select-font-family: var(--font-mono);
+	--select-font-weight: var(--font-weight-normal);
+	--select-line-height: var(--line-height-normal);
+
+	--select-transition: var(--transition-fast);
+	--select-cursor-default: pointer;
+	--select-cursor-disabled: not-allowed;
+	--select-opacity-disabled: var(--opacity-50);
+
+	--select-offset: var(--space-1);
+
+	--accordion-container-bg: var(--color-white);
+	--accordion-container-border: var(--color-gray-300);
+	--accordion-container-border-width: var(--border-width-2);
+	--accordion-container-radius: var(--radius-sm);
+	--accordion-item-gap: var(--space-0);
+
+	--accordion-item-bg: transparent;
+
+	--accordion-header-padding-x: var(--space-4);
+	--accordion-header-padding-y: var(--space-3);
+	--accordion-header-bg: transparent;
+	--accordion-header-bg-hover: var(--color-gray-50);
+	--accordion-header-bg-disabled: transparent;
+	--accordion-header-text: var(--color-gray-900);
+	--accordion-header-text-hover: var(--color-gray-900);
+	--accordion-header-text-disabled: var(--color-gray-400);
+	--accordion-header-border: transparent;
+	--accordion-header-border-hover: transparent;
+	--accordion-header-border-width: var(--border-width-0);
+
+	--accordion-header-font-family: var(--font-mono);
+	--accordion-header-font-size: var(--font-size-sm);
+	--accordion-header-font-weight: var(--font-weight-medium);
+	--accordion-header-line-height: var(--line-height-normal);
+
+	--accordion-icon-size: 16px;
+	--accordion-icon-color: var(--color-gray-600);
+	--accordion-icon-color-hover: var(--color-gray-900);
+	--accordion-icon-color-disabled: var(--color-gray-300);
+	--accordion-icon-position: right;
+	--accordion-icon-rotation: 180deg;
+
+	--accordion-panel-bg: transparent;
+	--accordion-panel-border: transparent;
+	--accordion-panel-border-width: var(--border-width-0);
+
+	--accordion-content-padding-x: var(--space-4);
+	--accordion-content-padding-y: var(--space-3);
+	--accordion-content-padding-top: var(--space-3);
+	--accordion-content-text: var(--color-gray-700);
+
+	--accordion-divider-color: var(--color-gray-300);
+	--accordion-divider-width: var(--border-width-1);
+
+	--accordion-focus-ring-width: 2px;
+	--accordion-focus-ring-offset: 1px;
+	--accordion-focus-ring-color: var(--color-gray-900);
+
+	--accordion-transition-duration: var(--transition-fast);
+	--accordion-cursor-default: pointer;
+	--accordion-cursor-disabled: not-allowed;
+	--accordion-opacity-disabled: var(--opacity-50);
+
+	--dialog-sm-width: 360px;
+	--dialog-md-width: 520px;
+	--dialog-lg-width: 680px;
+	--dialog-max-height: calc(100vh - 48px);
+
+	--dialog-backdrop-bg: rgba(0, 0, 0, 0.6);
+	--dialog-backdrop-blur: none;
+	--dialog-backdrop-z-index: var(--z-modal);
+
+	--dialog-bg: var(--color-white);
+	--dialog-border: var(--color-gray-300);
+	--dialog-border-width: var(--border-width-2);
+	--dialog-border-radius: var(--radius-sm);
+	--dialog-shadow: none;
+	--dialog-text: var(--color-gray-900);
+	--dialog-z-index: calc(var(--z-modal) + 1);
+
+	--dialog-header-padding-x: var(--space-4);
+	--dialog-header-padding-y: var(--space-3);
+	--dialog-header-border: var(--color-gray-300);
+	--dialog-header-border-width: var(--border-width-1);
+	--dialog-header-bg: var(--color-gray-50);
+	--dialog-header-gap: var(--space-3);
+
+	--dialog-title-color: var(--color-gray-900);
+	--dialog-title-font-size: var(--font-size-md);
+	--dialog-title-font-weight: var(--font-weight-semibold);
+	--dialog-title-line-height: var(--line-height-tight);
+
+	--dialog-description-color: var(--color-gray-600);
+	--dialog-description-font-size: var(--font-size-xs);
+	--dialog-description-gap: var(--space-1);
+
+	--dialog-body-padding-x: var(--space-4);
+	--dialog-body-padding-y: var(--space-3);
+	--dialog-body-gap: var(--space-3);
+
+	--dialog-footer-padding-x: var(--space-4);
+	--dialog-footer-padding-y: var(--space-3);
+	--dialog-footer-border: var(--color-gray-300);
+	--dialog-footer-border-width: var(--border-width-1);
+	--dialog-footer-bg: var(--color-gray-50);
+	--dialog-footer-gap: var(--space-2);
+	--dialog-footer-justify: flex-end;
+
+	--dialog-close-size: 28px;
+	--dialog-close-icon-size: 14px;
+	--dialog-close-color: var(--color-gray-500);
+	--dialog-close-color-hover: var(--color-gray-900);
+	--dialog-close-bg-hover: var(--color-gray-200);
+	--dialog-close-border-radius: var(--radius-sm);
+
+	--dialog-transition-duration: 150ms;
+	--dialog-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+	--dialog-font-family: var(--font-mono);
+
+	--dialog-focus-ring-width: 2px;
+	--dialog-focus-ring-offset: 1px;
+	--dialog-focus-ring-color: var(--color-gray-900);
 }

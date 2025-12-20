@@ -5,6 +5,12 @@
 			"command": "npx",
 			"env": {},
 			"args": ["-y", "@sveltejs/mcp"]
+		},
+		"lucide-icons": {
+			"type": "stdio",
+			"command": "npx",
+			"env": {},
+			"args": ["-y", "lucide-icons-mcp", "--stdio"]
 		}
 	}
 }

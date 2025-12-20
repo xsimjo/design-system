@@ -447,6 +447,243 @@ Each theme defines distinct visual personalities through token overrides:
 - Label properties (gap, color, typography per size)
 - Interaction (transition, cursor, opacity)
 
+### Select
+
+A dropdown component for selecting a single value from a list of options, with keyboard navigation and search support.
+
+**Props**:
+
+- `value`: string | number - Controlled selected value
+- `placeholder`: string - Placeholder text when no option selected
+- `disabled`: boolean - Disables interaction
+- `error`: boolean | string - Shows error state with optional message
+- `size`: 'sm' | 'md' | 'lg' - Size variant (default: 'md')
+- `label`: string - Associated label text (optional but recommended)
+- `helperText`: string - Helper text below select (optional)
+- `searchable`: boolean - Enables search/filter functionality (default: false)
+- `options`: Array<{value: string | number, label: string, disabled?: boolean}> - Options array
+- `emptyMessage`: string - Message shown when no options available (default: 'No options')
+
+**Structure**:
+
+- Container: Root wrapper element
+- Label: Associated text label above trigger (optional)
+- Trigger button: Clickable element displaying selected value or placeholder
+- Trigger icon: Chevron icon indicating dropdown state (rotates when open)
+- Dropdown panel: Floating panel containing options (positioned via floating-ui)
+- Search input: Optional filter input at top of dropdown (when searchable=true)
+- Options list: Scrollable list of selectable items
+- Option: Individual selectable item with optional checkmark
+- Empty state: Message shown when no options match or list is empty
+- Helper text: Optional text below trigger for hints or error messages
+
+**Sizes**:
+
+- Small (`sm`): Compact size (32px height in light/dark, 28px in dev) for dense layouts
+- Medium (`md`): Default size (40px height in light/dark, 36px in dev) for most use cases
+- Large (`lg`): Prominent size (48px height in light/dark, 44px in dev) for emphasis
+
+**States**:
+
+- Closed: Default state showing selected value or placeholder
+- Open: Dropdown panel visible with options list
+- Hover: Mouse over trigger or option
+- Focus: Keyboard focus on trigger or active option
+- Selected: Option matches current value (shows checkmark)
+- Disabled: Non-interactive state (trigger and/or individual options)
+- Error: Invalid selection state with red border and optional error message
+- Empty: No options available (shows empty message)
+
+**Behavior**:
+
+- Click trigger to toggle dropdown open/closed
+- Click outside or press Escape to close dropdown
+- Arrow keys navigate options when open
+- Enter/Space selects focused option and closes dropdown
+- Type-to-search when searchable=true filters options in real-time
+- Selected option shows checkmark icon
+- Dropdown positioned via floating-ui with flip/shift middleware
+- Dropdown width matches trigger width by default
+- Max height with internal scrolling for long lists
+- Disabled options are non-interactive but visible
+- Tab key closes dropdown and moves to next focusable element
+- Focus returns to trigger after selection
+
+**Keyboard Navigation**:
+
+- `Tab`: Focus trigger (closed) or close dropdown and move to next element (open)
+- `Space/Enter`: Open dropdown (closed) or select focused option (open)
+- `ArrowDown`: Open dropdown (closed) or move to next option (open)
+- `ArrowUp`: Open dropdown (closed) or move to previous option (open)
+- `Home`: Focus first option (open)
+- `End`: Focus last option (open)
+- `Escape`: Close dropdown
+- `A-Z`: Type-to-search (when searchable=true) or jump to matching option
+
+**Search Functionality** (when searchable=true):
+
+- Search input appears at top of dropdown
+- Auto-focused when dropdown opens
+- Filters options by label text (case-insensitive substring match)
+- Arrow keys navigate filtered results
+- Clear search with Escape (first press) or close dropdown (second press)
+- Shows empty message if no options match search
+
+**Floating-UI Integration**:
+
+- Uses `@floating-ui/dom` for intelligent positioning
+- Middleware: `offset`, `flip`, `shift`, `size`
+- Default placement: bottom-start
+- Auto-flips to top when bottom space insufficient
+- Auto-shifts horizontally to stay in viewport
+- Size middleware limits max height to available space
+- Strategy: absolute (positioned relative to trigger)
+- Updates position on scroll/resize events
+
+**Theme Variations**:
+
+Each theme defines distinct visual personalities through token overrides:
+
+- Light: White backgrounds, slate borders, blue accents for selected items, standard heights (32/40/48px), subtle shadows
+- Dark: Dark slate backgrounds, lighter borders for visibility, blue accents (500 shade), elevated shadows for depth
+- Dev: White backgrounds, visible borders (2px), compact heights (28/36/44px), sharp corners, monospace font, no shadows, gray-on-gray selected state
+
+**Accessibility**:
+
+- Trigger button with `role="combobox"` and `aria-haspopup="listbox"`
+- `aria-expanded` indicates dropdown state
+- `aria-controls` links trigger to dropdown
+- Dropdown with `role="listbox"`
+- Options with `role="option"`
+- `aria-selected` for selected option
+- `aria-activedescendant` tracks keyboard focus
+- `aria-invalid` for error state
+- `aria-describedby` linking to helper text or error messages
+- `aria-disabled` for disabled options
+- Focus ring with 3:1 contrast ratio
+- All text meets 4.5:1 contrast requirement
+- Keyboard navigation fully supported
+- Screen readers announce selected value, option count, and current focus
+- Label association via `for` attribute
+
+**Token Categories**:
+
+- Size variants (height, padding, font size, icon size per sm/md/lg)
+- Trigger properties (background, border, shadow, radius, text color, icon color per state)
+- Dropdown properties (background, border, shadow, radius, padding, max height, z-index)
+- Option properties (padding, background per state, text color per state, border radius, checkmark size/color)
+- Focus ring (width, offset, color per default/error)
+- Label properties (gap, color, typography per size)
+- Helper text properties (gap, color per default/error, typography per size)
+- Empty state (text color, padding)
+- Interaction (transition, cursor per state, opacity, offset from trigger)
+
+### Accordion
+
+A vertically stacked set of expandable panels, each revealing content when activated. Supports single-expand or multi-expand modes.
+
+**Props**:
+
+- `items`: Array<{id: string, title: string, content: string | Component, disabled?: boolean}> - Accordion items array
+- `mode`: 'single' | 'multiple' - Expand behavior (default: 'single')
+- `defaultOpen`: string | string[] - Initially open item IDs (string for single mode, array for multiple mode)
+- `collapsible`: boolean - Allow closing all items in single mode (default: true)
+- `disabled`: boolean - Disables all items
+
+**Structure**:
+
+- Container: Root wrapper for all accordion items
+- Item: Individual accordion section
+- Header: Clickable trigger containing title and icon
+- Trigger button: Interactive element wrapping header content
+- Title: Text label for the panel
+- Icon: Chevron or plus/minus indicator showing expand state
+- Panel: Expandable content area (hidden when collapsed)
+- Content: Inner content wrapper for proper padding
+
+**Modes**:
+
+- Single: Only one item can be open at a time. Opening a new item closes the previously open item.
+- Multiple: Multiple items can be open simultaneously. Each item toggles independently.
+
+**States**:
+
+- Collapsed: Panel closed, content hidden
+- Expanded: Panel open, content visible
+- Hover: Mouse over header trigger
+- Focus: Keyboard focus on header trigger
+- Disabled: Non-interactive state (entire accordion or individual items)
+
+**Behavior**:
+
+- Click header to toggle panel open/closed
+- In single mode, opening a new item closes the current item
+- In multiple mode, each item toggles independently
+- Collapsible mode allows closing all items in single mode
+- Non-collapsible single mode always keeps one item open
+- Smooth height animation when expanding/collapsing
+- Disabled items are non-interactive but visible
+- Focus moves to next/previous header with arrow keys
+- Enter/Space toggles focused item
+
+**Keyboard Navigation**:
+
+- `Tab`: Move focus to next accordion header or out of accordion
+- `Shift+Tab`: Move focus to previous accordion header or out of accordion
+- `Space/Enter`: Toggle focused item open/closed
+- `ArrowDown`: Move focus to next accordion header (cycles to first)
+- `ArrowUp`: Move focus to previous accordion header (cycles to last)
+- `Home`: Focus first accordion header
+- `End`: Focus last accordion header
+
+**Animation**:
+
+- Expand: Animate height from 0 to auto with smooth easing
+- Collapse: Animate height from auto to 0 with smooth easing
+- Icon rotation: Chevron rotates 180deg or plus/minus transitions
+- Use CSS transitions for performance
+- Duration controlled by theme transition tokens
+- Respect prefers-reduced-motion for accessibility
+
+**Icon Variants**:
+
+- Chevron: Rotates 180deg when expanded (default)
+- Plus/Minus: Plus icon when collapsed, minus when expanded (configurable)
+
+**Theme Variations**:
+
+Each theme defines distinct visual personalities through token overrides:
+
+- Light: White backgrounds, subtle dividers, smooth transitions, generous padding, blue accent on hover
+- Dark: Dark slate backgrounds, lighter dividers for visibility, elevated shadows, smooth transitions
+- Dev: Compact padding, sharp corners, visible borders (2px), no shadows, monospace font, instant transitions
+
+**Accessibility**:
+
+- Header with `role="button"` or native `<button>` element
+- `aria-expanded` indicates panel state (true/false)
+- `aria-controls` links header to panel
+- `aria-disabled` for disabled items
+- Panel with `role="region"` and `aria-labelledby` linking to header
+- Focus ring with 3:1 contrast ratio
+- All text meets 4.5:1 contrast requirement
+- Keyboard navigation fully supported
+- Screen readers announce item state changes (expanded/collapsed)
+- Focus management maintains logical tab order
+- Respects prefers-reduced-motion
+
+**Token Categories**:
+
+- Container properties (background, border, radius, gap between items)
+- Header properties (padding, background per state, text color per state, font family/size/weight, border)
+- Icon properties (size, color per state, rotation duration, position)
+- Panel properties (background, padding, border)
+- Content properties (padding, text color)
+- Divider properties (color, width)
+- Focus ring (width, offset, color)
+- Interaction (transition duration, easing, cursor per state)
+- Hover/active states (background, border, text color)
+
 ### Button
 
 A foundational interactive element supporting multiple variants, sizes, and states.

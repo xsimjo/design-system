@@ -50,5 +50,5 @@
 		]
 	},
 	"enableAllProjectMcpServers": true,
-	"enabledMcpjsonServers": ["svelte"]
+	"enabledMcpjsonServers": ["svelte", "lucide-icons"]
 }
