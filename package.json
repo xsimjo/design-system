@@ -1,12 +1,12 @@
 {
-	"name": "@simjoeweb/design-system",
+	"name": "@xsimjo/design-system",
 	"version": "0.0.2",
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/simjoeweb/design-system.git"
+		"url": "git+https://github.com/xsimjo/design-system.git"
 	},
 	"scripts": {
 		"dev": "vite dev",
