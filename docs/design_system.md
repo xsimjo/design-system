@@ -276,6 +276,104 @@ Each theme defines distinct visual personalities through token overrides:
 - Navigation layout (gap between items)
 - Actions area (gap between action elements)
 
+### Input
+
+A versatile text input field supporting various types, sizes, states, and optional icons or helper text.
+
+**Props**:
+
+- `value`: string - Controlled value
+- `type`: string - Input type (text, email, password, number, etc.) (default: 'text')
+- `placeholder`: string - Placeholder text
+- `disabled`: boolean - Disables interaction
+- `readonly`: boolean - Makes input read-only
+- `error`: boolean | string - Shows error state with optional message
+- `success`: boolean | string - Shows success state with optional message
+- `size`: 'sm' | 'md' | 'lg' - Size variant (default: 'md')
+- `label`: string - Associated label text (optional but recommended)
+- `helperText`: string - Helper text below input (optional)
+- `icon`: Component - Icon component to display (left or right aligned) (optional)
+- `iconPosition`: 'left' | 'right' - Icon placement (default: 'left')
+
+**Structure**:
+
+- Container: Root wrapper element
+- Label: Associated text label above input (optional)
+- Input wrapper: Contains input field and optional icons
+- Input field: Native input element with proper attributes
+- Icons: Optional leading or trailing icons
+- Helper text: Optional text below input for hints or error messages
+
+**Sizes**:
+
+- Small (`sm`): Compact size (32px height in light/dark, 28px in dev) for dense forms
+- Medium (`md`): Default size (40px height in light/dark, 36px in dev) for most use cases
+- Large (`lg`): Prominent size (48px height in light/dark, 44px in dev) for emphasis
+
+**States**:
+
+- Default: Normal resting state with placeholder
+- Hover: Mouse over interaction with border/shadow change
+- Focus: Active input state with visible focus ring
+- Filled: Contains user-entered text
+- Disabled: Non-interactive state with reduced opacity
+- Readonly: Non-editable but selectable state
+- Error: Invalid input state with red border and optional error message
+- Success: Valid input state with green border and optional success message
+
+**Input Types**:
+
+Supports all HTML5 input types including text, email, password, number, tel, url, search, date, time, etc.
+
+**Icon Support**:
+
+- Icons can be positioned on the left or right side of the input
+- Icon color adjusts based on input state (default, disabled, error, success)
+- Icons are purely decorative and do not receive focus
+
+**Behavior**:
+
+- Text cursor appears on focus
+- Placeholder disappears when typing begins
+- Label remains visible at all times (does not float)
+- Error/success states override default border colors
+- Disabled state prevents all interaction
+- Readonly allows selection but not editing
+- Native form submission support
+- Supports autocomplete and other HTML5 attributes
+
+**Theme Variations**:
+
+Each theme defines distinct visual personalities through token overrides:
+
+- Light: White background, slate borders, blue focus, standard heights (32/40/48px), smooth corners, subtle shadows
+- Dark: Dark slate background, lighter borders for visibility, blue focus (500 shade), elevated shadows for depth
+- Dev: White background, visible borders (2px), compact heights (28/36/44px), sharp corners, monospace font, no shadows
+
+**Accessibility**:
+
+- Native input element for screen readers
+- Label association via `for` attribute
+- `aria-invalid` for error state
+- `aria-describedby` linking to helper text or error messages
+- `aria-required` for required fields
+- Focus ring with 3:1 contrast ratio
+- Placeholder text meets 4.5:1 contrast requirement
+- Error messages announced to screen readers
+- Keyboard navigation (Tab, Shift+Tab)
+- Icons have `aria-hidden="true"` (decorative only)
+
+**Token Categories**:
+
+- Size variants (height, padding, font size, icon size per sm/md/lg)
+- Container properties (background, border, shadow, radius per state)
+- Text properties (color, placeholder color, disabled color)
+- Icon properties (color, disabled color, gap spacing)
+- Focus ring (width, offset, color per default/error/success)
+- Label properties (color, typography per size, gap spacing)
+- Helper text properties (color per default/error/success, typography per size, gap spacing)
+- Interaction (transition, cursor per state, opacity)
+
 ### Checkbox
 
 A form control that allows users to toggle between checked, unchecked, and indeterminate states.

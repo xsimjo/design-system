@@ -23,7 +23,7 @@
 		...restProps
 	}: Props = $props();
 
-	let inputElement: HTMLInputElement;
+	let inputElement = $state<HTMLInputElement | null>(null);
 
 	$effect(() => {
 		if (inputElement) {

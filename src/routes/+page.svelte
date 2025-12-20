@@ -4,6 +4,7 @@
 		ButtonShowcase,
 		CardShowcase,
 		CheckboxShowcase,
+		InputShowcase,
 		HeaderShowcase,
 		AvatarShowcase,
 		TooltipShowcase,
@@ -42,6 +43,7 @@
 	<main class="content">
 		<ButtonShowcase />
 		<CheckboxShowcase />
+		<InputShowcase />
 		<CardShowcase />
 		<HeaderShowcase />
 		<AvatarShowcase />
