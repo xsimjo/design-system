@@ -1,0 +1,14 @@
+{
+	"hooks": {
+		"before:init": ["npm run lint", "npm run build"]
+	},
+	"git": {
+		"commitMessage": "chore: release v${version}"
+	},
+	"github": {
+		"release": true
+	},
+	"npm": {
+		"publish": true
+	}
+}
