@@ -128,4 +128,43 @@
 
 	--button-cursor-default: pointer;
 	--button-cursor-disabled: not-allowed;
+
+	--avatar-sm-size: 28px;
+	--avatar-sm-font-size: var(--font-size-xs);
+	--avatar-sm-icon-size: 14px;
+
+	--avatar-md-size: 36px;
+	--avatar-md-font-size: var(--font-size-sm);
+	--avatar-md-icon-size: 16px;
+
+	--avatar-lg-size: 44px;
+	--avatar-lg-font-size: var(--font-size-md);
+	--avatar-lg-icon-size: 20px;
+
+	--avatar-bg: var(--color-gray-200);
+	--avatar-text: var(--color-gray-800);
+	--avatar-border: var(--color-gray-400);
+	--avatar-border-width: var(--border-width-1);
+
+	--avatar-radius-circle: var(--radius-full);
+	--avatar-radius-rounded: var(--radius-sm);
+
+	--avatar-font-family: var(--font-mono);
+	--avatar-font-weight: var(--font-weight-semibold);
+	--avatar-line-height: var(--line-height-none);
+
+	--avatar-img-object-fit: cover;
+
+	--avatar-status-size-sm: 8px;
+	--avatar-status-size-md: 10px;
+	--avatar-status-size-lg: 12px;
+	--avatar-status-border-width: 2px;
+	--avatar-status-border-color: var(--color-white);
+
+	--avatar-status-online-bg: #22c55e;
+	--avatar-status-offline-bg: var(--color-gray-400);
+	--avatar-status-away-bg: #f59e0b;
+	--avatar-status-busy-bg: #ef4444;
+
+	--avatar-transition: var(--transition-fast);
 }

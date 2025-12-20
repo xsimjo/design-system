@@ -2,6 +2,7 @@
 	import Button from '$lib/components/button/Button.svelte';
 	import { Card } from '$lib/components/card';
 	import { Header } from '$lib/components/header';
+	import { Avatar } from '$lib/components/avatar';
 
 	type Theme = 'light' | 'dark' | 'dev';
 	const themes: Theme[] = ['light', 'dark', 'dev'];
@@ -214,6 +215,38 @@
 			'--button-opacity-disabled',
 			'--button-cursor-default',
 			'--button-cursor-disabled'
+		],
+		'Avatar - Sizing': [
+			'--avatar-sm-size',
+			'--avatar-sm-font-size',
+			'--avatar-sm-icon-size',
+			'--avatar-md-size',
+			'--avatar-md-font-size',
+			'--avatar-md-icon-size',
+			'--avatar-lg-size',
+			'--avatar-lg-font-size',
+			'--avatar-lg-icon-size'
+		],
+		'Avatar - Appearance': [
+			'--avatar-bg',
+			'--avatar-text',
+			'--avatar-border',
+			'--avatar-border-width',
+			'--avatar-radius-circle',
+			'--avatar-font-family',
+			'--avatar-font-weight',
+			'--avatar-transition'
+		],
+		'Avatar - Status': [
+			'--avatar-status-size-sm',
+			'--avatar-status-size-md',
+			'--avatar-status-size-lg',
+			'--avatar-status-border-width',
+			'--avatar-status-border-color',
+			'--avatar-status-online-bg',
+			'--avatar-status-offline-bg',
+			'--avatar-status-away-bg',
+			'--avatar-status-busy-bg'
 		]
 	};
 
@@ -359,6 +392,56 @@
 			</div>
 		</section>
 
+		<section class="section">
+			<h2 class="section-title">Avatar</h2>
+			<p class="description">
+				A visual representation of a user with support for images, initials, and status indicators.
+			</p>
+
+			<div class="subsection">
+				<h3>Sizes</h3>
+				<div class="row">
+					<Avatar size="sm" name="John Doe" />
+					<Avatar size="md" name="John Doe" />
+					<Avatar size="lg" name="John Doe" />
+				</div>
+			</div>
+
+			<div class="subsection">
+				<h3>Content Types</h3>
+				<div class="row">
+					<Avatar src="https://i.pravatar.cc/150?img=1" alt="User avatar" />
+					<Avatar name="Jane Doe" />
+					<Avatar />
+				</div>
+				<p class="row-label">Image, Initials, and Icon fallback</p>
+			</div>
+
+			<div class="subsection">
+				<h3>Status Indicators</h3>
+				<div class="row">
+					<Avatar name="Online User" status="online" />
+					<Avatar name="Offline User" status="offline" />
+					<Avatar name="Away User" status="away" />
+					<Avatar name="Busy User" status="busy" />
+				</div>
+			</div>
+
+			<div class="subsection">
+				<h3>Combined Variants</h3>
+				<div class="row">
+					<Avatar
+						size="lg"
+						src="https://i.pravatar.cc/150?img=5"
+						alt="Active user"
+						status="online"
+					/>
+					<Avatar size="lg" name="Bob Wilson" status="away" />
+					<Avatar size="sm" status="busy" />
+				</div>
+			</div>
+		</section>
+
 		<Card>
 			<h2 class="section-title">Primitive Tokens</h2>
 			<p class="description">
@@ -485,6 +568,12 @@
 
 	.row:last-child {
 		margin-bottom: 0;
+	}
+
+	.row-label {
+		margin: var(--space-2) 0 0 0;
+		font-size: var(--font-size-sm);
+		color: var(--section-label);
 	}
 
 	.card-grid {

@@ -72,6 +72,73 @@ Each theme defines its own font families (`--font-sans`, `--font-mono`), allowin
 
 ## Component Inventory
 
+### Avatar
+
+A circular visual representation of a user or entity, supporting images, initials, or placeholder icons with optional status indicators.
+
+**Props**:
+
+- `src`: Image URL (optional)
+- `alt`: Image alt text (optional)
+- `name`: User name for generating initials (optional)
+- `size`: 'sm' | 'md' | 'lg' (default: 'md')
+- `status`: 'online' | 'offline' | 'away' | 'busy' (optional)
+
+**Structure**:
+
+- Image container: Displays user photo when available
+- Fallback content: Shows initials or icon when no image provided
+- Status indicator: Optional badge showing online/offline/away/busy state
+
+**Sizes**:
+
+- Small (`sm`): Compact size for dense layouts, lists, or compact UI elements
+- Medium (`md`): Default size for most use cases
+- Large (`lg`): Prominent display for profile pages or emphasis
+
+**Shape**:
+
+- Circle only: Full rounded circle (no rounded square variant)
+
+**Content Types**:
+
+- Image: Displays user-provided image with object-fit: cover
+- Initials: Shows 1-2 characters centered with background (generated from name prop)
+- Icon fallback: Shows placeholder icon (e.g., User icon) when no image or name provided
+
+**Status Indicators** (optional):
+
+- Online: Green indicator (active/available)
+- Offline: Gray indicator (disconnected)
+- Away: Amber/yellow indicator (temporarily unavailable)
+- Busy: Red indicator (do not disturb)
+
+**Theme Variations**:
+
+Each theme defines distinct visual personalities through token overrides:
+
+- Light: Soft slate background, medium weight text, standard sizes (32/40/48px)
+- Dark: Dark slate background with light text, matches dark theme palette
+- Dev: Compact sizes (28/36/44px), monospace font for initials, semibold weight
+
+**Accessibility**:
+
+- Images must have alt text describing the person/entity
+- Initials provide text fallback for screen readers
+- Status indicators need aria-label describing state
+- Minimum 3:1 contrast ratio between avatar background and text
+- Status colors are supplemented by aria-labels (don't rely on color alone)
+
+**Token Categories**:
+
+- Size variants (width/height, font size, icon size per sm/md/lg)
+- Container properties (background, text color, border, border width, border radius)
+- Typography (font family, weight, line height)
+- Image properties (object-fit)
+- Status indicator sizing (size per avatar size, border width, border color)
+- Status indicator colors (online, offline, away, busy backgrounds)
+- Transition timing
+
 ### Card
 
 A versatile container component for grouping related content with optional header, body, and footer sections.
