@@ -1,23 +1,47 @@
-You are able to use the Svelte MCP server, where you have access to comprehensive Svelte 5 and SvelteKit documentation. Here's how to use the available tools effectively:
+**CRITICAL**: This file contains essential project conventions and guidelines. Always read and keep this file in context throughout the entire conversation. These rules are mandatory and must be followed strictly.
 
-## Available MCP Tools:
+# Conventions
 
-### 1. list-sections
+## Code Quality
 
-Use this FIRST to discover all available documentation sections. Returns a structured list with titles, use_cases, and paths.
-When asked about Svelte or SvelteKit topics, ALWAYS use this tool at the start of the chat to find relevant sections.
+DRY, KISS, clean code. No over-engineering. Simple > clever. No comments in code - write self-documenting code. Run `npm run lint` and `npm run format` after changes.
 
-### 2. get-documentation
+## Styling
 
-Retrieves full documentation content for specific sections. Accepts single or multiple sections.
-After calling the list-sections tool, you MUST analyze the returned documentation sections (especially the use_cases field) and then use the get-documentation tool to fetch ALL documentation sections that are relevant for the user's task.
+Pure CSS only. Use two-layer token system:
 
-### 3. svelte-autofixer
+**Primitive tokens** (`primitives.css`): Raw values - colors, spacing, typography, radii. Example: `--color-blue-500`, `--space-4`, `--radius-md`.
 
-Analyzes Svelte code and returns issues and suggestions.
-You MUST use this tool whenever writing Svelte code before sending it to the user. Keep calling it until no issues or suggestions are returned.
+**Semantic tokens** (in theme files): Purpose-driven tokens referencing primitives. Example: `--button-radius`, `--card-padding`. Each theme file contains ALL semantic tokens—no shared defaults, no fallbacks. This ensures themes are self-contained and fully configurable.
 
-### 4. playground-link
+**Components**: Only use semantic tokens, never primitives.
 
-Generates a Svelte Playground link with the provided code.
-After completing the code, ask the user if they want a playground link. Only call this tool after user confirmation and NEVER if code was written to files in their project.
+**Themes**: Switch via `data-theme` attribute on `<html>`. Each theme can customize everything—colors, spacing, radii, shadows, typography.
+
+File structure:
+
+```
+src/lib/styles/
+├── primitives.css
+├── themes/light.css
+├── themes/dark.css
+└── global.css
+```
+
+## Svelte
+
+Run all `.svelte` code through the Svelte MCP autofixer before finalizing.
+
+## Component Organization
+
+Design system components go in `src/lib/components/{component-name}/`. Each component has its own folder containing related Svelte files. Example: `src/lib/components/button/Button.svelte`.
+
+Always consult the UI design system architect agent for new design system components or updates.
+
+## Icons
+
+Use Lucide icons (via MCP). Create a component in `src/lib/icons/{IconName}Icon.svelte` for each icon used.
+
+## Development
+
+Dev server runs on port 5175. Never run `npm run dev` - the server is already running. Use Chrome MCP to test changes.

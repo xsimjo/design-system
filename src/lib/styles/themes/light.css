@@ -1,0 +1,120 @@
+/**
+ * Light Theme - Semantic Design Tokens
+ *
+ * Layer 2: Purpose-driven tokens that reference primitives
+ * Apply this theme using: <html data-theme="light">
+ */
+
+[data-theme='light'] {
+	/* ============================================
+     BUTTON - Primary Variant
+     ============================================ */
+
+	/* Background */
+	--button-primary-bg: var(--color-blue-600);
+	--button-primary-bg-hover: var(--color-blue-700);
+	--button-primary-bg-active: var(--color-blue-800);
+	--button-primary-bg-disabled: var(--color-slate-200);
+
+	/* Text */
+	--button-primary-text: var(--color-white);
+	--button-primary-text-hover: var(--color-white);
+	--button-primary-text-active: var(--color-white);
+	--button-primary-text-disabled: var(--color-slate-400);
+
+	/* Border */
+	--button-primary-border: var(--color-blue-600);
+	--button-primary-border-hover: var(--color-blue-700);
+	--button-primary-border-active: var(--color-blue-800);
+	--button-primary-border-disabled: var(--color-slate-200);
+
+	/* Focus ring */
+	--button-primary-focus-ring: var(--color-blue-500);
+
+	/* ============================================
+     BUTTON - Secondary Variant
+     ============================================ */
+
+	/* Background */
+	--button-secondary-bg: var(--color-white);
+	--button-secondary-bg-hover: var(--color-slate-50);
+	--button-secondary-bg-active: var(--color-slate-100);
+	--button-secondary-bg-disabled: var(--color-slate-50);
+
+	/* Text */
+	--button-secondary-text: var(--color-slate-700);
+	--button-secondary-text-hover: var(--color-slate-900);
+	--button-secondary-text-active: var(--color-slate-900);
+	--button-secondary-text-disabled: var(--color-slate-300);
+
+	/* Border */
+	--button-secondary-border: var(--color-slate-300);
+	--button-secondary-border-hover: var(--color-slate-400);
+	--button-secondary-border-active: var(--color-slate-500);
+	--button-secondary-border-disabled: var(--color-slate-200);
+
+	/* Focus ring */
+	--button-secondary-focus-ring: var(--color-slate-400);
+
+	/* ============================================
+     BUTTON - Sizing
+     ============================================ */
+
+	/* Small */
+	--button-sm-height: 32px;
+	--button-sm-padding-x: var(--space-3);
+	--button-sm-padding-y: var(--space-1);
+	--button-sm-font-size: var(--font-size-sm);
+	--button-sm-gap: var(--space-2);
+	--button-sm-icon-size: 16px;
+
+	/* Medium (default) */
+	--button-md-height: 40px;
+	--button-md-padding-x: var(--space-4);
+	--button-md-padding-y: var(--space-2);
+	--button-md-font-size: var(--font-size-md);
+	--button-md-gap: var(--space-2);
+	--button-md-icon-size: 20px;
+
+	/* Large */
+	--button-lg-height: 48px;
+	--button-lg-padding-x: var(--space-6);
+	--button-lg-padding-y: var(--space-3);
+	--button-lg-font-size: var(--font-size-lg);
+	--button-lg-gap: var(--space-3);
+	--button-lg-icon-size: 24px;
+
+	/* ============================================
+     BUTTON - Shared Properties
+     ============================================ */
+
+	/* Typography */
+	--button-font-family: var(--font-sans);
+	--button-font-weight: var(--font-weight-medium);
+	--button-line-height: var(--line-height-none);
+
+	/* Border */
+	--button-border-width: var(--border-width-1);
+	--button-border-radius: var(--radius-lg);
+
+	/* Shadow */
+	--button-shadow: var(--shadow-sm);
+	--button-shadow-hover: var(--shadow-md);
+	--button-shadow-active: var(--shadow-sm);
+	--button-shadow-disabled: none;
+
+	/* Focus */
+	--button-focus-ring-width: 3px;
+	--button-focus-ring-offset: 2px;
+	--button-focus-ring-opacity: var(--opacity-50);
+
+	/* Transition */
+	--button-transition: var(--transition-fast);
+
+	/* Opacity */
+	--button-opacity-disabled: var(--opacity-60);
+
+	/* Cursor */
+	--button-cursor-default: pointer;
+	--button-cursor-disabled: not-allowed;
+}

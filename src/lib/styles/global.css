@@ -1,0 +1,15 @@
+@import './primitives.css';
+@import './themes/light.css';
+@import './themes/dark.css';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: var(--font-sans);
+	line-height: var(--line-height-normal);
+}
