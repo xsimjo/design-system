@@ -3,6 +3,7 @@
 	import { Card } from '$lib/components/card';
 	import { Header } from '$lib/components/header';
 	import { Avatar } from '$lib/components/avatar';
+	import { Tooltip } from '$lib/components/tooltip';
 
 	type Theme = 'light' | 'dark' | 'dev';
 	const themes: Theme[] = ['light', 'dark', 'dev'];
@@ -247,6 +248,18 @@
 			'--avatar-status-offline-bg',
 			'--avatar-status-away-bg',
 			'--avatar-status-busy-bg'
+		],
+		Tooltip: [
+			'--tooltip-bg',
+			'--tooltip-text',
+			'--tooltip-shadow',
+			'--tooltip-radius',
+			'--tooltip-padding-x',
+			'--tooltip-padding-y',
+			'--tooltip-font-family',
+			'--tooltip-font-size',
+			'--tooltip-arrow-size',
+			'--tooltip-arrow-color'
 		]
 	};
 
@@ -262,7 +275,7 @@
 <div class="showcase">
 	<header class="page-header">
 		<h1>Design System</h1>
-		<Button variant="secondary" size="sm" onclick={nextTheme}>
+		<Button variant="outline" color="neutral" size="sm" onclick={nextTheme}>
 			Theme: {getThemeLabel(theme)}
 		</Button>
 	</header>
@@ -270,13 +283,63 @@
 	<main class="content">
 		<section class="section">
 			<h2 class="section-title">Button</h2>
-			<p class="description">A versatile button component with multiple variants and sizes.</p>
+			<p class="description">A versatile button component with multiple variants and colors.</p>
 
 			<div class="subsection">
-				<h3>Variants</h3>
+				<h3>Style Variants (Filled color=primary)</h3>
 				<div class="row">
-					<Button variant="primary">Primary</Button>
-					<Button variant="secondary">Secondary</Button>
+					<Button variant="filled">Filled</Button>
+					<Button variant="outline">Outline</Button>
+					<Button variant="ghost">Ghost</Button>
+					<Button variant="soft">Soft</Button>
+					<Button variant="link">Link</Button>
+					<Button variant="dash">Dash</Button>
+				</div>
+			</div>
+
+			<div class="subsection">
+				<h3>Colors (Filled variant)</h3>
+				<div class="row">
+					<Button color="primary">Primary</Button>
+					<Button color="neutral">Neutral</Button>
+					<Button color="accent">Accent</Button>
+					<Button color="info">Info</Button>
+					<Button color="success">Success</Button>
+					<Button color="warning">Warning</Button>
+					<Button color="error">Error</Button>
+				</div>
+			</div>
+
+			<div class="subsection">
+				<h3>Outline Variant Colors</h3>
+				<div class="row">
+					<Button variant="outline" color="primary">Primary</Button>
+					<Button variant="outline" color="neutral">Neutral</Button>
+					<Button variant="outline" color="success">Success</Button>
+					<Button variant="outline" color="warning">Warning</Button>
+					<Button variant="outline" color="error">Error</Button>
+				</div>
+			</div>
+
+			<div class="subsection">
+				<h3>Ghost Variant Colors</h3>
+				<div class="row">
+					<Button variant="ghost" color="primary">Primary</Button>
+					<Button variant="ghost" color="neutral">Neutral</Button>
+					<Button variant="ghost" color="success">Success</Button>
+					<Button variant="ghost" color="warning">Warning</Button>
+					<Button variant="ghost" color="error">Error</Button>
+				</div>
+			</div>
+
+			<div class="subsection">
+				<h3>Soft Variant Colors</h3>
+				<div class="row">
+					<Button variant="soft" color="primary">Primary</Button>
+					<Button variant="soft" color="neutral">Neutral</Button>
+					<Button variant="soft" color="success">Success</Button>
+					<Button variant="soft" color="warning">Warning</Button>
+					<Button variant="soft" color="error">Error</Button>
 				</div>
 			</div>
 
@@ -290,14 +353,24 @@
 			</div>
 
 			<div class="subsection">
+				<h3>Icon Buttons</h3>
+				<div class="row">
+					<Button icon size="sm" variant="filled" color="primary">+</Button>
+					<Button icon size="md" variant="outline" color="neutral">×</Button>
+					<Button icon size="lg" variant="ghost" color="error">!</Button>
+				</div>
+			</div>
+
+			<div class="subsection">
 				<h3>States</h3>
 				<div class="row">
-					<Button variant="primary">Default</Button>
-					<Button variant="primary" disabled>Disabled</Button>
+					<Button color="primary">Default</Button>
+					<Button color="primary" disabled>Disabled</Button>
+					<Button color="primary" active>Active</Button>
 				</div>
 				<div class="row">
-					<Button variant="secondary">Default</Button>
-					<Button variant="secondary" disabled>Disabled</Button>
+					<Button variant="outline" color="neutral">Default</Button>
+					<Button variant="outline" color="neutral" disabled>Disabled</Button>
 				</div>
 			</div>
 		</section>
@@ -438,6 +511,52 @@
 					/>
 					<Avatar size="lg" name="Bob Wilson" status="away" />
 					<Avatar size="sm" status="busy" />
+				</div>
+			</div>
+		</section>
+
+		<section class="section">
+			<h2 class="section-title">Tooltip</h2>
+			<p class="description">
+				A small popup that displays additional information when hovering or focusing on an element.
+			</p>
+
+			<div class="subsection">
+				<h3>Placements</h3>
+				<div class="row">
+					<Tooltip content="Tooltip on top" placement="top">
+						<Button variant="secondary" size="sm">Top</Button>
+					</Tooltip>
+					<Tooltip content="Tooltip on bottom" placement="bottom">
+						<Button variant="secondary" size="sm">Bottom</Button>
+					</Tooltip>
+					<Tooltip content="Tooltip on left" placement="left">
+						<Button variant="secondary" size="sm">Left</Button>
+					</Tooltip>
+					<Tooltip content="Tooltip on right" placement="right">
+						<Button variant="secondary" size="sm">Right</Button>
+					</Tooltip>
+				</div>
+			</div>
+
+			<div class="subsection">
+				<h3>Without Arrow</h3>
+				<div class="row">
+					<Tooltip content="No arrow tooltip" showArrow={false}>
+						<Button variant="secondary" size="sm">Hover me</Button>
+					</Tooltip>
+				</div>
+			</div>
+
+			<div class="subsection">
+				<h3>With Different Content</h3>
+				<div class="row">
+					<Tooltip content="Click to save your changes">
+						<Button variant="primary" size="sm">Save</Button>
+					</Tooltip>
+					<Tooltip content="View user profile">
+						<Avatar name="Jane Doe" />
+					</Tooltip>
 				</div>
 			</div>
 		</section>

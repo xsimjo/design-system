@@ -72,6 +72,63 @@ Each theme defines its own font families (`--font-sans`, `--font-mono`), allowin
 
 ## Component Inventory
 
+### Tooltip
+
+A floating label that appears on hover or focus to provide additional context or information about an element.
+
+**Props**:
+
+- `content`: Text content to display in tooltip (required)
+- `placement`: 'top' | 'bottom' | 'left' | 'right' (default: 'top')
+- `showArrow`: boolean (default: true)
+- `delay`: number in milliseconds (optional, overrides theme default)
+
+**Structure**:
+
+- Trigger element: Wrapped child element that activates the tooltip
+- Tooltip container: Floating element positioned relative to trigger
+- Optional arrow: Visual pointer indicating which element triggered the tooltip
+
+**Behavior**:
+
+- Appears on mouse hover or keyboard focus
+- Disappears on mouse leave or blur
+- Delay before showing (configurable per theme)
+- Positioned using floating-ui library for smart placement
+- Automatically flips to avoid viewport edges
+
+**Placements**:
+
+- Top: Tooltip appears above trigger element
+- Bottom: Tooltip appears below trigger element
+- Left: Tooltip appears to the left of trigger element
+- Right: Tooltip appears to the right of trigger element
+
+**Theme Variations**:
+
+Each theme defines distinct visual personalities through token overrides:
+
+- Light: Dark background (slate-900) with white text, subtle shadow, medium padding
+- Dark: Lighter dark background (slate-700) with border, prominent shadow for depth
+- Dev: Pure dark background with thick border, no shadow, compact padding, monospace font
+
+**Accessibility**:
+
+- Trigger element must be keyboard focusable
+- Tooltip content accessible via aria-describedby
+- Role="tooltip" on tooltip container
+- Sufficient color contrast (white text on dark background exceeds 7:1)
+- Does not trap focus
+- Dismissable with Escape key
+
+**Token Categories**:
+
+- Container properties (background, text color, border, shadow, radius, padding, max-width)
+- Typography (font family, size, weight, line height)
+- Arrow properties (size, color)
+- Layout (z-index, offset from trigger)
+- Timing (transition delay, duration)
+
 ### Avatar
 
 A circular visual representation of a user or entity, supporting images, initials, or placeholder icons with optional status indicators.
