@@ -282,8 +282,12 @@ A foundational interactive element supporting multiple variants, sizes, and stat
 
 **Variants**:
 
-- Primary: High emphasis, used for primary actions
-- Secondary: Medium emphasis, used for secondary actions
+- Filled: Solid background, high emphasis
+- Outline: Transparent background with border
+- Ghost: Minimal styling, text-only appearance
+- Soft: Tinted background with matching text color
+- Link: Underlined text, link-like appearance
+- Dash: Dashed border outline
 
 **Sizes**:
 
@@ -299,6 +303,17 @@ A foundational interactive element supporting multiple variants, sizes, and stat
 - Focus: Keyboard navigation state (includes visible focus ring)
 - Disabled: Non-interactive state with reduced opacity
 
+**Color-Mix Pattern**:
+
+Buttons use a bidirectional color-mix system for deriving interactive states. Each theme defines:
+
+- `--button-mix-hover`: Target color for hover (black or white)
+- `--button-mix-hover-amount`: Mix percentage for hover state
+- `--button-mix-active`: Target color for active state
+- `--button-mix-active-amount`: Mix percentage for active state
+
+This enables themes to control whether colors darken (mix with black) or lighten (mix with white) on interaction, solving edge cases where base colors are too dark or too light.
+
 **Accessibility**:
 
 - Focus rings meet 3:1 contrast ratio requirement
@@ -307,12 +322,12 @@ A foundational interactive element supporting multiple variants, sizes, and stat
 
 **Token Categories**:
 
-- Background colors (per variant, per state)
-- Text colors (per variant, per state)
-- Border colors (per variant, per state)
-- Focus ring colors (per variant)
-- Sizing tokens (height, padding, font size, icon size per size variant)
-- Shared properties (typography, borders, shadows, transitions, cursors)
+- Base colors (7 semantic colors: primary, neutral, accent, info, success, warning, error)
+- Interaction mix targets (hover/active color and amount)
+- Disabled colors (background, text, border)
+- Sizing tokens (height, padding, font size, gap, icon size per size variant)
+- Icon button sizing (square dimensions per size)
+- Shared properties (typography, borders, shadows, transitions, cursors, opacity, focus ring)
 
 ## Accessibility Requirements
 

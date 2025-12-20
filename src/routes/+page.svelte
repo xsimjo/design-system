@@ -275,7 +275,7 @@
 <div class="showcase">
 	<header class="page-header">
 		<h1>Design System</h1>
-		<Button variant="outline" color="neutral" size="sm" onclick={nextTheme}>
+		<Button variant="outline" color="secondary" size="sm" onclick={nextTheme}>
 			Theme: {getThemeLabel(theme)}
 		</Button>
 	</header>
@@ -301,8 +301,7 @@
 				<h3>Colors (Filled variant)</h3>
 				<div class="row">
 					<Button color="primary">Primary</Button>
-					<Button color="neutral">Neutral</Button>
-					<Button color="accent">Accent</Button>
+					<Button color="secondary">Secondary</Button>
 					<Button color="info">Info</Button>
 					<Button color="success">Success</Button>
 					<Button color="warning">Warning</Button>
@@ -314,7 +313,7 @@
 				<h3>Outline Variant Colors</h3>
 				<div class="row">
 					<Button variant="outline" color="primary">Primary</Button>
-					<Button variant="outline" color="neutral">Neutral</Button>
+					<Button variant="outline" color="secondary">Secondary</Button>
 					<Button variant="outline" color="success">Success</Button>
 					<Button variant="outline" color="warning">Warning</Button>
 					<Button variant="outline" color="error">Error</Button>
@@ -325,7 +324,7 @@
 				<h3>Ghost Variant Colors</h3>
 				<div class="row">
 					<Button variant="ghost" color="primary">Primary</Button>
-					<Button variant="ghost" color="neutral">Neutral</Button>
+					<Button variant="ghost" color="secondary">Secondary</Button>
 					<Button variant="ghost" color="success">Success</Button>
 					<Button variant="ghost" color="warning">Warning</Button>
 					<Button variant="ghost" color="error">Error</Button>
@@ -336,7 +335,7 @@
 				<h3>Soft Variant Colors</h3>
 				<div class="row">
 					<Button variant="soft" color="primary">Primary</Button>
-					<Button variant="soft" color="neutral">Neutral</Button>
+					<Button variant="soft" color="secondary">Secondary</Button>
 					<Button variant="soft" color="success">Success</Button>
 					<Button variant="soft" color="warning">Warning</Button>
 					<Button variant="soft" color="error">Error</Button>
@@ -356,7 +355,7 @@
 				<h3>Icon Buttons</h3>
 				<div class="row">
 					<Button icon size="sm" variant="filled" color="primary">+</Button>
-					<Button icon size="md" variant="outline" color="neutral">×</Button>
+					<Button icon size="md" variant="outline" color="secondary">×</Button>
 					<Button icon size="lg" variant="ghost" color="error">!</Button>
 				</div>
 			</div>
@@ -369,8 +368,8 @@
 					<Button color="primary" active>Active</Button>
 				</div>
 				<div class="row">
-					<Button variant="outline" color="neutral">Default</Button>
-					<Button variant="outline" color="neutral" disabled>Disabled</Button>
+					<Button variant="outline" color="secondary">Default</Button>
+					<Button variant="outline" color="secondary" disabled>Disabled</Button>
 				</div>
 			</div>
 		</section>
