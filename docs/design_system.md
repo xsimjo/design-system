@@ -72,6 +72,50 @@ Each theme defines its own font families (`--font-sans`, `--font-mono`), allowin
 
 ## Component Inventory
 
+### Card
+
+A versatile container component for grouping related content with optional header, body, and footer sections.
+
+**Structure**:
+
+- Header: Optional section for titles, actions, or metadata
+- Body: Main content area (default slot)
+- Footer: Optional section for actions, timestamps, or navigation
+
+**Variants**:
+
+- Basic: Simple container with padding
+- Interactive: Adds hover effects for clickable cards
+- Sectioned: Uses header/footer slots with visual separators
+
+**Layout**:
+
+- Block-level element filling available width
+- Height determined by content
+- Flexible internal spacing controlled by theme tokens
+
+**Theme Variations**:
+
+Each theme defines distinct visual personalities through token overrides:
+
+- Light: Soft shadow, generous padding (24px), subtle separators, transparent section backgrounds
+- Dark: Elevated shadow, generous padding (24px), darker separators, transparent section backgrounds
+- Dev: No shadow, visible border (2px), tighter padding (16px), sharp corners, subtle backgrounds for sections
+
+**Accessibility**:
+
+- Semantic HTML structure for screen readers
+- Interactive cards must be keyboard accessible
+- All text and borders meet WCAG 2.1 AA contrast standards
+
+**Token Categories**:
+
+- Container properties (background, border, shadow, radius, text color, transition)
+- Header section (padding, border, background)
+- Body section (padding)
+- Footer section (padding, border, background)
+- Interactive state (hover shadow, hover border)
+
 ### Header
 
 A persistent navigation component providing site-wide navigation and branding.

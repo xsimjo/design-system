@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/button/Button.svelte';
+	import { Card } from '$lib/components/card';
 	import { Header } from '$lib/components/header';
 
 	type Theme = 'light' | 'dark' | 'dev';
@@ -226,7 +227,7 @@
 </svelte:head>
 
 <div class="showcase">
-	<header class="header">
+	<header class="page-header">
 		<h1>Design System</h1>
 		<Button variant="secondary" size="sm" onclick={nextTheme}>
 			Theme: {getThemeLabel(theme)}
@@ -235,7 +236,7 @@
 
 	<main class="content">
 		<section class="section">
-			<h2>Button</h2>
+			<h2 class="section-title">Button</h2>
 			<p class="description">A versatile button component with multiple variants and sizes.</p>
 
 			<div class="subsection">
@@ -269,7 +270,53 @@
 		</section>
 
 		<section class="section">
-			<h2>Header</h2>
+			<h2 class="section-title">Card</h2>
+			<p class="description">
+				A container component for grouping related content with optional header and footer.
+			</p>
+
+			<div class="subsection">
+				<h3>Basic</h3>
+				<Card>
+					<p>A simple card with default padding.</p>
+				</Card>
+			</div>
+
+			<div class="subsection">
+				<h3>With Header and Footer</h3>
+				<Card>
+					{#snippet header()}
+						<h4 class="card-title">Card Title</h4>
+					{/snippet}
+
+					<p>This card has a header and footer section with borders separating the content.</p>
+
+					{#snippet footer()}
+						<div class="row">
+							<Button variant="secondary" size="sm">Cancel</Button>
+							<Button variant="primary" size="sm">Save</Button>
+						</div>
+					{/snippet}
+				</Card>
+			</div>
+
+			<div class="subsection">
+				<h3>Interactive</h3>
+				<div class="card-grid">
+					<Card interactive>
+						<h4 class="card-title">Hover Me</h4>
+						<p>Interactive cards respond to hover with shadow and border changes.</p>
+					</Card>
+					<Card interactive>
+						<h4 class="card-title">Click Target</h4>
+						<p>Great for navigation or selection patterns.</p>
+					</Card>
+				</div>
+			</div>
+		</section>
+
+		<section class="section">
+			<h2 class="section-title">Header</h2>
 			<p class="description">
 				A persistent navigation element with logo, navigation items, and actions.
 			</p>
@@ -312,8 +359,8 @@
 			</div>
 		</section>
 
-		<section class="section">
-			<h2>Primitive Tokens</h2>
+		<Card>
+			<h2 class="section-title">Primitive Tokens</h2>
 			<p class="description">
 				Raw design values that serve as the foundation of the design system.
 			</p>
@@ -334,10 +381,10 @@
 					</div>
 				</div>
 			{/each}
-		</section>
+		</Card>
 
-		<section class="section">
-			<h2>Semantic Tokens</h2>
+		<Card>
+			<h2 class="section-title">Semantic Tokens</h2>
 			<p class="description">Purpose-driven tokens that change based on the active theme.</p>
 
 			{#each Object.entries(semanticTokens) as [category, tokens] (category)}
@@ -356,7 +403,7 @@
 					</div>
 				</div>
 			{/each}
-		</section>
+		</Card>
 	</main>
 </div>
 
@@ -366,7 +413,7 @@
 		background-color: var(--page-bg);
 	}
 
-	.header {
+	.page-header {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -375,7 +422,7 @@
 		background-color: var(--header-bg);
 	}
 
-	.header h1 {
+	.page-header h1 {
 		margin: 0;
 		font-size: var(--font-size-xl);
 		font-weight: var(--font-weight-semibold);
@@ -392,14 +439,15 @@
 	}
 
 	.section {
-		background-color: var(--card-bg);
-		border-radius: var(--card-radius);
-		padding: var(--space-6);
-		box-shadow: var(--card-shadow);
-		border: 1px solid var(--card-border);
+		padding: var(--space-6) 0;
+		border-bottom: 1px solid var(--card-border);
 	}
 
-	.section h2 {
+	.section:last-of-type {
+		border-bottom: none;
+	}
+
+	.section-title {
 		margin: 0 0 var(--space-2) 0;
 		font-size: var(--font-size-2xl);
 		font-weight: var(--font-weight-bold);
@@ -437,6 +485,23 @@
 
 	.row:last-child {
 		margin-bottom: 0;
+	}
+
+	.card-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--space-4);
+	}
+
+	.card-title {
+		margin: 0 0 var(--space-2) 0;
+		font-size: var(--font-size-lg);
+		font-weight: var(--font-weight-semibold);
+		color: var(--section-title);
+	}
+
+	.card-title + p {
+		margin: 0;
 	}
 
 	.token-list {

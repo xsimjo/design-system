@@ -27,6 +27,25 @@
 	--card-border: transparent;
 	--card-shadow: var(--shadow-sm);
 	--card-radius: var(--radius-xl);
+	--card-padding: var(--space-6);
+	--card-text: var(--color-white);
+	--card-border-width: var(--border-width-1);
+	--card-transition: var(--transition-base);
+
+	--card-header-padding: var(--space-6);
+	--card-header-border: var(--color-slate-700);
+	--card-header-border-width: var(--border-width-1);
+	--card-header-bg: transparent;
+
+	--card-body-padding: var(--space-6);
+
+	--card-footer-padding: var(--space-6);
+	--card-footer-border: var(--color-slate-700);
+	--card-footer-border-width: var(--border-width-1);
+	--card-footer-bg: transparent;
+
+	--card-hover-shadow: var(--shadow-md);
+	--card-hover-border: var(--color-slate-600);
 
 	--section-title: var(--color-white);
 	--section-description: var(--color-slate-400);

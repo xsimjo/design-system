@@ -27,6 +27,25 @@
 	--card-border: var(--color-gray-300);
 	--card-shadow: none;
 	--card-radius: var(--radius-sm);
+	--card-padding: var(--space-4);
+	--card-text: var(--color-gray-900);
+	--card-border-width: var(--border-width-2);
+	--card-transition: var(--transition-fast);
+
+	--card-header-padding: var(--space-4);
+	--card-header-border: var(--color-gray-300);
+	--card-header-border-width: var(--border-width-1);
+	--card-header-bg: var(--color-gray-50);
+
+	--card-body-padding: var(--space-4);
+
+	--card-footer-padding: var(--space-4);
+	--card-footer-border: var(--color-gray-300);
+	--card-footer-border-width: var(--border-width-1);
+	--card-footer-bg: var(--color-gray-50);
+
+	--card-hover-shadow: none;
+	--card-hover-border: var(--color-gray-500);
 
 	--section-title: var(--color-gray-900);
 	--section-description: var(--color-gray-600);
