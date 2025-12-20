@@ -218,7 +218,7 @@
 
 	.dialog__header {
 		display: flex;
-		align-items: flex-start;
+		align-items: center;
 		justify-content: space-between;
 		gap: var(--dialog-header-gap);
 		padding: var(--dialog-header-padding-y) var(--dialog-header-padding-x);
