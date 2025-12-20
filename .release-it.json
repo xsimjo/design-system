@@ -1,6 +1,7 @@
 {
 	"hooks": {
-		"before:init": ["npm run lint", "npm run build"]
+		"before:init": ["npm run lint", "npm run build"],
+		"after:bump": ["npm publish"]
 	},
 	"git": {
 		"commitMessage": "chore: release v${version}"
@@ -10,9 +11,6 @@
 		"tokenRef": "GITHUB_TOKEN"
 	},
 	"npm": {
-		"publish": true
-	},
-	"options": {
-		"shell": true
+		"publish": false
 	}
 }
