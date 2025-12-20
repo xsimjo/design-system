@@ -29,7 +29,7 @@ Raw, context-free values that form the foundation of the design system.
 - Colors (blue, slate, gray scales with 50-950 variants)
 - Spacing (4px base scale: 0-32)
 - Border radii (sm to full)
-- Typography (font families, sizes, weights, line heights)
+- Typography (font sizes, weights, line heights)
 - Shadows (sm to xl, plus focus states)
 - Transitions (fast, base, slow)
 - Opacity modifiers (0-100)
@@ -48,6 +48,11 @@ Purpose-driven tokens that map primitives to specific use cases. Each theme file
 
 - `themes/light.css`: Light theme semantic mappings
 - `themes/dark.css`: Dark theme semantic mappings
+- `themes/dev.css`: Developer theme semantic mappings
+
+**Theme-Specific Foundations**:
+
+Each theme defines its own font families (`--font-sans`, `--font-mono`), allowing different themes to use completely different typefaces. For example, the "dev" theme uses JetBrains Mono for both sans and mono, while "light" uses Inter for sans.
 
 **Naming Convention**: `--{component}-{variant}-{property}-{state?}`
 
@@ -57,6 +62,7 @@ Purpose-driven tokens that map primitives to specific use cases. Each theme file
 
 - `<html data-theme="light">` - applies light theme
 - `<html data-theme="dark">` - applies dark theme
+- `<html data-theme="dev">` - applies developer theme
 
 ### Component Architecture
 
@@ -65,6 +71,42 @@ Purpose-driven tokens that map primitives to specific use cases. Each theme file
 **Why**: This enables theme switching at runtime without component changes. Changing `data-theme` attribute automatically updates all component appearances.
 
 ## Component Inventory
+
+### Header
+
+A persistent navigation component providing site-wide navigation and branding.
+
+**Structure**:
+
+- Logo area: Branding element (image, text, or custom content)
+- Navigation: Horizontal list of navigation links (use Button component for nav items)
+- Actions area: Buttons, icons, or other interactive elements
+
+**Layout**:
+
+- Fixed or sticky positioning
+- Horizontal auto-layout with three main sections (logo, nav, actions)
+- Responsive spacing that adapts per theme
+
+**Theme Variations**:
+
+Each theme defines distinct visual personalities through token overrides:
+
+- Light: Standard height (64px), subtle shadow, generous spacing
+- Dark: Standard height (64px), prominent shadow for depth, same spacing as light
+- Dev: Compact height (56px), no shadow, tighter spacing, thicker border
+
+**Accessibility**:
+
+- Keyboard navigable with clear focus indicators
+- Semantic HTML structure for screen readers
+
+**Token Categories**:
+
+- Container properties (height, padding, background, border, shadow, z-index)
+- Logo area (height, gap spacing)
+- Navigation layout (gap between items)
+- Actions area (gap between action elements)
 
 ### Button
 
@@ -192,14 +234,15 @@ Blue conveys trust, reliability, and professionalism. The specific blue scale (b
 - Accessibility-friendly combinations with white/black text
 - Cultural neutrality across global markets
 
-### Font System Stack
+### Font System
 
-System font stacks prioritize:
+Font families are defined per-theme rather than as global primitives. This allows each theme to express a unique typographic personality:
 
-- Performance (no web font loading)
-- Native platform appearance
-- Broad compatibility
-- Excellent readability at all sizes
+- **Light theme**: Inter (modern, clean sans-serif)
+- **Dark theme**: Space Grotesk (geometric, distinctive)
+- **Dev theme**: JetBrains Mono (monospace for code-centric aesthetic)
+
+Each theme defines `--font-sans` and `--font-mono` with appropriate fallback stacks for reliability and performance.
 
 ## Future Considerations
 

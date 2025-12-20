@@ -1,66 +1,71 @@
-/**
- * Dark Theme - Semantic Design Tokens
- *
- * Layer 2: Purpose-driven tokens that reference primitives
- * Apply this theme using: <html data-theme="dark">
- */
-
 [data-theme='dark'] {
-	/* ============================================
-     BUTTON - Primary Variant
-     ============================================ */
+	--font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	--font-mono: ui-monospace, 'SF Mono', 'Monaco', 'Courier New', monospace;
 
-	/* Background */
+	--page-bg: var(--color-slate-900);
+	--page-text: var(--color-white);
+
+	--header-bg: var(--color-slate-800);
+	--header-border: var(--color-slate-700);
+	--header-text: var(--color-white);
+	--header-height: 64px;
+	--header-padding-x: var(--space-6);
+	--header-padding-y: var(--space-0);
+	--header-shadow: var(--shadow-lg);
+	--header-border-width: var(--border-width-1);
+	--header-z-index: var(--z-sticky);
+	--header-transition: var(--transition-base);
+
+	--header-logo-height: 32px;
+	--header-logo-gap: var(--space-3);
+
+	--header-nav-gap: var(--space-8);
+
+	--header-actions-gap: var(--space-3);
+
+	--card-bg: var(--color-slate-800);
+	--card-border: transparent;
+	--card-shadow: var(--shadow-sm);
+	--card-radius: var(--radius-xl);
+
+	--section-title: var(--color-white);
+	--section-description: var(--color-slate-400);
+	--section-label: var(--color-slate-400);
+
 	--button-primary-bg: var(--color-blue-500);
 	--button-primary-bg-hover: var(--color-blue-400);
 	--button-primary-bg-active: var(--color-blue-600);
 	--button-primary-bg-disabled: var(--color-slate-800);
 
-	/* Text */
 	--button-primary-text: var(--color-white);
 	--button-primary-text-hover: var(--color-white);
 	--button-primary-text-active: var(--color-white);
 	--button-primary-text-disabled: var(--color-slate-500);
 
-	/* Border */
 	--button-primary-border: var(--color-blue-500);
 	--button-primary-border-hover: var(--color-blue-400);
 	--button-primary-border-active: var(--color-blue-600);
 	--button-primary-border-disabled: var(--color-slate-800);
 
-	/* Focus ring */
 	--button-primary-focus-ring: var(--color-blue-400);
 
-	/* ============================================
-     BUTTON - Secondary Variant
-     ============================================ */
-
-	/* Background */
 	--button-secondary-bg: var(--color-slate-800);
 	--button-secondary-bg-hover: var(--color-slate-700);
 	--button-secondary-bg-active: var(--color-slate-600);
 	--button-secondary-bg-disabled: var(--color-slate-900);
 
-	/* Text */
 	--button-secondary-text: var(--color-slate-100);
 	--button-secondary-text-hover: var(--color-white);
 	--button-secondary-text-active: var(--color-white);
 	--button-secondary-text-disabled: var(--color-slate-600);
 
-	/* Border */
 	--button-secondary-border: var(--color-slate-600);
 	--button-secondary-border-hover: var(--color-slate-500);
 	--button-secondary-border-active: var(--color-slate-400);
 	--button-secondary-border-disabled: var(--color-slate-800);
 
-	/* Focus ring */
 	--button-secondary-focus-ring: var(--color-slate-500);
 
-	/* ============================================
-     BUTTON - Sizing
-     ============================================ */
-
-	/* Small */
 	--button-sm-height: 32px;
 	--button-sm-padding-x: var(--space-3);
 	--button-sm-padding-y: var(--space-1);
@@ -68,7 +73,6 @@
 	--button-sm-gap: var(--space-2);
 	--button-sm-icon-size: 16px;
 
-	/* Medium (default) */
 	--button-md-height: 40px;
 	--button-md-padding-x: var(--space-4);
 	--button-md-padding-y: var(--space-2);
@@ -76,7 +80,6 @@
 	--button-md-gap: var(--space-2);
 	--button-md-icon-size: 20px;
 
-	/* Large */
 	--button-lg-height: 48px;
 	--button-lg-padding-x: var(--space-6);
 	--button-lg-padding-y: var(--space-3);
@@ -84,37 +87,26 @@
 	--button-lg-gap: var(--space-3);
 	--button-lg-icon-size: 24px;
 
-	/* ============================================
-     BUTTON - Shared Properties
-     ============================================ */
-
-	/* Typography */
 	--button-font-family: var(--font-sans);
 	--button-font-weight: var(--font-weight-medium);
 	--button-line-height: var(--line-height-none);
 
-	/* Border */
 	--button-border-width: var(--border-width-1);
 	--button-border-radius: var(--radius-lg);
 
-	/* Shadow */
 	--button-shadow: var(--shadow-sm);
 	--button-shadow-hover: var(--shadow-md);
 	--button-shadow-active: var(--shadow-sm);
 	--button-shadow-disabled: none;
 
-	/* Focus */
 	--button-focus-ring-width: 3px;
 	--button-focus-ring-offset: 2px;
 	--button-focus-ring-opacity: var(--opacity-50);
 
-	/* Transition */
 	--button-transition: var(--transition-fast);
 
-	/* Opacity */
 	--button-opacity-disabled: var(--opacity-60);
 
-	/* Cursor */
 	--button-cursor-default: pointer;
 	--button-cursor-disabled: not-allowed;
 }

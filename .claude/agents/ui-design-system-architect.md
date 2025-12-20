@@ -53,6 +53,7 @@ This design system uses a **two-layer token architecture** with **fully configur
 - Semantic naming: `--card-bg`, not `--color-blue-500`
 - Consistent scales: spacing (4px base), typography, radii
 - Keep `docs/design_system.md` concise (~200 lines)—detailed values live in CSS
+- Never write comments in CSS files—token names should be self-documenting
 
 ## Escalation
 
