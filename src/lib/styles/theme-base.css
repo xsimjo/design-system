@@ -608,7 +608,7 @@
 	--slider-thumb-border-active: var(--color-primary);
 	--slider-thumb-border-disabled: var(--color-border);
 	--slider-thumb-border-width: 2px;
-	--slider-thumb-border-radius: var(--radius-full);
+	--slider-thumb-border-radius: var(--radius-slider);
 	--slider-thumb-shadow: var(--shadow-sm);
 	--slider-thumb-shadow-hover: var(--shadow-md);
 	--slider-thumb-shadow-active: var(--shadow-lg);

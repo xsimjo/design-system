@@ -32,6 +32,7 @@
 	--radius-card: var(--radius-lg);
 	--radius-badge: var(--radius-sm);
 	--radius-dialog: var(--radius-lg);
+	--radius-slider: var(--radius-full);
 
 	--field-height-sm: 32px;
 	--field-height-md: 40px;
