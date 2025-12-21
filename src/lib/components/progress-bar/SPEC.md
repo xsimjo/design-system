@@ -4,17 +4,17 @@ A visual indicator that displays the completion progress of a task or operation.
 
 ## Props
 
-| Prop             | Type                                         | Default     | Description                          |
-| ---------------- | -------------------------------------------- | ----------- | ------------------------------------ |
-| `value`          | `number`                                     | `0`         | Current progress value               |
-| `max`            | `number`                                     | `100`       | Maximum value                        |
-| `variant`        | `'default' \| 'success' \| 'warning' \| 'error'` | `'default'` | Color variant                        |
-| `size`           | `'sm' \| 'md' \| 'lg'`                       | `'md'`      | Height variant                       |
-| `indeterminate`  | `boolean`                                    | `false`     | Shows loading animation              |
-| `disabled`       | `boolean`                                    | `false`     | Shows disabled styling               |
-| `label`          | `string`                                     | `undefined` | Label text above the progress bar    |
-| `showPercentage` | `boolean`                                    | `false`     | Shows percentage value               |
-| `ariaLabel`      | `string`                                     | `undefined` | Custom accessible label              |
+| Prop             | Type                                             | Default     | Description                       |
+| ---------------- | ------------------------------------------------ | ----------- | --------------------------------- |
+| `value`          | `number`                                         | `0`         | Current progress value            |
+| `max`            | `number`                                         | `100`       | Maximum value                     |
+| `variant`        | `'default' \| 'success' \| 'warning' \| 'error'` | `'default'` | Color variant                     |
+| `size`           | `'sm' \| 'md' \| 'lg'`                           | `'md'`      | Height variant                    |
+| `indeterminate`  | `boolean`                                        | `false`     | Shows loading animation           |
+| `disabled`       | `boolean`                                        | `false`     | Shows disabled styling            |
+| `label`          | `string`                                         | `undefined` | Label text above the progress bar |
+| `showPercentage` | `boolean`                                        | `false`     | Shows percentage value            |
+| `ariaLabel`      | `string`                                         | `undefined` | Custom accessible label           |
 
 ## Slots
 

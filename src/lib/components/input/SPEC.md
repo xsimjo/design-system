@@ -4,23 +4,23 @@ A form control for text input with support for labels, helper text, and icons.
 
 ## Props
 
-| Prop         | Type                   | Default     | Description                     |
-| ------------ | ---------------------- | ----------- | ------------------------------- |
-| `value`      | `string`               | `''`        | The input value (bindable)      |
-| `size`       | `'sm' \| 'md' \| 'lg'` | `'md'`      | Size variant                    |
-| `disabled`   | `boolean`              | `false`     | Disables the input              |
-| `readonly`   | `boolean`              | `false`     | Makes the input read-only       |
-| `error`      | `boolean`              | `false`     | Shows error styling             |
-| `success`    | `boolean`              | `false`     | Shows success styling           |
-| `label`      | `string`               | `undefined` | Label text above the input      |
-| `helperText` | `string`               | `undefined` | Helper text below the input     |
-| `id`         | `string`               | auto-generated | Input element ID             |
+| Prop         | Type                   | Default        | Description                 |
+| ------------ | ---------------------- | -------------- | --------------------------- |
+| `value`      | `string`               | `''`           | The input value (bindable)  |
+| `size`       | `'sm' \| 'md' \| 'lg'` | `'md'`         | Size variant                |
+| `disabled`   | `boolean`              | `false`        | Disables the input          |
+| `readonly`   | `boolean`              | `false`        | Makes the input read-only   |
+| `error`      | `boolean`              | `false`        | Shows error styling         |
+| `success`    | `boolean`              | `false`        | Shows success styling       |
+| `label`      | `string`               | `undefined`    | Label text above the input  |
+| `helperText` | `string`               | `undefined`    | Helper text below the input |
+| `id`         | `string`               | auto-generated | Input element ID            |
 
 ## Slots
 
-| Slot        | Description                |
-| ----------- | -------------------------- |
-| `iconLeft`  | Icon displayed on the left |
+| Slot        | Description                 |
+| ----------- | --------------------------- |
+| `iconLeft`  | Icon displayed on the left  |
 | `iconRight` | Icon displayed on the right |
 
 ## Usage
@@ -44,8 +44,7 @@ A form control for text input with support for labels, helper text, and icons.
 	let value = $state('');
 </script>
 
-<Input bind:value label="Username" />
-<p>You entered: {value}</p>
+<Input bind:value label="Username" /><p>You entered: {value}</p>
 ```
 
 ### Size Variants

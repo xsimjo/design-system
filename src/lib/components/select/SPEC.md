@@ -4,19 +4,19 @@ A dropdown component for selecting a single option from a list.
 
 ## Props
 
-| Prop           | Type                     | Default              | Description                        |
-| -------------- | ------------------------ | -------------------- | ---------------------------------- |
-| `value`        | `string \| number \| null` | `null`             | Selected value (bindable)          |
-| `placeholder`  | `string`                 | `'Select an option'` | Placeholder text                   |
-| `disabled`     | `boolean`                | `false`              | Disables the select                |
-| `error`        | `boolean \| string`      | `false`              | Shows error state or error message |
-| `size`         | `'sm' \| 'md' \| 'lg'`   | `'md'`               | Size variant                       |
-| `label`        | `string`                 | `undefined`          | Label text above the select        |
-| `helperText`   | `string`                 | `undefined`          | Helper text below the select       |
-| `searchable`   | `boolean`                | `false`              | Enables search functionality       |
-| `options`      | `SelectOption[]`         | `[]`                 | Array of selectable options        |
-| `emptyMessage` | `string`                 | `'No options'`       | Message when no options match      |
-| `id`           | `string`                 | auto-generated       | Element ID                         |
+| Prop           | Type                       | Default              | Description                        |
+| -------------- | -------------------------- | -------------------- | ---------------------------------- |
+| `value`        | `string \| number \| null` | `null`               | Selected value (bindable)          |
+| `placeholder`  | `string`                   | `'Select an option'` | Placeholder text                   |
+| `disabled`     | `boolean`                  | `false`              | Disables the select                |
+| `error`        | `boolean \| string`        | `false`              | Shows error state or error message |
+| `size`         | `'sm' \| 'md' \| 'lg'`     | `'md'`               | Size variant                       |
+| `label`        | `string`                   | `undefined`          | Label text above the select        |
+| `helperText`   | `string`                   | `undefined`          | Helper text below the select       |
+| `searchable`   | `boolean`                  | `false`              | Enables search functionality       |
+| `options`      | `SelectOption[]`           | `[]`                 | Array of selectable options        |
+| `emptyMessage` | `string`                   | `'No options'`       | Message when no options match      |
+| `id`           | `string`                   | auto-generated       | Element ID                         |
 
 ### SelectOption Interface
 
@@ -66,12 +66,7 @@ This component does not use slots. Options are passed via the `options` prop.
 ### With Searchable
 
 ```svelte
-<Select
-	searchable
-	label="Country"
-	options={countries}
-	placeholder="Search countries..."
-/>
+<Select searchable label="Country" options={countries} placeholder="Search countries..." />
 ```
 
 ### With Disabled Options
@@ -88,19 +83,15 @@ This component does not use slots. Options are passed via the `options` prop.
 ### Error State
 
 ```svelte
-<Select
-	error="Please select an option"
-	label="Category"
-	options={categories}
-/>
+<Select error="Please select an option" label="Category" options={categories} />
 ```
 
 ### Size Variants
 
 ```svelte
-<Select size="sm" options={options} />
-<Select size="md" options={options} />
-<Select size="lg" options={options} />
+<Select size="sm" {options} />
+<Select size="md" {options} />
+<Select size="lg" {options} />
 ```
 
 ## Accessibility

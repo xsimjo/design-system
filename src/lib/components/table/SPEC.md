@@ -4,15 +4,15 @@ A data table component for displaying structured information in rows and columns
 
 ## Props
 
-| Prop        | Type                       | Default | Description                        |
-| ----------- | -------------------------- | ------- | ---------------------------------- |
-| `columns`   | `Column[]`                 | required | Array of column definitions        |
-| `data`      | `Record<string, unknown>[]` | required | Array of row data objects          |
-| `size`      | `'sm' \| 'md' \| 'lg'`     | `'md'`  | Size variant                       |
-| `striped`   | `boolean`                  | `false` | Alternating row backgrounds        |
-| `hoverable` | `boolean`                  | `false` | Highlight rows on hover            |
-| `compact`   | `boolean`                  | `false` | Reduced padding                    |
-| `bordered`  | `boolean`                  | `false` | Show cell borders                  |
+| Prop        | Type                        | Default  | Description                 |
+| ----------- | --------------------------- | -------- | --------------------------- |
+| `columns`   | `Column[]`                  | required | Array of column definitions |
+| `data`      | `Record<string, unknown>[]` | required | Array of row data objects   |
+| `size`      | `'sm' \| 'md' \| 'lg'`      | `'md'`   | Size variant                |
+| `striped`   | `boolean`                   | `false`  | Alternating row backgrounds |
+| `hoverable` | `boolean`                   | `false`  | Highlight rows on hover     |
+| `compact`   | `boolean`                   | `false`  | Reduced padding             |
+| `bordered`  | `boolean`                   | `false`  | Show cell borders           |
 
 ### Column Interface
 
@@ -51,13 +51,13 @@ interface Column {
 ### With Striped Rows
 
 ```svelte
-<Table columns={columns} data={data} striped />
+<Table {columns} {data} striped />
 ```
 
 ### With Hover Effect
 
 ```svelte
-<Table columns={columns} data={data} hoverable />
+<Table {columns} {data} hoverable />
 ```
 
 ### Column Alignment
@@ -76,7 +76,7 @@ interface Column {
 ### Custom Cell Rendering
 
 ```svelte
-<Table columns={columns} data={data}>
+<Table {columns} {data}>
 	{#snippet cell({ value, row, column })}
 		{#if column.key === 'status'}
 			<Badge variant={value === 'active' ? 'success' : 'error'}>{value}</Badge>
@@ -92,21 +92,21 @@ interface Column {
 ### Size Variants
 
 ```svelte
-<Table columns={columns} data={data} size="sm" />
-<Table columns={columns} data={data} size="md" />
-<Table columns={columns} data={data} size="lg" />
+<Table {columns} {data} size="sm" />
+<Table {columns} {data} size="md" />
+<Table {columns} {data} size="lg" />
 ```
 
 ### Compact Mode
 
 ```svelte
-<Table columns={columns} data={data} compact />
+<Table {columns} {data} compact />
 ```
 
 ### With Cell Borders
 
 ```svelte
-<Table columns={columns} data={data} bordered />
+<Table {columns} {data} bordered />
 ```
 
 ## Accessibility

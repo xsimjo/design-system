@@ -4,17 +4,17 @@ A range input component for selecting a numeric value within a defined range.
 
 ## Props
 
-| Prop         | Type      | Default     | Description                    |
-| ------------ | --------- | ----------- | ------------------------------ |
-| `value`      | `number`  | `0`         | Current value (bindable)       |
-| `min`        | `number`  | `0`         | Minimum value                  |
-| `max`        | `number`  | `100`       | Maximum value                  |
-| `step`       | `number`  | `1`         | Step increment                 |
-| `disabled`   | `boolean` | `false`     | Disables the slider            |
-| `label`      | `string`  | `undefined` | Label text above the slider    |
-| `helperText` | `string`  | `undefined` | Helper text below the slider   |
-| `showValue`  | `boolean` | `false`     | Shows current value display    |
-| `id`         | `string`  | auto-generated | Element ID                  |
+| Prop         | Type      | Default        | Description                  |
+| ------------ | --------- | -------------- | ---------------------------- |
+| `value`      | `number`  | `0`            | Current value (bindable)     |
+| `min`        | `number`  | `0`            | Minimum value                |
+| `max`        | `number`  | `100`          | Maximum value                |
+| `step`       | `number`  | `1`            | Step increment               |
+| `disabled`   | `boolean` | `false`        | Disables the slider          |
+| `label`      | `string`  | `undefined`    | Label text above the slider  |
+| `helperText` | `string`  | `undefined`    | Helper text below the slider |
+| `showValue`  | `boolean` | `false`        | Shows current value display  |
+| `id`         | `string`  | auto-generated | Element ID                   |
 
 ## Slots
 
@@ -47,11 +47,7 @@ This component does not use slots.
 ### With Helper Text
 
 ```svelte
-<Slider
-	label="Brightness"
-	helperText="Adjust the display brightness"
-	showValue
-/>
+<Slider label="Brightness" helperText="Adjust the display brightness" showValue />
 ```
 
 ### Custom Step

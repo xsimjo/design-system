@@ -4,11 +4,11 @@ A component for organizing content into multiple panels, with only one panel vis
 
 ## Props
 
-| Prop       | Type        | Default            | Description                      |
-| ---------- | ----------- | ------------------ | -------------------------------- |
-| `items`    | `TabItem[]` | required           | Array of tab items               |
-| `value`    | `string`    | first item's ID    | Active tab ID (bindable)         |
-| `disabled` | `boolean`   | `false`            | Disables all tabs                |
+| Prop       | Type        | Default         | Description              |
+| ---------- | ----------- | --------------- | ------------------------ |
+| `items`    | `TabItem[]` | required        | Array of tab items       |
+| `value`    | `string`    | first item's ID | Active tab ID (bindable) |
+| `disabled` | `boolean`   | `false`         | Disables all tabs        |
 
 ### TabItem Interface
 
@@ -104,7 +104,7 @@ This component does not use slots. Content is passed via the `items` prop.
 ### All Disabled
 
 ```svelte
-<Tabs disabled items={items} />
+<Tabs disabled {items} />
 ```
 
 ## Accessibility

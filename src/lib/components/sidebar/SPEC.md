@@ -60,10 +60,7 @@ A collapsible navigation panel component for application layouts.
 	let collapsed = $state(false);
 </script>
 
-<Sidebar
-	bind:collapsed
-	onCollapsedChange={(value) => console.log('Collapsed:', value)}
->
+<Sidebar bind:collapsed onCollapsedChange={(value) => console.log('Collapsed:', value)}>
 	<nav>Navigation items</nav>
 </Sidebar>
 ```

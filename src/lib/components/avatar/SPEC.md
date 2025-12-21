@@ -4,13 +4,13 @@ A visual representation of a user or entity, displaying an image, initials, or a
 
 ## Props
 
-| Prop     | Type                                        | Default     | Description                        |
-| -------- | ------------------------------------------- | ----------- | ---------------------------------- |
-| `src`    | `string`                                    | `undefined` | URL of the avatar image            |
-| `alt`    | `string`                                    | `undefined` | Alt text for the image             |
-| `name`   | `string`                                    | `undefined` | Name used to generate initials     |
-| `size`   | `'sm' \| 'md' \| 'lg'`                      | `'md'`      | Size variant of the avatar         |
-| `status` | `'online' \| 'offline' \| 'away' \| 'busy'` | `undefined` | Optional status indicator          |
+| Prop     | Type                                        | Default     | Description                    |
+| -------- | ------------------------------------------- | ----------- | ------------------------------ |
+| `src`    | `string`                                    | `undefined` | URL of the avatar image        |
+| `alt`    | `string`                                    | `undefined` | Alt text for the image         |
+| `name`   | `string`                                    | `undefined` | Name used to generate initials |
+| `size`   | `'sm' \| 'md' \| 'lg'`                      | `'md'`      | Size variant of the avatar     |
+| `status` | `'online' \| 'offline' \| 'away' \| 'busy'` | `undefined` | Optional status indicator      |
 
 ## Slots
 

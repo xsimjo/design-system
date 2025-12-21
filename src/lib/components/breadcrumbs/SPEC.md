@@ -4,9 +4,9 @@ A navigational component that shows the user's current location within a hierarc
 
 ## Props
 
-| Prop    | Type               | Default  | Description                          |
-| ------- | ------------------ | -------- | ------------------------------------ |
-| `items` | `BreadcrumbItem[]` | required | Array of breadcrumb items            |
+| Prop    | Type               | Default  | Description               |
+| ------- | ------------------ | -------- | ------------------------- |
+| `items` | `BreadcrumbItem[]` | required | Array of breadcrumb items |
 
 ### BreadcrumbItem Interface
 
@@ -39,13 +39,7 @@ This component does not use slots. Content is passed via the `items` prop.
 ### Without Links
 
 ```svelte
-<Breadcrumbs
-	items={[
-		{ label: 'Step 1' },
-		{ label: 'Step 2' },
-		{ label: 'Step 3' }
-	]}
-/>
+<Breadcrumbs items={[{ label: 'Step 1' }, { label: 'Step 2' }, { label: 'Step 3' }]} />
 ```
 
 ## Accessibility

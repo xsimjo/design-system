@@ -4,17 +4,17 @@ A small label component used to highlight status, counts, or categories.
 
 ## Props
 
-| Prop      | Type                                                                       | Default     | Description                        |
-| --------- | -------------------------------------------------------------------------- | ----------- | ---------------------------------- |
-| `variant` | `'default' \| 'primary' \| 'secondary' \| 'success' \| 'warning' \| 'error'` | `'default'` | Color variant of the badge         |
-| `size`    | `'sm' \| 'md'`                                                             | `'md'`      | Size variant                       |
-| `pill`    | `boolean`                                                                  | `false`     | Use pill-shaped (fully rounded) style |
-| `outline` | `boolean`                                                                  | `false`     | Use outline style instead of filled |
+| Prop      | Type                                                                         | Default     | Description                           |
+| --------- | ---------------------------------------------------------------------------- | ----------- | ------------------------------------- |
+| `variant` | `'default' \| 'primary' \| 'secondary' \| 'success' \| 'warning' \| 'error'` | `'default'` | Color variant of the badge            |
+| `size`    | `'sm' \| 'md'`                                                               | `'md'`      | Size variant                          |
+| `pill`    | `boolean`                                                                    | `false`     | Use pill-shaped (fully rounded) style |
+| `outline` | `boolean`                                                                    | `false`     | Use outline style instead of filled   |
 
 ## Slots
 
-| Slot      | Description           |
-| --------- | --------------------- |
+| Slot      | Description                  |
+| --------- | ---------------------------- |
 | `default` | Badge content (text or icon) |
 
 ## Usage

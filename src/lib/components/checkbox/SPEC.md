@@ -4,16 +4,16 @@ A form control that allows users to select one or more options from a set.
 
 ## Props
 
-| Prop            | Type                   | Default | Description                           |
-| --------------- | ---------------------- | ------- | ------------------------------------- |
-| `checked`       | `boolean`              | `false` | Whether the checkbox is checked       |
-| `indeterminate` | `boolean`              | `false` | Shows indeterminate (mixed) state     |
-| `disabled`      | `boolean`              | `false` | Disables the checkbox                 |
-| `error`         | `boolean`              | `false` | Shows error styling                   |
-| `size`          | `'sm' \| 'md' \| 'lg'` | `'md'`  | Size variant                          |
-| `label`         | `string`               | `undefined` | Optional label text                |
-| `name`          | `string`               | `undefined` | Form field name                    |
-| `value`         | `string`               | `undefined` | Form field value                   |
+| Prop            | Type                   | Default     | Description                       |
+| --------------- | ---------------------- | ----------- | --------------------------------- |
+| `checked`       | `boolean`              | `false`     | Whether the checkbox is checked   |
+| `indeterminate` | `boolean`              | `false`     | Shows indeterminate (mixed) state |
+| `disabled`      | `boolean`              | `false`     | Disables the checkbox             |
+| `error`         | `boolean`              | `false`     | Shows error styling               |
+| `size`          | `'sm' \| 'md' \| 'lg'` | `'md'`      | Size variant                      |
+| `label`         | `string`               | `undefined` | Optional label text               |
+| `name`          | `string`               | `undefined` | Form field name                   |
+| `value`         | `string`               | `undefined` | Form field value                  |
 
 ## Slots
 

@@ -4,13 +4,13 @@ A notification component for displaying brief, non-intrusive messages to users.
 
 ## Props
 
-| Prop          | Type                                           | Default     | Description                    |
-| ------------- | ---------------------------------------------- | ----------- | ------------------------------ |
-| `variant`     | `'success' \| 'error' \| 'warning' \| 'info'`  | required    | Type of notification           |
-| `title`       | `string`                                       | required    | Toast title text               |
-| `description` | `string`                                       | `undefined` | Optional description text      |
-| `dismissible` | `boolean`                                      | `true`      | Show dismiss button            |
-| `onDismiss`   | `() => void`                                   | `undefined` | Callback when dismissed        |
+| Prop          | Type                                          | Default     | Description               |
+| ------------- | --------------------------------------------- | ----------- | ------------------------- |
+| `variant`     | `'success' \| 'error' \| 'warning' \| 'info'` | required    | Type of notification      |
+| `title`       | `string`                                      | required    | Toast title text          |
+| `description` | `string`                                      | `undefined` | Optional description text |
+| `dismissible` | `boolean`                                     | `true`      | Show dismiss button       |
+| `onDismiss`   | `() => void`                                  | `undefined` | Callback when dismissed   |
 
 ## Slots
 
@@ -52,11 +52,7 @@ This component does not use slots.
 ### With Dismiss Handler
 
 ```svelte
-<Toast
-	variant="success"
-	title="Item deleted"
-	onDismiss={() => console.log('Toast dismissed')}
-/>
+<Toast variant="success" title="Item deleted" onDismiss={() => console.log('Toast dismissed')} />
 ```
 
 ### With Toast Manager

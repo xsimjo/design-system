@@ -4,12 +4,12 @@ A component for displaying syntax-highlighted code with optional line numbers an
 
 ## Props
 
-| Prop              | Type      | Default  | Description                         |
-| ----------------- | --------- | -------- | ----------------------------------- |
-| `code`            | `string`  | required | The code to display                 |
+| Prop              | Type      | Default  | Description                           |
+| ----------------- | --------- | -------- | ------------------------------------- |
+| `code`            | `string`  | required | The code to display                   |
 | `language`        | `string`  | `'text'` | Programming language for highlighting |
-| `showLineNumbers` | `boolean` | `false`  | Show line numbers                   |
-| `showHeader`      | `boolean` | `true`   | Show header with language label     |
+| `showLineNumbers` | `boolean` | `false`  | Show line numbers                     |
+| `showHeader`      | `boolean` | `true`   | Show header with language label       |
 
 ## Slots
 

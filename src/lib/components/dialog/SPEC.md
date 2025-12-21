@@ -4,23 +4,23 @@ A modal overlay component for displaying content that requires user attention or
 
 ## Props
 
-| Prop                  | Type                       | Default     | Description                           |
-| --------------------- | -------------------------- | ----------- | ------------------------------------- |
-| `open`                | `boolean`                  | `false`     | Whether the dialog is open            |
-| `onOpenChange`        | `(open: boolean) => void`  | `undefined` | Callback when open state changes      |
-| `title`               | `string`                   | `undefined` | Dialog title text                     |
-| `description`         | `string`                   | `undefined` | Optional description below title      |
-| `size`                | `'sm' \| 'md' \| 'lg'`     | `'md'`      | Size variant                          |
-| `closeOnClickOutside` | `boolean`                  | `true`      | Close when clicking backdrop          |
-| `closeOnEscape`       | `boolean`                  | `true`      | Close when pressing Escape            |
-| `showCloseButton`     | `boolean`                  | `true`      | Show close button in header           |
+| Prop                  | Type                      | Default     | Description                      |
+| --------------------- | ------------------------- | ----------- | -------------------------------- |
+| `open`                | `boolean`                 | `false`     | Whether the dialog is open       |
+| `onOpenChange`        | `(open: boolean) => void` | `undefined` | Callback when open state changes |
+| `title`               | `string`                  | `undefined` | Dialog title text                |
+| `description`         | `string`                  | `undefined` | Optional description below title |
+| `size`                | `'sm' \| 'md' \| 'lg'`    | `'md'`      | Size variant                     |
+| `closeOnClickOutside` | `boolean`                 | `true`      | Close when clicking backdrop     |
+| `closeOnEscape`       | `boolean`                 | `true`      | Close when pressing Escape       |
+| `showCloseButton`     | `boolean`                 | `true`      | Show close button in header      |
 
 ## Slots
 
-| Slot      | Description                    |
-| --------- | ------------------------------ |
-| `header`  | Custom header content          |
-| `default` | Main dialog body content       |
+| Slot      | Description                      |
+| --------- | -------------------------------- |
+| `header`  | Custom header content            |
+| `default` | Main dialog body content         |
 | `footer`  | Footer content (usually actions) |
 
 ## Usage
@@ -42,11 +42,7 @@ A modal overlay component for displaying content that requires user attention or
 ### With Description
 
 ```svelte
-<Dialog
-	bind:open
-	title="Confirm Action"
-	description="This action cannot be undone."
->
+<Dialog bind:open title="Confirm Action" description="This action cannot be undone.">
 	<p>Are you sure you want to proceed?</p>
 
 	{#snippet footer()}

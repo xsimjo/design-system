@@ -4,12 +4,12 @@ A component for rendering text with consistent typographic styles.
 
 ## Props
 
-| Prop       | Type          | Default     | Description                              |
-| ---------- | ------------- | ----------- | ---------------------------------------- |
-| `variant`  | `Variant`     | `'body-md'` | Typographic style variant                |
-| `as`       | `ElementType` | auto        | Override the rendered HTML element       |
-| `align`    | `Align`       | `undefined` | Text alignment                           |
-| `noMargin` | `boolean`     | `false`     | Remove default margins                   |
+| Prop       | Type          | Default     | Description                        |
+| ---------- | ------------- | ----------- | ---------------------------------- |
+| `variant`  | `Variant`     | `'body-md'` | Typographic style variant          |
+| `as`       | `ElementType` | auto        | Override the rendered HTML element |
+| `align`    | `Align`       | `undefined` | Text alignment                     |
+| `noMargin` | `boolean`     | `false`     | Remove default margins             |
 
 ### Variant Options
 

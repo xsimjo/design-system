@@ -4,14 +4,14 @@ A collapsible content component that allows users to show and hide sections of r
 
 ## Props
 
-| Prop          | Type                      | Default      | Description                                      |
-| ------------- | ------------------------- | ------------ | ------------------------------------------------ |
-| `items`       | `AccordionItem[]`         | required     | Array of accordion items with id, title, content |
-| `mode`        | `'single' \| 'multiple'`  | `'single'`   | Whether one or multiple items can be open        |
-| `defaultOpen` | `string[]`                | `[]`         | Array of item IDs to open by default             |
-| `collapsible` | `boolean`                 | `true`       | Whether the open item can be collapsed           |
-| `disabled`    | `boolean`                 | `false`      | Disables all accordion interactions              |
-| `flush`       | `boolean`                 | `false`      | Removes container styling for seamless embedding |
+| Prop          | Type                     | Default    | Description                                      |
+| ------------- | ------------------------ | ---------- | ------------------------------------------------ |
+| `items`       | `AccordionItem[]`        | required   | Array of accordion items with id, title, content |
+| `mode`        | `'single' \| 'multiple'` | `'single'` | Whether one or multiple items can be open        |
+| `defaultOpen` | `string[]`               | `[]`       | Array of item IDs to open by default             |
+| `collapsible` | `boolean`                | `true`     | Whether the open item can be collapsed           |
+| `disabled`    | `boolean`                | `false`    | Disables all accordion interactions              |
+| `flush`       | `boolean`                | `false`    | Removes container styling for seamless embedding |
 
 ### AccordionItem Interface
 

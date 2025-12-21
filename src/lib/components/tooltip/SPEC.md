@@ -4,11 +4,11 @@ A floating label that appears on hover or focus to provide additional informatio
 
 ## Props
 
-| Prop        | Type        | Default | Description                           |
-| ----------- | ----------- | ------- | ------------------------------------- |
-| `content`   | `string`    | required | Tooltip text content                  |
-| `placement` | `Placement` | `'top'` | Position relative to trigger element  |
-| `showArrow` | `boolean`   | `true`  | Show arrow pointing to trigger        |
+| Prop        | Type        | Default  | Description                          |
+| ----------- | ----------- | -------- | ------------------------------------ |
+| `content`   | `string`    | required | Tooltip text content                 |
+| `placement` | `Placement` | `'top'`  | Position relative to trigger element |
+| `showArrow` | `boolean`   | `true`   | Show arrow pointing to trigger       |
 
 ### Placement Options
 
@@ -30,9 +30,9 @@ type Placement =
 
 ## Slots
 
-| Slot      | Description                               |
-| --------- | ----------------------------------------- |
-| `default` | Trigger element (what the tooltip wraps)  |
+| Slot      | Description                              |
+| --------- | ---------------------------------------- |
+| `default` | Trigger element (what the tooltip wraps) |
 
 ## Usage
 

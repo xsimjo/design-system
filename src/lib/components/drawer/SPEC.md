@@ -4,23 +4,23 @@ A slide-out panel component that appears from the edge of the screen for seconda
 
 ## Props
 
-| Prop                  | Type                       | Default     | Description                           |
-| --------------------- | -------------------------- | ----------- | ------------------------------------- |
-| `open`                | `boolean`                  | `false`     | Whether the drawer is open            |
-| `onOpenChange`        | `(open: boolean) => void`  | `undefined` | Callback when open state changes      |
-| `title`               | `string`                   | `undefined` | Drawer title text                     |
-| `placement`           | `'left' \| 'right'`        | `'right'`   | Which edge the drawer appears from    |
-| `size`                | `'sm' \| 'md' \| 'lg'`     | `'md'`      | Width variant                         |
-| `closeOnClickOutside` | `boolean`                  | `true`      | Close when clicking backdrop          |
-| `closeOnEscape`       | `boolean`                  | `true`      | Close when pressing Escape            |
-| `showCloseButton`     | `boolean`                  | `true`      | Show close button in header           |
+| Prop                  | Type                      | Default     | Description                        |
+| --------------------- | ------------------------- | ----------- | ---------------------------------- |
+| `open`                | `boolean`                 | `false`     | Whether the drawer is open         |
+| `onOpenChange`        | `(open: boolean) => void` | `undefined` | Callback when open state changes   |
+| `title`               | `string`                  | `undefined` | Drawer title text                  |
+| `placement`           | `'left' \| 'right'`       | `'right'`   | Which edge the drawer appears from |
+| `size`                | `'sm' \| 'md' \| 'lg'`    | `'md'`      | Width variant                      |
+| `closeOnClickOutside` | `boolean`                 | `true`      | Close when clicking backdrop       |
+| `closeOnEscape`       | `boolean`                 | `true`      | Close when pressing Escape         |
+| `showCloseButton`     | `boolean`                 | `true`      | Show close button in header        |
 
 ## Slots
 
-| Slot      | Description                    |
-| --------- | ------------------------------ |
-| `header`  | Custom header content          |
-| `default` | Main drawer body content       |
+| Slot      | Description                      |
+| --------- | -------------------------------- |
+| `header`  | Custom header content            |
+| `default` | Main drawer body content         |
 | `footer`  | Footer content (usually actions) |
 
 ## Usage
