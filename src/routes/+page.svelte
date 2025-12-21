@@ -4,6 +4,12 @@
 	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';
 	import SidebarItem from '$lib/components/sidebar/SidebarItem.svelte';
 	import SidebarGroup from '$lib/components/sidebar/SidebarGroup.svelte';
+	import Tooltip from '$lib/components/tooltip/Tooltip.svelte';
+	import GithubIcon from '$lib/icons/GithubIcon.svelte';
+	import MoonIcon from '$lib/icons/MoonIcon.svelte';
+	import SunIcon from '$lib/icons/SunIcon.svelte';
+	import BookOpenIcon from '$lib/icons/BookOpenIcon.svelte';
+	import PaletteIcon from '$lib/icons/PaletteIcon.svelte';
 	import {
 		AccordionShowcase,
 		BadgeShowcase,
@@ -29,20 +35,14 @@
 		SemanticTokensShowcase
 	} from './_showcase';
 
-	type Theme = 'light' | 'dark' | 'dev';
-	const themes: Theme[] = ['light', 'dark', 'dev'];
+	type Theme = 'light' | 'dark';
 
 	let theme = $state<Theme>('light');
 	let sidebarCollapsed = $state(false);
 
-	function nextTheme() {
-		const currentIndex = themes.indexOf(theme);
-		theme = themes[(currentIndex + 1) % themes.length];
+	function toggleTheme() {
+		theme = theme === 'light' ? 'dark' : 'light';
 		document.documentElement.setAttribute('data-theme', theme);
-	}
-
-	function getThemeLabel(t: Theme): string {
-		return t.charAt(0).toUpperCase() + t.slice(1);
 	}
 
 	const components = [
@@ -75,18 +75,52 @@
 </script>
 
 <svelte:head>
-	<title>Design System Showcase</title>
+	<title>Greenfield UI - Svelte Design System</title>
 </svelte:head>
 
 <div class="showcase">
 	<Header sticky>
 		{#snippet logo()}
-			<span class="header-title">Design System</span>
+			<div class="logo-link">
+				<PaletteIcon size={28} />
+				<span class="header-title">Greenfield</span>
+				<span class="header-subtitle">UI</span>
+			</div>
+		{/snippet}
+		{#snippet nav()}
+			<Button variant="ghost" color="secondary" size="sm">
+				<BookOpenIcon size={16} />
+				Documentation
+			</Button>
+			<Button variant="ghost" color="secondary" size="sm">Components</Button>
+			<Button variant="ghost" color="secondary" size="sm">Themes</Button>
+			<Button variant="ghost" color="secondary" size="sm">Examples</Button>
 		{/snippet}
 		{#snippet actions()}
-			<Button variant="outline" color="secondary" size="sm" onclick={nextTheme}>
-				Theme: {getThemeLabel(theme)}
-			</Button>
+			<Tooltip text="View on GitHub" position="bottom">
+				<Button
+					variant="ghost"
+					color="secondary"
+					size="sm"
+					icon
+					onclick={() => window.open('https://github.com', '_blank')}
+				>
+					<GithubIcon size={18} />
+				</Button>
+			</Tooltip>
+			<Tooltip
+				text={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+				position="bottom"
+			>
+				<Button variant="ghost" color="secondary" size="sm" icon onclick={toggleTheme}>
+					{#if theme === 'light'}
+						<MoonIcon size={18} />
+					{:else}
+						<SunIcon size={18} />
+					{/if}
+				</Button>
+			</Tooltip>
+			<Button variant="outline" color="secondary" size="sm">v0.1.0</Button>
 		{/snippet}
 	</Header>
 
@@ -143,10 +177,25 @@
 		flex-direction: column;
 	}
 
+	.logo-link {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+		color: var(--header-text);
+	}
+
 	.header-title {
 		font-size: var(--font-size-xl);
-		font-weight: var(--font-weight-semibold);
+		font-weight: var(--font-weight-bold);
 		color: var(--header-text);
+		letter-spacing: -0.02em;
+	}
+
+	.header-subtitle {
+		font-size: var(--font-size-xl);
+		font-weight: var(--font-weight-normal);
+		color: var(--color-primary);
+		letter-spacing: -0.02em;
 	}
 
 	.layout {
