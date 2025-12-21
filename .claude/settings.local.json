@@ -47,7 +47,8 @@
 			"mcp__chrome-devtools__evaluate_script",
 			"mcp__chrome-devtools__resize_page",
 			"mcp__chrome-devtools__click",
-			"Bash(wc:*)"
+			"Bash(wc:*)",
+			"mcp__lucide-icons__list_all_icons_by_category"
 		]
 	},
 	"enableAllProjectMcpServers": true,

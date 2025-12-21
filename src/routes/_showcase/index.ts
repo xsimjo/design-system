@@ -19,3 +19,4 @@ export { default as TooltipShowcase } from './TooltipShowcase.svelte';
 export { default as PrimitiveTokensShowcase } from './PrimitiveTokensShowcase.svelte';
 export { default as SemanticTokensShowcase } from './SemanticTokensShowcase.svelte';
 export { default as TypographyShowcase } from './TypographyShowcase.svelte';
+export { default as SidebarShowcase } from './SidebarShowcase.svelte';

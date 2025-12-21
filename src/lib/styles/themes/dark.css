@@ -1013,4 +1013,113 @@
 
 	--typography-font-family: var(--font-sans);
 	--typography-transition: var(--transition-fast);
+
+	--sidebar-width-expanded: 256px;
+	--sidebar-width-collapsed: 64px;
+	--sidebar-bg: var(--color-slate-800);
+	--sidebar-border: var(--color-slate-700);
+	--sidebar-border-width: var(--border-width-1);
+	--sidebar-shadow: var(--shadow-lg);
+	--sidebar-z-index: var(--z-sticky);
+
+	--sidebar-header-padding-x: var(--space-4);
+	--sidebar-header-padding-y: var(--space-4);
+	--sidebar-header-border: var(--color-slate-700);
+	--sidebar-header-border-width: var(--border-width-1);
+	--sidebar-header-gap: var(--space-3);
+
+	--sidebar-content-padding-x: var(--space-2);
+	--sidebar-content-padding-y: var(--space-4);
+	--sidebar-content-gap: var(--space-1);
+
+	--sidebar-footer-padding-x: var(--space-4);
+	--sidebar-footer-padding-y: var(--space-4);
+	--sidebar-footer-border: var(--color-slate-700);
+	--sidebar-footer-border-width: var(--border-width-1);
+
+	--sidebar-item-padding-x: var(--space-3);
+	--sidebar-item-padding-y: var(--space-2);
+	--sidebar-item-bg: transparent;
+	--sidebar-item-bg-hover: var(--color-slate-700);
+	--sidebar-item-bg-active: rgba(59, 130, 246, 0.15);
+	--sidebar-item-text: var(--color-slate-300);
+	--sidebar-item-text-hover: var(--color-white);
+	--sidebar-item-text-active: var(--color-blue-400);
+	--sidebar-item-text-disabled: var(--color-slate-500);
+	--sidebar-item-border-radius: var(--radius-md);
+	--sidebar-item-gap: var(--space-3);
+	--sidebar-item-font-family: var(--font-sans);
+	--sidebar-item-font-size: var(--font-size-sm);
+	--sidebar-item-font-weight: var(--font-weight-medium);
+	--sidebar-item-line-height: var(--line-height-normal);
+
+	--sidebar-icon-size: 20px;
+	--sidebar-icon-color: var(--color-slate-400);
+	--sidebar-icon-color-hover: var(--color-white);
+	--sidebar-icon-color-active: var(--color-blue-400);
+	--sidebar-icon-color-disabled: var(--color-slate-600);
+
+	--sidebar-toggle-size: 28px;
+	--sidebar-toggle-icon-size: 16px;
+	--sidebar-toggle-bg: transparent;
+	--sidebar-toggle-bg-hover: var(--color-slate-700);
+	--sidebar-toggle-color: var(--color-slate-400);
+	--sidebar-toggle-color-hover: var(--color-white);
+	--sidebar-toggle-border-radius: var(--radius-md);
+
+	--sidebar-group-title-padding-x: var(--space-3);
+	--sidebar-group-title-padding-y: var(--space-2);
+	--sidebar-group-title-color: var(--color-slate-400);
+	--sidebar-group-title-font-size: var(--font-size-xs);
+	--sidebar-group-title-font-weight: var(--font-weight-semibold);
+	--sidebar-group-title-letter-spacing: 0.05em;
+	--sidebar-group-gap: var(--space-4);
+
+	--sidebar-divider-color: var(--color-slate-700);
+	--sidebar-divider-width: var(--border-width-1);
+	--sidebar-divider-margin: var(--space-2);
+
+	--sidebar-focus-ring-width: 3px;
+	--sidebar-focus-ring-offset: 2px;
+	--sidebar-focus-ring-color: rgba(59, 130, 246, 0.4);
+
+	--sidebar-transition: var(--transition-base);
+	--sidebar-cursor-default: pointer;
+	--sidebar-cursor-disabled: not-allowed;
+	--sidebar-opacity-disabled: var(--opacity-60);
+
+	--progress-sm-height: 4px;
+	--progress-md-height: 6px;
+	--progress-lg-height: 8px;
+
+	--progress-track-bg: var(--color-slate-700);
+	--progress-track-bg-disabled: var(--color-slate-800);
+	--progress-track-border-radius: var(--radius-full);
+
+	--progress-fill-bg: var(--color-blue-500);
+	--progress-fill-bg-success: var(--color-green-500);
+	--progress-fill-bg-warning: var(--color-amber-400);
+	--progress-fill-bg-error: var(--color-red-500);
+	--progress-fill-bg-disabled: var(--color-slate-600);
+	--progress-fill-border-radius: var(--radius-full);
+
+	--progress-indeterminate-duration: 1500ms;
+
+	--progress-label-color: var(--color-slate-300);
+	--progress-label-color-disabled: var(--color-slate-500);
+	--progress-label-font-family: var(--font-sans);
+	--progress-label-font-size: var(--font-size-sm);
+	--progress-label-font-weight: var(--font-weight-medium);
+	--progress-label-line-height: var(--line-height-normal);
+	--progress-label-gap: var(--space-2);
+
+	--progress-percentage-color: var(--color-slate-400);
+	--progress-percentage-color-disabled: var(--color-slate-600);
+	--progress-percentage-font-family: var(--font-mono);
+	--progress-percentage-font-size: var(--font-size-xs);
+	--progress-percentage-font-weight: var(--font-weight-medium);
+	--progress-percentage-line-height: var(--line-height-normal);
+
+	--progress-transition: var(--transition-base);
+	--progress-opacity-disabled: var(--opacity-60);
 }
