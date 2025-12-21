@@ -43,18 +43,22 @@ function extractTokens() {
 	const primitivesContent = readFileSync(primitivesPath, 'utf-8');
 	const primitives = parseTokens(primitivesContent);
 
+	const themeBasePath = join(stylesDir, 'theme-base.css');
+	const themeBaseContent = readFileSync(themeBasePath, 'utf-8');
+	const semantic = parseSemanticTokens(themeBaseContent);
+
 	const themes = ['light', 'dark', 'dev'];
-	const semantic = {};
+	const themeVariables = {};
 
 	for (const theme of themes) {
 		const themePath = join(stylesDir, 'themes', `${theme}.css`);
 		if (existsSync(themePath)) {
 			const themeContent = readFileSync(themePath, 'utf-8');
-			semantic[theme] = parseSemanticTokens(themeContent);
+			themeVariables[theme] = parseThemeVariables(themeContent);
 		}
 	}
 
-	return { primitives, semantic };
+	return { primitives, semantic, themeVariables };
 }
 
 function parseTokens(content) {
@@ -100,14 +104,63 @@ function parseTokens(content) {
 }
 
 function parseSemanticTokens(content) {
+	const dataThemeMatch = content.match(/\[data-theme\]\s*\{([^}]+(?:\{[^}]*\}[^}]*)*)\}/s);
+	if (!dataThemeMatch) return [];
+
 	const tokens = [];
-	const matches = content.matchAll(/--([^:]+):\s*([^;]+);/g);
+	const matches = dataThemeMatch[1].matchAll(/--([^:]+):\s*([^;]+);/g);
 
 	for (const match of matches) {
 		tokens.push(`--${match[1].trim()}`);
 	}
 
 	return tokens;
+}
+
+function parseThemeVariables(content) {
+	const variables = {
+		fonts: [],
+		colors: [],
+		shadows: [],
+		radii: [],
+		sizes: [],
+		borders: [],
+		focus: [],
+		backdrop: [],
+		transitions: [],
+		spacing: []
+	};
+
+	const matches = content.matchAll(/--([^:]+):\s*([^;]+);/g);
+
+	for (const match of matches) {
+		const name = `--${match[1].trim()}`;
+		const value = match[2].trim();
+
+		if (name.includes('font-')) {
+			variables.fonts.push({ name, value });
+		} else if (name.includes('color-') || name.includes('-link')) {
+			variables.colors.push({ name, value });
+		} else if (name.includes('shadow-')) {
+			variables.shadows.push({ name, value });
+		} else if (name.includes('radius-')) {
+			variables.radii.push({ name, value });
+		} else if (name.includes('field-height')) {
+			variables.sizes.push({ name, value });
+		} else if (name.includes('border-') || name.includes('focus-ring-width')) {
+			variables.borders.push({ name, value });
+		} else if (name.includes('focus-ring-color') || name.includes('hover-')) {
+			variables.focus.push({ name, value });
+		} else if (name.includes('backdrop-')) {
+			variables.backdrop.push({ name, value });
+		} else if (name.includes('transition-')) {
+			variables.transitions.push({ name, value });
+		} else if (name.includes('spacing-')) {
+			variables.spacing.push({ name, value });
+		}
+	}
+
+	return variables;
 }
 
 function main() {
@@ -119,7 +172,8 @@ function main() {
 
 	const tokens = extractTokens();
 	console.log(`  Found ${Object.values(tokens.primitives).flat().length} primitive tokens`);
-	console.log(`  Found ${Object.keys(tokens.semantic).length} themes`);
+	console.log(`  Found ${tokens.semantic.length} semantic tokens`);
+	console.log(`  Found ${Object.keys(tokens.themeVariables).length} themes`);
 	writeFileSync(join(DATA_DIR, 'tokens.json'), JSON.stringify(tokens, null, 2));
 
 	console.log('Done!');

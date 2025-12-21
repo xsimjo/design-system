@@ -101,17 +101,70 @@ export function registerTools(server: McpServer) {
 	);
 
 	server.tool(
-		'get_theme_tokens',
+		'list_semantic_tokens',
 		{
-			theme: z.enum(['light', 'dark', 'dev']).describe('Theme name'),
 			component: z
 				.string()
 				.optional()
-				.describe('Optional: filter by component (e.g., button, card)')
+				.describe('Optional: filter by component prefix (e.g., button, card, sidebar)')
 		},
-		async ({ theme, component }) => {
-			const themeTokens = tokens.semantic[theme as keyof typeof tokens.semantic];
-			if (!themeTokens) {
+		async ({ component }) => {
+			let filteredTokens = tokens.semantic as string[];
+
+			if (component) {
+				filteredTokens = filteredTokens.filter((t: string) =>
+					t.toLowerCase().includes(`--${component.toLowerCase()}`)
+				);
+			}
+
+			if (filteredTokens.length === 0) {
+				return {
+					content: [
+						{
+							type: 'text' as const,
+							text: component
+								? `No semantic tokens found for "${component}".`
+								: 'No semantic tokens found.'
+						}
+					]
+				};
+			}
+
+			return {
+				content: [
+					{
+						type: 'text' as const,
+						text: `# Semantic Tokens${component ? ` (${component})` : ''}\n\nThese tokens are computed from theme variables in \`theme-base.css\`.\n\n${filteredTokens.map((t: string) => `- \`${t}\``).join('\n')}`
+					}
+				]
+			};
+		}
+	);
+
+	server.tool(
+		'get_theme_variables',
+		{
+			theme: z.enum(['light', 'dark', 'dev']).describe('Theme name'),
+			category: z
+				.enum([
+					'fonts',
+					'colors',
+					'shadows',
+					'radii',
+					'sizes',
+					'borders',
+					'focus',
+					'backdrop',
+					'transitions',
+					'spacing',
+					'all'
+				])
+				.optional()
+				.describe('Optional: filter by category')
+		},
+		async ({ theme, category }) => {
+			const themeVars = tokens.themeVariables[theme as keyof typeof tokens.themeVariables];
+			if (!themeVars) {
 				return {
 					content: [
 						{
@@ -122,18 +175,48 @@ export function registerTools(server: McpServer) {
 				};
 			}
 
-			let filteredTokens = themeTokens;
-			if (component) {
-				filteredTokens = themeTokens.filter((t: string) =>
-					t.toLowerCase().includes(`--${component.toLowerCase()}`)
-				);
+			type ThemeVars = typeof themeVars;
+			type CategoryKey = keyof ThemeVars;
+
+			if (category && category !== 'all') {
+				const categoryVars = themeVars[category as CategoryKey] as Array<{
+					name: string;
+					value: string;
+				}>;
+				if (!categoryVars || categoryVars.length === 0) {
+					return {
+						content: [
+							{
+								type: 'text' as const,
+								text: `No ${category} variables found in ${theme} theme.`
+							}
+						]
+					};
+				}
+
+				return {
+					content: [
+						{
+							type: 'text' as const,
+							text: `# ${theme} Theme - ${category}\n\n${categoryVars.map((v) => `- \`${v.name}\`: \`${v.value}\``).join('\n')}`
+						}
+					]
+				};
 			}
+
+			const allVars = Object.entries(themeVars)
+				.filter(([, vars]) => (vars as Array<{ name: string; value: string }>).length > 0)
+				.map(
+					([cat, vars]) =>
+						`## ${cat}\n\n${(vars as Array<{ name: string; value: string }>).map((v) => `- \`${v.name}\`: \`${v.value}\``).join('\n')}`
+				)
+				.join('\n\n');
 
 			return {
 				content: [
 					{
 						type: 'text' as const,
-						text: `# ${theme} Theme Tokens${component ? ` (${component})` : ''}\n\n${filteredTokens.map((t: string) => `- \`${t}\``).join('\n')}`
+						text: `# ${theme} Theme Variables\n\nThese ~45 variables are the only ones you need to customize a theme.\n\n${allVars}`
 					}
 				]
 			};
@@ -187,7 +270,22 @@ import '@xsimjo/design-system/styles/themes/dark';  // Dark theme only
     document.documentElement.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
   }
 </script>
-\`\`\``
+\`\`\`
+
+## Creating a Custom Theme
+
+Themes only need ~45 CSS variables. Create a new file and override what you need:
+
+\`\`\`css
+[data-theme='my-brand'] {
+  --color-primary: #8b5cf6;
+  --color-bg: #faf5ff;
+  --radius-button: 9999px;
+  --shadow-sm: none;
+}
+\`\`\`
+
+See \`get_theme_variables\` tool for all available variables.`
 					}
 				]
 			};

@@ -2,23 +2,25 @@
 
 ## Philosophy
 
-This design system follows a **two-layer token architecture** that separates raw values from semantic meaning. This separation enables:
+This design system follows a **three-layer token architecture** that separates raw values, theme configuration, and auto-computed semantic tokens. This separation enables:
 
-- **Maintainability**: Change primitive values without touching component code
-- **Themability**: Swap themes by overriding semantic tokens only
+- **Simplicity**: Theme creators only configure ~45 variables instead of hundreds
+- **Maintainability**: Semantic tokens auto-compute from theme config, no manual mapping needed
+- **Themability**: Swap themes with minimal configuration overhead
 - **Consistency**: Components use semantic tokens, ensuring visual coherence
-- **Scalability**: Add new themes or primitives without refactoring components
+- **Scalability**: Add new themes by copying and modifying ~45 variables
 
 ### Core Principles
 
 1. **Semantic Over Literal**: Components reference purpose (`--button-primary-bg`), not values (`--color-blue-600`)
 2. **Single Source of Truth**: Each primitive defined once, referenced many times
-3. **Progressive Enhancement**: Start with solid foundations, layer complexity as needed
-4. **Accessibility First**: All color combinations meet WCAG 2.1 AA standards (4.5:1 for text, 3:1 for large text)
+3. **Auto-Computation**: Theme base layer derives ~400+ semantic tokens from ~45 theme variables
+4. **Simple Theming**: Theme files only contain essential configuration, not exhaustive mappings
+5. **Accessibility First**: All color combinations meet WCAG 2.1 AA standards (4.5:1 for text, 3:1 for large text)
 
 ## Architecture
 
-### Two-Layer Token System
+### Three-Layer Token System
 
 #### Layer 1: Primitives (`primitives.css`)
 
@@ -26,11 +28,11 @@ Raw, context-free values that form the foundation of the design system.
 
 **Categories**:
 
-- Colors (blue, slate, gray scales with 50-950 variants)
+- Colors (blue, slate, gray, green, red, amber scales with 50-950 variants)
 - Spacing (4px base scale: 0-32)
 - Border radii (sm to full)
 - Typography (font sizes, weights, line heights)
-- Shadows (sm to xl, plus focus states)
+- Shadows (sm to xl)
 - Transitions (fast, base, slow)
 - Opacity modifiers (0-100)
 
@@ -38,25 +40,101 @@ Raw, context-free values that form the foundation of the design system.
 
 - Examples: `--color-blue-600`, `--space-4`, `--radius-lg`, `--font-size-md`
 
-**Usage**: Never use primitives directly in components. They exist only to be referenced by semantic tokens.
+**Usage**: Primitives are only referenced by theme configuration files. Components never use primitives directly.
 
-#### Layer 2: Semantic Tokens (Theme Files)
+#### Layer 2: Theme Configuration (Theme Files)
 
-Purpose-driven tokens that map primitives to specific use cases. Each theme file contains the complete set of semantic tokens.
+Simple configuration files containing only ~45 essential variables that define a theme's personality. The theme base layer auto-computes hundreds of semantic tokens from these variables.
 
-**Structure**:
+**Theme Files**:
 
-- `themes/light.css`: Light theme semantic mappings
-- `themes/dark.css`: Dark theme semantic mappings
-- `themes/dev.css`: Developer theme semantic mappings
+- `themes/light.css`: Light theme configuration
+- `themes/dark.css`: Dark theme configuration
+- `themes/dev.css`: Developer theme configuration
 
-**Theme-Specific Foundations**:
+**The 45 Theme Variables**:
 
-Each theme defines its own font families (`--font-sans`, `--font-mono`), allowing different themes to use completely different typefaces. For example, the "dev" theme uses JetBrains Mono for both sans and mono, while "light" uses Inter for sans.
+Fonts (2):
 
-**Naming Convention**: `--{component}-{variant}-{property}-{state?}`
+- `--font-sans`: Primary font family
+- `--font-mono`: Monospace font family
 
-- Examples: `--button-primary-bg`, `--button-primary-bg-hover`, `--button-secondary-text-disabled`
+Colors (14):
+
+- `--color-primary`: Primary brand color
+- `--color-secondary`: Secondary/neutral color
+- `--color-success`: Success state color
+- `--color-warning`: Warning state color
+- `--color-error`: Error state color
+- `--color-info`: Informational color
+- `--color-link`: Link text color
+- `--color-link-hover`: Link hover color
+- `--color-bg`: Base background color
+- `--color-bg-elevated`: Elevated surface background
+- `--color-bg-muted`: Muted/subtle background
+- `--color-text`: Primary text color
+- `--color-text-muted`: Secondary/muted text
+- `--color-border`: Border color
+
+Shadows (4):
+
+- `--shadow-sm`: Small shadow
+- `--shadow-md`: Medium shadow
+- `--shadow-lg`: Large shadow
+- `--shadow-xl`: Extra large shadow
+
+Base Radii (3):
+
+- `--radius-sm`: Small border radius
+- `--radius-md`: Medium border radius
+- `--radius-lg`: Large border radius
+
+Component Radii (5):
+
+- `--radius-button`: Button border radius
+- `--radius-input`: Input field border radius
+- `--radius-card`: Card border radius
+- `--radius-badge`: Badge border radius
+- `--radius-dialog`: Dialog border radius
+
+Field Heights (3):
+
+- `--field-height-sm`: Small field height
+- `--field-height-md`: Medium field height
+- `--field-height-lg`: Large field height
+
+Borders (2):
+
+- `--border-width`: Standard border width
+- `--focus-ring-width`: Focus ring width
+
+Focus/Hover (3):
+
+- `--focus-ring-color`: Focus ring color
+- `--color-hover-mix`: Target color for hover states (black or white)
+- `--color-hover-amount`: Mix percentage for hover effects
+
+Backdrop (2):
+
+- `--backdrop-color`: Modal/dialog backdrop color
+- `--backdrop-blur`: Backdrop blur amount
+
+Transitions (3):
+
+- `--transition-fast`: Fast transition timing
+- `--transition-base`: Base transition timing
+- `--transition-slow`: Slow transition timing
+
+Spacing (4):
+
+- `--spacing-xs`: Extra small spacing
+- `--spacing-sm`: Small spacing
+- `--spacing-md`: Medium spacing
+- `--spacing-lg`: Large spacing
+
+**Naming Convention**: `--{category}-{variant}`
+
+- Examples: `--color-primary`, `--radius-button`, `--field-height-md`
 
 **Theme Application**: Use `data-theme` attribute on `<html>` element
 
@@ -64,11 +142,49 @@ Each theme defines its own font families (`--font-sans`, `--font-mono`), allowin
 - `<html data-theme="dark">` - applies dark theme
 - `<html data-theme="dev">` - applies developer theme
 
+#### Layer 3: Theme Base (`theme-base.css`)
+
+The auto-computation layer that derives ~400+ semantic tokens from the ~45 theme variables. This file:
+
+- Provides default theme configuration in `:root` (matches light theme)
+- Defines `[data-theme]` selector with all semantic tokens
+- Auto-computes component-specific tokens from theme variables
+- Uses `color-mix()`, `var()`, and CSS calculations for dynamic derivation
+
+**Examples of Auto-Computed Tokens**:
+
+```css
+/* Buttons derive from theme colors */
+--button-color-primary: var(--color-primary);
+--button-color-success: var(--color-success);
+
+/* Inputs derive sizing from field heights */
+--input-sm-height: var(--field-height-sm);
+--input-md-height: var(--field-height-md);
+
+/* Cards derive spacing from theme spacing */
+--card-padding: var(--spacing-lg);
+
+/* Badge backgrounds use color-mix for transparency */
+--badge-primary-bg: color-mix(in srgb, var(--color-primary) 15%, transparent);
+```
+
+**Why This Layer Exists**:
+
+- Theme creators don't manually define hundreds of tokens
+- Ensures consistency across all components
+- Simplifies theme maintenance and updates
+- Enables rapid theme prototyping
+
+**Naming Convention**: `--{component}-{variant}-{property}-{state?}`
+
+- Examples: `--button-primary-bg`, `--input-border-focus`, `--card-shadow-hover`
+
 ### Component Architecture
 
-**Component Rule**: Components MUST use only semantic tokens, never primitives.
+**Component Rule**: Components MUST use only semantic tokens from the theme base layer, never theme variables or primitives directly.
 
-**Why**: This enables theme switching at runtime without component changes. Changing `data-theme` attribute automatically updates all component appearances.
+**Why**: This enables theme switching at runtime without component changes. Changing `data-theme` attribute automatically updates all component appearances through the auto-computed semantic tokens.
 
 ## Component Inventory
 
@@ -1301,43 +1417,235 @@ All color combinations must meet **WCAG 2.1 AA** standards:
 
 ### Adding New Components
 
-1. Identify required primitives (colors, spacing, etc.)
-2. Add any missing primitives to `primitives.css`
-3. Define semantic tokens in BOTH theme files (`light.css` and `dark.css`)
-4. Ensure token structure is identical across themes
+1. Identify required semantic tokens (button colors, input sizes, etc.)
+2. Check if theme base layer provides needed tokens
+3. If new tokens needed, add them to `theme-base.css` in `[data-theme]` selector
+4. Ensure new tokens derive from theme variables (the ~45 config vars)
 5. Verify all color combinations meet WCAG AA standards
 6. Document component in this file's Component Inventory section
 
 ### Creating New Themes
 
-1. Create new theme file in `themes/{theme-name}.css`
-2. Copy complete semantic token structure from existing theme
-3. Override semantic tokens with new primitive mappings
+Creating a custom theme is simple - just configure the ~45 theme variables:
+
+1. Create new theme file: `themes/{theme-name}.css`
+2. Start with this template:
+
+```css
+[data-theme='custom'] {
+	/* Fonts (2) */
+	--font-sans: 'Your Font', sans-serif;
+	--font-mono: 'Your Mono', monospace;
+
+	/* Colors (14) */
+	--color-primary: #your-color;
+	--color-secondary: #your-color;
+	--color-success: #your-color;
+	--color-warning: #your-color;
+	--color-error: #your-color;
+	--color-info: #your-color;
+	--color-link: #your-color;
+	--color-link-hover: #your-color;
+	--color-bg: #your-color;
+	--color-bg-elevated: #your-color;
+	--color-bg-muted: #your-color;
+	--color-text: #your-color;
+	--color-text-muted: #your-color;
+	--color-border: #your-color;
+
+	/* Shadows (4) */
+	--shadow-sm: your-shadow-value;
+	--shadow-md: your-shadow-value;
+	--shadow-lg: your-shadow-value;
+	--shadow-xl: your-shadow-value;
+
+	/* Base Radii (3) */
+	--radius-sm: your-radius;
+	--radius-md: your-radius;
+	--radius-lg: your-radius;
+
+	/* Component Radii (5) */
+	--radius-button: var(--radius-md);
+	--radius-input: var(--radius-md);
+	--radius-card: var(--radius-lg);
+	--radius-badge: var(--radius-sm);
+	--radius-dialog: var(--radius-lg);
+
+	/* Field Heights (3) */
+	--field-height-sm: your-height;
+	--field-height-md: your-height;
+	--field-height-lg: your-height;
+
+	/* Borders (2) */
+	--border-width: your-width;
+	--focus-ring-width: your-width;
+
+	/* Focus/Hover (3) */
+	--focus-ring-color: your-color;
+	--color-hover-mix: black; /* or white */
+	--color-hover-amount: 10%;
+
+	/* Backdrop (2) */
+	--backdrop-color: your-color;
+	--backdrop-blur: your-blur;
+
+	/* Transitions (3) */
+	--transition-fast: your-timing;
+	--transition-base: your-timing;
+	--transition-slow: your-timing;
+
+	/* Spacing (4) */
+	--spacing-xs: your-spacing;
+	--spacing-sm: your-spacing;
+	--spacing-md: your-spacing;
+	--spacing-lg: your-spacing;
+}
+```
+
+3. Reference primitives from `primitives.css` for color values
 4. Test all components in new theme
 5. Verify accessibility standards are met
+6. The theme base layer will automatically compute all ~400+ semantic tokens
+
+**Example - Creating a "Purple" Theme**:
+
+```css
+[data-theme='purple'] {
+	--font-sans: 'Inter', sans-serif;
+	--font-mono: ui-monospace, monospace;
+
+	--color-primary: #9333ea; /* purple-600 */
+	--color-secondary: #64748b; /* slate-500 */
+	--color-success: #16a34a; /* green-600 */
+	--color-warning: #d97706; /* amber-600 */
+	--color-error: #dc2626; /* red-600 */
+	--color-info: #0284c7; /* sky-600 */
+	--color-link: #9333ea;
+	--color-link-hover: #7e22ce; /* purple-700 */
+
+	--color-bg: #ffffff;
+	--color-bg-elevated: #ffffff;
+	--color-bg-muted: #faf5ff; /* purple-50 */
+	--color-text: #0f172a; /* slate-900 */
+	--color-text-muted: #64748b; /* slate-500 */
+	--color-border: #e9d5ff; /* purple-200 */
+
+	/* Use existing values for shadows, radii, etc. */
+	--shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+	--shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	--shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+	--shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+	--radius-sm: 4px;
+	--radius-md: 6px;
+	--radius-lg: 8px;
+
+	--radius-button: var(--radius-md);
+	--radius-input: var(--radius-md);
+	--radius-card: var(--radius-lg);
+	--radius-badge: var(--radius-sm);
+	--radius-dialog: var(--radius-lg);
+
+	--field-height-sm: 32px;
+	--field-height-md: 40px;
+	--field-height-lg: 48px;
+
+	--border-width: 1px;
+	--focus-ring-width: 3px;
+
+	--focus-ring-color: rgba(147, 51, 234, 0.3);
+	--color-hover-mix: black;
+	--color-hover-amount: 10%;
+
+	--backdrop-color: rgba(0, 0, 0, 0.5);
+	--backdrop-blur: 4px;
+
+	--transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+	--transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+	--transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+	--spacing-xs: 4px;
+	--spacing-sm: 8px;
+	--spacing-md: 16px;
+	--spacing-lg: 24px;
+}
+```
 
 ### Token Naming Conventions
 
 **Primitives**: `--{category}-{variant}-{scale}`
 
 - Clear, descriptive, scale-based naming
-- Examples: `--color-blue-600`, `--space-4`, `--radius-lg`
+- Examples: `--color-blue-600`, `--space-4`, `--radius-lg`, `--font-size-md`
 
-**Semantics**: `--{component}-{variant}-{property}-{state?}`
+**Theme Variables**: `--{category}-{variant}`
+
+- Simple, high-level configuration tokens
+- Examples: `--color-primary`, `--radius-button`, `--field-height-md`
+
+**Semantic Tokens**: `--{component}-{variant}-{property}-{state?}`
 
 - Purpose-driven, component-scoped naming
 - Include state suffix when applicable
-- Examples: `--button-primary-bg`, `--button-primary-bg-hover`, `--card-border`
+- Examples: `--button-primary-bg`, `--input-border-focus`, `--card-shadow-hover`
 
 ## File References
 
-**Primitive Tokens**: `src/lib/styles/primitives.css`
-**Light Theme**: `src/lib/styles/themes/light.css`
-**Dark Theme**: `src/lib/styles/themes/dark.css`
+**Layer 1 - Primitives**: `src/lib/styles/primitives.css`
+
+- Raw color scales, spacing values, typography scales
+- Referenced only by theme configuration files
+
+**Layer 2 - Theme Configuration**:
+
+- `src/lib/styles/themes/light.css` - Light theme (~45 variables)
+- `src/lib/styles/themes/dark.css` - Dark theme (~45 variables)
+- `src/lib/styles/themes/dev.css` - Developer theme (~45 variables)
+
+**Layer 3 - Theme Base**: `src/lib/styles/theme-base.css`
+
+- Auto-computes ~400+ semantic tokens from theme variables
+- Contains `:root` defaults and `[data-theme]` semantic token definitions
+- Never needs manual editing for new themes
 
 All detailed token values live in the CSS files. This document provides architecture and usage guidance only.
 
 ## Design Decisions
+
+### Simplified Theming Architecture
+
+The three-layer token system was designed to solve a critical problem: theme creation complexity. Traditional design systems require theme creators to manually define hundreds of tokens for every component and state. Our system reduces this to ~45 essential variables.
+
+**Benefits**:
+
+- **Rapid Prototyping**: Create a new theme in minutes, not hours
+- **Reduced Errors**: Fewer manual mappings means fewer mistakes
+- **Consistency**: Auto-computed tokens ensure uniform behavior across components
+- **Maintainability**: Update one theme variable and all derived tokens update automatically
+- **Flexibility**: Override specific auto-computed tokens when needed for edge cases
+
+**How It Works**:
+
+1. Theme creator defines ~45 variables (colors, spacing, fonts, etc.)
+2. Theme base layer uses CSS `var()`, `color-mix()`, and calculations
+3. ~400+ semantic tokens auto-derive from those 45 variables
+4. Components consume semantic tokens, never aware of theme complexity
+
+**Example Auto-Computation**:
+
+```css
+/* Theme variable (user configures) */
+--color-primary: #2563eb;
+
+/* Auto-computed semantic tokens (theme-base.css) */
+--button-color-primary: var(--color-primary);
+--checkbox-bg-checked: var(--color-primary);
+--tabs-trigger-text-active: var(--color-primary);
+--badge-primary-bg: color-mix(in srgb, var(--color-primary) 15%, transparent);
+--select-option-bg-selected: color-mix(in srgb, var(--color-primary) 15%, transparent);
+```
+
+One variable (`--color-primary`) automatically updates dozens of component tokens.
 
 ### 4px Spacing Scale
 
@@ -1361,18 +1669,20 @@ Blue conveys trust, reliability, and professionalism. The specific blue scale (b
 Font families are defined per-theme rather than as global primitives. This allows each theme to express a unique typographic personality:
 
 - **Light theme**: Inter (modern, clean sans-serif)
-- **Dark theme**: Space Grotesk (geometric, distinctive)
+- **Dark theme**: Inter (consistent with light theme)
 - **Dev theme**: JetBrains Mono (monospace for code-centric aesthetic)
 
-Each theme defines `--font-sans` and `--font-mono` with appropriate fallback stacks for reliability and performance.
+Each theme defines `--font-sans` and `--font-mono` with appropriate fallback stacks for reliability and performance. The theme base layer automatically applies these fonts to all typography tokens.
 
 ## Future Considerations
 
 As the design system evolves, consider:
 
-- Additional color scales (red for errors, green for success, yellow for warnings)
-- Animation/motion tokens for consistent transitions
-- Breakpoint tokens for responsive design
-- Additional component states (loading, success, error)
-- Icon size scales aligned with typography
-- Z-index management system for layering
+- **Additional theme variables**: Expand the ~45 variables if common customizations emerge
+- **Advanced color-mix patterns**: Explore more sophisticated auto-computation strategies
+- **Breakpoint tokens**: Add responsive design variables to theme configuration
+- **Animation presets**: Include motion/animation tokens in theme variables
+- **Component-specific overrides**: Allow themes to override auto-computed tokens for edge cases
+- **Theme inheritance**: Support theme variants that extend base themes with minimal overrides
+- **Runtime theme generation**: Build tools to generate theme files from design tokens
+- **Accessibility validation**: Automated contrast checking for theme variables
