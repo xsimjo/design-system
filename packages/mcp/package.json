@@ -1,6 +1,6 @@
 {
 	"name": "@xsimjo/design-system-mcp",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"description": "MCP server for @xsimjo/design-system - provides AI assistants with component documentation, design tokens, and usage examples",
 	"type": "module",
 	"main": "./dist/index.js",
