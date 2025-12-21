@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { codeToHtml } from 'shiki';
 	import Button from '../button/Button.svelte';
 	import CopyIcon from '../../icons/CopyIcon.svelte';
 	import CheckIcon from '../../icons/CheckIcon.svelte';
@@ -16,19 +17,12 @@
 	let copied = $state(false);
 
 	$effect(() => {
-		import('shiki')
-			.then(({ codeToHtml }) =>
-				codeToHtml(code, {
-					lang: language,
-					theme: 'github-dark'
-				})
-			)
-			.then((html) => {
-				highlightedHtml = html;
-			})
-			.catch(() => {
-				console.error('CodeBlock requires shiki. Install it with: npm install shiki');
-			});
+		codeToHtml(code, {
+			lang: language,
+			theme: 'github-dark'
+		}).then((html) => {
+			highlightedHtml = html;
+		});
 	});
 
 	async function copyToClipboard() {

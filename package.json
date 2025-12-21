@@ -44,7 +44,8 @@
 		"./styles/themes/dev": "./dist/styles/themes/dev.css"
 	},
 	"peerDependencies": {
-		"svelte": "^5.0.0"
+		"svelte": "^5.0.0",
+		"shiki": "^3.20.0"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
