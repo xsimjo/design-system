@@ -1,0 +1,41 @@
+{
+	"name": "@xsimjo/design-system-mcp",
+	"version": "0.0.1",
+	"description": "MCP server for @xsimjo/design-system - provides AI assistants with component documentation, design tokens, and usage examples",
+	"type": "module",
+	"main": "./dist/index.js",
+	"bin": {
+		"design-system-mcp": "./dist/index.js"
+	},
+	"files": [
+		"dist"
+	],
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/xsimjo/design-system.git",
+		"directory": "packages/mcp"
+	},
+	"scripts": {
+		"extract": "node scripts/extract-data.js",
+		"build": "tsc",
+		"prepublishOnly": "npm run extract && npm run build"
+	},
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "^1.2.0",
+		"zod": "^3.24.0"
+	},
+	"devDependencies": {
+		"@types/node": "^22",
+		"typescript": "^5.9.3"
+	},
+	"keywords": [
+		"mcp",
+		"design-system",
+		"svelte",
+		"ai",
+		"claude"
+	]
+}

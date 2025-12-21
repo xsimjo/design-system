@@ -29,29 +29,3 @@ export type {
 } from './components/toast/toast.svelte.ts';
 export { default as Tooltip } from './components/tooltip/Tooltip.svelte';
 export { default as Typography } from './components/typography/Typography.svelte';
-
-export {
-	BarChartIcon,
-	CalendarIcon,
-	CheckIcon,
-	ChevronDownIcon,
-	ChevronRightIcon,
-	CircleCheckIcon,
-	CircleXIcon,
-	CopyIcon,
-	FolderIcon,
-	HelpCircleIcon,
-	HomeIcon,
-	InboxIcon,
-	InfoIcon,
-	MailIcon,
-	MinusIcon,
-	PanelLeftCloseIcon,
-	PanelLeftOpenIcon,
-	SearchIcon,
-	SettingsIcon,
-	TriangleAlertIcon,
-	UserIcon,
-	UsersIcon,
-	XIcon
-} from './icons/index.js';
