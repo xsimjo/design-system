@@ -39,7 +39,8 @@
 		"./styles": "./dist/styles/global.css",
 		"./styles/primitives": "./dist/styles/primitives.css",
 		"./styles/themes/light": "./dist/styles/themes/light.css",
-		"./styles/themes/dark": "./dist/styles/themes/dark.css"
+		"./styles/themes/dark": "./dist/styles/themes/dark.css",
+		"./styles/themes/dev": "./dist/styles/themes/dev.css"
 	},
 	"peerDependencies": {
 		"svelte": "^5.0.0"
