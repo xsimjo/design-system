@@ -11,7 +11,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
-		"build:mcp": "cd packages/mcp && npm run extract && npm run build",
+		"build:mcp": "cd packages/mcp && npm run extract && npm run build && cd ../.. && npm run format",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"prepack": "svelte-kit sync && svelte-package && publint",
