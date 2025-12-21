@@ -19,6 +19,6 @@
 	stroke-linejoin="round"
 	{...restProps}
 >
-	<path d="M18 6 6 18" />
-	<path d="m6 6 12 12" />
+	<circle cx="12" cy="12" r="10" />
+	<path d="m9 12 2 2 4-4" />
 </svg>

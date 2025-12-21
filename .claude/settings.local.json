@@ -46,7 +46,8 @@
 			"mcp__svelte__get-documentation",
 			"mcp__chrome-devtools__evaluate_script",
 			"mcp__chrome-devtools__resize_page",
-			"mcp__chrome-devtools__click"
+			"mcp__chrome-devtools__click",
+			"Bash(wc:*)"
 		]
 	},
 	"enableAllProjectMcpServers": true,

@@ -2,15 +2,24 @@
 	import Button from '$lib/components/button/Button.svelte';
 	import {
 		AccordionShowcase,
+		BadgeShowcase,
+		BreadcrumbsShowcase,
 		ButtonShowcase,
 		CardShowcase,
 		CheckboxShowcase,
+		CodeBlockShowcase,
 		DialogShowcase,
+		DrawerShowcase,
 		InputShowcase,
 		SelectShowcase,
+		SliderShowcase,
+		TableShowcase,
+		TabsShowcase,
+		ToastShowcase,
 		HeaderShowcase,
 		AvatarShowcase,
 		TooltipShowcase,
+		TypographyShowcase,
 		PrimitiveTokensShowcase,
 		SemanticTokensShowcase
 	} from './_showcase';
@@ -45,15 +54,24 @@
 
 	<main class="content">
 		<AccordionShowcase />
+		<BadgeShowcase />
+		<BreadcrumbsShowcase />
 		<ButtonShowcase />
 		<CheckboxShowcase />
+		<CodeBlockShowcase />
 		<DialogShowcase />
+		<DrawerShowcase />
 		<InputShowcase />
 		<SelectShowcase />
+		<SliderShowcase />
+		<TableShowcase />
+		<TabsShowcase />
+		<ToastShowcase />
 		<CardShowcase />
 		<HeaderShowcase />
 		<AvatarShowcase />
 		<TooltipShowcase />
+		<TypographyShowcase />
 		<PrimitiveTokensShowcase />
 		<SemanticTokensShowcase />
 	</main>
@@ -66,6 +84,9 @@
 	}
 
 	.page-header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;

@@ -684,6 +684,537 @@ Each theme defines distinct visual personalities through token overrides:
 - Interaction (transition duration, easing, cursor per state)
 - Hover/active states (background, border, text color)
 
+### Tabs
+
+A horizontal navigation component for organizing related content into separate views, showing one panel at a time.
+
+**Props**:
+
+- `items`: Array<{id: string, label: string, content: Component | string, disabled?: boolean}> - Tab items array (required)
+- `value`: string - Controlled active tab ID (optional, for controlled mode)
+- `defaultValue`: string - Initially active tab ID (optional, for uncontrolled mode)
+- `disabled`: boolean - Disables all tabs
+
+**Structure**:
+
+- Container: Root wrapper element
+- Tab list: Horizontal list of tab triggers with bottom border
+- Tab trigger: Clickable button for each tab
+- Active indicator: Visual underline showing active tab
+- Tab panel: Content area displaying active tab content
+
+**States**:
+
+- Default: Normal inactive tab state
+- Hover: Mouse over tab trigger
+- Active: Currently selected tab (one tab active at a time)
+- Focus: Keyboard focus on tab trigger
+- Disabled: Non-interactive state (entire component or individual tabs)
+
+**Behavior**:
+
+- Click tab trigger to switch active panel
+- Only one panel visible at a time
+- Active tab shows indicator underline and distinct text color
+- Arrow keys navigate between tabs when focused
+- Home/End keys jump to first/last tab
+- Smooth transitions when switching panels
+- Disabled tabs are non-interactive but visible
+- Tab content can be any component or string
+
+**Keyboard Navigation**:
+
+- `Tab`: Focus first tab (or next focusable element if already in tabs)
+- `Shift+Tab`: Focus previous element
+- `ArrowLeft`: Move to previous tab (cycles to last)
+- `ArrowRight`: Move to next tab (cycles to first)
+- `Home`: Focus first tab
+- `End`: Focus last tab
+- `Space/Enter`: Activate focused tab
+
+**HTML Structure**:
+
+```html
+<div class="tabs-container">
+	<div role="tablist">
+		<button role="tab" aria-selected="true" aria-controls="panel-1">Tab 1</button>
+		<button role="tab" aria-selected="false" aria-controls="panel-2">Tab 2</button>
+	</div>
+	<div role="tabpanel" id="panel-1" aria-labelledby="tab-1">Content 1</div>
+	<div role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>Content 2</div>
+</div>
+```
+
+**Theme Variations**:
+
+Each theme defines distinct visual personalities through token overrides:
+
+- Light: Subtle slate border below tabs, light gray inactive text (slate-600), blue active state with underline indicator, soft hover background (slate-50)
+- Dark: Dark slate border (slate-700), muted inactive text (slate-400), blue active state (blue-400) with underline, darker hover background (slate-800)
+- Dev: Compact padding, thicker border (2px), monospace font, smaller font size (14px), gray-on-gray active state, minimal hover effect, no transitions
+
+**Accessibility**:
+
+- Tab list with `role="tablist"`
+- Tab triggers with `role="tab"` and `aria-selected` attribute
+- `aria-controls` links tab to its panel
+- Tab panels with `role="tabpanel"` and `aria-labelledby` linking to tab
+- `aria-disabled` for disabled tabs
+- Focus ring with 3:1 contrast ratio
+- All text meets 4.5:1 contrast requirement
+- Keyboard navigation fully supported
+- Screen readers announce tab count, position, and selected state
+- Only active panel in DOM or marked with `hidden` attribute
+- Focus management moves to newly activated tab
+
+**Token Categories**:
+
+- Container properties (background, border, padding, radius)
+- Tab list properties (background, border, gap, padding)
+- Tab trigger properties (padding, background per state, text color per state, border per state, typography)
+- Active indicator properties (height, color, border radius)
+- Panel properties (background, border, padding, text color, radius)
+- Focus ring (width, offset, color)
+- Interaction (transition duration, cursor per state, opacity)
+
+### Breadcrumbs
+
+A navigation component displaying the current location within a hierarchical structure, enabling users to understand their position and navigate back to parent pages.
+
+**Props**:
+
+- `items`: Array<{label: string, href?: string}> - Breadcrumb items array (required)
+
+**Structure**:
+
+- Container: Root navigation element with aria-label
+- List: Ordered list of breadcrumb items
+- Item: Individual breadcrumb link or text
+- Separator: Visual divider between items (typically chevron or slash icon)
+
+**Behavior**:
+
+- Last item is current page (not a link, visually distinct)
+- All previous items are links to parent pages
+- Separator appears between items but not after last item
+- Keyboard navigable (Tab through links)
+- Links have hover and focus states
+- Current page has aria-current="page"
+
+**HTML Structure**:
+
+```html
+<nav aria-label="Breadcrumb">
+	<ol>
+		<li><a href="/">Home</a><span aria-hidden="true">/</span></li>
+		<li><a href="/products">Products</a><span aria-hidden="true">/</span></li>
+		<li aria-current="page">Current Page</li>
+	</ol>
+</nav>
+```
+
+**Theme Variations**:
+
+Each theme defines distinct visual personalities through token overrides:
+
+- Light: Medium gray items (slate-600) turning darker on hover (slate-900), lighter separators (slate-400), small font (14px), standard spacing (8px gap)
+- Dark: Light gray items (slate-400) turning white on hover, darker separators (slate-600) for contrast on dark backgrounds
+- Dev: Compact sizing (12px font, 4px gap), monospace font, medium weight, no underline on hover, smaller separator icons (14px vs 16px)
+
+**Accessibility**:
+
+- Wrapped in nav element with aria-label="Breadcrumb"
+- Use ordered list (ol) for semantic structure
+- Last item has aria-current="page" attribute
+- Separators have aria-hidden="true" (decorative only)
+- Focus rings meet 3:1 contrast ratio
+- All text meets 4.5:1 contrast requirement
+- Keyboard navigation via Tab/Shift+Tab through links
+- Screen readers announce navigation landmark and current page
+- Each link clearly describes destination
+
+**Token Categories**:
+
+- Typography (font family, size, weight, line height)
+- Spacing (gap between items)
+- Item colors (default, hover, current page)
+- Link decoration (none/underline per state)
+- Separator properties (color, icon size)
+- Focus ring (width, offset, color)
+- Interaction (transition timing)
+
+### Badge
+
+A small label component for highlighting status, counts, or categories.
+
+**Props**:
+
+- `variant`: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' (default: 'default')
+- `size`: 'sm' | 'md' (default: 'md')
+- `pill`: boolean - Use full border radius for pill shape (default: false)
+- `outline`: boolean - Use outline variant with transparent background (default: false)
+
+**Structure**:
+
+- Container: Root badge element with text and optional icon
+- Text: Badge label content
+- Icon: Optional leading or trailing icon (decorative only)
+
+**Sizes**:
+
+- Small (`sm`): Compact size (20px height in light/dark, 18px in dev) for dense layouts or inline with text
+- Medium (`md`): Default size (24px height in light/dark, 22px in dev) for most use cases
+
+**Variants**:
+
+- Default: Neutral gray appearance for general-purpose labels
+- Primary: Blue accent for primary status or emphasis
+- Secondary: Subtle gray for secondary information
+- Success: Green for positive states, completion, or success
+- Warning: Amber/yellow for warnings, pending states, or caution
+- Error: Red for errors, alerts, or critical states
+
+**Outline Option**:
+
+When `outline=true`, badge uses transparent background with colored border and text. Available for all variants. Provides lighter visual weight while maintaining semantic meaning.
+
+**Pill Option**:
+
+When `pill=true`, badge uses full border radius (--radius-full) for a rounded pill shape. Works with all variants and outline mode.
+
+**Behavior**:
+
+- Non-interactive by default (purely presentational)
+- Can wrap clickable content if needed (make parent element clickable)
+- Inline-flex display fits content width
+- Text does not wrap (use ellipsis for overflow if needed)
+- Icons are decorative and do not receive focus
+
+**Theme Variations**:
+
+Each theme defines distinct visual personalities through token overrides:
+
+- Light: Soft pastel backgrounds with darker text, smooth borders, medium weight text
+- Dark: Dark saturated backgrounds with lighter text, elevated appearance
+- Dev: Compact sizes (18/22px), monospace font, sharp corners, visible borders, no transitions
+
+**Accessibility**:
+
+- Use semantic HTML (span or div)
+- Ensure sufficient color contrast (4.5:1 for text)
+- Do not rely on color alone to convey meaning (supplement with text or icons)
+- Icons should have `aria-hidden="true"` (decorative only)
+- Use `aria-label` if badge meaning is not clear from visible text
+- Non-interactive badges should not be focusable
+
+**Token Categories**:
+
+- Size variants (height, padding, font size, gap, icon size per sm/md)
+- Variant colors (background, text, border per default/primary/secondary/success/warning/error)
+- Outline variant colors (transparent background, colored text and border per variant)
+- Border properties (width, radius, pill radius)
+- Typography (font family, weight, line height)
+- Transition timing
+
+### Slider
+
+A form control for selecting a numeric value within a specified range using a draggable thumb along a track.
+
+**Props**:
+
+- `value`: number - Controlled value (required)
+- `min`: number - Minimum value (default: 0)
+- `max`: number - Maximum value (default: 100)
+- `step`: number - Increment step (default: 1)
+- `disabled`: boolean - Disables interaction
+
+**Structure**:
+
+- Container: Root wrapper element
+- Track: Background rail representing full range
+- Fill: Colored portion from start to current value
+- Thumb: Draggable handle indicating current value
+
+**States**:
+
+- Default: Normal resting state
+- Hover: Mouse over thumb or track
+- Active: Dragging thumb
+- Focus: Keyboard navigation state with visible focus ring
+- Disabled: Non-interactive state with reduced opacity
+
+**Behavior**:
+
+- Click track to jump thumb to position
+- Drag thumb to adjust value smoothly
+- Arrow keys increment/decrement by step (Left/Down decrease, Right/Up increase)
+- Home key jumps to minimum value
+- End key jumps to maximum value
+- Value always rounds to nearest step
+- Native form submission support via hidden input
+- Touch-friendly with adequate thumb size
+
+**Keyboard Navigation**:
+
+- `Tab`: Focus slider
+- `ArrowLeft/ArrowDown`: Decrease value by step
+- `ArrowRight/ArrowUp`: Increase value by step
+- `Home`: Set to minimum value
+- `End`: Set to maximum value
+- `PageDown`: Decrease by larger increment (10x step)
+- `PageUp`: Increase by larger increment (10x step)
+
+**Theme Variations**:
+
+Each theme defines distinct visual personalities through token overrides:
+
+- Light: Soft slate track, blue fill and thumb border, white thumb with shadow, smooth rounded track (6px height, 20px thumb)
+- Dark: Dark slate track for visibility, blue fill (500 shade), elevated shadows for depth on thumb
+- Dev: Compact sizing (4px track, 16px thumb), square thumb with sharp corners, no shadows, no transitions, monochrome palette
+
+**Accessibility**:
+
+- Native range input with proper ARIA attributes
+- `role="slider"` for screen readers
+- `aria-valuemin`, `aria-valuemax`, `aria-valuenow` announce current state
+- `aria-disabled` for disabled state
+- Focus ring with 3:1 contrast ratio
+- Minimum 44x44px touch target for thumb
+- Keyboard navigation fully supported
+- Screen readers announce value changes
+- Label association via `for` attribute or `aria-label`
+
+**Token Categories**:
+
+- Track properties (height, background per state, border radius)
+- Fill properties (background per state)
+- Thumb properties (size, background per state, border per state, border width, border radius, shadow per state)
+- Focus ring (width, offset, color)
+- Interaction (transition, cursor per state, opacity)
+
+### Typography
+
+A semantic text component for displaying headings, body text, labels, captions, and other typographic elements with consistent styling across themes.
+
+**Props**:
+
+- `variant`: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body-lg' | 'body-md' | 'body-sm' | 'label-lg' | 'label-md' | 'label-sm' | 'caption' | 'overline' | 'code' | 'link' (required)
+- `as`: string - HTML element to render as (optional, defaults based on variant)
+- `color`: string - Override default color (optional, uses semantic token if not provided)
+- `align`: 'left' | 'center' | 'right' | 'justify' (optional, default: left for headings/body, inherit for labels/caption)
+- `children`: Snippet - Text content or child elements
+
+**Structure**:
+
+- Root element: Semantic HTML element based on variant (h1-h6, p, span, code, a)
+- Content: Text or inline elements
+
+**Variants**:
+
+Headings (h1-h6):
+
+- h1: Largest heading (36px light/dark, 30px dev), bold weight, tight line-height, bottom margin
+- h2: Second-level heading (30px light/dark, 24px dev), bold weight, tight line-height, bottom margin
+- h3: Third-level heading (24px light/dark, 20px dev), semibold weight, tight line-height, bottom margin
+- h4: Fourth-level heading (20px light/dark, 18px dev), semibold weight, normal line-height, bottom margin
+- h5: Fifth-level heading (18px light/dark, 16px dev), semibold weight, normal line-height, bottom margin
+- h6: Sixth-level heading (16px light/dark, 14px dev), semibold weight, normal line-height, bottom margin
+
+Body text (body-lg, body-md, body-sm):
+
+- body-lg: Large body text (18px light/dark, 16px dev), normal weight, relaxed line-height for readability
+- body-md: Default body text (16px light/dark, 14px dev), normal weight, normal line-height
+- body-sm: Small body text (14px light/dark, 12px dev), normal weight, normal line-height
+
+Labels (label-lg, label-md, label-sm):
+
+- label-lg: Large label (16px light/dark, 14px dev), medium weight for emphasis
+- label-md: Default label (14px light/dark, 12px dev), medium weight for form labels
+- label-sm: Small label (12px light/dark, 10px dev), medium weight for compact UIs
+
+Utility variants:
+
+- caption: Small supplementary text (12px light/dark, 10px dev), normal weight, lighter color
+- overline: All-caps label (12px light/dark, 10px dev), semibold weight, letter-spacing, uppercase
+- code: Inline code snippet, monospace font, background highlight, rounded corners
+- link: Hyperlink text with hover effects, underline on hover
+
+**Default Element Mapping**:
+
+- h1-h6: Render as corresponding heading element (h1, h2, etc.)
+- body-lg/md/sm: Render as paragraph (p)
+- label-lg/md/sm: Render as span
+- caption: Render as span
+- overline: Render as span
+- code: Render as code
+- link: Render as anchor (a) - requires href attribute
+
+**Behavior**:
+
+- Headings include default bottom margin for vertical rhythm
+- Body text has no margin (controlled by parent layout)
+- Labels and utility text have no margin
+- Code variant uses monospace font with background
+- Link variant supports hover state with color change and optional underline
+- All variants use theme-specific font families
+- Text inherits parent alignment unless overridden via align prop
+- Color can be overridden but defaults to semantic token for variant
+
+**Theme Variations**:
+
+Each theme defines distinct visual personalities through token overrides:
+
+Light theme:
+
+- Headings: Dark slate (slate-900), tight vertical rhythm, generous bottom margins
+- Body: Medium slate (slate-700) for readability
+- Labels: Medium slate (slate-700), medium weight
+- Code: Light slate background (slate-100), dark text (slate-800)
+- Link: Blue (blue-600) with darker hover (blue-700), underline on hover
+- Font family: Inter (sans-serif)
+
+Dark theme:
+
+- Headings: White text for maximum contrast on dark backgrounds
+- Body: Light slate (slate-300) for comfortable reading
+- Labels: Light slate (slate-300), medium weight
+- Code: Dark background (slate-800), light text (slate-200)
+- Link: Light blue (blue-400) with lighter hover (blue-300), underline on hover
+- Font family: Space Grotesk (geometric sans-serif)
+
+Dev theme:
+
+- Headings: Compact sizing (smaller by 6px), tighter margins, monospace font
+- Body: Smaller sizes (down one step: lg=md, md=sm, sm=xs), monospace font
+- Labels: Extra compact (10px for sm), monospace font
+- Code: Slightly larger relative size (0.9em vs 0.875em), gray background
+- Link: No underline on hover (pure monospace aesthetic), gray-on-gray
+- Font family: JetBrains Mono (monospace for code-centric look)
+- No transitions (instant state changes)
+
+**Accessibility**:
+
+- Semantic HTML elements for screen readers (h1-h6 for headings)
+- Proper heading hierarchy (don't skip levels)
+- All text meets WCAG 2.1 AA contrast standards (4.5:1 for normal text, 3:1 for large text)
+- Links have visible hover state with 3:1 contrast
+- Code snippets use sufficient contrast between text and background
+- Text scales with user font size preferences
+- Line heights provide adequate spacing for readability
+- Letter spacing on overline variant improves readability for uppercase text
+
+**Token Categories**:
+
+- Heading variants (font size, weight, line height, color, margins per h1-h6)
+- Body variants (font size, weight, line height, color per lg/md/sm)
+- Label variants (font size, weight, line height, color per lg/md/sm)
+- Caption properties (font size, weight, line height, color)
+- Overline properties (font size, weight, line height, color, text-transform, letter-spacing)
+- Code properties (font family, font size, weight, line height, color, background, padding, border radius)
+- Link properties (color, hover color, text decoration per state)
+- Shared properties (font family, transition)
+
+### Toast
+
+A temporary notification component that appears to provide feedback about actions or system events, automatically dismissing after a duration.
+
+**Props**:
+
+- `variant`: 'success' | 'error' | 'warning' | 'info' (default: 'info')
+- `title`: string - Main notification message (required)
+- `description`: string - Additional context or details (optional)
+- `duration`: number - Time in milliseconds before auto-dismiss (optional, uses theme default)
+- `dismissible`: boolean - Show close button (default: true)
+- `onDismiss`: function - Callback when toast is dismissed (optional)
+
+**Container Props**:
+
+- `position`: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right' (default: 'top-right')
+- `maxToasts`: number - Maximum visible toasts (default: 5)
+
+**Structure**:
+
+- Container: Fixed positioned wrapper anchored to viewport corner
+- Toast: Individual notification card with border accent
+- Icon: Variant-specific icon indicating notification type
+- Content: Title and optional description text
+- Close button: Optional dismiss control
+- Progress bar: Visual countdown indicator (optional)
+
+**Variants**:
+
+- Success: Green accent for completed actions, confirmations
+- Error: Red accent for failures, critical issues
+- Warning: Amber accent for cautions, important notices
+- Info: Blue accent for general information, neutral updates
+
+**Behavior**:
+
+- Appears with slide-in animation from container edge
+- Automatically dismisses after duration expires
+- Can be manually dismissed via close button
+- Multiple toasts stack vertically with gap spacing
+- Newest toasts appear at top of stack
+- Old toasts auto-remove when exceeding maxToasts limit
+- Hover pauses auto-dismiss timer
+- Focus trap not required (non-blocking notification)
+
+**Stacking**:
+
+- Toasts stack vertically in container
+- Gap between toasts controlled by theme token
+- Enter animation: slide + fade from edge
+- Exit animation: slide + fade + height collapse
+- Smooth reflow as toasts are added/removed
+
+**Position Options**:
+
+- Top-left: Slides in from left edge, top corner
+- Top-center: Slides down from top center
+- Top-right: Slides in from right edge, top corner (default)
+- Bottom-left: Slides in from left edge, bottom corner
+- Bottom-center: Slides up from bottom center
+- Bottom-right: Slides in from right edge, bottom corner
+
+**Progress Indicator**:
+
+- Optional horizontal bar at bottom of toast
+- Animates from full width to zero as duration elapses
+- Color matches variant accent color
+- Pauses on hover (synced with auto-dismiss timer)
+
+**Theme Variations**:
+
+Each theme defines distinct visual personalities through token overrides:
+
+- Light: White background, subtle shadow, colorful variant icons, 360px width, 5s default duration
+- Dark: Dark slate background, elevated shadow, lighter variant icons for contrast on dark backgrounds
+- Dev: Compact width (340px), visible border (2px), no shadow, monospace font, shorter durations, smaller icons
+
+**Accessibility**:
+
+- Container with `role="region"` and `aria-label="Notifications"`
+- Each toast with `role="status"` for polite announcements (info/success) or `role="alert"` for urgent messages (error/warning)
+- `aria-live="polite"` for status, `aria-live="assertive"` for alerts
+- Close button with `aria-label="Dismiss notification"`
+- Screen readers announce toast content when it appears
+- Keyboard navigation: Tab to close button, Enter/Space to dismiss
+- Focus management: does not steal focus from main content
+- Reduced motion: respects prefers-reduced-motion (instant appearance instead of animation)
+- Sufficient color contrast for all text and icons (4.5:1 minimum)
+
+**Token Categories**:
+
+- Container properties (width, padding, background, border, shadow, radius)
+- Typography (title and description font family, size, weight, line height, color)
+- Icon properties (size, gap, color per variant)
+- Accent bar (width, color per variant)
+- Close button (size, icon size, color per state, background on hover, border radius)
+- Container positioning (padding, gap between toasts, z-index)
+- Duration timing (default duration per variant)
+- Transition timing (enter and exit animation durations)
+- Progress bar (height, background, fill color per variant)
+
 ### Button
 
 A foundational interactive element supporting multiple variants, sizes, and states.
