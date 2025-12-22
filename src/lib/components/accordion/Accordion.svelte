@@ -98,7 +98,7 @@
 </script>
 
 <div class="accordion" class:accordion--disabled={disabled} class:accordion--flush={flush}>
-	{#each items as item, index (item.id)}
+	{#each items as item (item.id)}
 		{@const isOpen = openItems.has(item.id)}
 		{@const isDisabled = disabled || item.disabled}
 		<div
@@ -143,9 +143,6 @@
 				</div>
 			</div>
 		</div>
-		{#if index < items.length - 1}
-			<div class="accordion__divider"></div>
-		{/if}
 	{/each}
 </div>
 
@@ -172,6 +169,10 @@
 
 	.accordion__item {
 		background: var(--accordion-item-bg);
+	}
+
+	.accordion__item:not(:first-child) {
+		border-top: var(--accordion-divider-width) solid var(--accordion-divider-color);
 	}
 
 	.accordion--flush .accordion__item {
@@ -270,11 +271,6 @@
 	.accordion__content-inner {
 		padding: var(--accordion-content-padding-top) var(--accordion-content-padding-x)
 			var(--accordion-content-padding-y);
-	}
-
-	.accordion__divider {
-		height: var(--accordion-divider-width);
-		background: var(--accordion-divider-color);
 	}
 
 	@media (prefers-reduced-motion: reduce) {
