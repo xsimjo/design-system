@@ -2,21 +2,21 @@
 	--font-sans: 'JetBrains Mono', ui-monospace, monospace;
 	--font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-	--color-primary: #18181b;
-	--color-secondary: #71717a;
-	--color-success: #16a34a;
-	--color-warning: #d97706;
-	--color-error: #dc2626;
-	--color-info: #2563eb;
-	--color-link: #18181b;
-	--color-link-hover: #3f3f46;
+	--color-primary: oklch(21.08% 0.006 285.75);
+	--color-secondary: oklch(55.19% 0.011 286.32);
+	--color-success: oklch(56.16% 0.154 150.07);
+	--color-warning: oklch(62.67% 0.161 50.32);
+	--color-error: oklch(55.27% 0.195 27.33);
+	--color-info: oklch(54.61% 0.215 262.88);
+	--color-link: oklch(21.08% 0.006 285.75);
+	--color-link-hover: oklch(37.14% 0.009 286.32);
 
-	--color-bg: #f4f4f5;
-	--color-bg-elevated: #ffffff;
-	--color-bg-muted: #e4e4e7;
-	--color-text: #18181b;
-	--color-text-muted: #52525b;
-	--color-border: #a1a1aa;
+	--color-bg: oklch(96.74% 0.001 286.38);
+	--color-bg-elevated: oklch(100% 0 0);
+	--color-bg-muted: oklch(92.76% 0.003 286.32);
+	--color-text: oklch(21.08% 0.006 285.75);
+	--color-text-muted: oklch(44.64% 0.01 286.32);
+	--color-border: oklch(70.35% 0.008 286.32);
 
 	--shadow-sm: none;
 	--shadow-md: none;
@@ -41,11 +41,11 @@
 	--border-width: 1px;
 	--focus-ring-width: 2px;
 
-	--focus-ring-color: rgba(24, 24, 27, 0.3);
+	--focus-ring-color: oklch(21.08% 0.006 285.75 / 0.3);
 	--color-hover-mix: white;
 	--color-hover-amount: 15%;
 
-	--backdrop-color: rgba(0, 0, 0, 0.6);
+	--backdrop-color: oklch(0% 0 0 / 0.6);
 	--backdrop-blur: 0;
 
 	--transition-fast: 100ms ease;

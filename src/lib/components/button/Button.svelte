@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
+	import LoaderCircleIcon from '$lib/icons/LoaderCircleIcon.svelte';
 
 	interface Props extends HTMLButtonAttributes {
 		variant?: 'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash';
@@ -8,6 +9,8 @@
 		size?: 'sm' | 'md' | 'lg';
 		icon?: boolean;
 		active?: boolean;
+		loading?: boolean;
+		fullWidth?: boolean;
 		children: Snippet;
 	}
 
@@ -17,18 +20,33 @@
 		size = 'md',
 		icon = false,
 		active = false,
+		loading = false,
+		fullWidth = false,
+		disabled,
 		children,
 		...restProps
 	}: Props = $props();
+
+	const isDisabled = $derived(disabled || loading);
 </script>
 
 <button
 	class="button button--{variant} button--{color} button--{size}"
 	class:button--icon={icon}
 	class:button--active={active}
+	class:button--loading={loading}
+	class:button--full-width={fullWidth}
+	disabled={isDisabled}
 	{...restProps}
 >
-	{@render children()}
+	{#if loading}
+		<span class="button__loader">
+			<LoaderCircleIcon size="1em" />
+		</span>
+	{/if}
+	<span class="button__content" class:button__content--hidden={loading && icon}>
+		{@render children()}
+	</span>
 </button>
 
 <style>
@@ -115,7 +133,7 @@
 
 	.button--filled {
 		background-color: var(--_color);
-		color: white;
+		color: oklch(100% 0 0);
 		border-color: var(--_color);
 		box-shadow: var(--button-shadow);
 	}
@@ -372,5 +390,49 @@
 
 	.button--active {
 		box-shadow: 0 0 0 var(--button-active-ring-width) currentColor;
+	}
+
+	.button--full-width {
+		width: 100%;
+	}
+
+	.button--loading {
+		position: relative;
+	}
+
+	.button__content {
+		display: inline-flex;
+		align-items: center;
+		gap: inherit;
+	}
+
+	.button__content--hidden {
+		visibility: hidden;
+	}
+
+	.button--loading .button__content:not(.button__content--hidden) {
+		opacity: 0.7;
+	}
+
+	.button__loader {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		animation: spin 1s linear infinite;
+	}
+
+	.button--icon .button__loader {
+		position: absolute;
+		inset: 0;
+		display: flex;
+	}
+
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
 	}
 </style>

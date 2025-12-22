@@ -28,7 +28,12 @@
 		...restProps
 	}: Props = $props();
 
-	const inputId = id ?? crypto.randomUUID();
+	let idCounter = 0;
+	function generateId() {
+		return `input-${++idCounter}-${Math.random().toString(36).substring(2, 9)}`;
+	}
+
+	const inputId = id ?? crypto?.randomUUID?.() ?? generateId();
 	const helperId = `${inputId}-helper`;
 </script>
 

@@ -1,5 +1,47 @@
 # Design System Documentation
 
+## Table of Contents
+
+- [Philosophy](#philosophy)
+- [Architecture](#architecture)
+  - [Three-Layer Token System](#three-layer-token-system)
+  - [Component Architecture](#component-architecture)
+- [Component Inventory](#component-inventory)
+- [Accessibility Requirements](#accessibility-requirements)
+- [Usage Guidelines](#usage-guidelines)
+- [Design Decisions](#design-decisions)
+
+## Quick Reference
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  Layer 1: Primitives (primitives.css)                   │
+│  Raw values: --color-blue-500, --space-4, --radius-lg   │
+└─────────────────────────────────────────────────────────┘
+                          ↓
+┌─────────────────────────────────────────────────────────┐
+│  Layer 2: Theme Variables (~45 variables)               │
+│  --color-primary, --color-bg, --radius-button           │
+└─────────────────────────────────────────────────────────┘
+                          ↓
+┌─────────────────────────────────────────────────────────┐
+│  Layer 3: Semantic Tokens (theme-base.css)              │
+│  --button-bg, --card-shadow, --input-border-focus       │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Key Rule**: Components only use semantic tokens. Never primitives or theme variables directly.
+
+**Theme Switching**: Set `data-theme` attribute on `<html>`:
+
+```html
+<html data-theme="light">
+	<!-- or "dark" or "dev" -->
+</html>
+```
+
+---
+
 ## Philosophy
 
 This design system follows a **three-layer token architecture** that separates raw values, theme configuration, and auto-computed semantic tokens. This separation enables:
@@ -146,10 +188,11 @@ Spacing (4):
 
 The auto-computation layer that derives ~400+ semantic tokens from the ~45 theme variables. This file:
 
-- Provides default theme configuration in `:root` (matches light theme)
 - Defines `[data-theme]` selector with all semantic tokens
 - Auto-computes component-specific tokens from theme variables
-- Uses `color-mix()`, `var()`, and CSS calculations for dynamic derivation
+- Uses `color-mix(in oklch, ...)`, `var()`, and CSS calculations for dynamic derivation
+
+**Important**: The `data-theme` attribute must be set on the `<html>` element for styles to apply.
 
 **Examples of Auto-Computed Tokens**:
 
@@ -166,7 +209,7 @@ The auto-computation layer that derives ~400+ semantic tokens from the ~45 theme
 --card-padding: var(--spacing-lg);
 
 /* Badge backgrounds use color-mix for transparency */
---badge-primary-bg: color-mix(in srgb, var(--color-primary) 15%, transparent);
+--badge-primary-bg: color-mix(in oklch, var(--color-primary) 15%, transparent);
 ```
 
 **Why This Layer Exists**:
@@ -1605,7 +1648,7 @@ Creating a custom theme is simple - just configure the ~45 theme variables:
 **Layer 3 - Theme Base**: `src/lib/styles/theme-base.css`
 
 - Auto-computes ~400+ semantic tokens from theme variables
-- Contains `:root` defaults and `[data-theme]` semantic token definitions
+- Contains `[data-theme]` selector with all semantic token definitions
 - Never needs manual editing for new themes
 
 All detailed token values live in the CSS files. This document provides architecture and usage guidance only.
@@ -1641,8 +1684,8 @@ The three-layer token system was designed to solve a critical problem: theme cre
 --button-color-primary: var(--color-primary);
 --checkbox-bg-checked: var(--color-primary);
 --tabs-trigger-text-active: var(--color-primary);
---badge-primary-bg: color-mix(in srgb, var(--color-primary) 15%, transparent);
---select-option-bg-selected: color-mix(in srgb, var(--color-primary) 15%, transparent);
+--badge-primary-bg: color-mix(in oklch, var(--color-primary) 15%, transparent);
+--select-option-bg-selected: color-mix(in oklch, var(--color-primary) 15%, transparent);
 ```
 
 One variable (`--color-primary`) automatically updates dozens of component tokens.

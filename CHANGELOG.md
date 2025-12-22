@@ -1,0 +1,117 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+
+- `loading` prop to Button component with animated spinner
+- `fullWidth` prop to Button component for full-width buttons
+- LoaderCircle icon for loading states
+
+### Changed
+
+- Removed redundant `:root` block from theme-base.css (themes must set `data-theme` attribute)
+- Standardized all `color-mix()` to use `oklch` color space for better color accuracy
+
+### Fixed
+
+- Browser compatibility for `crypto.randomUUID()` in Input and Select components
+- Added fallback ID generation for older browsers
+
+## [0.0.9] - 2024-12-XX
+
+### Added
+
+- `--radius-slider` token for slider component styling
+- Theme toggle and GitHub link integration in header
+- New icons for header actions
+
+### Changed
+
+- Updated token architecture to three-layer system for improved theme customization
+- Removed badge and button documentation pages
+
+## [0.0.8] - 2024-12-XX
+
+### Changed
+
+- Added `shiki` to peerDependencies
+- Simplified usage in CodeBlock component
+
+## [0.0.7] - 2024-12-XX
+
+### Changed
+
+- Enabled optional peer dependency for `shiki`
+- Updated dynamic import logic in CodeBlock
+
+## [0.0.6] - 2024-12-XX
+
+### Changed
+
+- Added formatting step after release
+- Updated peer dependencies configuration
+
+## [0.0.5] - 2024-12-XX
+
+### Changed
+
+- Updated build:mcp script to include formatting step
+- Cleaned up components.json and specs
+
+## [0.0.4] - 2024-12-XX
+
+### Added
+
+- Sidebar component with SidebarItem, SidebarGroup, SidebarDivider
+- Badge component with multiple variants
+- Select component with search functionality
+- Accordion component
+- Input component with icons and validation states
+- Checkbox component
+- Avatar component with status indicators
+- Dev theme (monospace, compact styling)
+- New icons: PanelLeftClose, PanelLeftOpen, Users, BarChart, HelpCircle, Calendar, Home, Folder, Inbox, Settings
+
+### Changed
+
+- Expanded library exports with new components and icons
+- Consolidated button styles in dev theme
+
+## [0.0.3] - 2024-12-XX
+
+### Added
+
+- Dialog component
+- Drawer component
+- Toast notification system
+- Tooltip component
+- Table component
+- Tabs component
+- Progress bar component
+- Typography component
+- CodeBlock component with syntax highlighting
+- Breadcrumbs component
+
+## [0.0.2] - 2024-12-XX
+
+### Added
+
+- Card component
+- Header component
+- Slider component
+
+## [0.0.1] - 2024-12-XX
+
+### Added
+
+- Initial release
+- Button component with 6 variants (filled, outline, ghost, soft, link, dash)
+- Three-layer token architecture (primitives, theme variables, semantic tokens)
+- Light and dark themes
+- Core styling system with CSS custom properties

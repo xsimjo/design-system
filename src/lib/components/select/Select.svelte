@@ -44,7 +44,12 @@
 	let dropdownEl: HTMLDivElement | null = $state(null);
 	let searchInputEl: HTMLInputElement | null = $state(null);
 
-	const selectId = id ?? crypto.randomUUID();
+	let idCounter = 0;
+	function generateId() {
+		return `select-${++idCounter}-${Math.random().toString(36).substring(2, 9)}`;
+	}
+
+	const selectId = id ?? crypto?.randomUUID?.() ?? generateId();
 	const listboxId = `${selectId}-listbox`;
 	const helperId = `${selectId}-helper`;
 

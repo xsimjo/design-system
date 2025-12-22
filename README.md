@@ -1,58 +1,156 @@
-# Svelte library
+# @xsimjo/design-system
 
-Everything you need to build a Svelte library, powered by [`sv`](https://npmjs.com/package/sv).
+A modern, themeable Svelte 5 component library with a powerful three-layer token architecture.
 
-Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
+## Features
 
-## Creating a project
+- **Svelte 5** - Built with runes and modern Svelte patterns
+- **Three-Layer Token System** - Primitives → Theme Variables → Semantic Tokens
+- **Easy Theming** - Override ~45 simple variables to customize everything
+- **Pure CSS** - No runtime overhead, just CSS custom properties
+- **Accessible** - ARIA attributes, keyboard navigation, focus management
+- **TypeScript** - Full type safety with IntelliSense support
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Installation
 
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+```bash
+npm install @xsimjo/design-system
 ```
 
-## Developing
+## Quick Start
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+1. Import the styles in your root layout:
 
-```sh
-npm run dev
+```svelte
+<!-- src/routes/+layout.svelte -->
+<script>
+	import '@xsimjo/design-system/styles';
+	import '@xsimjo/design-system/styles/themes/light';
+</script>
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+<div data-theme="light">
+	<slot />
+</div>
 ```
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+2. Use components in your pages:
 
-## Building
+```svelte
+<script>
+	import { Button, Input, Card } from '@xsimjo/design-system';
+</script>
 
-To build your library:
-
-```sh
-npm pack
+<Card>
+	<Input label="Email" placeholder="Enter your email" />
+	<Button>Submit</Button>
+</Card>
 ```
 
-To create a production version of your showcase app:
+## Themes
 
-```sh
-npm run build
+The design system includes three built-in themes:
+
+```svelte
+<!-- Light theme (default) -->
+import '@xsimjo/design-system/styles/themes/light';
+
+<!-- Dark theme -->
+import '@xsimjo/design-system/styles/themes/dark';
+
+<!-- Dev theme (monospace, compact) -->
+import '@xsimjo/design-system/styles/themes/dev';
 ```
 
-You can preview the production build with `npm run preview`.
+Switch themes by changing the `data-theme` attribute:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
-
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```sh
-npm publish
+```svelte
+<html data-theme="dark">
 ```
+
+### Custom Themes
+
+Create your own theme by overriding ~45 simple variables:
+
+```css
+[data-theme='custom'] {
+	--color-primary: #8b5cf6;
+	--color-bg: #faf5ff;
+	--radius-button: 9999px;
+	/* ... override only what you need */
+}
+```
+
+## Components
+
+| Component     | Description                          |
+| ------------- | ------------------------------------ |
+| `Accordion`   | Expandable content sections          |
+| `Avatar`      | User profile images with fallback    |
+| `Badge`       | Status indicators and labels         |
+| `Breadcrumbs` | Navigation path display              |
+| `Button`      | Primary action element with variants |
+| `Card`        | Content container with sections      |
+| `Checkbox`    | Boolean input control                |
+| `CodeBlock`   | Syntax-highlighted code display      |
+| `Dialog`      | Modal overlay for confirmations      |
+| `Drawer`      | Slide-out panel                      |
+| `Header`      | App header with navigation           |
+| `Input`       | Text input with labels and icons     |
+| `ProgressBar` | Progress indicator                   |
+| `Select`      | Dropdown selection with search       |
+| `Sidebar`     | Navigation sidebar with groups       |
+| `Slider`      | Range input control                  |
+| `Table`       | Data table with sorting              |
+| `Tabs`        | Tabbed content navigation            |
+| `Toast`       | Notification messages                |
+| `Tooltip`     | Contextual help text                 |
+| `Typography`  | Consistent text styling              |
+
+## Token Architecture
+
+The design system uses a three-layer token architecture:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  Primitives (primitives.css)                            │
+│  Raw values: --color-blue-500, --space-4, --radius-lg   │
+└─────────────────────────────────────────────────────────┘
+                          ↓
+┌─────────────────────────────────────────────────────────┐
+│  Theme Variables (~45 simple variables)                 │
+│  --color-primary, --color-bg, --radius-button           │
+└─────────────────────────────────────────────────────────┘
+                          ↓
+┌─────────────────────────────────────────────────────────┐
+│  Semantic Tokens (theme-base.css)                       │
+│  --button-bg, --card-shadow, --input-border-focus       │
+└─────────────────────────────────────────────────────────┘
+```
+
+Components only use semantic tokens, which are automatically computed from your theme variables.
+
+## Browser Support
+
+- Chrome/Edge 111+
+- Firefox 113+
+- Safari 16.4+
+
+Requires support for:
+
+- CSS `color-mix()` in oklch
+- CSS custom properties
+- CSS `:has()` selector
+
+## Peer Dependencies
+
+- Svelte 5.0+
+- Shiki 3.20+ (for CodeBlock syntax highlighting)
+
+## License
+
+MIT
+
+## Links
+
+- [Documentation](./docs/design_system.md)
+- [GitHub Repository](https://github.com/xsimjo/design-system)
