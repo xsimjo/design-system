@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Button from '$lib/components/button/Button.svelte';
-	import CodeBlock from '$lib/components/code-block/CodeBlock.svelte';
+	import CodeExample from '$lib/internal/CodeExample.svelte';
+	import TableOfContents from '$lib/internal/TableOfContents.svelte';
 	import HeartIcon from '$lib/icons/HeartIcon.svelte';
 	import DownloadIcon from '$lib/icons/DownloadIcon.svelte';
 	import SendIcon from '$lib/icons/SendIcon.svelte';
@@ -23,10 +24,8 @@
 		{ id: 'states', label: 'States', indent: true },
 		{ id: 'full-width', label: 'Full Width', indent: true },
 		{ id: 'combinations', label: 'Combinations', indent: true },
-		{ id: 'css-tokens', label: 'CSS Tokens' },
 		{ id: 'api', label: 'API' },
-		{ id: 'accessibility', label: 'Accessibility', indent: true },
-		{ id: 'best-practices', label: 'Best Practices', indent: true }
+		{ id: 'css-tokens', label: 'CSS Tokens' }
 	];
 </script>
 
@@ -52,123 +51,112 @@
 				<p class="example-desc">
 					Six distinct visual styles for different contexts and emphasis levels.
 				</p>
-				<div class="example-preview">
-					{#each variants as v (v)}
-						<Button variant={v}>{v}</Button>
-					{/each}
-				</div>
-				<CodeBlock
+				<CodeExample
 					code={`<Button variant="filled">Filled</Button>
 <Button variant="outline">Outline</Button>
 <Button variant="ghost">Ghost</Button>
 <Button variant="soft">Soft</Button>
 <Button variant="link">Link</Button>
 <Button variant="dash">Dash</Button>`}
-					language="svelte"
-				/>
+				>
+					{#each variants as v (v)}
+						<Button variant={v}>{v}</Button>
+					{/each}
+				</CodeExample>
 			</div>
 
 			<div id="colors" class="example-block">
 				<h3>Colors</h3>
 				<p class="example-desc">Semantic colors for different actions and states.</p>
-				<div class="example-preview">
-					{#each colors as c (c)}
-						<Button color={c}>{c}</Button>
-					{/each}
-				</div>
-				<CodeBlock
+				<CodeExample
 					code={`<Button color="primary">Primary</Button>
 <Button color="secondary">Secondary</Button>
 <Button color="info">Info</Button>
 <Button color="success">Success</Button>
 <Button color="warning">Warning</Button>
 <Button color="error">Error</Button>`}
-					language="svelte"
-				/>
+				>
+					{#each colors as c (c)}
+						<Button color={c}>{c}</Button>
+					{/each}
+				</CodeExample>
 			</div>
 
 			<div id="sizes" class="example-block">
 				<h3>Sizes</h3>
 				<p class="example-desc">Three sizes to fit different UI contexts.</p>
-				<div class="example-preview aligned">
-					<Button size="sm">Small</Button>
-					<Button size="md">Medium</Button>
-					<Button size="lg">Large</Button>
-				</div>
-				<CodeBlock
+				<CodeExample
 					code={`<Button size="sm">Small</Button>
 <Button size="md">Medium</Button>
 <Button size="lg">Large</Button>`}
-					language="svelte"
-				/>
+					previewClass="aligned"
+				>
+					<Button size="sm">Small</Button>
+					<Button size="md">Medium</Button>
+					<Button size="lg">Large</Button>
+				</CodeExample>
 			</div>
 
 			<div id="with-icons" class="example-block">
 				<h3>With Icons</h3>
 				<p class="example-desc">Combine text with icons for enhanced visual communication.</p>
-				<div class="example-preview">
-					<Button><HeartIcon /> Like</Button>
-					<Button variant="outline"><DownloadIcon /> Download</Button>
-					<Button color="success"><SendIcon /> Send</Button>
-				</div>
-				<CodeBlock
+				<CodeExample
 					code={`<Button><HeartIcon /> Like</Button>
 <Button variant="outline"><DownloadIcon /> Download</Button>
 <Button color="success"><SendIcon /> Send</Button>`}
-					language="svelte"
-				/>
+				>
+					<Button><HeartIcon /> Like</Button>
+					<Button variant="outline"><DownloadIcon /> Download</Button>
+					<Button color="success"><SendIcon /> Send</Button>
+				</CodeExample>
 			</div>
 
 			<div id="icon-only" class="example-block">
 				<h3>Icon Only</h3>
 				<p class="example-desc">Square buttons for icon-only actions.</p>
-				<div class="example-preview aligned">
-					<Button icon size="sm"><PlusIcon /></Button>
-					<Button icon size="md"><HeartIcon /></Button>
-					<Button icon size="lg"><SettingsIcon /></Button>
-					<Button icon variant="outline"><DownloadIcon /></Button>
-					<Button icon variant="ghost"><SendIcon /></Button>
-				</div>
-				<CodeBlock
+				<CodeExample
 					code={`<Button icon size="sm"><PlusIcon /></Button>
 <Button icon size="md"><HeartIcon /></Button>
 <Button icon size="lg"><SettingsIcon /></Button>
 <Button icon variant="outline"><DownloadIcon /></Button>
 <Button icon variant="ghost"><SendIcon /></Button>`}
-					language="svelte"
-				/>
+					previewClass="aligned"
+				>
+					<Button icon size="sm"><PlusIcon /></Button>
+					<Button icon size="md"><HeartIcon /></Button>
+					<Button icon size="lg"><SettingsIcon /></Button>
+					<Button icon variant="outline"><DownloadIcon /></Button>
+					<Button icon variant="ghost"><SendIcon /></Button>
+				</CodeExample>
 			</div>
 
 			<div id="states" class="example-block">
 				<h3>States</h3>
 				<p class="example-desc">Interactive states for user feedback.</p>
-				<div class="example-preview">
-					<Button>Default</Button>
-					<Button active>Active</Button>
-					<Button loading>Loading</Button>
-					<Button disabled>Disabled</Button>
-				</div>
-				<CodeBlock
+				<CodeExample
 					code={`<Button>Default</Button>
 <Button active>Active</Button>
 <Button loading>Loading</Button>
 <Button disabled>Disabled</Button>`}
-					language="svelte"
-				/>
+				>
+					<Button>Default</Button>
+					<Button active>Active</Button>
+					<Button loading>Loading</Button>
+					<Button disabled>Disabled</Button>
+				</CodeExample>
 			</div>
 
 			<div id="full-width" class="example-block">
 				<h3>Full Width</h3>
 				<p class="example-desc">Buttons that span their container's width.</p>
-				<div class="example-preview column">
-					<Button fullWidth>Full Width Button</Button>
-					<Button fullWidth variant="outline">Full Width Outline</Button>
-				</div>
-				<CodeBlock
+				<CodeExample
 					code={`<Button fullWidth>Full Width Button</Button>
 <Button fullWidth variant="outline">Full Width Outline</Button>`}
-					language="svelte"
-				/>
+					previewClass="column"
+				>
+					<Button fullWidth>Full Width Button</Button>
+					<Button fullWidth variant="outline">Full Width Outline</Button>
+				</CodeExample>
 			</div>
 
 			<div id="combinations" class="example-block">
@@ -182,6 +170,85 @@
 							{/each}
 						</div>
 					{/each}
+				</div>
+			</div>
+		</section>
+
+		<section id="api" class="doc-section">
+			<h2>API</h2>
+
+			<div class="api-table">
+				<h3>Props</h3>
+				<div class="table-wrapper">
+					<table>
+						<thead>
+							<tr>
+								<th>Prop</th>
+								<th>Type</th>
+								<th>Default</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>variant</code></td>
+								<td><code>'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash'</code></td>
+								<td><code>'filled'</code></td>
+								<td>Visual style of the button</td>
+							</tr>
+							<tr>
+								<td><code>color</code></td>
+								<td
+									><code>'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error'</code
+									></td
+								>
+								<td><code>'primary'</code></td>
+								<td>Color theme</td>
+							</tr>
+							<tr>
+								<td><code>size</code></td>
+								<td><code>'sm' | 'md' | 'lg'</code></td>
+								<td><code>'md'</code></td>
+								<td>Button size</td>
+							</tr>
+							<tr>
+								<td><code>disabled</code></td>
+								<td><code>boolean</code></td>
+								<td><code>false</code></td>
+								<td>Disables interaction</td>
+							</tr>
+							<tr>
+								<td><code>loading</code></td>
+								<td><code>boolean</code></td>
+								<td><code>false</code></td>
+								<td>Shows loading spinner</td>
+							</tr>
+							<tr>
+								<td><code>active</code></td>
+								<td><code>boolean</code></td>
+								<td><code>false</code></td>
+								<td>Shows active/pressed state</td>
+							</tr>
+							<tr>
+								<td><code>icon</code></td>
+								<td><code>boolean</code></td>
+								<td><code>false</code></td>
+								<td>Square button for icon-only</td>
+							</tr>
+							<tr>
+								<td><code>fullWidth</code></td>
+								<td><code>boolean</code></td>
+								<td><code>false</code></td>
+								<td>Makes button 100% width</td>
+							</tr>
+							<tr>
+								<td><code>children</code></td>
+								<td><code>Snippet</code></td>
+								<td>—</td>
+								<td>Button content (text/icons)</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</section>
@@ -341,149 +408,10 @@
 					</div>
 				</div>
 			</div>
-
-			<div class="token-example">
-				<h3>Custom Theme Example</h3>
-				<CodeBlock
-					code={`/* Create a pill-shaped, bold button style */
-:root {
-  --button-border-radius: 9999px;
-  --button-font-weight: 700;
-  --button-shadow: none;
-  --button-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
-  --button-color-primary: #8b5cf6;
-}
-
-/* Or scope to a specific container */
-.marketing-section {
-  --button-md-padding-x: 32px;
-  --button-md-font-size: 18px;
-}`}
-					language="css"
-				/>
-			</div>
-		</section>
-
-		<section id="api" class="doc-section">
-			<h2>API</h2>
-
-			<div class="api-table">
-				<h3>Props</h3>
-				<div class="table-wrapper">
-					<table>
-						<thead>
-							<tr>
-								<th>Prop</th>
-								<th>Type</th>
-								<th>Default</th>
-								<th>Description</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><code>variant</code></td>
-								<td><code>'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash'</code></td>
-								<td><code>'filled'</code></td>
-								<td>Visual style of the button</td>
-							</tr>
-							<tr>
-								<td><code>color</code></td>
-								<td
-									><code>'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error'</code
-									></td
-								>
-								<td><code>'primary'</code></td>
-								<td>Color theme</td>
-							</tr>
-							<tr>
-								<td><code>size</code></td>
-								<td><code>'sm' | 'md' | 'lg'</code></td>
-								<td><code>'md'</code></td>
-								<td>Button size</td>
-							</tr>
-							<tr>
-								<td><code>disabled</code></td>
-								<td><code>boolean</code></td>
-								<td><code>false</code></td>
-								<td>Disables interaction</td>
-							</tr>
-							<tr>
-								<td><code>loading</code></td>
-								<td><code>boolean</code></td>
-								<td><code>false</code></td>
-								<td>Shows loading spinner</td>
-							</tr>
-							<tr>
-								<td><code>active</code></td>
-								<td><code>boolean</code></td>
-								<td><code>false</code></td>
-								<td>Shows active/pressed state</td>
-							</tr>
-							<tr>
-								<td><code>icon</code></td>
-								<td><code>boolean</code></td>
-								<td><code>false</code></td>
-								<td>Square button for icon-only</td>
-							</tr>
-							<tr>
-								<td><code>fullWidth</code></td>
-								<td><code>boolean</code></td>
-								<td><code>false</code></td>
-								<td>Makes button 100% width</td>
-							</tr>
-							<tr>
-								<td><code>children</code></td>
-								<td><code>Snippet</code></td>
-								<td>—</td>
-								<td>Button content (text/icons)</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-
-			<div id="accessibility" class="api-section">
-				<h3>Accessibility</h3>
-				<ul>
-					<li>Uses native <code>&lt;button&gt;</code> element for full keyboard support</li>
-					<li>Focus ring visible on keyboard navigation</li>
-					<li>Disabled state properly communicated to screen readers</li>
-					<li>Loading state maintains button dimensions to prevent layout shift</li>
-					<li>Color contrast meets WCAG AA standards</li>
-				</ul>
-			</div>
-
-			<div id="best-practices" class="api-section">
-				<h3>Best Practices</h3>
-				<ul>
-					<li>
-						Use <strong>filled</strong> for primary actions, <strong>outline</strong> or
-						<strong>ghost</strong> for secondary
-					</li>
-					<li>
-						Use semantic colors: <strong>success</strong> for confirmations,
-						<strong>error</strong> for destructive actions
-					</li>
-					<li>Add icons to improve scannability, especially for common actions</li>
-					<li>Use <strong>loading</strong> state for async operations to provide feedback</li>
-					<li>Avoid using more than 2-3 button variants in close proximity</li>
-				</ul>
-			</div>
 		</section>
 	</article>
 
-	<aside class="toc">
-		<nav class="toc-nav">
-			<h4>On this page</h4>
-			<ul>
-				{#each tocSections as section (section.id)}
-					<li class:indent={section.indent}>
-						<a href="#{section.id}">{section.label}</a>
-					</li>
-				{/each}
-			</ul>
-		</nav>
-	</aside>
+	<TableOfContents sections={tocSections} />
 </div>
 
 <style>
@@ -556,24 +484,6 @@
 	.example-desc {
 		color: var(--color-text-muted);
 		margin: 0;
-	}
-
-	.example-preview {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-3);
-		padding: var(--space-6);
-		background: var(--color-bg-subtle);
-		border-radius: var(--radius-lg);
-	}
-
-	.example-preview.aligned {
-		align-items: center;
-	}
-
-	.example-preview.column {
-		flex-direction: column;
-		max-width: 400px;
 	}
 
 	.example-grid {
@@ -731,59 +641,10 @@
 		border-radius: var(--radius-sm);
 	}
 
-	/* Table of Contents */
-	.toc {
-		position: sticky;
-		top: calc(var(--header-height) + var(--space-4));
-		align-self: start;
-		max-height: calc(100vh - var(--header-height) - var(--space-8));
-		overflow-y: auto;
-	}
-
-	.toc-nav h4 {
-		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-semibold);
-		color: var(--color-text-muted);
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		margin: 0 0 var(--space-3) 0;
-	}
-
-	.toc-nav ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-
-	.toc-nav li {
-		margin: 0;
-	}
-
-	.toc-nav li.indent {
-		padding-left: var(--space-3);
-	}
-
-	.toc-nav a {
-		display: block;
-		padding: var(--space-1) 0;
-		font-size: var(--font-size-sm);
-		color: var(--color-text-muted);
-		text-decoration: none;
-		transition: color 150ms;
-	}
-
-	.toc-nav a:hover {
-		color: var(--color-text);
-	}
-
 	/* Responsive */
 	@media (max-width: 1024px) {
 		.docs-layout {
 			grid-template-columns: 1fr;
-		}
-
-		.toc {
-			display: none;
 		}
 	}
 </style>

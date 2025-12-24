@@ -1427,6 +1427,125 @@ This enables themes to control whether colors darken (mix with black) or lighten
 - Icon button sizing (square dimensions per size)
 - Shared properties (typography, borders, shadows, transitions, cursors, opacity, focus ring)
 
+### TableOfContents
+
+A sticky navigation component for documentation pages that displays page sections, tracks scroll position, and provides smooth scrolling to anchors.
+
+**Props**:
+
+- `sections`: Array<{id: string, label: string, indent?: boolean}> - Section navigation items (required)
+- `activeId`: string - Currently active section ID (controlled, optional)
+- `heading`: string - Header text above navigation links (default: "On this page")
+
+**Structure**:
+
+- Container: Sticky wrapper that stays visible during scroll
+- Header: Optional "On this page" heading with uppercase styling
+- Navigation list: Vertical stack of section links
+- Link: Individual navigation anchor with active indicator
+- Active indicator: Left border accent showing current section
+
+**Behavior**:
+
+- Sticky positioning on right side of documentation layout
+- Intersection Observer tracks which section is currently in view
+- Clicking a link smoothly scrolls to that section
+- Active section shows visual indicator (left border accent)
+- Indented sections appear with left padding for hierarchy
+- Keyboard accessible with standard link navigation
+- Updates active state as user scrolls through page
+
+**Visual Indicator Recommendation**:
+
+Use a **2px left border accent** for the active section. This provides:
+
+- Clear visual feedback without overwhelming the minimal design
+- Consistent with the system's border-based active states
+- Better accessibility than background-only highlighting
+- Subtle enough for sidebar TOC context
+- Pairs well with primary color accent and medium font weight
+
+Alternative patterns considered but not recommended:
+
+- Background highlight: Too heavy for sticky sidebar context
+- Bold text only: Insufficient visual distinction for quick scanning
+- Right border: Conflicts with the left-aligned navigation pattern
+- Dot/bullet indicator: Adds unnecessary visual complexity
+
+**States**:
+
+- Default: Normal link state with muted text color
+- Hover: Lighter background with darker text
+- Active: Left border accent, primary color text, medium font weight
+- Focus: Standard focus ring for keyboard navigation
+
+**Active Section Detection**:
+
+Uses Intersection Observer API to track section visibility:
+
+- Monitors all sections with matching IDs in the viewport
+- Updates active state when section crosses threshold
+- Threshold typically 0.5 (section is 50 percent visible)
+- Handles edge cases like multiple sections visible simultaneously
+- Prioritizes topmost visible section as active
+
+**Indentation**:
+
+Sections with `indent: true` show visual hierarchy:
+
+- Left padding (16px default) to offset nested headings
+- Maintains same vertical spacing as parent items
+- Useful for h3 under h2, subsections under sections
+
+**Smooth Scrolling**:
+
+- Uses `element.scrollIntoView({ behavior: 'smooth', block: 'start' })`
+- Prevents default anchor jump behavior
+- Respects `prefers-reduced-motion` for accessibility
+- Offset may be needed if sticky header is present
+
+**Theme Variations**:
+
+Each theme defines distinct visual personalities through token overrides:
+
+- Light: Muted gray text (slate-600), subtle hover background (slate-50), blue active border and text (blue-600), uppercase header with letter spacing
+- Dark: Light muted text (slate-400), darker hover background (slate-800), lighter blue active state (blue-400), same structural design
+- Dev: Monospace font, compact spacing, gray-on-gray active state, no uppercase header, minimal transitions
+
+**Accessibility**:
+
+- Semantic nav element with aria-label="Table of Contents"
+- Native anchor links for screen reader compatibility
+- `aria-current="location"` on active link
+- Focus rings with 3:1 contrast ratio
+- All text meets 4.5:1 contrast requirement
+- Keyboard navigation via Tab/Shift+Tab
+- Links clearly describe destination sections
+- Sticky positioning does not obscure main content
+- Respects prefers-reduced-motion for smooth scrolling
+
+**Token Categories**:
+
+- Container properties (padding, sticky positioning, max height)
+- Header properties (color, typography, letter spacing, text transform, margin)
+- List properties (gap, padding)
+- Item properties (padding, background per state, text color per state, border radius, typography, font weight per state, text decoration)
+- Active indicator (width, color, offset)
+- Indentation (left padding for nested items)
+- Focus ring (width, offset, color)
+- Transition timing
+
+**UX Best Practices**:
+
+- Keep heading concise ("On this page" is standard)
+- Limit to 8-12 top-level sections for scannability
+- Use indentation sparingly (max 2 levels: h2, h3)
+- Ensure section IDs match heading text slugs
+- Place TOC in right sidebar for left-to-right reading flow
+- Sticky positioning should account for header height
+- Active indicator should update before section fully enters view
+- Smooth scroll duration should be fast (300-500ms) for short distances
+
 ## Accessibility Requirements
 
 ### Color Contrast

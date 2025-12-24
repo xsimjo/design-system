@@ -1,0 +1,137 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+
+	interface TocSection {
+		id: string;
+		label: string;
+		indent?: boolean;
+	}
+
+	interface Props {
+		sections: TocSection[];
+	}
+
+	let { sections }: Props = $props();
+
+	let activeId = $state('');
+
+	onMount(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						activeId = entry.target.id;
+					}
+				}
+			},
+			{
+				rootMargin: '-80px 0px -60% 0px',
+				threshold: 0
+			}
+		);
+
+		for (const section of sections) {
+			const element = document.getElementById(section.id);
+			if (element) {
+				observer.observe(element);
+			}
+		}
+
+		return () => observer.disconnect();
+	});
+
+	function scrollToSection(e: MouseEvent, id: string) {
+		e.preventDefault();
+		const element = document.getElementById(id);
+		if (element) {
+			element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			history.pushState(null, '', `#${id}`);
+		}
+	}
+</script>
+
+<aside class="toc">
+	<nav class="toc-nav" aria-label="Table of Contents">
+		<h4>On this page</h4>
+		<ul>
+			{#each sections as section (section.id)}
+				<li class:indent={section.indent}>
+					<a
+						href="#{section.id}"
+						class:active={activeId === section.id}
+						aria-current={activeId === section.id ? 'location' : undefined}
+						onclick={(e) => scrollToSection(e, section.id)}
+					>
+						{section.label}
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</nav>
+</aside>
+
+<style>
+	.toc {
+		position: sticky;
+		top: calc(var(--header-height) + var(--space-4));
+		align-self: start;
+		max-height: calc(100vh - var(--header-height) - var(--space-8));
+		overflow-y: auto;
+	}
+
+	.toc-nav h4 {
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-semibold);
+		color: var(--color-text-muted);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		margin: 0 0 var(--space-3) 0;
+	}
+
+	.toc-nav ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+	}
+
+	.toc-nav li {
+		margin: 0;
+	}
+
+	.toc-nav li.indent {
+		padding-left: var(--space-4);
+	}
+
+	.toc-nav a {
+		display: block;
+		padding: var(--space-1) var(--space-2);
+		font-size: var(--font-size-sm);
+		color: var(--color-text-muted);
+		text-decoration: none;
+		border-left: 2px solid transparent;
+		transition: all 150ms;
+	}
+
+	.toc-nav a:hover {
+		color: var(--color-text);
+	}
+
+	.toc-nav a.active {
+		color: var(--color-primary);
+		border-left-color: var(--color-primary);
+	}
+
+	.toc-nav a:focus-visible {
+		outline: 2px solid var(--color-primary);
+		outline-offset: 2px;
+	}
+
+	@media (max-width: 1024px) {
+		.toc {
+			display: none;
+		}
+	}
+</style>
