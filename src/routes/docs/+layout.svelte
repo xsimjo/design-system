@@ -183,23 +183,23 @@
 	.layout {
 		display: flex;
 		flex: 1;
-		height: calc(100vh - var(--header-height));
+		min-height: calc(100vh - var(--header-height));
 	}
 
 	.layout :global(.sidebar) {
 		position: sticky;
 		top: var(--header-height);
 		height: calc(100vh - var(--header-height));
+		overflow-y: auto;
 	}
 
 	.content {
 		flex: 1;
-		max-width: 900px;
+		max-width: 1150px;
 		margin: 0 auto;
 		padding: var(--space-8);
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-6);
-		overflow-y: auto;
 	}
 </style>

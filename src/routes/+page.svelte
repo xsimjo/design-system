@@ -33,7 +33,7 @@
 		TypographyShowcase,
 		PrimitiveTokensShowcase,
 		SemanticTokensShowcase
-	} from './_showcase';
+	} from '$lib/internal/showcase';
 
 	type Theme = 'light' | 'dark';
 

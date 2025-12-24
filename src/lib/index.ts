@@ -18,7 +18,7 @@ export { default as SidebarGroup } from './components/sidebar/SidebarGroup.svelt
 export { default as SidebarDivider } from './components/sidebar/SidebarDivider.svelte';
 export { default as Slider } from './components/slider/Slider.svelte';
 export { default as Table } from './components/table/Table.svelte';
-export { default as Tabs } from './components/tabs/Tabs.svelte';
+export { Tabs, TabList, Tab, TabPanel } from './components/tabs';
 export { default as Toast } from './components/toast/Toast.svelte';
 export { default as ToastContainer } from './components/toast/ToastContainer.svelte';
 export { toastStore } from './components/toast/toast.svelte.ts';
