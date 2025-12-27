@@ -2,32 +2,15 @@
 	import Button from '$lib/components/button/Button.svelte';
 	import Header from '$lib/internal/Header.svelte';
 	import DocsSidebar from '$lib/internal/DocsSidebar.svelte';
-	import Tooltip from '$lib/components/tooltip/Tooltip.svelte';
+	import Tooltip from '$lib/internal/Tooltip.svelte';
 	import GithubIcon from '$lib/icons/GithubIcon.svelte';
 	import MoonIcon from '$lib/icons/MoonIcon.svelte';
 	import SunIcon from '$lib/icons/SunIcon.svelte';
 	import BookOpenIcon from '$lib/icons/BookOpenIcon.svelte';
 	import PaletteIcon from '$lib/icons/PaletteIcon.svelte';
 	import {
-		AccordionShowcase,
-		BadgeShowcase,
-		BreadcrumbsShowcase,
 		ButtonShowcase,
-		CardShowcase,
-		CheckboxShowcase,
-		DialogShowcase,
-		DrawerShowcase,
-		InputShowcase,
-		ProgressBarShowcase,
-		SelectShowcase,
-		SliderShowcase,
 		SpinnerShowcase,
-		TableShowcase,
-		TabsShowcase,
-		ToastShowcase,
-		AvatarShowcase,
-		TooltipShowcase,
-		TypographyShowcase,
 		PrimitiveTokensShowcase,
 		SemanticTokensShowcase
 	} from '$lib/internal/showcase';
@@ -45,31 +28,13 @@
 		{
 			title: 'Components',
 			items: [
-				{ label: 'Accordion', href: '#accordion' },
-				{ label: 'Avatar', href: '#avatar' },
-				{ label: 'Badge', href: '#badge' },
-				{ label: 'Breadcrumbs', href: '#breadcrumbs' },
 				{ label: 'Button', href: '#button' },
-				{ label: 'Card', href: '#card' },
-				{ label: 'Checkbox', href: '#checkbox' },
-				{ label: 'Code Block', href: '#code-block' },
-				{ label: 'Dialog', href: '#dialog' },
-				{ label: 'Drawer', href: '#drawer' },
-				{ label: 'Header', href: '#header' },
-				{ label: 'Input', href: '#input' },
-				{ label: 'Select', href: '#select' },
-				{ label: 'Slider', href: '#slider' },
-				{ label: 'Spinner', href: '#spinner' },
-				{ label: 'Table', href: '#table' },
-				{ label: 'Tabs', href: '#tabs' },
-				{ label: 'Toast', href: '#toast' },
-				{ label: 'Tooltip', href: '#tooltip' }
+				{ label: 'Spinner', href: '#spinner' }
 			]
 		},
 		{
 			title: 'Foundations',
 			items: [
-				{ label: 'Typography', href: '#typography' },
 				{ label: 'Primitive Tokens', href: '#primitive-tokens' },
 				{ label: 'Semantic Tokens', href: '#semantic-tokens' }
 			]
@@ -133,25 +98,8 @@
 		</aside>
 
 		<main class="content">
-			<section id="accordion"><AccordionShowcase /></section>
-			<section id="avatar"><AvatarShowcase /></section>
-			<section id="badge"><BadgeShowcase /></section>
-			<section id="breadcrumbs"><BreadcrumbsShowcase /></section>
 			<section id="button"><ButtonShowcase /></section>
-			<section id="card"><CardShowcase /></section>
-			<section id="checkbox"><CheckboxShowcase /></section>
-			<section id="dialog"><DialogShowcase /></section>
-			<section id="drawer"><DrawerShowcase /></section>
-			<section id="input"><InputShowcase /></section>
-			<section id="progress-bar"><ProgressBarShowcase /></section>
-			<section id="select"><SelectShowcase /></section>
-			<section id="slider"><SliderShowcase /></section>
 			<section id="spinner"><SpinnerShowcase /></section>
-			<section id="table"><TableShowcase /></section>
-			<section id="tabs"><TabsShowcase /></section>
-			<section id="toast"><ToastShowcase /></section>
-			<section id="tooltip"><TooltipShowcase /></section>
-			<section id="typography"><TypographyShowcase /></section>
 			<section id="primitive-tokens"><PrimitiveTokensShowcase /></section>
 			<section id="semantic-tokens"><SemanticTokensShowcase /></section>
 		</main>

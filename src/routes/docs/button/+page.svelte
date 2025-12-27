@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Button from '$lib/components/button/Button.svelte';
-	import Table from '$lib/components/table/Table.svelte';
 	import CodeExample from '$lib/internal/CodeExample.svelte';
 	import TableOfContents from '$lib/internal/TableOfContents.svelte';
 	import HeartIcon from '$lib/icons/HeartIcon.svelte';
@@ -14,131 +13,6 @@
 
 	const variants: Variant[] = ['filled', 'outline', 'ghost', 'soft', 'link', 'dash'];
 	const colors: Color[] = ['primary', 'secondary', 'error'];
-
-	const apiColumns = [
-		{ key: 'prop', header: 'Prop' },
-		{ key: 'type', header: 'Type' },
-		{ key: 'default', header: 'Default' },
-		{ key: 'description', header: 'Description' }
-	];
-
-	const apiData = [
-		{
-			prop: 'variant',
-			type: "'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash'",
-			default: "'filled'",
-			description: 'Visual style of the button'
-		},
-		{
-			prop: 'color',
-			type: "'primary' | 'secondary' | 'error'",
-			default: "'primary'",
-			description: 'Color theme'
-		},
-		{
-			prop: 'size',
-			type: "'sm' | 'md' | 'lg'",
-			default: "'md'",
-			description: 'Button size'
-		},
-		{
-			prop: 'disabled',
-			type: 'boolean',
-			default: 'false',
-			description: 'Disables interaction'
-		},
-		{
-			prop: 'loading',
-			type: 'boolean',
-			default: 'false',
-			description: 'Shows loading spinner'
-		},
-		{
-			prop: 'active',
-			type: 'boolean',
-			default: 'false',
-			description: 'Shows active/pressed state'
-		},
-		{
-			prop: 'icon',
-			type: 'boolean',
-			default: 'false',
-			description: 'Square button for icon-only'
-		},
-		{
-			prop: 'fullWidth',
-			type: 'boolean',
-			default: 'false',
-			description: 'Makes button 100% width'
-		},
-		{
-			prop: 'children',
-			type: 'Snippet',
-			default: '—',
-			description: 'Button content (text/icons)'
-		}
-	];
-
-	const colorTokenColumns = [
-		{ key: 'token', header: 'Token' },
-		{ key: 'default', header: 'Default' },
-		{ key: 'description', header: 'Description' }
-	];
-
-	const colorTokenData = [
-		{
-			token: '--button-color-primary',
-			default: 'var(--color-primary)',
-			description: 'Primary button color'
-		},
-		{
-			token: '--button-color-secondary',
-			default: 'var(--color-secondary)',
-			description: 'Secondary button color'
-		},
-		{
-			token: '--button-color-error',
-			default: 'var(--color-error)',
-			description: 'Error button color'
-		},
-		{
-			token: '--button-mix-hover-amount',
-			default: '15%',
-			description: 'Darken amount on hover'
-		},
-		{
-			token: '--button-mix-active-amount',
-			default: '25%',
-			description: 'Darken amount when pressed'
-		}
-	];
-
-	const sizeTokenColumns = [
-		{ key: 'token', header: 'Token' },
-		{ key: 'sm', header: 'SM' },
-		{ key: 'md', header: 'MD' },
-		{ key: 'lg', header: 'LG' }
-	];
-
-	const sizeTokenData = [
-		{ token: '--button-{size}-height', sm: '32px', md: '40px', lg: '48px' },
-		{ token: '--button-{size}-padding-x', sm: '8px', md: '16px', lg: '24px' },
-		{ token: '--button-{size}-padding-y', sm: '4px', md: '8px', lg: '8px' },
-		{ token: '--button-{size}-font-size', sm: '14px', md: '16px', lg: '18px' },
-		{ token: '--button-{size}-icon-size', sm: '16px', md: '20px', lg: '24px' }
-	];
-
-	const styleTokenData = [
-		{ token: '--button-border-radius', default: '6px', description: 'Corner roundness' },
-		{ token: '--button-border-width', default: '1px', description: 'Border thickness' },
-		{ token: '--button-font-family', default: 'var(--font-sans)', description: 'Font family' },
-		{ token: '--button-font-weight', default: '600', description: 'Font weight' },
-		{ token: '--button-shadow', default: '0 1px 2px...', description: 'Default shadow' },
-		{ token: '--button-shadow-hover', default: '0 4px 6px...', description: 'Hover shadow' },
-		{ token: '--button-transition', default: '150ms', description: 'Animation timing' },
-		{ token: '--button-focus-ring-width', default: '3px', description: 'Focus ring size' },
-		{ token: '--button-opacity-disabled', default: '0.6', description: 'Disabled opacity' }
-	];
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -302,15 +176,72 @@
 
 			<div class="api-table">
 				<h3>Props</h3>
-				<Table columns={apiColumns} data={apiData} size="sm">
-					{#snippet cell({ value, column })}
-						{#if column.key === 'prop' || column.key === 'type' || column.key === 'default'}
-							<code>{value}</code>
-						{:else}
-							{value}
-						{/if}
-					{/snippet}
-				</Table>
+				<table class="props-table">
+					<thead>
+						<tr>
+							<th>Prop</th>
+							<th>Type</th>
+							<th>Default</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>variant</code></td>
+							<td><code>'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash'</code></td>
+							<td><code>'filled'</code></td>
+							<td>Visual style of the button</td>
+						</tr>
+						<tr>
+							<td><code>color</code></td>
+							<td><code>'primary' | 'secondary' | 'error'</code></td>
+							<td><code>'primary'</code></td>
+							<td>Color theme</td>
+						</tr>
+						<tr>
+							<td><code>size</code></td>
+							<td><code>'sm' | 'md' | 'lg'</code></td>
+							<td><code>'md'</code></td>
+							<td>Button size</td>
+						</tr>
+						<tr>
+							<td><code>disabled</code></td>
+							<td><code>boolean</code></td>
+							<td><code>false</code></td>
+							<td>Disables interaction</td>
+						</tr>
+						<tr>
+							<td><code>loading</code></td>
+							<td><code>boolean</code></td>
+							<td><code>false</code></td>
+							<td>Shows loading spinner</td>
+						</tr>
+						<tr>
+							<td><code>active</code></td>
+							<td><code>boolean</code></td>
+							<td><code>false</code></td>
+							<td>Shows active/pressed state</td>
+						</tr>
+						<tr>
+							<td><code>icon</code></td>
+							<td><code>boolean</code></td>
+							<td><code>false</code></td>
+							<td>Square button for icon-only</td>
+						</tr>
+						<tr>
+							<td><code>fullWidth</code></td>
+							<td><code>boolean</code></td>
+							<td><code>false</code></td>
+							<td>Makes button 100% width</td>
+						</tr>
+						<tr>
+							<td><code>children</code></td>
+							<td><code>Snippet</code></td>
+							<td><code>—</code></td>
+							<td>Button content (text/icons)</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</section>
 
@@ -323,41 +254,148 @@
 
 			<div class="token-group">
 				<h3>Color Tokens</h3>
-				<Table columns={colorTokenColumns} data={colorTokenData} size="sm">
-					{#snippet cell({ value, column })}
-						{#if column.key === 'token'}
-							<code>{value}</code>
-						{:else}
-							{value}
-						{/if}
-					{/snippet}
-				</Table>
+				<table class="props-table">
+					<thead>
+						<tr>
+							<th>Token</th>
+							<th>Default</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>--button-color-primary</code></td>
+							<td>var(--color-primary)</td>
+							<td>Primary button color</td>
+						</tr>
+						<tr>
+							<td><code>--button-color-secondary</code></td>
+							<td>var(--color-secondary)</td>
+							<td>Secondary button color</td>
+						</tr>
+						<tr>
+							<td><code>--button-color-error</code></td>
+							<td>var(--color-error)</td>
+							<td>Error button color</td>
+						</tr>
+						<tr>
+							<td><code>--button-mix-hover-amount</code></td>
+							<td>15%</td>
+							<td>Darken amount on hover</td>
+						</tr>
+						<tr>
+							<td><code>--button-mix-active-amount</code></td>
+							<td>25%</td>
+							<td>Darken amount when pressed</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 
 			<div class="token-group">
 				<h3>Size Tokens</h3>
-				<Table columns={sizeTokenColumns} data={sizeTokenData} size="sm">
-					{#snippet cell({ value, column })}
-						{#if column.key === 'token'}
-							<code>{value}</code>
-						{:else}
-							{value}
-						{/if}
-					{/snippet}
-				</Table>
+				<table class="props-table">
+					<thead>
+						<tr>
+							<th>Token</th>
+							<th>SM</th>
+							<th>MD</th>
+							<th>LG</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>--button-{'{size}'}-height</code></td>
+							<td>32px</td>
+							<td>40px</td>
+							<td>48px</td>
+						</tr>
+						<tr>
+							<td><code>--button-{'{size}'}-padding-x</code></td>
+							<td>8px</td>
+							<td>16px</td>
+							<td>24px</td>
+						</tr>
+						<tr>
+							<td><code>--button-{'{size}'}-padding-y</code></td>
+							<td>4px</td>
+							<td>8px</td>
+							<td>8px</td>
+						</tr>
+						<tr>
+							<td><code>--button-{'{size}'}-font-size</code></td>
+							<td>14px</td>
+							<td>16px</td>
+							<td>18px</td>
+						</tr>
+						<tr>
+							<td><code>--button-{'{size}'}-icon-size</code></td>
+							<td>16px</td>
+							<td>20px</td>
+							<td>24px</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 
 			<div class="token-group">
 				<h3>Style Tokens</h3>
-				<Table columns={colorTokenColumns} data={styleTokenData} size="sm">
-					{#snippet cell({ value, column })}
-						{#if column.key === 'token'}
-							<code>{value}</code>
-						{:else}
-							{value}
-						{/if}
-					{/snippet}
-				</Table>
+				<table class="props-table">
+					<thead>
+						<tr>
+							<th>Token</th>
+							<th>Default</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>--button-border-radius</code></td>
+							<td>6px</td>
+							<td>Corner roundness</td>
+						</tr>
+						<tr>
+							<td><code>--button-border-width</code></td>
+							<td>1px</td>
+							<td>Border thickness</td>
+						</tr>
+						<tr>
+							<td><code>--button-font-family</code></td>
+							<td>var(--font-sans)</td>
+							<td>Font family</td>
+						</tr>
+						<tr>
+							<td><code>--button-font-weight</code></td>
+							<td>600</td>
+							<td>Font weight</td>
+						</tr>
+						<tr>
+							<td><code>--button-shadow</code></td>
+							<td>0 1px 2px...</td>
+							<td>Default shadow</td>
+						</tr>
+						<tr>
+							<td><code>--button-shadow-hover</code></td>
+							<td>0 4px 6px...</td>
+							<td>Hover shadow</td>
+						</tr>
+						<tr>
+							<td><code>--button-transition</code></td>
+							<td>150ms</td>
+							<td>Animation timing</td>
+						</tr>
+						<tr>
+							<td><code>--button-focus-ring-width</code></td>
+							<td>3px</td>
+							<td>Focus ring size</td>
+						</tr>
+						<tr>
+							<td><code>--button-opacity-disabled</code></td>
+							<td>0.6</td>
+							<td>Disabled opacity</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</section>
 	</article>
@@ -394,7 +432,6 @@
 		margin: 0;
 	}
 
-	/* Sections */
 	.doc-section {
 		margin-bottom: var(--space-12);
 		scroll-margin-top: var(--space-4);
@@ -416,7 +453,6 @@
 		margin: 0 0 var(--space-6) 0;
 	}
 
-	/* Examples */
 	.example-block {
 		display: flex;
 		flex-direction: column;
@@ -453,7 +489,6 @@
 		flex-wrap: nowrap;
 	}
 
-	/* API & Token Tables */
 	.api-table,
 	.token-group {
 		display: flex;
@@ -470,8 +505,25 @@
 		margin: 0;
 	}
 
-	.api-table code,
-	.token-group code {
+	.props-table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: var(--font-size-sm);
+	}
+
+	.props-table th,
+	.props-table td {
+		padding: var(--space-2) var(--space-3);
+		text-align: left;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.props-table th {
+		font-weight: var(--font-weight-semibold);
+		background: var(--color-bg-muted);
+	}
+
+	.props-table code {
 		font-family: var(--font-mono);
 		font-size: var(--font-size-xs);
 		background: var(--color-bg-muted);
@@ -479,7 +531,6 @@
 		border-radius: var(--radius-sm);
 	}
 
-	/* Responsive */
 	@media (max-width: 1024px) {
 		.docs-layout {
 			grid-template-columns: 1fr;

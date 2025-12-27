@@ -2,7 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import Button from '$lib/components/button/Button.svelte';
 	import Header from '$lib/internal/Header.svelte';
-	import Tooltip from '$lib/components/tooltip/Tooltip.svelte';
+	import Tooltip from '$lib/internal/Tooltip.svelte';
 	import DocsSidebar from '$lib/internal/DocsSidebar.svelte';
 	import GithubIcon from '$lib/icons/GithubIcon.svelte';
 	import MoonIcon from '$lib/icons/MoonIcon.svelte';
@@ -31,32 +31,14 @@
 				{ label: 'Introduction', href: '/docs' },
 				{ label: 'Installation', href: '/docs/installation' },
 				{ label: 'Usage', href: '/docs/usage' },
-				{ label: 'Theming', href: '/docs/theming' },
-				{ label: 'Typography', href: '/docs/typography' },
-				{ label: 'Primitive Tokens', href: '/docs/primitive-tokens' },
-				{ label: 'Semantic Tokens', href: '/docs/semantic-tokens' }
+				{ label: 'Theming', href: '/docs/theming' }
 			]
 		},
 		{
 			title: 'Components',
 			items: [
-				{ label: 'Accordion', href: '/docs/accordion' },
-				{ label: 'Avatar', href: '/docs/avatar' },
-				{ label: 'Badge', href: '/docs/badge' },
-				{ label: 'Breadcrumbs', href: '/docs/breadcrumbs' },
 				{ label: 'Button', href: '/docs/button' },
-				{ label: 'Card', href: '/docs/card' },
-				{ label: 'Checkbox', href: '/docs/checkbox' },
-				{ label: 'Dialog', href: '/docs/dialog' },
-				{ label: 'Drawer', href: '/docs/drawer' },
-				{ label: 'Input', href: '/docs/input' },
-				{ label: 'Progress Bar', href: '/docs/progress-bar' },
-				{ label: 'Select', href: '/docs/select' },
-				{ label: 'Slider', href: '/docs/slider' },
-				{ label: 'Table', href: '/docs/table' },
-				{ label: 'Tabs', href: '/docs/tabs' },
-				{ label: 'Toast', href: '/docs/toast' },
-				{ label: 'Tooltip', href: '/docs/tooltip' }
+				{ label: 'Spinner', href: '/docs/spinner' }
 			]
 		}
 	];

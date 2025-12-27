@@ -4,13 +4,13 @@
 	import type { Snippet } from 'svelte';
 
 	interface Props {
-		content: string;
-		placement?: Placement;
+		text: string;
+		position?: Placement;
 		showArrow?: boolean;
 		children: Snippet;
 	}
 
-	let { content, placement = 'top', showArrow = true, children }: Props = $props();
+	let { text, position = 'top', showArrow = true, children }: Props = $props();
 
 	let triggerEl: HTMLElement | null = $state(null);
 	let tooltipEl: HTMLElement | null = $state(null);
@@ -34,7 +34,11 @@
 			y,
 			placement: finalPlacement,
 			middlewareData
-		} = await computePosition(triggerEl, tooltipEl, { placement, middleware, strategy: 'fixed' });
+		} = await computePosition(triggerEl, tooltipEl, {
+			placement: position,
+			middleware,
+			strategy: 'fixed'
+		});
 
 		tooltipEl.style.left = `${x}px`;
 		tooltipEl.style.top = `${y}px`;
@@ -88,7 +92,7 @@
 </span>
 
 <div bind:this={tooltipEl} id={tooltipId} class="tooltip" class:visible role="tooltip">
-	{content}
+	{text}
 	{#if showArrow}
 		<div bind:this={arrowEl} class="tooltip__arrow"></div>
 	{/if}

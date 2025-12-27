@@ -12,7 +12,7 @@
 	<header class="page-header">
 		<h1>Introduction</h1>
 		<p class="lead">
-			Greenfield UI is a component library for Svelte 5. It provides 21 accessible, themeable
+			Greenfield UI is a component library for Svelte 5. It provides accessible, themeable
 			components with a token-based styling system that makes customization simple.
 		</p>
 	</header>
@@ -74,7 +74,7 @@
 			<div class="layer layer--auto">
 				<span class="layer-label">Auto-computed</span>
 				<span class="layer-name">Semantic Tokens</span>
-				<span class="layer-desc">~400 component-specific tokens</span>
+				<span class="layer-desc">Component-specific tokens</span>
 			</div>
 			<div class="layer-arrow"></div>
 			<div class="layer layer--base">
@@ -87,55 +87,18 @@
 
 	<section class="section">
 		<h2>Components</h2>
-		<p class="section-intro">21 production-ready components organized by category.</p>
+		<p class="section-intro">Production-ready components.</p>
 		<div class="component-grid">
-			<div class="component-group">
-				<h4>Layout</h4>
-				<ul>
-					<li>Header</li>
-					<li>Sidebar</li>
-					<li>Card</li>
-				</ul>
-			</div>
 			<div class="component-group">
 				<h4>Form</h4>
 				<ul>
 					<li>Button</li>
-					<li>Input</li>
-					<li>Select</li>
-					<li>Checkbox</li>
-					<li>Slider</li>
 				</ul>
 			</div>
 			<div class="component-group">
 				<h4>Feedback</h4>
 				<ul>
-					<li>Badge</li>
-					<li>Toast</li>
-					<li>Tooltip</li>
-					<li>Progress Bar</li>
-				</ul>
-			</div>
-			<div class="component-group">
-				<h4>Overlay</h4>
-				<ul>
-					<li>Dialog</li>
-					<li>Drawer</li>
-				</ul>
-			</div>
-			<div class="component-group">
-				<h4>Navigation</h4>
-				<ul>
-					<li>Tabs</li>
-					<li>Breadcrumbs</li>
-				</ul>
-			</div>
-			<div class="component-group">
-				<h4>Data</h4>
-				<ul>
-					<li>Table</li>
-					<li>Accordion</li>
-					<li>CodeBlock</li>
+					<li>Spinner</li>
 				</ul>
 			</div>
 		</div>
@@ -201,7 +164,6 @@
 		margin: var(--space-3) 0;
 	}
 
-	/* Principles */
 	.principles {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
@@ -227,7 +189,6 @@
 		line-height: var(--line-height-relaxed);
 	}
 
-	/* Architecture */
 	.architecture {
 		display: flex;
 		flex-direction: column;
@@ -285,10 +246,9 @@
 		border-left: 1px solid var(--color-border);
 	}
 
-	/* Component Grid */
 	.component-grid {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 		gap: var(--space-4);
 	}
 
@@ -312,7 +272,6 @@
 		padding: var(--space-1) 0;
 	}
 
-	/* Next Steps */
 	.next-steps {
 		display: flex;
 		gap: var(--space-3);
@@ -325,7 +284,7 @@
 		}
 
 		.component-grid {
-			grid-template-columns: repeat(2, 1fr);
+			grid-template-columns: 1fr;
 		}
 	}
 </style>
