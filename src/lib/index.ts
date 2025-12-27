@@ -5,10 +5,8 @@ export { default as Breadcrumbs } from './components/breadcrumbs/Breadcrumbs.sve
 export { default as Button } from './components/button/Button.svelte';
 export { default as Card } from './components/card/Card.svelte';
 export { default as Checkbox } from './components/checkbox/Checkbox.svelte';
-export { default as CodeBlock } from './components/code-block/CodeBlock.svelte';
 export { default as Dialog } from './components/dialog/Dialog.svelte';
 export { default as Drawer } from './components/drawer/Drawer.svelte';
-export { default as Header } from './components/header/Header.svelte';
 export { default as Input } from './components/input/Input.svelte';
 export { default as ProgressBar } from './components/progress-bar/ProgressBar.svelte';
 export { default as Select } from './components/select/Select.svelte';

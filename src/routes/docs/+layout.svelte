@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import Button from '$lib/components/button/Button.svelte';
-	import Header from '$lib/components/header/Header.svelte';
+	import Header from '$lib/internal/Header.svelte';
 	import Tooltip from '$lib/components/tooltip/Tooltip.svelte';
 	import DocsSidebar from '$lib/internal/DocsSidebar.svelte';
 	import GithubIcon from '$lib/icons/GithubIcon.svelte';
@@ -47,10 +47,8 @@
 				{ label: 'Button', href: '/docs/button' },
 				{ label: 'Card', href: '/docs/card' },
 				{ label: 'Checkbox', href: '/docs/checkbox' },
-				{ label: 'Code Block', href: '/docs/code-block' },
 				{ label: 'Dialog', href: '/docs/dialog' },
 				{ label: 'Drawer', href: '/docs/drawer' },
-				{ label: 'Header', href: '/docs/header' },
 				{ label: 'Input', href: '/docs/input' },
 				{ label: 'Progress Bar', href: '/docs/progress-bar' },
 				{ label: 'Select', href: '/docs/select' },

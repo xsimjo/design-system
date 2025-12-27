@@ -91,10 +91,8 @@ Create your own theme by overriding ~45 simple variables:
 | `Button`      | Primary action element with variants |
 | `Card`        | Content container with sections      |
 | `Checkbox`    | Boolean input control                |
-| `CodeBlock`   | Syntax-highlighted code display      |
 | `Dialog`      | Modal overlay for confirmations      |
 | `Drawer`      | Slide-out panel                      |
-| `Header`      | App header with navigation           |
 | `Input`       | Text input with labels and icons     |
 | `ProgressBar` | Progress indicator                   |
 | `Select`      | Dropdown selection with search       |

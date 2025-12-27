@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CodeBlock from '$lib/components/code-block/CodeBlock.svelte';
+	import CodeBlock from '$lib/internal/CodeBlock.svelte';
 
 	const jsExample = `function greet(name) {
   console.log(\`Hello, \${name}!\`);

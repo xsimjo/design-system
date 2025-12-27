@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { codeToHtml } from 'shiki';
-	import Button from '../button/Button.svelte';
-	import CopyIcon from '../../icons/CopyIcon.svelte';
-	import CheckIcon from '../../icons/CheckIcon.svelte';
+	import Button from '$lib/components/button/Button.svelte';
+	import CopyIcon from '$lib/icons/CopyIcon.svelte';
+	import CheckIcon from '$lib/icons/CheckIcon.svelte';
 
 	interface Props {
 		code: string;

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/button/Button.svelte';
-	import Header from '$lib/components/header/Header.svelte';
+	import Header from '$lib/internal/Header.svelte';
 	import DocsSidebar from '$lib/internal/DocsSidebar.svelte';
 	import Tooltip from '$lib/components/tooltip/Tooltip.svelte';
 	import GithubIcon from '$lib/icons/GithubIcon.svelte';
@@ -15,16 +15,15 @@
 		ButtonShowcase,
 		CardShowcase,
 		CheckboxShowcase,
-		CodeBlockShowcase,
 		DialogShowcase,
 		DrawerShowcase,
 		InputShowcase,
+		ProgressBarShowcase,
 		SelectShowcase,
 		SliderShowcase,
 		TableShowcase,
 		TabsShowcase,
 		ToastShowcase,
-		HeaderShowcase,
 		AvatarShowcase,
 		TooltipShowcase,
 		TypographyShowcase,
@@ -139,11 +138,10 @@
 			<section id="button"><ButtonShowcase /></section>
 			<section id="card"><CardShowcase /></section>
 			<section id="checkbox"><CheckboxShowcase /></section>
-			<section id="code-block"><CodeBlockShowcase /></section>
 			<section id="dialog"><DialogShowcase /></section>
 			<section id="drawer"><DrawerShowcase /></section>
-			<section id="header"><HeaderShowcase /></section>
 			<section id="input"><InputShowcase /></section>
+			<section id="progress-bar"><ProgressBarShowcase /></section>
 			<section id="select"><SelectShowcase /></section>
 			<section id="slider"><SliderShowcase /></section>
 			<section id="table"><TableShowcase /></section>

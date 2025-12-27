@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/button/Button.svelte';
+	import Table from '$lib/components/table/Table.svelte';
 	import CodeExample from '$lib/internal/CodeExample.svelte';
 	import TableOfContents from '$lib/internal/TableOfContents.svelte';
 	import HeartIcon from '$lib/icons/HeartIcon.svelte';
@@ -13,6 +14,146 @@
 
 	const variants: Variant[] = ['filled', 'outline', 'ghost', 'soft', 'link', 'dash'];
 	const colors: Color[] = ['primary', 'secondary', 'info', 'success', 'warning', 'error'];
+
+	const apiColumns = [
+		{ key: 'prop', header: 'Prop' },
+		{ key: 'type', header: 'Type' },
+		{ key: 'default', header: 'Default' },
+		{ key: 'description', header: 'Description' }
+	];
+
+	const apiData = [
+		{
+			prop: 'variant',
+			type: "'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash'",
+			default: "'filled'",
+			description: 'Visual style of the button'
+		},
+		{
+			prop: 'color',
+			type: "'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error'",
+			default: "'primary'",
+			description: 'Color theme'
+		},
+		{
+			prop: 'size',
+			type: "'sm' | 'md' | 'lg'",
+			default: "'md'",
+			description: 'Button size'
+		},
+		{
+			prop: 'disabled',
+			type: 'boolean',
+			default: 'false',
+			description: 'Disables interaction'
+		},
+		{
+			prop: 'loading',
+			type: 'boolean',
+			default: 'false',
+			description: 'Shows loading spinner'
+		},
+		{
+			prop: 'active',
+			type: 'boolean',
+			default: 'false',
+			description: 'Shows active/pressed state'
+		},
+		{
+			prop: 'icon',
+			type: 'boolean',
+			default: 'false',
+			description: 'Square button for icon-only'
+		},
+		{
+			prop: 'fullWidth',
+			type: 'boolean',
+			default: 'false',
+			description: 'Makes button 100% width'
+		},
+		{
+			prop: 'children',
+			type: 'Snippet',
+			default: '—',
+			description: 'Button content (text/icons)'
+		}
+	];
+
+	const colorTokenColumns = [
+		{ key: 'token', header: 'Token' },
+		{ key: 'default', header: 'Default' },
+		{ key: 'description', header: 'Description' }
+	];
+
+	const colorTokenData = [
+		{
+			token: '--button-color-primary',
+			default: 'var(--color-primary)',
+			description: 'Primary button color'
+		},
+		{
+			token: '--button-color-secondary',
+			default: 'var(--color-secondary)',
+			description: 'Secondary button color'
+		},
+		{
+			token: '--button-color-info',
+			default: 'var(--color-info)',
+			description: 'Info button color'
+		},
+		{
+			token: '--button-color-success',
+			default: 'var(--color-success)',
+			description: 'Success button color'
+		},
+		{
+			token: '--button-color-warning',
+			default: 'var(--color-warning)',
+			description: 'Warning button color'
+		},
+		{
+			token: '--button-color-error',
+			default: 'var(--color-error)',
+			description: 'Error button color'
+		},
+		{
+			token: '--button-mix-hover-amount',
+			default: '15%',
+			description: 'Darken amount on hover'
+		},
+		{
+			token: '--button-mix-active-amount',
+			default: '25%',
+			description: 'Darken amount when pressed'
+		}
+	];
+
+	const sizeTokenColumns = [
+		{ key: 'token', header: 'Token' },
+		{ key: 'sm', header: 'SM' },
+		{ key: 'md', header: 'MD' },
+		{ key: 'lg', header: 'LG' }
+	];
+
+	const sizeTokenData = [
+		{ token: '--button-{size}-height', sm: '32px', md: '40px', lg: '48px' },
+		{ token: '--button-{size}-padding-x', sm: '8px', md: '16px', lg: '24px' },
+		{ token: '--button-{size}-padding-y', sm: '4px', md: '8px', lg: '8px' },
+		{ token: '--button-{size}-font-size', sm: '14px', md: '16px', lg: '18px' },
+		{ token: '--button-{size}-icon-size', sm: '16px', md: '20px', lg: '24px' }
+	];
+
+	const styleTokenData = [
+		{ token: '--button-border-radius', default: '6px', description: 'Corner roundness' },
+		{ token: '--button-border-width', default: '1px', description: 'Border thickness' },
+		{ token: '--button-font-family', default: 'var(--font-sans)', description: 'Font family' },
+		{ token: '--button-font-weight', default: '600', description: 'Font weight' },
+		{ token: '--button-shadow', default: '0 1px 2px...', description: 'Default shadow' },
+		{ token: '--button-shadow-hover', default: '0 4px 6px...', description: 'Hover shadow' },
+		{ token: '--button-transition', default: '150ms', description: 'Animation timing' },
+		{ token: '--button-focus-ring-width', default: '3px', description: 'Focus ring size' },
+		{ token: '--button-opacity-disabled', default: '0.6', description: 'Disabled opacity' }
+	];
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -179,77 +320,15 @@
 
 			<div class="api-table">
 				<h3>Props</h3>
-				<div class="table-wrapper">
-					<table>
-						<thead>
-							<tr>
-								<th>Prop</th>
-								<th>Type</th>
-								<th>Default</th>
-								<th>Description</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><code>variant</code></td>
-								<td><code>'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash'</code></td>
-								<td><code>'filled'</code></td>
-								<td>Visual style of the button</td>
-							</tr>
-							<tr>
-								<td><code>color</code></td>
-								<td
-									><code>'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error'</code
-									></td
-								>
-								<td><code>'primary'</code></td>
-								<td>Color theme</td>
-							</tr>
-							<tr>
-								<td><code>size</code></td>
-								<td><code>'sm' | 'md' | 'lg'</code></td>
-								<td><code>'md'</code></td>
-								<td>Button size</td>
-							</tr>
-							<tr>
-								<td><code>disabled</code></td>
-								<td><code>boolean</code></td>
-								<td><code>false</code></td>
-								<td>Disables interaction</td>
-							</tr>
-							<tr>
-								<td><code>loading</code></td>
-								<td><code>boolean</code></td>
-								<td><code>false</code></td>
-								<td>Shows loading spinner</td>
-							</tr>
-							<tr>
-								<td><code>active</code></td>
-								<td><code>boolean</code></td>
-								<td><code>false</code></td>
-								<td>Shows active/pressed state</td>
-							</tr>
-							<tr>
-								<td><code>icon</code></td>
-								<td><code>boolean</code></td>
-								<td><code>false</code></td>
-								<td>Square button for icon-only</td>
-							</tr>
-							<tr>
-								<td><code>fullWidth</code></td>
-								<td><code>boolean</code></td>
-								<td><code>false</code></td>
-								<td>Makes button 100% width</td>
-							</tr>
-							<tr>
-								<td><code>children</code></td>
-								<td><code>Snippet</code></td>
-								<td>—</td>
-								<td>Button content (text/icons)</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+				<Table columns={apiColumns} data={apiData} size="sm">
+					{#snippet cell({ value, column })}
+						{#if column.key === 'prop' || column.key === 'type' || column.key === 'default'}
+							<code>{value}</code>
+						{:else}
+							{value}
+						{/if}
+					{/snippet}
+				</Table>
 			</div>
 		</section>
 
@@ -262,151 +341,41 @@
 
 			<div class="token-group">
 				<h3>Color Tokens</h3>
-				<div class="token-table">
-					<div class="token-row header">
-						<span>Token</span>
-						<span>Default</span>
-						<span>Description</span>
-					</div>
-					<div class="token-row">
-						<code>--button-color-primary</code>
-						<span>var(--color-primary)</span>
-						<span>Primary button color</span>
-					</div>
-					<div class="token-row">
-						<code>--button-color-secondary</code>
-						<span>var(--color-secondary)</span>
-						<span>Secondary button color</span>
-					</div>
-					<div class="token-row">
-						<code>--button-color-info</code>
-						<span>var(--color-info)</span>
-						<span>Info button color</span>
-					</div>
-					<div class="token-row">
-						<code>--button-color-success</code>
-						<span>var(--color-success)</span>
-						<span>Success button color</span>
-					</div>
-					<div class="token-row">
-						<code>--button-color-warning</code>
-						<span>var(--color-warning)</span>
-						<span>Warning button color</span>
-					</div>
-					<div class="token-row">
-						<code>--button-color-error</code>
-						<span>var(--color-error)</span>
-						<span>Error button color</span>
-					</div>
-					<div class="token-row">
-						<code>--button-mix-hover-amount</code>
-						<span>15%</span>
-						<span>Darken amount on hover</span>
-					</div>
-					<div class="token-row">
-						<code>--button-mix-active-amount</code>
-						<span>25%</span>
-						<span>Darken amount when pressed</span>
-					</div>
-				</div>
+				<Table columns={colorTokenColumns} data={colorTokenData} size="sm">
+					{#snippet cell({ value, column })}
+						{#if column.key === 'token'}
+							<code>{value}</code>
+						{:else}
+							{value}
+						{/if}
+					{/snippet}
+				</Table>
 			</div>
 
 			<div class="token-group">
 				<h3>Size Tokens</h3>
-				<div class="token-table token-table--4col">
-					<div class="token-row header">
-						<span>Token</span>
-						<span>SM</span>
-						<span>MD</span>
-						<span>LG</span>
-					</div>
-					<div class="token-row">
-						<code>--button-{'{size}'}-height</code>
-						<span>32px</span>
-						<span>40px</span>
-						<span>48px</span>
-					</div>
-					<div class="token-row">
-						<code>--button-{'{size}'}-padding-x</code>
-						<span>8px</span>
-						<span>16px</span>
-						<span>24px</span>
-					</div>
-					<div class="token-row">
-						<code>--button-{'{size}'}-padding-y</code>
-						<span>4px</span>
-						<span>8px</span>
-						<span>8px</span>
-					</div>
-					<div class="token-row">
-						<code>--button-{'{size}'}-font-size</code>
-						<span>14px</span>
-						<span>16px</span>
-						<span>18px</span>
-					</div>
-					<div class="token-row">
-						<code>--button-{'{size}'}-icon-size</code>
-						<span>16px</span>
-						<span>20px</span>
-						<span>24px</span>
-					</div>
-				</div>
+				<Table columns={sizeTokenColumns} data={sizeTokenData} size="sm">
+					{#snippet cell({ value, column })}
+						{#if column.key === 'token'}
+							<code>{value}</code>
+						{:else}
+							{value}
+						{/if}
+					{/snippet}
+				</Table>
 			</div>
 
 			<div class="token-group">
 				<h3>Style Tokens</h3>
-				<div class="token-table">
-					<div class="token-row header">
-						<span>Token</span>
-						<span>Default</span>
-						<span>Description</span>
-					</div>
-					<div class="token-row">
-						<code>--button-border-radius</code>
-						<span>6px</span>
-						<span>Corner roundness</span>
-					</div>
-					<div class="token-row">
-						<code>--button-border-width</code>
-						<span>1px</span>
-						<span>Border thickness</span>
-					</div>
-					<div class="token-row">
-						<code>--button-font-family</code>
-						<span>var(--font-sans)</span>
-						<span>Font family</span>
-					</div>
-					<div class="token-row">
-						<code>--button-font-weight</code>
-						<span>600</span>
-						<span>Font weight</span>
-					</div>
-					<div class="token-row">
-						<code>--button-shadow</code>
-						<span>0 1px 2px...</span>
-						<span>Default shadow</span>
-					</div>
-					<div class="token-row">
-						<code>--button-shadow-hover</code>
-						<span>0 4px 6px...</span>
-						<span>Hover shadow</span>
-					</div>
-					<div class="token-row">
-						<code>--button-transition</code>
-						<span>150ms</span>
-						<span>Animation timing</span>
-					</div>
-					<div class="token-row">
-						<code>--button-focus-ring-width</code>
-						<span>3px</span>
-						<span>Focus ring size</span>
-					</div>
-					<div class="token-row">
-						<code>--button-opacity-disabled</code>
-						<span>0.6</span>
-						<span>Disabled opacity</span>
-					</div>
-				</div>
+				<Table columns={colorTokenColumns} data={styleTokenData} size="sm">
+					{#snippet cell({ value, column })}
+						{#if column.key === 'token'}
+							<code>{value}</code>
+						{:else}
+							{value}
+						{/if}
+					{/snippet}
+				</Table>
 			</div>
 		</section>
 	</article>
@@ -502,7 +471,8 @@
 		flex-wrap: nowrap;
 	}
 
-	/* Tokens */
+	/* API & Token Tables */
+	.api-table,
 	.token-group {
 		display: flex;
 		flex-direction: column;
@@ -510,6 +480,7 @@
 		margin-bottom: var(--space-6);
 	}
 
+	.api-table h3,
 	.token-group h3 {
 		font-size: var(--font-size-lg);
 		font-weight: var(--font-weight-semibold);
@@ -517,125 +488,10 @@
 		margin: 0;
 	}
 
-	.token-table {
-		display: flex;
-		flex-direction: column;
-		border: 1px solid var(--color-border);
-		border-radius: var(--radius-md);
-		overflow: hidden;
-	}
-
-	.token-row {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		gap: var(--space-4);
-		padding: var(--space-3) var(--space-4);
-		border-bottom: 1px solid var(--color-border);
-		font-size: var(--font-size-sm);
-	}
-
-	.token-table--4col .token-row {
-		grid-template-columns: 1fr 1fr 1fr 1fr;
-	}
-
-	.token-row:last-child {
-		border-bottom: none;
-	}
-
-	.token-row.header {
-		background: var(--color-bg-subtle);
-		font-weight: var(--font-weight-semibold);
-		color: var(--color-text-muted);
-	}
-
-	.token-row code {
+	.api-table code,
+	.token-group code {
 		font-family: var(--font-mono);
 		font-size: var(--font-size-xs);
-		color: var(--color-primary);
-	}
-
-	.token-example {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-3);
-	}
-
-	.token-example h3 {
-		font-size: var(--font-size-lg);
-		font-weight: var(--font-weight-semibold);
-		color: var(--color-text);
-		margin: 0;
-	}
-
-	/* API */
-	.api-table h3,
-	.api-section h3 {
-		font-size: var(--font-size-lg);
-		font-weight: var(--font-weight-semibold);
-		color: var(--color-text);
-		margin: 0 0 var(--space-3) 0;
-	}
-
-	.api-table {
-		margin-bottom: var(--space-6);
-	}
-
-	.table-wrapper {
-		overflow-x: auto;
-		border: 1px solid var(--color-border);
-		border-radius: var(--radius-md);
-	}
-
-	table {
-		width: 100%;
-		border-collapse: collapse;
-		font-size: var(--font-size-sm);
-	}
-
-	th,
-	td {
-		text-align: left;
-		padding: var(--space-3) var(--space-4);
-		border-bottom: 1px solid var(--color-border);
-	}
-
-	th {
-		background: var(--color-bg-subtle);
-		font-weight: var(--font-weight-semibold);
-		color: var(--color-text-muted);
-	}
-
-	tr:last-child td {
-		border-bottom: none;
-	}
-
-	td code {
-		font-family: var(--font-mono);
-		font-size: var(--font-size-xs);
-		background: var(--color-bg-muted);
-		padding: 2px 6px;
-		border-radius: var(--radius-sm);
-	}
-
-	.api-section {
-		margin-bottom: var(--space-6);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.api-section ul {
-		margin: 0;
-		padding-left: var(--space-5);
-		color: var(--color-text);
-		line-height: var(--line-height-relaxed);
-	}
-
-	.api-section li {
-		margin-bottom: var(--space-2);
-	}
-
-	.api-section code {
-		font-family: var(--font-mono);
-		font-size: var(--font-size-sm);
 		background: var(--color-bg-muted);
 		padding: 2px 6px;
 		border-radius: var(--radius-sm);

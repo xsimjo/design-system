@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CodeBlock from '$lib/components/code-block/CodeBlock.svelte';
+	import CodeBlock from '$lib/internal/CodeBlock.svelte';
 	import Button from '$lib/components/button/Button.svelte';
 	import ArrowRightIcon from '$lib/icons/ArrowRightIcon.svelte';
 </script>
