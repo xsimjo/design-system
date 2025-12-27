@@ -965,4 +965,20 @@
 	--toc-focus-ring-color: var(--focus-ring-color);
 	--toc-sticky-top: var(--spacing-md);
 	--toc-max-height: calc(100vh - 128px);
+
+	--spinner-sm-size: 16px;
+	--spinner-md-size: 24px;
+	--spinner-lg-size: 32px;
+	--spinner-sm-border-width: 2px;
+	--spinner-md-border-width: 3px;
+	--spinner-lg-border-width: 4px;
+	--spinner-border-radius: var(--radius-full);
+	--spinner-track-color: var(--color-border);
+	--spinner-color-primary: var(--color-primary);
+	--spinner-color-secondary: var(--color-secondary);
+	--spinner-color-success: var(--color-success);
+	--spinner-color-warning: var(--color-warning);
+	--spinner-color-error: var(--color-error);
+	--spinner-duration: 800ms;
+	--spinner-timing: linear;
 }

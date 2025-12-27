@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
-	import LoaderCircleIcon from '$lib/icons/LoaderCircleIcon.svelte';
+	import Spinner from '$lib/components/spinner/Spinner.svelte';
 
 	interface Props extends HTMLButtonAttributes {
 		variant?: 'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash';
@@ -41,7 +41,7 @@
 >
 	{#if loading}
 		<span class="button__loader">
-			<LoaderCircleIcon size="1em" />
+			<Spinner />
 		</span>
 	{/if}
 	<span class="button__content" class:button__content--hidden={loading && icon}>
@@ -418,21 +418,11 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		animation: spin 1s linear infinite;
 	}
 
 	.button--icon .button__loader {
 		position: absolute;
 		inset: 0;
 		display: flex;
-	}
-
-	@keyframes spin {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
 	}
 </style>

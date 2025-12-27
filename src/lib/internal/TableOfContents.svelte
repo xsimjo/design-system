@@ -15,36 +15,47 @@
 
 	let activeId = $state('');
 
-	onMount(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				for (const entry of entries) {
-					if (entry.isIntersecting) {
-						activeId = entry.target.id;
-					}
-				}
-			},
-			{
-				rootMargin: '-80px 0px -60% 0px',
-				threshold: 0
-			}
+	function getHeaderOffset(): number {
+		return (
+			parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) + 20
 		);
+	}
+
+	function updateActiveSection() {
+		const offset = getHeaderOffset();
+		let currentId = sections[0]?.id || '';
 
 		for (const section of sections) {
 			const element = document.getElementById(section.id);
 			if (element) {
-				observer.observe(element);
+				const rect = element.getBoundingClientRect();
+				if (rect.top <= offset) {
+					currentId = section.id;
+				} else {
+					break;
+				}
 			}
 		}
 
-		return () => observer.disconnect();
+		activeId = currentId;
+	}
+
+	onMount(() => {
+		updateActiveSection();
+		window.addEventListener('scroll', updateActiveSection, { passive: true });
+		return () => window.removeEventListener('scroll', updateActiveSection);
 	});
 
 	function scrollToSection(e: MouseEvent, id: string) {
 		e.preventDefault();
 		const element = document.getElementById(id);
 		if (element) {
-			element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			const headerHeight = parseInt(
+				getComputedStyle(document.documentElement).getPropertyValue('--header-height')
+			);
+			const offset = headerHeight + 16;
+			const top = element.getBoundingClientRect().top + window.scrollY - offset;
+			window.scrollTo({ top, behavior: 'smooth' });
 			history.pushState(null, '', `#${id}`);
 		}
 	}

@@ -21,6 +21,7 @@
 		ProgressBarShowcase,
 		SelectShowcase,
 		SliderShowcase,
+		SpinnerShowcase,
 		TableShowcase,
 		TabsShowcase,
 		ToastShowcase,
@@ -58,6 +59,7 @@
 				{ label: 'Input', href: '#input' },
 				{ label: 'Select', href: '#select' },
 				{ label: 'Slider', href: '#slider' },
+				{ label: 'Spinner', href: '#spinner' },
 				{ label: 'Table', href: '#table' },
 				{ label: 'Tabs', href: '#tabs' },
 				{ label: 'Toast', href: '#toast' },
@@ -144,6 +146,7 @@
 			<section id="progress-bar"><ProgressBarShowcase /></section>
 			<section id="select"><SelectShowcase /></section>
 			<section id="slider"><SliderShowcase /></section>
+			<section id="spinner"><SpinnerShowcase /></section>
 			<section id="table"><TableShowcase /></section>
 			<section id="tabs"><TabsShowcase /></section>
 			<section id="toast"><ToastShowcase /></section>

@@ -11,6 +11,7 @@ export { default as Input } from './components/input/Input.svelte';
 export { default as ProgressBar } from './components/progress-bar/ProgressBar.svelte';
 export { default as Select } from './components/select/Select.svelte';
 export { default as Slider } from './components/slider/Slider.svelte';
+export { default as Spinner } from './components/spinner/Spinner.svelte';
 export { default as Table } from './components/table/Table.svelte';
 export { Tabs, TabList, Tab, TabPanel } from './components/tabs';
 export { default as Toast } from './components/toast/Toast.svelte';

@@ -10,6 +10,7 @@ export { default as InputShowcase } from './InputShowcase.svelte';
 export { default as ProgressBarShowcase } from './ProgressBarShowcase.svelte';
 export { default as SelectShowcase } from './SelectShowcase.svelte';
 export { default as SliderShowcase } from './SliderShowcase.svelte';
+export { default as SpinnerShowcase } from './SpinnerShowcase.svelte';
 export { default as TableShowcase } from './TableShowcase.svelte';
 export { default as TabsShowcase } from './TabsShowcase.svelte';
 export { default as AvatarShowcase } from './AvatarShowcase.svelte';
