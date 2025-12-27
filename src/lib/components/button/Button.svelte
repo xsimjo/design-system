@@ -5,7 +5,7 @@
 
 	interface Props extends HTMLButtonAttributes {
 		variant?: 'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash';
-		color?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error';
+		color?: 'primary' | 'secondary' | 'error';
 		size?: 'sm' | 'md' | 'lg';
 		icon?: boolean;
 		active?: boolean;
@@ -78,15 +78,6 @@
 	}
 	.button--secondary {
 		--_color: var(--button-color-secondary);
-	}
-	.button--info {
-		--_color: var(--button-color-info);
-	}
-	.button--success {
-		--_color: var(--button-color-success);
-	}
-	.button--warning {
-		--_color: var(--button-color-warning);
 	}
 	.button--error {
 		--_color: var(--button-color-error);

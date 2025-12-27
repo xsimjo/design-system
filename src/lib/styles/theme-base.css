@@ -43,9 +43,6 @@
 
 	--button-color-primary: var(--color-primary);
 	--button-color-secondary: var(--color-secondary);
-	--button-color-info: var(--color-info);
-	--button-color-success: var(--color-success);
-	--button-color-warning: var(--color-warning);
 	--button-color-error: var(--color-error);
 	--button-mix-hover: var(--color-hover-mix);
 	--button-mix-hover-amount: 15%;

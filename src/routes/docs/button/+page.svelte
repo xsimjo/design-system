@@ -10,10 +10,10 @@
 	import SettingsIcon from '$lib/icons/SettingsIcon.svelte';
 
 	type Variant = 'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash';
-	type Color = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error';
+	type Color = 'primary' | 'secondary' | 'error';
 
 	const variants: Variant[] = ['filled', 'outline', 'ghost', 'soft', 'link', 'dash'];
-	const colors: Color[] = ['primary', 'secondary', 'info', 'success', 'warning', 'error'];
+	const colors: Color[] = ['primary', 'secondary', 'error'];
 
 	const apiColumns = [
 		{ key: 'prop', header: 'Prop' },
@@ -31,7 +31,7 @@
 		},
 		{
 			prop: 'color',
-			type: "'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error'",
+			type: "'primary' | 'secondary' | 'error'",
 			default: "'primary'",
 			description: 'Color theme'
 		},
@@ -95,21 +95,6 @@
 			token: '--button-color-secondary',
 			default: 'var(--color-secondary)',
 			description: 'Secondary button color'
-		},
-		{
-			token: '--button-color-info',
-			default: 'var(--color-info)',
-			description: 'Info button color'
-		},
-		{
-			token: '--button-color-success',
-			default: 'var(--color-success)',
-			description: 'Success button color'
-		},
-		{
-			token: '--button-color-warning',
-			default: 'var(--color-warning)',
-			description: 'Warning button color'
 		},
 		{
 			token: '--button-color-error',
@@ -212,9 +197,6 @@
 				<CodeExample
 					code={`<Button color="primary">Primary</Button>
 <Button color="secondary">Secondary</Button>
-<Button color="info">Info</Button>
-<Button color="success">Success</Button>
-<Button color="warning">Warning</Button>
 <Button color="error">Error</Button>`}
 				>
 					{#each colors as c (c)}
@@ -244,11 +226,11 @@
 				<CodeExample
 					code={`<Button><HeartIcon /> Like</Button>
 <Button variant="outline"><DownloadIcon /> Download</Button>
-<Button color="success"><SendIcon /> Send</Button>`}
+<Button color="secondary"><SendIcon /> Send</Button>`}
 				>
 					<Button><HeartIcon /> Like</Button>
 					<Button variant="outline"><DownloadIcon /> Download</Button>
-					<Button color="success"><SendIcon /> Send</Button>
+					<Button color="secondary"><SendIcon /> Send</Button>
 				</CodeExample>
 			</div>
 
