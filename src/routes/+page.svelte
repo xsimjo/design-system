@@ -1,9 +1,7 @@
 <script lang="ts">
 	import Button from '$lib/components/button/Button.svelte';
 	import Header from '$lib/components/header/Header.svelte';
-	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';
-	import SidebarItem from '$lib/components/sidebar/SidebarItem.svelte';
-	import SidebarGroup from '$lib/components/sidebar/SidebarGroup.svelte';
+	import DocsSidebar from '$lib/internal/DocsSidebar.svelte';
 	import Tooltip from '$lib/components/tooltip/Tooltip.svelte';
 	import GithubIcon from '$lib/icons/GithubIcon.svelte';
 	import MoonIcon from '$lib/icons/MoonIcon.svelte';
@@ -22,7 +20,6 @@
 		DrawerShowcase,
 		InputShowcase,
 		SelectShowcase,
-		SidebarShowcase,
 		SliderShowcase,
 		TableShowcase,
 		TabsShowcase,
@@ -38,39 +35,44 @@
 	type Theme = 'light' | 'dark';
 
 	let theme = $state<Theme>('light');
-	let sidebarCollapsed = $state(false);
 
 	function toggleTheme() {
 		theme = theme === 'light' ? 'dark' : 'light';
 		document.documentElement.setAttribute('data-theme', theme);
 	}
 
-	const components = [
-		{ id: 'accordion', label: 'Accordion' },
-		{ id: 'avatar', label: 'Avatar' },
-		{ id: 'badge', label: 'Badge' },
-		{ id: 'breadcrumbs', label: 'Breadcrumbs' },
-		{ id: 'button', label: 'Button' },
-		{ id: 'card', label: 'Card' },
-		{ id: 'checkbox', label: 'Checkbox' },
-		{ id: 'code-block', label: 'Code Block' },
-		{ id: 'dialog', label: 'Dialog' },
-		{ id: 'drawer', label: 'Drawer' },
-		{ id: 'header', label: 'Header' },
-		{ id: 'input', label: 'Input' },
-		{ id: 'select', label: 'Select' },
-		{ id: 'sidebar', label: 'Sidebar' },
-		{ id: 'slider', label: 'Slider' },
-		{ id: 'table', label: 'Table' },
-		{ id: 'tabs', label: 'Tabs' },
-		{ id: 'toast', label: 'Toast' },
-		{ id: 'tooltip', label: 'Tooltip' }
-	];
-
-	const foundations = [
-		{ id: 'typography', label: 'Typography' },
-		{ id: 'primitive-tokens', label: 'Primitive Tokens' },
-		{ id: 'semantic-tokens', label: 'Semantic Tokens' }
+	const navGroups = [
+		{
+			title: 'Components',
+			items: [
+				{ label: 'Accordion', href: '#accordion' },
+				{ label: 'Avatar', href: '#avatar' },
+				{ label: 'Badge', href: '#badge' },
+				{ label: 'Breadcrumbs', href: '#breadcrumbs' },
+				{ label: 'Button', href: '#button' },
+				{ label: 'Card', href: '#card' },
+				{ label: 'Checkbox', href: '#checkbox' },
+				{ label: 'Code Block', href: '#code-block' },
+				{ label: 'Dialog', href: '#dialog' },
+				{ label: 'Drawer', href: '#drawer' },
+				{ label: 'Header', href: '#header' },
+				{ label: 'Input', href: '#input' },
+				{ label: 'Select', href: '#select' },
+				{ label: 'Slider', href: '#slider' },
+				{ label: 'Table', href: '#table' },
+				{ label: 'Tabs', href: '#tabs' },
+				{ label: 'Toast', href: '#toast' },
+				{ label: 'Tooltip', href: '#tooltip' }
+			]
+		},
+		{
+			title: 'Foundations',
+			items: [
+				{ label: 'Typography', href: '#typography' },
+				{ label: 'Primitive Tokens', href: '#primitive-tokens' },
+				{ label: 'Semantic Tokens', href: '#semantic-tokens' }
+			]
+		}
 	];
 </script>
 
@@ -125,22 +127,9 @@
 	</Header>
 
 	<div class="layout">
-		<Sidebar bind:collapsed={sidebarCollapsed} collapsible showToggle>
-			<SidebarGroup title="Components">
-				{#each components as component (component.id)}
-					<SidebarItem href={`#${component.id}`}>
-						{component.label}
-					</SidebarItem>
-				{/each}
-			</SidebarGroup>
-			<SidebarGroup title="Foundations">
-				{#each foundations as foundation (foundation.id)}
-					<SidebarItem href={`#${foundation.id}`}>
-						{foundation.label}
-					</SidebarItem>
-				{/each}
-			</SidebarGroup>
-		</Sidebar>
+		<aside class="sidebar-container">
+			<DocsSidebar groups={navGroups} />
+		</aside>
 
 		<main class="content">
 			<section id="accordion"><AccordionShowcase /></section>
@@ -156,7 +145,6 @@
 			<section id="header"><HeaderShowcase /></section>
 			<section id="input"><InputShowcase /></section>
 			<section id="select"><SelectShowcase /></section>
-			<section id="sidebar"><SidebarShowcase /></section>
 			<section id="slider"><SliderShowcase /></section>
 			<section id="table"><TableShowcase /></section>
 			<section id="tabs"><TabsShowcase /></section>
@@ -204,10 +192,12 @@
 		height: calc(100vh - var(--header-height));
 	}
 
-	.layout :global(.sidebar) {
+	.sidebar-container {
 		position: sticky;
 		top: var(--header-height);
 		height: calc(100vh - var(--header-height));
+		overflow-y: auto;
+		flex-shrink: 0;
 	}
 
 	.content {

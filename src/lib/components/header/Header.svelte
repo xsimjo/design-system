@@ -46,6 +46,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		gap: var(--spacing-lg);
 	}
 
 	.header--sticky {
@@ -78,5 +79,6 @@
 		display: flex;
 		align-items: center;
 		gap: var(--header-actions-gap);
+		margin-left: auto;
 	}
 </style>

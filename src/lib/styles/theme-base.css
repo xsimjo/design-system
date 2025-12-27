@@ -3,18 +3,18 @@
 	--page-text: var(--color-text);
 
 	--header-bg: var(--color-bg-elevated);
-	--header-border: var(--color-border);
+	--header-border: transparent;
 	--header-text: var(--color-text);
 	--header-height: 64px;
 	--header-padding-x: var(--spacing-lg);
 	--header-padding-y: 0;
-	--header-shadow: var(--shadow-sm);
-	--header-border-width: var(--border-width);
+	--header-shadow: none;
+	--header-border-width: 0;
 	--header-z-index: var(--z-sticky);
 	--header-transition: var(--transition-base);
 	--header-logo-height: 32px;
 	--header-logo-gap: var(--spacing-sm);
-	--header-nav-gap: var(--spacing-lg);
+	--header-nav-gap: var(--spacing-sm);
 	--header-actions-gap: var(--spacing-sm);
 
 	--card-bg: var(--color-bg-elevated);
@@ -838,9 +838,9 @@
 	--sidebar-width-expanded: 256px;
 	--sidebar-width-collapsed: 64px;
 	--sidebar-bg: var(--color-bg-elevated);
-	--sidebar-border: var(--color-border);
-	--sidebar-border-width: var(--border-width);
-	--sidebar-shadow: var(--shadow-sm);
+	--sidebar-border: transparent;
+	--sidebar-border-width: 0;
+	--sidebar-shadow: none;
 	--sidebar-z-index: var(--z-sticky);
 	--sidebar-header-padding-x: var(--spacing-md);
 	--sidebar-header-padding-y: var(--spacing-md);
@@ -859,7 +859,7 @@
 	--sidebar-item-bg: transparent;
 	--sidebar-item-bg-hover: var(--color-bg-muted);
 	--sidebar-item-bg-active: color-mix(in oklch, var(--color-primary) 15%, transparent);
-	--sidebar-item-text: var(--color-text-muted);
+	--sidebar-item-text: var(--color-text);
 	--sidebar-item-text-hover: var(--color-text);
 	--sidebar-item-text-active: var(--color-primary);
 	--sidebar-item-text-disabled: var(--color-border);
@@ -870,7 +870,7 @@
 	--sidebar-item-font-weight: var(--font-weight-medium);
 	--sidebar-item-line-height: var(--line-height-normal);
 	--sidebar-icon-size: 20px;
-	--sidebar-icon-color: var(--color-text-muted);
+	--sidebar-icon-color: var(--color-text);
 	--sidebar-icon-color-hover: var(--color-text);
 	--sidebar-icon-color-active: var(--color-primary);
 	--sidebar-icon-color-disabled: var(--color-border);
@@ -883,7 +883,7 @@
 	--sidebar-toggle-border-radius: var(--radius-sm);
 	--sidebar-group-title-padding-x: var(--spacing-sm);
 	--sidebar-group-title-padding-y: var(--spacing-sm);
-	--sidebar-group-title-color: var(--color-text-muted);
+	--sidebar-group-title-color: var(--color-text);
 	--sidebar-group-title-font-size: var(--font-size-xs);
 	--sidebar-group-title-font-weight: var(--font-weight-semibold);
 	--sidebar-group-title-letter-spacing: 0.05em;

@@ -50,7 +50,9 @@
 			"Bash(wc:*)",
 			"mcp__lucide-icons__list_all_icons_by_category",
 			"Bash(ls:*)",
-			"Bash(npm run lint:*)"
+			"Bash(npm run lint:*)",
+			"WebFetch(domain:lucide.dev)",
+			"WebFetch(domain:raw.githubusercontent.com)"
 		]
 	},
 	"enableAllProjectMcpServers": true,

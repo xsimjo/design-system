@@ -2,16 +2,12 @@
 	import type { Snippet } from 'svelte';
 	import Button from '$lib/components/button/Button.svelte';
 	import Header from '$lib/components/header/Header.svelte';
-	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';
-	import SidebarItem from '$lib/components/sidebar/SidebarItem.svelte';
-	import SidebarGroup from '$lib/components/sidebar/SidebarGroup.svelte';
 	import Tooltip from '$lib/components/tooltip/Tooltip.svelte';
+	import DocsSidebar from '$lib/internal/DocsSidebar.svelte';
 	import GithubIcon from '$lib/icons/GithubIcon.svelte';
 	import MoonIcon from '$lib/icons/MoonIcon.svelte';
 	import SunIcon from '$lib/icons/SunIcon.svelte';
-	import BookOpenIcon from '$lib/icons/BookOpenIcon.svelte';
 	import PaletteIcon from '$lib/icons/PaletteIcon.svelte';
-	import HomeIcon from '$lib/icons/HomeIcon.svelte';
 
 	interface Props {
 		children: Snippet;
@@ -22,47 +18,49 @@
 	type Theme = 'light' | 'dark';
 
 	let theme = $state<Theme>('light');
-	let sidebarCollapsed = $state(false);
 
 	function toggleTheme() {
 		theme = theme === 'light' ? 'dark' : 'light';
 		document.documentElement.setAttribute('data-theme', theme);
 	}
 
-	const gettingStarted = [
-		{ id: 'introduction', label: 'Introduction', href: '/docs' },
-		{ id: 'installation', label: 'Installation', href: '/docs/installation' },
-		{ id: 'usage', label: 'Usage', href: '/docs/usage' },
-		{ id: 'theming', label: 'Theming', href: '/docs/theming' }
-	];
-
-	const components = [
-		{ id: 'accordion', label: 'Accordion', href: '/docs/accordion' },
-		{ id: 'avatar', label: 'Avatar', href: '/docs/avatar' },
-		{ id: 'badge', label: 'Badge', href: '/docs/badge' },
-		{ id: 'breadcrumbs', label: 'Breadcrumbs', href: '/docs/breadcrumbs' },
-		{ id: 'button', label: 'Button', href: '/docs/button' },
-		{ id: 'card', label: 'Card', href: '/docs/card' },
-		{ id: 'checkbox', label: 'Checkbox', href: '/docs/checkbox' },
-		{ id: 'code-block', label: 'Code Block', href: '/docs/code-block' },
-		{ id: 'dialog', label: 'Dialog', href: '/docs/dialog' },
-		{ id: 'drawer', label: 'Drawer', href: '/docs/drawer' },
-		{ id: 'header', label: 'Header', href: '/docs/header' },
-		{ id: 'input', label: 'Input', href: '/docs/input' },
-		{ id: 'progress-bar', label: 'Progress Bar', href: '/docs/progress-bar' },
-		{ id: 'select', label: 'Select', href: '/docs/select' },
-		{ id: 'sidebar', label: 'Sidebar', href: '/docs/sidebar' },
-		{ id: 'slider', label: 'Slider', href: '/docs/slider' },
-		{ id: 'table', label: 'Table', href: '/docs/table' },
-		{ id: 'tabs', label: 'Tabs', href: '/docs/tabs' },
-		{ id: 'toast', label: 'Toast', href: '/docs/toast' },
-		{ id: 'tooltip', label: 'Tooltip', href: '/docs/tooltip' }
-	];
-
-	const foundations = [
-		{ id: 'typography', label: 'Typography', href: '/docs/typography' },
-		{ id: 'primitive-tokens', label: 'Primitive Tokens', href: '/docs/primitive-tokens' },
-		{ id: 'semantic-tokens', label: 'Semantic Tokens', href: '/docs/semantic-tokens' }
+	const navGroups = [
+		{
+			title: 'Docs',
+			items: [
+				{ label: 'Introduction', href: '/docs' },
+				{ label: 'Installation', href: '/docs/installation' },
+				{ label: 'Usage', href: '/docs/usage' },
+				{ label: 'Theming', href: '/docs/theming' },
+				{ label: 'Typography', href: '/docs/typography' },
+				{ label: 'Primitive Tokens', href: '/docs/primitive-tokens' },
+				{ label: 'Semantic Tokens', href: '/docs/semantic-tokens' }
+			]
+		},
+		{
+			title: 'Components',
+			items: [
+				{ label: 'Accordion', href: '/docs/accordion' },
+				{ label: 'Avatar', href: '/docs/avatar' },
+				{ label: 'Badge', href: '/docs/badge' },
+				{ label: 'Breadcrumbs', href: '/docs/breadcrumbs' },
+				{ label: 'Button', href: '/docs/button' },
+				{ label: 'Card', href: '/docs/card' },
+				{ label: 'Checkbox', href: '/docs/checkbox' },
+				{ label: 'Code Block', href: '/docs/code-block' },
+				{ label: 'Dialog', href: '/docs/dialog' },
+				{ label: 'Drawer', href: '/docs/drawer' },
+				{ label: 'Header', href: '/docs/header' },
+				{ label: 'Input', href: '/docs/input' },
+				{ label: 'Progress Bar', href: '/docs/progress-bar' },
+				{ label: 'Select', href: '/docs/select' },
+				{ label: 'Slider', href: '/docs/slider' },
+				{ label: 'Table', href: '/docs/table' },
+				{ label: 'Tabs', href: '/docs/tabs' },
+				{ label: 'Toast', href: '/docs/toast' },
+				{ label: 'Tooltip', href: '/docs/tooltip' }
+			]
+		}
 	];
 </script>
 
@@ -80,14 +78,8 @@
 			</a>
 		{/snippet}
 		{#snippet nav()}
-			<Button variant="ghost" color="secondary" size="sm" href="/">
-				<HomeIcon size={16} />
-				Home
-			</Button>
-			<Button variant="ghost" color="secondary" size="sm" href="/docs">
-				<BookOpenIcon size={16} />
-				Documentation
-			</Button>
+			<Button variant="ghost" color="secondary" size="sm" href="/">Home</Button>
+			<Button variant="ghost" color="secondary" size="sm" href="/docs">Documentation</Button>
 			<Button variant="ghost" color="secondary" size="sm">Components</Button>
 			<Button variant="ghost" color="secondary" size="sm">Themes</Button>
 		{/snippet}
@@ -120,29 +112,9 @@
 	</Header>
 
 	<div class="layout">
-		<Sidebar bind:collapsed={sidebarCollapsed} collapsible showToggle>
-			<SidebarGroup title="Getting Started">
-				{#each gettingStarted as item (item.id)}
-					<SidebarItem href={item.href}>
-						{item.label}
-					</SidebarItem>
-				{/each}
-			</SidebarGroup>
-			<SidebarGroup title="Components">
-				{#each components as component (component.id)}
-					<SidebarItem href={component.href}>
-						{component.label}
-					</SidebarItem>
-				{/each}
-			</SidebarGroup>
-			<SidebarGroup title="Foundations">
-				{#each foundations as foundation (foundation.id)}
-					<SidebarItem href={foundation.href}>
-						{foundation.label}
-					</SidebarItem>
-				{/each}
-			</SidebarGroup>
-		</Sidebar>
+		<aside class="sidebar-container">
+			<DocsSidebar groups={navGroups} />
+		</aside>
 
 		<main class="content">
 			{@render children()}
@@ -186,11 +158,12 @@
 		min-height: calc(100vh - var(--header-height));
 	}
 
-	.layout :global(.sidebar) {
+	.sidebar-container {
 		position: sticky;
 		top: var(--header-height);
 		height: calc(100vh - var(--header-height));
 		overflow-y: auto;
+		flex-shrink: 0;
 	}
 
 	.content {
