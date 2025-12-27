@@ -6,6 +6,10 @@
 @import './themes/dark.css';
 @import './themes/dev.css';
 
+[data-theme] {
+	--header-height: 64px;
+}
+
 *,
 *::before,
 *::after {

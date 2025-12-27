@@ -107,20 +107,20 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		z-index: var(--tooltip-z-index);
-		max-width: var(--tooltip-max-width);
-		padding: var(--tooltip-padding-y) var(--tooltip-padding-x);
-		background-color: var(--tooltip-bg);
-		color: var(--tooltip-text);
-		border-radius: var(--tooltip-radius);
-		box-shadow: var(--tooltip-shadow);
-		font-family: var(--tooltip-font-family);
-		font-size: var(--tooltip-font-size);
-		font-weight: var(--tooltip-font-weight);
-		line-height: var(--tooltip-line-height);
+		z-index: var(--z-tooltip);
+		max-width: 256px;
+		padding: var(--spacing-xs) var(--spacing-sm);
+		background-color: var(--color-text);
+		color: var(--color-bg);
+		border-radius: var(--radius-sm);
+		box-shadow: var(--shadow-lg);
+		font-family: var(--font-sans);
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-normal);
+		line-height: var(--line-height-tight);
 		pointer-events: none;
 		opacity: 0;
-		transition: opacity var(--tooltip-transition-duration);
+		transition: opacity var(--transition-fast);
 	}
 
 	.tooltip.visible {
@@ -129,9 +129,9 @@
 
 	.tooltip__arrow {
 		position: absolute;
-		width: var(--tooltip-arrow-size);
-		height: var(--tooltip-arrow-size);
-		background-color: var(--tooltip-arrow-color);
+		width: 8px;
+		height: 8px;
+		background-color: var(--color-text);
 		transform: rotate(45deg);
 	}
 </style>

@@ -1,166 +1,58 @@
 <script lang="ts">
 	import Button from '$lib/components/button/Button.svelte';
-	import Header from '$lib/internal/Header.svelte';
-	import DocsSidebar from '$lib/internal/DocsSidebar.svelte';
-	import Tooltip from '$lib/internal/Tooltip.svelte';
-	import GithubIcon from '$lib/icons/GithubIcon.svelte';
-	import MoonIcon from '$lib/icons/MoonIcon.svelte';
-	import SunIcon from '$lib/icons/SunIcon.svelte';
-	import BookOpenIcon from '$lib/icons/BookOpenIcon.svelte';
-	import PaletteIcon from '$lib/icons/PaletteIcon.svelte';
-	import {
-		ButtonShowcase,
-		SpinnerShowcase,
-		PrimitiveTokensShowcase,
-		SemanticTokensShowcase
-	} from '$lib/internal/showcase';
-
-	type Theme = 'light' | 'dark';
-
-	let theme = $state<Theme>('light');
-
-	function toggleTheme() {
-		theme = theme === 'light' ? 'dark' : 'light';
-		document.documentElement.setAttribute('data-theme', theme);
-	}
-
-	const navGroups = [
-		{
-			title: 'Components',
-			items: [
-				{ label: 'Button', href: '#button' },
-				{ label: 'Spinner', href: '#spinner' }
-			]
-		},
-		{
-			title: 'Foundations',
-			items: [
-				{ label: 'Primitive Tokens', href: '#primitive-tokens' },
-				{ label: 'Semantic Tokens', href: '#semantic-tokens' }
-			]
-		}
-	];
+	import ArrowRightIcon from '$lib/icons/ArrowRightIcon.svelte';
 </script>
 
 <svelte:head>
 	<title>Greenfield UI - Svelte Design System</title>
 </svelte:head>
 
-<div class="showcase">
-	<Header sticky>
-		{#snippet logo()}
-			<div class="logo-link">
-				<PaletteIcon size={28} />
-				<span class="header-title">Greenfield</span>
-				<span class="header-subtitle">UI</span>
-			</div>
-		{/snippet}
-		{#snippet nav()}
-			<Button variant="ghost" color="secondary" size="sm">
-				<BookOpenIcon size={16} />
-				Documentation
+<main class="landing">
+	<section class="hero">
+		<h1>Greenfield UI</h1>
+		<p class="lead">A minimal component library for Svelte 5 with token-based theming.</p>
+		<div class="actions">
+			<Button href="/docs">
+				Get Started
+				<ArrowRightIcon size={16} />
 			</Button>
-			<Button variant="ghost" color="secondary" size="sm">Components</Button>
-			<Button variant="ghost" color="secondary" size="sm">Themes</Button>
-			<Button variant="ghost" color="secondary" size="sm">Examples</Button>
-		{/snippet}
-		{#snippet actions()}
-			<Tooltip text="View on GitHub" position="bottom">
-				<Button
-					variant="ghost"
-					color="secondary"
-					size="sm"
-					icon
-					onclick={() => window.open('https://github.com', '_blank')}
-				>
-					<GithubIcon size={18} />
-				</Button>
-			</Tooltip>
-			<Tooltip
-				text={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-				position="bottom"
-			>
-				<Button variant="ghost" color="secondary" size="sm" icon onclick={toggleTheme}>
-					{#if theme === 'light'}
-						<MoonIcon size={18} />
-					{:else}
-						<SunIcon size={18} />
-					{/if}
-				</Button>
-			</Tooltip>
-			<Button variant="outline" color="secondary" size="sm">v0.1.0</Button>
-		{/snippet}
-	</Header>
-
-	<div class="layout">
-		<aside class="sidebar-container">
-			<DocsSidebar groups={navGroups} />
-		</aside>
-
-		<main class="content">
-			<section id="button"><ButtonShowcase /></section>
-			<section id="spinner"><SpinnerShowcase /></section>
-			<section id="primitive-tokens"><PrimitiveTokensShowcase /></section>
-			<section id="semantic-tokens"><SemanticTokensShowcase /></section>
-		</main>
-	</div>
-</div>
+			<Button variant="outline" color="secondary" href="/docs/button">Components</Button>
+		</div>
+	</section>
+</main>
 
 <style>
-	.showcase {
+	.landing {
 		min-height: 100vh;
-		background-color: var(--page-bg);
-		display: flex;
-		flex-direction: column;
-	}
-
-	.logo-link {
 		display: flex;
 		align-items: center;
-		gap: var(--space-2);
-		color: var(--header-text);
+		justify-content: center;
+		background-color: var(--page-bg);
+		padding: var(--spacing-lg);
 	}
 
-	.header-title {
-		font-size: var(--font-size-xl);
+	.hero {
+		text-align: center;
+		max-width: 600px;
+	}
+
+	h1 {
+		font-size: var(--font-size-4xl);
 		font-weight: var(--font-weight-bold);
-		color: var(--header-text);
-		letter-spacing: -0.02em;
+		color: var(--color-text);
+		margin: 0 0 var(--spacing-md) 0;
 	}
 
-	.header-subtitle {
-		font-size: var(--font-size-xl);
-		font-weight: var(--font-weight-normal);
-		color: var(--color-primary);
-		letter-spacing: -0.02em;
+	.lead {
+		font-size: var(--font-size-lg);
+		color: var(--color-text-muted);
+		line-height: var(--line-height-relaxed);
+		margin: 0 0 var(--spacing-xl) 0;
 	}
 
-	.layout {
+	.actions {
 		display: flex;
-		flex: 1;
-		height: calc(100vh - var(--header-height));
-	}
-
-	.sidebar-container {
-		position: sticky;
-		top: var(--header-height);
-		height: calc(100vh - var(--header-height));
-		overflow-y: auto;
-		flex-shrink: 0;
-	}
-
-	.content {
-		flex: 1;
-		max-width: 900px;
-		margin: 0 auto;
-		padding: var(--space-8);
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-6);
-		overflow-y: auto;
-	}
-
-	.content section {
-		scroll-margin-top: calc(var(--header-height) + var(--space-4));
+		gap: var(--spacing-sm);
+		justify-content: center;
 	}
 </style>
