@@ -49,7 +49,7 @@
 </svelte:head>
 
 <div class="docs">
-	<Header sticky>
+	<Header sticky maxWidth="1400px">
 		{#snippet logo()}
 			<a href="/" class="logo-link">
 				<PaletteIcon size={28} />
@@ -135,6 +135,8 @@
 	.layout {
 		display: flex;
 		flex: 1;
+		max-width: 1400px;
+		margin: 0 auto;
 		min-height: calc(100vh - var(--header-height));
 	}
 
@@ -149,7 +151,6 @@
 	.content {
 		flex: 1;
 		max-width: 1150px;
-		margin: 0 auto;
 		padding: var(--space-8);
 		display: flex;
 		flex-direction: column;

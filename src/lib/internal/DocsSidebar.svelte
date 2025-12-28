@@ -50,7 +50,6 @@
 	}
 
 	.group-header {
-		padding: 0 var(--spacing-sm);
 		margin-bottom: var(--spacing-sm);
 		color: color-mix(in oklch, var(--color-text-muted) 70%, transparent);
 		font-size: var(--font-size-sm);
@@ -71,18 +70,16 @@
 		display: flex;
 		align-items: center;
 		height: var(--field-height-sm);
-		padding: 0 var(--spacing-sm);
 		background: transparent;
-		border-radius: var(--radius-button);
 		color: var(--color-text);
 		font-size: var(--font-size-sm);
 		font-weight: var(--font-weight-medium);
 		font-family: var(--font-sans);
 		text-decoration: none;
-		transition: background-color var(--transition-fast);
+		transition: color var(--transition-fast);
 	}
 
 	.nav-item:hover {
-		background-color: color-mix(in oklch, var(--color-primary) 15%, transparent);
+		color: var(--color-primary);
 	}
 </style>
