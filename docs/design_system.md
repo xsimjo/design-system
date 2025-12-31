@@ -195,7 +195,7 @@ The auto-computation layer that derives ~400+ semantic tokens from the ~45 theme
 **Important**: The `data-theme` attribute must be set on the `<html>` element for styles to apply.
 
 **Examples of Auto-Computed Tokens**:
-
+ 
 ```css
 /* Buttons derive from theme colors */
 --button-color-primary: var(--color-primary);
