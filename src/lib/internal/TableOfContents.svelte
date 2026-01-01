@@ -91,9 +91,9 @@
 	}
 
 	.toc-nav h4 {
-		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-semibold);
-		color: var(--color-text-muted);
+		font-size: var(--ui-text-sm);
+		font-weight: 600;
+		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 		margin: 0 0 var(--space-3) 0;
@@ -119,24 +119,24 @@
 	.toc-nav a {
 		display: block;
 		padding: var(--space-1) var(--space-2);
-		font-size: var(--font-size-sm);
-		color: var(--color-text-muted);
+		font-size: var(--ui-text-sm);
+		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
 		text-decoration: none;
 		border-left: 2px solid transparent;
-		transition: all 150ms;
+		transition: all var(--ui-duration);
 	}
 
 	.toc-nav a:hover {
-		color: var(--color-text);
+		color: var(--ui-surface-foreground);
 	}
 
 	.toc-nav a.active {
-		color: var(--color-primary);
-		border-left-color: var(--color-primary);
+		color: var(--ui-primary);
+		border-left-color: var(--ui-primary);
 	}
 
 	.toc-nav a:focus-visible {
-		outline: 2px solid var(--color-primary);
+		outline: 2px solid var(--ui-primary);
 		outline-offset: 2px;
 	}
 

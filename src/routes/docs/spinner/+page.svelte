@@ -47,14 +47,14 @@
 				</CodeExample>
 
 				<CodeExample
-					code={`<span style="color: var(--color-primary)"><Spinner /> Primary</span>
-<span style="color: var(--color-success)"><Spinner /> Success</span>
-<span style="color: var(--color-error)"><Spinner /> Error</span>`}
+					code={`<span style="color: var(--ui-primary)"><Spinner /> Primary</span>
+<span style="color: var(--ui-success)"><Spinner /> Success</span>
+<span style="color: var(--ui-danger)"><Spinner /> Danger</span>`}
 					previewClass="aligned"
 				>
-					<span class="adaptive" style="color: var(--color-primary)"><Spinner /> Primary</span>
-					<span class="adaptive" style="color: var(--color-success)"><Spinner /> Success</span>
-					<span class="adaptive" style="color: var(--color-error)"><Spinner /> Error</span>
+					<span class="adaptive" style="color: var(--ui-primary)"><Spinner /> Primary</span>
+					<span class="adaptive" style="color: var(--ui-success)"><Spinner /> Success</span>
+					<span class="adaptive" style="color: var(--ui-danger)"><Spinner /> Danger</span>
 				</CodeExample>
 			</div>
 
@@ -198,7 +198,7 @@
 						</tr>
 						<tr>
 							<td><code>--spinner-color-primary</code></td>
-							<td>var(--color-primary)</td>
+							<td>var(--ui-primary)</td>
 							<td>Primary variant color</td>
 						</tr>
 						<tr>
@@ -208,7 +208,7 @@
 						</tr>
 						<tr>
 							<td><code>--spinner-color-success</code></td>
-							<td>var(--color-success)</td>
+							<td>var(--ui-success)</td>
 							<td>Success variant color</td>
 						</tr>
 						<tr>
@@ -272,14 +272,14 @@
 
 	h1 {
 		font-size: var(--font-size-3xl);
-		font-weight: var(--font-weight-bold);
-		color: var(--color-text);
+		font-weight: var(--ui-weight-bold);
+		color: var(--ui-surface-foreground);
 		margin: 0 0 var(--space-3) 0;
 	}
 
 	.lead {
-		font-size: var(--font-size-lg);
-		color: var(--color-text-muted);
+		font-size: var(--ui-text-lg);
+		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
 		line-height: var(--line-height-relaxed);
 		margin: 0;
 	}
@@ -291,16 +291,16 @@
 
 	.doc-section h2 {
 		font-size: var(--font-size-2xl);
-		font-weight: var(--font-weight-bold);
-		color: var(--color-text);
+		font-weight: var(--ui-weight-bold);
+		color: var(--ui-surface-foreground);
 		margin: 0 0 var(--space-6) 0;
 		padding-bottom: var(--space-3);
-		border-bottom: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--ui-border);
 	}
 
 	.section-intro {
-		color: var(--color-text-muted);
-		font-size: var(--font-size-base);
+		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
+		font-size: var(--ui-text-base);
 		line-height: var(--line-height-relaxed);
 		margin: 0 0 var(--space-6) 0;
 	}
@@ -314,14 +314,14 @@
 	}
 
 	.example-block h3 {
-		font-size: var(--font-size-lg);
-		font-weight: var(--font-weight-semibold);
-		color: var(--color-text);
+		font-size: var(--ui-text-lg);
+		font-weight: 600;
+		color: var(--ui-surface-foreground);
 		margin: 0;
 	}
 
 	.example-desc {
-		color: var(--color-text-muted);
+		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
 		margin: 0;
 	}
 
@@ -332,11 +332,11 @@
 	}
 
 	.adaptive--sm {
-		font-size: var(--font-size-sm);
+		font-size: var(--ui-text-sm);
 	}
 
 	.adaptive--md {
-		font-size: var(--font-size-lg);
+		font-size: var(--ui-text-lg);
 	}
 
 	.adaptive--lg {
@@ -353,36 +353,36 @@
 
 	.api-table h3,
 	.token-group h3 {
-		font-size: var(--font-size-lg);
-		font-weight: var(--font-weight-semibold);
-		color: var(--color-text);
+		font-size: var(--ui-text-lg);
+		font-weight: 600;
+		color: var(--ui-surface-foreground);
 		margin: 0;
 	}
 
 	.props-table {
 		width: 100%;
 		border-collapse: collapse;
-		font-size: var(--font-size-sm);
+		font-size: var(--ui-text-sm);
 	}
 
 	.props-table th,
 	.props-table td {
 		padding: var(--space-2) var(--space-3);
 		text-align: left;
-		border-bottom: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--ui-border);
 	}
 
 	.props-table th {
-		font-weight: var(--font-weight-semibold);
-		background: var(--color-bg-muted);
+		font-weight: 600;
+		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
 	}
 
 	.props-table code {
-		font-family: var(--font-mono);
+		font-family: var(--ui-font-mono);
 		font-size: var(--font-size-xs);
-		background: var(--color-bg-muted);
+		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
 		padding: 2px 6px;
-		border-radius: var(--radius-sm);
+		border-radius: calc(var(--ui-radius) * 0.5);
 	}
 
 	@media (max-width: 1024px) {

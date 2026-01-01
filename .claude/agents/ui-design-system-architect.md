@@ -23,7 +23,6 @@ This design system uses a **three-layer token architecture** optimized for easy 
 1. **Primitives** (`primitives.css`): Raw values (not theme-aware)
 2. **Semantic** (`themes/*.css`): 41 `--ui-*` tokens that define the theme
 3. **Component** (`components/{name}/{name}.css`): Component-specific tokens (e.g., `--button-*`)
-4. **Compatibility** (`theme-base.css`): Aliases for legacy token names (`--color-*`, `--font-*`, etc.)
 
 **Semantic Tokens (41 total):**
 
@@ -42,7 +41,7 @@ This design system uses a **three-layer token architecture** optimized for easy 
 
 **Theme switching:** `data-theme` attribute on `<html>`.
 
-**Component rule:** Components use semantic tokens from theme-base (e.g., `--button-*`), never primitives.
+**Component rule:** Components use their component tokens (e.g., `--button-*`) or semantic tokens (e.g., `--ui-*`). Never primitives.
 
 ## Scope
 
@@ -52,7 +51,6 @@ This design system uses a **three-layer token architecture** optimized for easy 
 **Files you own:**
 
 - `src/lib/styles/primitives.css` - raw values
-- `src/lib/styles/theme-base.css` - compatibility aliases
 - `src/lib/styles/themes/*.css` - semantic token definitions
 - `src/lib/components/{name}/{name}.css` - component-specific tokens
 - `docs/design_system.md` - high-level philosophy only

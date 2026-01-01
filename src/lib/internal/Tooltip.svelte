@@ -109,18 +109,18 @@
 		left: 0;
 		z-index: var(--z-tooltip);
 		max-width: 256px;
-		padding: var(--spacing-xs) var(--spacing-sm);
-		background-color: var(--color-text);
-		color: var(--color-bg);
-		border-radius: var(--radius-sm);
+		padding: var(--space-1) var(--space-2);
+		background-color: var(--ui-surface-foreground);
+		color: var(--ui-surface);
+		border-radius: calc(var(--ui-radius) * 0.5);
 		box-shadow: var(--shadow-lg);
-		font-family: var(--font-sans);
-		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-normal);
-		line-height: var(--line-height-tight);
+		font-family: var(--ui-font-sans);
+		font-size: var(--ui-text-sm);
+		font-weight: var(--ui-weight-normal);
+		line-height: var(--ui-leading-tight);
 		pointer-events: none;
 		opacity: 0;
-		transition: opacity var(--transition-fast);
+		transition: opacity var(--ui-duration) cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
 	.tooltip.visible {
@@ -131,7 +131,7 @@
 		position: absolute;
 		width: 8px;
 		height: 8px;
-		background-color: var(--color-text);
+		background-color: var(--ui-surface-foreground);
 		transform: rotate(45deg);
 	}
 </style>

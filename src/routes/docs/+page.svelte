@@ -124,20 +124,20 @@
 
 	.page-header {
 		margin-bottom: var(--space-8);
-		border-bottom: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--ui-border);
 		padding-bottom: var(--space-6);
 	}
 
 	h1 {
 		font-size: var(--font-size-3xl);
-		font-weight: var(--font-weight-bold);
-		color: var(--color-text);
+		font-weight: var(--ui-weight-bold);
+		color: var(--ui-surface-foreground);
 		margin-bottom: var(--space-3);
 	}
 
 	.lead {
-		font-size: var(--font-size-lg);
-		color: var(--color-text-muted);
+		font-size: var(--ui-text-lg);
+		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
 		line-height: var(--line-height-relaxed);
 		max-width: 640px;
 	}
@@ -147,20 +147,20 @@
 	}
 
 	.section-intro {
-		color: var(--color-text-muted);
+		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
 		margin-bottom: var(--space-4);
 	}
 
 	h2 {
 		font-size: var(--font-size-xl);
-		font-weight: var(--font-weight-semibold);
-		color: var(--color-text);
+		font-weight: 600;
+		color: var(--ui-surface-foreground);
 		margin-bottom: var(--space-4);
 	}
 
 	.hint {
-		font-size: var(--font-size-sm);
-		color: var(--color-text-muted);
+		font-size: var(--ui-text-sm);
+		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
 		margin: var(--space-3) 0;
 	}
 
@@ -172,20 +172,20 @@
 
 	.principle {
 		padding: var(--space-4);
-		background: var(--color-bg-muted);
-		border-radius: var(--radius-md);
+		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
+		border-radius: calc(var(--ui-radius) * 0.75);
 	}
 
 	.principle h3 {
-		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-semibold);
-		color: var(--color-text);
+		font-size: var(--ui-text-sm);
+		font-weight: 600;
+		color: var(--ui-surface-foreground);
 		margin-bottom: var(--space-1);
 	}
 
 	.principle p {
-		font-size: var(--font-size-sm);
-		color: var(--color-text-muted);
+		font-size: var(--ui-text-sm);
+		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
 		line-height: var(--line-height-relaxed);
 	}
 
@@ -199,51 +199,51 @@
 		display: flex;
 		flex-direction: column;
 		padding: var(--space-4);
-		border-radius: var(--radius-md);
-		border: 1px solid var(--color-border);
+		border-radius: calc(var(--ui-radius) * 0.75);
+		border: 1px solid var(--ui-border);
 	}
 
 	.layer-label {
 		font-size: var(--font-size-xs);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		color: var(--color-text-muted);
+		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
 		margin-bottom: var(--space-1);
 	}
 
 	.layer-name {
-		font-weight: var(--font-weight-semibold);
-		font-size: var(--font-size-base);
-		color: var(--color-text);
+		font-weight: 600;
+		font-size: var(--ui-text-base);
+		color: var(--ui-surface-foreground);
 	}
 
 	.layer-desc {
-		font-size: var(--font-size-sm);
-		color: var(--color-text-muted);
+		font-size: var(--ui-text-sm);
+		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
 	}
 
 	.layer--user {
-		background: color-mix(in oklch, var(--color-primary) 8%, var(--color-bg));
-		border-color: color-mix(in oklch, var(--color-primary) 25%, var(--color-border));
+		background: color-mix(in oklch, var(--ui-primary) 8%, var(--ui-surface));
+		border-color: color-mix(in oklch, var(--ui-primary) 25%, var(--ui-border));
 	}
 
 	.layer--user .layer-name {
-		color: var(--color-primary);
+		color: var(--ui-primary);
 	}
 
 	.layer--auto {
-		background: var(--color-bg-elevated);
+		background: var(--ui-surface-raised);
 	}
 
 	.layer--base {
-		background: var(--color-bg-muted);
+		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
 	}
 
 	.layer-arrow {
 		width: 24px;
 		height: 16px;
 		align-self: center;
-		border-left: 1px solid var(--color-border);
+		border-left: 1px solid var(--ui-border);
 	}
 
 	.component-grid {
@@ -256,7 +256,7 @@
 		font-size: var(--font-size-xs);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		color: var(--color-text-muted);
+		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
 		margin-bottom: var(--space-2);
 	}
 
@@ -267,8 +267,8 @@
 	}
 
 	.component-group li {
-		font-size: var(--font-size-sm);
-		color: var(--color-text);
+		font-size: var(--ui-text-sm);
+		color: var(--ui-surface-foreground);
 		padding: var(--space-1) 0;
 	}
 

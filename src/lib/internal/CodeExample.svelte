@@ -67,8 +67,8 @@
 
 <style>
 	.code-example {
-		border: 1px solid var(--color-border);
-		border-radius: var(--radius-lg);
+		border: 1px solid var(--ui-border);
+		border-radius: var(--ui-radius);
 		overflow: hidden;
 	}
 
@@ -77,7 +77,7 @@
 		flex-wrap: wrap;
 		gap: var(--space-3);
 		padding: var(--space-6);
-		background: var(--color-bg);
+		background: var(--ui-surface);
 	}
 
 	.code-example__preview:global(.aligned) {
@@ -91,7 +91,7 @@
 
 	.code-example__code {
 		position: relative;
-		border-top: 1px solid var(--color-border);
+		border-top: 1px solid var(--ui-border);
 	}
 
 	.code-example__copy {
@@ -118,7 +118,7 @@
 	.code-example__content {
 		overflow-x: auto;
 		scrollbar-width: thin;
-		scrollbar-color: var(--color-border) transparent;
+		scrollbar-color: var(--ui-border) transparent;
 	}
 
 	.code-example__content::-webkit-scrollbar {
@@ -130,15 +130,15 @@
 	}
 
 	.code-example__content::-webkit-scrollbar-thumb {
-		background-color: var(--color-border);
+		background-color: var(--ui-border);
 		border-radius: 3px;
 	}
 
 	.code-example__content :global(pre) {
 		margin: 0;
 		padding: var(--space-4);
-		font-family: var(--font-mono);
-		font-size: var(--font-size-sm);
+		font-family: var(--ui-font-mono);
+		font-size: var(--ui-text-sm);
 		font-variant-ligatures: none;
 		line-height: 1.6;
 		border-radius: 0;

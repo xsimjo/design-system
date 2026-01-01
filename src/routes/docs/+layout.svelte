@@ -105,7 +105,7 @@
 <style>
 	.docs {
 		min-height: 100vh;
-		background-color: var(--page-bg);
+		background-color: var(--ui-surface);
 		display: flex;
 		flex-direction: column;
 	}
@@ -114,21 +114,21 @@
 		display: flex;
 		align-items: center;
 		gap: var(--space-2);
-		color: var(--header-text);
+		color: var(--ui-surface-foreground);
 		text-decoration: none;
 	}
 
 	.header-title {
 		font-size: var(--font-size-xl);
-		font-weight: var(--font-weight-bold);
-		color: var(--header-text);
+		font-weight: var(--ui-weight-bold);
+		color: var(--ui-surface-foreground);
 		letter-spacing: -0.02em;
 	}
 
 	.header-subtitle {
 		font-size: var(--font-size-xl);
-		font-weight: var(--font-weight-normal);
-		color: var(--color-primary);
+		font-weight: var(--ui-weight-normal);
+		color: var(--ui-primary);
 		letter-spacing: -0.02em;
 	}
 

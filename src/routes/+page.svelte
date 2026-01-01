@@ -27,8 +27,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-color: var(--page-bg);
-		padding: var(--spacing-lg);
+		background-color: var(--ui-surface);
+		padding: var(--space-6);
 	}
 
 	.hero {
@@ -38,21 +38,21 @@
 
 	h1 {
 		font-size: var(--font-size-4xl);
-		font-weight: var(--font-weight-bold);
-		color: var(--color-text);
-		margin: 0 0 var(--spacing-md) 0;
+		font-weight: var(--ui-weight-bold);
+		color: var(--ui-surface-foreground);
+		margin: 0 0 var(--space-4) 0;
 	}
 
 	.lead {
-		font-size: var(--font-size-lg);
-		color: var(--color-text-muted);
+		font-size: var(--ui-text-lg);
+		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
 		line-height: var(--line-height-relaxed);
-		margin: 0 0 var(--spacing-xl) 0;
+		margin: 0 0 var(--space-8) 0;
 	}
 
 	.actions {
 		display: flex;
-		gap: var(--spacing-sm);
+		gap: var(--space-2);
 		justify-content: center;
 	}
 </style>

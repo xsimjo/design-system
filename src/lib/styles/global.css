@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @import './primitives.css';
-@import './theme-base.css';
 @import './themes/light.css';
 @import './themes/dark.css';
 @import './themes/dev.css';
@@ -20,6 +19,6 @@ body {
 	margin: 0;
 	font-family: var(--ui-font-sans);
 	line-height: var(--ui-leading-normal);
-	background-color: var(--page-bg);
-	color: var(--page-text);
+	background-color: var(--ui-surface);
+	color: var(--ui-surface-foreground);
 }

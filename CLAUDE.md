@@ -8,17 +8,15 @@ DRY, KISS, clean code. No over-engineering. Simple > clever. No comments in code
 
 ## Styling
 
-Pure CSS only. Use four-layer token system:
+Pure CSS only. Use three-layer token system:
 
-**Primitives** (`primitives.css`): Raw values - color palettes, spacing scale. Not theme-aware.
+**Primitives** (`primitives.css`): Raw values - color palettes, spacing scale, font sizes, radii, shadows, z-index. Not theme-aware.
 
 **Semantic** (`themes/*.css`): 41 `--ui-*` tokens that define each theme's personality. Example: `--ui-primary`, `--ui-surface`, `--ui-radius`.
 
-**Component** (`components/{name}/{name}.css`): Component-specific tokens co-located with components. Example: `--button-border-radius`, `--spinner-track-color`.
+**Component** (`components/{name}/{name}.css`): Component-specific tokens co-located with components, derived from semantic tokens. Example: `--button-border-radius: var(--ui-radius)`.
 
-**Compatibility** (`theme-base.css`): Aliases for legacy token names. Example: `--color-primary`, `--font-sans`.
-
-**Components**: Only use their own component tokens (e.g., `--button-*`), never primitives or semantic tokens directly.
+**Components**: Use their own component tokens OR semantic `--ui-*` tokens directly. Never primitives.
 
 **Themes**: Switch via `data-theme` attribute on `<html>`. Define all 41 `--ui-*` tokens.
 
@@ -27,7 +25,6 @@ File structure:
 ```
 src/lib/styles/
 ├── primitives.css      # Raw values (not theme-aware)
-├── theme-base.css      # Compatibility aliases
 ├── themes/light.css    # 41 --ui-* tokens
 ├── themes/dark.css     # 41 --ui-* tokens
 ├── themes/dev.css      # 41 --ui-* tokens
@@ -35,10 +32,10 @@ src/lib/styles/
 
 src/lib/components/
 ├── button/
-│   ├── Button.svelte
+│   ├── Button.svelte   # Imports button.css
 │   └── button.css      # Component tokens
 ├── spinner/
-│   ├── Spinner.svelte
+│   ├── Spinner.svelte  # Imports spinner.css
 │   └── spinner.css     # Component tokens
 ```
 

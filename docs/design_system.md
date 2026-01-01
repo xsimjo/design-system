@@ -16,7 +16,7 @@
 ```
 +-------------------------------------------------------------+
 |  Layer 1: Primitives (primitives.css)                       |
-|  Raw values: color palettes, spacing scale (not theme-aware)|
+|  Raw values: color palettes, spacing, font sizes, radii     |
 +-------------------------------------------------------------+
                           |
                           v
@@ -30,15 +30,9 @@
 |  Layer 3: Component Tokens (components/{name}/{name}.css)   |
 |  --button-*, --spinner-* (co-located with components)       |
 +-------------------------------------------------------------+
-                          |
-                          v
-+-------------------------------------------------------------+
-|  Layer 4: Compatibility (theme-base.css)                    |
-|  --color-*, --font-*, --space-* (legacy aliases)            |
-+-------------------------------------------------------------+
 ```
 
-**Key Rule**: Components use their own component tokens (e.g., `--button-*`). Never primitives or semantic tokens directly.
+**Key Rule**: Components use their own component tokens (e.g., `--button-*`) or semantic tokens (e.g., `--ui-primary`). Never primitives directly.
 
 **Theme Switching**: Set `data-theme` attribute on `<html>`:
 
@@ -218,26 +212,11 @@ src/lib/components/
 - Clear ownership and organization
 - Components are self-contained
 
-#### Layer 4: Compatibility Aliases (`theme-base.css`)
-
-Provides aliases for legacy token names so existing code continues to work.
-
-```css
-[data-theme] {
-	--color-primary: var(--ui-primary);
-	--color-bg: var(--ui-surface);
-	--color-text: var(--ui-surface-foreground);
-	--font-sans: var(--ui-font-sans);
-	--radius-lg: var(--ui-radius);
-	/* ... more aliases */
-}
-```
-
 ### Component Architecture
 
-**Component Rule**: Components MUST use their own component tokens (e.g., `--button-color-primary` from `button.css`), never semantic tokens or primitives directly.
+**Component Rule**: Components use their own component tokens (e.g., `--button-color-primary` from `button.css`) or semantic tokens (e.g., `--ui-primary`) directly. Never use primitives.
 
-**Why**: This enables theme switching at runtime. Changing `data-theme` attribute updates all component appearances through the derived tokens.
+**Why**: This enables theme switching at runtime. Changing `data-theme` attribute updates all component appearances through the token system.
 
 ## Component Inventory
 
@@ -456,8 +435,6 @@ Creating a custom theme requires defining exactly 41 `--ui-*` tokens:
 - `src/lib/components/button/button.css`
 - `src/lib/components/spinner/spinner.css`
 - (add more as components are created)
-
-**Layer 4 - Compatibility**: `src/lib/styles/theme-base.css`
 
 ## Design Decisions
 

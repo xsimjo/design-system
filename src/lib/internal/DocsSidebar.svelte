@@ -37,11 +37,11 @@
 <style>
 	.sidebar {
 		width: 260px;
-		padding: var(--spacing-md);
+		padding: var(--space-4);
 		padding-left: var(--space-6);
 		display: flex;
 		flex-direction: column;
-		gap: var(--spacing-md);
+		gap: var(--space-4);
 	}
 
 	.group {
@@ -50,11 +50,11 @@
 	}
 
 	.group-header {
-		margin-bottom: var(--spacing-sm);
-		color: color-mix(in oklch, var(--color-text-muted) 70%, transparent);
-		font-size: var(--font-size-sm);
-		font-family: var(--font-sans);
-		font-weight: var(--font-weight-bold);
+		margin-bottom: var(--space-2);
+		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 60%);
+		font-size: var(--ui-text-sm);
+		font-family: var(--ui-font-sans);
+		font-weight: var(--ui-weight-bold);
 	}
 
 	.group-items {
@@ -63,23 +63,23 @@
 		padding: 0;
 		display: flex;
 		flex-direction: column;
-		gap: var(--spacing-xs);
+		gap: var(--space-1);
 	}
 
 	.nav-item {
 		display: flex;
 		align-items: center;
-		height: var(--field-height-sm);
+		height: 32px;
 		background: transparent;
-		color: var(--color-text);
-		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-medium);
-		font-family: var(--font-sans);
+		color: var(--ui-surface-foreground);
+		font-size: var(--ui-text-sm);
+		font-weight: var(--ui-weight-medium);
+		font-family: var(--ui-font-sans);
 		text-decoration: none;
-		transition: color var(--transition-fast);
+		transition: color var(--ui-duration) cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
 	.nav-item:hover {
-		color: var(--color-primary);
+		color: var(--ui-primary);
 	}
 </style>
