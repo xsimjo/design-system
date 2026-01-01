@@ -18,8 +18,8 @@
 
 body {
 	margin: 0;
-	font-family: var(--font-sans);
-	line-height: var(--line-height-normal);
+	font-family: var(--ui-font-sans);
+	line-height: var(--ui-leading-normal);
 	background-color: var(--page-bg);
 	color: var(--page-text);
 }

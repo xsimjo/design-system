@@ -1,9 +1,10 @@
 <script lang="ts">
+	import './spinner.css';
 	import type { HTMLAttributes } from 'svelte/elements';
 
 	interface Props extends HTMLAttributes<HTMLDivElement> {
 		size?: 'sm' | 'md' | 'lg';
-		variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'error';
+		variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
 		label?: string;
 	}
 
@@ -19,7 +20,7 @@
 	class:spinner--secondary={variant === 'secondary'}
 	class:spinner--success={variant === 'success'}
 	class:spinner--warning={variant === 'warning'}
-	class:spinner--error={variant === 'error'}
+	class:spinner--danger={variant === 'danger'}
 	role="status"
 	aria-live="polite"
 	aria-label={label ?? 'Loading'}
@@ -127,8 +128,8 @@
 		border-top-color: var(--spinner-color-warning);
 	}
 
-	.spinner--error .spinner__indicator {
-		border-top-color: var(--spinner-color-error);
+	.spinner--danger .spinner__indicator {
+		border-top-color: var(--spinner-color-danger);
 	}
 
 	@keyframes spinner-rotate {

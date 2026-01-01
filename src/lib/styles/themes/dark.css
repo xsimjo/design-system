@@ -1,59 +1,93 @@
 [data-theme='dark'] {
-	--font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-	--font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Monaco', 'Courier New', monospace;
+	/* ==========================================================================
+	   COLORS (7 pairs = 14 tokens)
+	   ========================================================================== */
+	--ui-primary: oklch(62% 0.19 260);
+	--ui-primary-foreground: oklch(100% 0 0);
 
-	--color-primary: oklch(62.31% 0.19 259.81);
-	--color-secondary: oklch(55.37% 0.03 259.39);
-	--color-success: oklch(64.82% 0.178 148.14);
-	--color-warning: oklch(70.42% 0.17 61.33);
-	--color-error: oklch(62.78% 0.194 24.58);
-	--color-info: oklch(65.49% 0.163 241.68);
-	--color-link: oklch(71.76% 0.149 249.25);
-	--color-link-hover: oklch(80.7% 0.11 252.72);
+	--ui-secondary: oklch(55% 0.03 260);
+	--ui-secondary-foreground: oklch(100% 0 0);
 
-	--color-bg: oklch(20.82% 0.031 265.75);
-	--color-bg-elevated: oklch(27.93% 0.028 264.53);
-	--color-bg-muted: oklch(36.2% 0.027 265.75);
-	--color-text: oklch(98.47% 0.003 247.86);
-	--color-text-muted: oklch(70.39% 0.028 256.79);
-	--color-border: oklch(44.6% 0.026 264.53);
+	--ui-success: oklch(65% 0.18 148);
+	--ui-success-foreground: oklch(100% 0 0);
 
-	--shadow-sm: 0 1px 2px 0 oklch(0% 0 0 / 0.3);
-	--shadow-md: 0 4px 6px -1px oklch(0% 0 0 / 0.4), 0 2px 4px -1px oklch(0% 0 0 / 0.3);
-	--shadow-lg: 0 10px 15px -3px oklch(0% 0 0 / 0.4), 0 4px 6px -2px oklch(0% 0 0 / 0.3);
-	--shadow-xl: 0 20px 25px -5px oklch(0% 0 0 / 0.5), 0 10px 10px -5px oklch(0% 0 0 / 0.3);
+	--ui-warning: oklch(70% 0.17 61);
+	--ui-warning-foreground: oklch(20% 0.05 61);
 
-	--radius-sm: 4px;
-	--radius-md: 6px;
-	--radius-lg: 8px;
+	--ui-danger: oklch(63% 0.19 25);
+	--ui-danger-foreground: oklch(100% 0 0);
 
-	--radius-button: var(--radius-md);
-	--radius-input: var(--radius-md);
-	--radius-card: var(--radius-lg);
-	--radius-badge: var(--radius-sm);
-	--radius-dialog: var(--radius-lg);
-	--radius-slider: var(--radius-full);
+	--ui-info: oklch(65% 0.16 242);
+	--ui-info-foreground: oklch(100% 0 0);
 
-	--field-height-sm: 32px;
-	--field-height-md: 40px;
-	--field-height-lg: 48px;
+	--ui-neutral: oklch(55% 0.03 260);
+	--ui-neutral-foreground: oklch(100% 0 0);
 
-	--border-width: 1px;
-	--focus-ring-width: 3px;
+	/* ==========================================================================
+	   SURFACES (3 pairs = 6 tokens)
+	   ========================================================================== */
+	--ui-surface: oklch(21% 0.03 266);
+	--ui-surface-foreground: oklch(98% 0.003 248);
 
-	--focus-ring-color: oklch(62.31% 0.19 259.81 / 0.4);
-	--color-hover-mix: white;
-	--color-hover-amount: 10%;
+	--ui-surface-raised: oklch(28% 0.028 265);
+	--ui-surface-raised-foreground: oklch(98% 0.003 248);
 
-	--backdrop-color: oklch(0% 0 0 / 0.7);
-	--backdrop-blur: 4px;
+	--ui-surface-overlay: oklch(32% 0.025 265);
+	--ui-surface-overlay-foreground: oklch(98% 0.003 248);
 
-	--transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-	--transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-	--transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+	/* ==========================================================================
+	   BACKDROP (2 tokens)
+	   ========================================================================== */
+	--ui-backdrop: oklch(0% 0 0 / 0.7);
+	--ui-backdrop-blur: 4px;
 
-	--spacing-xs: 4px;
-	--spacing-sm: 8px;
-	--spacing-md: 16px;
-	--spacing-lg: 24px;
+	/* ==========================================================================
+	   BORDER (2 tokens)
+	   ========================================================================== */
+	--ui-border: oklch(45% 0.026 265);
+	--ui-border-width: 1px;
+
+	/* ==========================================================================
+	   TYPOGRAPHY (10 tokens)
+	   ========================================================================== */
+	--ui-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	--ui-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Monaco', 'Courier New', monospace;
+
+	--ui-text-sm: 14px;
+	--ui-text-base: 16px;
+	--ui-text-lg: 18px;
+
+	--ui-leading-tight: 1.25;
+	--ui-leading-normal: 1.5;
+
+	--ui-weight-normal: 400;
+	--ui-weight-medium: 500;
+	--ui-weight-bold: 700;
+
+	/* ==========================================================================
+	   RADIUS (1 token)
+	   ========================================================================== */
+	--ui-radius: 6px;
+
+	/* ==========================================================================
+	   SHADOW (1 token)
+	   ========================================================================== */
+	--ui-shadow: 0 1px 2px 0 oklch(0% 0 0 / 0.3);
+
+	/* ==========================================================================
+	   FOCUS (2 tokens)
+	   ========================================================================== */
+	--ui-ring: oklch(62% 0.19 260 / 0.4);
+	--ui-ring-width: 3px;
+
+	/* ==========================================================================
+	   INTERACTION (2 tokens)
+	   ========================================================================== */
+	--ui-hover-mix: white;
+	--ui-hover-amount: 10%;
+
+	/* ==========================================================================
+	   MOTION (1 token)
+	   ========================================================================== */
+	--ui-duration: 150ms;
 }

@@ -1,11 +1,12 @@
 <script lang="ts">
+	import './button.css';
 	import type { Snippet } from 'svelte';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 	import Spinner from '$lib/components/spinner/Spinner.svelte';
 
 	interface Props extends HTMLButtonAttributes {
 		variant?: 'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash';
-		color?: 'primary' | 'secondary' | 'error';
+		color?: 'primary' | 'secondary' | 'success' | 'danger';
 		size?: 'sm' | 'md' | 'lg';
 		icon?: boolean;
 		active?: boolean;
@@ -52,6 +53,7 @@
 <style>
 	.button {
 		--_color: var(--button-color-primary);
+		--_foreground: var(--button-color-primary-foreground);
 
 		display: inline-flex;
 		align-items: center;
@@ -75,12 +77,19 @@
 
 	.button--primary {
 		--_color: var(--button-color-primary);
+		--_foreground: var(--button-color-primary-foreground);
 	}
 	.button--secondary {
 		--_color: var(--button-color-secondary);
+		--_foreground: var(--button-color-secondary-foreground);
 	}
-	.button--error {
-		--_color: var(--button-color-error);
+	.button--success {
+		--_color: var(--button-color-success);
+		--_foreground: var(--button-color-success-foreground);
+	}
+	.button--danger {
+		--_color: var(--button-color-danger);
+		--_foreground: var(--button-color-danger-foreground);
 	}
 
 	.button--sm {
@@ -124,7 +133,7 @@
 
 	.button--filled {
 		background-color: var(--_color);
-		color: oklch(100% 0 0);
+		color: var(--_foreground);
 		border-color: var(--_color);
 		box-shadow: var(--button-shadow);
 	}

@@ -81,14 +81,14 @@
 <Spinner size="md" variant="secondary" />
 <Spinner size="md" variant="success" />
 <Spinner size="md" variant="warning" />
-<Spinner size="md" variant="error" />`}
+<Spinner size="md" variant="danger" />`}
 					previewClass="aligned"
 				>
 					<Spinner size="md" variant="primary" />
 					<Spinner size="md" variant="secondary" />
 					<Spinner size="md" variant="success" />
 					<Spinner size="md" variant="warning" />
-					<Spinner size="md" variant="error" />
+					<Spinner size="md" variant="danger" />
 				</CodeExample>
 			</div>
 		</section>
@@ -116,7 +116,7 @@
 						</tr>
 						<tr>
 							<td><code>variant</code></td>
-							<td><code>'primary' | 'secondary' | 'success' | 'warning' | 'error'</code></td>
+							<td><code>'primary' | 'secondary' | 'success' | 'warning' | 'danger'</code></td>
 							<td><code>—</code></td>
 							<td>Color variant</td>
 						</tr>
@@ -217,9 +217,9 @@
 							<td>Warning variant color</td>
 						</tr>
 						<tr>
-							<td><code>--spinner-color-error</code></td>
-							<td>var(--color-error)</td>
-							<td>Error variant color</td>
+							<td><code>--spinner-color-danger</code></td>
+							<td>var(--ui-danger)</td>
+							<td>Danger variant color</td>
 						</tr>
 					</tbody>
 				</table>

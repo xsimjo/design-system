@@ -1,59 +1,93 @@
 [data-theme='light'] {
-	--font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-	--font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Monaco', 'Courier New', monospace;
+	/* ==========================================================================
+	   COLORS (7 pairs = 14 tokens)
+	   ========================================================================== */
+	--ui-primary: oklch(50% 0.3 268);
+	--ui-primary-foreground: oklch(100% 0 0);
 
-	--color-primary: oklch(50% 0.3 268);
-	--color-secondary: oklch(45% 0.24 250);
-	--color-success: oklch(64% 0.19 155);
-	--color-warning: oklch(75% 0.17 75);
-	--color-error: oklch(62% 0.22 25);
-	--color-info: oklch(55% 0.26 268);
-	--color-link: oklch(50% 0.3 268);
-	--color-link-hover: oklch(42% 0.28 268);
+	--ui-secondary: oklch(55% 0.03 260);
+	--ui-secondary-foreground: oklch(100% 0 0);
 
-	--color-bg: oklch(100% 0 0);
-	--color-bg-elevated: oklch(100% 0 0);
-	--color-bg-muted: oklch(96% 0.008 268);
-	--color-text: oklch(25% 0.012 268);
-	--color-text-muted: oklch(52% 0.02 268);
-	--color-border: oklch(90% 0.006 268);
+	--ui-success: oklch(64% 0.19 155);
+	--ui-success-foreground: oklch(100% 0 0);
 
-	--shadow-sm: 0 1px 3px 0 oklch(0% 0 0 / 0.08);
-	--shadow-md: 0 4px 8px -2px oklch(0% 0 0 / 0.12), 0 2px 4px -1px oklch(0% 0 0 / 0.08);
-	--shadow-lg: 0 12px 20px -4px oklch(0% 0 0 / 0.14), 0 4px 8px -2px oklch(0% 0 0 / 0.08);
-	--shadow-xl: 0 24px 32px -8px oklch(0% 0 0 / 0.16), 0 12px 16px -4px oklch(0% 0 0 / 0.1);
+	--ui-warning: oklch(75% 0.17 75);
+	--ui-warning-foreground: oklch(25% 0.05 75);
 
-	--radius-sm: 6px;
-	--radius-md: 8px;
-	--radius-lg: 12px;
+	--ui-danger: oklch(62% 0.22 25);
+	--ui-danger-foreground: oklch(100% 0 0);
 
-	--radius-button: var(--radius-md);
-	--radius-input: var(--radius-md);
-	--radius-card: var(--radius-lg);
-	--radius-badge: 12px;
-	--radius-dialog: var(--radius-lg);
-	--radius-slider: var(--radius-full);
+	--ui-info: oklch(55% 0.26 268);
+	--ui-info-foreground: oklch(100% 0 0);
 
-	--field-height-sm: 32px;
-	--field-height-md: 40px;
-	--field-height-lg: 48px;
+	--ui-neutral: oklch(55% 0.02 260);
+	--ui-neutral-foreground: oklch(100% 0 0);
 
-	--border-width: 1px;
-	--focus-ring-width: 3px;
+	/* ==========================================================================
+	   SURFACES (3 pairs = 6 tokens)
+	   ========================================================================== */
+	--ui-surface: oklch(100% 0 0);
+	--ui-surface-foreground: oklch(25% 0.012 268);
 
-	--focus-ring-color: oklch(50% 0.3 268 / 0.3);
-	--color-hover-mix: black;
-	--color-hover-amount: 10%;
+	--ui-surface-raised: oklch(100% 0 0);
+	--ui-surface-raised-foreground: oklch(25% 0.012 268);
 
-	--backdrop-color: oklch(0% 0 0 / 0.5);
-	--backdrop-blur: 4px;
+	--ui-surface-overlay: oklch(100% 0 0);
+	--ui-surface-overlay-foreground: oklch(25% 0.012 268);
 
-	--transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-	--transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-	--transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+	/* ==========================================================================
+	   BACKDROP (2 tokens)
+	   ========================================================================== */
+	--ui-backdrop: oklch(0% 0 0 / 0.5);
+	--ui-backdrop-blur: 4px;
 
-	--spacing-xs: 4px;
-	--spacing-sm: 8px;
-	--spacing-md: 16px;
-	--spacing-lg: 24px;
+	/* ==========================================================================
+	   BORDER (2 tokens)
+	   ========================================================================== */
+	--ui-border: oklch(90% 0.006 268);
+	--ui-border-width: 1px;
+
+	/* ==========================================================================
+	   TYPOGRAPHY (10 tokens)
+	   ========================================================================== */
+	--ui-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	--ui-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Monaco', 'Courier New', monospace;
+
+	--ui-text-sm: 14px;
+	--ui-text-base: 16px;
+	--ui-text-lg: 18px;
+
+	--ui-leading-tight: 1.25;
+	--ui-leading-normal: 1.5;
+
+	--ui-weight-normal: 400;
+	--ui-weight-medium: 500;
+	--ui-weight-bold: 700;
+
+	/* ==========================================================================
+	   RADIUS (1 token)
+	   ========================================================================== */
+	--ui-radius: 8px;
+
+	/* ==========================================================================
+	   SHADOW (1 token)
+	   ========================================================================== */
+	--ui-shadow: 0 1px 3px 0 oklch(0% 0 0 / 0.08);
+
+	/* ==========================================================================
+	   FOCUS (2 tokens)
+	   ========================================================================== */
+	--ui-ring: oklch(50% 0.3 268 / 0.3);
+	--ui-ring-width: 3px;
+
+	/* ==========================================================================
+	   INTERACTION (2 tokens)
+	   ========================================================================== */
+	--ui-hover-mix: black;
+	--ui-hover-amount: 10%;
+
+	/* ==========================================================================
+	   MOTION (1 token)
+	   ========================================================================== */
+	--ui-duration: 150ms;
 }

@@ -13,36 +13,36 @@ This design system uses a **three-layer token architecture** optimized for easy 
 **Why three layers?**
 
 1. **Primitives**: Raw design values (color palettes, spacing scale, typography). These rarely change.
-2. **Theme Base**: Computes ~400 component semantic tokens from ~45 simple theme variables. This is the "engine" that maps simple inputs to detailed outputs.
-3. **Themes**: Just ~45 variables users need to customize. Easy to create, understand, and maintain.
+2. **Semantic Layer (Themes)**: 41 `--ui-*` tokens that define a theme's personality. Easy to create and understand.
+3. **Component Layer**: Auto-computes component tokens and compatibility aliases from semantic tokens.
 
-**Why ~45 theme variables (not 400+)?** Users shouldn't need to understand every component token to create a theme. By exposing only the essential levers (colors, radii, shadows, spacing), we make theming accessible while the theme-base layer handles the complexity.
+**Why 41 semantic tokens (not 400+)?** Users shouldn't need to understand every component token to create a theme. By exposing only the essential levers, we make theming accessible while the component layer handles the complexity.
 
 **The three layers:**
 
-1. **Primitives** (`primitives.css`): Raw values. `--color-blue-500: #3b82f6`, `--space-4: 16px`, `--font-size-lg`
-2. **Theme Base** (`theme-base.css`): Computes semantic tokens. `--button-border-radius: var(--radius-button)`, `--card-shadow: var(--shadow-sm)`
-3. **Themes** (`themes/*.css`): Simple overrides. `--color-primary`, `--radius-button`, `--shadow-sm`
+1. **Primitives** (`primitives.css`): Raw values (not theme-aware)
+2. **Semantic** (`themes/*.css`): 41 `--ui-*` tokens that define the theme
+3. **Component** (`components/{name}/{name}.css`): Component-specific tokens (e.g., `--button-*`)
+4. **Compatibility** (`theme-base.css`): Aliases for legacy token names (`--color-*`, `--font-*`, etc.)
 
-**Theme variables (~45 total):**
+**Semantic Tokens (41 total):**
 
-| Category            | Variables                                                                                                                                                                                                                                                            |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Fonts (2)           | `--font-sans`, `--font-mono`                                                                                                                                                                                                                                         |
-| Colors (14)         | `--color-primary`, `--color-secondary`, `--color-success`, `--color-warning`, `--color-error`, `--color-info`, `--color-link`, `--color-link-hover`, `--color-bg`, `--color-bg-elevated`, `--color-bg-muted`, `--color-text`, `--color-text-muted`, `--color-border` |
-| Shadows (4)         | `--shadow-sm`, `--shadow-md`, `--shadow-lg`, `--shadow-xl`                                                                                                                                                                                                           |
-| Core Radii (3)      | `--radius-sm`, `--radius-md`, `--radius-lg`                                                                                                                                                                                                                          |
-| Component Radii (5) | `--radius-button`, `--radius-input`, `--radius-card`, `--radius-badge`, `--radius-dialog`                                                                                                                                                                            |
-| Field Sizes (3)     | `--field-height-sm`, `--field-height-md`, `--field-height-lg`                                                                                                                                                                                                        |
-| Borders (2)         | `--border-width`, `--focus-ring-width`                                                                                                                                                                                                                               |
-| Focus/Hover (3)     | `--focus-ring-color`, `--color-hover-mix`, `--color-hover-amount`                                                                                                                                                                                                    |
-| Backdrop (2)        | `--backdrop-color`, `--backdrop-blur`                                                                                                                                                                                                                                |
-| Transitions (3)     | `--transition-fast`, `--transition-base`, `--transition-slow`                                                                                                                                                                                                        |
-| Spacing (4)         | `--spacing-xs`, `--spacing-sm`, `--spacing-md`, `--spacing-lg`                                                                                                                                                                                                       |
+| Category        | Tokens                                                                                                               |
+| --------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Colors (14)     | `--ui-{primary,secondary,success,warning,danger,info,neutral}` + `-foreground` variants                              |
+| Surfaces (6)    | `--ui-surface`, `--ui-surface-raised`, `--ui-surface-overlay` + `-foreground` variants                               |
+| Backdrop (2)    | `--ui-backdrop`, `--ui-backdrop-blur`                                                                                |
+| Border (2)      | `--ui-border`, `--ui-border-width`                                                                                   |
+| Typography (10) | `--ui-font-{sans,mono}`, `--ui-text-{sm,base,lg}`, `--ui-leading-{tight,normal}`, `--ui-weight-{normal,medium,bold}` |
+| Radius (1)      | `--ui-radius`                                                                                                        |
+| Shadow (1)      | `--ui-shadow`                                                                                                        |
+| Focus (2)       | `--ui-ring`, `--ui-ring-width`                                                                                       |
+| Interaction (2) | `--ui-hover-mix`, `--ui-hover-amount`                                                                                |
+| Motion (1)      | `--ui-duration`                                                                                                      |
 
 **Theme switching:** `data-theme` attribute on `<html>`.
 
-**Component rule:** Components only use semantic tokens from theme-base, never primitives.
+**Component rule:** Components use semantic tokens from theme-base (e.g., `--button-*`), never primitives.
 
 ## Scope
 
@@ -52,8 +52,9 @@ This design system uses a **three-layer token architecture** optimized for easy 
 **Files you own:**
 
 - `src/lib/styles/primitives.css` - raw values
-- `src/lib/styles/theme-base.css` - semantic token computations
-- `src/lib/styles/themes/*.css` - theme variable overrides
+- `src/lib/styles/theme-base.css` - compatibility aliases
+- `src/lib/styles/themes/*.css` - semantic token definitions
+- `src/lib/components/{name}/{name}.css` - component-specific tokens
 - `docs/design_system.md` - high-level philosophy only
 
 **State:** You have no memory between sessions. Always read token files and `docs/design_system.md` first.
@@ -67,7 +68,7 @@ This design system uses a **three-layer token architecture** optimized for easy 
 ## Standards
 
 - WCAG 2.1 AA contrast (4.5:1 text, 3:1 large text)
-- Semantic naming: `--card-bg`, not `--color-blue-500`
+- Semantic naming: `--button-bg`, not `--color-blue-500`
 - Consistent scales: spacing (4px base), typography, radii
 - Keep `docs/design_system.md` concise (~200 lines)—detailed values live in CSS
 - Never write comments in CSS files—token names should be self-documenting

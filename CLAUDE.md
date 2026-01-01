@@ -8,27 +8,38 @@ DRY, KISS, clean code. No over-engineering. Simple > clever. No comments in code
 
 ## Styling
 
-Pure CSS only. Use three-layer token system:
+Pure CSS only. Use four-layer token system:
 
-**Primitives** (`primitives.css`): Raw values - full color palettes, spacing scale, typography, z-index. Example: `--color-blue-500`, `--space-4`, `--font-size-lg`.
+**Primitives** (`primitives.css`): Raw values - color palettes, spacing scale. Not theme-aware.
 
-**Theme Base** (`theme-base.css`): Computes all ~400 component semantic tokens from ~45 simple theme variables. Components use these tokens (e.g., `--button-border-radius`, `--card-shadow`).
+**Semantic** (`themes/*.css`): 41 `--ui-*` tokens that define each theme's personality. Example: `--ui-primary`, `--ui-surface`, `--ui-radius`.
 
-**Themes** (`themes/*.css`): Simple ~45 variables users override to customize appearance. Categories: fonts (2), colors (14), shadows (4), radii (8), field sizes (3), borders (2), focus/hover (3), backdrop (2), transitions (3), spacing (4).
+**Component** (`components/{name}/{name}.css`): Component-specific tokens co-located with components. Example: `--button-border-radius`, `--spinner-track-color`.
 
-**Components**: Only use semantic tokens from theme-base, never primitives directly.
+**Compatibility** (`theme-base.css`): Aliases for legacy token names. Example: `--color-primary`, `--font-sans`.
 
-**Themes**: Switch via `data-theme` attribute on `<html>`. Override only the ~45 simple variables you need.
+**Components**: Only use their own component tokens (e.g., `--button-*`), never primitives or semantic tokens directly.
+
+**Themes**: Switch via `data-theme` attribute on `<html>`. Define all 41 `--ui-*` tokens.
 
 File structure:
 
 ```
 src/lib/styles/
-├── primitives.css      # Raw values (colors, spacing, typography)
-├── theme-base.css      # Computes semantic tokens from theme variables
-├── themes/light.css    # ~45 simple variables
-├── themes/dark.css     # ~45 simple variables
+├── primitives.css      # Raw values (not theme-aware)
+├── theme-base.css      # Compatibility aliases
+├── themes/light.css    # 41 --ui-* tokens
+├── themes/dark.css     # 41 --ui-* tokens
+├── themes/dev.css      # 41 --ui-* tokens
 └── global.css          # Imports all, base styles
+
+src/lib/components/
+├── button/
+│   ├── Button.svelte
+│   └── button.css      # Component tokens
+├── spinner/
+│   ├── Spinner.svelte
+│   └── spinner.css     # Component tokens
 ```
 
 ## Svelte
@@ -37,7 +48,10 @@ Run all `.svelte` code through the Svelte MCP autofixer before finalizing.
 
 ## Component Organization
 
-Design system components go in `src/lib/components/{component-name}/`. Each component has its own folder containing related Svelte files. Example: `src/lib/components/button/Button.svelte`.
+Design system components go in `src/lib/components/{component-name}/`. Each component has its own folder containing:
+
+- `{ComponentName}.svelte` - Component implementation (imports its own CSS)
+- `{component-name}.css` - Component tokens (imported by the component)
 
 Always consult the UI design system architect agent for new design system components or updates.
 

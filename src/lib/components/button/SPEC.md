@@ -7,7 +7,7 @@ Primary action component with multiple variants, colors, and sizes.
 | Prop        | Type                                                             | Default     | Description                         |
 | ----------- | ---------------------------------------------------------------- | ----------- | ----------------------------------- |
 | `variant`   | `'filled' \| 'outline' \| 'ghost' \| 'soft' \| 'link' \| 'dash'` | `'filled'`  | Visual style                        |
-| `color`     | `'primary' \| 'secondary' \| 'error'`                            | `'primary'` | Color theme                         |
+| `color`     | `'primary' \| 'secondary' \| 'success' \| 'danger'`              | `'primary'` | Color theme                         |
 | `size`      | `'sm' \| 'md' \| 'lg'`                                           | `'md'`      | Button size                         |
 | `icon`      | `boolean`                                                        | `false`     | Square button for icon-only content |
 | `active`    | `boolean`                                                        | `false`     | Shows active/pressed state          |
@@ -47,7 +47,8 @@ Primary action component with multiple variants, colors, and sizes.
 ```svelte
 <Button color="primary">Submit</Button>
 <Button color="secondary">Cancel</Button>
-<Button color="error">Delete</Button>
+<Button color="success">Confirm</Button>
+<Button color="danger">Delete</Button>
 ```
 
 ### With Sizes
@@ -102,7 +103,7 @@ Primary action component with multiple variants, colors, and sizes.
 
 This component uses the following semantic tokens:
 
-- `--button-color-{primary|secondary|error}` - Color per theme
+- `--button-color-{primary|secondary|success|danger}` - Color per theme
 - `--button-secondary-text` - Text color for secondary variant
 - `--button-{sm|md|lg}-height` - Height per size
 - `--button-{sm|md|lg}-padding-x` - Horizontal padding per size
