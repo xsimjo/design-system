@@ -9,10 +9,18 @@
 	import SettingsIcon from '$lib/icons/SettingsIcon.svelte';
 
 	type Variant = 'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash';
-	type Color = 'primary' | 'secondary' | 'success' | 'danger';
+	type Color = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral';
 
 	const variants: Variant[] = ['filled', 'outline', 'ghost', 'soft', 'link', 'dash'];
-	const colors: Color[] = ['primary', 'secondary', 'success', 'danger'];
+	const colors: Color[] = [
+		'primary',
+		'secondary',
+		'success',
+		'danger',
+		'warning',
+		'info',
+		'neutral'
+	];
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -72,7 +80,10 @@
 					code={`<Button color="primary">Primary</Button>
 <Button color="secondary">Secondary</Button>
 <Button color="success">Success</Button>
-<Button color="danger">Danger</Button>`}
+<Button color="danger">Danger</Button>
+<Button color="warning">Warning</Button>
+<Button color="info">Info</Button>
+<Button color="neutral">Neutral</Button>`}
 				>
 					{#each colors as c (c)}
 						<Button color={c}>{c}</Button>
@@ -195,7 +206,11 @@
 						</tr>
 						<tr>
 							<td><code>color</code></td>
-							<td><code>'primary' | 'secondary' | 'success' | 'danger'</code></td>
+							<td
+								><code
+									>'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral'</code
+								></td
+							>
 							<td><code>'primary'</code></td>
 							<td>Color theme</td>
 						</tr>
@@ -266,12 +281,12 @@
 					<tbody>
 						<tr>
 							<td><code>--button-color-primary</code></td>
-							<td>var(--color-primary)</td>
+							<td>var(--ui-primary)</td>
 							<td>Primary button color</td>
 						</tr>
 						<tr>
 							<td><code>--button-color-secondary</code></td>
-							<td>var(--color-secondary)</td>
+							<td>var(--ui-secondary)</td>
 							<td>Secondary button color</td>
 						</tr>
 						<tr>
@@ -283,6 +298,21 @@
 							<td><code>--button-color-danger</code></td>
 							<td>var(--ui-danger)</td>
 							<td>Danger button color</td>
+						</tr>
+						<tr>
+							<td><code>--button-color-warning</code></td>
+							<td>var(--ui-warning)</td>
+							<td>Warning button color</td>
+						</tr>
+						<tr>
+							<td><code>--button-color-info</code></td>
+							<td>var(--ui-info)</td>
+							<td>Info button color</td>
+						</tr>
+						<tr>
+							<td><code>--button-color-neutral</code></td>
+							<td>var(--ui-neutral)</td>
+							<td>Neutral button color</td>
 						</tr>
 						<tr>
 							<td><code>--button-mix-hover-amount</code></td>

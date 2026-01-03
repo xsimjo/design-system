@@ -21,7 +21,7 @@
                           |
                           v
 +-------------------------------------------------------------+
-|  Layer 2: Semantic Tokens (themes/*.css) - 41 tokens        |
+|  Layer 2: Semantic Tokens (themes/*.css) - 42 tokens        |
 |  --ui-primary, --ui-surface, --ui-radius, --ui-duration     |
 +-------------------------------------------------------------+
                           |
@@ -48,11 +48,11 @@
 
 This design system follows a **three-layer token architecture** that separates raw values, semantic theme tokens, and auto-computed component tokens. This separation enables:
 
-- **Simplicity**: Theme creators only configure 41 semantic tokens instead of hundreds
+- **Simplicity**: Theme creators only configure 42 semantic tokens instead of hundreds
 - **Maintainability**: Component tokens auto-compute from semantic tokens
-- **Themability**: Swap themes by defining 41 `--ui-*` variables
+- **Themability**: Swap themes by defining 42 `--ui-*` variables
 - **Consistency**: Components use derived tokens, ensuring visual coherence
-- **Scalability**: Add new themes by copying and modifying 41 tokens
+- **Scalability**: Add new themes by copying and modifying 42 tokens
 
 ### Core Principles
 
@@ -80,7 +80,7 @@ Raw, context-free values that form the foundation. These are NOT theme-aware.
 
 #### Layer 2: Semantic Tokens (Theme Files)
 
-Each theme defines exactly **41 semantic tokens** using the `--ui-*` prefix. These tokens define a theme's personality.
+Each theme defines exactly **42 semantic tokens** using the `--ui-*` prefix. These tokens define a theme's personality.
 
 **Theme Files**:
 
@@ -152,6 +152,9 @@ Each theme defines exactly **41 semantic tokens** using the `--ui-*` prefix. The
 
 	/* MOTION (1 token) */
 	--ui-duration: ;
+
+	/* SPACING (1 token) */
+	--ui-base-spacing: ;
 }
 ```
 
@@ -169,6 +172,7 @@ Each theme defines exactly **41 semantic tokens** using the `--ui-*` prefix. The
 | Focus       | 2     | Focus ring color and width                                        |
 | Interaction | 2     | Hover color-mix target and amount                                 |
 | Motion      | 1     | Base transition duration                                          |
+| Spacing     | 1     | Base spacing unit for component padding/gaps                      |
 
 #### Layer 3: Component Tokens (`components/{name}/{name}.css`)
 
@@ -226,7 +230,7 @@ A foundational interactive element supporting multiple variants, sizes, and stat
 
 **Variants**: filled, outline, ghost, soft, link, dash
 
-**Colors**: primary, secondary, success, danger
+**Colors**: primary, secondary, success, danger, warning, info, neutral
 
 **Sizes**: sm, md, lg
 
@@ -328,10 +332,10 @@ All color combinations must meet **WCAG 2.1 AA** standards:
 
 ### Creating New Themes
 
-Creating a custom theme requires defining exactly 41 `--ui-*` tokens:
+Creating a custom theme requires defining exactly 42 `--ui-*` tokens:
 
 1. Create new theme file: `themes/{theme-name}.css`
-2. Define all 41 semantic tokens
+2. Define all 42 semantic tokens
 3. The component layer automatically computes all derived tokens
 
 **Example - Creating a "Purple" Theme**:
@@ -398,6 +402,9 @@ Creating a custom theme requires defining exactly 41 `--ui-*` tokens:
 
 	/* Motion */
 	--ui-duration: 150ms;
+
+	/* Spacing */
+	--ui-base-spacing: 8px;
 }
 ```
 

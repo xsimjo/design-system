@@ -6,7 +6,7 @@
 
 	interface Props extends HTMLButtonAttributes {
 		variant?: 'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash';
-		color?: 'primary' | 'secondary' | 'success' | 'danger';
+		color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral';
 		size?: 'sm' | 'md' | 'lg';
 		icon?: boolean;
 		active?: boolean;
@@ -90,6 +90,18 @@
 	.button--danger {
 		--_color: var(--button-color-danger);
 		--_foreground: var(--button-color-danger-foreground);
+	}
+	.button--warning {
+		--_color: var(--button-color-warning);
+		--_foreground: var(--button-color-warning-foreground);
+	}
+	.button--info {
+		--_color: var(--button-color-info);
+		--_foreground: var(--button-color-info-foreground);
+	}
+	.button--neutral {
+		--_color: var(--button-color-neutral);
+		--_foreground: var(--button-color-neutral-foreground);
 	}
 
 	.button--sm {

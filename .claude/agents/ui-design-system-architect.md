@@ -13,18 +13,18 @@ This design system uses a **three-layer token architecture** optimized for easy 
 **Why three layers?**
 
 1. **Primitives**: Raw design values (color palettes, spacing scale, typography). These rarely change.
-2. **Semantic Layer (Themes)**: 41 `--ui-*` tokens that define a theme's personality. Easy to create and understand.
+2. **Semantic Layer (Themes)**: 42 `--ui-*` tokens that define a theme's personality. Easy to create and understand.
 3. **Component Layer**: Auto-computes component tokens and compatibility aliases from semantic tokens.
 
-**Why 41 semantic tokens (not 400+)?** Users shouldn't need to understand every component token to create a theme. By exposing only the essential levers, we make theming accessible while the component layer handles the complexity.
+**Why 42 semantic tokens (not 400+)?** Users shouldn't need to understand every component token to create a theme. By exposing only the essential levers, we make theming accessible while the component layer handles the complexity.
 
 **The three layers:**
 
 1. **Primitives** (`primitives.css`): Raw values (not theme-aware)
-2. **Semantic** (`themes/*.css`): 41 `--ui-*` tokens that define the theme
+2. **Semantic** (`themes/*.css`): 42 `--ui-*` tokens that define the theme
 3. **Component** (`components/{name}/{name}.css`): Component-specific tokens (e.g., `--button-*`)
 
-**Semantic Tokens (41 total):**
+**Semantic Tokens (42 total):**
 
 | Category        | Tokens                                                                                                               |
 | --------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -38,6 +38,7 @@ This design system uses a **three-layer token architecture** optimized for easy 
 | Focus (2)       | `--ui-ring`, `--ui-ring-width`                                                                                       |
 | Interaction (2) | `--ui-hover-mix`, `--ui-hover-amount`                                                                                |
 | Motion (1)      | `--ui-duration`                                                                                                      |
+| Spacing (1)     | `--ui-base-spacing`                                                                                                  |
 
 **Theme switching:** `data-theme` attribute on `<html>`.
 

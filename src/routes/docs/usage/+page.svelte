@@ -60,12 +60,16 @@
 					<tr>
 						<td><code>color</code></td>
 						<td>Button, Badge</td>
-						<td><code>'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info'</code></td>
+						<td
+							><code
+								>'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral'</code
+							></td
+						>
 					</tr>
 					<tr>
 						<td><code>variant</code></td>
 						<td>Button</td>
-						<td><code>'filled' | 'outline' | 'ghost' | 'soft' | 'link'</code></td>
+						<td><code>'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash'</code></td>
 					</tr>
 				</tbody>
 			</table>
