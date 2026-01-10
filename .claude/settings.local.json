@@ -52,7 +52,8 @@
 			"Bash(ls:*)",
 			"Bash(npm run lint:*)",
 			"WebFetch(domain:lucide.dev)",
-			"WebFetch(domain:raw.githubusercontent.com)"
+			"WebFetch(domain:raw.githubusercontent.com)",
+			"Bash(cat:*)"
 		]
 	},
 	"enableAllProjectMcpServers": true,

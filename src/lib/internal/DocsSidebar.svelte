@@ -76,7 +76,7 @@
 		font-weight: var(--ui-weight-medium);
 		font-family: var(--ui-font-sans);
 		text-decoration: none;
-		transition: color var(--ui-duration) cubic-bezier(0.4, 0, 0.2, 1);
+		transition: color var(--ui-base-duration) cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
 	.nav-item:hover {

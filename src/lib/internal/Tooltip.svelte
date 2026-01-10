@@ -112,7 +112,7 @@
 		padding: var(--space-1) var(--space-2);
 		background-color: var(--ui-surface-foreground);
 		color: var(--ui-surface);
-		border-radius: calc(var(--ui-radius) * 0.5);
+		border-radius: calc(var(--ui-base-radius) * 0.5);
 		box-shadow: var(--shadow-lg);
 		font-family: var(--ui-font-sans);
 		font-size: var(--ui-text-sm);
@@ -120,7 +120,7 @@
 		line-height: var(--ui-leading-tight);
 		pointer-events: none;
 		opacity: 0;
-		transition: opacity var(--ui-duration) cubic-bezier(0.4, 0, 0.2, 1);
+		transition: opacity var(--ui-base-duration) cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
 	.tooltip.visible {

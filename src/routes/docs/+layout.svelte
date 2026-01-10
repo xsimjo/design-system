@@ -38,6 +38,7 @@
 			title: 'Components',
 			items: [
 				{ label: 'Button', href: '/docs/button' },
+				{ label: 'Dropdown', href: '/docs/dropdown' },
 				{ label: 'Spinner', href: '/docs/spinner' }
 			]
 		}

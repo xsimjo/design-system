@@ -123,7 +123,7 @@
 		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
 		text-decoration: none;
 		border-left: 2px solid transparent;
-		transition: all var(--ui-duration);
+		transition: all var(--ui-base-duration);
 	}
 
 	.toc-nav a:hover {

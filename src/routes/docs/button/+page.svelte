@@ -515,7 +515,7 @@
 		gap: var(--space-3);
 		padding: var(--space-6);
 		background: color-mix(in oklch, var(--ui-neutral), transparent 92%);
-		border-radius: var(--ui-radius);
+		border-radius: var(--ui-base-radius);
 		overflow-x: auto;
 	}
 
@@ -564,7 +564,7 @@
 		font-size: var(--font-size-xs);
 		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
 		padding: 2px 6px;
-		border-radius: calc(var(--ui-radius) * 0.5);
+		border-radius: calc(var(--ui-base-radius) * 0.5);
 	}
 
 	@media (max-width: 1024px) {

@@ -1,0 +1,35 @@
+[data-theme] {
+	--dropdown-surface: var(--ui-surface-overlay);
+	--dropdown-surface-foreground: var(--ui-surface-overlay-foreground);
+
+	--dropdown-border: var(--ui-border);
+	--dropdown-border-width: var(--ui-border-width);
+	--dropdown-border-radius: var(--ui-base-radius);
+	--dropdown-shadow: var(--shadow-lg);
+
+	--dropdown-padding: calc(var(--ui-base-spacing) * 0.5);
+	--dropdown-min-width: 180px;
+	--dropdown-max-height: 320px;
+
+	--dropdown-item-height: calc(var(--ui-base-spacing) * 4.5);
+	--dropdown-item-padding-x: calc(var(--ui-base-spacing) * 1.5);
+	--dropdown-item-padding-y: calc(var(--ui-base-spacing) * 0.75);
+	--dropdown-item-gap: calc(var(--ui-base-spacing) * 1);
+	--dropdown-item-font-size: var(--ui-text-sm);
+	--dropdown-item-font-weight: var(--ui-weight-normal);
+	--dropdown-item-border-radius: calc(var(--ui-base-radius) * 0.5);
+
+	--dropdown-item-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 90%);
+	--dropdown-item-active-bg: color-mix(in oklch, var(--ui-neutral), transparent 85%);
+	--dropdown-item-selected-bg: color-mix(in oklch, var(--ui-primary), transparent 90%);
+	--dropdown-item-selected-color: var(--ui-primary);
+	--dropdown-item-disabled-opacity: 0.5;
+
+	--dropdown-item-destructive-color: var(--ui-danger);
+	--dropdown-item-destructive-hover-bg: color-mix(in oklch, var(--ui-danger), transparent 92%);
+
+	--dropdown-divider-color: var(--ui-border);
+	--dropdown-divider-margin: calc(var(--ui-base-spacing) * 0.5);
+
+	--dropdown-transition: var(--ui-base-duration) cubic-bezier(0.4, 0, 0.2, 1);
+}

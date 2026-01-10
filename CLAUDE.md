@@ -12,9 +12,9 @@ Pure CSS only. Use three-layer token system:
 
 **Primitives** (`primitives.css`): Raw values - color palettes, spacing scale, font sizes, radii, shadows, z-index. Not theme-aware.
 
-**Semantic** (`themes/*.css`): 41 `--ui-*` tokens that define each theme's personality. Example: `--ui-primary`, `--ui-surface`, `--ui-radius`.
+**Semantic** (`themes/*.css`): 41 `--ui-*` tokens that define each theme's personality. Example: `--ui-primary`, `--ui-surface`, `--ui-base-radius`.
 
-**Component** (`components/{name}/{name}.css`): Component-specific tokens co-located with components, derived from semantic tokens. Example: `--button-border-radius: var(--ui-radius)`.
+**Component** (`components/{name}/{name}.css`): Component-specific tokens co-located with components, derived from semantic tokens. Example: `--button-border-radius: var(--ui-base-radius)`.
 
 **Components**: Use their own component tokens OR semantic `--ui-*` tokens directly. Never primitives.
 

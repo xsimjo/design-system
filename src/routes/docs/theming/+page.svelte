@@ -312,7 +312,7 @@ document.documentElement.dataset.theme = 'dark';`}
 	.section-intro code {
 		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
 		padding: 2px 6px;
-		border-radius: calc(var(--ui-radius) * 0.5);
+		border-radius: calc(var(--ui-base-radius) * 0.5);
 		font-family: var(--ui-font-mono);
 		font-size: 0.9em;
 	}
@@ -349,7 +349,7 @@ document.documentElement.dataset.theme = 'dark';`}
 	.hint code {
 		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
 		padding: 2px 6px;
-		border-radius: calc(var(--ui-radius) * 0.5);
+		border-radius: calc(var(--ui-base-radius) * 0.5);
 		font-family: var(--ui-font-mono);
 		font-size: 0.85em;
 	}
@@ -366,7 +366,7 @@ document.documentElement.dataset.theme = 'dark';`}
 		display: flex;
 		flex-direction: column;
 		padding: var(--space-4);
-		border-radius: calc(var(--ui-radius) * 0.75);
+		border-radius: calc(var(--ui-base-radius) * 0.75);
 		border: 1px solid var(--ui-border);
 		flex: 1;
 		min-width: 200px;
@@ -425,7 +425,7 @@ document.documentElement.dataset.theme = 'dark';`}
 		gap: var(--space-4);
 		padding: var(--space-3);
 		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		border-radius: calc(var(--ui-radius) * 0.75);
+		border-radius: calc(var(--ui-base-radius) * 0.75);
 	}
 
 	.theme-name {
@@ -478,7 +478,7 @@ document.documentElement.dataset.theme = 'dark';`}
 	.tips-list code {
 		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
 		padding: 2px 6px;
-		border-radius: calc(var(--ui-radius) * 0.5);
+		border-radius: calc(var(--ui-base-radius) * 0.5);
 		font-family: var(--ui-font-mono);
 		font-size: 0.85em;
 	}

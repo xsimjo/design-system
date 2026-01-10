@@ -173,7 +173,7 @@
 	.principle {
 		padding: var(--space-4);
 		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		border-radius: calc(var(--ui-radius) * 0.75);
+		border-radius: calc(var(--ui-base-radius) * 0.75);
 	}
 
 	.principle h3 {
@@ -199,7 +199,7 @@
 		display: flex;
 		flex-direction: column;
 		padding: var(--space-4);
-		border-radius: calc(var(--ui-radius) * 0.75);
+		border-radius: calc(var(--ui-base-radius) * 0.75);
 		border: 1px solid var(--ui-border);
 	}
 

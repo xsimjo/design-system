@@ -68,7 +68,7 @@
 <style>
 	.code-example {
 		border: 1px solid var(--ui-border);
-		border-radius: var(--ui-radius);
+		border-radius: var(--ui-base-radius);
 		overflow: hidden;
 	}
 

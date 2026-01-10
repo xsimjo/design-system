@@ -22,7 +22,7 @@
                           v
 +-------------------------------------------------------------+
 |  Layer 2: Semantic Tokens (themes/*.css) - 42 tokens        |
-|  --ui-primary, --ui-surface, --ui-radius, --ui-duration     |
+|  --ui-primary, --ui-surface, --ui-base-radius, --ui-base-duration     |
 +-------------------------------------------------------------+
                           |
                           v
@@ -137,10 +137,10 @@ Each theme defines exactly **42 semantic tokens** using the `--ui-*` prefix. The
 	--ui-weight-bold: ;
 
 	/* RADIUS (1 token) */
-	--ui-radius: ;
+	--ui-base-radius: ;
 
-	/* SHADOW (1 token) */
-	--ui-shadow: ;
+	/* DEPTH (1 token) */
+	--ui-depth: ;
 
 	/* FOCUS (2 tokens) */
 	--ui-ring: ;
@@ -151,7 +151,7 @@ Each theme defines exactly **42 semantic tokens** using the `--ui-*` prefix. The
 	--ui-hover-amount: ;
 
 	/* MOTION (1 token) */
-	--ui-duration: ;
+	--ui-base-duration: ;
 
 	/* SPACING (1 token) */
 	--ui-base-spacing: ;
@@ -168,7 +168,7 @@ Each theme defines exactly **42 semantic tokens** using the `--ui-*` prefix. The
 | Border      | 2     | Border color and width                                            |
 | Typography  | 10    | Font families, text sizes, line heights, font weights             |
 | Radius      | 1     | Base border radius (components derive sm/md/lg from this)         |
-| Shadow      | 1     | Base shadow (components can derive variations)                    |
+| Depth       | 1     | Base depth/shadow (components can derive variations)              |
 | Focus       | 2     | Focus ring color and width                                        |
 | Interaction | 2     | Hover color-mix target and amount                                 |
 | Motion      | 1     | Base transition duration                                          |
@@ -204,7 +204,7 @@ src/lib/components/
 /* button.css */
 [data-theme] {
 	--button-color-primary: var(--ui-primary);
-	--button-border-radius: var(--ui-radius);
+	--button-border-radius: var(--ui-base-radius);
 	/* ... */
 }
 ```
@@ -387,10 +387,10 @@ Creating a custom theme requires defining exactly 42 `--ui-*` tokens:
 	--ui-weight-bold: 700;
 
 	/* Radius */
-	--ui-radius: 8px;
+	--ui-base-radius: 8px;
 
-	/* Shadow */
-	--ui-shadow: 0 1px 3px 0 oklch(0% 0 0 / 0.08);
+	/* Depth */
+	--ui-depth: 0 1px 3px 0 oklch(0% 0 0 / 0.08);
 
 	/* Focus */
 	--ui-ring: oklch(55% 0.25 300 / 0.3);
@@ -401,7 +401,7 @@ Creating a custom theme requires defining exactly 42 `--ui-*` tokens:
 	--ui-hover-amount: 10%;
 
 	/* Motion */
-	--ui-duration: 150ms;
+	--ui-base-duration: 150ms;
 
 	/* Spacing */
 	--ui-base-spacing: 8px;

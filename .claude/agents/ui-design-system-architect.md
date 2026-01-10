@@ -33,11 +33,11 @@ This design system uses a **three-layer token architecture** optimized for easy 
 | Backdrop (2)    | `--ui-backdrop`, `--ui-backdrop-blur`                                                                                |
 | Border (2)      | `--ui-border`, `--ui-border-width`                                                                                   |
 | Typography (10) | `--ui-font-{sans,mono}`, `--ui-text-{sm,base,lg}`, `--ui-leading-{tight,normal}`, `--ui-weight-{normal,medium,bold}` |
-| Radius (1)      | `--ui-radius`                                                                                                        |
-| Shadow (1)      | `--ui-shadow`                                                                                                        |
+| Radius (1)      | `--ui-base-radius`                                                                                                   |
+| Depth (1)       | `--ui-depth`                                                                                                         |
 | Focus (2)       | `--ui-ring`, `--ui-ring-width`                                                                                       |
 | Interaction (2) | `--ui-hover-mix`, `--ui-hover-amount`                                                                                |
-| Motion (1)      | `--ui-duration`                                                                                                      |
+| Motion (1)      | `--ui-base-duration`                                                                                                 |
 | Spacing (1)     | `--ui-base-spacing`                                                                                                  |
 
 **Theme switching:** `data-theme` attribute on `<html>`.

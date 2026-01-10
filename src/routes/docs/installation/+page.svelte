@@ -155,7 +155,7 @@ import '@xsimjo/design-system/styles';`}
 	.section-intro code {
 		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
 		padding: 2px 6px;
-		border-radius: calc(var(--ui-radius) * 0.5);
+		border-radius: calc(var(--ui-base-radius) * 0.5);
 		font-family: var(--ui-font-mono);
 		font-size: 0.9em;
 	}
@@ -202,7 +202,7 @@ import '@xsimjo/design-system/styles';`}
 	.hint code {
 		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
 		padding: 2px 6px;
-		border-radius: calc(var(--ui-radius) * 0.5);
+		border-radius: calc(var(--ui-base-radius) * 0.5);
 		font-family: var(--ui-font-mono);
 		font-size: 0.85em;
 	}
