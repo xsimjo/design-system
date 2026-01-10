@@ -3,10 +3,9 @@
 	import Button from '$lib/components/button/Button.svelte';
 	import Header from '$lib/internal/Header.svelte';
 	import Tooltip from '$lib/internal/Tooltip.svelte';
+	import ThemeSwitcher from '$lib/internal/ThemeSwitcher.svelte';
 	import DocsSidebar from '$lib/internal/DocsSidebar.svelte';
 	import GithubIcon from '$lib/icons/GithubIcon.svelte';
-	import MoonIcon from '$lib/icons/MoonIcon.svelte';
-	import SunIcon from '$lib/icons/SunIcon.svelte';
 	import PaletteIcon from '$lib/icons/PaletteIcon.svelte';
 
 	interface Props {
@@ -14,15 +13,6 @@
 	}
 
 	let { children }: Props = $props();
-
-	type Theme = 'light' | 'dark';
-
-	let theme = $state<Theme>('light');
-
-	function toggleTheme() {
-		theme = theme === 'light' ? 'dark' : 'light';
-		document.documentElement.setAttribute('data-theme', theme);
-	}
 
 	const navGroups = [
 		{
@@ -76,18 +66,7 @@
 					<GithubIcon size={18} />
 				</Button>
 			</Tooltip>
-			<Tooltip
-				text={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-				position="bottom"
-			>
-				<Button variant="ghost" color="secondary" size="sm" icon onclick={toggleTheme}>
-					{#if theme === 'light'}
-						<MoonIcon size={18} />
-					{:else}
-						<SunIcon size={18} />
-					{/if}
-				</Button>
-			</Tooltip>
+			<ThemeSwitcher />
 			<Button variant="outline" color="secondary" size="sm">v0.1.0</Button>
 		{/snippet}
 	</Header>
