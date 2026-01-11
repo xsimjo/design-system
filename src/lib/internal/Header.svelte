@@ -40,9 +40,8 @@
 		top: 0;
 		width: 100%;
 		height: var(--header-height);
-		background-color: var(--ui-surface-raised);
+		background-color: var(--ui-surface);
 		z-index: var(--z-sticky);
-		transition: all var(--ui-base-duration) cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
 	.header-inner {

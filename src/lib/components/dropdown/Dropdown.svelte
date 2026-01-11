@@ -1,6 +1,6 @@
 <script lang="ts">
 	import './dropdown.css';
-	import { computePosition, flip, shift, offset, size } from '@floating-ui/dom';
+	import { computePosition, flip, shift, offset, size, autoUpdate } from '@floating-ui/dom';
 	import type { Placement, Middleware } from '@floating-ui/dom';
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
@@ -82,7 +82,8 @@
 
 	$effect(() => {
 		if (open && menuEl && triggerEl) {
-			updatePosition();
+			const cleanup = autoUpdate(triggerEl, menuEl, updatePosition);
+			return cleanup;
 		}
 	});
 
