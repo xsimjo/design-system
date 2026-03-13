@@ -5,7 +5,7 @@
 	--ui-primary: oklch(62% 0.19 260);
 	--ui-primary-foreground: oklch(100% 0 0);
 
-	--ui-secondary: oklch(55% 0.03 260);
+	--ui-secondary: oklch(52% 0.04 255);
 	--ui-secondary-foreground: oklch(100% 0 0);
 
 	--ui-success: oklch(65% 0.18 148);
@@ -17,10 +17,10 @@
 	--ui-danger: oklch(63% 0.19 25);
 	--ui-danger-foreground: oklch(100% 0 0);
 
-	--ui-info: oklch(65% 0.16 242);
+	--ui-info: oklch(66% 0.18 220);
 	--ui-info-foreground: oklch(100% 0 0);
 
-	--ui-neutral: oklch(55% 0.03 260);
+	--ui-neutral: oklch(54% 0.01 270);
 	--ui-neutral-foreground: oklch(100% 0 0);
 
 	/* ==========================================================================
@@ -32,7 +32,7 @@
 	--ui-surface-raised: oklch(28% 0.028 265);
 	--ui-surface-raised-foreground: oklch(98% 0.003 248);
 
-	--ui-surface-overlay: oklch(32% 0.025 265);
+	--ui-surface-overlay: oklch(35% 0.022 265);
 	--ui-surface-overlay-foreground: oklch(98% 0.003 248);
 
 	/* ==========================================================================
@@ -84,7 +84,7 @@
 	   INTERACTION (2 tokens)
 	   ========================================================================== */
 	--ui-hover-mix: white;
-	--ui-hover-amount: 10%;
+	--ui-hover-amount: 12%;
 
 	/* ==========================================================================
 	   MOTION (1 token)

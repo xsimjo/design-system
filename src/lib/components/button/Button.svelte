@@ -401,7 +401,7 @@
 	}
 
 	.button--active {
-		box-shadow: 0 0 0 var(--button-active-ring-width) currentColor;
+		box-shadow: 0 0 0 var(--button-active-ring-width) var(--_color);
 	}
 
 	.button--full-width {
