@@ -51,6 +51,7 @@ Look for:
 - Logic that forces a fork instead of a prop addition
 
 For each component, check:
+
 1. Does the props interface extend the relevant `HTML*Attributes` type?
 2. Is `...restProps` spread onto the root element?
 3. Are there hard-coded values that consumers cannot override?
@@ -66,6 +67,7 @@ For each component, check:
 Components wrapping native HTML elements must behave like those elements. A `<Button>` must be droppable anywhere a `<button>` is used without breaking the interface.
 
 Check:
+
 - Components wrapping `<button>`, `<a>`, `<input>`, etc. forward all relevant ARIA and HTML attributes via `...restProps`
 - No native behaviors are silently swallowed (e.g. `on:click` blocked, `disabled` not forwarded, `type` ignored)
 - Event delegation is not used in ways that break standard event bubbling expectations
@@ -93,18 +95,19 @@ For each component interface, count props and identify mutually exclusive groups
 
 ## Check 5 — Dependency Inversion (D in SOLID)
 
-Components must depend on abstractions (design tokens, `--ui-*` semantic layer) not on concrete values.
+Components must depend on abstractions, not concrete implementations — at both the code and import level.
 
-This overlaps with the token layer rule in CLAUDE.md. Check all component `.css` files:
+> **Note**: CSS-level DI (raw values, primitive token leaks) is fully covered by `/design-audit Check 1`. Do not re-run that check here. This check covers code-level coupling only.
 
-- No raw hex/rgb/hsl values — must go through component tokens or `--ui-*`
-- No raw pixel values for spacing — must use `--ui-*` spacing tokens
-- No direct primitive references (`--color-*`, `--space-*`, etc.)
+Check each `.svelte` file for:
 
-- All values via token abstractions → PASS
-- Any raw value or primitive reference → FAIL (file, line, value)
+1. **No cross-component internal imports** — a component must not import from inside another component's folder (e.g. `import { x } from '../button/button-internals'`). Components are black boxes; only the public API exposed via props/snippets is a valid dependency.
+2. **No hardcoded concrete values in logic** — props that control appearance or behavior should be typed abstractions (e.g. `'sm' | 'md' | 'lg'`), not magic numbers or strings that bypass the type system.
+3. **No direct DOM coupling** — components should not reach into child DOM nodes via `bind:this` on elements they don't own, or rely on sibling component internals.
 
-This check is identical to the primitive-leak check in `pre-release` — if that check already passed, this is PASS with a note.
+- No violations → PASS
+- Cross-component internal import → FAIL (list the import, explain the coupling risk)
+- Hardcoded magic value in logic → WARN
 
 ---
 
@@ -113,14 +116,17 @@ This check is identical to the primitive-leak check in `pre-release` — if that
 Identify duplication across the codebase:
 
 **CSS duplication:**
+
 - Same CSS rule block (3+ lines) repeated across two or more component `.css` files → extract to a shared utility or a `--ui-*` token
 - Same `@keyframes` defined in multiple files
 
 **Svelte template duplication:**
+
 - Identical template fragments (3+ nodes) copy-pasted across components → extract to an `src/lib/internal/` helper component
 - Same `$derived()` or `$effect()` logic copy-pasted
 
 **Props duplication:**
+
 - Same prop (name + type) defined identically in 3+ components with identical semantics → define a shared type in a `types.ts` file
 
 For each violation, cite both files and the duplicated block.
@@ -136,6 +142,7 @@ For each violation, cite both files and the duplicated block.
 Flag unnecessary complexity:
 
 **In `.svelte` files:**
+
 - `$derived()` expressions with more than 2 levels of nesting or chained ternaries — rewrite as a named helper function
 - `$effect()` blocks doing more than one side effect — split into separate effects
 - Conditional template branches with 4+ conditions — extract to a dedicated sub-component
@@ -143,6 +150,7 @@ Flag unnecessary complexity:
 - Legacy patterns: any `$:` reactive statements, `on:event` syntax, `export let` props — these are Svelte 4 and must be replaced
 
 **In `.css` files:**
+
 - Selector specificity above `0,2,0` (two classes) without a clear reason
 - `!important` usage
 - Deeply nested rules (4+ levels) that could be flattened
@@ -160,7 +168,8 @@ All components should follow the same API conventions. Check:
 1. **Prop naming**: size props are `size`, color props are `color`, variant props are `variant` — no aliases like `sz`, `type` (for visual variant), `kind`
 2. **Default values**: every optional prop has a documented default in the interface
 3. **Snippet pattern**: content passed via `children` snippet, not a `label` string prop (unless the component is icon-only)
-4. **CSS class pattern**: BEM-style `{component}--{modifier}` classes, not inline style strings
+
+> **Note**: BEM class naming (`{component}--{modifier}`) and CSS structural conventions are checked by `/design-audit Check 8`. Do not duplicate that check here.
 
 For each component, verify the naming and pattern conventions are consistent.
 
@@ -183,7 +192,7 @@ Output a single consolidated report after all checks:
 | 2 | O — Open/Closed      | Extensible via props/slots   | ❌ FAIL | Button missing ...restProps |
 | 3 | L — Liskov Sub.      | Native element behavior      | ✅ PASS |       |
 | 4 | I — Interface Seg.   | Lean props interfaces        | ⚠️ WARN  | Dropdown has 10 props, suggest split |
-| 5 | D — Dep. Inversion   | Token abstractions only      | ✅ PASS |       |
+| 5 | D — Dep. Inversion   | No code-level coupling       | ✅ PASS |       |
 | 6 | DRY                  | No duplication               | ❌ FAIL | keyframes duplicated in 3 files |
 | 7 | KISS                 | No unnecessary complexity    | ⚠️ WARN  | Legacy $: in Spinner.svelte:14 |
 | 8 | Consistency          | Unified component API        | ✅ PASS |       |
