@@ -4,7 +4,7 @@
 
 	interface Props extends HTMLAttributes<HTMLDivElement> {
 		size?: 'sm' | 'md' | 'lg';
-		variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+		variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'neutral';
 		label?: string;
 	}
 
@@ -21,9 +21,9 @@
 	class:spinner--success={variant === 'success'}
 	class:spinner--warning={variant === 'warning'}
 	class:spinner--danger={variant === 'danger'}
+	class:spinner--info={variant === 'info'}
+	class:spinner--neutral={variant === 'neutral'}
 	role="status"
-	aria-live="polite"
-	aria-label={label ?? 'Loading'}
 	{...restProps}
 >
 	<span class="spinner__track"></span>

@@ -16,7 +16,7 @@
 	--button-mix-hover: var(--ui-hover-mix);
 	--button-mix-hover-amount: var(--ui-hover-amount);
 	--button-mix-active: var(--ui-hover-mix);
-	--button-mix-active-amount: 20%;
+	--button-mix-active-amount: var(--ui-active-amount);
 	--button-secondary-text: var(--ui-surface-foreground);
 	--button-disabled-bg: color-mix(in oklch, var(--ui-neutral), transparent 80%);
 	--button-disabled-text: color-mix(in oklch, var(--ui-surface-foreground), transparent 50%);
@@ -47,16 +47,13 @@
 	--button-shadow-disabled: none;
 	--button-focus-ring-width: var(--ui-ring-width);
 	--button-focus-ring-offset: var(--ui-ring-offset);
-	--button-focus-ring-color: var(--ui-ring);
-	--button-transition: var(--ui-base-duration) cubic-bezier(0.4, 0, 0.2, 1);
+	--button-transition: var(--ui-base-duration) var(--ui-base-easing);
 	--button-opacity-disabled: 0.6;
 	--button-cursor-default: pointer;
 	--button-cursor-disabled: not-allowed;
 	--button-icon-sm-size: calc(var(--ui-base-spacing) * 4);
 	--button-icon-md-size: calc(var(--ui-base-spacing) * 5);
 	--button-icon-lg-size: calc(var(--ui-base-spacing) * 6);
-	--button-active-ring-width: var(--ui-ring-offset);
-	--button-active-ring-surface: var(--ui-surface);
 }
 
 .button {
@@ -74,7 +71,12 @@
 	border-width: var(--button-border-width);
 	border-radius: var(--button-border-radius);
 	cursor: var(--button-cursor-default);
-	transition: all var(--button-transition);
+	transition:
+		background-color var(--button-transition),
+		border-color var(--button-transition),
+		color var(--button-transition),
+		box-shadow var(--button-transition),
+		opacity var(--button-transition);
 	text-decoration: none;
 }
 
@@ -87,7 +89,7 @@
 }
 
 .button:focus-visible {
-	outline: var(--button-focus-ring-width) solid var(--button-focus-ring-color);
+	outline: var(--button-focus-ring-width) solid var(--_color);
 	outline-offset: var(--button-focus-ring-offset);
 }
 
@@ -352,12 +354,6 @@
 	background-color: transparent;
 	color: var(--button-disabled-text);
 	border-color: var(--button-disabled-border);
-}
-
-.button--active {
-	box-shadow:
-		0 0 0 var(--button-focus-ring-offset) var(--button-active-ring-surface),
-		0 0 0 calc(var(--button-focus-ring-offset) + var(--button-active-ring-width)) var(--_color);
 }
 
 .button--full-width {

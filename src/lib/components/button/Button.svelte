@@ -9,7 +9,6 @@
 		color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral';
 		size?: 'sm' | 'md' | 'lg';
 		icon?: boolean;
-		active?: boolean;
 		loading?: boolean;
 		fullWidth?: boolean;
 		disabled?: boolean;
@@ -26,7 +25,6 @@
 		color = 'primary',
 		size = 'md',
 		icon = false,
-		active = false,
 		loading = false,
 		fullWidth = false,
 		disabled = false,
@@ -43,7 +41,6 @@
 		{href}
 		class="button button--{variant} button--{color} button--{size}"
 		class:button--icon={icon}
-		class:button--active={active}
 		class:button--loading={loading}
 		class:button--full-width={fullWidth}
 		aria-disabled={isDisabled || undefined}
@@ -62,7 +59,6 @@
 	<button
 		class="button button--{variant} button--{color} button--{size}"
 		class:button--icon={icon}
-		class:button--active={active}
 		class:button--loading={loading}
 		class:button--full-width={fullWidth}
 		disabled={isDisabled}

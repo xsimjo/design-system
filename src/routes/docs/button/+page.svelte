@@ -144,12 +144,10 @@
 				<p class="example-desc">Interactive states for user feedback.</p>
 				<CodeExample
 					code={`<Button>Default</Button>
-<Button active>Active</Button>
 <Button loading>Loading</Button>
 <Button disabled>Disabled</Button>`}
 				>
 					<Button>Default</Button>
-					<Button active>Active</Button>
 					<Button loading>Loading</Button>
 					<Button disabled>Disabled</Button>
 				</CodeExample>
@@ -231,12 +229,6 @@
 							<td><code>boolean</code></td>
 							<td><code>false</code></td>
 							<td>Shows loading spinner</td>
-						</tr>
-						<tr>
-							<td><code>active</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Shows active/pressed state</td>
 						</tr>
 						<tr>
 							<td><code>icon</code></td>

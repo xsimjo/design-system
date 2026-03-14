@@ -11,16 +11,25 @@
 	--dropdown-min-width: 180px;
 	--dropdown-max-height: 320px;
 
-	--dropdown-item-height: calc(var(--ui-base-spacing) * 4.5);
+	--dropdown-item-height: calc(var(--ui-base-spacing) * 5);
 	--dropdown-item-padding-x: calc(var(--ui-base-spacing) * 1.5);
 	--dropdown-item-padding-y: calc(var(--ui-base-spacing) * 0.75);
 	--dropdown-item-gap: calc(var(--ui-base-spacing) * 1);
 	--dropdown-item-font-size: var(--ui-text-sm);
 	--dropdown-item-font-weight: var(--ui-weight-normal);
+	--dropdown-item-line-height: var(--ui-leading-tight);
 	--dropdown-item-border-radius: calc(var(--ui-base-radius) * 0.5);
 
-	--dropdown-item-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 90%);
-	--dropdown-item-active-bg: color-mix(in oklch, var(--ui-neutral), transparent 85%);
+	--dropdown-item-hover-bg: color-mix(
+		in oklch,
+		var(--ui-neutral),
+		var(--ui-hover-mix) var(--ui-hover-amount)
+	);
+	--dropdown-item-active-bg: color-mix(
+		in oklch,
+		var(--ui-neutral),
+		var(--ui-hover-mix) var(--ui-active-amount)
+	);
 	--dropdown-item-selected-bg: color-mix(in oklch, var(--ui-primary), transparent 90%);
 	--dropdown-item-selected-color: var(--ui-primary);
 	--dropdown-item-disabled-opacity: 0.5;
@@ -33,8 +42,7 @@
 
 	--dropdown-focus-ring-color: var(--ui-ring);
 	--dropdown-focus-ring-width: var(--ui-ring-width);
-
-	--dropdown-transition: var(--ui-base-duration) cubic-bezier(0.4, 0, 0.2, 1);
+	--dropdown-transition: var(--ui-base-duration) var(--ui-base-easing);
 	--dropdown-z-index: var(--ui-z-overlay);
 	--dropdown-enter-offset: var(--ui-enter-offset);
 }
@@ -44,23 +52,6 @@
 	display: inline-block;
 }
 
-.dropdown__trigger {
-	all: unset;
-	box-sizing: border-box;
-	cursor: pointer;
-	display: inline-flex;
-}
-
-.dropdown__trigger:focus-visible {
-	outline: var(--dropdown-focus-ring-width) solid var(--dropdown-focus-ring-color);
-	outline-offset: 2px;
-	border-radius: var(--dropdown-border-radius);
-}
-
-.dropdown--disabled .dropdown__trigger {
-	cursor: not-allowed;
-	pointer-events: none;
-}
 
 .dropdown__menu {
 	position: fixed;
@@ -100,6 +91,7 @@
 	font-family: var(--ui-font-sans);
 	font-size: var(--dropdown-item-font-size);
 	font-weight: var(--dropdown-item-font-weight);
+	line-height: var(--dropdown-item-line-height);
 	color: var(--dropdown-surface-foreground);
 	border-radius: var(--dropdown-item-border-radius);
 	cursor: pointer;
@@ -161,7 +153,7 @@
 }
 
 .dropdown-divider {
-	height: 1px;
+	height: var(--dropdown-border-width);
 	margin: var(--dropdown-divider-margin) 0;
 	background-color: var(--dropdown-divider-color);
 }

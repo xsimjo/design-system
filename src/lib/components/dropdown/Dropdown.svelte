@@ -5,6 +5,17 @@
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 
+	type TriggerProps = {
+		id: string;
+		type: 'button';
+		'aria-haspopup': 'menu';
+		'aria-expanded': boolean;
+		'aria-controls': string | undefined;
+		disabled: boolean;
+		onclick: () => void;
+		onkeydown: (event: KeyboardEvent) => void;
+	};
+
 	interface Props extends HTMLAttributes<HTMLDivElement> {
 		open?: boolean;
 		placement?: Placement;
@@ -14,7 +25,7 @@
 		closeOnClickOutside?: boolean;
 		closeOnEscape?: boolean;
 		disabled?: boolean;
-		trigger: Snippet<[{ open: boolean }]>;
+		trigger: Snippet<[{ open: boolean; triggerProps: TriggerProps }]>;
 		children: Snippet;
 	}
 
@@ -33,11 +44,28 @@
 	}: Props = $props();
 
 	let containerEl: HTMLDivElement | null = $state(null);
-	let triggerEl: HTMLButtonElement | null = $state(null);
+	let triggerEl: HTMLElement | null = $state(null);
 	let menuEl: HTMLDivElement | null = $state(null);
 
 	const menuId = `dropdown-menu-${Math.random().toString(36).slice(2, 9)}`;
 	const triggerId = `dropdown-trigger-${Math.random().toString(36).slice(2, 9)}`;
+
+	const triggerProps: TriggerProps = $derived({
+		id: triggerId,
+		type: 'button',
+		'aria-haspopup': 'menu',
+		'aria-expanded': open,
+		'aria-controls': open ? menuId : undefined,
+		disabled,
+		onclick: toggleOpen,
+		onkeydown: handleTriggerKeydown
+	});
+
+	$effect(() => {
+		if (containerEl) {
+			triggerEl = containerEl.querySelector<HTMLElement>('[aria-haspopup="menu"]');
+		}
+	});
 
 	async function updatePosition() {
 		if (!triggerEl || !menuEl) return;
@@ -209,20 +237,7 @@
 </script>
 
 <div bind:this={containerEl} class="dropdown" class:dropdown--disabled={disabled} {...restProps}>
-	<button
-		bind:this={triggerEl}
-		id={triggerId}
-		class="dropdown__trigger"
-		type="button"
-		aria-haspopup="menu"
-		aria-expanded={open}
-		aria-controls={open ? menuId : undefined}
-		{disabled}
-		onclick={toggleOpen}
-		onkeydown={handleTriggerKeydown}
-	>
-		{@render trigger({ open })}
-	</button>
+	{@render trigger({ open, triggerProps })}
 
 	{#if open}
 		<div
