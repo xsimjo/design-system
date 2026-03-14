@@ -55,7 +55,7 @@
 		class:button--loading={loading}
 		class:button--full-width={fullWidth}
 		aria-disabled={isDisabled || undefined}
-		{...restProps as HTMLAnchorAttributes}
+		{...restProps}
 	>
 		{@render buttonContent()}
 	</a>
