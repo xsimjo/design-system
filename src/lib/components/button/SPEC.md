@@ -4,16 +4,17 @@ Primary action component with multiple variants, colors, and sizes.
 
 ## Props
 
-| Prop        | Type                                                             | Default     | Description                         |
-| ----------- | ---------------------------------------------------------------- | ----------- | ----------------------------------- |
-| `variant`   | `'filled' \| 'outline' \| 'ghost' \| 'soft' \| 'link' \| 'dash'` | `'filled'`  | Visual style                        |
-| `color`     | `'primary' \| 'secondary' \| 'success' \| 'danger'`              | `'primary'` | Color theme                         |
-| `size`      | `'sm' \| 'md' \| 'lg'`                                           | `'md'`      | Button size                         |
-| `icon`      | `boolean`                                                        | `false`     | Square button for icon-only content |
-| `active`    | `boolean`                                                        | `false`     | Shows active/pressed state          |
-| `loading`   | `boolean`                                                        | `false`     | Shows spinner and disables button   |
-| `fullWidth` | `boolean`                                                        | `false`     | Makes button take full width        |
-| `disabled`  | `boolean`                                                        | `false`     | Disables interaction                |
+| Prop        | Type                                                                                    | Default     | Description                            |
+| ----------- | --------------------------------------------------------------------------------------- | ----------- | -------------------------------------- |
+| `variant`   | `'filled' \| 'outline' \| 'ghost' \| 'soft' \| 'link' \| 'dash'`                        | `'filled'`  | Visual style                           |
+| `color`     | `'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning' \| 'info' \| 'neutral'` | `'primary'` | Color theme                            |
+| `size`      | `'sm' \| 'md' \| 'lg'`                                                                  | `'md'`      | Button size                            |
+| `icon`      | `boolean`                                                                               | `false`     | Square button for icon-only content    |
+| `active`    | `boolean`                                                                               | `false`     | Shows active/pressed state             |
+| `loading`   | `boolean`                                                                               | `false`     | Shows spinner and disables button      |
+| `fullWidth` | `boolean`                                                                               | `false`     | Makes button take full width           |
+| `href`      | `string`                                                                                | `undefined` | Renders as `<a>` instead of `<button>` |
+| `disabled`  | `boolean`                                                                               | `false`     | Disables interaction                   |
 
 ## Slots
 
@@ -103,7 +104,8 @@ Primary action component with multiple variants, colors, and sizes.
 
 This component uses the following semantic tokens:
 
-- `--button-color-{primary|secondary|success|danger}` - Color per theme
+- `--button-color-{primary|secondary|success|danger|warning|info|neutral}` - Color per theme
+- `--button-color-{primary|secondary|success|danger|warning|info|neutral}-foreground` - Foreground per color
 - `--button-secondary-text` - Text color for secondary variant
 - `--button-{sm|md|lg}-height` - Height per size
 - `--button-{sm|md|lg}-padding-x` - Horizontal padding per size
@@ -130,6 +132,7 @@ This component uses the following semantic tokens:
 - `--button-mix-hover-amount` - Amount to mix on hover
 - `--button-mix-active` - Color to mix on active
 - `--button-mix-active-amount` - Amount to mix on active
+- `--button-focus-ring-color` - Focus ring color
 - `--button-focus-ring-offset` - Focus ring offset
 - `--button-focus-ring-width` - Focus ring width
 - `--button-active-ring-width` - Ring width for active state

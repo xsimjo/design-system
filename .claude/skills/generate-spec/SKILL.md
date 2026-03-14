@@ -17,6 +17,7 @@ If the user didn't specify a component, ask. Component folders are in `src/lib/c
 ### 2. Read source files
 
 Read ALL files in the component folder:
+
 - `{ComponentName}.svelte` — props interface, template structure, ARIA attributes, variants/sizes/colors from class names
 - `{component-name}.css` — all `--{component}-*` token names
 - Any sub-components (`{ComponentName}Item.svelte`, etc.)
@@ -26,12 +27,14 @@ Do NOT guess. Extract everything directly from the source.
 ### 3. Extract the following
 
 **From the `.svelte` file:**
+
 - TypeScript `interface Props` → props table (name, type, default, description)
 - Class name patterns (e.g. `button--{variant}`, `button--{color}`) → valid enum values
 - ARIA attributes used in the template → accessibility section
 - Slots / snippets used (`children`, named snippets) → slots section
 
 **From the `.css` file:**
+
 - Every `--{component}-*` custom property name → tokens section
 
 ### 4. Generate the SPEC.md
@@ -45,15 +48,15 @@ One-line description of what the component does.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
+| Prop       | Type                     | Default     | Description      |
+| ---------- | ------------------------ | ----------- | ---------------- |
 | `propName` | `'option1' \| 'option2'` | `'default'` | What it controls |
 
 ## Slots
 
-| Slot | Description |
-| ---- | ----------- |
-| `default` | ... |
+| Slot      | Description |
+| --------- | ----------- |
+| `default` | ...         |
 
 ## Usage
 

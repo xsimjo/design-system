@@ -49,7 +49,7 @@
 			code={`<script>
   import '@xsimjo/design-system/styles';
   import { Button } from '@xsimjo/design-system';
-</script>
+${'</' + 'script>'}
 
 <html data-theme="light">
   <Button>Click me</Button>

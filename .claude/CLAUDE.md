@@ -33,7 +33,7 @@ Runes only — no legacy `$:` reactive statements.
 
 - Props: `$props()` with a TypeScript interface extending the relevant HTML element attributes (`HTMLButtonAttributes`, etc.)
 - State/derived: `$state()`, `$derived()`, `$effect()`, `$bindable()`
-- Run all `.svelte` files through the **Svelte MCP autofixer** before finalizing.
+- Run all `.svelte` files through the **Svelte MCP autofixer** before finalizing. Ignore the "Unexpected href link without resolve()" warning — it's a false positive for library components that accept `href` as a prop.
 
 ## Icons
 

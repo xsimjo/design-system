@@ -1,10 +1,10 @@
 <script lang="ts">
 	import './button.css';
 	import type { Snippet } from 'svelte';
-	import type { HTMLButtonAttributes } from 'svelte/elements';
+	import type { HTMLButtonAttributes, HTMLAnchorAttributes } from 'svelte/elements';
 	import Spinner from '$lib/components/spinner/Spinner.svelte';
 
-	interface Props extends HTMLButtonAttributes {
+	type BaseProps = {
 		variant?: 'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash';
 		color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral';
 		size?: 'sm' | 'md' | 'lg';
@@ -12,8 +12,14 @@
 		active?: boolean;
 		loading?: boolean;
 		fullWidth?: boolean;
+		disabled?: boolean;
 		children: Snippet;
-	}
+	};
+
+	type Props = BaseProps &
+		Omit<HTMLButtonAttributes, keyof BaseProps> & {
+			href?: string;
+		};
 
 	let {
 		variant = 'filled',
@@ -23,7 +29,8 @@
 		active = false,
 		loading = false,
 		fullWidth = false,
-		disabled,
+		disabled = false,
+		href,
 		children,
 		...restProps
 	}: Props = $props();
@@ -31,24 +38,46 @@
 	const isDisabled = $derived(disabled || loading);
 </script>
 
-<button
-	class="button button--{variant} button--{color} button--{size}"
-	class:button--icon={icon}
-	class:button--active={active}
-	class:button--loading={loading}
-	class:button--full-width={fullWidth}
-	disabled={isDisabled}
-	{...restProps}
->
-	{#if loading}
-		<span class="button__loader">
-			<Spinner />
+{#if href}
+	<a
+		{href}
+		class="button button--{variant} button--{color} button--{size}"
+		class:button--icon={icon}
+		class:button--active={active}
+		class:button--loading={loading}
+		class:button--full-width={fullWidth}
+		aria-disabled={isDisabled || undefined}
+		{...restProps as HTMLAnchorAttributes}
+	>
+		{#if loading}
+			<span class="button__loader">
+				<Spinner />
+			</span>
+		{/if}
+		<span class="button__content" class:button__content--hidden={loading && icon}>
+			{@render children()}
 		</span>
-	{/if}
-	<span class="button__content" class:button__content--hidden={loading && icon}>
-		{@render children()}
-	</span>
-</button>
+	</a>
+{:else}
+	<button
+		class="button button--{variant} button--{color} button--{size}"
+		class:button--icon={icon}
+		class:button--active={active}
+		class:button--loading={loading}
+		class:button--full-width={fullWidth}
+		disabled={isDisabled}
+		{...restProps}
+	>
+		{#if loading}
+			<span class="button__loader">
+				<Spinner />
+			</span>
+		{/if}
+		<span class="button__content" class:button__content--hidden={loading && icon}>
+			{@render children()}
+		</span>
+	</button>
+{/if}
 
 <style>
 	.button {
@@ -67,12 +96,15 @@
 		border-radius: var(--button-border-radius);
 		cursor: var(--button-cursor-default);
 		transition: all var(--button-transition);
+		text-decoration: none;
 	}
 
-	.button:disabled {
+	.button:disabled,
+	.button[aria-disabled='true'] {
 		cursor: var(--button-cursor-disabled);
 		opacity: var(--button-opacity-disabled);
 		box-shadow: var(--button-shadow-disabled);
+		pointer-events: none;
 	}
 
 	.button--primary {
@@ -150,7 +182,7 @@
 		box-shadow: var(--button-shadow);
 	}
 
-	.button--filled:hover:not(:disabled) {
+	.button--filled:hover:not(:disabled):not([aria-disabled='true']) {
 		background-color: color-mix(
 			in oklch,
 			var(--_color),
@@ -164,7 +196,7 @@
 		box-shadow: var(--button-shadow-hover);
 	}
 
-	.button--filled:active:not(:disabled) {
+	.button--filled:active:not(:disabled):not([aria-disabled='true']) {
 		background-color: color-mix(
 			in oklch,
 			var(--_color),
@@ -186,7 +218,8 @@
 				color-mix(in oklch, var(--_color), transparent 50%);
 	}
 
-	.button--filled:disabled {
+	.button--filled:disabled,
+	.button--filled[aria-disabled='true'] {
 		background-color: var(--button-disabled-bg);
 		color: var(--button-disabled-text);
 		border-color: var(--button-disabled-border);
@@ -203,7 +236,7 @@
 		border-color: color-mix(in oklch, var(--_color), transparent 50%);
 	}
 
-	.button--outline:hover:not(:disabled) {
+	.button--outline:hover:not(:disabled):not([aria-disabled='true']) {
 		background-color: color-mix(in oklch, var(--_color), transparent 92%);
 		color: color-mix(
 			in oklch,
@@ -213,7 +246,7 @@
 		border-color: color-mix(in oklch, var(--_color), var(--button-mix-hover) 10%);
 	}
 
-	.button--outline:active:not(:disabled) {
+	.button--outline:active:not(:disabled):not([aria-disabled='true']) {
 		background-color: color-mix(in oklch, var(--_color), transparent 85%);
 		color: color-mix(
 			in oklch,
@@ -231,7 +264,8 @@
 				color-mix(in oklch, var(--_color), transparent 50%);
 	}
 
-	.button--outline:disabled {
+	.button--outline:disabled,
+	.button--outline[aria-disabled='true'] {
 		background-color: transparent;
 		color: var(--button-disabled-text);
 		border-color: var(--button-disabled-border);
@@ -247,7 +281,7 @@
 		color: var(--button-secondary-text);
 	}
 
-	.button--ghost:hover:not(:disabled) {
+	.button--ghost:hover:not(:disabled):not([aria-disabled='true']) {
 		background-color: color-mix(in oklch, var(--_color), transparent 90%);
 		color: color-mix(
 			in oklch,
@@ -256,7 +290,7 @@
 		);
 	}
 
-	.button--ghost:active:not(:disabled) {
+	.button--ghost:active:not(:disabled):not([aria-disabled='true']) {
 		background-color: color-mix(in oklch, var(--_color), transparent 82%);
 		color: color-mix(
 			in oklch,
@@ -273,7 +307,8 @@
 				color-mix(in oklch, var(--_color), transparent 50%);
 	}
 
-	.button--ghost:disabled {
+	.button--ghost:disabled,
+	.button--ghost[aria-disabled='true'] {
 		background-color: transparent;
 		color: var(--button-disabled-text);
 	}
@@ -284,7 +319,7 @@
 		border-color: transparent;
 	}
 
-	.button--soft:hover:not(:disabled) {
+	.button--soft:hover:not(:disabled):not([aria-disabled='true']) {
 		background-color: color-mix(in oklch, var(--_color), transparent 78%);
 		color: color-mix(
 			in oklch,
@@ -293,7 +328,7 @@
 		);
 	}
 
-	.button--soft:active:not(:disabled) {
+	.button--soft:active:not(:disabled):not([aria-disabled='true']) {
 		background-color: color-mix(in oklch, var(--_color), transparent 70%);
 		color: color-mix(
 			in oklch,
@@ -310,7 +345,8 @@
 				color-mix(in oklch, var(--_color), transparent 50%);
 	}
 
-	.button--soft:disabled {
+	.button--soft:disabled,
+	.button--soft[aria-disabled='true'] {
 		background-color: var(--button-disabled-bg);
 		color: var(--button-disabled-text);
 	}
@@ -327,7 +363,7 @@
 		color: var(--button-secondary-text);
 	}
 
-	.button--link:hover:not(:disabled) {
+	.button--link:hover:not(:disabled):not([aria-disabled='true']) {
 		color: color-mix(
 			in oklch,
 			var(--_color),
@@ -335,7 +371,7 @@
 		);
 	}
 
-	.button--link:active:not(:disabled) {
+	.button--link:active:not(:disabled):not([aria-disabled='true']) {
 		color: color-mix(
 			in oklch,
 			var(--_color),
@@ -351,7 +387,8 @@
 				color-mix(in oklch, var(--_color), transparent 50%);
 	}
 
-	.button--link:disabled {
+	.button--link:disabled,
+	.button--link[aria-disabled='true'] {
 		color: var(--button-disabled-text);
 	}
 
@@ -366,7 +403,7 @@
 		color: var(--button-secondary-text);
 	}
 
-	.button--dash:hover:not(:disabled) {
+	.button--dash:hover:not(:disabled):not([aria-disabled='true']) {
 		background-color: color-mix(in oklch, var(--_color), transparent 92%);
 		color: color-mix(
 			in oklch,
@@ -376,7 +413,7 @@
 		border-color: color-mix(in oklch, var(--_color), transparent 20%);
 	}
 
-	.button--dash:active:not(:disabled) {
+	.button--dash:active:not(:disabled):not([aria-disabled='true']) {
 		background-color: color-mix(in oklch, var(--_color), transparent 85%);
 		color: color-mix(
 			in oklch,
@@ -394,7 +431,8 @@
 				color-mix(in oklch, var(--_color), transparent 50%);
 	}
 
-	.button--dash:disabled {
+	.button--dash:disabled,
+	.button--dash[aria-disabled='true'] {
 		background-color: transparent;
 		color: var(--button-disabled-text);
 		border-color: var(--button-disabled-border);

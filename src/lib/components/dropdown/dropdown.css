@@ -5,7 +5,7 @@
 	--dropdown-border: var(--ui-border);
 	--dropdown-border-width: var(--ui-border-width);
 	--dropdown-border-radius: var(--ui-base-radius);
-	--dropdown-shadow: var(--shadow-lg);
+	--dropdown-shadow: var(--ui-depth);
 
 	--dropdown-padding: calc(var(--ui-base-spacing) * 0.5);
 	--dropdown-min-width: 180px;

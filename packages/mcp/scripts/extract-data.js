@@ -43,7 +43,7 @@ function extractTokens() {
 	const primitivesContent = readFileSync(primitivesPath, 'utf-8');
 	const primitives = parseTokens(primitivesContent);
 
-	const themeBasePath = join(stylesDir, 'theme-base.css');
+	const themeBasePath = join(stylesDir, 'themes', 'light.css');
 	const themeBaseContent = readFileSync(themeBasePath, 'utf-8');
 	const semantic = parseSemanticTokens(themeBaseContent);
 
@@ -104,7 +104,7 @@ function parseTokens(content) {
 }
 
 function parseSemanticTokens(content) {
-	const dataThemeMatch = content.match(/\[data-theme\]\s*\{([^}]+(?:\{[^}]*\}[^}]*)*)\}/s);
+	const dataThemeMatch = content.match(/\[data-theme[^\]]*\]\s*\{([^}]+(?:\{[^}]*\}[^}]*)*)\}/s);
 	if (!dataThemeMatch) return [];
 
 	const tokens = [];

@@ -1,4 +1,4 @@
-# @xsimjo/design-system
+re# @xsimjo/design-system
 
 A modern, themeable Svelte 5 component library with a powerful three-layer token architecture.
 
