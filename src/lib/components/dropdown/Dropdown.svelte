@@ -1,6 +1,5 @@
 <script lang="ts">
 	import './dropdown.css';
-	import Button from '$lib/components/button/Button.svelte';
 	import {
 		computePosition,
 		flip,
@@ -22,10 +21,6 @@
 		closeOnClickOutside?: boolean;
 		closeOnEscape?: boolean;
 		disabled?: boolean;
-		variant?: 'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash';
-		color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral';
-		size?: 'sm' | 'md' | 'lg';
-		fullWidth?: boolean;
 		trigger: Snippet<[{ open: boolean }]>;
 		children: Snippet;
 	}
@@ -39,30 +34,48 @@
 		closeOnClickOutside = true,
 		closeOnEscape = true,
 		disabled = false,
-		variant = 'filled',
-		color = 'primary',
-		size = 'md',
-		fullWidth = false,
 		trigger,
 		children,
 		...restProps
 	}: Props = $props();
 
 	let containerEl: HTMLDivElement | null = $state(null);
-	let triggerEl: HTMLElement | null = $state(null);
+	let triggerWrapperEl: HTMLSpanElement | null = $state(null);
 	let menuEl: HTMLDivElement | null = $state(null);
 
 	const menuId = `dropdown-menu-${Math.random().toString(36).slice(2, 9)}`;
 	const triggerId = `dropdown-trigger-${Math.random().toString(36).slice(2, 9)}`;
 
+	function getInteractiveTrigger(): HTMLElement | null {
+		if (!triggerWrapperEl) return null;
+		return (
+			triggerWrapperEl.querySelector<HTMLElement>(
+				'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
+			) ?? triggerWrapperEl
+		);
+	}
+
+	// Sync ARIA attrs onto the actual interactive trigger element
 	$effect(() => {
-		if (containerEl) {
-			triggerEl = containerEl.querySelector<HTMLElement>('[aria-haspopup="menu"]');
+		const el = getInteractiveTrigger();
+		if (!el) return;
+		el.id = triggerId;
+		el.setAttribute('aria-haspopup', 'menu');
+		el.setAttribute('aria-expanded', String(open));
+		if (open) {
+			el.setAttribute('aria-controls', menuId);
+		} else {
+			el.removeAttribute('aria-controls');
 		}
+		return () => {
+			el.removeAttribute('aria-haspopup');
+			el.removeAttribute('aria-expanded');
+			el.removeAttribute('aria-controls');
+		};
 	});
 
 	async function updatePosition() {
-		if (!triggerEl || !menuEl) return;
+		if (!triggerWrapperEl || !menuEl) return;
 
 		const middleware: Middleware[] = [
 			offset(offsetValue),
@@ -98,7 +111,7 @@
 			);
 		}
 
-		const { x, y } = await computePosition(triggerEl, menuEl, {
+		const { x, y } = await computePosition(triggerWrapperEl, menuEl, {
 			placement,
 			middleware,
 			strategy: 'fixed'
@@ -109,8 +122,8 @@
 	}
 
 	$effect(() => {
-		if (open && menuEl && triggerEl) {
-			const cleanup = autoUpdate(triggerEl, menuEl, updatePosition);
+		if (open && menuEl && triggerWrapperEl) {
+			const cleanup = autoUpdate(triggerWrapperEl, menuEl, updatePosition);
 			return cleanup;
 		}
 	});
@@ -132,7 +145,11 @@
 			function handleMenuClick(event: MouseEvent) {
 				const target = event.target as HTMLElement;
 				const item = target.closest('[role="menuitem"]');
-				if (item && !item.hasAttribute('disabled') && !item.getAttribute('aria-disabled')) {
+				if (
+					item &&
+					!item.hasAttribute('disabled') &&
+					item.getAttribute('aria-disabled') !== 'true'
+				) {
 					open = false;
 				}
 			}
@@ -141,7 +158,7 @@
 		}
 	});
 
-	function toggleOpen() {
+	function handleTriggerClick() {
 		if (disabled) return;
 		open = !open;
 	}
@@ -150,7 +167,9 @@
 		if (disabled) return;
 
 		if (!open) {
-			if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
+			// ArrowDown opens and focuses first item. Enter/Space are left to the
+			// trigger element's native click handling to avoid double-toggling.
+			if (event.key === 'ArrowDown') {
 				event.preventDefault();
 				open = true;
 				requestAnimationFrame(() => focusFirstItem());
@@ -167,7 +186,7 @@
 				if (closeOnEscape) {
 					event.preventDefault();
 					open = false;
-					triggerEl?.focus();
+					getInteractiveTrigger()?.focus();
 				}
 				break;
 			case 'ArrowDown':
@@ -201,8 +220,7 @@
 
 	function getFocusedIndex(): number {
 		const items = getMenuItems();
-		const focused = document.activeElement;
-		return items.indexOf(focused as HTMLElement);
+		return items.indexOf(document.activeElement as HTMLElement);
 	}
 
 	function focusItem(index: number) {
@@ -224,34 +242,26 @@
 	function focusNextItem() {
 		const items = getMenuItems();
 		const currentIndex = getFocusedIndex();
-		const nextIndex = currentIndex < items.length - 1 ? currentIndex + 1 : 0;
-		focusItem(nextIndex);
+		focusItem(currentIndex < items.length - 1 ? currentIndex + 1 : 0);
 	}
 
 	function focusPreviousItem() {
 		const items = getMenuItems();
 		const currentIndex = getFocusedIndex();
-		const prevIndex = currentIndex > 0 ? currentIndex - 1 : items.length - 1;
-		focusItem(prevIndex);
+		focusItem(currentIndex > 0 ? currentIndex - 1 : items.length - 1);
 	}
 </script>
 
 <div bind:this={containerEl} class="dropdown" class:dropdown--disabled={disabled} {...restProps}>
-	<Button
-		id={triggerId}
-		{variant}
-		{color}
-		{size}
-		{disabled}
-		{fullWidth}
-		aria-haspopup="menu"
-		aria-expanded={open}
-		aria-controls={open ? menuId : undefined}
-		onclick={toggleOpen}
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<span
+		bind:this={triggerWrapperEl}
+		class="dropdown__trigger"
+		onclick={handleTriggerClick}
 		onkeydown={handleTriggerKeydown}
 	>
 		{@render trigger({ open })}
-	</Button>
+	</span>
 
 	{#if open}
 		<div

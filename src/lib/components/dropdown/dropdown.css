@@ -20,39 +20,20 @@
 	--dropdown-item-line-height: var(--ui-leading-tight);
 	--dropdown-item-border-radius: calc(var(--ui-base-radius) * 0.5);
 
-	--dropdown-item-hover-bg: color-mix(
-		in oklch,
-		var(--ui-neutral),
-		var(--ui-hover-mix) var(--ui-hover-amount)
-	);
-	--dropdown-item-active-bg: color-mix(
-		in oklch,
-		var(--ui-neutral),
-		var(--ui-hover-mix) var(--ui-active-amount)
-	);
-	--dropdown-item-selected-bg-alpha: 90%;
-	--dropdown-item-selected-bg: color-mix(
-		in oklch,
-		var(--ui-primary),
-		transparent var(--dropdown-item-selected-bg-alpha)
-	);
+	--dropdown-item-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 90%);
+	--dropdown-item-active-bg: color-mix(in oklch, var(--ui-neutral), transparent 82%);
+	--dropdown-item-selected-bg: color-mix(in oklch, var(--ui-primary), transparent 90%);
+	--dropdown-item-selected-hover-bg: color-mix(in oklch, var(--ui-primary), transparent 84%);
 	--dropdown-item-selected-color: var(--ui-primary);
 	--dropdown-item-disabled-opacity: 0.5;
 
 	--dropdown-item-destructive-color: var(--ui-danger);
-	--dropdown-item-destructive-hover-bg-alpha: 92%;
-	--dropdown-item-destructive-hover-bg: color-mix(
-		in oklch,
-		var(--ui-danger),
-		transparent var(--dropdown-item-destructive-hover-bg-alpha)
-	);
+	--dropdown-item-destructive-hover-bg: color-mix(in oklch, var(--ui-danger), transparent 90%);
+	--dropdown-item-destructive-active-bg: color-mix(in oklch, var(--ui-danger), transparent 82%);
 
 	--dropdown-divider-color: var(--ui-border);
 	--dropdown-divider-margin: calc(var(--ui-base-spacing) * 0.5);
 
-	--dropdown-focus-ring-color: color-mix(in oklch, var(--ui-primary), transparent 55%);
-	--dropdown-focus-ring-width: var(--ui-ring-width);
-	--dropdown-focus-ring-offset: -2px;
 	--dropdown-transition: var(--ui-base-duration) var(--ui-base-easing);
 	--dropdown-z-index: var(--ui-z-overlay);
 	--dropdown-enter-offset: var(--ui-enter-offset);
@@ -61,6 +42,10 @@
 .dropdown {
 	position: relative;
 	display: inline-block;
+}
+
+.dropdown__trigger {
+	display: inline-flex;
 }
 
 .dropdown__menu {
@@ -120,8 +105,7 @@
 }
 
 .dropdown-item:focus-visible {
-	outline: var(--dropdown-focus-ring-width) solid var(--dropdown-focus-ring-color);
-	outline-offset: var(--dropdown-focus-ring-offset);
+	outline: none;
 	background: var(--dropdown-item-hover-bg);
 }
 
@@ -131,16 +115,27 @@
 }
 
 .dropdown-item--selected:hover:not(.dropdown-item--disabled) {
-	background: var(--dropdown-item-selected-bg);
+	background: var(--dropdown-item-selected-hover-bg);
+}
+
+.dropdown-item--selected:active:not(.dropdown-item--disabled) {
+	background: color-mix(in oklch, var(--ui-primary), transparent 78%);
 }
 
 .dropdown-item--destructive {
-	background: color-mix(in oklch, var(--ui-danger), transparent 100%);
 	color: var(--dropdown-item-destructive-color);
+}
+
+.dropdown-item--destructive:focus-visible {
+	background: var(--dropdown-item-destructive-hover-bg);
 }
 
 .dropdown-item--destructive:hover:not(.dropdown-item--disabled) {
 	background: var(--dropdown-item-destructive-hover-bg);
+}
+
+.dropdown-item--destructive:active:not(.dropdown-item--disabled) {
+	background: var(--dropdown-item-destructive-active-bg);
 }
 
 .dropdown-item--disabled {
