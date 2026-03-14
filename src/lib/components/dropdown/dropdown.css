@@ -50,7 +50,7 @@
 	--dropdown-divider-color: var(--ui-border);
 	--dropdown-divider-margin: calc(var(--ui-base-spacing) * 0.5);
 
-	--dropdown-focus-ring-color: var(--ui-ring);
+	--dropdown-focus-ring-color: color-mix(in oklch, var(--ui-primary), transparent 55%);
 	--dropdown-focus-ring-width: var(--ui-ring-width);
 	--dropdown-focus-ring-offset: -2px;
 	--dropdown-transition: var(--ui-base-duration) var(--ui-base-easing);

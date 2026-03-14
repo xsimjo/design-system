@@ -1,7 +1,7 @@
 <script lang="ts">
 	import './button.css';
 	import type { Snippet } from 'svelte';
-	import type { HTMLButtonAttributes, HTMLAnchorAttributes } from 'svelte/elements';
+	import type { HTMLButtonAttributes } from 'svelte/elements';
 	import Spinner from '$lib/components/spinner/Spinner.svelte';
 
 	type BaseProps = {
