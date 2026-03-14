@@ -1,20 +1,17 @@
 <script lang="ts">
 	import './dropdown.css';
-	import { computePosition, flip, shift, offset, size, autoUpdate } from '@floating-ui/dom';
+	import Button from '$lib/components/button/Button.svelte';
+	import {
+		computePosition,
+		flip,
+		shift,
+		offset,
+		size as floatingSize,
+		autoUpdate
+	} from '@floating-ui/dom';
 	import type { Placement, Middleware } from '@floating-ui/dom';
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
-
-	type TriggerProps = {
-		id: string;
-		type: 'button';
-		'aria-haspopup': 'menu';
-		'aria-expanded': boolean;
-		'aria-controls': string | undefined;
-		disabled: boolean;
-		onclick: () => void;
-		onkeydown: (event: KeyboardEvent) => void;
-	};
 
 	interface Props extends HTMLAttributes<HTMLDivElement> {
 		open?: boolean;
@@ -25,7 +22,11 @@
 		closeOnClickOutside?: boolean;
 		closeOnEscape?: boolean;
 		disabled?: boolean;
-		trigger: Snippet<[{ open: boolean; triggerProps: TriggerProps }]>;
+		variant?: 'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash';
+		color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral';
+		size?: 'sm' | 'md' | 'lg';
+		fullWidth?: boolean;
+		trigger: Snippet<[{ open: boolean }]>;
 		children: Snippet;
 	}
 
@@ -38,6 +39,10 @@
 		closeOnClickOutside = true,
 		closeOnEscape = true,
 		disabled = false,
+		variant = 'filled',
+		color = 'primary',
+		size = 'md',
+		fullWidth = false,
 		trigger,
 		children,
 		...restProps
@@ -49,17 +54,6 @@
 
 	const menuId = `dropdown-menu-${Math.random().toString(36).slice(2, 9)}`;
 	const triggerId = `dropdown-trigger-${Math.random().toString(36).slice(2, 9)}`;
-
-	const triggerProps: TriggerProps = $derived({
-		id: triggerId,
-		type: 'button',
-		'aria-haspopup': 'menu',
-		'aria-expanded': open,
-		'aria-controls': open ? menuId : undefined,
-		disabled,
-		onclick: toggleOpen,
-		onkeydown: handleTriggerKeydown
-	});
 
 	$effect(() => {
 		if (containerEl) {
@@ -78,8 +72,14 @@
 
 		if (width === 'trigger') {
 			middleware.push(
-				size({
-					apply({ rects, elements }) {
+				floatingSize({
+					apply({
+						rects,
+						elements
+					}: {
+						rects: { reference: { width: number } };
+						elements: { floating: HTMLElement };
+					}) {
 						Object.assign(elements.floating.style, {
 							width: `${rects.reference.width}px`
 						});
@@ -88,8 +88,8 @@
 			);
 		} else if (typeof width === 'number') {
 			middleware.push(
-				size({
-					apply({ elements }) {
+				floatingSize({
+					apply({ elements }: { elements: { floating: HTMLElement } }) {
 						Object.assign(elements.floating.style, {
 							width: `${width}px`
 						});
@@ -237,7 +237,21 @@
 </script>
 
 <div bind:this={containerEl} class="dropdown" class:dropdown--disabled={disabled} {...restProps}>
-	{@render trigger({ open, triggerProps })}
+	<Button
+		id={triggerId}
+		{variant}
+		{color}
+		{size}
+		{disabled}
+		{fullWidth}
+		aria-haspopup="menu"
+		aria-expanded={open}
+		aria-controls={open ? menuId : undefined}
+		onclick={toggleOpen}
+		onkeydown={handleTriggerKeydown}
+	>
+		{@render trigger({ open })}
+	</Button>
 
 	{#if open}
 		<div

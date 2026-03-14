@@ -56,10 +56,8 @@
 				<CodeExample
 					code={`<Dropdown>
   {#snippet trigger({ open })}
-    <Button>
-      Options
-      <ChevronDownIcon />
-    </Button>
+    Options
+    <ChevronDownIcon />
   {/snippet}
   <DropdownItem>Edit</DropdownItem>
   <DropdownItem>Duplicate</DropdownItem>
@@ -68,10 +66,8 @@
 				>
 					<Dropdown>
 						{#snippet trigger()}
-							<Button>
-								Options
-								<ChevronDownIcon />
-							</Button>
+							Options
+							<ChevronDownIcon />
 						{/snippet}
 						<DropdownItem>Edit</DropdownItem>
 						<DropdownItem>Duplicate</DropdownItem>
@@ -92,30 +88,30 @@
 <Dropdown placement="top-start">...</Dropdown>
 <Dropdown placement="right-start">...</Dropdown>`}
 				>
-					<Dropdown placement="bottom-start">
+					<Dropdown placement="bottom-start" variant="outline">
 						{#snippet trigger()}
-							<Button variant="outline">bottom-start</Button>
+							bottom-start
 						{/snippet}
 						<DropdownItem>Item 1</DropdownItem>
 						<DropdownItem>Item 2</DropdownItem>
 					</Dropdown>
-					<Dropdown placement="bottom-end">
+					<Dropdown placement="bottom-end" variant="outline">
 						{#snippet trigger()}
-							<Button variant="outline">bottom-end</Button>
+							bottom-end
 						{/snippet}
 						<DropdownItem>Item 1</DropdownItem>
 						<DropdownItem>Item 2</DropdownItem>
 					</Dropdown>
-					<Dropdown placement="top-start">
+					<Dropdown placement="top-start" variant="outline">
 						{#snippet trigger()}
-							<Button variant="outline">top-start</Button>
+							top-start
 						{/snippet}
 						<DropdownItem>Item 1</DropdownItem>
 						<DropdownItem>Item 2</DropdownItem>
 					</Dropdown>
-					<Dropdown placement="right-start">
+					<Dropdown placement="right-start" variant="outline">
 						{#snippet trigger()}
-							<Button variant="outline">right-start</Button>
+							right-start
 						{/snippet}
 						<DropdownItem>Item 1</DropdownItem>
 						<DropdownItem>Item 2</DropdownItem>
@@ -133,23 +129,23 @@
 <Dropdown width="trigger">...</Dropdown>
 <Dropdown width={300}>...</Dropdown>`}
 				>
-					<Dropdown width="auto">
+					<Dropdown width="auto" variant="outline">
 						{#snippet trigger()}
-							<Button variant="outline">Auto Width</Button>
+							Auto Width
 						{/snippet}
 						<DropdownItem>Short</DropdownItem>
 						<DropdownItem>Much longer item text</DropdownItem>
 					</Dropdown>
-					<Dropdown width="trigger">
+					<Dropdown width="trigger" variant="outline" fullWidth>
 						{#snippet trigger()}
-							<Button variant="outline" fullWidth>Match Trigger Width</Button>
+							Match Trigger Width
 						{/snippet}
 						<DropdownItem>Item 1</DropdownItem>
 						<DropdownItem>Item 2</DropdownItem>
 					</Dropdown>
-					<Dropdown width={250}>
+					<Dropdown width={250} variant="outline">
 						{#snippet trigger()}
-							<Button variant="outline">Fixed 250px</Button>
+							Fixed 250px
 						{/snippet}
 						<DropdownItem>Item 1</DropdownItem>
 						<DropdownItem>Item 2</DropdownItem>
@@ -172,10 +168,8 @@
 				>
 					<Dropdown>
 						{#snippet trigger()}
-							<Button>
-								Actions
-								<ChevronDownIcon />
-							</Button>
+							Actions
+							<ChevronDownIcon />
 						{/snippet}
 						<DropdownItem>
 							{#snippet leadingIcon()}<EditIcon size={16} />{/snippet}
@@ -198,8 +192,9 @@
 				<p class="example-desc">Use dividers to group related items.</p>
 				<CodeExample
 					code={`<Dropdown>
-  {#snippet trigger({ open })}
-    <Button>Menu</Button>
+  {#snippet trigger()}
+    File
+    <ChevronDownIcon />
   {/snippet}
   <DropdownItem>New File</DropdownItem>
   <DropdownItem>Open</DropdownItem>
@@ -212,10 +207,8 @@
 				>
 					<Dropdown>
 						{#snippet trigger()}
-							<Button>
-								File
-								<ChevronDownIcon />
-							</Button>
+							File
+							<ChevronDownIcon />
 						{/snippet}
 						<DropdownItem>New File</DropdownItem>
 						<DropdownItem>Open</DropdownItem>
@@ -240,12 +233,10 @@
 <DropdownDivider />
 <DropdownItem destructive>Delete</DropdownItem>`}
 				>
-					<Dropdown>
+					<Dropdown color="danger" variant="outline">
 						{#snippet trigger()}
-							<Button color="danger" variant="outline">
-								Danger Menu
-								<ChevronDownIcon />
-							</Button>
+							Danger Menu
+							<ChevronDownIcon />
 						{/snippet}
 						<DropdownItem>Edit</DropdownItem>
 						<DropdownItem>Duplicate</DropdownItem>
@@ -268,10 +259,8 @@
 						</Button>
 						<Dropdown bind:open={controlledOpen}>
 							{#snippet trigger()}
-								<Button>
-									Controlled
-									<ChevronDownIcon />
-								</Button>
+								Controlled
+								<ChevronDownIcon />
 							{/snippet}
 							<DropdownItem onclick={() => (controlledOpen = false)}>Close menu</DropdownItem>
 							<DropdownItem>Stay open</DropdownItem>
@@ -301,6 +290,34 @@
 							<td><code>boolean</code></td>
 							<td><code>false</code></td>
 							<td>Bindable open state</td>
+						</tr>
+						<tr>
+							<td><code>variant</code></td>
+							<td><code>'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash'</code></td>
+							<td><code>'filled'</code></td>
+							<td>Trigger button variant</td>
+						</tr>
+						<tr>
+							<td><code>color</code></td>
+							<td
+								><code
+									>'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral'</code
+								></td
+							>
+							<td><code>'primary'</code></td>
+							<td>Trigger button color</td>
+						</tr>
+						<tr>
+							<td><code>size</code></td>
+							<td><code>'sm' | 'md' | 'lg'</code></td>
+							<td><code>'md'</code></td>
+							<td>Trigger button size</td>
+						</tr>
+						<tr>
+							<td><code>fullWidth</code></td>
+							<td><code>boolean</code></td>
+							<td><code>false</code></td>
+							<td>Makes trigger button 100% width</td>
 						</tr>
 						<tr>
 							<td><code>placement</code></td>
@@ -348,7 +365,7 @@
 							<td><code>trigger</code></td>
 							<td><code>Snippet&lt;[&#123;open: boolean&#125;]&gt;</code></td>
 							<td><code>required</code></td>
-							<td>Trigger content snippet</td>
+							<td>Trigger button content</td>
 						</tr>
 						<tr>
 							<td><code>children</code></td>
