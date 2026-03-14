@@ -28,5 +28,5 @@
 >
 	<span class="spinner__track"></span>
 	<span class="spinner__indicator"></span>
-	<span class="visually-hidden">{label ?? 'Loading'}</span>
+	<span class="spinner__label">{label ?? 'Loading'}</span>
 </div>

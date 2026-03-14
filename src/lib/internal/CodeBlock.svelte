@@ -168,7 +168,7 @@
 	.codeblock__code :global(pre) {
 		margin: 0;
 		padding: 0;
-		background: transparent !important;
+		background: transparent;
 		font-family: var(--codeblock-font-family);
 		font-size: var(--codeblock-font-size);
 		line-height: var(--codeblock-line-height);

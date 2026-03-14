@@ -8,8 +8,8 @@
 	--dropdown-shadow: var(--ui-depth);
 
 	--dropdown-padding: calc(var(--ui-base-spacing) * 0.5);
-	--dropdown-min-width: 180px;
-	--dropdown-max-height: 320px;
+	--dropdown-min-width: calc(var(--ui-base-spacing) * 23);
+	--dropdown-max-height: calc(var(--ui-base-spacing) * 40);
 
 	--dropdown-item-height: calc(var(--ui-base-spacing) * 5);
 	--dropdown-item-padding-x: calc(var(--ui-base-spacing) * 1.5);
@@ -30,18 +30,29 @@
 		var(--ui-neutral),
 		var(--ui-hover-mix) var(--ui-active-amount)
 	);
-	--dropdown-item-selected-bg: color-mix(in oklch, var(--ui-primary), transparent 90%);
+	--dropdown-item-selected-bg-alpha: 90%;
+	--dropdown-item-selected-bg: color-mix(
+		in oklch,
+		var(--ui-primary),
+		transparent var(--dropdown-item-selected-bg-alpha)
+	);
 	--dropdown-item-selected-color: var(--ui-primary);
 	--dropdown-item-disabled-opacity: 0.5;
 
 	--dropdown-item-destructive-color: var(--ui-danger);
-	--dropdown-item-destructive-hover-bg: color-mix(in oklch, var(--ui-danger), transparent 92%);
+	--dropdown-item-destructive-hover-bg-alpha: 92%;
+	--dropdown-item-destructive-hover-bg: color-mix(
+		in oklch,
+		var(--ui-danger),
+		transparent var(--dropdown-item-destructive-hover-bg-alpha)
+	);
 
 	--dropdown-divider-color: var(--ui-border);
 	--dropdown-divider-margin: calc(var(--ui-base-spacing) * 0.5);
 
 	--dropdown-focus-ring-color: var(--ui-ring);
 	--dropdown-focus-ring-width: var(--ui-ring-width);
+	--dropdown-focus-ring-offset: -2px;
 	--dropdown-transition: var(--ui-base-duration) var(--ui-base-easing);
 	--dropdown-z-index: var(--ui-z-overlay);
 	--dropdown-enter-offset: var(--ui-enter-offset);
@@ -92,6 +103,7 @@
 	font-weight: var(--dropdown-item-font-weight);
 	line-height: var(--dropdown-item-line-height);
 	color: var(--dropdown-surface-foreground);
+	background: color-mix(in oklch, var(--ui-neutral), transparent 100%);
 	border-radius: var(--dropdown-item-border-radius);
 	cursor: pointer;
 	transition:
@@ -109,7 +121,7 @@
 
 .dropdown-item:focus-visible {
 	outline: var(--dropdown-focus-ring-width) solid var(--dropdown-focus-ring-color);
-	outline-offset: -2px;
+	outline-offset: var(--dropdown-focus-ring-offset);
 	background: var(--dropdown-item-hover-bg);
 }
 
@@ -123,6 +135,7 @@
 }
 
 .dropdown-item--destructive {
+	background: color-mix(in oklch, var(--ui-danger), transparent 100%);
 	color: var(--dropdown-item-destructive-color);
 }
 

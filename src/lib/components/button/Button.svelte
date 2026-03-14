@@ -36,6 +36,17 @@
 	const isDisabled = $derived(disabled || loading);
 </script>
 
+{#snippet buttonContent()}
+	{#if loading}
+		<span class="button__loader">
+			<Spinner />
+		</span>
+	{/if}
+	<span class="button__content" class:button__content--hidden={loading && icon}>
+		{@render children()}
+	</span>
+{/snippet}
+
 {#if href}
 	<a
 		{href}
@@ -46,14 +57,7 @@
 		aria-disabled={isDisabled || undefined}
 		{...restProps as HTMLAnchorAttributes}
 	>
-		{#if loading}
-			<span class="button__loader">
-				<Spinner />
-			</span>
-		{/if}
-		<span class="button__content" class:button__content--hidden={loading && icon}>
-			{@render children()}
-		</span>
+		{@render buttonContent()}
 	</a>
 {:else}
 	<button
@@ -64,13 +68,6 @@
 		disabled={isDisabled}
 		{...restProps}
 	>
-		{#if loading}
-			<span class="button__loader">
-				<Spinner />
-			</span>
-		{/if}
-		<span class="button__content" class:button__content--hidden={loading && icon}>
-			{@render children()}
-		</span>
+		{@render buttonContent()}
 	</button>
 {/if}

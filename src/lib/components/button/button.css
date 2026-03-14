@@ -49,6 +49,17 @@
 	--button-focus-ring-offset: var(--ui-ring-offset);
 	--button-transition: var(--ui-base-duration) var(--ui-base-easing);
 	--button-opacity-disabled: 0.6;
+	--button-opacity-loading: 0.7;
+	--button-soft-text-mix-amount: 10%;
+	--button-outline-hover-alpha: 92%;
+	--button-outline-active-alpha: 85%;
+	--button-ghost-hover-alpha: 90%;
+	--button-ghost-active-alpha: 82%;
+	--button-soft-bg-alpha: 85%;
+	--button-soft-hover-alpha: 78%;
+	--button-soft-active-alpha: 70%;
+	--button-dash-hover-alpha: 92%;
+	--button-dash-active-alpha: 85%;
 	--button-cursor-default: pointer;
 	--button-cursor-disabled: not-allowed;
 	--button-icon-sm-size: calc(var(--ui-base-spacing) * 4);
@@ -80,17 +91,17 @@
 	text-decoration: none;
 }
 
+.button:focus-visible {
+	outline: var(--button-focus-ring-width) solid var(--_color);
+	outline-offset: var(--button-focus-ring-offset);
+}
+
 .button:disabled,
 .button[aria-disabled='true'] {
 	cursor: var(--button-cursor-disabled);
 	opacity: var(--button-opacity-disabled);
 	box-shadow: var(--button-shadow-disabled);
 	pointer-events: none;
-}
-
-.button:focus-visible {
-	outline: var(--button-focus-ring-width) solid var(--_color);
-	outline-offset: var(--button-focus-ring-offset);
 }
 
 .button--primary {
@@ -204,7 +215,7 @@
 }
 
 .button--outline {
-	background-color: transparent;
+	background-color: color-mix(in oklch, var(--_color), transparent 100%);
 	color: var(--_color);
 	border-color: var(--_color);
 }
@@ -215,13 +226,21 @@
 }
 
 .button--outline:hover:not(:disabled):not([aria-disabled='true']) {
-	background-color: color-mix(in oklch, var(--_color), transparent 92%);
+	background-color: color-mix(
+		in oklch,
+		var(--_color),
+		transparent var(--button-outline-hover-alpha)
+	);
 	color: color-mix(in oklch, var(--_color), var(--button-mix-hover) var(--button-mix-hover-amount));
 	border-color: color-mix(in oklch, var(--_color), var(--button-mix-hover) 10%);
 }
 
 .button--outline:active:not(:disabled):not([aria-disabled='true']) {
-	background-color: color-mix(in oklch, var(--_color), transparent 85%);
+	background-color: color-mix(
+		in oklch,
+		var(--_color),
+		transparent var(--button-outline-active-alpha)
+	);
 	color: color-mix(
 		in oklch,
 		var(--_color),
@@ -232,13 +251,13 @@
 
 .button--outline:disabled,
 .button--outline[aria-disabled='true'] {
-	background-color: transparent;
+	background-color: color-mix(in oklch, var(--_color), transparent 100%);
 	color: var(--button-disabled-text);
 	border-color: var(--button-disabled-border);
 }
 
 .button--ghost {
-	background-color: transparent;
+	background-color: color-mix(in oklch, var(--_color), transparent 100%);
 	color: var(--_color);
 	border-color: transparent;
 }
@@ -248,12 +267,16 @@
 }
 
 .button--ghost:hover:not(:disabled):not([aria-disabled='true']) {
-	background-color: color-mix(in oklch, var(--_color), transparent 90%);
+	background-color: color-mix(in oklch, var(--_color), transparent var(--button-ghost-hover-alpha));
 	color: color-mix(in oklch, var(--_color), var(--button-mix-hover) var(--button-mix-hover-amount));
 }
 
 .button--ghost:active:not(:disabled):not([aria-disabled='true']) {
-	background-color: color-mix(in oklch, var(--_color), transparent 82%);
+	background-color: color-mix(
+		in oklch,
+		var(--_color),
+		transparent var(--button-ghost-active-alpha)
+	);
 	color: color-mix(
 		in oklch,
 		var(--_color),
@@ -263,23 +286,27 @@
 
 .button--ghost:disabled,
 .button--ghost[aria-disabled='true'] {
-	background-color: transparent;
+	background-color: color-mix(in oklch, var(--_color), transparent 100%);
 	color: var(--button-disabled-text);
 }
 
 .button--soft {
-	background-color: color-mix(in oklch, var(--_color), transparent 85%);
-	color: color-mix(in oklch, var(--_color), var(--button-mix-hover) 10%);
+	background-color: color-mix(in oklch, var(--_color), transparent var(--button-soft-bg-alpha));
+	color: color-mix(
+		in oklch,
+		var(--_color),
+		var(--button-mix-hover) var(--button-soft-text-mix-amount)
+	);
 	border-color: transparent;
 }
 
 .button--soft:hover:not(:disabled):not([aria-disabled='true']) {
-	background-color: color-mix(in oklch, var(--_color), transparent 78%);
+	background-color: color-mix(in oklch, var(--_color), transparent var(--button-soft-hover-alpha));
 	color: color-mix(in oklch, var(--_color), var(--button-mix-hover) var(--button-mix-hover-amount));
 }
 
 .button--soft:active:not(:disabled):not([aria-disabled='true']) {
-	background-color: color-mix(in oklch, var(--_color), transparent 70%);
+	background-color: color-mix(in oklch, var(--_color), transparent var(--button-soft-active-alpha));
 	color: color-mix(
 		in oklch,
 		var(--_color),
@@ -294,7 +321,7 @@
 }
 
 .button--link {
-	background-color: transparent;
+	background-color: color-mix(in oklch, var(--_color), transparent 100%);
 	color: var(--_color);
 	border-color: transparent;
 	text-decoration: underline;
@@ -323,7 +350,7 @@
 }
 
 .button--dash {
-	background-color: transparent;
+	background-color: color-mix(in oklch, var(--_color), transparent 100%);
 	color: var(--_color);
 	border-color: color-mix(in oklch, var(--_color), transparent 40%);
 	border-style: dashed;
@@ -334,13 +361,13 @@
 }
 
 .button--dash:hover:not(:disabled):not([aria-disabled='true']) {
-	background-color: color-mix(in oklch, var(--_color), transparent 92%);
+	background-color: color-mix(in oklch, var(--_color), transparent var(--button-dash-hover-alpha));
 	color: color-mix(in oklch, var(--_color), var(--button-mix-hover) var(--button-mix-hover-amount));
 	border-color: color-mix(in oklch, var(--_color), transparent 20%);
 }
 
 .button--dash:active:not(:disabled):not([aria-disabled='true']) {
-	background-color: color-mix(in oklch, var(--_color), transparent 85%);
+	background-color: color-mix(in oklch, var(--_color), transparent var(--button-dash-active-alpha));
 	color: color-mix(
 		in oklch,
 		var(--_color),
@@ -351,7 +378,7 @@
 
 .button--dash:disabled,
 .button--dash[aria-disabled='true'] {
-	background-color: transparent;
+	background-color: color-mix(in oklch, var(--_color), transparent 100%);
 	color: var(--button-disabled-text);
 	border-color: var(--button-disabled-border);
 }
@@ -375,7 +402,7 @@
 }
 
 .button--loading .button__content:not(.button__content--hidden) {
-	opacity: 0.7;
+	opacity: var(--button-opacity-loading);
 }
 
 .button__loader {
