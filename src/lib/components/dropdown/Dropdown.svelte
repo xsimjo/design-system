@@ -261,7 +261,7 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		z-index: var(--z-dropdown, 50);
+		z-index: var(--dropdown-z-index);
 		min-width: var(--dropdown-min-width);
 		max-height: var(--dropdown-max-height);
 		overflow-y: auto;
@@ -272,7 +272,7 @@
 		border-radius: var(--dropdown-border-radius);
 		box-shadow: var(--dropdown-shadow);
 		opacity: 0;
-		transform: translateY(-4px);
+		transform: translateY(var(--dropdown-enter-offset));
 		animation: dropdown-enter var(--dropdown-transition) forwards;
 	}
 

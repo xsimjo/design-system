@@ -32,4 +32,6 @@
 	--dropdown-divider-margin: calc(var(--ui-base-spacing) * 0.5);
 
 	--dropdown-transition: var(--ui-base-duration) cubic-bezier(0.4, 0, 0.2, 1);
+	--dropdown-z-index: var(--ui-z-overlay);
+	--dropdown-enter-offset: -4px;
 }
