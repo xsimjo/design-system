@@ -25,8 +25,6 @@ Themes switch via `data-theme` attribute on `<html>`.
 
 Each component lives in `src/lib/components/{name}/` with a `.svelte` file and a `.css` file. The `.svelte` file imports its own `.css`. Internal doc/demo components live in `src/lib/internal/` and are not exported.
 
-When creating or modifying design system components, always consult the **UI design system architect agent**.
-
 ## Svelte 5
 
 Runes only — no legacy `$:` reactive statements.
