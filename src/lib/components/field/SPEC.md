@@ -25,6 +25,7 @@ A composable family of primitives for building accessible form fields. `Field` i
 | `required`  | `boolean` | `false` | Shows required indicator on `FieldLabel`; sets `aria-required` on input       |
 | `disabled`  | `boolean` | `false` | Propagates disabled state to child inputs via context                         |
 | `fullWidth` | `boolean` | `false` | Stretches the field container to 100% width                                   |
+| `inline`    | `boolean` | `false` | Lays out children in a row (flex-direction: row) instead of a column          |
 | `children`  | `Snippet` | —       | Field contents                                                                |
 
 ### FieldLabel

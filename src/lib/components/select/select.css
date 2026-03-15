@@ -1,0 +1,252 @@
+[data-theme] {
+	/* Trigger */
+	--select-bg: var(--ui-surface);
+	--select-fg: var(--ui-surface-foreground);
+	--select-border: var(--ui-border);
+	--select-border-width: var(--ui-border-width);
+	--select-placeholder: color-mix(in oklch, var(--ui-surface-foreground), transparent 55%);
+	--select-focus-color: var(--ui-primary);
+	--select-focus-ring-width: var(--ui-ring-width);
+	--select-focus-ring-offset: var(--ui-ring-offset);
+	--select-error-color: var(--ui-danger);
+	--select-disabled-bg: color-mix(in oklch, var(--ui-neutral), transparent 80%);
+	--select-disabled-fg: color-mix(in oklch, var(--ui-surface-foreground), transparent 50%);
+	--select-disabled-border: var(--ui-border);
+	--select-hover-border: color-mix(
+		in oklch,
+		var(--ui-border),
+		var(--ui-hover-mix) var(--ui-hover-amount)
+	);
+
+	/* Sizes */
+	--select-sm-height: calc(var(--ui-base-spacing) * 4);
+	--select-sm-padding-x: calc(var(--ui-base-spacing) * 1.5);
+	--select-sm-font-size: var(--ui-text-sm);
+	--select-md-height: calc(var(--ui-base-spacing) * 5);
+	--select-md-padding-x: calc(var(--ui-base-spacing) * 2);
+	--select-md-font-size: var(--ui-text-base);
+	--select-lg-height: calc(var(--ui-base-spacing) * 6);
+	--select-lg-padding-x: calc(var(--ui-base-spacing) * 3);
+	--select-lg-font-size: var(--ui-text-lg);
+
+	--select-font-family: var(--ui-font-sans);
+	--select-font-weight: var(--ui-weight-normal);
+	--select-border-radius: var(--ui-base-radius);
+	--select-transition: var(--ui-base-duration) var(--ui-base-easing);
+	--select-chevron-size: calc(var(--ui-base-spacing) * 2);
+	--select-chevron-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 35%);
+
+	/* Listbox */
+	--select-listbox-bg: var(--ui-surface-overlay);
+	--select-listbox-fg: var(--ui-surface-overlay-foreground);
+	--select-listbox-border: var(--ui-border);
+	--select-listbox-shadow: var(--ui-depth);
+	--select-listbox-padding: calc(var(--ui-base-spacing) * 0.5);
+	--select-listbox-max-height: calc(var(--ui-base-spacing) * 40);
+	--select-listbox-z-index: var(--ui-z-overlay);
+	--select-listbox-enter-offset: var(--ui-enter-offset);
+
+	/* Options */
+	--select-option-height: calc(var(--ui-base-spacing) * 5);
+	--select-option-padding-x: calc(var(--ui-base-spacing) * 1.5);
+	--select-option-font-size: var(--ui-text-sm);
+	--select-option-border-radius: calc(var(--ui-base-radius) * 0.5);
+	--select-option-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 90%);
+	--select-option-selected-bg: color-mix(in oklch, var(--ui-primary), transparent 90%);
+	--select-option-selected-hover-bg: color-mix(in oklch, var(--ui-primary), transparent 84%);
+	--select-option-selected-fg: var(--ui-primary);
+	--select-option-check-size: calc(var(--ui-base-spacing) * 2);
+	--select-option-disabled-opacity: 0.5;
+}
+
+/* Wrapper */
+.select {
+	display: inline-flex;
+}
+
+.select--full-width {
+	display: flex;
+	width: 100%;
+}
+
+/* Trigger */
+.select__trigger {
+	all: unset;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: calc(var(--ui-base-spacing) * 1);
+	width: 100%;
+	background-color: var(--select-bg);
+	color: var(--select-fg);
+	border: var(--select-border-width) solid var(--select-border);
+	border-radius: var(--select-border-radius);
+	font-family: var(--select-font-family);
+	font-weight: var(--select-font-weight);
+	cursor: pointer;
+	outline: var(--select-focus-ring-width) solid transparent;
+	outline-offset: var(--select-focus-ring-offset);
+	transition:
+		border-color var(--select-transition),
+		background-color var(--select-transition),
+		outline-color var(--select-transition);
+	white-space: nowrap;
+	text-align: left;
+}
+
+.select__trigger--sm {
+	height: var(--select-sm-height);
+	padding: 0 var(--select-sm-padding-x);
+	font-size: var(--select-sm-font-size);
+}
+
+.select__trigger--md {
+	height: var(--select-md-height);
+	padding: 0 var(--select-md-padding-x);
+	font-size: var(--select-md-font-size);
+}
+
+.select__trigger--lg {
+	height: var(--select-lg-height);
+	padding: 0 var(--select-lg-padding-x);
+	font-size: var(--select-lg-font-size);
+}
+
+.select__trigger:hover:not(:disabled):not(.select__trigger--open) {
+	border-color: var(--select-hover-border);
+}
+
+.select__trigger:focus-visible,
+.select__trigger--open:not(:disabled) {
+	border-color: var(--select-focus-color);
+	outline-color: color-mix(in oklch, var(--select-focus-color), transparent 70%);
+}
+
+.select__trigger--error {
+	border-color: var(--select-error-color);
+}
+
+.select__trigger--error:hover:not(:disabled),
+.select__trigger--error.select__trigger--open:not(:disabled) {
+	border-color: var(--select-error-color);
+	outline-color: color-mix(in oklch, var(--select-error-color), transparent 70%);
+}
+
+.select__trigger:disabled {
+	background-color: var(--select-disabled-bg);
+	color: var(--select-disabled-fg);
+	border-color: var(--select-disabled-border);
+	cursor: not-allowed;
+}
+
+.select__value-wrapper {
+	display: grid;
+	flex: 1;
+	overflow: hidden;
+	min-width: 0;
+}
+
+.select__value-wrapper > span {
+	grid-area: 1 / 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.select__value-sizer {
+	visibility: hidden;
+	pointer-events: none;
+	user-select: none;
+}
+
+.select__value--placeholder {
+	color: var(--select-placeholder);
+}
+
+.select__chevron {
+	flex-shrink: 0;
+	width: var(--select-chevron-size);
+	height: var(--select-chevron-size);
+	color: var(--select-chevron-color);
+	transition: transform var(--select-transition);
+}
+
+.select__chevron--open {
+	transform: rotate(180deg);
+}
+
+/* Listbox */
+.select__listbox {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: var(--select-listbox-z-index);
+	max-height: var(--select-listbox-max-height);
+	overflow-y: auto;
+	padding: var(--select-listbox-padding);
+	background: var(--select-listbox-bg);
+	color: var(--select-listbox-fg);
+	border: var(--select-border-width) solid var(--select-listbox-border);
+	border-radius: var(--select-border-radius);
+	box-shadow: var(--select-listbox-shadow);
+	opacity: 0;
+	transform: translateY(var(--select-listbox-enter-offset));
+	animation: select-enter var(--select-transition) forwards;
+}
+
+@keyframes select-enter {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Options */
+.select__option {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: calc(var(--ui-base-spacing) * 1.5);
+	min-height: var(--select-option-height);
+	padding: 0 var(--select-option-padding-x);
+	font-family: var(--select-font-family);
+	font-size: var(--select-option-font-size);
+	border-radius: var(--select-option-border-radius);
+	cursor: pointer;
+	user-select: none;
+	transition: background var(--select-transition);
+}
+
+.select__option:not(.select__option--disabled):hover,
+.select__option--active:not(.select__option--disabled) {
+	background: var(--select-option-hover-bg);
+}
+
+.select__option--selected {
+	background: var(--select-option-selected-bg);
+	color: var(--select-option-selected-fg);
+}
+
+.select__option--selected:not(.select__option--disabled):hover,
+.select__option--selected.select__option--active:not(.select__option--disabled) {
+	background: var(--select-option-selected-hover-bg);
+}
+
+.select__option--disabled {
+	opacity: var(--select-option-disabled-opacity);
+	cursor: not-allowed;
+}
+
+.select__option-label {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.select__option-check {
+	flex-shrink: 0;
+	width: var(--select-option-check-size);
+	height: var(--select-option-check-size);
+}

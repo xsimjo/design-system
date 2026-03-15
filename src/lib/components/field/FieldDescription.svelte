@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getContext } from 'svelte';
+	import { getContext, untrack } from 'svelte';
 	import { FIELD_KEY } from './context.js';
 	import type { FieldContext } from './context.js';
 	import type { Snippet } from 'svelte';
@@ -18,7 +18,7 @@
 	const isError = $derived(variant === 'error' || (!variant && !!field?.error));
 
 	$effect(() => {
-		field?.registerDescription(descId);
+		untrack(() => field?.registerDescription(descId));
 		return () => {
 			field?.unregisterDescription(descId);
 		};

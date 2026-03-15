@@ -1,9 +1,13 @@
 export { default as Button } from './components/button/Button.svelte';
+export { default as Checkbox } from './components/checkbox/Checkbox.svelte';
 export { default as Input } from './components/input/Input.svelte';
+export { default as Textarea } from './components/textarea/Textarea.svelte';
 export { default as Spinner } from './components/spinner/Spinner.svelte';
 export { default as Dropdown } from './components/dropdown/Dropdown.svelte';
 export { default as DropdownItem } from './components/dropdown/DropdownItem.svelte';
 export { default as DropdownDivider } from './components/dropdown/DropdownDivider.svelte';
+export { default as Select } from './components/select/Select.svelte';
+export type { SelectOption } from './components/select/Select.svelte';
 export { default as Field } from './components/field/Field.svelte';
 export { default as FieldLabel } from './components/field/FieldLabel.svelte';
 export { default as FieldDescription } from './components/field/FieldDescription.svelte';

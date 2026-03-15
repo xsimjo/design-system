@@ -1,0 +1,119 @@
+[data-theme] {
+	--textarea-bg: var(--ui-surface);
+	--textarea-fg: var(--ui-surface-foreground);
+	--textarea-border: var(--ui-border);
+	--textarea-border-width: var(--ui-border-width);
+	--textarea-placeholder: color-mix(in oklch, var(--ui-surface-foreground), transparent 55%);
+	--textarea-focus-color: var(--ui-primary);
+	--textarea-focus-ring-width: var(--ui-ring-width);
+	--textarea-focus-ring-offset: var(--ui-ring-offset);
+	--textarea-error-color: var(--ui-danger);
+	--textarea-disabled-bg: color-mix(in oklch, var(--ui-neutral), transparent 80%);
+	--textarea-disabled-fg: color-mix(in oklch, var(--ui-surface-foreground), transparent 50%);
+	--textarea-disabled-border: var(--ui-border);
+	--textarea-hover-border: color-mix(
+		in oklch,
+		var(--ui-border),
+		var(--ui-hover-mix) var(--ui-hover-amount)
+	);
+	--textarea-sm-padding-x: calc(var(--ui-base-spacing) * 1.5);
+	--textarea-sm-padding-y: calc(var(--ui-base-spacing) * 1);
+	--textarea-sm-font-size: var(--ui-text-sm);
+	--textarea-md-padding-x: calc(var(--ui-base-spacing) * 2);
+	--textarea-md-padding-y: calc(var(--ui-base-spacing) * 1.5);
+	--textarea-md-font-size: var(--ui-text-base);
+	--textarea-lg-padding-x: calc(var(--ui-base-spacing) * 3);
+	--textarea-lg-padding-y: calc(var(--ui-base-spacing) * 2);
+	--textarea-lg-font-size: var(--ui-text-lg);
+	--textarea-font-family: var(--ui-font-sans);
+	--textarea-font-weight: var(--ui-weight-normal);
+	--textarea-line-height: var(--ui-leading-normal);
+	--textarea-border-radius: var(--ui-base-radius);
+	--textarea-transition: var(--ui-base-duration) var(--ui-base-easing);
+	--textarea-min-height: calc(var(--ui-base-spacing) * 10);
+}
+
+.textarea__field {
+	background-color: var(--textarea-bg);
+	color: var(--textarea-fg);
+	border: var(--textarea-border-width) solid var(--textarea-border);
+	border-radius: var(--textarea-border-radius);
+	font-family: var(--textarea-font-family);
+	font-weight: var(--textarea-font-weight);
+	line-height: var(--textarea-line-height);
+	outline: var(--textarea-focus-ring-width) solid transparent;
+	outline-offset: var(--textarea-focus-ring-offset);
+	min-height: var(--textarea-min-height);
+	transition:
+		border-color var(--textarea-transition),
+		background-color var(--textarea-transition);
+}
+
+.textarea__field--full-width {
+	width: 100%;
+}
+
+.textarea__field--sm {
+	padding: var(--textarea-sm-padding-y) var(--textarea-sm-padding-x);
+	font-size: var(--textarea-sm-font-size);
+}
+
+.textarea__field--md {
+	padding: var(--textarea-md-padding-y) var(--textarea-md-padding-x);
+	font-size: var(--textarea-md-font-size);
+}
+
+.textarea__field--lg {
+	padding: var(--textarea-lg-padding-y) var(--textarea-lg-padding-x);
+	font-size: var(--textarea-lg-font-size);
+}
+
+.textarea__field::placeholder {
+	color: var(--textarea-placeholder);
+}
+
+.textarea__field:hover:not(:disabled):not([aria-disabled='true']):not(:focus) {
+	border-color: var(--textarea-hover-border);
+}
+
+.textarea__field:active:not(:disabled):not([aria-disabled='true']) {
+	border-color: var(--textarea-focus-color);
+}
+
+.textarea__field:focus {
+	border-color: var(--textarea-focus-color);
+}
+
+.textarea__field:focus-visible {
+	outline-color: color-mix(in oklch, var(--textarea-focus-color), transparent 70%);
+}
+
+.textarea__field--error {
+	border-color: var(--textarea-error-color);
+}
+
+.textarea__field--error:hover:not(:disabled):not([aria-disabled='true']):not(:focus),
+.textarea__field--error:active:not(:disabled):not([aria-disabled='true']) {
+	border-color: var(--textarea-error-color);
+}
+
+.textarea__field--error:focus {
+	border-color: var(--textarea-error-color);
+}
+
+.textarea__field--error:focus-visible {
+	outline-color: color-mix(in oklch, var(--textarea-error-color), transparent 70%);
+}
+
+.textarea__field:disabled,
+.textarea__field[aria-disabled='true'] {
+	background-color: var(--textarea-disabled-bg);
+	color: var(--textarea-disabled-fg);
+	border-color: var(--textarea-disabled-border);
+	cursor: not-allowed;
+}
+
+.textarea__field:disabled::placeholder,
+.textarea__field[aria-disabled='true']::placeholder {
+	color: var(--textarea-disabled-fg);
+}

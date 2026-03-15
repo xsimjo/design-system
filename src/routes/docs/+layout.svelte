@@ -28,10 +28,13 @@
 			title: 'Components',
 			items: [
 				{ label: 'Button', href: '/docs/button' },
+				{ label: 'Checkbox', href: '/docs/checkbox' },
 				{ label: 'Dropdown', href: '/docs/dropdown' },
 				{ label: 'Field', href: '/docs/field' },
 				{ label: 'Input', href: '/docs/input' },
-				{ label: 'Spinner', href: '/docs/spinner' }
+				{ label: 'Select', href: '/docs/select' },
+				{ label: 'Spinner', href: '/docs/spinner' },
+				{ label: 'Textarea', href: '/docs/textarea' }
 			]
 		}
 	];

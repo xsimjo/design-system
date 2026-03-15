@@ -12,6 +12,7 @@
 		required?: boolean;
 		disabled?: boolean;
 		fullWidth?: boolean;
+		inline?: boolean;
 		children: Snippet;
 	}
 
@@ -21,6 +22,7 @@
 		required = false,
 		disabled = false,
 		fullWidth = false,
+		inline = false,
 		children,
 		...restProps
 	}: Props = $props();
@@ -55,6 +57,6 @@
 	});
 </script>
 
-<div class="field" class:field--full-width={fullWidth} {...restProps}>
+<div class="field" class:field--full-width={fullWidth} class:field--inline={inline} {...restProps}>
 	{@render children()}
 </div>
