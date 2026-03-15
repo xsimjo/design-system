@@ -4,71 +4,71 @@ A composable family of primitives for building accessible form fields. `Field` i
 
 ## Sub-components
 
-| Component          | Element       | Role                                                                    |
-| ------------------ | ------------- | ----------------------------------------------------------------------- |
-| `Field`            | `<div>`       | Root container. Provides shared context to all descendants.             |
-| `FieldLabel`       | `<label>`     | Links to the field's input via context `id`. Shows required indicator.  |
-| `FieldDescription` | `<p>`         | Hint or error text. Registers its ID for `aria-describedby` on inputs.  |
-| `FieldGroup`       | `<div>`       | Flex container for laying out multiple fields side-by-side or stacked.  |
-| `FieldSet`         | `<fieldset>`  | Semantic grouping for related fields (e.g. address, radio/checkbox groups). |
-| `FieldLegend`      | `<legend>`    | Accessible group label for a `FieldSet`.                                |
-| `FieldSeparator`   | `<hr>`        | Visual divider between fields or form sections.                         |
+| Component          | Element      | Role                                                                        |
+| ------------------ | ------------ | --------------------------------------------------------------------------- |
+| `Field`            | `<div>`      | Root container. Provides shared context to all descendants.                 |
+| `FieldLabel`       | `<label>`    | Links to the field's input via context `id`. Shows required indicator.      |
+| `FieldDescription` | `<p>`        | Hint or error text. Registers its ID for `aria-describedby` on inputs.      |
+| `FieldGroup`       | `<div>`      | Flex container for laying out multiple fields side-by-side or stacked.      |
+| `FieldSet`         | `<fieldset>` | Semantic grouping for related fields (e.g. address, radio/checkbox groups). |
+| `FieldLegend`      | `<legend>`   | Accessible group label for a `FieldSet`.                                    |
+| `FieldSeparator`   | `<hr>`       | Visual divider between fields or form sections.                             |
 
 ## Props
 
 ### Field
 
-| Prop        | Type      | Default | Description                                                              |
-| ----------- | --------- | ------- | ------------------------------------------------------------------------ |
-| `id`        | `string`  | —       | Custom ID for the field; auto-generated if omitted                       |
+| Prop        | Type      | Default | Description                                                                   |
+| ----------- | --------- | ------- | ----------------------------------------------------------------------------- |
+| `id`        | `string`  | —       | Custom ID for the field; auto-generated if omitted                            |
 | `error`     | `string`  | —       | Sets error state; propagates to Input (`aria-invalid`) and `FieldDescription` |
-| `required`  | `boolean` | `false` | Shows required indicator on `FieldLabel`; sets `aria-required` on input  |
-| `disabled`  | `boolean` | `false` | Propagates disabled state to child inputs via context                    |
-| `fullWidth` | `boolean` | `false` | Stretches the field container to 100% width                              |
-| `children`  | `Snippet` | —       | Field contents                                                           |
+| `required`  | `boolean` | `false` | Shows required indicator on `FieldLabel`; sets `aria-required` on input       |
+| `disabled`  | `boolean` | `false` | Propagates disabled state to child inputs via context                         |
+| `fullWidth` | `boolean` | `false` | Stretches the field container to 100% width                                   |
+| `children`  | `Snippet` | —       | Field contents                                                                |
 
 ### FieldLabel
 
-| Prop           | Type                    | Default | Description                                                         |
-| -------------- | ----------------------- | ------- | ------------------------------------------------------------------- |
-| `children`     | `Snippet`               | —       | Label text                                                          |
-| `...restProps` | `HTMLLabelAttributes`   | —       | All native label attributes; `for` is set automatically from context |
+| Prop           | Type                  | Default | Description                                                          |
+| -------------- | --------------------- | ------- | -------------------------------------------------------------------- |
+| `children`     | `Snippet`             | —       | Label text                                                           |
+| `...restProps` | `HTMLLabelAttributes` | —       | All native label attributes; `for` is set automatically from context |
 
 ### FieldDescription
 
-| Prop           | Type                         | Default | Description                                                                                           |
-| -------------- | ---------------------------- | ------- | ----------------------------------------------------------------------------------------------------- |
-| `variant`      | `'hint' \| 'error'`          | —       | Controls color. When omitted, auto-applies error styling if the parent `Field` has an `error` set     |
-| `children`     | `Snippet`                    | —       | Description or error text                                                                             |
-| `...restProps` | `HTMLAttributes<HTMLParagraphElement>` | — | All native paragraph attributes                                                              |
+| Prop           | Type                                   | Default | Description                                                                                       |
+| -------------- | -------------------------------------- | ------- | ------------------------------------------------------------------------------------------------- |
+| `variant`      | `'hint' \| 'error'`                    | —       | Controls color. When omitted, auto-applies error styling if the parent `Field` has an `error` set |
+| `children`     | `Snippet`                              | —       | Description or error text                                                                         |
+| `...restProps` | `HTMLAttributes<HTMLParagraphElement>` | —       | All native paragraph attributes                                                                   |
 
 ### FieldGroup
 
-| Prop           | Type                        | Default   | Description                          |
-| -------------- | --------------------------- | --------- | ------------------------------------ |
-| `direction`    | `'row' \| 'column'`         | `'row'`   | Flex direction of the group          |
-| `children`     | `Snippet`                   | —         | Field children                       |
-| `...restProps` | `HTMLAttributes<HTMLDivElement>` | —    | All native div attributes            |
+| Prop           | Type                             | Default | Description                 |
+| -------------- | -------------------------------- | ------- | --------------------------- |
+| `direction`    | `'row' \| 'column'`              | `'row'` | Flex direction of the group |
+| `children`     | `Snippet`                        | —       | Field children              |
+| `...restProps` | `HTMLAttributes<HTMLDivElement>` | —       | All native div attributes   |
 
 ### FieldSet
 
-| Prop           | Type                      | Default | Description                       |
-| -------------- | ------------------------- | ------- | --------------------------------- |
-| `children`     | `Snippet`                 | —       | Contents (typically `FieldLegend` + fields) |
-| `...restProps` | `HTMLFieldsetAttributes`  | —       | All native fieldset attributes    |
+| Prop           | Type                     | Default | Description                                 |
+| -------------- | ------------------------ | ------- | ------------------------------------------- |
+| `children`     | `Snippet`                | —       | Contents (typically `FieldLegend` + fields) |
+| `...restProps` | `HTMLFieldsetAttributes` | —       | All native fieldset attributes              |
 
 ### FieldLegend
 
-| Prop           | Type                                    | Default | Description                 |
-| -------------- | --------------------------------------- | ------- | --------------------------- |
-| `children`     | `Snippet`                               | —       | Legend text                 |
-| `...restProps` | `HTMLAttributes<HTMLLegendElement>`     | —       | All native legend attributes |
+| Prop           | Type                                | Default | Description                  |
+| -------------- | ----------------------------------- | ------- | ---------------------------- |
+| `children`     | `Snippet`                           | —       | Legend text                  |
+| `...restProps` | `HTMLAttributes<HTMLLegendElement>` | —       | All native legend attributes |
 
 ### FieldSeparator
 
-| Prop           | Type                           | Default | Description              |
-| -------------- | ------------------------------ | ------- | ------------------------ |
-| `...restProps` | `HTMLAttributes<HTMLHRElement>` | —      | All native hr attributes |
+| Prop           | Type                            | Default | Description              |
+| -------------- | ------------------------------- | ------- | ------------------------ |
+| `...restProps` | `HTMLAttributes<HTMLHRElement>` | —       | All native hr attributes |
 
 ## Slots
 
@@ -79,27 +79,23 @@ All components use a `children` snippet (Svelte 5 runes). No named slots.
 ### Basic field with label
 
 ```svelte
-import {
-  Field,
-  FieldLabel,
-  Input
-} from '@xsimjo/design-system';
+import {(Field, FieldLabel, Input)} from '@xsimjo/design-system';
 
 <Field>
-  <FieldLabel>Email</FieldLabel>
-  <Input type="email" placeholder="jane@example.com" />
+	<FieldLabel>Email</FieldLabel>
+	<Input type="email" placeholder="jane@example.com" />
 </Field>
 ```
 
 ### With hint description
 
 ```svelte
-import { Field, FieldLabel, FieldDescription, Input } from '@xsimjo/design-system';
+import {(Field, FieldLabel, FieldDescription, Input)} from '@xsimjo/design-system';
 
 <Field>
-  <FieldLabel>Username</FieldLabel>
-  <Input placeholder="cool_user_42" />
-  <FieldDescription>Letters, numbers, and underscores only.</FieldDescription>
+	<FieldLabel>Username</FieldLabel>
+	<Input placeholder="cool_user_42" />
+	<FieldDescription>Letters, numbers, and underscores only.</FieldDescription>
 </Field>
 ```
 
@@ -109,9 +105,9 @@ import { Field, FieldLabel, FieldDescription, Input } from '@xsimjo/design-syste
 
 ```svelte
 <Field>
-  <FieldLabel>API key</FieldLabel>
-  <FieldDescription>Found in your account settings under Developer.</FieldDescription>
-  <Input placeholder="sk-..." />
+	<FieldLabel>API key</FieldLabel>
+	<FieldDescription>Found in your account settings under Developer.</FieldDescription>
+	<Input placeholder="sk-..." />
 </Field>
 ```
 
@@ -119,9 +115,9 @@ import { Field, FieldLabel, FieldDescription, Input } from '@xsimjo/design-syste
 
 ```svelte
 <Field error="Please enter a valid email address.">
-  <FieldLabel>Email</FieldLabel>
-  <Input value="not-an-email" />
-  <FieldDescription>Please enter a valid email address.</FieldDescription>
+	<FieldLabel>Email</FieldLabel>
+	<Input value="not-an-email" />
+	<FieldDescription>Please enter a valid email address.</FieldDescription>
 </Field>
 ```
 
@@ -129,9 +125,9 @@ import { Field, FieldLabel, FieldDescription, Input } from '@xsimjo/design-syste
 
 ```svelte
 <Field required>
-  <FieldLabel>Password</FieldLabel>
-  <Input type="password" />
-  <FieldDescription>Must be at least 8 characters.</FieldDescription>
+	<FieldLabel>Password</FieldLabel>
+	<Input type="password" />
+	<FieldDescription>Must be at least 8 characters.</FieldDescription>
 </Field>
 ```
 
@@ -139,72 +135,65 @@ import { Field, FieldLabel, FieldDescription, Input } from '@xsimjo/design-syste
 
 ```svelte
 <Field disabled>
-  <FieldLabel>Account email</FieldLabel>
-  <Input value="jane@example.com" />
+	<FieldLabel>Account email</FieldLabel>
+	<Input value="jane@example.com" />
 </Field>
 ```
 
 ### Side-by-side fields with FieldGroup
 
 ```svelte
-import { Field, FieldLabel, FieldGroup, Input } from '@xsimjo/design-system';
+import {(Field, FieldLabel, FieldGroup, Input)} from '@xsimjo/design-system';
 
 <FieldGroup>
-  <Field fullWidth>
-    <FieldLabel>First name</FieldLabel>
-    <Input fullWidth placeholder="Jane" />
-  </Field>
-  <Field fullWidth>
-    <FieldLabel>Last name</FieldLabel>
-    <Input fullWidth placeholder="Smith" />
-  </Field>
+	<Field fullWidth>
+		<FieldLabel>First name</FieldLabel>
+		<Input fullWidth placeholder="Jane" />
+	</Field>
+	<Field fullWidth>
+		<FieldLabel>Last name</FieldLabel>
+		<Input fullWidth placeholder="Smith" />
+	</Field>
 </FieldGroup>
 ```
 
 ### Semantic grouping with FieldSet + FieldLegend
 
 ```svelte
-import {
-  Field,
-  FieldLabel,
-  FieldGroup,
-  FieldSet,
-  FieldLegend,
-  Input
-} from '@xsimjo/design-system';
+import {(Field, FieldLabel, FieldGroup, FieldSet, FieldLegend, Input)} from '@xsimjo/design-system';
 
 <FieldSet>
-  <FieldLegend>Shipping address</FieldLegend>
-  <FieldGroup>
-    <Field fullWidth>
-      <FieldLabel>First name</FieldLabel>
-      <Input fullWidth placeholder="Jane" />
-    </Field>
-    <Field fullWidth>
-      <FieldLabel>Last name</FieldLabel>
-      <Input fullWidth placeholder="Smith" />
-    </Field>
-  </FieldGroup>
-  <Field fullWidth>
-    <FieldLabel>Street</FieldLabel>
-    <Input fullWidth placeholder="123 Main St" />
-  </Field>
+	<FieldLegend>Shipping address</FieldLegend>
+	<FieldGroup>
+		<Field fullWidth>
+			<FieldLabel>First name</FieldLabel>
+			<Input fullWidth placeholder="Jane" />
+		</Field>
+		<Field fullWidth>
+			<FieldLabel>Last name</FieldLabel>
+			<Input fullWidth placeholder="Smith" />
+		</Field>
+	</FieldGroup>
+	<Field fullWidth>
+		<FieldLabel>Street</FieldLabel>
+		<Input fullWidth placeholder="123 Main St" />
+	</Field>
 </FieldSet>
 ```
 
 ### FieldSeparator
 
 ```svelte
-import { Field, FieldLabel, FieldSeparator, Input } from '@xsimjo/design-system';
+import {(Field, FieldLabel, FieldSeparator, Input)} from '@xsimjo/design-system';
 
 <Field fullWidth>
-  <FieldLabel>Email</FieldLabel>
-  <Input fullWidth type="email" />
+	<FieldLabel>Email</FieldLabel>
+	<Input fullWidth type="email" />
 </Field>
 <FieldSeparator />
 <Field fullWidth>
-  <FieldLabel>Password</FieldLabel>
-  <Input fullWidth type="password" />
+	<FieldLabel>Password</FieldLabel>
+	<Input fullWidth type="password" />
 </Field>
 ```
 
