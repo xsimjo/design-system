@@ -1,0 +1,136 @@
+[data-theme] {
+	/* Field */
+	--field-gap: calc(var(--ui-base-spacing) * 1.5);
+	--field-font-family: var(--ui-font-sans);
+
+	/* FieldLabel */
+	--field-label-font-size: var(--ui-text-sm);
+	--field-label-font-weight: var(--ui-weight-medium);
+	--field-label-color: var(--ui-surface-foreground);
+	--field-label-line-height: var(--ui-leading-tight);
+	--field-required-color: var(--ui-danger);
+
+	/* FieldDescription */
+	--field-description-font-size: var(--ui-text-sm);
+	--field-description-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 45%);
+	--field-description-error-color: var(--ui-danger);
+	--field-description-line-height: var(--ui-leading-tight);
+
+	/* FieldGroup */
+	--field-group-gap: calc(var(--ui-base-spacing) * 2);
+
+	/* FieldSet */
+	--field-set-gap: calc(var(--ui-base-spacing) * 2);
+
+	/* FieldLegend */
+	--field-legend-font-size: var(--ui-text-base);
+	--field-legend-font-weight: var(--ui-weight-medium);
+	--field-legend-color: var(--ui-surface-foreground);
+	--field-legend-line-height: var(--ui-leading-tight);
+
+	/* FieldSeparator */
+	--field-separator-color: var(--ui-border);
+	--field-separator-width: var(--ui-border-width);
+}
+
+/* =========================================================================
+   Field
+   ========================================================================= */
+
+.field {
+	display: inline-flex;
+	flex-direction: column;
+	gap: var(--field-gap);
+	font-family: var(--field-font-family);
+}
+
+.field--full-width {
+	width: 100%;
+}
+
+/* =========================================================================
+   FieldLabel
+   ========================================================================= */
+
+.field-label {
+	font-size: var(--field-label-font-size);
+	font-weight: var(--field-label-font-weight);
+	color: var(--field-label-color);
+	line-height: var(--field-label-line-height);
+}
+
+.field-label__required {
+	color: var(--field-required-color);
+	margin-inline-start: 2px;
+}
+
+/* =========================================================================
+   FieldDescription
+   ========================================================================= */
+
+.field-description {
+	font-size: var(--field-description-font-size);
+	color: var(--field-description-color);
+	line-height: var(--field-description-line-height);
+	margin: 0;
+}
+
+.field-description--error {
+	color: var(--field-description-error-color);
+}
+
+/* =========================================================================
+   FieldGroup
+   ========================================================================= */
+
+.field-group {
+	display: flex;
+	gap: var(--field-group-gap);
+	align-items: flex-start;
+}
+
+.field-group--row {
+	flex-direction: row;
+}
+
+.field-group--column {
+	flex-direction: column;
+}
+
+/* =========================================================================
+   FieldSet
+   ========================================================================= */
+
+.field-set {
+	display: flex;
+	flex-direction: column;
+	gap: var(--field-set-gap);
+	border: none;
+	padding: 0;
+	margin: 0;
+	min-inline-size: 0;
+}
+
+/* =========================================================================
+   FieldLegend
+   ========================================================================= */
+
+.field-legend {
+	font-size: var(--field-legend-font-size);
+	font-weight: var(--field-legend-font-weight);
+	color: var(--field-legend-color);
+	line-height: var(--field-legend-line-height);
+	padding: 0;
+	/* <legend> doesn't reliably participate in flex gap across browsers */
+	margin-bottom: var(--field-set-gap);
+}
+
+/* =========================================================================
+   FieldSeparator
+   ========================================================================= */
+
+.field-separator {
+	border: none;
+	border-top: var(--field-separator-width) solid var(--field-separator-color);
+	margin: 0;
+}

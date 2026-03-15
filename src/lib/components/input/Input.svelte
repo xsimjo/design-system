@@ -1,21 +1,18 @@
 <script lang="ts">
 	import './input.css';
+	import { getContext } from 'svelte';
+	import { FIELD_KEY } from '$lib/components/field/context.js';
+	import type { FieldContext } from '$lib/components/field/context.js';
 	import type { HTMLInputAttributes } from 'svelte/elements';
 
 	interface Props extends Omit<HTMLInputAttributes, 'value' | 'size'> {
 		value?: string | number;
-		label?: string;
-		hint?: string;
-		error?: string;
 		size?: 'sm' | 'md' | 'lg';
 		fullWidth?: boolean;
 	}
 
 	let {
 		value = $bindable(''),
-		label,
-		hint,
-		error,
 		size = 'md',
 		fullWidth = false,
 		disabled = false,
@@ -23,25 +20,26 @@
 		...restProps
 	}: Props = $props();
 
-	let uniqueId = `input-${Math.random().toString(36).slice(2)}`;
-	const inputId = $derived(id ?? uniqueId);
+	const field = getContext<FieldContext>(FIELD_KEY);
+
+	const uniqueId = `input-${Math.random().toString(36).slice(2)}`;
+	const inputId = $derived(id ?? field?.id ?? uniqueId);
+	const isDisabled = $derived(disabled || !!field?.disabled);
+	const hasError = $derived(!!field?.error);
+	const describedBy = $derived(
+		field?.descriptionIds.length ? field.descriptionIds.join(' ') : undefined
+	);
 </script>
 
-<div class="input" class:input--full-width={fullWidth}>
-	{#if label}
-		<label class="input__label" for={inputId}>{label}</label>
-	{/if}
-	<input
-		class="input__field input__field--{size}"
-		class:input__field--error={!!error}
-		id={inputId}
-		{disabled}
-		bind:value
-		{...restProps}
-	/>
-	{#if error}
-		<span class="input__error">{error}</span>
-	{:else if hint}
-		<span class="input__hint">{hint}</span>
-	{/if}
-</div>
+<input
+	class="input__field input__field--{size}"
+	class:input__field--full-width={fullWidth}
+	class:input__field--error={hasError}
+	id={inputId}
+	disabled={isDisabled}
+	aria-describedby={describedBy}
+	aria-required={field?.required || undefined}
+	aria-invalid={hasError || undefined}
+	bind:value
+	{...restProps}
+/>

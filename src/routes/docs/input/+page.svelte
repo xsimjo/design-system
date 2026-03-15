@@ -1,5 +1,8 @@
 <script lang="ts">
 	import Input from '$lib/components/input/Input.svelte';
+	import Field from '$lib/components/field/Field.svelte';
+	import FieldLabel from '$lib/components/field/FieldLabel.svelte';
+	import FieldDescription from '$lib/components/field/FieldDescription.svelte';
 	import CodeExample from '$lib/internal/CodeExample.svelte';
 	import TableOfContents from '$lib/internal/TableOfContents.svelte';
 
@@ -27,8 +30,9 @@
 		<header class="page-header">
 			<h1>Input</h1>
 			<p class="lead">
-				Accessible text input with label, hint, and error support. Fully themeable through CSS
-				variables, with three sizes and support for all native input types.
+				Accessible text input. Compose with <code>Field</code>, <code>FieldLabel</code>, and
+				<code>FieldDescription</code> to add labels, hints, and error messages. Fully themeable through
+				CSS variables, with three sizes and support for all native input types.
 			</p>
 		</header>
 
@@ -46,45 +50,70 @@
 			<div id="label" class="example-block">
 				<h3>With Label</h3>
 				<p class="example-desc">
-					Labels are linked to the input via a generated or provided <code>id</code>.
+					Wrap with <code>Field</code> and <code>FieldLabel</code> — the label is linked to the input
+					automatically via context.
 				</p>
 				<CodeExample
-					code={`<Input label="Full name" placeholder="Jane Smith" />
-<Input label="Email address" placeholder="jane@example.com" />`}
+					code={`<Field>
+  <FieldLabel>Full name</FieldLabel>
+  <Input placeholder="Jane Smith" />
+</Field>
+<Field>
+  <FieldLabel>Email address</FieldLabel>
+  <Input placeholder="jane@example.com" />
+</Field>`}
 					previewClass="column"
 				>
-					<Input label="Full name" placeholder="Jane Smith" />
-					<Input label="Email address" placeholder="jane@example.com" />
+					<Field>
+						<FieldLabel>Full name</FieldLabel>
+						<Input placeholder="Jane Smith" />
+					</Field>
+					<Field>
+						<FieldLabel>Email address</FieldLabel>
+						<Input placeholder="jane@example.com" />
+					</Field>
 				</CodeExample>
 			</div>
 
 			<div id="hint" class="example-block">
 				<h3>With Hint</h3>
-				<p class="example-desc">Hint text appears below the input to provide additional context.</p>
+				<p class="example-desc">
+					<code>FieldDescription</code> can appear before or after the input.
+				</p>
 				<CodeExample
-					code="<Input label=&quot;Username&quot; hint=&quot;Letters, numbers, and underscores only.&quot; placeholder=&quot;cool_user_42&quot; />"
+					code={`<Field>
+  <FieldLabel>Username</FieldLabel>
+  <Input placeholder="cool_user_42" />
+  <FieldDescription>Letters, numbers, and underscores only.</FieldDescription>
+</Field>`}
 				>
-					<Input
-						label="Username"
-						hint="Letters, numbers, and underscores only."
-						placeholder="cool_user_42"
-					/>
+					<Field>
+						<FieldLabel>Username</FieldLabel>
+						<Input placeholder="cool_user_42" />
+						<FieldDescription>Letters, numbers, and underscores only.</FieldDescription>
+					</Field>
 				</CodeExample>
 			</div>
 
 			<div id="error" class="example-block">
 				<h3>With Error</h3>
 				<p class="example-desc">
-					Error messages replace the hint text and style the border in the error color.
+					Set <code>error</code> on <code>Field</code> to apply error styling.
+					<code>FieldDescription</code> automatically renders in the error color when the field has an
+					error.
 				</p>
 				<CodeExample
-					code="<Input label=&quot;Email address&quot; value=&quot;not-an-email&quot; error=&quot;Please enter a valid email address.&quot; />"
+					code={`<Field error="Please enter a valid email address.">
+  <FieldLabel>Email address</FieldLabel>
+  <Input value="not-an-email" />
+  <FieldDescription>Please enter a valid email address.</FieldDescription>
+</Field>`}
 				>
-					<Input
-						label="Email address"
-						value="not-an-email"
-						error="Please enter a valid email address."
-					/>
+					<Field error="Please enter a valid email address.">
+						<FieldLabel>Email address</FieldLabel>
+						<Input value="not-an-email" />
+						<FieldDescription>Please enter a valid email address.</FieldDescription>
+					</Field>
 				</CodeExample>
 			</div>
 
@@ -92,14 +121,32 @@
 				<h3>Sizes</h3>
 				<p class="example-desc">Three sizes to match your layout density.</p>
 				<CodeExample
-					code={`<Input size="sm" label="Small" placeholder="32px height" />
-<Input size="md" label="Medium" placeholder="40px height" />
-<Input size="lg" label="Large" placeholder="48px height" />`}
+					code={`<Field>
+  <FieldLabel>Small</FieldLabel>
+  <Input size="sm" placeholder="32px height" />
+</Field>
+<Field>
+  <FieldLabel>Medium</FieldLabel>
+  <Input size="md" placeholder="40px height" />
+</Field>
+<Field>
+  <FieldLabel>Large</FieldLabel>
+  <Input size="lg" placeholder="48px height" />
+</Field>`}
 					previewClass="column"
 				>
-					<Input size="sm" label="Small" placeholder="32px height" />
-					<Input size="md" label="Medium" placeholder="40px height" />
-					<Input size="lg" label="Large" placeholder="48px height" />
+					<Field>
+						<FieldLabel>Small</FieldLabel>
+						<Input size="sm" placeholder="32px height" />
+					</Field>
+					<Field>
+						<FieldLabel>Medium</FieldLabel>
+						<Input size="md" placeholder="40px height" />
+					</Field>
+					<Field>
+						<FieldLabel>Large</FieldLabel>
+						<Input size="lg" placeholder="48px height" />
+					</Field>
 				</CodeExample>
 			</div>
 
@@ -107,22 +154,40 @@
 				<h3>States</h3>
 				<p class="example-desc">Disabled inputs prevent interaction and apply muted styling.</p>
 				<CodeExample
-					code={`<Input label="Active" placeholder="Interact with me" />
-<Input label="Disabled" value="Can't touch this" disabled />`}
+					code={`<Field>
+  <FieldLabel>Active</FieldLabel>
+  <Input placeholder="Interact with me" />
+</Field>
+<Field disabled>
+  <FieldLabel>Disabled</FieldLabel>
+  <Input value="Can't touch this" />
+</Field>`}
 					previewClass="column"
 				>
-					<Input label="Active" placeholder="Interact with me" />
-					<Input label="Disabled" value="Can't touch this" disabled />
+					<Field>
+						<FieldLabel>Active</FieldLabel>
+						<Input placeholder="Interact with me" />
+					</Field>
+					<Field disabled>
+						<FieldLabel>Disabled</FieldLabel>
+						<Input value="Can't touch this" />
+					</Field>
 				</CodeExample>
 			</div>
 
 			<div id="full-width" class="example-block">
 				<h3>Full Width</h3>
-				<p class="example-desc">Stretches the input to fill its container.</p>
+				<p class="example-desc">Stretches the field to fill its container.</p>
 				<CodeExample
-					code="<Input label=&quot;Search&quot; placeholder=&quot;Search the docs...&quot; fullWidth />"
+					code={`<Field fullWidth>
+  <FieldLabel>Search</FieldLabel>
+  <Input fullWidth placeholder="Search the docs..." />
+</Field>`}
 				>
-					<Input label="Search" placeholder="Search the docs..." fullWidth />
+					<Field fullWidth>
+						<FieldLabel>Search</FieldLabel>
+						<Input fullWidth placeholder="Search the docs..." />
+					</Field>
 				</CodeExample>
 			</div>
 
@@ -132,14 +197,32 @@
 					All native HTML input types are supported via <code>restProps</code>.
 				</p>
 				<CodeExample
-					code={`<Input label="Password" type="password" placeholder="••••••••" />
-<Input label="Number" type="number" placeholder="42" />
-<Input label="Date" type="date" />`}
+					code={`<Field>
+  <FieldLabel>Password</FieldLabel>
+  <Input type="password" placeholder="••••••••" />
+</Field>
+<Field>
+  <FieldLabel>Number</FieldLabel>
+  <Input type="number" placeholder="42" />
+</Field>
+<Field>
+  <FieldLabel>Date</FieldLabel>
+  <Input type="date" />
+</Field>`}
 					previewClass="column"
 				>
-					<Input label="Password" type="password" placeholder="••••••••" />
-					<Input label="Number" type="number" placeholder="42" />
-					<Input label="Date" type="date" />
+					<Field>
+						<FieldLabel>Password</FieldLabel>
+						<Input type="password" placeholder="••••••••" />
+					</Field>
+					<Field>
+						<FieldLabel>Number</FieldLabel>
+						<Input type="number" placeholder="42" />
+					</Field>
+					<Field>
+						<FieldLabel>Date</FieldLabel>
+						<Input type="date" />
+					</Field>
 				</CodeExample>
 			</div>
 		</section>
@@ -148,7 +231,7 @@
 			<h2>API</h2>
 
 			<div class="api-table">
-				<h3>Props</h3>
+				<h3>Input Props</h3>
 				<table class="props-table">
 					<thead>
 						<tr>
@@ -166,24 +249,6 @@
 							<td>Bindable input value</td>
 						</tr>
 						<tr>
-							<td><code>label</code></td>
-							<td><code>string</code></td>
-							<td><code>—</code></td>
-							<td>Label rendered above the input</td>
-						</tr>
-						<tr>
-							<td><code>hint</code></td>
-							<td><code>string</code></td>
-							<td><code>—</code></td>
-							<td>Helper text shown below the input (hidden when <code>error</code> is set)</td>
-						</tr>
-						<tr>
-							<td><code>error</code></td>
-							<td><code>string</code></td>
-							<td><code>—</code></td>
-							<td>Error message; also applies error border styling</td>
-						</tr>
-						<tr>
 							<td><code>size</code></td>
 							<td><code>'sm' | 'md' | 'lg'</code></td>
 							<td><code>'md'</code></td>
@@ -199,13 +264,13 @@
 							<td><code>disabled</code></td>
 							<td><code>boolean</code></td>
 							<td><code>false</code></td>
-							<td>Disables the input</td>
+							<td>Disables the input (also inherited from Field context)</td>
 						</tr>
 						<tr>
 							<td><code>id</code></td>
 							<td><code>string</code></td>
 							<td><code>—</code></td>
-							<td>Custom ID for the input; auto-generated if omitted</td>
+							<td>Custom ID; auto-generated from Field context if omitted</td>
 						</tr>
 						<tr>
 							<td><code>...restProps</code></td>
@@ -215,6 +280,46 @@
 								>All other native input attributes (e.g. <code>type</code>,
 								<code>placeholder</code>, <code>autocomplete</code>)</td
 							>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="api-table">
+				<h3>Field Props</h3>
+				<table class="props-table">
+					<thead>
+						<tr>
+							<th>Prop</th>
+							<th>Type</th>
+							<th>Default</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>error</code></td>
+							<td><code>string</code></td>
+							<td><code>—</code></td>
+							<td>Triggers error styling on Input and FieldDescription</td>
+						</tr>
+						<tr>
+							<td><code>required</code></td>
+							<td><code>boolean</code></td>
+							<td><code>false</code></td>
+							<td>Shows required indicator on FieldLabel; sets aria-required</td>
+						</tr>
+						<tr>
+							<td><code>disabled</code></td>
+							<td><code>boolean</code></td>
+							<td><code>false</code></td>
+							<td>Propagates disabled state to child Input</td>
+						</tr>
+						<tr>
+							<td><code>fullWidth</code></td>
+							<td><code>boolean</code></td>
+							<td><code>false</code></td>
+							<td>Stretches the field container to 100% width</td>
 						</tr>
 					</tbody>
 				</table>
@@ -246,7 +351,7 @@
 						<tr>
 							<td><code>--input-fg</code></td>
 							<td>var(--ui-surface-foreground)</td>
-							<td>Input text and label color</td>
+							<td>Input text color</td>
 						</tr>
 						<tr>
 							<td><code>--input-border</code></td>
@@ -261,7 +366,7 @@
 						<tr>
 							<td><code>--input-placeholder</code></td>
 							<td>color-mix(…55% transparent)</td>
-							<td>Placeholder and hint text color</td>
+							<td>Placeholder text color</td>
 						</tr>
 						<tr>
 							<td><code>--input-hover-border</code></td>
@@ -286,7 +391,7 @@
 						<tr>
 							<td><code>--input-error-color</code></td>
 							<td>var(--ui-danger)</td>
-							<td>Border and error message color</td>
+							<td>Border color in error state</td>
 						</tr>
 						<tr>
 							<td><code>--input-disabled-bg</code></td>
@@ -373,31 +478,6 @@
 							<td>Input line height</td>
 						</tr>
 						<tr>
-							<td><code>--input-label-font-size</code></td>
-							<td>var(--ui-text-sm)</td>
-							<td>Label font size</td>
-						</tr>
-						<tr>
-							<td><code>--input-label-font-weight</code></td>
-							<td>var(--ui-weight-medium)</td>
-							<td>Label font weight</td>
-						</tr>
-						<tr>
-							<td><code>--input-hint-font-size</code></td>
-							<td>var(--ui-text-sm)</td>
-							<td>Hint and error message font size</td>
-						</tr>
-						<tr>
-							<td><code>--input-label-gap</code></td>
-							<td>4px</td>
-							<td>Gap between label and input</td>
-						</tr>
-						<tr>
-							<td><code>--input-field-gap</code></td>
-							<td>6px</td>
-							<td>Gap between input and hint/error</td>
-						</tr>
-						<tr>
 							<td><code>--input-transition</code></td>
 							<td>var(--ui-base-duration) var(--ui-base-easing)</td>
 							<td>Transition for border and background</td>
@@ -438,6 +518,14 @@
 		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
 		line-height: var(--line-height-relaxed);
 		margin: 0;
+	}
+
+	.lead code {
+		font-family: var(--ui-font-mono);
+		font-size: var(--font-size-xs);
+		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
+		padding: 2px 6px;
+		border-radius: calc(var(--ui-base-radius) * 0.5);
 	}
 
 	.doc-section {

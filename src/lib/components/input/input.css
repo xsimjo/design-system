@@ -28,46 +28,16 @@
 	--input-font-family: var(--ui-font-sans);
 	--input-font-weight: var(--ui-weight-normal);
 	--input-line-height: var(--ui-leading-normal);
-	--input-label-font-size: var(--ui-text-sm);
-	--input-label-font-weight: var(--ui-weight-medium);
-	--input-hint-font-size: var(--ui-text-sm);
 	--input-border-radius: var(--ui-base-radius);
 	--input-transition: var(--ui-base-duration) var(--ui-base-easing);
-	--input-label-gap: calc(var(--ui-base-spacing) * 1.5);
-	--input-field-gap: calc(var(--ui-base-spacing) * 1.5);
-	--input-hint: color-mix(in oklch, var(--ui-surface-foreground), transparent 45%);
-}
-
-.input {
-	display: inline-flex;
-	flex-direction: column;
-	gap: var(--input-label-gap);
-	font-family: var(--input-font-family);
-}
-
-.input__hint,
-.input__error {
-	margin-top: calc(var(--input-field-gap) - var(--input-label-gap));
-}
-
-.input--full-width {
-	width: 100%;
-}
-
-.input__label {
-	font-size: var(--input-label-font-size);
-	font-weight: var(--input-label-font-weight);
-	color: var(--input-fg);
-	line-height: var(--ui-leading-tight);
 }
 
 .input__field {
-	width: 100%;
 	background-color: var(--input-bg);
 	color: var(--input-fg);
 	border: var(--input-border-width) solid var(--input-border);
 	border-radius: var(--input-border-radius);
-	font-family: inherit;
+	font-family: var(--input-font-family);
 	font-weight: var(--input-font-weight);
 	line-height: var(--input-line-height);
 	outline: var(--input-focus-ring-width) solid transparent;
@@ -77,8 +47,8 @@
 		background-color var(--input-transition);
 }
 
-.input__field::placeholder {
-	color: var(--input-placeholder);
+.input__field--full-width {
+	width: 100%;
 }
 
 .input__field--sm {
@@ -97,6 +67,10 @@
 	height: var(--input-lg-height);
 	padding: 0 var(--input-lg-padding-x);
 	font-size: var(--input-lg-font-size);
+}
+
+.input__field::placeholder {
+	color: var(--input-placeholder);
 }
 
 .input__field:hover:not(:disabled):not([aria-disabled='true']):not(:focus) {
@@ -143,16 +117,4 @@
 .input__field:disabled::placeholder,
 .input__field[aria-disabled='true']::placeholder {
 	color: var(--input-disabled-fg);
-}
-
-.input__hint {
-	font-size: var(--input-hint-font-size);
-	color: var(--input-hint);
-	line-height: var(--ui-leading-tight);
-}
-
-.input__error {
-	font-size: var(--input-hint-font-size);
-	color: var(--input-error-color);
-	line-height: var(--ui-leading-tight);
 }
