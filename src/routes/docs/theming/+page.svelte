@@ -270,7 +270,7 @@ document.documentElement.dataset.theme = 'dark';`}
 	<section class="section next">
 		<h2>Next: Components</h2>
 		<p class="section-intro">Explore the full component library.</p>
-		<Button href="/docs/button">View Components</Button>
+		<a href="/docs/button"><Button>View Components</Button></a>
 	</section>
 </article>
 

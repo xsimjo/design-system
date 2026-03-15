@@ -107,12 +107,9 @@ ${'</' + 'script>'}
 	<section class="section">
 		<h2>Next Steps</h2>
 		<div class="next-steps">
-			<Button href="/docs/installation">
-				Installation
-				<ArrowRightIcon size={16} />
-			</Button>
-			<Button variant="outline" color="secondary" href="/docs/usage">Usage Guide</Button>
-			<Button variant="outline" color="secondary" href="/docs/theming">Theming</Button>
+			<a href="/docs/installation"><Button>Installation <ArrowRightIcon size={16} /></Button></a>
+			<a href="/docs/usage"><Button variant="outline" color="secondary">Usage Guide</Button></a>
+			<a href="/docs/theming"><Button variant="outline" color="secondary">Theming</Button></a>
 		</div>
 	</section>
 </article>

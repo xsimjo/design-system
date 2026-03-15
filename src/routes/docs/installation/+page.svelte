@@ -111,10 +111,7 @@ import '@xsimjo/design-system/styles';`}
 	<section class="section next">
 		<h2>Next: Usage</h2>
 		<p class="section-intro">Learn how to use components and understand the API patterns.</p>
-		<Button href="/docs/usage">
-			Usage Guide
-			<ArrowRightIcon size={16} />
-		</Button>
+		<a href="/docs/usage"><Button>Usage Guide <ArrowRightIcon size={16} /></Button></a>
 	</section>
 </article>
 

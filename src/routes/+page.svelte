@@ -12,11 +12,8 @@
 		<h1>Greenfield UI</h1>
 		<p class="lead">A minimal component library for Svelte 5 with token-based theming.</p>
 		<div class="actions">
-			<Button href="/docs">
-				Get Started
-				<ArrowRightIcon size={16} />
-			</Button>
-			<Button variant="outline" color="secondary" href="/docs/button">Components</Button>
+			<a href="/docs"><Button>Get Started <ArrowRightIcon size={16} /></Button></a>
+			<a href="/docs/button"><Button variant="outline" color="secondary">Components</Button></a>
 		</div>
 	</section>
 </main>

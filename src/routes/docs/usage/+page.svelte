@@ -220,10 +220,7 @@ function showSuccess() {
 	<section class="section next">
 		<h2>Next: Theming</h2>
 		<p class="section-intro">Learn how to customize colors, spacing, and component styles.</p>
-		<Button href="/docs/theming">
-			Theming Guide
-			<ArrowRightIcon size={16} />
-		</Button>
+		<a href="/docs/theming"><Button>Theming Guide <ArrowRightIcon size={16} /></Button></a>
 	</section>
 </article>
 

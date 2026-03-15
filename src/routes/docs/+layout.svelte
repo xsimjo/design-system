@@ -49,8 +49,8 @@
 			</a>
 		{/snippet}
 		{#snippet nav()}
-			<Button variant="ghost" color="secondary" size="sm" href="/">Home</Button>
-			<Button variant="ghost" color="secondary" size="sm" href="/docs">Documentation</Button>
+			<a href="/"><Button variant="ghost" color="secondary" size="sm">Home</Button></a>
+			<a href="/docs"><Button variant="ghost" color="secondary" size="sm">Documentation</Button></a>
 			<Button variant="ghost" color="secondary" size="sm">Components</Button>
 			<Button variant="ghost" color="secondary" size="sm">Themes</Button>
 		{/snippet}

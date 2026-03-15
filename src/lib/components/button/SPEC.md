@@ -4,16 +4,15 @@ Primary action component with multiple variants, colors, and sizes.
 
 ## Props
 
-| Prop        | Type                                                                                    | Default     | Description                            |
-| ----------- | --------------------------------------------------------------------------------------- | ----------- | -------------------------------------- |
-| `variant`   | `'filled' \| 'outline' \| 'ghost' \| 'soft' \| 'link' \| 'dash'`                        | `'filled'`  | Visual style                           |
-| `color`     | `'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning' \| 'info' \| 'neutral'` | `'primary'` | Color theme                            |
-| `size`      | `'sm' \| 'md' \| 'lg'`                                                                  | `'md'`      | Button size                            |
-| `icon`      | `boolean`                                                                               | `false`     | Square button for icon-only content    |
-| `loading`   | `boolean`                                                                               | `false`     | Shows spinner and disables button      |
-| `fullWidth` | `boolean`                                                                               | `false`     | Makes button take full width           |
-| `href`      | `string`                                                                                | `undefined` | Renders as `<a>` instead of `<button>` |
-| `disabled`  | `boolean`                                                                               | `false`     | Disables interaction                   |
+| Prop        | Type                                                                                    | Default     | Description                                                        |
+| ----------- | --------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------ |
+| `variant`   | `'filled' \| 'outline' \| 'ghost' \| 'soft' \| 'link' \| 'dash'`                        | `'filled'`  | Visual style; `link` is visual only — always renders as `<button>` |
+| `color`     | `'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning' \| 'info' \| 'neutral'` | `'primary'` | Color theme                                                        |
+| `size`      | `'sm' \| 'md' \| 'lg'`                                                                  | `'md'`      | Button size                                                        |
+| `icon`      | `boolean`                                                                               | `false`     | Square button for icon-only content                                |
+| `loading`   | `boolean`                                                                               | `false`     | Shows spinner and disables button                                  |
+| `fullWidth` | `boolean`                                                                               | `false`     | Makes button take full width                                       |
+| `disabled`  | `boolean`                                                                               | `false`     | Disables interaction                                               |
 
 ## Slots
 

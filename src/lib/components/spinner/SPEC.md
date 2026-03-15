@@ -58,6 +58,8 @@ Extends `HTMLAttributes<HTMLDivElement>`.
 
 This component uses the following component tokens:
 
+- `--spinner-default-size` - Default width/height (1em, used when no size prop)
+- `--spinner-default-border-width` - Default border thickness (used when no size prop)
 - `--spinner-sm-size` - Width/height for small size
 - `--spinner-md-size` - Width/height for medium size
 - `--spinner-lg-size` - Width/height for large size
@@ -75,3 +77,4 @@ This component uses the following component tokens:
 - `--spinner-color-neutral` - Indicator color for neutral variant
 - `--spinner-duration` - Animation duration
 - `--spinner-timing` - Animation timing function
+- `--spinner-reduced-motion-duration` - Animation duration when prefers-reduced-motion is active

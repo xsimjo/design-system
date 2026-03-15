@@ -14,22 +14,18 @@ Floating menu component with keyboard navigation, positioning via Floating UI, a
 
 ### Dropdown
 
-| Prop                  | Type                                                                                    | Default          | Description                                        |
-| --------------------- | --------------------------------------------------------------------------------------- | ---------------- | -------------------------------------------------- |
-| `open`                | `boolean` (bindable)                                                                    | `false`          | Controls open state                                |
-| `placement`           | `Placement` (Floating UI)                                                               | `'bottom-start'` | Preferred menu placement                           |
-| `offset`              | `number`                                                                                | `4`              | Pixel gap between trigger and menu                 |
-| `width`               | `'auto' \| 'trigger' \| number`                                                         | `'auto'`         | Menu width strategy                                |
-| `closeOnSelect`       | `boolean`                                                                               | `true`           | Close menu when a menu item is clicked             |
-| `closeOnClickOutside` | `boolean`                                                                               | `true`           | Close menu on outside click                        |
-| `closeOnEscape`       | `boolean`                                                                               | `true`           | Close menu on Escape key                           |
-| `disabled`            | `boolean`                                                                               | `false`          | Disables the trigger                               |
-| `variant`             | `'filled' \| 'outline' \| 'ghost' \| 'soft' \| 'link' \| 'dash'`                        | `'filled'`       | Visual style of the trigger button                 |
-| `color`               | `'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning' \| 'info' \| 'neutral'` | `'primary'`      | Color theme of the trigger button                  |
-| `size`                | `'sm' \| 'md' \| 'lg'`                                                                  | `'md'`           | Size of the trigger button                         |
-| `fullWidth`           | `boolean`                                                                               | `false`          | Makes the trigger button full width                |
-| `trigger`             | `Snippet<[{ open: boolean }]>`                                                          | required         | Trigger element; receives `open` state             |
-| `children`            | `Snippet`                                                                               | required         | Menu content (DropdownItem, DropdownDivider, etc.) |
+| Prop                  | Type                            | Default          | Description                                        |
+| --------------------- | ------------------------------- | ---------------- | -------------------------------------------------- |
+| `open`                | `boolean` (bindable)            | `false`          | Controls open state                                |
+| `placement`           | `Placement` (Floating UI)       | `'bottom-start'` | Preferred menu placement                           |
+| `offset`              | `number`                        | `4`              | Pixel gap between trigger and menu                 |
+| `width`               | `'auto' \| 'trigger' \| number` | `'auto'`         | Menu width strategy                                |
+| `closeOnSelect`       | `boolean`                       | `true`           | Close menu when a menu item is clicked             |
+| `closeOnClickOutside` | `boolean`                       | `true`           | Close menu on outside click                        |
+| `closeOnEscape`       | `boolean`                       | `true`           | Close menu on Escape key                           |
+| `disabled`            | `boolean`                       | `false`          | Disables the trigger                               |
+| `trigger`             | `Snippet<[{ open: boolean }]>`  | required         | Trigger element; receives `open` state             |
+| `children`            | `Snippet`                       | required         | Menu content (DropdownItem, DropdownDivider, etc.) |
 
 Extends `HTMLAttributes<HTMLDivElement>`.
 
@@ -148,18 +144,15 @@ This component uses the following component tokens:
 - `--dropdown-item-hover-bg` - Item background on hover
 - `--dropdown-item-active-bg` - Item background on active/press
 - `--dropdown-item-selected-bg` - Selected item background
+- `--dropdown-item-selected-hover-bg` - Selected item background on hover
 - `--dropdown-item-selected-color` - Selected item text color
 - `--dropdown-item-line-height` - Item line height
 - `--dropdown-item-disabled-opacity` - Opacity for disabled items
-- `--dropdown-item-selected-bg-alpha` - Transparency alpha for selected item bg
 - `--dropdown-item-destructive-color` - Text color for destructive items
-- `--dropdown-item-destructive-hover-bg-alpha` - Transparency alpha for destructive hover bg
 - `--dropdown-item-destructive-hover-bg` - Hover background for destructive items
+- `--dropdown-item-destructive-active-bg` - Active/pressed background for destructive items
 - `--dropdown-divider-color` - Divider line color
 - `--dropdown-divider-margin` - Vertical margin around divider
-- `--dropdown-focus-ring-color` - Focus ring color for menu items
-- `--dropdown-focus-ring-width` - Focus ring width for menu items
-- `--dropdown-focus-ring-offset` - Focus ring offset for menu items
 - `--dropdown-transition` - Animation timing
 - `--dropdown-z-index` - Z-index for the floating menu
 - `--dropdown-enter-offset` - Transform offset for enter animation
