@@ -53,6 +53,7 @@
 	--ui-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 	--ui-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Monaco', 'Courier New', monospace;
 
+	--ui-text-xs: 12px;
 	--ui-text-sm: 14px;
 	--ui-text-base: 16px;
 	--ui-text-lg: 18px;

@@ -32,6 +32,11 @@
 				{ label: 'Dropdown', href: '/docs/dropdown' },
 				{ label: 'Field', href: '/docs/field' },
 				{ label: 'Input', href: '/docs/input' },
+				{ label: 'Badge', href: '/docs/badge' },
+				{ label: 'BadgeInput', href: '/docs/badge-input' },
+				{ label: 'FileInput', href: '/docs/file-input' },
+				{ label: 'Combobox', href: '/docs/combobox' },
+				{ label: 'MultiSelect', href: '/docs/multiselect' },
 				{ label: 'Select', href: '/docs/select' },
 				{ label: 'Spinner', href: '/docs/spinner' },
 				{ label: 'Textarea', href: '/docs/textarea' }

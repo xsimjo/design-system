@@ -1,0 +1,149 @@
+[data-theme] {
+	/* Colors — primary variant (default) */
+	--badge-bg: color-mix(in oklch, var(--ui-primary), transparent 88%);
+	--badge-fg: var(--ui-primary);
+	--badge-border: color-mix(in oklch, var(--ui-primary), transparent 75%);
+	--badge-border-width: var(--ui-border-width);
+	--badge-remove-hover-bg: color-mix(in oklch, var(--ui-primary), transparent 70%);
+
+	/* Sizes */
+	--badge-height-sm: calc(var(--ui-base-spacing) * 3);
+	--badge-height-md: calc(var(--ui-base-spacing) * 3.5);
+	--badge-height-lg: calc(var(--ui-base-spacing) * 4);
+	--badge-padding-x-sm: calc(var(--ui-base-spacing) * 1.25);
+	--badge-padding-x-md: calc(var(--ui-base-spacing) * 1.5);
+	--badge-padding-x-lg: calc(var(--ui-base-spacing) * 2);
+	--badge-font-size-sm: var(--ui-text-xs);
+	--badge-font-size-md: var(--ui-text-sm);
+	--badge-font-size-lg: var(--ui-text-base);
+
+	--badge-border-radius: calc(var(--ui-base-radius) * 10);
+	--badge-remove-size: calc(var(--ui-base-spacing) * 2.5);
+	--badge-transition: var(--ui-base-duration) var(--ui-base-easing);
+}
+
+/* Variants */
+.badge--secondary {
+	--badge-bg: color-mix(in oklch, var(--ui-secondary), transparent 88%);
+	--badge-fg: var(--ui-secondary);
+	--badge-border: color-mix(in oklch, var(--ui-secondary), transparent 75%);
+	--badge-remove-hover-bg: color-mix(in oklch, var(--ui-secondary), transparent 70%);
+}
+
+.badge--success {
+	--badge-bg: color-mix(in oklch, var(--ui-success), transparent 88%);
+	--badge-fg: var(--ui-success);
+	--badge-border: color-mix(in oklch, var(--ui-success), transparent 75%);
+	--badge-remove-hover-bg: color-mix(in oklch, var(--ui-success), transparent 70%);
+}
+
+.badge--danger {
+	--badge-bg: color-mix(in oklch, var(--ui-danger), transparent 88%);
+	--badge-fg: var(--ui-danger);
+	--badge-border: color-mix(in oklch, var(--ui-danger), transparent 75%);
+	--badge-remove-hover-bg: color-mix(in oklch, var(--ui-danger), transparent 70%);
+}
+
+.badge--warning {
+	--badge-bg: color-mix(in oklch, var(--ui-warning), transparent 88%);
+	--badge-fg: color-mix(in oklch, var(--ui-warning), transparent 10%);
+	--badge-border: color-mix(in oklch, var(--ui-warning), transparent 75%);
+	--badge-remove-hover-bg: color-mix(in oklch, var(--ui-warning), transparent 70%);
+}
+
+.badge--info {
+	--badge-bg: color-mix(in oklch, var(--ui-info), transparent 88%);
+	--badge-fg: var(--ui-info);
+	--badge-border: color-mix(in oklch, var(--ui-info), transparent 75%);
+	--badge-remove-hover-bg: color-mix(in oklch, var(--ui-info), transparent 70%);
+}
+
+.badge--neutral {
+	--badge-bg: color-mix(in oklch, var(--ui-neutral), transparent 88%);
+	--badge-fg: var(--ui-surface-foreground);
+	--badge-border: color-mix(in oklch, var(--ui-neutral), transparent 70%);
+	--badge-remove-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 65%);
+}
+
+.badge {
+	display: inline-flex;
+	align-items: center;
+	gap: calc(var(--ui-base-spacing) * 0.5);
+	max-width: 100%;
+	background-color: var(--badge-bg);
+	color: var(--badge-fg);
+	border: var(--badge-border-width) solid var(--badge-border);
+	border-radius: var(--badge-border-radius);
+	font-family: var(--ui-font-sans);
+	font-weight: var(--ui-weight-medium);
+	white-space: nowrap;
+	user-select: none;
+}
+
+.badge--sm {
+	height: var(--badge-height-sm);
+	padding: 0 var(--badge-padding-x-sm);
+	font-size: var(--badge-font-size-sm);
+}
+
+.badge--md {
+	height: var(--badge-height-md);
+	padding: 0 var(--badge-padding-x-md);
+	font-size: var(--badge-font-size-md);
+}
+
+.badge--lg {
+	height: var(--badge-height-lg);
+	padding: 0 var(--badge-padding-x-lg);
+	font-size: var(--badge-font-size-lg);
+}
+
+.badge--has-remove.badge--sm {
+	padding-right: calc(var(--badge-padding-x-sm) * 0.5);
+}
+
+.badge--has-remove.badge--md {
+	padding-right: calc(var(--badge-padding-x-md) * 0.5);
+}
+
+.badge--has-remove.badge--lg {
+	padding-right: calc(var(--badge-padding-x-lg) * 0.5);
+}
+
+.badge--disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.badge__label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.badge__remove {
+	all: unset;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: var(--badge-remove-size);
+	height: var(--badge-remove-size);
+	border-radius: 50%;
+	color: inherit;
+	cursor: pointer;
+	transition: background-color var(--badge-transition);
+}
+
+.badge__remove:hover:not(:disabled) {
+	background-color: var(--badge-remove-hover-bg);
+}
+
+.badge__remove:focus-visible {
+	outline: var(--ui-ring-width) solid currentColor;
+	outline-offset: 1px;
+}
+
+.badge__remove:disabled {
+	cursor: not-allowed;
+}

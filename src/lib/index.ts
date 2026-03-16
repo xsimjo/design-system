@@ -8,6 +8,13 @@ export { default as DropdownItem } from './components/dropdown/DropdownItem.svel
 export { default as DropdownDivider } from './components/dropdown/DropdownDivider.svelte';
 export { default as Select } from './components/select/Select.svelte';
 export type { SelectOption } from './components/select/Select.svelte';
+export { default as Badge } from './components/badge/Badge.svelte';
+export { default as Combobox } from './components/combobox/Combobox.svelte';
+export type { ComboboxOption } from './components/combobox/Combobox.svelte';
+export { default as MultiSelect } from './components/multiselect/MultiSelect.svelte';
+export type { MultiSelectOption } from './components/multiselect/MultiSelect.svelte';
+export { default as BadgeInput } from './components/badge-input/BadgeInput.svelte';
+export { default as FileInput } from './components/file-input/FileInput.svelte';
 export { default as Field } from './components/field/Field.svelte';
 export { default as FieldLabel } from './components/field/FieldLabel.svelte';
 export { default as FieldDescription } from './components/field/FieldDescription.svelte';
@@ -15,3 +22,7 @@ export { default as FieldGroup } from './components/field/FieldGroup.svelte';
 export { default as FieldSet } from './components/field/FieldSet.svelte';
 export { default as FieldLegend } from './components/field/FieldLegend.svelte';
 export { default as FieldSeparator } from './components/field/FieldSeparator.svelte';
+
+export { default as XIcon } from './icons/XIcon.svelte';
+export { default as CloudUploadIcon } from './icons/CloudUploadIcon.svelte';
+export { default as FileUpIcon } from './icons/FileUpIcon.svelte';

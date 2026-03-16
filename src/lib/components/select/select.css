@@ -127,7 +127,11 @@
 	border-color: var(--select-error-color);
 }
 
-.select__trigger--error:hover:not(:disabled),
+.select__trigger--error:hover:not(:disabled):not(.select__trigger--open) {
+	border-color: var(--select-error-color);
+}
+
+.select__trigger--error:focus-visible,
 .select__trigger--error.select__trigger--open:not(:disabled) {
 	border-color: var(--select-error-color);
 	outline-color: color-mix(in oklch, var(--select-error-color), transparent 70%);

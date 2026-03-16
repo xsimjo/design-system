@@ -1,0 +1,283 @@
+[data-theme] {
+	/* Trigger */
+	--multiselect-bg: var(--ui-surface);
+	--multiselect-fg: var(--ui-surface-foreground);
+	--multiselect-border: var(--ui-border);
+	--multiselect-border-width: var(--ui-border-width);
+	--multiselect-placeholder: color-mix(in oklch, var(--ui-surface-foreground), transparent 55%);
+	--multiselect-focus-color: var(--ui-primary);
+	--multiselect-focus-ring-width: var(--ui-ring-width);
+	--multiselect-focus-ring-offset: var(--ui-ring-offset);
+	--multiselect-error-color: var(--ui-danger);
+	--multiselect-disabled-bg: color-mix(in oklch, var(--ui-neutral), transparent 80%);
+	--multiselect-disabled-fg: color-mix(in oklch, var(--ui-surface-foreground), transparent 50%);
+	--multiselect-disabled-border: var(--ui-border);
+	--multiselect-hover-border: color-mix(
+		in oklch,
+		var(--ui-border),
+		var(--ui-hover-mix) var(--ui-hover-amount)
+	);
+	--multiselect-gap: calc(var(--ui-base-spacing) * 0.75);
+
+	/* Sizes */
+	--multiselect-sm-min-height: calc(var(--ui-base-spacing) * 4);
+	--multiselect-sm-padding-x: calc(var(--ui-base-spacing) * 1.5);
+	--multiselect-sm-padding-y: calc(var(--ui-base-spacing) * 0.5);
+	--multiselect-sm-font-size: var(--ui-text-sm);
+	--multiselect-md-min-height: calc(var(--ui-base-spacing) * 5);
+	--multiselect-md-padding-x: calc(var(--ui-base-spacing) * 2);
+	--multiselect-md-padding-y: calc(var(--ui-base-spacing) * 0.75);
+	--multiselect-md-font-size: var(--ui-text-base);
+	--multiselect-lg-min-height: calc(var(--ui-base-spacing) * 6);
+	--multiselect-lg-padding-x: calc(var(--ui-base-spacing) * 3);
+	--multiselect-lg-padding-y: calc(var(--ui-base-spacing) * 1);
+	--multiselect-lg-font-size: var(--ui-text-lg);
+
+	--multiselect-font-family: var(--ui-font-sans);
+	--multiselect-font-weight: var(--ui-weight-normal);
+	--multiselect-border-radius: var(--ui-base-radius);
+	--multiselect-transition: var(--ui-base-duration) var(--ui-base-easing);
+	--multiselect-chevron-size: calc(var(--ui-base-spacing) * 2);
+	--multiselect-chevron-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 35%);
+
+	/* Listbox */
+	--multiselect-listbox-bg: var(--ui-surface-overlay);
+	--multiselect-listbox-fg: var(--ui-surface-overlay-foreground);
+	--multiselect-listbox-border: var(--ui-border);
+	--multiselect-listbox-shadow: var(--ui-depth);
+	--multiselect-listbox-padding: calc(var(--ui-base-spacing) * 0.5);
+	--multiselect-listbox-max-height: calc(var(--ui-base-spacing) * 40);
+	--multiselect-listbox-z-index: var(--ui-z-overlay);
+	--multiselect-listbox-enter-offset: var(--ui-enter-offset);
+
+	/* Options */
+	--multiselect-option-height: calc(var(--ui-base-spacing) * 5);
+	--multiselect-option-padding-x: calc(var(--ui-base-spacing) * 1.5);
+	--multiselect-option-font-size: var(--ui-text-sm);
+	--multiselect-option-border-radius: calc(var(--ui-base-radius) * 0.5);
+	--multiselect-option-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 90%);
+	--multiselect-option-selected-bg: color-mix(in oklch, var(--ui-primary), transparent 90%);
+	--multiselect-option-selected-hover-bg: color-mix(in oklch, var(--ui-primary), transparent 84%);
+	--multiselect-option-selected-fg: var(--ui-primary);
+	--multiselect-option-check-size: calc(var(--ui-base-spacing) * 2);
+	--multiselect-option-disabled-opacity: 0.5;
+
+	/* Badge highlight */
+	--multiselect-badge-focused-outline: 2px solid var(--ui-primary);
+}
+
+/* Wrapper */
+.multiselect {
+	display: inline-flex;
+	position: relative;
+}
+
+.multiselect--full-width {
+	display: flex;
+	width: 100%;
+}
+
+/* Trigger */
+.multiselect__trigger {
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--multiselect-gap);
+	width: 100%;
+	background-color: var(--multiselect-bg);
+	color: var(--multiselect-fg);
+	border: var(--multiselect-border-width) solid var(--multiselect-border);
+	border-radius: var(--multiselect-border-radius);
+	font-family: var(--multiselect-font-family);
+	font-weight: var(--multiselect-font-weight);
+	cursor: text;
+	outline: var(--multiselect-focus-ring-width) solid transparent;
+	outline-offset: var(--multiselect-focus-ring-offset);
+	transition:
+		border-color var(--multiselect-transition),
+		background-color var(--multiselect-transition),
+		outline-color var(--multiselect-transition);
+}
+
+.multiselect__trigger--sm {
+	min-height: var(--multiselect-sm-min-height);
+	padding: var(--multiselect-sm-padding-y) var(--multiselect-sm-padding-x);
+	font-size: var(--multiselect-sm-font-size);
+}
+
+.multiselect__trigger--md {
+	min-height: var(--multiselect-md-min-height);
+	padding: var(--multiselect-md-padding-y) var(--multiselect-md-padding-x);
+	font-size: var(--multiselect-md-font-size);
+}
+
+.multiselect__trigger--lg {
+	min-height: var(--multiselect-lg-min-height);
+	padding: var(--multiselect-lg-padding-y) var(--multiselect-lg-padding-x);
+	font-size: var(--multiselect-lg-font-size);
+}
+
+.multiselect__trigger:hover:not(.multiselect__trigger--disabled):not(.multiselect__trigger--open) {
+	border-color: var(--multiselect-hover-border);
+}
+
+.multiselect__trigger:focus-within,
+.multiselect__trigger--open:not(.multiselect__trigger--disabled) {
+	border-color: var(--multiselect-focus-color);
+	outline-color: color-mix(in oklch, var(--multiselect-focus-color), transparent 70%);
+}
+
+.multiselect__trigger--error {
+	border-color: var(--multiselect-error-color);
+}
+
+.multiselect__trigger--error:hover:not(.multiselect__trigger--disabled):not(
+		.multiselect__trigger--open
+	) {
+	border-color: var(--multiselect-error-color);
+}
+
+.multiselect__trigger--error:focus-within,
+.multiselect__trigger--error.multiselect__trigger--open:not(.multiselect__trigger--disabled) {
+	border-color: var(--multiselect-error-color);
+	outline-color: color-mix(in oklch, var(--multiselect-error-color), transparent 70%);
+}
+
+.multiselect__trigger--disabled {
+	background-color: var(--multiselect-disabled-bg);
+	color: var(--multiselect-disabled-fg);
+	border-color: var(--multiselect-disabled-border);
+	cursor: not-allowed;
+}
+
+/* Badge highlight state */
+.multiselect__badge--focused {
+	outline: var(--multiselect-badge-focused-outline);
+	outline-offset: 1px;
+	border-radius: calc(var(--ui-base-radius) * 10);
+}
+
+/* Input */
+.multiselect__input {
+	all: unset;
+	flex: 1;
+	min-width: 80px;
+	background: transparent;
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	cursor: text;
+	line-height: 1;
+}
+
+.multiselect__input::placeholder {
+	color: var(--multiselect-placeholder);
+}
+
+.multiselect__input:disabled {
+	cursor: not-allowed;
+}
+
+/* Chevron */
+.multiselect__chevron {
+	flex-shrink: 0;
+	align-self: center;
+	margin-left: auto;
+	width: var(--multiselect-chevron-size);
+	height: var(--multiselect-chevron-size);
+	color: var(--multiselect-chevron-color);
+	transition: transform var(--multiselect-transition);
+	pointer-events: none;
+}
+
+.multiselect__chevron--open {
+	transform: rotate(180deg);
+}
+
+/* Listbox */
+.multiselect__listbox {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: var(--multiselect-listbox-z-index);
+	max-height: var(--multiselect-listbox-max-height);
+	overflow-y: auto;
+	padding: var(--multiselect-listbox-padding);
+	background: var(--multiselect-listbox-bg);
+	color: var(--multiselect-listbox-fg);
+	border: var(--multiselect-border-width) solid var(--multiselect-listbox-border);
+	border-radius: var(--multiselect-border-radius);
+	box-shadow: var(--multiselect-listbox-shadow);
+	opacity: 0;
+	transform: translateY(var(--multiselect-listbox-enter-offset));
+	animation: multiselect-enter var(--multiselect-transition) forwards;
+}
+
+@keyframes multiselect-enter {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Options */
+.multiselect__option {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: calc(var(--ui-base-spacing) * 1.5);
+	min-height: var(--multiselect-option-height);
+	padding: 0 var(--multiselect-option-padding-x);
+	font-family: var(--multiselect-font-family);
+	font-size: var(--multiselect-option-font-size);
+	border-radius: var(--multiselect-option-border-radius);
+	cursor: pointer;
+	user-select: none;
+	transition: background var(--multiselect-transition);
+}
+
+.multiselect__option:not(.multiselect__option--disabled):hover,
+.multiselect__option--active:not(.multiselect__option--disabled) {
+	background: var(--multiselect-option-hover-bg);
+}
+
+.multiselect__option--selected {
+	background: var(--multiselect-option-selected-bg);
+	color: var(--multiselect-option-selected-fg);
+}
+
+.multiselect__option--selected:not(.multiselect__option--disabled):hover,
+.multiselect__option--selected.multiselect__option--active:not(.multiselect__option--disabled) {
+	background: var(--multiselect-option-selected-hover-bg);
+}
+
+.multiselect__option--disabled {
+	opacity: var(--multiselect-option-disabled-opacity);
+	cursor: not-allowed;
+}
+
+.multiselect__option-label {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.multiselect__option-check {
+	flex-shrink: 0;
+	width: var(--multiselect-option-check-size);
+	height: var(--multiselect-option-check-size);
+}
+
+.multiselect__empty {
+	display: flex;
+	align-items: center;
+	min-height: var(--multiselect-option-height);
+	padding: 0 var(--multiselect-option-padding-x);
+	font-family: var(--multiselect-font-family);
+	font-size: var(--multiselect-option-font-size);
+	color: color-mix(in oklch, var(--multiselect-listbox-fg), transparent 50%);
+	font-style: italic;
+}

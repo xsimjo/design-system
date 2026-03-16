@@ -1,0 +1,152 @@
+[data-theme] {
+	/* Trigger */
+	--badge-input-bg: var(--ui-surface);
+	--badge-input-fg: var(--ui-surface-foreground);
+	--badge-input-border: var(--ui-border);
+	--badge-input-border-width: var(--ui-border-width);
+	--badge-input-placeholder: color-mix(in oklch, var(--ui-surface-foreground), transparent 55%);
+	--badge-input-focus-color: var(--ui-primary);
+	--badge-input-focus-ring-width: var(--ui-ring-width);
+	--badge-input-focus-ring-offset: var(--ui-ring-offset);
+	--badge-input-error-color: var(--ui-danger);
+	--badge-input-disabled-bg: color-mix(in oklch, var(--ui-neutral), transparent 80%);
+	--badge-input-disabled-fg: color-mix(in oklch, var(--ui-surface-foreground), transparent 50%);
+	--badge-input-disabled-border: var(--ui-border);
+	--badge-input-hover-border: color-mix(
+		in oklch,
+		var(--ui-border),
+		var(--ui-hover-mix) var(--ui-hover-amount)
+	);
+	--badge-input-gap: calc(var(--ui-base-spacing) * 0.75);
+	--badge-input-validation-error-fg: var(--ui-danger);
+
+	/* Sizes */
+	--badge-input-sm-min-height: calc(var(--ui-base-spacing) * 4);
+	--badge-input-sm-padding-x: calc(var(--ui-base-spacing) * 1.5);
+	--badge-input-sm-padding-y: calc(var(--ui-base-spacing) * 0.5);
+	--badge-input-sm-font-size: var(--ui-text-sm);
+	--badge-input-md-min-height: calc(var(--ui-base-spacing) * 5);
+	--badge-input-md-padding-x: calc(var(--ui-base-spacing) * 2);
+	--badge-input-md-padding-y: calc(var(--ui-base-spacing) * 0.75);
+	--badge-input-md-font-size: var(--ui-text-base);
+	--badge-input-lg-min-height: calc(var(--ui-base-spacing) * 6);
+	--badge-input-lg-padding-x: calc(var(--ui-base-spacing) * 3);
+	--badge-input-lg-padding-y: calc(var(--ui-base-spacing) * 1);
+	--badge-input-lg-font-size: var(--ui-text-lg);
+
+	--badge-input-font-family: var(--ui-font-sans);
+	--badge-input-font-weight: var(--ui-weight-normal);
+	--badge-input-border-radius: var(--ui-base-radius);
+	--badge-input-transition: var(--ui-base-duration) var(--ui-base-easing);
+}
+
+/* Wrapper */
+.badge-input {
+	display: inline-flex;
+	flex-direction: column;
+	gap: calc(var(--ui-base-spacing) * 1);
+}
+
+.badge-input--full-width {
+	display: flex;
+	width: 100%;
+}
+
+/* Trigger */
+.badge-input__trigger {
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--badge-input-gap);
+	width: 100%;
+	background-color: var(--badge-input-bg);
+	color: var(--badge-input-fg);
+	border: var(--badge-input-border-width) solid var(--badge-input-border);
+	border-radius: var(--badge-input-border-radius);
+	font-family: var(--badge-input-font-family);
+	font-weight: var(--badge-input-font-weight);
+	cursor: text;
+	outline: var(--badge-input-focus-ring-width) solid transparent;
+	outline-offset: var(--badge-input-focus-ring-offset);
+	transition:
+		border-color var(--badge-input-transition),
+		background-color var(--badge-input-transition),
+		outline-color var(--badge-input-transition);
+}
+
+.badge-input__trigger--sm {
+	min-height: var(--badge-input-sm-min-height);
+	padding: var(--badge-input-sm-padding-y) var(--badge-input-sm-padding-x);
+	font-size: var(--badge-input-sm-font-size);
+}
+
+.badge-input__trigger--md {
+	min-height: var(--badge-input-md-min-height);
+	padding: var(--badge-input-md-padding-y) var(--badge-input-md-padding-x);
+	font-size: var(--badge-input-md-font-size);
+}
+
+.badge-input__trigger--lg {
+	min-height: var(--badge-input-lg-min-height);
+	padding: var(--badge-input-lg-padding-y) var(--badge-input-lg-padding-x);
+	font-size: var(--badge-input-lg-font-size);
+}
+
+.badge-input__trigger:hover:not(.badge-input__trigger--disabled) {
+	border-color: var(--badge-input-hover-border);
+}
+
+.badge-input__trigger:focus-within {
+	border-color: var(--badge-input-focus-color);
+	outline-color: color-mix(in oklch, var(--badge-input-focus-color), transparent 70%);
+}
+
+.badge-input__trigger--error {
+	border-color: var(--badge-input-error-color);
+}
+
+.badge-input__trigger--error:hover:not(.badge-input__trigger--disabled) {
+	border-color: var(--badge-input-error-color);
+}
+
+.badge-input__trigger--error:focus-within {
+	border-color: var(--badge-input-error-color);
+	outline-color: color-mix(in oklch, var(--badge-input-error-color), transparent 70%);
+}
+
+.badge-input__trigger--disabled {
+	background-color: var(--badge-input-disabled-bg);
+	color: var(--badge-input-disabled-fg);
+	border-color: var(--badge-input-disabled-border);
+	cursor: not-allowed;
+}
+
+/* Input */
+.badge-input__input {
+	all: unset;
+	flex: 1;
+	min-width: 80px;
+	background: transparent;
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	cursor: text;
+	line-height: 1;
+}
+
+.badge-input__input::placeholder {
+	color: var(--badge-input-placeholder);
+}
+
+.badge-input__input:disabled {
+	cursor: not-allowed;
+}
+
+/* Validation error */
+.badge-input__error {
+	font-family: var(--badge-input-font-family);
+	font-size: var(--ui-text-sm);
+	color: var(--badge-input-validation-error-fg);
+}

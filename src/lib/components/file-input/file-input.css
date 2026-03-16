@@ -1,0 +1,268 @@
+[data-theme] {
+	/* Zone */
+	--file-input-bg: var(--ui-surface);
+	--file-input-fg: var(--ui-surface-foreground);
+	--file-input-border: var(--ui-border);
+	--file-input-border-width: var(--ui-border-width);
+	--file-input-border-style: dashed;
+	--file-input-border-radius: var(--ui-base-radius);
+	--file-input-focus-color: var(--ui-primary);
+	--file-input-focus-ring-width: var(--ui-ring-width);
+	--file-input-focus-ring-offset: var(--ui-ring-offset);
+	--file-input-hover-bg: color-mix(in oklch, var(--ui-primary), transparent 96%);
+	--file-input-hover-border: color-mix(
+		in oklch,
+		var(--ui-border),
+		var(--ui-hover-mix) var(--ui-hover-amount)
+	);
+	--file-input-drag-bg: color-mix(in oklch, var(--ui-primary), transparent 90%);
+	--file-input-drag-border: var(--ui-primary);
+	--file-input-error-color: var(--ui-danger);
+	--file-input-success-color: var(--ui-success);
+	--file-input-disabled-bg: color-mix(in oklch, var(--ui-neutral), transparent 80%);
+	--file-input-disabled-fg: color-mix(in oklch, var(--ui-surface-foreground), transparent 50%);
+	--file-input-disabled-border: var(--ui-border);
+	--file-input-hint-fg: color-mix(in oklch, var(--ui-surface-foreground), transparent 45%);
+	--file-input-icon-fg: var(--ui-neutral);
+
+	/* File list */
+	--file-input-file-bg: var(--ui-surface-raised);
+	--file-input-file-border: var(--ui-border);
+	--file-input-file-name-fg: var(--ui-surface-foreground);
+	--file-input-file-size-fg: var(--ui-secondary);
+	--file-input-remove-fg: var(--ui-neutral);
+	--file-input-remove-hover-fg: var(--ui-danger);
+
+	/* Sizes */
+	--file-input-sm-padding-y: calc(var(--ui-base-spacing) * 2);
+	--file-input-sm-padding-x: calc(var(--ui-base-spacing) * 2);
+	--file-input-sm-icon-size: 24px;
+	--file-input-sm-font-size: var(--ui-text-sm);
+
+	--file-input-md-padding-y: calc(var(--ui-base-spacing) * 3);
+	--file-input-md-padding-x: calc(var(--ui-base-spacing) * 3);
+	--file-input-md-icon-size: 32px;
+	--file-input-md-font-size: var(--ui-text-base);
+
+	--file-input-lg-padding-y: calc(var(--ui-base-spacing) * 4);
+	--file-input-lg-padding-x: calc(var(--ui-base-spacing) * 4);
+	--file-input-lg-icon-size: 40px;
+	--file-input-lg-font-size: var(--ui-text-lg);
+
+	--file-input-font-family: var(--ui-font-sans);
+	--file-input-font-weight: var(--ui-weight-normal);
+	--file-input-transition: var(--ui-base-duration) var(--ui-base-easing);
+	--file-input-gap: calc(var(--ui-base-spacing) * 1);
+}
+
+/* Wrapper */
+.file-input {
+	display: inline-flex;
+	flex-direction: column;
+	gap: var(--file-input-gap);
+}
+
+.file-input--full-width {
+	display: flex;
+	width: 100%;
+}
+
+/* Hidden native input */
+.file-input__native {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+/* Drop zone */
+.file-input__zone {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: calc(var(--ui-base-spacing) * 0.75);
+	width: 100%;
+	background-color: var(--file-input-bg);
+	color: var(--file-input-fg);
+	border: var(--file-input-border-width) var(--file-input-border-style) var(--file-input-border);
+	border-radius: var(--file-input-border-radius);
+	font-family: var(--file-input-font-family);
+	font-weight: var(--file-input-font-weight);
+	cursor: pointer;
+	text-align: center;
+	outline: var(--file-input-focus-ring-width) solid transparent;
+	outline-offset: var(--file-input-focus-ring-offset);
+	transition:
+		border-color var(--file-input-transition),
+		background-color var(--file-input-transition),
+		outline-color var(--file-input-transition);
+}
+
+.file-input__zone--sm {
+	padding: var(--file-input-sm-padding-y) var(--file-input-sm-padding-x);
+	font-size: var(--file-input-sm-font-size);
+}
+
+.file-input__zone--md {
+	padding: var(--file-input-md-padding-y) var(--file-input-md-padding-x);
+	font-size: var(--file-input-md-font-size);
+}
+
+.file-input__zone--lg {
+	padding: var(--file-input-lg-padding-y) var(--file-input-lg-padding-x);
+	font-size: var(--file-input-lg-font-size);
+}
+
+.file-input__zone:hover:not(.file-input__zone--disabled) {
+	background-color: var(--file-input-hover-bg);
+	border-color: var(--file-input-hover-border);
+}
+
+.file-input__zone:focus-visible {
+	border-color: var(--file-input-focus-color);
+	outline-color: color-mix(in oklch, var(--file-input-focus-color), transparent 70%);
+}
+
+.file-input__zone--drag-over {
+	background-color: var(--file-input-drag-bg);
+	border-color: var(--file-input-drag-border);
+	border-style: solid;
+}
+
+.file-input__zone--error {
+	border-color: var(--file-input-error-color);
+	border-style: solid;
+}
+
+.file-input__zone--error:hover:not(.file-input__zone--disabled) {
+	border-color: var(--file-input-error-color);
+}
+
+.file-input__zone--error:focus-visible {
+	border-color: var(--file-input-error-color);
+	outline-color: color-mix(in oklch, var(--file-input-error-color), transparent 70%);
+}
+
+.file-input__zone--success {
+	border-color: var(--file-input-success-color);
+	border-style: solid;
+}
+
+.file-input__zone--success:hover:not(.file-input__zone--disabled) {
+	border-color: var(--file-input-success-color);
+}
+
+.file-input__zone--success:focus-visible {
+	border-color: var(--file-input-success-color);
+	outline-color: color-mix(in oklch, var(--file-input-success-color), transparent 70%);
+}
+
+.file-input__zone--disabled {
+	background-color: var(--file-input-disabled-bg);
+	color: var(--file-input-disabled-fg);
+	border-color: var(--file-input-disabled-border);
+	cursor: not-allowed;
+}
+
+/* Zone icon */
+.file-input__icon {
+	color: var(--file-input-icon-fg);
+	flex-shrink: 0;
+}
+
+.file-input__zone--sm .file-input__icon {
+	width: var(--file-input-sm-icon-size);
+	height: var(--file-input-sm-icon-size);
+}
+
+.file-input__zone--md .file-input__icon {
+	width: var(--file-input-md-icon-size);
+	height: var(--file-input-md-icon-size);
+}
+
+.file-input__zone--lg .file-input__icon {
+	width: var(--file-input-lg-icon-size);
+	height: var(--file-input-lg-icon-size);
+}
+
+/* Zone text */
+.file-input__placeholder {
+	font-weight: var(--ui-weight-medium);
+}
+
+.file-input__hint {
+	font-size: var(--ui-text-sm);
+	color: var(--file-input-hint-fg);
+	line-height: var(--ui-leading-normal);
+}
+
+/* File list */
+.file-input__file-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: calc(var(--ui-base-spacing) * 0.5);
+}
+
+.file-input__file-item {
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	gap: calc(var(--ui-base-spacing) * 1.5);
+	padding: calc(var(--ui-base-spacing) * 1) calc(var(--ui-base-spacing) * 1.5);
+	background-color: var(--file-input-file-bg);
+	border: var(--file-input-border-width) solid var(--file-input-file-border);
+	border-radius: var(--file-input-border-radius);
+	font-family: var(--file-input-font-family);
+	font-size: var(--ui-text-sm);
+}
+
+.file-input__file-icon {
+	color: var(--file-input-icon-fg);
+	flex-shrink: 0;
+}
+
+.file-input__file-name {
+	flex: 1;
+	color: var(--file-input-file-name-fg);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	min-width: 0;
+}
+
+.file-input__file-size {
+	color: var(--file-input-file-size-fg);
+	font-size: var(--ui-text-xs);
+	flex-shrink: 0;
+}
+
+.file-input__file-remove {
+	all: unset;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	color: var(--file-input-remove-fg);
+	cursor: pointer;
+	border-radius: calc(var(--ui-base-radius) * 0.5);
+	transition: color var(--file-input-transition);
+}
+
+.file-input__file-remove:hover {
+	color: var(--file-input-remove-hover-fg);
+}
+
+.file-input__file-remove:focus-visible {
+	outline: var(--file-input-focus-ring-width) solid var(--file-input-focus-color);
+	outline-offset: 2px;
+}
