@@ -7,8 +7,42 @@
 	import FieldLegend from '$lib/components/field/FieldLegend.svelte';
 	import FieldSeparator from '$lib/components/field/FieldSeparator.svelte';
 	import Input from '$lib/components/input/Input.svelte';
+	import Textarea from '$lib/components/textarea/Textarea.svelte';
+	import Select from '$lib/components/select/Select.svelte';
+	import Checkbox from '$lib/components/checkbox/Checkbox.svelte';
+	import Radio from '$lib/components/radio/Radio.svelte';
+	import Switch from '$lib/components/switch/Switch.svelte';
+	import Slider from '$lib/components/slider/Slider.svelte';
+	import Combobox from '$lib/components/combobox/Combobox.svelte';
+	import MultiSelect from '$lib/components/multiselect/MultiSelect.svelte';
+	import BadgeInput from '$lib/components/badge-input/BadgeInput.svelte';
+	import FileInput from '$lib/components/file-input/FileInput.svelte';
 	import CodeExample from '$lib/internal/CodeExample.svelte';
 	import TableOfContents from '$lib/internal/TableOfContents.svelte';
+
+	let demoSlider = $state(40);
+	let demoCheckbox = $state(false);
+	let demoRadio = $state('');
+	let demoSwitch = $state(false);
+	let demoSelect = $state<string | undefined>(undefined);
+	let demoMulti = $state<string[]>([]);
+	let demoCombobox = $state<string | undefined>(undefined);
+	let demoTags = $state<string[]>([]);
+
+	const roleOptions = [
+		{ value: 'dev', label: 'Developer' },
+		{ value: 'design', label: 'Designer' },
+		{ value: 'pm', label: 'Product Manager' },
+		{ value: 'other', label: 'Other' }
+	];
+
+	const skillOptions = [
+		{ value: 'svelte', label: 'Svelte' },
+		{ value: 'react', label: 'React' },
+		{ value: 'vue', label: 'Vue' },
+		{ value: 'ts', label: 'TypeScript' },
+		{ value: 'css', label: 'CSS' }
+	];
 
 	const tocSections = [
 		{ id: 'overview', label: 'Overview' },
@@ -22,6 +56,7 @@
 		{ id: 'group', label: 'FieldGroup', indent: true },
 		{ id: 'fieldset', label: 'FieldSet + FieldLegend', indent: true },
 		{ id: 'separator', label: 'FieldSeparator', indent: true },
+		{ id: 'components', label: 'Compatible Components' },
 		{ id: 'api', label: 'API' },
 		{ id: 'css-tokens', label: 'CSS Tokens' }
 	];
@@ -340,6 +375,146 @@
 					</Field>
 				</CodeExample>
 			</div>
+		</section>
+
+		<section id="components" class="doc-section">
+			<h2>Compatible Components</h2>
+			<p class="section-intro">
+				Every component that reads from <code>Field</code> context. Drop any of these inside a
+				<code>Field</code> and labels, errors, and disabled state wire up automatically.
+			</p>
+
+			<CodeExample
+				code={`<Field fullWidth>
+  <FieldLabel>Full name</FieldLabel>
+  <Input fullWidth placeholder="Jane Smith" />
+</Field>
+
+<Field fullWidth>
+  <FieldLabel>Bio</FieldLabel>
+  <Textarea fullWidth placeholder="Tell us about yourself" />
+</Field>
+
+<Field fullWidth>
+  <FieldLabel>Role</FieldLabel>
+  <Select fullWidth options={roleOptions} />
+</Field>
+
+<Field fullWidth>
+  <FieldLabel>Skills</FieldLabel>
+  <MultiSelect fullWidth options={skillOptions} />
+</Field>
+
+<Field fullWidth>
+  <FieldLabel>City</FieldLabel>
+  <Combobox fullWidth options={cityOptions} placeholder="Search cities…" />
+</Field>
+
+<Field fullWidth>
+  <FieldLabel>Tags</FieldLabel>
+  <BadgeInput fullWidth placeholder="Add a tag…" />
+</Field>
+
+<Field fullWidth>
+  <FieldLabel>Resume</FieldLabel>
+  <FileInput fullWidth />
+</Field>
+
+<Field fullWidth>
+  <FieldLabel>Volume</FieldLabel>
+  <Slider fullWidth bind:value={volume} showValue />
+</Field>
+
+<Field inline>
+  <Checkbox bind:checked={agreed} />
+  <FieldLabel>Agree to terms</FieldLabel>
+</Field>
+
+<FieldSet>
+  <FieldLegend>Availability</FieldLegend>
+  <Field inline>
+    <Radio bind:group={avail} value="full" name="avail" />
+    <FieldLabel>Full-time</FieldLabel>
+  </Field>
+  <Field inline>
+    <Radio bind:group={avail} value="part" name="avail" />
+    <FieldLabel>Part-time</FieldLabel>
+  </Field>
+</FieldSet>
+
+<Field inline>
+  <Switch bind:checked={notifications} />
+  <FieldLabel>Email notifications</FieldLabel>
+</Field>`}
+				previewClass="column"
+			>
+				<Field fullWidth>
+					<FieldLabel>Full name</FieldLabel>
+					<Input fullWidth placeholder="Jane Smith" />
+				</Field>
+
+				<Field fullWidth>
+					<FieldLabel>Bio</FieldLabel>
+					<Textarea fullWidth placeholder="Tell us about yourself" />
+				</Field>
+
+				<Field fullWidth>
+					<FieldLabel>Role</FieldLabel>
+					<Select fullWidth options={roleOptions} bind:value={demoSelect} />
+				</Field>
+
+				<Field fullWidth>
+					<FieldLabel>Skills</FieldLabel>
+					<MultiSelect fullWidth options={skillOptions} bind:values={demoMulti} />
+				</Field>
+
+				<Field fullWidth>
+					<FieldLabel>City</FieldLabel>
+					<Combobox
+						fullWidth
+						options={skillOptions}
+						bind:value={demoCombobox}
+						placeholder="Search…"
+					/>
+				</Field>
+
+				<Field fullWidth>
+					<FieldLabel>Tags</FieldLabel>
+					<BadgeInput fullWidth bind:tags={demoTags} placeholder="Add a tag…" />
+				</Field>
+
+				<Field fullWidth>
+					<FieldLabel>Resume</FieldLabel>
+					<FileInput fullWidth />
+				</Field>
+
+				<Field fullWidth>
+					<FieldLabel>Volume</FieldLabel>
+					<Slider fullWidth bind:value={demoSlider} showValue />
+				</Field>
+
+				<Field inline>
+					<Checkbox bind:checked={demoCheckbox} />
+					<FieldLabel>Agree to terms</FieldLabel>
+				</Field>
+
+				<FieldSet>
+					<FieldLegend>Availability</FieldLegend>
+					<Field inline>
+						<Radio bind:group={demoRadio} value="full" name="avail-demo" />
+						<FieldLabel>Full-time</FieldLabel>
+					</Field>
+					<Field inline>
+						<Radio bind:group={demoRadio} value="part" name="avail-demo" />
+						<FieldLabel>Part-time</FieldLabel>
+					</Field>
+				</FieldSet>
+
+				<Field inline>
+					<Switch bind:checked={demoSwitch} />
+					<FieldLabel>Email notifications</FieldLabel>
+				</Field>
+			</CodeExample>
 		</section>
 
 		<section id="api" class="doc-section">

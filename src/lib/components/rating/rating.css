@@ -1,0 +1,94 @@
+[data-theme] {
+	/* Colors */
+	--rating-star-color: var(--ui-warning);
+	--rating-star-empty-color: var(--ui-border);
+	--rating-star-hover-color: var(--ui-warning);
+	--rating-focus-color: var(--ui-primary);
+	--rating-focus-ring-width: var(--ui-ring-width);
+	--rating-focus-ring-offset: var(--ui-ring-offset);
+
+	/* Sizes */
+	--rating-star-size-sm: 16px;
+	--rating-star-size-md: 24px;
+	--rating-star-size-lg: 32px;
+
+	/* Style */
+	--rating-gap: calc(var(--ui-base-spacing) * 0.25);
+	--rating-stroke-width: 1.5;
+	--rating-transition: var(--ui-base-duration) var(--ui-base-easing);
+}
+
+.rating {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--rating-gap);
+}
+
+.rating--sm {
+	--_star-size: var(--rating-star-size-sm);
+}
+
+.rating--md {
+	--_star-size: var(--rating-star-size-md);
+}
+
+.rating--lg {
+	--_star-size: var(--rating-star-size-lg);
+}
+
+.rating--disabled {
+	opacity: 0.5;
+}
+
+.rating__star {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--_star-size);
+	height: var(--_star-size);
+	padding: 0;
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--rating-star-empty-color);
+	transition:
+		color var(--rating-transition),
+		transform var(--rating-transition);
+	border-radius: calc(var(--ui-base-radius) * 0.25);
+	outline: var(--rating-focus-ring-width) solid transparent;
+	outline-offset: var(--rating-focus-ring-offset);
+}
+
+.rating:not(.rating--disabled):not(.rating--readonly) .rating__star:hover {
+	transform: scale(1.15);
+}
+
+.rating__star:focus-visible {
+	outline-color: color-mix(in oklch, var(--rating-focus-color), transparent 70%);
+}
+
+.rating__star--filled {
+	color: var(--rating-star-color);
+}
+
+.rating__star--hovered {
+	color: var(--rating-star-hover-color);
+	transform: scale(1.15);
+}
+
+.rating__star-icon {
+	width: 100%;
+	height: 100%;
+	fill: currentColor;
+	stroke: currentColor;
+	stroke-width: var(--rating-stroke-width);
+}
+
+.rating__star:not(.rating__star--filled):not(.rating__star--hovered) .rating__star-icon {
+	fill: none;
+}
+
+.rating--readonly .rating__star,
+.rating--disabled .rating__star {
+	cursor: default;
+}

@@ -81,7 +81,6 @@
 .multiselect__trigger {
 	box-sizing: border-box;
 	display: flex;
-	flex-wrap: wrap;
 	align-items: center;
 	gap: var(--multiselect-gap);
 	width: 100%;
@@ -116,6 +115,16 @@
 	min-height: var(--multiselect-lg-min-height);
 	padding: var(--multiselect-lg-padding-y) var(--multiselect-lg-padding-x);
 	font-size: var(--multiselect-lg-font-size);
+}
+
+/* Content: wrapping flex container for badges + input */
+.multiselect__content {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	flex: 1;
+	gap: var(--multiselect-gap);
+	min-width: 0;
 }
 
 .multiselect__trigger:hover:not(.multiselect__trigger--disabled):not(.multiselect__trigger--open) {
@@ -183,8 +192,6 @@
 /* Chevron */
 .multiselect__chevron {
 	flex-shrink: 0;
-	align-self: center;
-	margin-left: auto;
 	width: var(--multiselect-chevron-size);
 	height: var(--multiselect-chevron-size);
 	color: var(--multiselect-chevron-color);

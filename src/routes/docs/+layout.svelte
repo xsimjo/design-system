@@ -29,6 +29,9 @@
 			items: [
 				{ label: 'Button', href: '/docs/button' },
 				{ label: 'Checkbox', href: '/docs/checkbox' },
+				{ label: 'Radio', href: '/docs/radio' },
+				{ label: 'Rating', href: '/docs/rating' },
+				{ label: 'Switch', href: '/docs/switch' },
 				{ label: 'Dropdown', href: '/docs/dropdown' },
 				{ label: 'Field', href: '/docs/field' },
 				{ label: 'Input', href: '/docs/input' },
@@ -38,6 +41,7 @@
 				{ label: 'Combobox', href: '/docs/combobox' },
 				{ label: 'MultiSelect', href: '/docs/multiselect' },
 				{ label: 'Select', href: '/docs/select' },
+				{ label: 'Slider', href: '/docs/slider' },
 				{ label: 'Spinner', href: '/docs/spinner' },
 				{ label: 'Textarea', href: '/docs/textarea' }
 			]

@@ -290,44 +290,46 @@
 		class:multiselect__trigger--disabled={isDisabled}
 		onclick={() => inputEl?.focus()}
 	>
-		{#each selectedOptions as opt, i (opt.value)}
-			<span
-				class:multiselect__badge--focused={focusedBadgeIndex === i}
-				onmousedown={(e) => e.preventDefault()}
-			>
-				<Badge
-					label={opt.label}
-					variant="neutral"
-					size={size === 'lg' ? 'md' : 'sm'}
-					disabled={isDisabled}
-					onremove={isDisabled ? undefined : () => removeValue(opt.value)}
-				/>
-			</span>
-		{/each}
+		<div class="multiselect__content">
+			{#each selectedOptions as opt, i (opt.value)}
+				<span
+					class:multiselect__badge--focused={focusedBadgeIndex === i}
+					onmousedown={(e) => e.preventDefault()}
+				>
+					<Badge
+						label={opt.label}
+						variant="neutral"
+						size={size === 'lg' ? 'md' : 'sm'}
+						disabled={isDisabled}
+						onremove={isDisabled ? undefined : () => removeValue(opt.value)}
+					/>
+				</span>
+			{/each}
 
-		<input
-			bind:this={inputEl}
-			id={inputId}
-			type="text"
-			role="combobox"
-			aria-autocomplete="list"
-			aria-haspopup="listbox"
-			aria-expanded={open}
-			aria-controls={open ? listboxId : undefined}
-			aria-activedescendant={activeOptionId}
-			aria-describedby={describedBy}
-			aria-required={field?.required || undefined}
-			aria-invalid={hasError || undefined}
-			aria-label={values.length > 0 ? `${values.length} selected` : undefined}
-			class="multiselect__input"
-			{placeholder}
-			disabled={isDisabled}
-			value={query}
-			oninput={handleInput}
-			onfocus={handleFocus}
-			onblur={handleBlur}
-			onkeydown={handleKeydown}
-		/>
+			<input
+				bind:this={inputEl}
+				id={inputId}
+				type="text"
+				role="combobox"
+				aria-autocomplete="list"
+				aria-haspopup="listbox"
+				aria-expanded={open}
+				aria-controls={open ? listboxId : undefined}
+				aria-activedescendant={activeOptionId}
+				aria-describedby={describedBy}
+				aria-required={field?.required || undefined}
+				aria-invalid={hasError || undefined}
+				aria-label={values.length > 0 ? `${values.length} selected` : undefined}
+				class="multiselect__input"
+				{placeholder}
+				disabled={isDisabled}
+				value={query}
+				oninput={handleInput}
+				onfocus={handleFocus}
+				onblur={handleBlur}
+				onkeydown={handleKeydown}
+			/>
+		</div>
 
 		<svg
 			class="multiselect__chevron"

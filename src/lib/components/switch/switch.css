@@ -1,0 +1,155 @@
+[data-theme] {
+	/* Colors */
+	--switch-bg: var(--ui-border);
+	--switch-checked-bg: var(--ui-primary);
+	--switch-thumb-bg: var(--ui-surface);
+	--switch-hover-bg: color-mix(
+		in oklch,
+		var(--ui-border),
+		var(--ui-hover-mix) var(--ui-hover-amount)
+	);
+	--switch-checked-hover-bg: color-mix(
+		in oklch,
+		var(--ui-primary),
+		var(--ui-hover-mix) var(--ui-hover-amount)
+	);
+	--switch-focus-color: var(--ui-primary);
+	--switch-focus-ring-width: var(--ui-ring-width);
+	--switch-focus-ring-offset: var(--ui-ring-offset);
+	--switch-error-bg: var(--ui-danger);
+	--switch-checked-error-bg: color-mix(
+		in oklch,
+		var(--ui-danger),
+		var(--ui-hover-mix) var(--ui-hover-amount)
+	);
+
+	/* Sizes */
+	--switch-track-width-sm: 28px;
+	--switch-track-height-sm: 16px;
+	--switch-thumb-size-sm: 12px;
+	--switch-thumb-travel-sm: 12px;
+
+	--switch-track-width-md: 36px;
+	--switch-track-height-md: 20px;
+	--switch-thumb-size-md: 16px;
+	--switch-thumb-travel-md: 16px;
+
+	--switch-track-width-lg: 44px;
+	--switch-track-height-lg: 24px;
+	--switch-thumb-size-lg: 20px;
+	--switch-thumb-travel-lg: 20px;
+
+	/* Style */
+	--switch-border-radius: 9999px;
+	--switch-thumb-shadow: 0 1px 3px oklch(0% 0 0 / 0.25);
+	--switch-transition: var(--ui-base-duration) var(--ui-base-easing);
+}
+
+.switch {
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
+	user-select: none;
+}
+
+.switch--disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
+/* Size variants — set local custom properties used by track/thumb */
+.switch--sm {
+	--_track-width: var(--switch-track-width-sm);
+	--_track-height: var(--switch-track-height-sm);
+	--_thumb-size: var(--switch-thumb-size-sm);
+	--_thumb-travel: var(--switch-thumb-travel-sm);
+}
+
+.switch--md {
+	--_track-width: var(--switch-track-width-md);
+	--_track-height: var(--switch-track-height-md);
+	--_thumb-size: var(--switch-thumb-size-md);
+	--_thumb-travel: var(--switch-thumb-travel-md);
+}
+
+.switch--lg {
+	--_track-width: var(--switch-track-width-lg);
+	--_track-height: var(--switch-track-height-lg);
+	--_thumb-size: var(--switch-thumb-size-lg);
+	--_thumb-travel: var(--switch-thumb-travel-lg);
+}
+
+/* Visually hidden input — keeps native focus & form semantics */
+.switch__input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.switch__track {
+	position: relative;
+	display: inline-block;
+	width: var(--_track-width);
+	height: var(--_track-height);
+	background-color: var(--switch-bg);
+	border-radius: var(--switch-border-radius);
+	transition: background-color var(--switch-transition);
+}
+
+.switch__thumb {
+	position: absolute;
+	top: 50%;
+	left: 2px;
+	transform: translateY(-50%);
+	width: var(--_thumb-size);
+	height: var(--_thumb-size);
+	background-color: var(--switch-thumb-bg);
+	border-radius: var(--switch-border-radius);
+	box-shadow: var(--switch-thumb-shadow);
+	transition: transform var(--switch-transition);
+}
+
+/* Hover */
+.switch:not(.switch--disabled):hover .switch__track {
+	background-color: var(--switch-hover-bg);
+}
+
+/* Checked */
+.switch__input:checked + .switch__track {
+	background-color: var(--switch-checked-bg);
+}
+
+.switch__input:checked + .switch__track .switch__thumb {
+	transform: translateY(-50%) translateX(var(--_thumb-travel));
+}
+
+/* Checked + hover (higher specificity, comes after) */
+.switch:not(.switch--disabled):hover .switch__input:checked + .switch__track {
+	background-color: var(--switch-checked-hover-bg);
+}
+
+/* Focus */
+.switch__input:focus-visible + .switch__track {
+	outline: var(--switch-focus-ring-width) solid
+		color-mix(in oklch, var(--switch-focus-color), transparent 70%);
+	outline-offset: var(--switch-focus-ring-offset);
+}
+
+/* Error */
+.switch--error .switch__track {
+	background-color: var(--switch-error-bg);
+}
+
+.switch--error .switch__input:checked + .switch__track {
+	background-color: var(--switch-error-bg);
+}
+
+.switch--error .switch__input:focus-visible + .switch__track {
+	outline-color: color-mix(in oklch, var(--switch-error-bg), transparent 70%);
+}
