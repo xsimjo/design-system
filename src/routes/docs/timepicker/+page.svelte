@@ -17,7 +17,15 @@
 		{ id: 'sizes', label: 'Sizes', indent: true },
 		{ id: 'states', label: 'States', indent: true },
 		{ id: 'controlled', label: 'Controlled', indent: true },
+		{ id: 'locales', label: 'Locales', indent: true },
 		{ id: 'api', label: 'API' }
+	];
+
+	const localeExamples = [
+		{ label: 'English', tag: 'en' },
+		{ label: 'German', tag: 'de', note: 'Stunden / Minuten / Sekunden' },
+		{ label: 'Russian', tag: 'ru', note: 'Часы / Минуты / Секунды' },
+		{ label: 'Japanese', tag: 'ja-JP', note: '時 / 分 / 秒' }
 	];
 </script>
 
@@ -151,6 +159,30 @@
 					</div>
 				</CodeExample>
 			</div>
+			<div id="locales" class="example-block">
+				<h3>Locales</h3>
+				<p class="example-desc">
+					Pass a BCP 47 locale tag via <code>locale.tag</code> to automatically use locale-appropriate
+					placeholder abbreviations. Individual placeholders can still be overridden.
+				</p>
+				<CodeExample
+					code={`<TimePicker locale={{ tag: 'en' }} />
+<TimePicker locale={{ tag: 'de' }} />
+<TimePicker locale={{ tag: 'ru' }} />
+<TimePicker locale={{ tag: 'ja-JP' }} />`}
+					previewClass="column"
+				>
+					{#each localeExamples as ex (ex.label)}
+						<Field>
+							<FieldLabel
+								>{ex.label}{#if ex.note}&nbsp;<span class="locale-note">{ex.note}</span
+									>{/if}</FieldLabel
+							>
+							<TimePicker locale={{ tag: ex.tag }} />
+						</Field>
+					{/each}
+				</CodeExample>
+			</div>
 		</section>
 
 		<section id="api" class="doc-section">
@@ -209,6 +241,16 @@
 							<td><code>boolean</code></td>
 							<td><code>false</code></td>
 							<td>Show a seconds column; value becomes <code>"HH:MM:SS"</code></td>
+						</tr>
+						<tr>
+							<td><code>locale</code></td>
+							<td><code>TimePickerLocale</code></td>
+							<td><code>—</code></td>
+							<td
+								>BCP 47 <code>tag</code> for automatic placeholders; override individually with
+								<code>hourPlaceholder</code>, <code>minutePlaceholder</code>,
+								<code>secondPlaceholder</code></td
+							>
 						</tr>
 					</tbody>
 				</table>
@@ -308,6 +350,12 @@
 		font-size: var(--ui-text-sm);
 		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 30%);
 		margin: 0;
+	}
+
+	.locale-note {
+		font-size: var(--ui-text-xs);
+		font-weight: 400;
+		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 45%);
 	}
 
 	.api-table {

@@ -47,10 +47,28 @@
 		field?.descriptionIds.length ? field.descriptionIds.join(' ') : undefined
 	);
 
-	const segPlaceholders = $derived({
-		hour: locale?.hourPlaceholder ?? 'HH',
-		minute: locale?.minutePlaceholder ?? 'MM',
-		second: locale?.secondPlaceholder ?? 'SS'
+	const effectiveLocale = $derived(
+		locale?.tag ?? (typeof navigator !== 'undefined' ? navigator.language : 'en')
+	);
+
+	const localePlaceholders: Record<string, { hour: string; minute: string; second: string }> = {
+		de: { hour: 'SS', minute: 'MM', second: 'SS' },
+		nl: { hour: 'UU', minute: 'MM', second: 'SS' },
+		ru: { hour: 'ЧЧ', minute: 'ММ', second: 'СС' },
+		uk: { hour: 'ГГ', minute: 'ХХ', second: 'СС' },
+		ja: { hour: '時', minute: '分', second: '秒' },
+		zh: { hour: '时', minute: '分', second: '秒' },
+		ko: { hour: 'HH', minute: 'MM', second: 'SS' }
+	};
+
+	const segPlaceholders = $derived.by(() => {
+		const lang = effectiveLocale.split('-')[0].toLowerCase();
+		const defaults = localePlaceholders[lang] ?? { hour: 'HH', minute: 'MM', second: 'SS' };
+		return {
+			hour: locale?.hourPlaceholder ?? defaults.hour,
+			minute: locale?.minutePlaceholder ?? defaults.minute,
+			second: locale?.secondPlaceholder ?? defaults.second
+		};
 	});
 
 	const iconSize = $derived({ sm: 14, md: 16, lg: 18 }[size]);
