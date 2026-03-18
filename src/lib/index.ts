@@ -15,6 +15,8 @@ export type { SelectOption } from './components/select/Select.svelte';
 export { default as Badge } from './components/badge/Badge.svelte';
 export { default as Combobox } from './components/combobox/Combobox.svelte';
 export type { ComboboxOption } from './components/combobox/Combobox.svelte';
+export { default as DatePicker } from './components/datepicker/DatePicker.svelte';
+export { default as TimePicker } from './components/timepicker/TimePicker.svelte';
 export { default as MultiSelect } from './components/multiselect/MultiSelect.svelte';
 export type { MultiSelectOption } from './components/multiselect/MultiSelect.svelte';
 export { default as BadgeInput } from './components/badge-input/BadgeInput.svelte';
@@ -30,3 +32,5 @@ export { default as FieldSeparator } from './components/field/FieldSeparator.sve
 export { default as XIcon } from './icons/XIcon.svelte';
 export { default as CloudUploadIcon } from './icons/CloudUploadIcon.svelte';
 export { default as FileUpIcon } from './icons/FileUpIcon.svelte';
+export { default as CalendarIcon } from './icons/CalendarIcon.svelte';
+export { default as ClockIcon } from './icons/ClockIcon.svelte';

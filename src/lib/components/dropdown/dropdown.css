@@ -1,3 +1,5 @@
+@import '../../styles/animations.css';
+
 [data-theme] {
 	--dropdown-surface: var(--ui-surface-overlay);
 	--dropdown-surface-foreground: var(--ui-surface-overlay-foreground);
@@ -64,14 +66,7 @@
 	box-shadow: var(--dropdown-shadow);
 	opacity: 0;
 	transform: translateY(var(--dropdown-enter-offset));
-	animation: dropdown-enter var(--dropdown-transition) forwards;
-}
-
-@keyframes dropdown-enter {
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+	animation: panel-enter var(--dropdown-transition) forwards;
 }
 
 .dropdown-item {

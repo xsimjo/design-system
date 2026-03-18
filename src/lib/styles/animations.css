@@ -1,0 +1,6 @@
+@keyframes panel-enter {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

@@ -39,6 +39,8 @@
 				{ label: 'BadgeInput', href: '/docs/badge-input' },
 				{ label: 'FileInput', href: '/docs/file-input' },
 				{ label: 'Combobox', href: '/docs/combobox' },
+				{ label: 'DatePicker', href: '/docs/datepicker' },
+				{ label: 'TimePicker', href: '/docs/timepicker' },
 				{ label: 'MultiSelect', href: '/docs/multiselect' },
 				{ label: 'Select', href: '/docs/select' },
 				{ label: 'Slider', href: '/docs/slider' },

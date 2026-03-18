@@ -1,0 +1,301 @@
+@import '../../styles/animations.css';
+
+[data-theme] {
+	/* Trigger — mirrors datepicker/combobox pattern */
+	--timepicker-bg: var(--ui-surface);
+	--timepicker-fg: var(--ui-surface-foreground);
+	--timepicker-border: var(--ui-border);
+	--timepicker-border-width: var(--ui-border-width);
+	--timepicker-placeholder: color-mix(in oklch, var(--ui-surface-foreground), transparent 55%);
+	--timepicker-focus-color: var(--ui-primary);
+	--timepicker-focus-ring-width: var(--ui-ring-width);
+	--timepicker-focus-ring-offset: var(--ui-ring-offset);
+	--timepicker-error-color: var(--ui-danger);
+	--timepicker-disabled-bg: color-mix(in oklch, var(--ui-neutral), transparent 80%);
+	--timepicker-disabled-fg: color-mix(in oklch, var(--ui-surface-foreground), transparent 50%);
+	--timepicker-disabled-border: var(--ui-border);
+	--timepicker-hover-border: color-mix(
+		in oklch,
+		var(--ui-border),
+		var(--ui-hover-mix) var(--ui-hover-amount)
+	);
+
+	/* Sizes */
+	--timepicker-sm-height: calc(var(--ui-base-spacing) * 4);
+	--timepicker-sm-padding-x: calc(var(--ui-base-spacing) * 1.5);
+	--timepicker-sm-font-size: var(--ui-text-sm);
+	--timepicker-md-height: calc(var(--ui-base-spacing) * 5);
+	--timepicker-md-padding-x: calc(var(--ui-base-spacing) * 2);
+	--timepicker-md-font-size: var(--ui-text-base);
+	--timepicker-lg-height: calc(var(--ui-base-spacing) * 6);
+	--timepicker-lg-padding-x: calc(var(--ui-base-spacing) * 3);
+	--timepicker-lg-font-size: var(--ui-text-lg);
+
+	--timepicker-font-family: var(--ui-font-sans);
+	--timepicker-font-weight: var(--ui-weight-normal);
+	--timepicker-border-radius: var(--ui-base-radius);
+	--timepicker-transition: var(--ui-base-duration) var(--ui-base-easing);
+	--timepicker-icon-size: calc(var(--ui-base-spacing) * 2);
+	--timepicker-icon-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 35%);
+
+	/* Panel */
+	--timepicker-panel-bg: var(--ui-surface-overlay);
+	--timepicker-panel-fg: var(--ui-surface-overlay-foreground);
+	--timepicker-panel-border: var(--ui-border);
+	--timepicker-panel-shadow: var(--ui-depth);
+	--timepicker-panel-z-index: var(--ui-z-overlay);
+	--timepicker-panel-enter-offset: var(--ui-enter-offset);
+
+	/* Columns */
+	--timepicker-col-width: calc(var(--ui-base-spacing) * 7);
+	--timepicker-col-item-height: calc(var(--ui-base-spacing) * 5);
+	--timepicker-col-list-height: calc(var(--timepicker-col-item-height) * 5);
+	--timepicker-col-item-selected-bg: color-mix(in oklch, var(--ui-primary), transparent 90%);
+	--timepicker-col-item-selected-fg: var(--ui-primary);
+	--timepicker-col-item-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 85%);
+	--timepicker-value-size: var(--ui-text-2xl);
+	--timepicker-value-font-weight: var(--ui-weight-semibold);
+	--timepicker-sep-color: color-mix(
+		in oklch,
+		var(--ui-surface-overlay-foreground),
+		transparent 50%
+	);
+	--timepicker-divider-color: var(--ui-border);
+	--timepicker-col-sep-color: var(--ui-border);
+
+	/* Segment inputs */
+	--timepicker-seg-input-size: var(--ui-text-base);
+}
+
+/* Wrapper */
+.timepicker {
+	display: inline-flex;
+	position: relative;
+}
+
+.timepicker--full-width {
+	display: flex;
+	width: 100%;
+}
+
+/* Trigger container */
+.timepicker__trigger {
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: calc(var(--ui-base-spacing) * 1);
+	width: 100%;
+	background-color: var(--timepicker-bg);
+	color: var(--timepicker-fg);
+	border: var(--timepicker-border-width) solid var(--timepicker-border);
+	border-radius: var(--timepicker-border-radius);
+	font-family: var(--timepicker-font-family);
+	font-weight: var(--timepicker-font-weight);
+	outline: var(--timepicker-focus-ring-width) solid transparent;
+	outline-offset: var(--timepicker-focus-ring-offset);
+	transition:
+		border-color var(--timepicker-transition),
+		background-color var(--timepicker-transition),
+		outline-color var(--timepicker-transition);
+}
+
+.timepicker__trigger--sm {
+	min-height: var(--timepicker-sm-height);
+	padding: 0 var(--timepicker-sm-padding-x);
+	font-size: var(--timepicker-sm-font-size);
+}
+
+.timepicker__trigger--md {
+	min-height: var(--timepicker-md-height);
+	padding: 0 var(--timepicker-md-padding-x);
+	font-size: var(--timepicker-md-font-size);
+}
+
+.timepicker__trigger--lg {
+	min-height: var(--timepicker-lg-height);
+	padding: 0 var(--timepicker-lg-padding-x);
+	font-size: var(--timepicker-lg-font-size);
+}
+
+.timepicker__trigger:hover:not(.timepicker__trigger--disabled):not(.timepicker__trigger--open) {
+	border-color: var(--timepicker-hover-border);
+}
+
+.timepicker__trigger:focus-within,
+.timepicker__trigger--open:not(.timepicker__trigger--disabled) {
+	border-color: var(--timepicker-focus-color);
+	outline-color: color-mix(in oklch, var(--timepicker-focus-color), transparent 70%);
+}
+
+.timepicker__trigger--error {
+	border-color: var(--timepicker-error-color);
+}
+
+.timepicker__trigger--error:hover:not(.timepicker__trigger--disabled):not(
+		.timepicker__trigger--open
+	) {
+	border-color: var(--timepicker-error-color);
+}
+
+.timepicker__trigger--error:focus-within,
+.timepicker__trigger--error.timepicker__trigger--open:not(.timepicker__trigger--disabled) {
+	border-color: var(--timepicker-error-color);
+	outline-color: color-mix(in oklch, var(--timepicker-error-color), transparent 70%);
+}
+
+.timepicker__trigger--disabled {
+	background-color: var(--timepicker-disabled-bg);
+	color: var(--timepicker-disabled-fg);
+	border-color: var(--timepicker-disabled-border);
+	cursor: not-allowed;
+}
+
+/* Segment inputs row inside the trigger */
+.timepicker__segments {
+	display: flex;
+	align-items: center;
+	gap: 0;
+	flex: 1;
+	min-width: 0;
+}
+
+/* Colon separator between segments */
+.timepicker__seg-sep {
+	font-family: var(--timepicker-font-family);
+	font-size: var(--timepicker-seg-input-size);
+	font-weight: var(--timepicker-value-font-weight);
+	color: var(--timepicker-sep-color);
+	line-height: 1;
+	padding: 0 1px;
+	user-select: none;
+	pointer-events: none;
+}
+
+/* Inline segment inputs */
+.timepicker__seg-input {
+	all: unset;
+	box-sizing: content-box;
+	field-sizing: content;
+	min-width: 2ch;
+	font-family: var(--timepicker-font-family);
+	font-size: var(--timepicker-seg-input-size);
+	font-weight: var(--timepicker-value-font-weight);
+	font-variant-numeric: tabular-nums;
+	line-height: 1;
+	text-align: center;
+	color: var(--timepicker-fg);
+	border-radius: calc(var(--timepicker-border-radius) * 0.5);
+	padding: 1px;
+	cursor: text;
+	transition: background-color var(--timepicker-transition);
+}
+
+.timepicker__seg-input:hover {
+	background-color: var(--timepicker-col-item-hover-bg);
+}
+
+.timepicker__seg-input:focus {
+	background-color: var(--timepicker-col-item-selected-bg);
+	outline: none;
+}
+
+/* Segment input placeholder (HH / MM / SS format hint) */
+.timepicker__seg-input::placeholder {
+	color: var(--timepicker-placeholder);
+	font-weight: var(--ui-weight-normal);
+}
+
+/* Clock icon toggle button */
+.timepicker__icon-btn {
+	all: unset;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	cursor: pointer;
+	border-radius: calc(var(--timepicker-border-radius) * 0.5);
+	padding: 2px;
+	color: var(--timepicker-icon-color);
+	transition: color var(--timepicker-transition);
+}
+
+.timepicker__icon-btn:hover {
+	color: var(--timepicker-fg);
+}
+
+.timepicker__icon {
+	width: var(--timepicker-icon-size);
+	height: var(--timepicker-icon-size);
+	pointer-events: none;
+}
+
+/* Panel */
+.timepicker__panel {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: var(--timepicker-panel-z-index);
+	background: var(--timepicker-panel-bg);
+	color: var(--timepicker-panel-fg);
+	border: var(--timepicker-border-width) solid var(--timepicker-panel-border);
+	border-radius: var(--timepicker-border-radius);
+	box-shadow: var(--timepicker-panel-shadow);
+	overflow: hidden;
+	opacity: 0;
+	transform: translateY(var(--timepicker-panel-enter-offset));
+	animation: panel-enter var(--timepicker-transition) forwards;
+}
+
+/* Scrollable list columns row */
+.timepicker__columns {
+	display: flex;
+	align-items: stretch;
+}
+
+/* Vertical separator between columns */
+.timepicker__col-sep {
+	border-left: var(--timepicker-border-width) solid var(--timepicker-col-sep-color);
+	flex-shrink: 0;
+}
+
+/* Scrollable column list */
+.timepicker__col-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow-y: scroll;
+	scrollbar-width: none;
+	height: var(--timepicker-col-list-height);
+	width: var(--timepicker-col-width);
+	flex-shrink: 0;
+}
+
+.timepicker__col-list::-webkit-scrollbar {
+	display: none;
+}
+
+/* Individual list item */
+.timepicker__col-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: var(--timepicker-col-item-height);
+	font-family: var(--timepicker-font-family);
+	font-size: var(--timepicker-value-size);
+	font-weight: var(--timepicker-value-font-weight);
+	font-variant-numeric: tabular-nums;
+	cursor: pointer;
+	transition: background-color var(--timepicker-transition);
+	user-select: none;
+}
+
+.timepicker__col-item:hover:not(.timepicker__col-item--selected) {
+	background-color: var(--timepicker-col-item-hover-bg);
+}
+
+.timepicker__col-item--selected {
+	background-color: var(--timepicker-col-item-selected-bg);
+	color: var(--timepicker-col-item-selected-fg);
+}

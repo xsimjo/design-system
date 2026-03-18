@@ -1,3 +1,5 @@
+@import '../../styles/animations.css';
+
 [data-theme] {
 	/* Trigger */
 	--multiselect-bg: var(--ui-surface);
@@ -219,14 +221,7 @@
 	box-shadow: var(--multiselect-listbox-shadow);
 	opacity: 0;
 	transform: translateY(var(--multiselect-listbox-enter-offset));
-	animation: multiselect-enter var(--multiselect-transition) forwards;
-}
-
-@keyframes multiselect-enter {
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+	animation: panel-enter var(--multiselect-transition) forwards;
 }
 
 /* Options */

@@ -1,3 +1,5 @@
+@import '../../styles/animations.css';
+
 [data-theme] {
 	/* Trigger */
 	--combobox-bg: var(--ui-surface);
@@ -192,14 +194,7 @@
 	box-shadow: var(--combobox-listbox-shadow);
 	opacity: 0;
 	transform: translateY(var(--combobox-listbox-enter-offset));
-	animation: combobox-enter var(--combobox-transition) forwards;
-}
-
-@keyframes combobox-enter {
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+	animation: panel-enter var(--combobox-transition) forwards;
 }
 
 /* Options */

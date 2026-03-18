@@ -1,3 +1,5 @@
+@import '../../styles/animations.css';
+
 [data-theme] {
 	/* Trigger */
 	--select-bg: var(--ui-surface);
@@ -196,14 +198,7 @@
 	box-shadow: var(--select-listbox-shadow);
 	opacity: 0;
 	transform: translateY(var(--select-listbox-enter-offset));
-	animation: select-enter var(--select-transition) forwards;
-}
-
-@keyframes select-enter {
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+	animation: panel-enter var(--select-transition) forwards;
 }
 
 /* Options */
