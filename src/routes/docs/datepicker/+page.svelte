@@ -22,7 +22,17 @@
 		{ id: 'states', label: 'States', indent: true },
 		{ id: 'min-max', label: 'Min & Max', indent: true },
 		{ id: 'controlled', label: 'Controlled', indent: true },
+		{ id: 'locales', label: 'Locales', indent: true },
 		{ id: 'api', label: 'API' }
+	];
+
+	const localeExamples = [
+		{ tag: 'en-US', label: 'English (US)' },
+		{ tag: 'en-GB', label: 'English (UK)' },
+		{ tag: 'fr-FR', label: 'French' },
+		{ tag: 'de-DE', label: 'German' },
+		{ tag: 'ja-JP', label: 'Japanese' },
+		{ tag: 'zh-CN', label: 'Chinese (Simplified)' }
 	];
 </script>
 
@@ -94,15 +104,15 @@
 				>
 					<Field>
 						<FieldLabel>Small</FieldLabel>
-						<DatePicker size="sm" placeholder="32px height" />
+						<DatePicker size="sm" />
 					</Field>
 					<Field>
 						<FieldLabel>Medium</FieldLabel>
-						<DatePicker size="md" placeholder="40px height" />
+						<DatePicker size="md" />
 					</Field>
 					<Field>
 						<FieldLabel>Large</FieldLabel>
-						<DatePicker size="lg" placeholder="48px height" />
+						<DatePicker size="lg" />
 					</Field>
 				</CodeExample>
 			</div>
@@ -160,6 +170,27 @@
 					</div>
 				</CodeExample>
 			</div>
+			<div id="locales" class="example-block">
+				<h3>Locales</h3>
+				<p class="example-desc">
+					Segment order and placeholders adapt to the locale. Pass a <code>locale</code> prop to override
+					the browser default.
+				</p>
+				<CodeExample
+					code={`<DatePicker locale={{ tag: 'en-US' }} />
+<DatePicker locale={{ tag: 'fr-FR' }} />
+<DatePicker locale={{ tag: 'de-DE' }} />
+<DatePicker locale={{ tag: 'ja-JP' }} />`}
+					previewClass="column"
+				>
+					{#each localeExamples as { tag, label } (tag)}
+						<Field>
+							<FieldLabel>{label} — <code>{tag}</code></FieldLabel>
+							<DatePicker locale={{ tag }} />
+						</Field>
+					{/each}
+				</CodeExample>
+			</div>
 		</section>
 
 		<section id="api" class="doc-section">
@@ -181,12 +212,6 @@
 							<td><code>Date</code></td>
 							<td><code>undefined</code></td>
 							<td>Bindable selected date</td>
-						</tr>
-						<tr>
-							<td><code>placeholder</code></td>
-							<td><code>string</code></td>
-							<td><code>'Pick a date'</code></td>
-							<td>Text shown when no date is selected</td>
 						</tr>
 						<tr>
 							<td><code>size</code></td>
@@ -232,15 +257,13 @@
 						</tr>
 						<tr>
 							<td><code>locale</code></td>
-							<td><code>string</code></td>
-							<td><code>navigator.language</code></td>
-							<td>Intl locale string for display formatting</td>
-						</tr>
-						<tr>
-							<td><code>format</code></td>
-							<td><code>(date: Date) => string</code></td>
-							<td><code>—</code></td>
-							<td>Custom display format; overrides the default Intl formatter</td>
+							<td><code>DatePickerLocale</code></td>
+							<td><code>undefined</code></td>
+							<td
+								>Locale options: <code>tag</code> (BCP 47, defaults to
+								<code>navigator.language</code>), <code>dayPlaceholder</code>,
+								<code>monthPlaceholder</code>, <code>yearPlaceholder</code></td
+							>
 						</tr>
 					</tbody>
 				</table>

@@ -2,29 +2,40 @@
 
 ## Overview
 
-A calendar popover for selecting a single date. Uses native JS `Date` + `Intl.DateTimeFormat` (no additional runtime dependencies) and `@floating-ui/dom` for popover positioning. Follows all design system token and component patterns.
+A calendar popover for selecting a single date. Uses a segmented input trigger (DD/MM/YYYY or locale-equivalent) and a floating calendar panel with day/month/year drill-down views. Uses native JS `Date` + `Intl.DateTimeFormat` (no additional runtime dependencies) and `@floating-ui/dom` for popover positioning. Follows all design system token and component patterns.
 
 ---
 
 ## Props
 
-| Prop          | Type                     | Default              | Description                                                                                     |
-| ------------- | ------------------------ | -------------------- | ----------------------------------------------------------------------------------------------- |
-| `value`       | `Date \| undefined`      | `undefined`          | Bindable selected date                                                                          |
-| `placeholder` | `string`                 | `'Pick a date'`      | Text shown when no date is selected                                                             |
-| `size`        | `'sm' \| 'md' \| 'lg'`   | `'md'`               | Controls trigger height, padding, and font size                                                 |
-| `fullWidth`   | `boolean`                | `false`              | Stretches trigger to 100% of container width                                                    |
-| `disabled`    | `boolean`                | `false`              | Disables the trigger (also inherited from Field context)                                        |
-| `id`          | `string`                 | auto                 | Custom ID; falls back to Field context ID then auto-generated                                   |
-| `name`        | `string`                 | —                    | Form field name; produces a hidden `<input value="YYYY-MM-DD">` when set and a date is selected |
-| `min`         | `Date`                   | —                    | Minimum selectable date (inclusive). Days before this are disabled.                             |
-| `max`         | `Date`                   | —                    | Maximum selectable date (inclusive). Days after this are disabled.                              |
-| `locale`      | `string`                 | `navigator.language` | Intl locale string for formatting (e.g. `'fr-FR'`, `'ja-JP'`)                                   |
-| `format`      | `(date: Date) => string` | —                    | Custom display format function; overrides the default `Intl.DateTimeFormat` formatter           |
+| Prop        | Type                   | Default     | Description                                                                                     |
+| ----------- | ---------------------- | ----------- | ----------------------------------------------------------------------------------------------- |
+| `value`     | `Date \| undefined`    | `undefined` | Bindable selected date                                                                          |
+| `size`      | `'sm' \| 'md' \| 'lg'` | `'md'`      | Controls trigger height, padding, and font size                                                 |
+| `fullWidth` | `boolean`              | `false`     | Stretches trigger to 100% of container width                                                    |
+| `disabled`  | `boolean`              | `false`     | Disables the trigger (also inherited from Field context)                                        |
+| `id`        | `string`               | auto        | Custom ID; falls back to Field context ID then auto-generated                                   |
+| `name`      | `string`               | —           | Form field name; produces a hidden `<input value="YYYY-MM-DD">` when set and a date is selected |
+| `min`       | `Date`                 | —           | Minimum selectable date (inclusive). Days before this are disabled in the calendar.             |
+| `max`       | `Date`                 | —           | Maximum selectable date (inclusive). Days after this are disabled in the calendar.              |
+| `locale`    | `DatePickerLocale`     | —           | Locale overrides for segment placeholders and calendar locale tag                               |
+
+### DatePickerLocale Interface
+
+```ts
+export interface DatePickerLocale {
+	tag?: string; // Intl locale tag (e.g. 'fr-FR', 'ja-JP'). Defaults to navigator.language
+	dayPlaceholder?: string; // Placeholder for the day segment (e.g. 'JJ' for French)
+	monthPlaceholder?: string; // Placeholder for the month segment
+	yearPlaceholder?: string; // Placeholder for the year segment
+}
+```
+
+Built-in locale defaults exist for: `fr`, `es`, `pt`, `it`, `de`, `nl`, `pl`, `ru`, `uk`, `ja`, `zh`, `ko`. All other locales default to `DD / MM / YYYY`.
 
 ### Value Type
 
-`value` is a native JS `Date` object. The time portion is ignored for display and comparison — only the calendar date (year, month, day) is significant. When serialised via the `name` prop, the value is always `YYYY-MM-DD` in local time.
+`value` is a native JS `Date` object. The time portion is ignored — only the calendar date (year, month, day) matters. When serialised via the `name` prop, the value is always `YYYY-MM-DD` in local time.
 
 ---
 
@@ -46,7 +57,7 @@ A calendar popover for selecting a single date. Uses native JS `Date` + `Intl.Da
 </Field>
 ```
 
-### Min / Max constraint
+### Min / Max Constraint
 
 ```svelte
 <script>
@@ -57,7 +68,7 @@ A calendar popover for selecting a single date. Uses native JS `Date` + `Intl.Da
 <DatePicker bind:value={date} min={today} max={nextMonth} />
 ```
 
-### Form submission
+### Form Submission
 
 ```svelte
 <form method="post">
@@ -67,12 +78,11 @@ A calendar popover for selecting a single date. Uses native JS `Date` + `Intl.Da
 <!-- Submits: start_date=2026-03-16 -->
 ```
 
-### Custom locale & format
+### Custom Locale
 
 ```svelte
 <DatePicker
-	locale="fr-FR"
-	format={(d) => d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })}
+	locale={{ tag: 'fr-FR', dayPlaceholder: 'JJ', monthPlaceholder: 'MM', yearPlaceholder: 'AAAA' }}
 	bind:value={date}
 />
 ```
@@ -83,49 +93,67 @@ A calendar popover for selecting a single date. Uses native JS `Date` + `Intl.Da
 
 ### ARIA Roles
 
-| Element            | Role                   | Notes                                                                 |
-| ------------------ | ---------------------- | --------------------------------------------------------------------- |
-| Trigger `<button>` | `combobox`             | `aria-haspopup="dialog"`, `aria-expanded`                             |
-| Panel `<div>`      | `dialog`               | `aria-modal="true"`, `aria-label="Choose date"`                       |
-| Calendar `<div>`   | `grid`                 | `aria-label` = current month/year                                     |
-| Weekday row        | `row` + `columnheader` | Abbreviated day labels                                                |
-| Date row           | `row`                  | One per week                                                          |
-| Date cell          | `gridcell`             | `aria-selected`, `aria-disabled`                                      |
-| Date button        | button                 | `tabindex` managed (roving tabindex), `aria-current="date"` for today |
+| Element          | Role / Attribute | Notes                                                                   |
+| ---------------- | ---------------- | ----------------------------------------------------------------------- |
+| Trigger `<div>`  | `group`          | `aria-label="Date picker"`, `aria-describedby` from Field context       |
+| Day `<input>`    | (implicit input) | `aria-label="Day"`, `inputmode="numeric"`                               |
+| Month `<input>`  | (implicit input) | `aria-label="Month"`, `inputmode="numeric"`                             |
+| Year `<input>`   | (implicit input) | `aria-label="Year"`, `inputmode="numeric"`                              |
+| Icon `<button>`  | button           | `aria-label="Open/Close date picker"`, `aria-expanded`, `aria-controls` |
+| Panel `<div>`    | `dialog`         | `aria-modal="true"`, `aria-label="Choose date"`                         |
+| Calendar `<div>` | `grid`           | `aria-label` = current month/year (from `Intl.DateTimeFormat`)          |
+| Weekday row      | `row`            | `columnheader` cells with abbreviated day labels                        |
+| Date row         | `row`            | One per week                                                            |
+| Date cell        | `gridcell`       | `aria-selected`, `aria-disabled`                                        |
+| Date button      | button           | `tabindex="-1"` (all); `aria-current="date"` for today; `aria-pressed`  |
 
 ### Live Region
 
-The month/year header label (`<span aria-live="polite">`) announces navigation changes to screen readers without interrupting focus.
-
-### Roving Tabindex
-
-Only one day cell has `tabindex="0"` at a time (`focusedDate`). All others have `tabindex="-1"`. This follows the ARIA grid pattern for keyboard navigation within the calendar.
+The month/year header in the panel uses `aria-live="polite"` to announce view changes (month navigation, switching to month/year picker).
 
 ---
 
 ## Keyboard Navigation
 
-### Trigger (panel closed)
+### Segment Inputs (trigger, panel closed)
 
-| Key                     | Action              |
-| ----------------------- | ------------------- |
-| `Enter` / `Space` / `↓` | Open calendar panel |
+| Key         | Action                                                                                        |
+| ----------- | --------------------------------------------------------------------------------------------- |
+| Any digit   | Smart auto-advance: moves to next segment when value is unambiguous (e.g. day > 3, month > 1) |
+| `↑`         | Increment segment value (day wraps to month's max days, month wraps 1–12)                     |
+| `↓`         | Decrement segment value                                                                       |
+| `Tab`       | Advance to next segment; close panel when leaving last segment                                |
+| `Shift+Tab` | Return to previous segment; close panel before first segment                                  |
+| `Escape`    | Close calendar panel                                                                          |
 
-### Calendar grid (panel open)
+Clicking or focusing a segment input opens the calendar panel.
 
-| Key               | Action                                                  |
-| ----------------- | ------------------------------------------------------- |
-| `←` / `→`         | Move focus ±1 day (wraps across months)                 |
-| `↑` / `↓`         | Move focus ±7 days (wraps across months)                |
-| `Home`            | First day of current week (Monday)                      |
-| `End`             | Last day of current week (Sunday)                       |
-| `PageUp`          | Previous month (same day, clamped to last day of month) |
-| `PageDown`        | Next month (same day, clamped)                          |
-| `Shift+PageUp`    | Previous year                                           |
-| `Shift+PageDown`  | Next year                                               |
-| `Enter` / `Space` | Select focused date (if not disabled/out of range)      |
-| `Escape`          | Close panel, return focus to trigger                    |
-| `Tab`             | Close panel (natural tab flow continues)                |
+### Icon Button
+
+| Key                     | Action               |
+| ----------------------- | -------------------- |
+| `Enter` / `Space` / `↓` | Open calendar panel  |
+| `Escape`                | Close calendar panel |
+
+### Calendar Panel
+
+| Key      | Action                                           |
+| -------- | ------------------------------------------------ |
+| `Escape` | Close panel, return focus to last active segment |
+
+Day cells are click-only (no roving tabindex). Month and year selection navigates drill-down views within the panel.
+
+---
+
+## Panel Views
+
+The calendar panel has three nested views, accessible by clicking the month or year label in the header:
+
+| View     | Content                                          | Header Navigation |
+| -------- | ------------------------------------------------ | ----------------- |
+| `days`   | 7-column date grid for the current month         | ← / → month       |
+| `months` | 3-column grid of abbreviated month names         | ← / → year        |
+| `years`  | 3-column grid of 12 years (current decade range) | ← / → 12 years    |
 
 ---
 
@@ -160,17 +188,23 @@ All tokens are scoped to `[data-theme]` and derived from `--ui-*` semantic token
 
 ### Trigger Tokens
 
-| Token                       | Source                                      |
-| --------------------------- | ------------------------------------------- |
-| `--datepicker-bg`           | `--ui-surface`                              |
-| `--datepicker-fg`           | `--ui-surface-foreground`                   |
-| `--datepicker-border`       | `--ui-border`                               |
-| `--datepicker-border-width` | `--ui-border-width`                         |
-| `--datepicker-placeholder`  | `--ui-surface-foreground` + 55% transparent |
-| `--datepicker-focus-color`  | `--ui-primary`                              |
-| `--datepicker-error-color`  | `--ui-danger`                               |
-| `--datepicker-disabled-bg`  | `--ui-neutral` + 80% transparent            |
-| `--datepicker-hover-border` | `--ui-border` + hover mix                   |
+| Token                            | Source                                      |
+| -------------------------------- | ------------------------------------------- |
+| `--datepicker-bg`                | `--ui-surface`                              |
+| `--datepicker-fg`                | `--ui-surface-foreground`                   |
+| `--datepicker-border`            | `--ui-border`                               |
+| `--datepicker-border-width`      | `--ui-border-width`                         |
+| `--datepicker-placeholder`       | `--ui-surface-foreground` + 55% transparent |
+| `--datepicker-focus-color`       | `--ui-primary`                              |
+| `--datepicker-focus-ring-width`  | `--ui-ring-width`                           |
+| `--datepicker-focus-ring-offset` | `--ui-ring-offset`                          |
+| `--datepicker-error-color`       | `--ui-danger`                               |
+| `--datepicker-disabled-bg`       | `--ui-neutral` + 80% transparent            |
+| `--datepicker-disabled-fg`       | `--ui-surface-foreground` + 50% transparent |
+| `--datepicker-disabled-border`   | `--ui-border`                               |
+| `--datepicker-hover-border`      | `--ui-border` + hover mix                   |
+| `--datepicker-icon-color`        | `--ui-surface-foreground` + 35% transparent |
+| `--datepicker-icon-size`         | `2 × base-spacing`                          |
 
 ### Size Tokens
 
@@ -180,24 +214,54 @@ All tokens are scoped to `[data-theme]` and derived from `--ui-*` semantic token
 | `--datepicker-{s}-padding-x` | `1.5 × base`   | `2 × base`       | `3 × base`     |
 | `--datepicker-{s}-font-size` | `--ui-text-sm` | `--ui-text-base` | `--ui-text-lg` |
 
+### Typography / Layout Tokens
+
+| Token                            | Source                                      |
+| -------------------------------- | ------------------------------------------- |
+| `--datepicker-font-family`       | `--ui-font-sans`                            |
+| `--datepicker-font-weight`       | `--ui-weight-normal`                        |
+| `--datepicker-border-radius`     | `--ui-base-radius`                          |
+| `--datepicker-transition`        | `duration + easing`                         |
+| `--datepicker-seg-input-size`    | `--ui-text-base`                            |
+| `--datepicker-seg-hover-bg`      | `--ui-neutral` + 85% transparent            |
+| `--datepicker-value-font-weight` | `--ui-weight-normal`                        |
+| `--datepicker-sep-color`         | `--ui-surface-foreground` + 50% transparent |
+
 ### Panel Tokens
 
-| Token                        | Value                             |
-| ---------------------------- | --------------------------------- |
-| `--datepicker-panel-bg`      | `--ui-surface-overlay`            |
-| `--datepicker-panel-fg`      | `--ui-surface-overlay-foreground` |
-| `--datepicker-panel-border`  | `--ui-border`                     |
-| `--datepicker-panel-shadow`  | `--ui-depth`                      |
-| `--datepicker-panel-width`   | `35 × base-spacing` (280px)       |
-| `--datepicker-panel-z-index` | `--ui-z-overlay`                  |
+| Token                             | Value                             |
+| --------------------------------- | --------------------------------- |
+| `--datepicker-panel-bg`           | `--ui-surface-overlay`            |
+| `--datepicker-panel-fg`           | `--ui-surface-overlay-foreground` |
+| `--datepicker-panel-border`       | `--ui-border`                     |
+| `--datepicker-panel-shadow`       | `--ui-depth`                      |
+| `--datepicker-panel-padding`      | `1.5 × base-spacing`              |
+| `--datepicker-panel-width`        | `35 × base-spacing` (280px)       |
+| `--datepicker-panel-z-index`      | `--ui-z-overlay`                  |
+| `--datepicker-panel-enter-offset` | `--ui-enter-offset`               |
+
+### Header Tokens
+
+| Token                             | Value                            |
+| --------------------------------- | -------------------------------- |
+| `--datepicker-header-font-size`   | `--ui-text-sm`                   |
+| `--datepicker-header-font-weight` | `--ui-weight-semibold`           |
+| `--datepicker-nav-btn-size`       | `3.5 × base-spacing`             |
+| `--datepicker-nav-btn-hover-bg`   | `--ui-neutral` + 85% transparent |
 
 ### Grid Tokens
 
-| Token                               | Value                                               |
-| ----------------------------------- | --------------------------------------------------- |
-| `--datepicker-weekday-color`        | `--ui-surface-overlay-foreground` + 45% transparent |
-| `--datepicker-day-size`             | `4.5 × base-spacing` (36px)                         |
-| `--datepicker-day-selected-bg`      | `--ui-primary`                                      |
-| `--datepicker-day-selected-fg`      | `--ui-primary-foreground`                           |
-| `--datepicker-day-today-color`      | `--ui-primary`                                      |
-| `--datepicker-day-disabled-opacity` | `0.35`                                              |
+| Token                                | Value                                               |
+| ------------------------------------ | --------------------------------------------------- |
+| `--datepicker-weekday-color`         | `--ui-surface-overlay-foreground` + 45% transparent |
+| `--datepicker-weekday-font-size`     | `--ui-text-xs`                                      |
+| `--datepicker-day-size`              | `4.5 × base-spacing` (36px)                         |
+| `--datepicker-day-border-radius`     | `--ui-base-radius`                                  |
+| `--datepicker-day-hover-bg`          | `--ui-neutral` + 85% transparent                    |
+| `--datepicker-day-selected-bg`       | `--ui-primary`                                      |
+| `--datepicker-day-selected-fg`       | `--ui-primary-foreground`                           |
+| `--datepicker-day-selected-hover-bg` | `--ui-primary` + 15% transparent                    |
+| `--datepicker-day-today-color`       | `--ui-primary`                                      |
+| `--datepicker-day-today-border`      | `--ui-primary`                                      |
+| `--datepicker-day-outside-color`     | `--ui-surface-overlay-foreground` + 65% transparent |
+| `--datepicker-day-disabled-opacity`  | `0.35`                                              |

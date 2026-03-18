@@ -53,7 +53,7 @@
 	--timepicker-col-item-selected-bg: color-mix(in oklch, var(--ui-primary), transparent 90%);
 	--timepicker-col-item-selected-fg: var(--ui-primary);
 	--timepicker-col-item-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-	--timepicker-value-size: var(--ui-text-2xl);
+	--timepicker-value-size: var(--ui-text-base);
 	--timepicker-value-font-weight: var(--ui-weight-semibold);
 	--timepicker-sep-color: color-mix(
 		in oklch,
@@ -180,7 +180,7 @@
 	min-width: 2ch;
 	font-family: var(--timepicker-font-family);
 	font-size: var(--timepicker-seg-input-size);
-	font-weight: var(--timepicker-value-font-weight);
+	font-weight: var(--timepicker-font-weight);
 	font-variant-numeric: tabular-nums;
 	line-height: 1;
 	text-align: center;
@@ -216,7 +216,7 @@
 	flex-shrink: 0;
 	cursor: pointer;
 	border-radius: calc(var(--timepicker-border-radius) * 0.5);
-	padding: 2px;
+	padding: calc(var(--ui-base-spacing) * 0.25);
 	color: var(--timepicker-icon-color);
 	transition: color var(--timepicker-transition);
 }
@@ -284,7 +284,7 @@
 	height: var(--timepicker-col-item-height);
 	font-family: var(--timepicker-font-family);
 	font-size: var(--timepicker-value-size);
-	font-weight: var(--timepicker-value-font-weight);
+	font-weight: var(--timepicker-font-weight);
 	font-variant-numeric: tabular-nums;
 	cursor: pointer;
 	transition: background-color var(--timepicker-transition);

@@ -1,10 +1,18 @@
 <script lang="ts">
 	import './timepicker.css';
-	import { getContext } from 'svelte';
-	import { computePosition, flip, shift, offset, autoUpdate } from '@floating-ui/dom';
+	import { getContext, tick } from 'svelte';
 	import { FIELD_KEY } from '$lib/components/field/context.js';
 	import type { FieldContext } from '$lib/components/field/context.js';
 	import ClockIcon from '$lib/icons/ClockIcon.svelte';
+	import { useFloatingPanel } from '$lib/internal/useFloatingPanel.svelte.js';
+	import TimePickerPanel from '$lib/internal/TimePickerPanel.svelte';
+
+	export interface TimePickerLocale {
+		tag?: string;
+		hourPlaceholder?: string;
+		minutePlaceholder?: string;
+		secondPlaceholder?: string;
+	}
 
 	interface Props {
 		value?: string; // "HH:MM" or "HH:MM:SS" in 24-hour
@@ -14,6 +22,7 @@
 		id?: string;
 		name?: string;
 		seconds?: boolean; // show seconds column
+		locale?: TimePickerLocale;
 	}
 
 	let {
@@ -23,7 +32,8 @@
 		disabled = false,
 		id,
 		name,
-		seconds = false
+		seconds = false,
+		locale
 	}: Props = $props();
 
 	const field = getContext<FieldContext>(FIELD_KEY);
@@ -37,9 +47,13 @@
 		field?.descriptionIds.length ? field.descriptionIds.join(' ') : undefined
 	);
 
-	const hourValues = Array.from({ length: 24 }, (_, i) => i);
-	const minuteValues = Array.from({ length: 60 }, (_, i) => i);
-	const secondValues = Array.from({ length: 60 }, (_, i) => i);
+	const segPlaceholders = $derived({
+		hour: locale?.hourPlaceholder ?? 'HH',
+		minute: locale?.minutePlaceholder ?? 'MM',
+		second: locale?.secondPlaceholder ?? 'SS'
+	});
+
+	const iconSize = $derived({ sm: 14, md: 16, lg: 18 }[size]);
 
 	function parseTimeString(val: string | undefined): { h: number; m: number; s: number } {
 		if (!val) return { h: 0, m: 0, s: 0 };
@@ -59,21 +73,25 @@
 	let editS = $state(0);
 
 	const hasValue = $derived(!!value);
-
 	let open = $state(false);
 
-	// Whether to show numeric values vs empty placeholders
 	const showValues = $derived(hasValue || open);
+
 	let triggerEl = $state<HTMLDivElement | null>(null);
 	let panelEl = $state<HTMLDivElement | null>(null);
-
 	let hourListEl = $state<HTMLUListElement | null>(null);
 	let minuteListEl = $state<HTMLUListElement | null>(null);
 	let secondListEl = $state<HTMLUListElement | null>(null);
-
 	let hourInputEl = $state<HTMLInputElement | null>(null);
 	let minuteInputEl = $state<HTMLInputElement | null>(null);
 	let secondInputEl = $state<HTMLInputElement | null>(null);
+
+	useFloatingPanel(
+		() => triggerEl,
+		() => panelEl,
+		() => open,
+		closePanel
+	);
 
 	function scrollToItemBehavior(
 		listEl: HTMLUListElement | null,
@@ -86,52 +104,10 @@
 		listEl.scrollTo({ top, behavior });
 	}
 
-	async function updatePosition() {
-		if (!triggerEl || !panelEl) return;
-		const { x, y } = await computePosition(triggerEl, panelEl, {
-			placement: 'bottom-start',
-			strategy: 'fixed',
-			middleware: [offset(4), flip({ padding: 8 }), shift({ padding: 8 })]
-		});
-		panelEl.style.left = `${x}px`;
-		panelEl.style.top = `${y}px`;
-	}
-
-	$effect(() => {
-		if (open && triggerEl && panelEl) {
-			return autoUpdate(triggerEl, panelEl, updatePosition);
-		}
-	});
-
-	$effect(() => {
-		if (!open) return;
-		function handleClickOutside(e: MouseEvent) {
-			if (!triggerEl?.contains(e.target as Node) && !panelEl?.contains(e.target as Node)) {
-				closePanel();
-			}
-		}
-		document.addEventListener('mousedown', handleClickOutside);
-		return () => document.removeEventListener('mousedown', handleClickOutside);
-	});
-
-	// Scroll columns to selected items when panel opens
-	$effect(() => {
-		if (!open) return;
-		setTimeout(() => {
-			scrollToItemBehavior(hourListEl, editH, 'instant');
-			scrollToItemBehavior(minuteListEl, editM, 'instant');
-			if (seconds) scrollToItemBehavior(secondListEl, editS, 'instant');
-		}, 0);
-	});
-
 	// Keep segment inputs in sync with state
 	$effect(() => {
 		if (hourInputEl) hourInputEl.value = showValues ? String(editH).padStart(2, '0') : '';
-	});
-	$effect(() => {
 		if (minuteInputEl) minuteInputEl.value = showValues ? String(editM).padStart(2, '0') : '';
-	});
-	$effect(() => {
 		if (secondInputEl) secondInputEl.value = showValues ? String(editS).padStart(2, '0') : '';
 	});
 
@@ -143,13 +119,9 @@
 	}
 
 	function openPanel() {
-		if (isDisabled) return;
+		if (isDisabled || open) return;
 		syncFromValue();
 		open = true;
-		setTimeout(() => {
-			hourInputEl?.focus();
-			hourInputEl?.select();
-		}, 0);
 	}
 
 	function closePanel() {
@@ -161,15 +133,14 @@
 	}
 
 	type Col = 'hour' | 'minute' | 'second';
-	const colMax: Record<Col, number> = { hour: 24, minute: 60, second: 60 };
 
-	function getListEl(col: Col) {
+	function getListEl(col: Col): HTMLUListElement | null {
 		if (col === 'hour') return hourListEl;
 		if (col === 'minute') return minuteListEl;
 		return secondListEl;
 	}
 
-	function getVal(col: Col) {
+	function getVal(col: Col): number {
 		if (col === 'hour') return editH;
 		if (col === 'minute') return editM;
 		return editS;
@@ -181,26 +152,28 @@
 		else editS = val;
 	}
 
-	function commitCol(col: Col, num: number) {
-		setVal(col, Math.min(colMax[col] - 1, Math.max(0, num)));
-		commitValue();
-		scrollToItemBehavior(getListEl(col), getVal(col), 'smooth');
-	}
-
 	function stepCol(col: Col, delta: number) {
-		const max = colMax[col];
+		const max = col === 'hour' ? 24 : 60;
 		setVal(col, (((getVal(col) + delta) % max) + max) % max);
 		commitValue();
 		scrollToItemBehavior(getListEl(col), getVal(col), 'smooth');
 	}
 
-	function selectCol(col: Col, val: number) {
-		setVal(col, val);
+	function commitColFromInput(col: Col, num: number) {
+		const max = col === 'hour' ? 23 : 59;
+		setVal(col, Math.min(max, Math.max(0, num)));
 		commitValue();
-		scrollToItemBehavior(getListEl(col), val, 'smooth');
+		scrollToItemBehavior(getListEl(col), getVal(col), 'smooth');
 	}
 
-	function handleSegInput(e: Event, col: 'hour' | 'minute' | 'second') {
+	async function advanceSeg(col: Col) {
+		const inputEl = col === 'hour' ? hourInputEl : col === 'minute' ? minuteInputEl : secondInputEl;
+		inputEl?.focus();
+		await tick();
+		inputEl?.select();
+	}
+
+	function handleSegInput(e: Event, col: Col) {
 		const input = e.currentTarget as HTMLInputElement;
 		const raw = input.value.replace(/\D/g, '');
 		input.value = raw;
@@ -215,26 +188,32 @@
 
 		if (shouldAdvance) {
 			if (col === 'hour') {
-				minuteInputEl?.focus();
-				setTimeout(() => minuteInputEl?.select(), 0);
-			} else if (col === 'minute' && seconds) {
-				secondInputEl?.focus();
-				setTimeout(() => secondInputEl?.select(), 0);
+				editH = Math.min(23, num);
+				scrollToItemBehavior(hourListEl, editH, 'smooth');
+				advanceSeg('minute');
+			} else if (col === 'minute') {
+				editM = Math.min(59, num);
+				scrollToItemBehavior(minuteListEl, editM, 'smooth');
+				if (seconds) advanceSeg('second');
+			} else {
+				editS = Math.min(59, num);
+				scrollToItemBehavior(secondListEl, editS, 'smooth');
 			}
+			commitValue();
 		}
 	}
 
-	function handleSegBlur(e: FocusEvent, col: 'hour' | 'minute' | 'second') {
+	function handleSegBlur(e: FocusEvent, col: Col) {
 		const input = e.currentTarget as HTMLInputElement;
 		const raw = input.value.replace(/\D/g, '');
 		if (raw.length === 0) return;
 		const num = parseInt(raw, 10);
-		commitCol(col, num);
+		commitColFromInput(col, num);
 		input.value = String(getVal(col)).padStart(2, '0');
 	}
 
-	function handleSegKeydown(e: KeyboardEvent, col: 'hour' | 'minute' | 'second') {
-		const lastCol = seconds ? 'second' : 'minute';
+	function handleSegKeydown(e: KeyboardEvent, col: Col) {
+		const lastCol: Col = seconds ? 'second' : 'minute';
 		switch (e.key) {
 			case 'ArrowUp':
 				e.preventDefault();
@@ -289,9 +268,10 @@
 				type="text"
 				inputmode="numeric"
 				value={showValues ? String(editH).padStart(2, '0') : ''}
-				placeholder="HH"
+				placeholder={segPlaceholders.hour}
 				aria-label="Hour"
 				disabled={isDisabled}
+				onfocus={() => openPanel()}
 				onblur={(e) => handleSegBlur(e, 'hour')}
 				onkeydown={(e) => handleSegKeydown(e, 'hour')}
 				oninput={(e) => handleSegInput(e, 'hour')}
@@ -304,9 +284,10 @@
 				type="text"
 				inputmode="numeric"
 				value={showValues ? String(editM).padStart(2, '0') : ''}
-				placeholder="MM"
+				placeholder={segPlaceholders.minute}
 				aria-label="Minute"
 				disabled={isDisabled}
+				onfocus={() => openPanel()}
 				onblur={(e) => handleSegBlur(e, 'minute')}
 				onkeydown={(e) => handleSegKeydown(e, 'minute')}
 				oninput={(e) => handleSegInput(e, 'minute')}
@@ -320,9 +301,10 @@
 					type="text"
 					inputmode="numeric"
 					value={showValues ? String(editS).padStart(2, '0') : ''}
-					placeholder="SS"
+					placeholder={segPlaceholders.second}
 					aria-label="Second"
 					disabled={isDisabled}
+					onfocus={() => openPanel()}
 					onblur={(e) => handleSegBlur(e, 'second')}
 					onkeydown={(e) => handleSegKeydown(e, 'second')}
 					oninput={(e) => handleSegInput(e, 'second')}
@@ -343,7 +325,7 @@
 			onclick={() => (open ? closePanel() : openPanel())}
 			onkeydown={handleIconBtnKeydown}
 		>
-			<ClockIcon class="timepicker__icon" size={16} aria-hidden="true" />
+			<ClockIcon class="timepicker__icon" size={iconSize} aria-hidden="true" />
 		</button>
 	</div>
 
@@ -352,99 +334,17 @@
 	{/if}
 
 	{#if open}
-		<div
-			bind:this={panelEl}
+		<TimePickerPanel
 			id={panelId}
-			class="timepicker__panel"
-			role="dialog"
-			aria-modal="true"
-			aria-label="Choose time"
-		>
-			<div class="timepicker__columns">
-				<ul
-					bind:this={hourListEl}
-					class="timepicker__col-list"
-					tabindex="-1"
-					role="listbox"
-					aria-label="Hour"
-				>
-					{#each hourValues as h (h)}
-						<li
-							class="timepicker__col-item"
-							class:timepicker__col-item--selected={h === editH}
-							role="option"
-							aria-selected={h === editH}
-							onclick={() => selectCol('hour', h)}
-							onkeydown={(e) => {
-								if (e.key === 'Enter' || e.key === ' ') {
-									e.preventDefault();
-									selectCol('hour', h);
-								}
-							}}
-						>
-							{String(h).padStart(2, '0')}
-						</li>
-					{/each}
-				</ul>
-
-				<div class="timepicker__col-sep" aria-hidden="true"></div>
-
-				<ul
-					bind:this={minuteListEl}
-					class="timepicker__col-list"
-					tabindex="-1"
-					role="listbox"
-					aria-label="Minute"
-				>
-					{#each minuteValues as m (m)}
-						<li
-							class="timepicker__col-item"
-							class:timepicker__col-item--selected={m === editM}
-							role="option"
-							aria-selected={m === editM}
-							onclick={() => selectCol('minute', m)}
-							onkeydown={(e) => {
-								if (e.key === 'Enter' || e.key === ' ') {
-									e.preventDefault();
-									selectCol('minute', m);
-								}
-							}}
-						>
-							{String(m).padStart(2, '0')}
-						</li>
-					{/each}
-				</ul>
-
-				{#if seconds}
-					<div class="timepicker__col-sep" aria-hidden="true"></div>
-
-					<ul
-						bind:this={secondListEl}
-						class="timepicker__col-list"
-						tabindex="-1"
-						role="listbox"
-						aria-label="Second"
-					>
-						{#each secondValues as s (s)}
-							<li
-								class="timepicker__col-item"
-								class:timepicker__col-item--selected={s === editS}
-								role="option"
-								aria-selected={s === editS}
-								onclick={() => selectCol('second', s)}
-								onkeydown={(e) => {
-									if (e.key === 'Enter' || e.key === ' ') {
-										e.preventDefault();
-										selectCol('second', s);
-									}
-								}}
-							>
-								{String(s).padStart(2, '0')}
-							</li>
-						{/each}
-					</ul>
-				{/if}
-			</div>
-		</div>
+			bind:panelEl
+			bind:hourListEl
+			bind:minuteListEl
+			bind:secondListEl
+			bind:editH
+			bind:editM
+			bind:editS
+			{seconds}
+			onCommit={commitValue}
+		/>
 	{/if}
 </div>
