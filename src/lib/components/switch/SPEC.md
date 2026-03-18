@@ -4,13 +4,12 @@ A toggle switch for boolean on/off states. Renders as a pill-shaped track with a
 
 ## Props
 
-| Prop           | Type                   | Default | Description                                                                        |
-| -------------- | ---------------------- | ------- | ---------------------------------------------------------------------------------- |
-| `checked`      | `boolean`              | `false` | Bindable on/off state                                                              |
-| `size`         | `'sm' \| 'md' \| 'lg'` | `'md'`  | Controls track width, track height, and thumb size                                 |
-| `disabled`     | `boolean`              | `false` | Prevents interaction and applies muted styling (also inherited from Field context) |
-| `id`           | `string`               | —       | Custom ID; auto-generated from Field context if omitted                            |
-| `...restProps` | `HTMLInputAttributes`  | —       | All other native checkbox input attributes (e.g. `name`, `value`)                  |
+| Prop           | Type                  | Default | Description                                                                        |
+| -------------- | --------------------- | ------- | ---------------------------------------------------------------------------------- |
+| `checked`      | `boolean`             | `false` | Bindable on/off state                                                              |
+| `disabled`     | `boolean`             | `false` | Prevents interaction and applies muted styling (also inherited from Field context) |
+| `id`           | `string`              | —       | Custom ID; auto-generated from Field context if omitted                            |
+| `...restProps` | `HTMLInputAttributes` | —       | All other native checkbox input attributes (e.g. `name`, `value`)                  |
 
 ## Context Integration
 
@@ -40,14 +39,6 @@ Switch reads from the `Field` context when composed inside a `<Field>` wrapper:
 	<Switch />
 	<FieldLabel>Enable notifications</FieldLabel>
 </Field>
-```
-
-### Sizes
-
-```svelte
-<Switch size="sm" />
-<Switch size="md" />
-<Switch size="lg" />
 ```
 
 ### Disabled
@@ -104,20 +95,12 @@ Switch reads from the `Field` context when composed inside a `<Field>` wrapper:
 
 ### Size Tokens
 
-| Token                      | Default | Description                       |
-| -------------------------- | ------- | --------------------------------- |
-| `--switch-track-width-sm`  | `28px`  | Track width for sm                |
-| `--switch-track-height-sm` | `16px`  | Track height for sm               |
-| `--switch-thumb-size-sm`   | `12px`  | Thumb diameter for sm             |
-| `--switch-thumb-travel-sm` | `12px`  | Thumb translation distance for sm |
-| `--switch-track-width-md`  | `36px`  | Track width for md                |
-| `--switch-track-height-md` | `20px`  | Track height for md               |
-| `--switch-thumb-size-md`   | `16px`  | Thumb diameter for md             |
-| `--switch-thumb-travel-md` | `16px`  | Thumb translation distance for md |
-| `--switch-track-width-lg`  | `44px`  | Track width for lg                |
-| `--switch-track-height-lg` | `24px`  | Track height for lg               |
-| `--switch-thumb-size-lg`   | `20px`  | Thumb diameter for lg             |
-| `--switch-thumb-travel-lg` | `20px`  | Thumb translation distance for lg |
+| Token                   | Description           |
+| ----------------------- | --------------------- |
+| `--switch-track-width`  | Track width           |
+| `--switch-track-height` | Track height          |
+| `--switch-thumb-size`   | Thumb diameter        |
+| `--switch-thumb-travel` | Thumb travel distance |
 
 ### Style Tokens
 

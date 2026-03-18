@@ -20,19 +20,10 @@
 	--badge-input-gap: calc(var(--ui-base-spacing) * 0.75);
 	--badge-input-validation-error-fg: var(--ui-danger);
 
-	/* Sizes */
-	--badge-input-sm-min-height: calc(var(--ui-base-spacing) * 4);
-	--badge-input-sm-padding-x: calc(var(--ui-base-spacing) * 1.5);
-	--badge-input-sm-padding-y: calc(var(--ui-base-spacing) * 0.5);
-	--badge-input-sm-font-size: var(--ui-text-sm);
-	--badge-input-md-min-height: calc(var(--ui-base-spacing) * 5);
-	--badge-input-md-padding-x: calc(var(--ui-base-spacing) * 2);
-	--badge-input-md-padding-y: calc(var(--ui-base-spacing) * 0.75);
-	--badge-input-md-font-size: var(--ui-text-base);
-	--badge-input-lg-min-height: calc(var(--ui-base-spacing) * 6);
-	--badge-input-lg-padding-x: calc(var(--ui-base-spacing) * 3);
-	--badge-input-lg-padding-y: calc(var(--ui-base-spacing) * 1);
-	--badge-input-lg-font-size: var(--ui-text-lg);
+	--badge-input-min-height: calc(var(--ui-base-spacing) * 5);
+	--badge-input-padding-x: calc(var(--ui-base-spacing) * 2);
+	--badge-input-padding-y: calc(var(--ui-base-spacing) * 0.75);
+	--badge-input-font-size: var(--ui-text-base);
 
 	--badge-input-font-family: var(--ui-font-sans);
 	--badge-input-font-weight: var(--ui-weight-normal);
@@ -75,22 +66,10 @@
 		outline-color var(--badge-input-transition);
 }
 
-.badge-input__trigger--sm {
-	min-height: var(--badge-input-sm-min-height);
-	padding: var(--badge-input-sm-padding-y) var(--badge-input-sm-padding-x);
-	font-size: var(--badge-input-sm-font-size);
-}
-
-.badge-input__trigger--md {
-	min-height: var(--badge-input-md-min-height);
-	padding: var(--badge-input-md-padding-y) var(--badge-input-md-padding-x);
-	font-size: var(--badge-input-md-font-size);
-}
-
-.badge-input__trigger--lg {
-	min-height: var(--badge-input-lg-min-height);
-	padding: var(--badge-input-lg-padding-y) var(--badge-input-lg-padding-x);
-	font-size: var(--badge-input-lg-font-size);
+.badge-input__trigger {
+	min-height: var(--badge-input-min-height);
+	padding: var(--badge-input-padding-y) var(--badge-input-padding-x);
+	font-size: var(--badge-input-font-size);
 }
 
 .badge-input__trigger:hover:not(.badge-input__trigger--disabled) {

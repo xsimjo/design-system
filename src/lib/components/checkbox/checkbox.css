@@ -17,10 +17,8 @@
 	--checkbox-disabled-bg: color-mix(in oklch, var(--ui-neutral), transparent 80%);
 	--checkbox-disabled-border: var(--ui-border);
 
-	/* Sizes */
-	--checkbox-size-sm: calc(var(--ui-base-spacing) * 1.75);
-	--checkbox-size-md: calc(var(--ui-base-spacing) * 2);
-	--checkbox-size-lg: calc(var(--ui-base-spacing) * 2.5);
+	/* Size */
+	--checkbox-size: calc(var(--ui-base-spacing) * 2);
 
 	/* Style */
 	--checkbox-border-radius: calc(var(--ui-base-radius) * 0.5);
@@ -47,19 +45,9 @@
 		background-color var(--checkbox-transition);
 }
 
-.checkbox__input--sm {
-	width: var(--checkbox-size-sm);
-	height: var(--checkbox-size-sm);
-}
-
-.checkbox__input--md {
-	width: var(--checkbox-size-md);
-	height: var(--checkbox-size-md);
-}
-
-.checkbox__input--lg {
-	width: var(--checkbox-size-lg);
-	height: var(--checkbox-size-lg);
+.checkbox__input {
+	width: var(--checkbox-size);
+	height: var(--checkbox-size);
 }
 
 .checkbox__input:hover:not(:disabled):not([aria-disabled='true']) {

@@ -13,7 +13,6 @@
 		min?: number;
 		max?: number;
 		step?: number;
-		size?: 'sm' | 'md' | 'lg';
 		fullWidth?: boolean;
 		showValue?: boolean;
 		disabled?: boolean;
@@ -25,7 +24,6 @@
 		min = 0,
 		max = 100,
 		step = 1,
-		size = 'md',
 		fullWidth = false,
 		showValue = false,
 		disabled = false,
@@ -59,7 +57,7 @@
 <div class="slider__wrapper" class:slider__wrapper--full-width={fullWidth}>
 	<input
 		type="range"
-		class="slider__input slider__input--{size}"
+		class="slider__input"
 		class:slider__input--error={hasError}
 		id={sliderId}
 		disabled={isDisabled}

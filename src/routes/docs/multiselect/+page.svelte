@@ -24,7 +24,6 @@
 		{ id: 'examples', label: 'Examples' },
 		{ id: 'basic', label: 'Basic', indent: true },
 		{ id: 'with-field', label: 'With Field', indent: true },
-		{ id: 'sizes', label: 'Sizes', indent: true },
 		{ id: 'max', label: 'Max Selections', indent: true },
 		{ id: 'controlled', label: 'Controlled', indent: true },
 		{ id: 'api', label: 'API' }
@@ -82,30 +81,6 @@
 					<Field error="Please select at least one skill.">
 						<FieldLabel>Skills (error)</FieldLabel>
 						<MultiSelect options={skillOptions} placeholder="Select skills…" />
-					</Field>
-				</CodeExample>
-			</div>
-
-			<div id="sizes" class="example-block">
-				<h3>Sizes</h3>
-				<p class="example-desc">Three sizes to match layout density.</p>
-				<CodeExample
-					code={`<MultiSelect size="sm" options={options} />
-<MultiSelect size="md" options={options} />
-<MultiSelect size="lg" options={options} />`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Small</FieldLabel>
-						<MultiSelect size="sm" options={skillOptions} placeholder="Select…" />
-					</Field>
-					<Field>
-						<FieldLabel>Medium</FieldLabel>
-						<MultiSelect size="md" options={skillOptions} placeholder="Select…" />
-					</Field>
-					<Field>
-						<FieldLabel>Large</FieldLabel>
-						<MultiSelect size="lg" options={skillOptions} placeholder="Select…" />
 					</Field>
 				</CodeExample>
 			</div>

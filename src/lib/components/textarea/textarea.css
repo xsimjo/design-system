@@ -16,15 +16,9 @@
 		var(--ui-border),
 		var(--ui-hover-mix) var(--ui-hover-amount)
 	);
-	--textarea-sm-padding-x: calc(var(--ui-base-spacing) * 1.5);
-	--textarea-sm-padding-y: calc(var(--ui-base-spacing) * 1);
-	--textarea-sm-font-size: var(--ui-text-sm);
-	--textarea-md-padding-x: calc(var(--ui-base-spacing) * 2);
-	--textarea-md-padding-y: calc(var(--ui-base-spacing) * 1.5);
-	--textarea-md-font-size: var(--ui-text-base);
-	--textarea-lg-padding-x: calc(var(--ui-base-spacing) * 3);
-	--textarea-lg-padding-y: calc(var(--ui-base-spacing) * 2);
-	--textarea-lg-font-size: var(--ui-text-lg);
+	--textarea-padding-x: calc(var(--ui-base-spacing) * 2);
+	--textarea-padding-y: calc(var(--ui-base-spacing) * 1.5);
+	--textarea-font-size: var(--ui-text-base);
 	--textarea-font-family: var(--ui-font-sans);
 	--textarea-font-weight: var(--ui-weight-normal);
 	--textarea-line-height: var(--ui-leading-normal);
@@ -49,23 +43,13 @@
 		background-color var(--textarea-transition);
 }
 
+.textarea__field {
+	padding: var(--textarea-padding-y) var(--textarea-padding-x);
+	font-size: var(--textarea-font-size);
+}
+
 .textarea__field--full-width {
 	width: 100%;
-}
-
-.textarea__field--sm {
-	padding: var(--textarea-sm-padding-y) var(--textarea-sm-padding-x);
-	font-size: var(--textarea-sm-font-size);
-}
-
-.textarea__field--md {
-	padding: var(--textarea-md-padding-y) var(--textarea-md-padding-x);
-	font-size: var(--textarea-md-font-size);
-}
-
-.textarea__field--lg {
-	padding: var(--textarea-lg-padding-y) var(--textarea-lg-padding-x);
-	font-size: var(--textarea-lg-font-size);
 }
 
 .textarea__field::placeholder {

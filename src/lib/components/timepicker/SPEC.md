@@ -8,16 +8,15 @@ A time-selection input with segmented hour/minute/(optional second) fields and a
 
 ## Props
 
-| Prop        | Type                   | Default     | Description                                                                          |
-| ----------- | ---------------------- | ----------- | ------------------------------------------------------------------------------------ |
-| `value`     | `string \| undefined`  | `undefined` | Bindable time string. `"HH:MM"` (24-hour) or `"HH:MM:SS"` when `seconds` is true.    |
-| `size`      | `'sm' \| 'md' \| 'lg'` | `'md'`      | Controls trigger height, padding, and font size                                      |
-| `fullWidth` | `boolean`              | `false`     | Stretches trigger to 100% of container width                                         |
-| `disabled`  | `boolean`              | `false`     | Disables the trigger (also inherited from Field context)                             |
-| `id`        | `string`               | auto        | Custom ID; falls back to Field context ID then auto-generated                        |
-| `name`      | `string`               | —           | Form field name; produces a hidden `<input value="HH:MM">` when set and value is set |
-| `seconds`   | `boolean`              | `false`     | Show a third (seconds) column and include seconds in the value string                |
-| `locale`    | `TimePickerLocale`     | —           | Locale overrides for segment placeholder strings                                     |
+| Prop        | Type                  | Default     | Description                                                                          |
+| ----------- | --------------------- | ----------- | ------------------------------------------------------------------------------------ |
+| `value`     | `string \| undefined` | `undefined` | Bindable time string. `"HH:MM"` (24-hour) or `"HH:MM:SS"` when `seconds` is true.    |
+| `fullWidth` | `boolean`             | `false`     | Stretches trigger to 100% of container width                                         |
+| `disabled`  | `boolean`             | `false`     | Disables the trigger (also inherited from Field context)                             |
+| `id`        | `string`              | auto        | Custom ID; falls back to Field context ID then auto-generated                        |
+| `name`      | `string`              | —           | Form field name; produces a hidden `<input value="HH:MM">` when set and value is set |
+| `seconds`   | `boolean`             | `false`     | Show a third (seconds) column and include seconds in the value string                |
+| `locale`    | `TimePickerLocale`    | —           | Locale overrides for segment placeholder strings                                     |
 
 ### TimePickerLocale Interface
 
@@ -155,11 +154,11 @@ All tokens are scoped to `[data-theme]` and derived from `--ui-*` semantic token
 
 ### Size Tokens
 
-| Token                        | sm             | md               | lg             |
-| ---------------------------- | -------------- | ---------------- | -------------- |
-| `--timepicker-{s}-height`    | `4 × base`     | `5 × base`       | `6 × base`     |
-| `--timepicker-{s}-padding-x` | `1.5 × base`   | `2 × base`       | `3 × base`     |
-| `--timepicker-{s}-font-size` | `--ui-text-sm` | `--ui-text-base` | `--ui-text-lg` |
+| Token                    | Description        |
+| ------------------------ | ------------------ |
+| `--timepicker-height`    | Trigger height     |
+| `--timepicker-padding-x` | Horizontal padding |
+| `--timepicker-font-size` | Font size          |
 
 ### Typography / Layout Tokens
 

@@ -7,7 +7,6 @@
 		{ id: 'examples', label: 'Examples' },
 		{ id: 'basic', label: 'Basic', indent: true },
 		{ id: 'readonly', label: 'Readonly', indent: true },
-		{ id: 'sizes', label: 'Sizes', indent: true },
 		{ id: 'custom-max', label: 'Custom Max', indent: true },
 		{ id: 'disabled', label: 'Disabled', indent: true },
 		{ id: 'api', label: 'API' },
@@ -64,21 +63,6 @@
 					<Rating value={3} readonly />
 					<Rating value={4} readonly />
 					<Rating value={5} readonly />
-				</CodeExample>
-			</div>
-
-			<div id="sizes" class="example-block">
-				<h3>Sizes</h3>
-				<p class="example-desc">Three sizes for different contexts.</p>
-				<CodeExample
-					code={`<Rating value={4} size="sm" readonly />
-<Rating value={4} size="md" readonly />
-<Rating value={4} size="lg" readonly />`}
-					previewClass="column"
-				>
-					<Rating value={4} size="sm" readonly />
-					<Rating value={4} size="md" readonly />
-					<Rating value={4} size="lg" readonly />
 				</CodeExample>
 			</div>
 

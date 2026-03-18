@@ -9,7 +9,6 @@ Multi-value searchable select with badge chips, floating-ui positioning, full ke
 | `values`      | `string[]` (bindable)                                | `[]`           | Array of selected option values                                   |
 | `options`     | `MultiSelectOption[]`                                | required       | Array of available options                                        |
 | `placeholder` | `string`                                             | `'Select…'`    | Placeholder text when no values are selected                      |
-| `size`        | `'sm' \| 'md' \| 'lg'`                               | `'md'`         | Controls min-height, padding, and font size                       |
 | `fullWidth`   | `boolean`                                            | `false`        | Stretches the component to fill its container width               |
 | `disabled`    | `boolean`                                            | `false`        | Disables the component; also propagated from Field context        |
 | `id`          | `string`                                             | `—`            | Custom ID; falls back to Field context ID, then auto-generated    |
@@ -146,12 +145,12 @@ When placed inside a `Field` component, MultiSelect automatically reads:
 
 ### Sizes
 
-| Token                             | SM                  | MD                    | LG                  |
-| --------------------------------- | ------------------- | --------------------- | ------------------- |
-| `--multiselect-{size}-min-height` | `32px`              | `40px`                | `48px`              |
-| `--multiselect-{size}-padding-x`  | `12px`              | `16px`                | `24px`              |
-| `--multiselect-{size}-padding-y`  | `4px`               | `6px`                 | `8px`               |
-| `--multiselect-{size}-font-size`  | `var(--ui-text-sm)` | `var(--ui-text-base)` | `var(--ui-text-lg)` |
+| Token                      | Description        |
+| -------------------------- | ------------------ |
+| `--multiselect-min-height` | Min trigger height |
+| `--multiselect-padding-x`  | Horizontal padding |
+| `--multiselect-padding-y`  | Vertical padding   |
+| `--multiselect-font-size`  | Font size          |
 
 ### Listbox
 

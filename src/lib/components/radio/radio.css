@@ -18,13 +18,9 @@
 	--radio-disabled-bg: color-mix(in oklch, var(--ui-neutral), transparent 80%);
 	--radio-disabled-border: var(--ui-border);
 
-	/* Sizes */
-	--radio-size-sm: calc(var(--ui-base-spacing) * 2);
-	--radio-size-md: calc(var(--ui-base-spacing) * 2.25);
-	--radio-size-lg: calc(var(--ui-base-spacing) * 2.75);
-	--radio-dot-radius-sm: 3px;
-	--radio-dot-radius-md: 4px;
-	--radio-dot-radius-lg: 5px;
+	/* Size */
+	--radio-size: calc(var(--ui-base-spacing) * 2.25);
+	--radio-dot-radius: 4px;
 
 	/* Style */
 	--radio-transition: var(--ui-base-duration) var(--ui-base-easing);
@@ -48,22 +44,10 @@
 		background-color var(--radio-transition);
 }
 
-.radio__input--sm {
-	width: var(--radio-size-sm);
-	height: var(--radio-size-sm);
-	--_dot-radius: var(--radio-dot-radius-sm);
-}
-
-.radio__input--md {
-	width: var(--radio-size-md);
-	height: var(--radio-size-md);
-	--_dot-radius: var(--radio-dot-radius-md);
-}
-
-.radio__input--lg {
-	width: var(--radio-size-lg);
-	height: var(--radio-size-lg);
-	--_dot-radius: var(--radio-dot-radius-lg);
+.radio__input {
+	width: var(--radio-size);
+	height: var(--radio-size);
+	--_dot-radius: var(--radio-dot-radius);
 }
 
 .radio__input:hover:not(:disabled):not([aria-disabled='true']):not(:checked) {

@@ -20,7 +20,6 @@
 		{ id: 'multiple', label: 'Multiple Files', indent: true },
 		{ id: 'accept', label: 'File Type Restriction', indent: true },
 		{ id: 'with-field', label: 'With Field', indent: true },
-		{ id: 'sizes', label: 'Sizes', indent: true },
 		{ id: 'states', label: 'States', indent: true },
 		{ id: 'api', label: 'API' }
 	];
@@ -126,30 +125,6 @@
 						<FieldLabel>Resume (required)</FieldLabel>
 						<FileInput placeholder="Drop your resume here or click to browse" />
 						<FieldDescription>PDF or Word document, max 10 MB.</FieldDescription>
-					</Field>
-				</CodeExample>
-			</div>
-
-			<div id="sizes" class="example-block">
-				<h3>Sizes</h3>
-				<p class="example-desc">Three sizes to match layout density.</p>
-				<CodeExample
-					code={`<FileInput size="sm" placeholder="Small" />
-<FileInput size="md" placeholder="Medium" />
-<FileInput size="lg" placeholder="Large" />`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Small</FieldLabel>
-						<FileInput size="sm" placeholder="Small" />
-					</Field>
-					<Field>
-						<FieldLabel>Medium</FieldLabel>
-						<FileInput size="md" placeholder="Medium" />
-					</Field>
-					<Field>
-						<FieldLabel>Large</FieldLabel>
-						<FileInput size="lg" placeholder="Large" />
 					</Field>
 				</CodeExample>
 			</div>

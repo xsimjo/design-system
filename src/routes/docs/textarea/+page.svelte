@@ -12,7 +12,6 @@
 		{ id: 'label', label: 'With Label', indent: true },
 		{ id: 'hint', label: 'With Hint', indent: true },
 		{ id: 'error', label: 'With Error', indent: true },
-		{ id: 'sizes', label: 'Sizes', indent: true },
 		{ id: 'resize', label: 'Resize', indent: true },
 		{ id: 'rows', label: 'Rows', indent: true },
 		{ id: 'states', label: 'States', indent: true },
@@ -114,39 +113,6 @@
 						<FieldLabel>Message</FieldLabel>
 						<Textarea />
 						<FieldDescription>Message is required.</FieldDescription>
-					</Field>
-				</CodeExample>
-			</div>
-
-			<div id="sizes" class="example-block">
-				<h3>Sizes</h3>
-				<p class="example-desc">Three sizes to match your layout density.</p>
-				<CodeExample
-					code={`<Field>
-  <FieldLabel>Small</FieldLabel>
-  <Textarea size="sm" placeholder="Small text size" />
-</Field>
-<Field>
-  <FieldLabel>Medium</FieldLabel>
-  <Textarea size="md" placeholder="Medium text size" />
-</Field>
-<Field>
-  <FieldLabel>Large</FieldLabel>
-  <Textarea size="lg" placeholder="Large text size" />
-</Field>`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Small</FieldLabel>
-						<Textarea size="sm" placeholder="Small text size" />
-					</Field>
-					<Field>
-						<FieldLabel>Medium</FieldLabel>
-						<Textarea size="md" placeholder="Medium text size" />
-					</Field>
-					<Field>
-						<FieldLabel>Large</FieldLabel>
-						<Textarea size="lg" placeholder="Large text size" />
 					</Field>
 				</CodeExample>
 			</div>

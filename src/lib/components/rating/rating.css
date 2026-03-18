@@ -7,10 +7,8 @@
 	--rating-focus-ring-width: var(--ui-ring-width);
 	--rating-focus-ring-offset: var(--ui-ring-offset);
 
-	/* Sizes */
-	--rating-star-size-sm: 16px;
-	--rating-star-size-md: 24px;
-	--rating-star-size-lg: 32px;
+	/* Size */
+	--rating-star-size: 24px;
 
 	/* Style */
 	--rating-gap: calc(var(--ui-base-spacing) * 0.25);
@@ -24,16 +22,8 @@
 	gap: var(--rating-gap);
 }
 
-.rating--sm {
-	--_star-size: var(--rating-star-size-sm);
-}
-
-.rating--md {
-	--_star-size: var(--rating-star-size-md);
-}
-
-.rating--lg {
-	--_star-size: var(--rating-star-size-lg);
+.rating {
+	--_star-size: var(--rating-star-size);
 }
 
 .rating--disabled {

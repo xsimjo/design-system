@@ -23,7 +23,6 @@
 		value?: string;
 		options: SelectOption[];
 		placeholder?: string;
-		size?: 'sm' | 'md' | 'lg';
 		fullWidth?: boolean;
 		disabled?: boolean;
 		id?: string;
@@ -34,7 +33,6 @@
 		value = $bindable(undefined),
 		options = [],
 		placeholder = 'Select…',
-		size = 'md',
 		fullWidth = false,
 		disabled = false,
 		id,
@@ -218,7 +216,7 @@
 		aria-describedby={describedBy}
 		aria-required={field?.required || undefined}
 		aria-invalid={hasError || undefined}
-		class="select__trigger select__trigger--{size}"
+		class="select__trigger"
 		class:select__trigger--error={hasError}
 		class:select__trigger--open={open}
 		disabled={isDisabled}

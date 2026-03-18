@@ -4,7 +4,6 @@
 	interface Props {
 		value?: number;
 		max?: number;
-		size?: 'sm' | 'md' | 'lg';
 		readonly?: boolean;
 		disabled?: boolean;
 		label?: string;
@@ -14,7 +13,6 @@
 	let {
 		value = $bindable(0),
 		max = 5,
-		size = 'md',
 		readonly = false,
 		disabled = false,
 		label = 'Rating',
@@ -66,7 +64,7 @@
 </script>
 
 <div
-	class="rating rating--{size}"
+	class="rating"
 	class:rating--disabled={disabled}
 	class:rating--readonly={readonly}
 	role="radiogroup"

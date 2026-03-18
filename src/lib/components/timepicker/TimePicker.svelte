@@ -16,7 +16,6 @@
 
 	interface Props {
 		value?: string; // "HH:MM" or "HH:MM:SS" in 24-hour
-		size?: 'sm' | 'md' | 'lg';
 		fullWidth?: boolean;
 		disabled?: boolean;
 		id?: string;
@@ -27,7 +26,6 @@
 
 	let {
 		value = $bindable(undefined),
-		size = 'md',
 		fullWidth = false,
 		disabled = false,
 		id,
@@ -71,7 +69,7 @@
 		};
 	});
 
-	const iconSize = $derived({ sm: 14, md: 16, lg: 18 }[size]);
+	const iconSize = 16;
 
 	function parseTimeString(val: string | undefined): { h: number; m: number; s: number } {
 		if (!val) return { h: 0, m: 0, s: 0 };
@@ -271,7 +269,7 @@
 	<div
 		bind:this={triggerEl}
 		id={timepickerId}
-		class="timepicker__trigger timepicker__trigger--{size}"
+		class="timepicker__trigger"
 		class:timepicker__trigger--error={hasError}
 		class:timepicker__trigger--open={open}
 		class:timepicker__trigger--disabled={isDisabled}

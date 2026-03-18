@@ -7,14 +7,12 @@
 
 	interface Props extends Omit<HTMLTextareaAttributes, 'value'> {
 		value?: string;
-		size?: 'sm' | 'md' | 'lg';
 		fullWidth?: boolean;
 		resize?: 'none' | 'vertical' | 'horizontal' | 'both';
 	}
 
 	let {
 		value = $bindable(''),
-		size = 'md',
 		fullWidth = false,
 		resize = 'vertical',
 		disabled = false,
@@ -34,7 +32,7 @@
 </script>
 
 <textarea
-	class="textarea__field textarea__field--{size}"
+	class="textarea__field"
 	class:textarea__field--full-width={fullWidth}
 	class:textarea__field--error={hasError}
 	style:resize

@@ -14,7 +14,6 @@
 		{ id: 'basic', label: 'Basic', indent: true },
 		{ id: 'with-field', label: 'With Field', indent: true },
 		{ id: 'with-seconds', label: 'With Seconds', indent: true },
-		{ id: 'sizes', label: 'Sizes', indent: true },
 		{ id: 'states', label: 'States', indent: true },
 		{ id: 'controlled', label: 'Controlled', indent: true },
 		{ id: 'locales', label: 'Locales', indent: true },
@@ -91,30 +90,6 @@
 				<p class="example-desc">Add a seconds column with the <code>seconds</code> prop.</p>
 				<CodeExample code={`<TimePicker seconds bind:value={time} />`}>
 					<TimePicker seconds bind:value={basic} />
-				</CodeExample>
-			</div>
-
-			<div id="sizes" class="example-block">
-				<h3>Sizes</h3>
-				<p class="example-desc">Three sizes to match layout density.</p>
-				<CodeExample
-					code={`<TimePicker size="sm" />
-<TimePicker size="md" />
-<TimePicker size="lg" />`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Small</FieldLabel>
-						<TimePicker size="sm" />
-					</Field>
-					<Field>
-						<FieldLabel>Medium</FieldLabel>
-						<TimePicker size="md" />
-					</Field>
-					<Field>
-						<FieldLabel>Large</FieldLabel>
-						<TimePicker size="lg" />
-					</Field>
 				</CodeExample>
 			</div>
 

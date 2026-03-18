@@ -9,7 +9,6 @@ Searchable single-select dropdown with floating-ui positioning, full keyboard na
 | `value`       | `string` (bindable)                               | `undefined`    | The currently selected option value                              |
 | `options`     | `ComboboxOption[]`                                | required       | Array of options to display                                      |
 | `placeholder` | `string`                                          | `'Search…'`    | Placeholder text in the input                                    |
-| `size`        | `'sm' \| 'md' \| 'lg'`                            | `'md'`         | Controls height, padding, and font size                          |
 | `fullWidth`   | `boolean`                                         | `false`        | Stretches the combobox to fill its container width               |
 | `disabled`    | `boolean`                                         | `false`        | Disables the combobox; also propagated from Field context        |
 | `id`          | `string`                                          | `—`            | Custom ID; falls back to Field context ID, then auto-generated   |
@@ -143,11 +142,11 @@ When placed inside a `Field` component, Combobox automatically reads:
 
 ### Sizes
 
-| Token                         | SM                  | MD                    | LG                  |
-| ----------------------------- | ------------------- | --------------------- | ------------------- |
-| `--combobox-{size}-height`    | `32px`              | `40px`                | `48px`              |
-| `--combobox-{size}-padding-x` | `12px`              | `16px`                | `24px`              |
-| `--combobox-{size}-font-size` | `var(--ui-text-sm)` | `var(--ui-text-base)` | `var(--ui-text-lg)` |
+| Token                  | Description        |
+| ---------------------- | ------------------ |
+| `--combobox-height`    | Trigger height     |
+| `--combobox-padding-x` | Horizontal padding |
+| `--combobox-font-size` | Font size          |
 
 ### Listbox
 

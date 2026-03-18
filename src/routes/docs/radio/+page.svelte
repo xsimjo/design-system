@@ -11,14 +11,12 @@
 		{ id: 'basic', label: 'Basic', indent: true },
 		{ id: 'label', label: 'With Label', indent: true },
 		{ id: 'error', label: 'With Error', indent: true },
-		{ id: 'sizes', label: 'Sizes', indent: true },
 		{ id: 'disabled', label: 'Disabled', indent: true },
 		{ id: 'api', label: 'API' },
 		{ id: 'css-tokens', label: 'CSS Tokens' }
 	];
 
 	let plan = $state('');
-	let size = $state('');
 	let errorPlan = $state('');
 	let disabledPlan = $state('free');
 </script>
@@ -120,21 +118,6 @@
 						</Field>
 						<FieldDescription variant="error">Please select a plan.</FieldDescription>
 					</div>
-				</CodeExample>
-			</div>
-
-			<div id="sizes" class="example-block">
-				<h3>Sizes</h3>
-				<p class="example-desc">Three sizes to match your layout density.</p>
-				<CodeExample
-					code={`<Radio size="sm" checked />
-<Radio size="md" checked />
-<Radio size="lg" checked />`}
-					previewClass="aligned"
-				>
-					<Radio bind:group={size} value="sm" size="sm" name="size-demo" />
-					<Radio bind:group={size} value="md" size="md" name="size-demo" />
-					<Radio bind:group={size} value="lg" size="lg" name="size-demo" />
 				</CodeExample>
 			</div>
 

@@ -17,7 +17,6 @@
 
 	interface Props {
 		value?: Date;
-		size?: 'sm' | 'md' | 'lg';
 		fullWidth?: boolean;
 		disabled?: boolean;
 		id?: string;
@@ -29,7 +28,6 @@
 
 	let {
 		value = $bindable(undefined),
-		size = 'md',
 		fullWidth = false,
 		disabled = false,
 		id,
@@ -64,7 +62,7 @@
 	let editM = $state(value ? value.getMonth() + 1 : 0);
 	let editY = $state(value?.getFullYear() ?? 0);
 
-	const iconSize = $derived({ sm: 14, md: 16, lg: 18 }[size]);
+	const iconSize = 16;
 
 	let open = $state(false);
 	let triggerEl = $state<HTMLDivElement | null>(null);
@@ -317,7 +315,7 @@
 	<div
 		bind:this={triggerEl}
 		id={datepickerId}
-		class="datepicker__trigger datepicker__trigger--{size}"
+		class="datepicker__trigger"
 		class:datepicker__trigger--error={hasError}
 		class:datepicker__trigger--open={open}
 		class:datepicker__trigger--disabled={isDisabled}

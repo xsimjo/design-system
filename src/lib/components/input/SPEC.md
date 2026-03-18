@@ -1,18 +1,17 @@
 # Input
 
-Text input component with size variants, full-width support, and deep Field context integration for accessible form composition.
+Text input component with full-width support and deep Field context integration for accessible form composition.
 
 ## Props
 
-| Prop        | Type                   | Default     | Description                                                      |
-| ----------- | ---------------------- | ----------- | ---------------------------------------------------------------- |
-| `value`     | `string \| number`     | `''`        | Bindable input value                                             |
-| `size`      | `'sm' \| 'md' \| 'lg'` | `'md'`      | Input height and font size                                       |
-| `fullWidth` | `boolean`              | `false`     | Stretches input to 100% width                                    |
-| `disabled`  | `boolean`              | `false`     | Disables interaction; also inherited from parent `Field` context |
-| `id`        | `string`               | `undefined` | Custom ID; auto-set from `Field` context if omitted              |
+| Prop        | Type               | Default     | Description                                                      |
+| ----------- | ------------------ | ----------- | ---------------------------------------------------------------- |
+| `value`     | `string \| number` | `''`        | Bindable input value                                             |
+| `fullWidth` | `boolean`          | `false`     | Stretches input to 100% width                                    |
+| `disabled`  | `boolean`          | `false`     | Disables interaction; also inherited from parent `Field` context |
+| `id`        | `string`           | `undefined` | Custom ID; auto-set from `Field` context if omitted              |
 
-Extends `HTMLInputAttributes` (excluding `value` and `size` which are redefined). All native input attributes (`type`, `placeholder`, `required`, `autocomplete`, etc.) are forwarded via `...restProps`.
+Extends `HTMLInputAttributes` (excluding `value` which is redefined). All native input attributes (`type`, `placeholder`, `required`, `autocomplete`, etc.) are forwarded via `...restProps`.
 
 ## Context Integration
 
@@ -30,14 +29,6 @@ When placed inside a `<Field>`, `Input` automatically:
 
 ```svelte
 <Input placeholder="Enter text..." />
-```
-
-### With Size
-
-```svelte
-<Input size="sm" placeholder="Small" />
-<Input size="md" placeholder="Medium" />
-<Input size="lg" placeholder="Large" />
 ```
 
 ### Full Width
@@ -101,15 +92,9 @@ When placed inside a `<Field>`, `Input` automatically:
 | `--input-disabled-fg`       | Text color when disabled                 |
 | `--input-disabled-border`   | Border color when disabled               |
 | `--input-hover-border`      | Border color on hover                    |
-| `--input-sm-height`         | Height for small size                    |
-| `--input-sm-padding-x`      | Horizontal padding for small size        |
-| `--input-sm-font-size`      | Font size for small size                 |
-| `--input-md-height`         | Height for medium size                   |
-| `--input-md-padding-x`      | Horizontal padding for medium size       |
-| `--input-md-font-size`      | Font size for medium size                |
-| `--input-lg-height`         | Height for large size                    |
-| `--input-lg-padding-x`      | Horizontal padding for large size        |
-| `--input-lg-font-size`      | Font size for large size                 |
+| `--input-height`            | Field height                             |
+| `--input-padding-x`         | Horizontal padding                       |
+| `--input-font-size`         | Font size                                |
 | `--input-font-family`       | Input font family                        |
 | `--input-font-weight`       | Input font weight                        |
 | `--input-line-height`       | Input line height                        |

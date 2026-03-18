@@ -12,7 +12,6 @@ Drag-and-drop file upload zone with a styled drop area, selected file list, and 
 | `accept`      | `string`                            | `undefined`                            | MIME types or file extensions forwarded to the native input. Displayed as a hint when `hint` is not set. |
 | `multiple`    | `boolean`                           | `false`                                | Allows selecting more than one file                                                                      |
 | `maxSize`     | `number`                            | `undefined`                            | Display-only max file size in bytes; shown as a hint inside the zone                                     |
-| `size`        | `'sm' \| 'md' \| 'lg'`              | `'md'`                                 | Controls zone padding and font size                                                                      |
 | `fullWidth`   | `boolean`                           | `false`                                | Stretches to 100% of container width                                                                     |
 | `disabled`    | `boolean`                           | `false`                                | Disables interaction; also inherited from parent `Field` context                                         |
 | `success`     | `boolean`                           | `false`                                | Applies success border state                                                                             |
@@ -138,18 +137,9 @@ When placed inside a `<Field>`, `FileInput` automatically:
 | `--file-input-file-size-fg`      | File size text color                     |
 | `--file-input-remove-fg`         | Remove button icon color                 |
 | `--file-input-remove-hover-fg`   | Remove button icon color on hover        |
-| `--file-input-sm-padding-y`      | Vertical padding for small size          |
-| `--file-input-sm-padding-x`      | Horizontal padding for small size        |
-| `--file-input-sm-icon-size`      | Upload icon size for small zone          |
-| `--file-input-sm-font-size`      | Font size for small zone                 |
-| `--file-input-md-padding-y`      | Vertical padding for medium size         |
-| `--file-input-md-padding-x`      | Horizontal padding for medium size       |
-| `--file-input-md-icon-size`      | Upload icon size for medium zone         |
-| `--file-input-md-font-size`      | Font size for medium zone                |
-| `--file-input-lg-padding-y`      | Vertical padding for large size          |
-| `--file-input-lg-padding-x`      | Horizontal padding for large size        |
-| `--file-input-lg-icon-size`      | Upload icon size for large zone          |
-| `--file-input-lg-font-size`      | Font size for large zone                 |
+| `--file-input-padding-y`         | Zone vertical padding                    |
+| `--file-input-padding-x`         | Zone horizontal padding                  |
+| `--file-input-font-size`         | Zone font size                           |
 | `--file-input-font-family`       | Zone font family                         |
 | `--file-input-font-weight`       | Zone font weight                         |
 | `--file-input-transition`        | Transition timing for interactive states |

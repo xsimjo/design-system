@@ -12,7 +12,6 @@
 		{ id: 'states', label: 'States', indent: true },
 		{ id: 'label', label: 'With Label', indent: true },
 		{ id: 'error', label: 'With Error', indent: true },
-		{ id: 'sizes', label: 'Sizes', indent: true },
 		{ id: 'disabled', label: 'Disabled', indent: true },
 		{ id: 'api', label: 'API' },
 		{ id: 'css-tokens', label: 'CSS Tokens' }
@@ -111,21 +110,6 @@
 							>You must accept the terms to continue.</FieldDescription
 						>
 					</div>
-				</CodeExample>
-			</div>
-
-			<div id="sizes" class="example-block">
-				<h3>Sizes</h3>
-				<p class="example-desc">Three sizes to match your layout density.</p>
-				<CodeExample
-					code={`<Checkbox size="sm" checked={true} />
-<Checkbox size="md" checked={true} />
-<Checkbox size="lg" checked={true} />`}
-					previewClass="aligned"
-				>
-					<Checkbox size="sm" checked={true} />
-					<Checkbox size="md" checked={true} />
-					<Checkbox size="lg" checked={true} />
 				</CodeExample>
 			</div>
 

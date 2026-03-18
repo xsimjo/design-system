@@ -8,17 +8,16 @@ A calendar popover for selecting a single date. Uses a segmented input trigger (
 
 ## Props
 
-| Prop        | Type                   | Default     | Description                                                                                     |
-| ----------- | ---------------------- | ----------- | ----------------------------------------------------------------------------------------------- |
-| `value`     | `Date \| undefined`    | `undefined` | Bindable selected date                                                                          |
-| `size`      | `'sm' \| 'md' \| 'lg'` | `'md'`      | Controls trigger height, padding, and font size                                                 |
-| `fullWidth` | `boolean`              | `false`     | Stretches trigger to 100% of container width                                                    |
-| `disabled`  | `boolean`              | `false`     | Disables the trigger (also inherited from Field context)                                        |
-| `id`        | `string`               | auto        | Custom ID; falls back to Field context ID then auto-generated                                   |
-| `name`      | `string`               | —           | Form field name; produces a hidden `<input value="YYYY-MM-DD">` when set and a date is selected |
-| `min`       | `Date`                 | —           | Minimum selectable date (inclusive). Days before this are disabled in the calendar.             |
-| `max`       | `Date`                 | —           | Maximum selectable date (inclusive). Days after this are disabled in the calendar.              |
-| `locale`    | `DatePickerLocale`     | —           | Locale overrides for segment placeholders and calendar locale tag                               |
+| Prop        | Type                | Default     | Description                                                                                     |
+| ----------- | ------------------- | ----------- | ----------------------------------------------------------------------------------------------- |
+| `value`     | `Date \| undefined` | `undefined` | Bindable selected date                                                                          |
+| `fullWidth` | `boolean`           | `false`     | Stretches trigger to 100% of container width                                                    |
+| `disabled`  | `boolean`           | `false`     | Disables the trigger (also inherited from Field context)                                        |
+| `id`        | `string`            | auto        | Custom ID; falls back to Field context ID then auto-generated                                   |
+| `name`      | `string`            | —           | Form field name; produces a hidden `<input value="YYYY-MM-DD">` when set and a date is selected |
+| `min`       | `Date`              | —           | Minimum selectable date (inclusive). Days before this are disabled in the calendar.             |
+| `max`       | `Date`              | —           | Maximum selectable date (inclusive). Days after this are disabled in the calendar.              |
+| `locale`    | `DatePickerLocale`  | —           | Locale overrides for segment placeholders and calendar locale tag                               |
 
 ### DatePickerLocale Interface
 
@@ -208,11 +207,11 @@ All tokens are scoped to `[data-theme]` and derived from `--ui-*` semantic token
 
 ### Size Tokens
 
-| Token                        | sm             | md               | lg             |
-| ---------------------------- | -------------- | ---------------- | -------------- |
-| `--datepicker-{s}-height`    | `4 × base`     | `5 × base`       | `6 × base`     |
-| `--datepicker-{s}-padding-x` | `1.5 × base`   | `2 × base`       | `3 × base`     |
-| `--datepicker-{s}-font-size` | `--ui-text-sm` | `--ui-text-base` | `--ui-text-lg` |
+| Token                    | Description        |
+| ------------------------ | ------------------ |
+| `--datepicker-height`    | Trigger height     |
+| `--datepicker-padding-x` | Horizontal padding |
+| `--datepicker-font-size` | Font size          |
 
 ### Typography / Layout Tokens
 

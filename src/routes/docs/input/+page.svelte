@@ -12,7 +12,6 @@
 		{ id: 'label', label: 'With Label', indent: true },
 		{ id: 'hint', label: 'With Hint', indent: true },
 		{ id: 'error', label: 'With Error', indent: true },
-		{ id: 'sizes', label: 'Sizes', indent: true },
 		{ id: 'states', label: 'States', indent: true },
 		{ id: 'full-width', label: 'Full Width', indent: true },
 		{ id: 'types', label: 'Input Types', indent: true },
@@ -113,39 +112,6 @@
 						<FieldLabel>Email address</FieldLabel>
 						<Input value="not-an-email" />
 						<FieldDescription>Please enter a valid email address.</FieldDescription>
-					</Field>
-				</CodeExample>
-			</div>
-
-			<div id="sizes" class="example-block">
-				<h3>Sizes</h3>
-				<p class="example-desc">Three sizes to match your layout density.</p>
-				<CodeExample
-					code={`<Field>
-  <FieldLabel>Small</FieldLabel>
-  <Input size="sm" placeholder="32px height" />
-</Field>
-<Field>
-  <FieldLabel>Medium</FieldLabel>
-  <Input size="md" placeholder="40px height" />
-</Field>
-<Field>
-  <FieldLabel>Large</FieldLabel>
-  <Input size="lg" placeholder="48px height" />
-</Field>`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Small</FieldLabel>
-						<Input size="sm" placeholder="32px height" />
-					</Field>
-					<Field>
-						<FieldLabel>Medium</FieldLabel>
-						<Input size="md" placeholder="40px height" />
-					</Field>
-					<Field>
-						<FieldLabel>Large</FieldLabel>
-						<Input size="lg" placeholder="48px height" />
 					</Field>
 				</CodeExample>
 			</div>

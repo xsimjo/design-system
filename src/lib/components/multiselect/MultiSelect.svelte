@@ -24,7 +24,6 @@
 		values?: string[];
 		options: MultiSelectOption[];
 		placeholder?: string;
-		size?: 'sm' | 'md' | 'lg';
 		fullWidth?: boolean;
 		disabled?: boolean;
 		id?: string;
@@ -38,7 +37,6 @@
 		values = $bindable([]),
 		options = [],
 		placeholder = 'Select…',
-		size = 'md',
 		fullWidth = false,
 		disabled = false,
 		id,
@@ -284,7 +282,7 @@
 	<div
 		bind:this={triggerEl}
 		role="none"
-		class="multiselect__trigger multiselect__trigger--{size}"
+		class="multiselect__trigger"
 		class:multiselect__trigger--error={hasError}
 		class:multiselect__trigger--open={open}
 		class:multiselect__trigger--disabled={isDisabled}
@@ -299,7 +297,7 @@
 					<Badge
 						label={opt.label}
 						variant="neutral"
-						size={size === 'lg' ? 'md' : 'sm'}
+						size="sm"
 						disabled={isDisabled}
 						onremove={isDisabled ? undefined : () => removeValue(opt.value)}
 					/>

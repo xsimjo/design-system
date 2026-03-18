@@ -23,21 +23,11 @@
 		var(--ui-hover-mix) var(--ui-hover-amount)
 	);
 
-	/* Sizes */
-	--switch-track-width-sm: 28px;
-	--switch-track-height-sm: 16px;
-	--switch-thumb-size-sm: 12px;
-	--switch-thumb-travel-sm: 12px;
-
-	--switch-track-width-md: 36px;
-	--switch-track-height-md: 20px;
-	--switch-thumb-size-md: 16px;
-	--switch-thumb-travel-md: 16px;
-
-	--switch-track-width-lg: 44px;
-	--switch-track-height-lg: 24px;
-	--switch-thumb-size-lg: 20px;
-	--switch-thumb-travel-lg: 20px;
+	/* Size */
+	--switch-track-width: 36px;
+	--switch-track-height: 20px;
+	--switch-thumb-size: 16px;
+	--switch-thumb-travel: 16px;
 
 	/* Style */
 	--switch-border-radius: 9999px;
@@ -57,26 +47,11 @@
 	opacity: 0.5;
 }
 
-/* Size variants — set local custom properties used by track/thumb */
-.switch--sm {
-	--_track-width: var(--switch-track-width-sm);
-	--_track-height: var(--switch-track-height-sm);
-	--_thumb-size: var(--switch-thumb-size-sm);
-	--_thumb-travel: var(--switch-thumb-travel-sm);
-}
-
-.switch--md {
-	--_track-width: var(--switch-track-width-md);
-	--_track-height: var(--switch-track-height-md);
-	--_thumb-size: var(--switch-thumb-size-md);
-	--_thumb-travel: var(--switch-thumb-travel-md);
-}
-
-.switch--lg {
-	--_track-width: var(--switch-track-width-lg);
-	--_track-height: var(--switch-track-height-lg);
-	--_thumb-size: var(--switch-thumb-size-lg);
-	--_thumb-travel: var(--switch-thumb-travel-lg);
+.switch {
+	--_track-width: var(--switch-track-width);
+	--_track-height: var(--switch-track-height);
+	--_thumb-size: var(--switch-thumb-size);
+	--_thumb-travel: var(--switch-thumb-travel);
 }
 
 /* Visually hidden input — keeps native focus & form semantics */

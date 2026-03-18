@@ -2,6 +2,26 @@ re# @xsimjo/design-system
 
 A modern, themeable Svelte 5 component library with a powerful three-layer token architecture.
 
+## TODOS
+
+- Hover on the switch
+- Timepircker defaults to 00:00 when click (annoying)
+
+Components v1
+
+- Modal
+- Toast
+- Tooltip
+- Alert / Banner
+- Card
+- Accordion
+- Progress bar
+- Avatar
+- Table / Pagination
+- Breadcrumbs
+- Popover
+- Skeleton
+
 ## Features
 
 - **Svelte 5** - Built with runes and modern Svelte patterns

@@ -11,7 +11,6 @@
 		{ id: 'basic', label: 'Basic', indent: true },
 		{ id: 'label', label: 'With Label', indent: true },
 		{ id: 'show-value', label: 'Show Value', indent: true },
-		{ id: 'sizes', label: 'Sizes', indent: true },
 		{ id: 'range-step', label: 'Range & Step', indent: true },
 		{ id: 'states', label: 'States', indent: true },
 		{ id: 'error', label: 'With Error', indent: true },
@@ -94,39 +93,6 @@
 						<FieldLabel>Volume</FieldLabel>
 						<Slider bind:value={volume} showValue />
 						<FieldDescription>Adjust the output volume.</FieldDescription>
-					</Field>
-				</CodeExample>
-			</div>
-
-			<div id="sizes" class="example-block">
-				<h3>Sizes</h3>
-				<p class="example-desc">Three sizes to match your layout density.</p>
-				<CodeExample
-					code={`<Field>
-  <FieldLabel>Small</FieldLabel>
-  <Slider size="sm" value={30} />
-</Field>
-<Field>
-  <FieldLabel>Medium</FieldLabel>
-  <Slider size="md" value={50} />
-</Field>
-<Field>
-  <FieldLabel>Large</FieldLabel>
-  <Slider size="lg" value={70} />
-</Field>`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Small</FieldLabel>
-						<Slider size="sm" value={30} />
-					</Field>
-					<Field>
-						<FieldLabel>Medium</FieldLabel>
-						<Slider size="md" value={50} />
-					</Field>
-					<Field>
-						<FieldLabel>Large</FieldLabel>
-						<Slider size="lg" value={70} />
 					</Field>
 				</CodeExample>
 			</div>

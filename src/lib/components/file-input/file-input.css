@@ -33,21 +33,9 @@
 	--file-input-remove-fg: var(--ui-neutral);
 	--file-input-remove-hover-fg: var(--ui-danger);
 
-	/* Sizes */
-	--file-input-sm-padding-y: calc(var(--ui-base-spacing) * 2);
-	--file-input-sm-padding-x: calc(var(--ui-base-spacing) * 2);
-	--file-input-sm-icon-size: 24px;
-	--file-input-sm-font-size: var(--ui-text-sm);
-
-	--file-input-md-padding-y: calc(var(--ui-base-spacing) * 3);
-	--file-input-md-padding-x: calc(var(--ui-base-spacing) * 3);
-	--file-input-md-icon-size: 32px;
-	--file-input-md-font-size: var(--ui-text-base);
-
-	--file-input-lg-padding-y: calc(var(--ui-base-spacing) * 4);
-	--file-input-lg-padding-x: calc(var(--ui-base-spacing) * 4);
-	--file-input-lg-icon-size: 40px;
-	--file-input-lg-font-size: var(--ui-text-lg);
+	--file-input-padding-y: calc(var(--ui-base-spacing) * 3);
+	--file-input-padding-x: calc(var(--ui-base-spacing) * 3);
+	--file-input-font-size: var(--ui-text-base);
 
 	--file-input-font-family: var(--ui-font-sans);
 	--file-input-font-weight: var(--ui-weight-normal);
@@ -105,19 +93,9 @@
 		outline-color var(--file-input-transition);
 }
 
-.file-input__zone--sm {
-	padding: var(--file-input-sm-padding-y) var(--file-input-sm-padding-x);
-	font-size: var(--file-input-sm-font-size);
-}
-
-.file-input__zone--md {
-	padding: var(--file-input-md-padding-y) var(--file-input-md-padding-x);
-	font-size: var(--file-input-md-font-size);
-}
-
-.file-input__zone--lg {
-	padding: var(--file-input-lg-padding-y) var(--file-input-lg-padding-x);
-	font-size: var(--file-input-lg-font-size);
+.file-input__zone {
+	padding: var(--file-input-padding-y) var(--file-input-padding-x);
+	font-size: var(--file-input-font-size);
 }
 
 .file-input__zone:hover:not(.file-input__zone--disabled) {
@@ -175,21 +153,6 @@
 .file-input__icon {
 	color: var(--file-input-icon-fg);
 	flex-shrink: 0;
-}
-
-.file-input__zone--sm .file-input__icon {
-	width: var(--file-input-sm-icon-size);
-	height: var(--file-input-sm-icon-size);
-}
-
-.file-input__zone--md .file-input__icon {
-	width: var(--file-input-md-icon-size);
-	height: var(--file-input-md-icon-size);
-}
-
-.file-input__zone--lg .file-input__icon {
-	width: var(--file-input-lg-icon-size);
-	height: var(--file-input-lg-icon-size);
 }
 
 /* Zone text */

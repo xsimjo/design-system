@@ -8,7 +8,6 @@
 	interface Props {
 		tags?: string[];
 		placeholder?: string;
-		size?: 'sm' | 'md' | 'lg';
 		fullWidth?: boolean;
 		disabled?: boolean;
 		id?: string;
@@ -27,7 +26,6 @@
 	let {
 		tags = $bindable([]),
 		placeholder = 'Add tag…',
-		size = 'md',
 		fullWidth = false,
 		disabled = false,
 		id,
@@ -136,7 +134,7 @@
 >
 	<div
 		role="none"
-		class="badge-input__trigger badge-input__trigger--{size}"
+		class="badge-input__trigger"
 		class:badge-input__trigger--error={hasError}
 		class:badge-input__trigger--disabled={isDisabled}
 		onclick={() => inputEl?.focus()}
@@ -148,7 +146,7 @@
 						<Badge
 							label={tag}
 							variant="neutral"
-							size={size === 'lg' ? 'md' : 'sm'}
+							size="sm"
 							disabled={isDisabled}
 							onremove={isDisabled
 								? undefined

@@ -51,7 +51,6 @@
 		{ id: 'with-field', label: 'With Field', indent: true },
 		{ id: 'hint', label: 'With Hint', indent: true },
 		{ id: 'error', label: 'With Error', indent: true },
-		{ id: 'sizes', label: 'Sizes', indent: true },
 		{ id: 'states', label: 'States', indent: true },
 		{ id: 'disabled-options', label: 'Disabled Options', indent: true },
 		{ id: 'full-width', label: 'Full Width', indent: true },
@@ -152,39 +151,6 @@
 						<FieldLabel>Country</FieldLabel>
 						<Select options={countryOptions} placeholder="Choose a country" />
 						<FieldDescription>Please select a country.</FieldDescription>
-					</Field>
-				</CodeExample>
-			</div>
-
-			<div id="sizes" class="example-block">
-				<h3>Sizes</h3>
-				<p class="example-desc">Three sizes to match your layout density.</p>
-				<CodeExample
-					code={`<Field>
-  <FieldLabel>Small</FieldLabel>
-  <Select size="sm" options={options} placeholder="32px height" />
-</Field>
-<Field>
-  <FieldLabel>Medium</FieldLabel>
-  <Select size="md" options={options} placeholder="40px height" />
-</Field>
-<Field>
-  <FieldLabel>Large</FieldLabel>
-  <Select size="lg" options={options} placeholder="48px height" />
-</Field>`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Small</FieldLabel>
-						<Select size="sm" options={countryOptions} placeholder="32px height" />
-					</Field>
-					<Field>
-						<FieldLabel>Medium</FieldLabel>
-						<Select size="md" options={countryOptions} placeholder="40px height" />
-					</Field>
-					<Field>
-						<FieldLabel>Large</FieldLabel>
-						<Select size="lg" options={countryOptions} placeholder="48px height" />
 					</Field>
 				</CodeExample>
 			</div>

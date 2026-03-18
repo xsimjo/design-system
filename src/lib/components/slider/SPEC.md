@@ -4,18 +4,17 @@ Accessible range input for selecting a numeric value within a bounded interval. 
 
 ## Props
 
-| Prop           | Type                   | Default | Description                                                        |
-| -------------- | ---------------------- | ------- | ------------------------------------------------------------------ |
-| `value`        | `number`               | `0`     | Bindable slider value                                              |
-| `min`          | `number`               | `0`     | Minimum selectable value                                           |
-| `max`          | `number`               | `100`   | Maximum selectable value                                           |
-| `step`         | `number`               | `1`     | Increment between selectable values                                |
-| `size`         | `'sm' \| 'md' \| 'lg'` | `'md'`  | Controls track height and thumb size                               |
-| `fullWidth`    | `boolean`              | `false` | Stretches the slider to 100% of its container                      |
-| `showValue`    | `boolean`              | `false` | Displays the current numeric value beside the slider               |
-| `disabled`     | `boolean`              | `false` | Disables the slider; also inherited from `Field` context           |
-| `id`           | `string`               | —       | Custom ID; auto-generated from Field context if omitted            |
-| `...restProps` | `HTMLInputAttributes`  | —       | All native input attributes (e.g. `name`, `oninput`, `aria-label`) |
+| Prop           | Type                  | Default | Description                                                        |
+| -------------- | --------------------- | ------- | ------------------------------------------------------------------ |
+| `value`        | `number`              | `0`     | Bindable slider value                                              |
+| `min`          | `number`              | `0`     | Minimum selectable value                                           |
+| `max`          | `number`              | `100`   | Maximum selectable value                                           |
+| `step`         | `number`              | `1`     | Increment between selectable values                                |
+| `fullWidth`    | `boolean`             | `false` | Stretches the slider to 100% of its container                      |
+| `showValue`    | `boolean`             | `false` | Displays the current numeric value beside the slider               |
+| `disabled`     | `boolean`             | `false` | Disables the slider; also inherited from `Field` context           |
+| `id`           | `string`              | —       | Custom ID; auto-generated from Field context if omitted            |
+| `...restProps` | `HTMLInputAttributes` | —       | All native input attributes (e.g. `name`, `oninput`, `aria-label`) |
 
 ## Slots
 
@@ -86,14 +85,6 @@ Set `error` on `Field` to apply error styling to the track fill and thumb.
 </Field>
 ```
 
-### Sizes
-
-```svelte
-<Slider size="sm" />
-<Slider size="md" />
-<Slider size="lg" />
-```
-
 ### Disabled
 
 ```svelte
@@ -155,12 +146,8 @@ This component uses the following component tokens (defined in `slider.css`):
 
 ### Size
 
-- `--slider-sm-track-height` — track height for `size="sm"` (4px)
-- `--slider-sm-thumb-size` — thumb diameter for `size="sm"` (16px)
-- `--slider-md-track-height` — track height for `size="md"` (6px)
-- `--slider-md-thumb-size` — thumb diameter for `size="md"` (20px)
-- `--slider-lg-track-height` — track height for `size="lg"` (8px)
-- `--slider-lg-thumb-size` — thumb diameter for `size="lg"` (24px)
+- `--slider-track-height` — track height
+- `--slider-thumb-size` — thumb diameter
 
 ### Style
 

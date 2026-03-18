@@ -7,13 +7,11 @@
 
 	interface Props extends Omit<HTMLInputAttributes, 'value' | 'size'> {
 		value?: string | number;
-		size?: 'sm' | 'md' | 'lg';
 		fullWidth?: boolean;
 	}
 
 	let {
 		value = $bindable(''),
-		size = 'md',
 		fullWidth = false,
 		disabled = false,
 		id,
@@ -32,7 +30,7 @@
 </script>
 
 <input
-	class="input__field input__field--{size}"
+	class="input__field"
 	class:input__field--full-width={fullWidth}
 	class:input__field--error={hasError}
 	id={inputId}

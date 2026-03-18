@@ -4,14 +4,13 @@ A styled radio button for single-selection within a group. Works with Svelte's `
 
 ## Props
 
-| Prop           | Type                   | Default | Description                                                                        |
-| -------------- | ---------------------- | ------- | ---------------------------------------------------------------------------------- |
-| `group`        | `unknown`              | —       | Bindable group value — shared across all radios in the group                       |
-| `value`        | `unknown`              | —       | The value this radio represents; set on `group` when selected                      |
-| `size`         | `'sm' \| 'md' \| 'lg'` | `'md'`  | Controls the radio button diameter                                                 |
-| `disabled`     | `boolean`              | `false` | Prevents interaction and applies muted styling (also inherited from Field context) |
-| `id`           | `string`               | —       | Custom ID; auto-generated from Field context if omitted                            |
-| `...restProps` | `HTMLInputAttributes`  | —       | All other native input attributes (e.g. `name`)                                    |
+| Prop           | Type                  | Default | Description                                                                        |
+| -------------- | --------------------- | ------- | ---------------------------------------------------------------------------------- |
+| `group`        | `unknown`             | —       | Bindable group value — shared across all radios in the group                       |
+| `value`        | `unknown`             | —       | The value this radio represents; set on `group` when selected                      |
+| `disabled`     | `boolean`             | `false` | Prevents interaction and applies muted styling (also inherited from Field context) |
+| `id`           | `string`              | —       | Custom ID; auto-generated from Field context if omitted                            |
+| `...restProps` | `HTMLInputAttributes` | —       | All other native input attributes (e.g. `name`)                                    |
 
 ## Context Integration
 
@@ -50,14 +49,6 @@ Radio reads from the `Field` context when composed inside a `<Field>` wrapper:
 	<Radio bind:group={plan} value="pro" name="plan" />
 	<FieldLabel>Pro</FieldLabel>
 </Field>
-```
-
-### Sizes
-
-```svelte
-<Radio size="sm" />
-<Radio size="md" />
-<Radio size="lg" />
 ```
 
 ### With Error
@@ -108,14 +99,10 @@ Radio reads from the `Field` context when composed inside a `<Field>` wrapper:
 
 ### Size Tokens
 
-| Token                   | Default                               | Description                         |
-| ----------------------- | ------------------------------------- | ----------------------------------- |
-| `--radio-size-sm`       | `calc(var(--ui-base-spacing) * 2)`    | Diameter for sm                     |
-| `--radio-size-md`       | `calc(var(--ui-base-spacing) * 2.25)` | Diameter for md                     |
-| `--radio-size-lg`       | `calc(var(--ui-base-spacing) * 2.75)` | Diameter for lg                     |
-| `--radio-dot-radius-sm` | `3px`                                 | Inner dot radius (half-size) for sm |
-| `--radio-dot-radius-md` | `4px`                                 | Inner dot radius (half-size) for md |
-| `--radio-dot-radius-lg` | `5px`                                 | Inner dot radius (half-size) for lg |
+| Token                | Description      |
+| -------------------- | ---------------- |
+| `--radio-size`       | Diameter         |
+| `--radio-dot-radius` | Inner dot radius |
 
 ### Style Tokens
 

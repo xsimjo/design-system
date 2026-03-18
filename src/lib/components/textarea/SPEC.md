@@ -7,7 +7,6 @@ Accessible multi-line text input that integrates with the Field context system f
 | Prop           | Type                                             | Default      | Description                                                              |
 | -------------- | ------------------------------------------------ | ------------ | ------------------------------------------------------------------------ |
 | `value`        | `string`                                         | `''`         | Bindable textarea value                                                  |
-| `size`         | `'sm' \| 'md' \| 'lg'`                           | `'md'`       | Controls padding and font size                                           |
 | `fullWidth`    | `boolean`                                        | `false`      | Stretches the textarea to 100% of its container                          |
 | `resize`       | `'none' \| 'vertical' \| 'horizontal' \| 'both'` | `'vertical'` | Controls user resize behavior via the CSS `resize` property              |
 | `disabled`     | `boolean`                                        | `false`      | Disables the textarea; also inherited from `Field` context               |
@@ -57,25 +56,6 @@ Set `error` on `Field` to apply error styling to the textarea and turn `FieldDes
 	<FieldLabel>Message</FieldLabel>
 	<Textarea />
 	<FieldDescription>Message is required.</FieldDescription>
-</Field>
-```
-
-### Sizes
-
-```svelte
-<Field>
-	<FieldLabel>Small</FieldLabel>
-	<Textarea size="sm" placeholder="Small text size" />
-</Field>
-
-<Field>
-	<FieldLabel>Medium</FieldLabel>
-	<Textarea size="md" placeholder="Medium text size" />
-</Field>
-
-<Field>
-	<FieldLabel>Large</FieldLabel>
-	<Textarea size="lg" placeholder="Large text size" />
 </Field>
 ```
 
@@ -150,15 +130,9 @@ This component uses the following component tokens (defined in `textarea.css`):
 
 ### Size
 
-- `--textarea-sm-padding-x` — horizontal padding for `size="sm"`
-- `--textarea-sm-padding-y` — vertical padding for `size="sm"`
-- `--textarea-sm-font-size` — font size for `size="sm"`
-- `--textarea-md-padding-x` — horizontal padding for `size="md"`
-- `--textarea-md-padding-y` — vertical padding for `size="md"`
-- `--textarea-md-font-size` — font size for `size="md"`
-- `--textarea-lg-padding-x` — horizontal padding for `size="lg"`
-- `--textarea-lg-padding-y` — vertical padding for `size="lg"`
-- `--textarea-lg-font-size` — font size for `size="lg"`
+- `--textarea-padding-x` — horizontal padding
+- `--textarea-padding-y` — vertical padding
+- `--textarea-font-size` — font size
 
 ### Style
 

@@ -18,7 +18,6 @@
 		{ id: 'examples', label: 'Examples' },
 		{ id: 'basic', label: 'Basic', indent: true },
 		{ id: 'with-field', label: 'With Field', indent: true },
-		{ id: 'sizes', label: 'Sizes', indent: true },
 		{ id: 'states', label: 'States', indent: true },
 		{ id: 'min-max', label: 'Min & Max', indent: true },
 		{ id: 'controlled', label: 'Controlled', indent: true },
@@ -89,30 +88,6 @@
 						<FieldLabel>Due date (error)</FieldLabel>
 						<DatePicker />
 						<FieldDescription>Select a date for this task.</FieldDescription>
-					</Field>
-				</CodeExample>
-			</div>
-
-			<div id="sizes" class="example-block">
-				<h3>Sizes</h3>
-				<p class="example-desc">Three sizes to match layout density.</p>
-				<CodeExample
-					code={`<DatePicker size="sm" />
-<DatePicker size="md" />
-<DatePicker size="lg" />`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Small</FieldLabel>
-						<DatePicker size="sm" />
-					</Field>
-					<Field>
-						<FieldLabel>Medium</FieldLabel>
-						<DatePicker size="md" />
-					</Field>
-					<Field>
-						<FieldLabel>Large</FieldLabel>
-						<DatePicker size="lg" />
 					</Field>
 				</CodeExample>
 			</div>

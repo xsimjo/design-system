@@ -30,7 +30,6 @@
 		{ id: 'examples', label: 'Examples' },
 		{ id: 'basic', label: 'Basic', indent: true },
 		{ id: 'with-field', label: 'With Field', indent: true },
-		{ id: 'sizes', label: 'Sizes', indent: true },
 		{ id: 'states', label: 'States', indent: true },
 		{ id: 'controlled', label: 'Controlled', indent: true },
 		{ id: 'api', label: 'API' }
@@ -86,30 +85,6 @@
 						<FieldLabel>Country (error)</FieldLabel>
 						<Combobox options={countryOptions} placeholder="Search countries…" />
 						<FieldDescription>Please select a valid country.</FieldDescription>
-					</Field>
-				</CodeExample>
-			</div>
-
-			<div id="sizes" class="example-block">
-				<h3>Sizes</h3>
-				<p class="example-desc">Three sizes to match layout density.</p>
-				<CodeExample
-					code={`<Combobox size="sm" options={options} />
-<Combobox size="md" options={options} />
-<Combobox size="lg" options={options} />`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Small</FieldLabel>
-						<Combobox size="sm" options={countryOptions} placeholder="32px height" />
-					</Field>
-					<Field>
-						<FieldLabel>Medium</FieldLabel>
-						<Combobox size="md" options={countryOptions} placeholder="40px height" />
-					</Field>
-					<Field>
-						<FieldLabel>Large</FieldLabel>
-						<Combobox size="lg" options={countryOptions} placeholder="48px height" />
 					</Field>
 				</CodeExample>
 			</div>

@@ -8,7 +8,6 @@
 	interface Props extends Omit<HTMLInputAttributes, 'checked' | 'type' | 'size'> {
 		checked?: boolean;
 		indeterminate?: boolean;
-		size?: 'sm' | 'md' | 'lg';
 		disabled?: boolean;
 		id?: string;
 	}
@@ -16,7 +15,6 @@
 	let {
 		checked = $bindable(false),
 		indeterminate = $bindable(false),
-		size = 'md',
 		disabled = false,
 		id,
 		...restProps
@@ -35,7 +33,7 @@
 
 <input
 	type="checkbox"
-	class="checkbox__input checkbox__input--{size}"
+	class="checkbox__input"
 	class:checkbox__input--error={hasError}
 	id={checkboxId}
 	disabled={isDisabled}

@@ -14,7 +14,6 @@
 		accept?: string;
 		multiple?: boolean;
 		maxSize?: number;
-		size?: 'sm' | 'md' | 'lg';
 		fullWidth?: boolean;
 		disabled?: boolean;
 		success?: boolean;
@@ -30,7 +29,6 @@
 		accept,
 		multiple = false,
 		maxSize,
-		size = 'md',
 		fullWidth = false,
 		disabled = false,
 		success = false,
@@ -54,7 +52,7 @@
 
 	const fileList = $derived(files ? Array.from(files) : []);
 
-	const iconSize = $derived(size === 'sm' ? 24 : size === 'lg' ? 40 : 32);
+	const iconSize = 32;
 
 	function handleClick() {
 		if (isDisabled) return;
@@ -135,7 +133,7 @@
 	<div
 		role="button"
 		tabindex={isDisabled ? -1 : 0}
-		class="file-input__zone file-input__zone--{size}"
+		class="file-input__zone"
 		class:file-input__zone--drag-over={isDragOver}
 		class:file-input__zone--error={hasError}
 		class:file-input__zone--success={success && !hasError}

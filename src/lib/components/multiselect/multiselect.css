@@ -21,19 +21,10 @@
 	);
 	--multiselect-gap: calc(var(--ui-base-spacing) * 0.75);
 
-	/* Sizes */
-	--multiselect-sm-min-height: calc(var(--ui-base-spacing) * 4);
-	--multiselect-sm-padding-x: calc(var(--ui-base-spacing) * 1.5);
-	--multiselect-sm-padding-y: calc(var(--ui-base-spacing) * 0.5);
-	--multiselect-sm-font-size: var(--ui-text-sm);
-	--multiselect-md-min-height: calc(var(--ui-base-spacing) * 5);
-	--multiselect-md-padding-x: calc(var(--ui-base-spacing) * 2);
-	--multiselect-md-padding-y: calc(var(--ui-base-spacing) * 0.75);
-	--multiselect-md-font-size: var(--ui-text-base);
-	--multiselect-lg-min-height: calc(var(--ui-base-spacing) * 6);
-	--multiselect-lg-padding-x: calc(var(--ui-base-spacing) * 3);
-	--multiselect-lg-padding-y: calc(var(--ui-base-spacing) * 1);
-	--multiselect-lg-font-size: var(--ui-text-lg);
+	--multiselect-min-height: calc(var(--ui-base-spacing) * 5);
+	--multiselect-padding-x: calc(var(--ui-base-spacing) * 2);
+	--multiselect-padding-y: calc(var(--ui-base-spacing) * 0.75);
+	--multiselect-font-size: var(--ui-text-base);
 
 	--multiselect-font-family: var(--ui-font-sans);
 	--multiselect-font-weight: var(--ui-weight-normal);
@@ -101,22 +92,10 @@
 		outline-color var(--multiselect-transition);
 }
 
-.multiselect__trigger--sm {
-	min-height: var(--multiselect-sm-min-height);
-	padding: var(--multiselect-sm-padding-y) var(--multiselect-sm-padding-x);
-	font-size: var(--multiselect-sm-font-size);
-}
-
-.multiselect__trigger--md {
-	min-height: var(--multiselect-md-min-height);
-	padding: var(--multiselect-md-padding-y) var(--multiselect-md-padding-x);
-	font-size: var(--multiselect-md-font-size);
-}
-
-.multiselect__trigger--lg {
-	min-height: var(--multiselect-lg-min-height);
-	padding: var(--multiselect-lg-padding-y) var(--multiselect-lg-padding-x);
-	font-size: var(--multiselect-lg-font-size);
+.multiselect__trigger {
+	min-height: var(--multiselect-min-height);
+	padding: var(--multiselect-padding-y) var(--multiselect-padding-x);
+	font-size: var(--multiselect-font-size);
 }
 
 /* Content: wrapping flex container for badges + input */

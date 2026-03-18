@@ -20,16 +20,9 @@
 		var(--ui-hover-mix) var(--ui-hover-amount)
 	);
 
-	/* Sizes */
-	--select-sm-height: calc(var(--ui-base-spacing) * 4);
-	--select-sm-padding-x: calc(var(--ui-base-spacing) * 1.5);
-	--select-sm-font-size: var(--ui-text-sm);
-	--select-md-height: calc(var(--ui-base-spacing) * 5);
-	--select-md-padding-x: calc(var(--ui-base-spacing) * 2);
-	--select-md-font-size: var(--ui-text-base);
-	--select-lg-height: calc(var(--ui-base-spacing) * 6);
-	--select-lg-padding-x: calc(var(--ui-base-spacing) * 3);
-	--select-lg-font-size: var(--ui-text-lg);
+	--select-height: calc(var(--ui-base-spacing) * 5);
+	--select-padding-x: calc(var(--ui-base-spacing) * 2);
+	--select-font-size: var(--ui-text-base);
 
 	--select-font-family: var(--ui-font-sans);
 	--select-font-weight: var(--ui-weight-normal);
@@ -97,22 +90,10 @@
 	text-align: left;
 }
 
-.select__trigger--sm {
-	height: var(--select-sm-height);
-	padding: 0 var(--select-sm-padding-x);
-	font-size: var(--select-sm-font-size);
-}
-
-.select__trigger--md {
-	height: var(--select-md-height);
-	padding: 0 var(--select-md-padding-x);
-	font-size: var(--select-md-font-size);
-}
-
-.select__trigger--lg {
-	height: var(--select-lg-height);
-	padding: 0 var(--select-lg-padding-x);
-	font-size: var(--select-lg-font-size);
+.select__trigger {
+	height: var(--select-height);
+	padding: 0 var(--select-padding-x);
+	font-size: var(--select-font-size);
 }
 
 .select__trigger:hover:not(:disabled):not(.select__trigger--open) {

@@ -16,7 +16,6 @@
 		{ id: 'basic', label: 'Basic', indent: true },
 		{ id: 'with-field', label: 'With Field', indent: true },
 		{ id: 'validation', label: 'Validation', indent: true },
-		{ id: 'sizes', label: 'Sizes', indent: true },
 		{ id: 'api', label: 'API' }
 	];
 
@@ -101,30 +100,6 @@
 							validate={validateEmail}
 							placeholder="Add email address…"
 						/>
-					</Field>
-				</CodeExample>
-			</div>
-
-			<div id="sizes" class="example-block">
-				<h3>Sizes</h3>
-				<p class="example-desc">Three sizes to match layout density.</p>
-				<CodeExample
-					code={`<BadgeInput size="sm" placeholder="Small…" />
-<BadgeInput size="md" placeholder="Medium…" />
-<BadgeInput size="lg" placeholder="Large…" />`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Small</FieldLabel>
-						<BadgeInput size="sm" placeholder="Small…" />
-					</Field>
-					<Field>
-						<FieldLabel>Medium</FieldLabel>
-						<BadgeInput size="md" placeholder="Medium…" />
-					</Field>
-					<Field>
-						<FieldLabel>Large</FieldLabel>
-						<BadgeInput size="lg" placeholder="Large…" />
 					</Field>
 				</CodeExample>
 			</div>

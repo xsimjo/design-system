@@ -4,15 +4,14 @@ A star rating widget for collecting or displaying a numeric score. Supports hove
 
 ## Props
 
-| Prop       | Type                   | Default    | Description                                                |
-| ---------- | ---------------------- | ---------- | ---------------------------------------------------------- |
-| `value`    | `number`               | `0`        | Bindable selected rating (0 = no rating, 1–max = selected) |
-| `max`      | `number`               | `5`        | Total number of stars                                      |
-| `size`     | `'sm' \| 'md' \| 'lg'` | `'md'`     | Controls star icon size                                    |
-| `readonly` | `boolean`              | `false`    | Disables interaction; stars are display-only               |
-| `disabled` | `boolean`              | `false`    | Prevents interaction and applies 50% opacity               |
-| `label`    | `string`               | `'Rating'` | Accessible label for the `radiogroup`                      |
-| `name`     | `string`               | —          | When set, renders a hidden `<input>` for form submission   |
+| Prop       | Type      | Default    | Description                                                |
+| ---------- | --------- | ---------- | ---------------------------------------------------------- |
+| `value`    | `number`  | `0`        | Bindable selected rating (0 = no rating, 1–max = selected) |
+| `max`      | `number`  | `5`        | Total number of stars                                      |
+| `readonly` | `boolean` | `false`    | Disables interaction; stars are display-only               |
+| `disabled` | `boolean` | `false`    | Prevents interaction and applies 50% opacity               |
+| `label`    | `string`  | `'Rating'` | Accessible label for the `radiogroup`                      |
+| `name`     | `string`  | —          | When set, renders a hidden `<input>` for form submission   |
 
 ## Usage
 
@@ -36,14 +35,6 @@ A star rating widget for collecting or displaying a numeric score. Supports hove
 
 ```svelte
 <Rating bind:value={score} max={10} />
-```
-
-### Sizes
-
-```svelte
-<Rating value={3} size="sm" readonly />
-<Rating value={3} size="md" readonly />
-<Rating value={3} size="lg" readonly />
 ```
 
 ### With Form Submission
@@ -97,11 +88,9 @@ Clicking an already-selected star deselects it (sets value to 0).
 
 ### Size Tokens
 
-| Token                   | Default | Description           |
-| ----------------------- | ------- | --------------------- |
-| `--rating-star-size-sm` | `16px`  | Star icon size for sm |
-| `--rating-star-size-md` | `24px`  | Star icon size for md |
-| `--rating-star-size-lg` | `32px`  | Star icon size for lg |
+| Token                | Description    |
+| -------------------- | -------------- |
+| `--rating-star-size` | Star icon size |
 
 ### Style Tokens
 

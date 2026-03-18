@@ -23,7 +23,6 @@
 		value?: string;
 		options: ComboboxOption[];
 		placeholder?: string;
-		size?: 'sm' | 'md' | 'lg';
 		fullWidth?: boolean;
 		disabled?: boolean;
 		id?: string;
@@ -36,7 +35,6 @@
 		value = $bindable(undefined),
 		options = [],
 		placeholder = 'Search…',
-		size = 'md',
 		fullWidth = false,
 		disabled = false,
 		id,
@@ -239,7 +237,7 @@
 <div class="combobox" class:combobox--full-width={fullWidth}>
 	<div
 		bind:this={triggerEl}
-		class="combobox__trigger combobox__trigger--{size}"
+		class="combobox__trigger"
 		class:combobox__trigger--error={hasError}
 		class:combobox__trigger--open={open}
 		class:combobox__trigger--disabled={isDisabled}

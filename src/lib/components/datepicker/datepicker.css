@@ -20,16 +20,9 @@
 		var(--ui-hover-mix) var(--ui-hover-amount)
 	);
 
-	/* Sizes */
-	--datepicker-sm-height: calc(var(--ui-base-spacing) * 4);
-	--datepicker-sm-padding-x: calc(var(--ui-base-spacing) * 1.5);
-	--datepicker-sm-font-size: var(--ui-text-sm);
-	--datepicker-md-height: calc(var(--ui-base-spacing) * 5);
-	--datepicker-md-padding-x: calc(var(--ui-base-spacing) * 2);
-	--datepicker-md-font-size: var(--ui-text-base);
-	--datepicker-lg-height: calc(var(--ui-base-spacing) * 6);
-	--datepicker-lg-padding-x: calc(var(--ui-base-spacing) * 3);
-	--datepicker-lg-font-size: var(--ui-text-lg);
+	--datepicker-height: calc(var(--ui-base-spacing) * 5);
+	--datepicker-padding-x: calc(var(--ui-base-spacing) * 2);
+	--datepicker-font-size: var(--ui-text-base);
 
 	--datepicker-font-family: var(--ui-font-sans);
 	--datepicker-font-weight: var(--ui-weight-normal);
@@ -116,22 +109,10 @@
 		outline-color var(--datepicker-transition);
 }
 
-.datepicker__trigger--sm {
-	min-height: var(--datepicker-sm-height);
-	padding: 0 var(--datepicker-sm-padding-x);
-	font-size: var(--datepicker-sm-font-size);
-}
-
-.datepicker__trigger--md {
-	min-height: var(--datepicker-md-height);
-	padding: 0 var(--datepicker-md-padding-x);
-	font-size: var(--datepicker-md-font-size);
-}
-
-.datepicker__trigger--lg {
-	min-height: var(--datepicker-lg-height);
-	padding: 0 var(--datepicker-lg-padding-x);
-	font-size: var(--datepicker-lg-font-size);
+.datepicker__trigger {
+	min-height: var(--datepicker-height);
+	padding: 0 var(--datepicker-padding-x);
+	font-size: var(--datepicker-font-size);
 }
 
 .datepicker__trigger:hover:not(.datepicker__trigger--disabled):not(.datepicker__trigger--open) {

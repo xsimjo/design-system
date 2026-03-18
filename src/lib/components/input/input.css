@@ -16,15 +16,9 @@
 		var(--ui-border),
 		var(--ui-hover-mix) var(--ui-hover-amount)
 	);
-	--input-sm-height: calc(var(--ui-base-spacing) * 4);
-	--input-sm-padding-x: calc(var(--ui-base-spacing) * 1.5);
-	--input-sm-font-size: var(--ui-text-sm);
-	--input-md-height: calc(var(--ui-base-spacing) * 5);
-	--input-md-padding-x: calc(var(--ui-base-spacing) * 2);
-	--input-md-font-size: var(--ui-text-base);
-	--input-lg-height: calc(var(--ui-base-spacing) * 6);
-	--input-lg-padding-x: calc(var(--ui-base-spacing) * 3);
-	--input-lg-font-size: var(--ui-text-lg);
+	--input-height: calc(var(--ui-base-spacing) * 5);
+	--input-padding-x: calc(var(--ui-base-spacing) * 2);
+	--input-font-size: var(--ui-text-base);
 	--input-font-family: var(--ui-font-sans);
 	--input-font-weight: var(--ui-weight-normal);
 	--input-line-height: var(--ui-leading-normal);
@@ -47,26 +41,14 @@
 		background-color var(--input-transition);
 }
 
+.input__field {
+	height: var(--input-height);
+	padding: 0 var(--input-padding-x);
+	font-size: var(--input-font-size);
+}
+
 .input__field--full-width {
 	width: 100%;
-}
-
-.input__field--sm {
-	height: var(--input-sm-height);
-	padding: 0 var(--input-sm-padding-x);
-	font-size: var(--input-sm-font-size);
-}
-
-.input__field--md {
-	height: var(--input-md-height);
-	padding: 0 var(--input-md-padding-x);
-	font-size: var(--input-md-font-size);
-}
-
-.input__field--lg {
-	height: var(--input-lg-height);
-	padding: 0 var(--input-lg-padding-x);
-	font-size: var(--input-lg-font-size);
 }
 
 .input__field::placeholder {

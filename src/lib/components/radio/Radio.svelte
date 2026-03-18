@@ -8,19 +8,11 @@
 	interface Props extends Omit<HTMLInputAttributes, 'type' | 'size'> {
 		group?: unknown;
 		value?: unknown;
-		size?: 'sm' | 'md' | 'lg';
 		disabled?: boolean;
 		id?: string;
 	}
 
-	let {
-		group = $bindable(),
-		value,
-		size = 'md',
-		disabled = false,
-		id,
-		...restProps
-	}: Props = $props();
+	let { group = $bindable(), value, disabled = false, id, ...restProps }: Props = $props();
 
 	const field = getContext<FieldContext>(FIELD_KEY);
 	const uniqueId = `radio-${Math.random().toString(36).slice(2)}`;
@@ -34,7 +26,7 @@
 
 <input
 	type="radio"
-	class="radio__input radio__input--{size}"
+	class="radio__input"
 	class:radio__input--error={hasError}
 	id={radioId}
 	disabled={isDisabled}

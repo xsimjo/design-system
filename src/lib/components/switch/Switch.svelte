@@ -7,18 +7,11 @@
 
 	interface Props extends Omit<HTMLInputAttributes, 'checked' | 'type' | 'size'> {
 		checked?: boolean;
-		size?: 'sm' | 'md' | 'lg';
 		disabled?: boolean;
 		id?: string;
 	}
 
-	let {
-		checked = $bindable(false),
-		size = 'md',
-		disabled = false,
-		id,
-		...restProps
-	}: Props = $props();
+	let { checked = $bindable(false), disabled = false, id, ...restProps }: Props = $props();
 
 	const field = getContext<FieldContext>(FIELD_KEY);
 	const uniqueId = `switch-${Math.random().toString(36).slice(2)}`;
@@ -30,11 +23,7 @@
 	);
 </script>
 
-<label
-	class="switch switch--{size}"
-	class:switch--error={hasError}
-	class:switch--disabled={isDisabled}
->
+<label class="switch" class:switch--error={hasError} class:switch--disabled={isDisabled}>
 	<input
 		type="checkbox"
 		class="switch__input"

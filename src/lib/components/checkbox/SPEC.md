@@ -4,15 +4,14 @@ Checkbox input with checked, indeterminate, and error states. Integrates with Fi
 
 ## Props
 
-| Prop            | Type                   | Default     | Description                                                        |
-| --------------- | ---------------------- | ----------- | ------------------------------------------------------------------ |
-| `checked`       | `boolean`              | `false`     | Bindable checked state                                             |
-| `indeterminate` | `boolean`              | `false`     | Bindable indeterminate state; takes visual precedence over checked |
-| `size`          | `'sm' \| 'md' \| 'lg'` | `'md'`      | Checkbox size (14px / 16px / 20px)                                 |
-| `disabled`      | `boolean`              | `false`     | Disables interaction; also inherited from parent `Field` context   |
-| `id`            | `string`               | `undefined` | Custom ID; auto-set from `Field` context if omitted                |
+| Prop            | Type      | Default     | Description                                                        |
+| --------------- | --------- | ----------- | ------------------------------------------------------------------ |
+| `checked`       | `boolean` | `false`     | Bindable checked state                                             |
+| `indeterminate` | `boolean` | `false`     | Bindable indeterminate state; takes visual precedence over checked |
+| `disabled`      | `boolean` | `false`     | Disables interaction; also inherited from parent `Field` context   |
+| `id`            | `string`  | `undefined` | Custom ID; auto-set from `Field` context if omitted                |
 
-Extends `HTMLInputAttributes` (excluding `checked`, `type`, and `size` which are redefined). All other native input attributes are forwarded via `...restProps`.
+Extends `HTMLInputAttributes` (excluding `checked` and `type` which are redefined). All other native input attributes are forwarded via `...restProps`.
 
 ## Context Integration
 
@@ -47,14 +46,6 @@ When placed inside a `<Field>`, `Checkbox` automatically:
 
 ```svelte
 <Checkbox indeterminate={true} />
-```
-
-### Sizes
-
-```svelte
-<Checkbox size="sm" />
-<Checkbox size="md" />
-<Checkbox size="lg" />
 ```
 
 ### Inside a Field
@@ -112,11 +103,9 @@ When placed inside a `<Field>`, `Checkbox` automatically:
 
 ### Size Tokens
 
-| Token                | Default | Description                  |
-| -------------------- | ------- | ---------------------------- |
-| `--checkbox-size-sm` | 14px    | Width and height for sm size |
-| `--checkbox-size-md` | 16px    | Width and height for md size |
-| `--checkbox-size-lg` | 20px    | Width and height for lg size |
+| Token             | Description      |
+| ----------------- | ---------------- |
+| `--checkbox-size` | Width and height |
 
 ### Style Tokens
 

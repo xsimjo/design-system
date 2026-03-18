@@ -4,16 +4,15 @@ Custom select field with floating-ui positioning, full keyboard navigation, and 
 
 ## Props
 
-| Prop          | Type                   | Default     | Description                                                          |
-| ------------- | ---------------------- | ----------- | -------------------------------------------------------------------- |
-| `value`       | `string` (bindable)    | `undefined` | The currently selected option value                                  |
-| `options`     | `SelectOption[]`       | required    | Array of options to display in the listbox                           |
-| `placeholder` | `string`               | `'Select…'` | Text shown in the trigger when no value is selected                  |
-| `size`        | `'sm' \| 'md' \| 'lg'` | `'md'`      | Controls height, horizontal padding, and font size                   |
-| `fullWidth`   | `boolean`              | `false`     | Stretches the select to fill its container width                     |
-| `disabled`    | `boolean`              | `false`     | Disables the select; also propagated from Field context              |
-| `id`          | `string`               | `—`         | Custom ID; falls back to Field context ID, then an auto-generated ID |
-| `name`        | `string`               | `—`         | Renders a hidden `<input>` for native form submission                |
+| Prop          | Type                | Default     | Description                                                          |
+| ------------- | ------------------- | ----------- | -------------------------------------------------------------------- |
+| `value`       | `string` (bindable) | `undefined` | The currently selected option value                                  |
+| `options`     | `SelectOption[]`    | required    | Array of options to display in the listbox                           |
+| `placeholder` | `string`            | `'Select…'` | Text shown in the trigger when no value is selected                  |
+| `fullWidth`   | `boolean`           | `false`     | Stretches the select to fill its container width                     |
+| `disabled`    | `boolean`           | `false`     | Disables the select; also propagated from Field context              |
+| `id`          | `string`            | `—`         | Custom ID; falls back to Field context ID, then an auto-generated ID |
+| `name`        | `string`            | `—`         | Renders a hidden `<input>` for native form submission                |
 
 ## SelectOption Type
 
@@ -176,11 +175,11 @@ The listbox is positioned with `@floating-ui/dom`:
 
 ### Sizes
 
-| Token                       | SM                  | MD                    | LG                  |
-| --------------------------- | ------------------- | --------------------- | ------------------- |
-| `--select-{size}-height`    | `32px`              | `40px`                | `48px`              |
-| `--select-{size}-padding-x` | `12px`              | `16px`                | `24px`              |
-| `--select-{size}-font-size` | `var(--ui-text-sm)` | `var(--ui-text-base)` | `var(--ui-text-lg)` |
+| Token                | Description        |
+| -------------------- | ------------------ |
+| `--select-height`    | Trigger height     |
+| `--select-padding-x` | Horizontal padding |
+| `--select-font-size` | Font size          |
 
 ### Listbox
 
