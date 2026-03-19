@@ -1,0 +1,134 @@
+@keyframes popover-enter {
+	from {
+		opacity: 0;
+		transform: translateY(var(--popover-enter-offset)) scale(0.98);
+	}
+}
+
+@keyframes popover-leave {
+	to {
+		opacity: 0;
+		transform: translateY(var(--popover-enter-offset)) scale(0.98);
+	}
+}
+
+[data-theme] {
+	--popover-bg: var(--ui-surface-raised);
+	--popover-color: var(--ui-surface-raised-foreground);
+	--popover-border: var(--ui-border);
+	--popover-border-width: var(--ui-border-width);
+	--popover-border-radius: var(--ui-base-radius);
+	--popover-shadow: var(--ui-depth);
+
+	--popover-padding: calc(var(--ui-base-spacing) * 2);
+	--popover-min-width: calc(var(--ui-base-spacing) * 28);
+	--popover-max-width: calc(var(--ui-base-spacing) * 52);
+	--popover-z-index: var(--ui-z-overlay);
+
+	--popover-arrow-size: calc(var(--ui-base-spacing) * 1);
+	--popover-enter-offset: calc(var(--ui-base-spacing) * 0.75);
+
+	--popover-title-size: var(--ui-text-sm);
+	--popover-title-weight: var(--ui-weight-semibold);
+	--popover-body-size: var(--ui-text-sm);
+
+	--popover-header-padding-bottom: calc(var(--ui-base-spacing) * 1.5);
+	--popover-footer-padding-top: calc(var(--ui-base-spacing) * 1.5);
+	--popover-footer-gap: calc(var(--ui-base-spacing) * 1.5);
+
+	--popover-duration: var(--ui-base-duration);
+	--popover-easing: var(--ui-base-easing);
+}
+
+.popover-trigger {
+	display: inline-block;
+}
+
+.popover-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: var(--popover-z-index);
+	min-width: var(--popover-min-width);
+	max-width: var(--popover-max-width);
+	animation: popover-enter var(--popover-duration) var(--popover-easing) both;
+}
+
+.popover-container--closing {
+	animation: popover-leave var(--popover-duration) var(--popover-easing) both;
+}
+
+.popover {
+	background-color: var(--popover-bg);
+	color: var(--popover-color);
+	border: var(--popover-border-width) solid var(--popover-border);
+	border-radius: var(--popover-border-radius);
+	box-shadow: var(--popover-shadow);
+	overflow: hidden;
+	font-family: var(--ui-font-sans);
+	font-size: var(--popover-body-size);
+	line-height: var(--ui-leading-normal);
+}
+
+.popover__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: calc(var(--ui-base-spacing) * 2);
+	padding: var(--popover-padding) var(--popover-padding) var(--popover-header-padding-bottom);
+	border-bottom: var(--popover-border-width) solid var(--popover-border);
+}
+
+.popover__title {
+	font-size: var(--popover-title-size);
+	font-weight: var(--popover-title-weight);
+	line-height: var(--ui-leading-tight);
+	color: var(--popover-color);
+}
+
+.popover__body {
+	padding: var(--popover-padding);
+}
+
+.popover:has(.popover__header) .popover__body {
+	padding-top: var(--popover-header-padding-bottom);
+}
+
+.popover__footer {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: var(--popover-footer-gap);
+	padding: var(--popover-footer-padding-top) var(--popover-padding) var(--popover-padding);
+	border-top: var(--popover-border-width) solid var(--popover-border);
+}
+
+.popover__arrow {
+	position: absolute;
+	width: var(--popover-arrow-size);
+	height: var(--popover-arrow-size);
+	background-color: var(--popover-bg);
+	transform: rotate(45deg);
+	pointer-events: none;
+}
+
+/* Only the two outer-facing sides get the border.
+   CSS rotate(45deg) in screen coords (y-down): TL→top tip, TR→right tip, BR→bottom tip, BL→left tip.
+   border-top = upper-right side, border-left = upper-left side,
+   border-right = lower-right side, border-bottom = lower-left side. */
+.popover__arrow[data-side='bottom'] {
+	border-top: var(--popover-border-width) solid var(--popover-border);
+	border-left: var(--popover-border-width) solid var(--popover-border);
+}
+.popover__arrow[data-side='top'] {
+	border-right: var(--popover-border-width) solid var(--popover-border);
+	border-bottom: var(--popover-border-width) solid var(--popover-border);
+}
+.popover__arrow[data-side='right'] {
+	border-bottom: var(--popover-border-width) solid var(--popover-border);
+	border-left: var(--popover-border-width) solid var(--popover-border);
+}
+.popover__arrow[data-side='left'] {
+	border-top: var(--popover-border-width) solid var(--popover-border);
+	border-right: var(--popover-border-width) solid var(--popover-border);
+}

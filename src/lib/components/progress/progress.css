@@ -1,0 +1,123 @@
+[data-theme] {
+	--progress-height-xs: calc(var(--ui-base-spacing) * 0.25);
+	--progress-height-sm: calc(var(--ui-base-spacing) * 0.5);
+	--progress-height-md: calc(var(--ui-base-spacing) * 1);
+	--progress-height-lg: calc(var(--ui-base-spacing) * 1.5);
+	--progress-border-radius: 9999px;
+	--progress-track-color: color-mix(in oklch, var(--ui-neutral), transparent 75%);
+	--progress-fill-primary: var(--ui-primary);
+	--progress-fill-success: var(--ui-success);
+	--progress-fill-danger: var(--ui-danger);
+	--progress-fill-warning: var(--ui-warning);
+	--progress-fill-info: var(--ui-info);
+	--progress-fill-neutral: var(--ui-neutral);
+	--progress-transition-duration: var(--ui-base-duration);
+	--progress-transition-easing: var(--ui-base-easing);
+	--progress-indeterminate-duration: calc(var(--ui-base-duration) * 10);
+	--progress-indeterminate-easing: ease-in-out;
+	--progress-indeterminate-fill-width: 40%;
+	--progress-value-font-size: var(--ui-text-sm);
+	--progress-value-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 30%);
+	--progress-value-font-weight: var(--ui-weight-medium);
+}
+
+.progress-root {
+	display: flex;
+	flex-direction: column;
+	gap: calc(var(--ui-base-spacing) * 0.75);
+	width: 100%;
+}
+
+.progress-value {
+	align-self: flex-end;
+	font-size: var(--progress-value-font-size);
+	font-weight: var(--progress-value-font-weight);
+	color: var(--progress-value-color);
+	font-family: var(--ui-font-mono);
+	line-height: var(--ui-leading-none);
+}
+
+.progress {
+	position: relative;
+	width: 100%;
+	height: var(--progress-height-md);
+	background-color: var(--progress-track-color);
+	border-radius: var(--progress-border-radius);
+	overflow: hidden;
+}
+
+.progress--xs {
+	height: var(--progress-height-xs);
+}
+
+.progress--sm {
+	height: var(--progress-height-sm);
+}
+
+.progress--md {
+	height: var(--progress-height-md);
+}
+
+.progress--lg {
+	height: var(--progress-height-lg);
+}
+
+.progress__fill {
+	position: absolute;
+	inset-block: 0;
+	left: 0;
+	border-radius: var(--progress-border-radius);
+	transition:
+		width var(--progress-transition-duration) var(--progress-transition-easing),
+		background-color var(--progress-transition-duration) var(--progress-transition-easing);
+}
+
+.progress--primary .progress__fill {
+	background-color: var(--progress-fill-primary);
+}
+
+.progress--success .progress__fill {
+	background-color: var(--progress-fill-success);
+}
+
+.progress--danger .progress__fill {
+	background-color: var(--progress-fill-danger);
+}
+
+.progress--warning .progress__fill {
+	background-color: var(--progress-fill-warning);
+}
+
+.progress--info .progress__fill {
+	background-color: var(--progress-fill-info);
+}
+
+.progress--neutral .progress__fill {
+	background-color: var(--progress-fill-neutral);
+}
+
+/* Indeterminate state */
+.progress--indeterminate .progress__fill {
+	width: var(--progress-indeterminate-fill-width);
+	animation: progress-indeterminate var(--progress-indeterminate-duration)
+		var(--progress-indeterminate-easing) infinite;
+}
+
+@keyframes progress-indeterminate {
+	0% {
+		left: -50%;
+	}
+	100% {
+		left: 110%;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.progress__fill {
+		transition: none;
+	}
+
+	.progress--indeterminate .progress__fill {
+		animation-duration: calc(var(--progress-indeterminate-duration) * 3);
+	}
+}

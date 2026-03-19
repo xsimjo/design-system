@@ -1,0 +1,49 @@
+[data-theme] {
+	--toast-width: 360px;
+	--toast-gap: calc(var(--ui-base-spacing) * 1);
+	--toast-z-index: var(--ui-z-tooltip);
+}
+
+/* --- Toaster container --- */
+
+.toaster__anchor {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+	z-index: -1;
+}
+
+.toaster__anchor[data-position^='bottom'] {
+	top: auto;
+	bottom: 0;
+}
+
+.toaster__anchor[data-position$='right'] {
+	left: auto;
+	right: 0;
+}
+
+.toaster__anchor[data-position$='center'] {
+	left: 50%;
+}
+
+.toaster {
+	display: flex;
+	flex-direction: column;
+	gap: var(--toast-gap);
+	width: var(--toast-width);
+	max-width: calc(100vw - 32px);
+	z-index: var(--toast-z-index);
+	pointer-events: none;
+}
+
+.toaster[data-position^='bottom'] {
+	flex-direction: column;
+}
+
+.toaster[data-position^='top'] {
+	flex-direction: column-reverse;
+}

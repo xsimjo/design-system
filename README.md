@@ -9,17 +9,11 @@ A modern, themeable Svelte 5 component library with a powerful three-layer token
 
 Components v1
 
-- Modal
-- Toast
-- Tooltip
-- Alert / Banner
 - Card
 - Accordion
-- Progress bar
 - Avatar
 - Table / Pagination
 - Breadcrumbs
-- Popover
 - Skeleton
 
 ## Features

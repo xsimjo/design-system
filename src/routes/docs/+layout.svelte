@@ -27,12 +27,16 @@
 		{
 			title: 'Components',
 			items: [
+				{ label: 'Alert', href: '/docs/alert' },
 				{ label: 'Button', href: '/docs/button' },
 				{ label: 'Checkbox', href: '/docs/checkbox' },
 				{ label: 'Radio', href: '/docs/radio' },
 				{ label: 'Rating', href: '/docs/rating' },
 				{ label: 'Switch', href: '/docs/switch' },
 				{ label: 'Dropdown', href: '/docs/dropdown' },
+				{ label: 'Modal', href: '/docs/modal' },
+				{ label: 'Popover', href: '/docs/popover' },
+				{ label: 'Progress', href: '/docs/progress' },
 				{ label: 'Field', href: '/docs/field' },
 				{ label: 'Input', href: '/docs/input' },
 				{ label: 'Badge', href: '/docs/badge' },
@@ -45,7 +49,9 @@
 				{ label: 'Select', href: '/docs/select' },
 				{ label: 'Slider', href: '/docs/slider' },
 				{ label: 'Spinner', href: '/docs/spinner' },
-				{ label: 'Textarea', href: '/docs/textarea' }
+				{ label: 'Textarea', href: '/docs/textarea' },
+				{ label: 'Toast', href: '/docs/toast' },
+				{ label: 'Tooltip', href: '/docs/tooltip' }
 			]
 		}
 	];
