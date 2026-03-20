@@ -67,3 +67,6 @@ export { default as CircleCheckIcon } from './icons/CircleCheckIcon.svelte';
 export { default as CircleXIcon } from './icons/CircleXIcon.svelte';
 export { default as TriangleAlertIcon } from './icons/TriangleAlertIcon.svelte';
 export { default as InfoIcon } from './icons/InfoIcon.svelte';
+export { default as ChevronDownIcon } from './icons/ChevronDownIcon.svelte';
+export { default as ChevronRightIcon } from './icons/ChevronRightIcon.svelte';
+export { default as UserIcon } from './icons/UserIcon.svelte';
