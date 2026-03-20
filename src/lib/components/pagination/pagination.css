@@ -1,0 +1,191 @@
+[data-theme] {
+	/* ==========================================================================
+	   PAGINATION COMPONENT TOKENS
+	   ========================================================================== */
+
+	/* Item sizing */
+	--pagination-item-sm: calc(var(--ui-base-spacing) * 4);
+	--pagination-item-md: calc(var(--ui-base-spacing) * 5);
+	--pagination-item-lg: calc(var(--ui-base-spacing) * 6);
+	--pagination-font-sm: var(--ui-text-xs);
+	--pagination-font-md: var(--ui-text-sm);
+	--pagination-font-lg: var(--ui-text-base);
+	--pagination-gap-sm: calc(var(--ui-base-spacing) * 0.5);
+	--pagination-gap-md: calc(var(--ui-base-spacing) * 0.75);
+	--pagination-gap-lg: var(--ui-base-spacing);
+
+	/* Colors */
+	--pagination-item-bg: transparent;
+	--pagination-item-text: var(--ui-surface-foreground);
+	--pagination-item-border: var(--ui-border);
+	--pagination-item-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 82%);
+	--pagination-item-hover-border: var(--ui-border);
+	--pagination-item-active-bg: var(--ui-primary);
+	--pagination-item-active-text: var(--ui-primary-foreground);
+	--pagination-item-active-border: var(--ui-primary);
+	--pagination-item-disabled-text: color-mix(
+		in oklch,
+		var(--ui-surface-foreground),
+		transparent 60%
+	);
+	--pagination-item-disabled-bg: transparent;
+	--pagination-item-disabled-border: color-mix(in oklch, var(--ui-border), transparent 40%);
+
+	/* Dots */
+	--pagination-dots-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
+
+	/* Shape */
+	--pagination-border-radius: var(--ui-base-radius);
+	--pagination-border-width: var(--ui-border-width);
+
+	/* Focus */
+	--pagination-focus-ring-width: var(--ui-ring-width);
+	--pagination-focus-ring-color: var(--ui-primary);
+	--pagination-focus-ring-offset: var(--ui-ring-offset);
+
+	/* Transition */
+	--pagination-transition: var(--ui-base-duration) var(--ui-base-easing);
+}
+
+/* ============================================================
+   NAV CONTAINER
+   ============================================================ */
+
+.pagination {
+	display: flex;
+	align-items: center;
+	gap: var(--pagination-gap-md);
+	flex-wrap: wrap;
+}
+
+.pagination--sm {
+	gap: var(--pagination-gap-sm);
+}
+
+.pagination--lg {
+	gap: var(--pagination-gap-lg);
+}
+
+/* ============================================================
+   PAGE ITEM (button)
+   ============================================================ */
+
+.pagination__item {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: var(--pagination-item-md);
+	height: var(--pagination-item-md);
+	padding: 0 calc(var(--ui-base-spacing) * 0.75);
+	font-family: var(--ui-font-sans);
+	font-size: var(--pagination-font-md);
+	font-weight: var(--ui-weight-medium);
+	line-height: 1;
+	color: var(--pagination-item-text);
+	background: var(--pagination-item-bg);
+	border: var(--pagination-border-width) solid var(--pagination-item-border);
+	border-radius: var(--pagination-border-radius);
+	cursor: pointer;
+	transition:
+		background-color var(--pagination-transition),
+		border-color var(--pagination-transition),
+		color var(--pagination-transition);
+	white-space: nowrap;
+	text-decoration: none;
+}
+
+.pagination__item--icon {
+	min-width: var(--pagination-item-md);
+	width: var(--pagination-item-md);
+	padding: 0;
+}
+
+.pagination__item:hover:not(:disabled) {
+	background: var(--pagination-item-hover-bg);
+	border-color: var(--pagination-item-hover-border);
+}
+
+.pagination__item:focus-visible {
+	outline: var(--pagination-focus-ring-width) solid var(--pagination-focus-ring-color);
+	outline-offset: var(--pagination-focus-ring-offset);
+}
+
+.pagination__item--active {
+	background: var(--pagination-item-active-bg);
+	border-color: var(--pagination-item-active-border);
+	color: var(--pagination-item-active-text);
+}
+
+.pagination__item--active:hover:not(:disabled) {
+	background: color-mix(
+		in oklch,
+		var(--pagination-item-active-bg),
+		var(--ui-hover-mix) var(--ui-hover-amount)
+	);
+	border-color: color-mix(
+		in oklch,
+		var(--pagination-item-active-bg),
+		var(--ui-hover-mix) var(--ui-hover-amount)
+	);
+}
+
+.pagination__item:disabled {
+	color: var(--pagination-item-disabled-text);
+	background: var(--pagination-item-disabled-bg);
+	border-color: var(--pagination-item-disabled-border);
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+/* ============================================================
+   ELLIPSIS DOTS
+   ============================================================ */
+
+.pagination__dots {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: var(--pagination-item-md);
+	height: var(--pagination-item-md);
+	font-size: var(--pagination-font-md);
+	color: var(--pagination-dots-color);
+	user-select: none;
+}
+
+/* ============================================================
+   SIZES
+   ============================================================ */
+
+.pagination--sm .pagination__item {
+	min-width: var(--pagination-item-sm);
+	height: var(--pagination-item-sm);
+	font-size: var(--pagination-font-sm);
+}
+
+.pagination--sm .pagination__item--icon {
+	width: var(--pagination-item-sm);
+	min-width: var(--pagination-item-sm);
+}
+
+.pagination--sm .pagination__dots {
+	min-width: var(--pagination-item-sm);
+	height: var(--pagination-item-sm);
+	font-size: var(--pagination-font-sm);
+}
+
+.pagination--lg .pagination__item {
+	min-width: var(--pagination-item-lg);
+	height: var(--pagination-item-lg);
+	font-size: var(--pagination-font-lg);
+}
+
+.pagination--lg .pagination__item--icon {
+	width: var(--pagination-item-lg);
+	min-width: var(--pagination-item-lg);
+}
+
+.pagination--lg .pagination__dots {
+	min-width: var(--pagination-item-lg);
+	height: var(--pagination-item-lg);
+	font-size: var(--pagination-font-lg);
+}

@@ -1,0 +1,325 @@
+[data-theme] {
+	/* ==========================================================================
+	   TABLE COMPONENT TOKENS
+	   ========================================================================== */
+
+	/* Wrapper */
+	--table-bg: var(--ui-surface-raised);
+	--table-border-radius: var(--ui-base-radius);
+	--table-border-color: var(--ui-border);
+	--table-border-width: var(--ui-border-width);
+	--table-shadow: var(--ui-depth);
+
+	/* Header */
+	--table-header-bg: color-mix(in oklch, var(--ui-neutral), transparent 88%);
+	--table-header-text: var(--ui-surface-foreground);
+	--table-header-font-weight: var(--ui-weight-semibold);
+	--table-header-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 80%);
+	--table-header-active-bg: color-mix(in oklch, var(--ui-neutral), transparent 72%);
+
+	/* Row */
+	--table-row-bg: var(--ui-surface-raised);
+	--table-row-text: var(--ui-surface-raised-foreground);
+	--table-row-hover-bg: color-mix(in oklch, var(--ui-primary), transparent 94%);
+	--table-row-active-bg: color-mix(in oklch, var(--ui-primary), transparent 88%);
+	--table-row-selected-bg: color-mix(in oklch, var(--ui-primary), transparent 88%);
+	--table-row-selected-text: var(--ui-surface-foreground);
+	--table-row-selected-hover-bg: color-mix(
+		in oklch,
+		var(--table-row-selected-bg),
+		var(--ui-hover-mix) var(--ui-hover-amount)
+	);
+	--table-row-cursor-clickable: pointer;
+
+	/* Stripe */
+	--table-stripe-bg: color-mix(in oklch, var(--ui-neutral), transparent 93%);
+
+	/* Cell sizing */
+	--table-cell-sm-padding: calc(var(--ui-base-spacing) * 1) calc(var(--ui-base-spacing) * 1.5);
+	--table-cell-md-padding: calc(var(--ui-base-spacing) * 1.5) calc(var(--ui-base-spacing) * 2);
+	--table-cell-lg-padding: calc(var(--ui-base-spacing) * 2) calc(var(--ui-base-spacing) * 3);
+	--table-font-sm: var(--ui-text-xs);
+	--table-font-md: var(--ui-text-sm);
+	--table-font-lg: var(--ui-text-base);
+
+	/* Sorting */
+	--table-sort-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 55%);
+	--table-sort-active-color: var(--ui-primary);
+
+	/* Caption */
+	--table-caption-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 45%);
+	--table-caption-font-size: var(--ui-text-sm);
+
+	/* Focus */
+	--table-focus-ring-width: var(--ui-ring-width);
+	--table-focus-ring-color: var(--ui-primary);
+	--table-focus-ring-offset: var(--ui-ring-offset);
+
+	/* Transition */
+	--table-transition: var(--ui-base-duration) var(--ui-base-easing);
+
+	/* Truncate */
+	--table-truncate-max-width: calc(var(--ui-base-spacing) * 25);
+
+	/* Sticky max-height (overridable per-instance via inline style) */
+	--table-max-height: calc(var(--ui-base-spacing) * 50);
+}
+
+/* ============================================================
+   WRAPPER
+   ============================================================ */
+
+.table-wrapper {
+	width: 100%;
+	overflow-x: auto;
+	border-radius: var(--table-border-radius);
+	border: var(--table-border-width) solid var(--table-border-color);
+	box-shadow: var(--table-shadow);
+	background: var(--table-bg);
+}
+
+.table-wrapper--sticky {
+	overflow-y: auto;
+	max-height: var(--table-max-height);
+}
+
+/* ============================================================
+   TABLE ELEMENT
+   ============================================================ */
+
+.table {
+	/* Size-specific values cascade via custom props */
+	--_cell-padding: var(--table-cell-md-padding);
+	--_font-size: var(--table-font-md);
+
+	width: 100%;
+	border-collapse: collapse;
+	font-family: var(--ui-font-sans);
+	color: var(--table-row-text);
+}
+
+.table--sm {
+	--_cell-padding: var(--table-cell-sm-padding);
+	--_font-size: var(--table-font-sm);
+}
+
+.table--lg {
+	--_cell-padding: var(--table-cell-lg-padding);
+	--_font-size: var(--table-font-lg);
+}
+
+/* ============================================================
+   CAPTION
+   ============================================================ */
+
+.table__caption {
+	font-size: var(--table-caption-font-size);
+	color: var(--table-caption-color);
+	padding: calc(var(--ui-base-spacing) * 1.5) calc(var(--ui-base-spacing) * 2);
+	text-align: center;
+	line-height: var(--ui-leading-normal);
+}
+
+/* ============================================================
+   THEAD / TFOOT
+   ============================================================ */
+
+.table__head {
+	border-bottom: calc(var(--table-border-width) * 2) solid var(--table-border-color);
+}
+
+.table__foot {
+	border-top: calc(var(--table-border-width) * 2) solid var(--table-border-color);
+}
+
+/* Sticky header: position th cells, not thead itself */
+.table-wrapper--sticky .table__head .table__header {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+/* ============================================================
+   HEADER CELL (th)
+   ============================================================ */
+
+.table__header {
+	background: var(--table-header-bg);
+	color: var(--table-header-text);
+	font-size: var(--_font-size);
+	font-weight: var(--table-header-font-weight);
+	text-align: left;
+	white-space: nowrap;
+	vertical-align: middle;
+	user-select: none;
+}
+
+/* Non-sortable headers get direct padding */
+.table__header:not(.table__header--sortable) {
+	padding: var(--_cell-padding);
+}
+
+/* Sortable: the button carries the padding instead */
+.table__header--sortable {
+	padding: 0;
+}
+
+/* Sort button inside th */
+.table__sort-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: calc(var(--ui-base-spacing) * 0.75);
+	width: 100%;
+	padding: var(--_cell-padding);
+	background: transparent;
+	border: none;
+	color: inherit;
+	font: inherit;
+	font-weight: var(--table-header-font-weight);
+	text-align: inherit;
+	cursor: pointer;
+	transition:
+		background-color var(--table-transition),
+		color var(--table-transition);
+}
+
+.table__sort-btn:hover {
+	background: var(--table-header-hover-bg);
+}
+
+.table__sort-btn:active {
+	background: var(--table-header-active-bg);
+}
+
+.table__sort-btn:focus-visible {
+	outline: var(--table-focus-ring-width) solid var(--table-focus-ring-color);
+	outline-offset: calc(0px - var(--table-focus-ring-width));
+}
+
+.table__sort-icon {
+	display: inline-flex;
+	flex-shrink: 0;
+	color: var(--table-sort-color);
+	transition: color var(--table-transition);
+}
+
+.table__header--sorted .table__sort-icon {
+	color: var(--table-sort-active-color);
+}
+
+/* Alignment for header */
+.table__header--left {
+	text-align: left;
+}
+.table__header--center {
+	text-align: center;
+}
+.table__header--right {
+	text-align: right;
+}
+
+/* ============================================================
+   TABLE ROW (tr)
+   ============================================================ */
+
+.table__row {
+	background: var(--table-row-bg);
+	color: var(--table-row-text);
+	transition: background-color var(--table-transition);
+}
+
+/* Remove bottom border from last row in tbody */
+.table__body .table__row:last-child .table__cell {
+	border-bottom: none;
+}
+
+.table__row--clickable {
+	cursor: var(--table-row-cursor-clickable);
+}
+
+.table__row--clickable:hover {
+	background: var(--table-row-hover-bg);
+}
+
+.table__row--clickable:active {
+	background: var(--table-row-active-bg);
+}
+
+.table__row--clickable:focus-visible {
+	outline: var(--table-focus-ring-width) solid var(--table-focus-ring-color);
+	outline-offset: calc(-1 * var(--table-focus-ring-offset));
+}
+
+.table__row--selected {
+	background: var(--table-row-selected-bg);
+	color: var(--table-row-selected-text);
+}
+
+.table__row--selected.table__row--clickable:hover {
+	background: var(--table-row-selected-hover-bg);
+}
+
+.table__row--selected.table__row--clickable:active {
+	background: color-mix(
+		in oklch,
+		var(--table-row-selected-bg),
+		var(--ui-hover-mix) var(--ui-active-amount)
+	);
+}
+
+/* ============================================================
+   DATA CELL (td)
+   ============================================================ */
+
+.table__cell {
+	padding: var(--_cell-padding);
+	border-bottom: var(--table-border-width) solid var(--table-border-color);
+	font-size: var(--_font-size);
+	vertical-align: middle;
+	color: inherit;
+}
+
+.table__cell--left {
+	text-align: left;
+}
+.table__cell--center {
+	text-align: center;
+}
+.table__cell--right {
+	text-align: right;
+}
+
+.table__cell--truncate {
+	max-width: var(--table-truncate-max-width);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* ============================================================
+   VARIANTS
+   ============================================================ */
+
+/* Striped: even rows in tbody get alternate background */
+.table--striped .table__body .table__row:nth-child(even) {
+	background: var(--table-stripe-bg);
+}
+
+.table--striped .table__body .table__row--selected:nth-child(even) {
+	background: var(--table-row-selected-bg);
+}
+
+.table--striped .table__body .table__row--clickable:nth-child(even):hover {
+	background: var(--table-row-hover-bg);
+}
+
+.table--striped .table__body .table__row--clickable:nth-child(even):active {
+	background: var(--table-row-active-bg);
+}
+
+/* Bordered: vertical dividers between all cells */
+.table--bordered .table__header,
+.table--bordered .table__cell {
+	border: var(--table-border-width) solid var(--table-border-color);
+}

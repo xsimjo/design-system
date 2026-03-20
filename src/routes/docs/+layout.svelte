@@ -39,6 +39,7 @@
 				{ label: 'Switch', href: '/docs/switch' },
 				{ label: 'Dropdown', href: '/docs/dropdown' },
 				{ label: 'Modal', href: '/docs/modal' },
+				{ label: 'Pagination', href: '/docs/pagination' },
 				{ label: 'Popover', href: '/docs/popover' },
 				{ label: 'Progress', href: '/docs/progress' },
 				{ label: 'Field', href: '/docs/field' },
@@ -54,6 +55,7 @@
 				{ label: 'Slider', href: '/docs/slider' },
 				{ label: 'Skeleton', href: '/docs/skeleton' },
 				{ label: 'Spinner', href: '/docs/spinner' },
+				{ label: 'Table', href: '/docs/table' },
 				{ label: 'Textarea', href: '/docs/textarea' },
 				{ label: 'Toast', href: '/docs/toast' },
 				{ label: 'Tooltip', href: '/docs/tooltip' }
