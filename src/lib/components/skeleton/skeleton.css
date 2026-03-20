@@ -1,0 +1,84 @@
+[data-theme] {
+	--skeleton-bg: color-mix(in oklch, var(--ui-neutral), transparent 78%);
+	--skeleton-shimmer-color: color-mix(in oklch, var(--ui-neutral-foreground), transparent 75%);
+	--skeleton-radius: var(--ui-base-radius);
+	--skeleton-radius-circle: 9999px;
+	--skeleton-duration: 1.5s;
+	--skeleton-easing: ease-in-out;
+	--skeleton-stagger: 0.15s;
+	--skeleton-line-height: calc(var(--ui-base-spacing) * 2);
+	--skeleton-line-gap: calc(var(--ui-base-spacing) * 1.5);
+	--skeleton-line-last-width: 70%;
+}
+
+@keyframes skeleton-shimmer {
+	0% {
+		background-position: -200% 0;
+	}
+	100% {
+		background-position: 200% 0;
+	}
+}
+
+.skeleton {
+	display: block;
+	background-color: var(--skeleton-bg);
+	border-radius: var(--skeleton-radius);
+	position: relative;
+	overflow: hidden;
+}
+
+.skeleton--animated,
+.skeleton--animated .skeleton__line {
+	background-image: linear-gradient(
+		90deg,
+		transparent 0%,
+		var(--skeleton-shimmer-color) 50%,
+		transparent 100%
+	);
+	background-size: 200% 100%;
+	animation: skeleton-shimmer var(--skeleton-duration) var(--skeleton-easing) infinite;
+}
+
+.skeleton--circle {
+	border-radius: var(--skeleton-radius-circle);
+}
+
+.skeleton--text {
+	background: none;
+	animation: none;
+	display: flex;
+	flex-direction: column;
+	gap: var(--skeleton-line-gap);
+}
+
+.skeleton__line {
+	display: block;
+	height: var(--skeleton-line-height);
+	background-color: var(--skeleton-bg);
+	border-radius: var(--skeleton-radius);
+}
+
+.skeleton--animated .skeleton__line:nth-child(2) {
+	animation-delay: calc(var(--skeleton-stagger) * 1);
+}
+
+.skeleton--animated .skeleton__line:nth-child(3) {
+	animation-delay: calc(var(--skeleton-stagger) * 2);
+}
+
+.skeleton--animated .skeleton__line:nth-child(4) {
+	animation-delay: calc(var(--skeleton-stagger) * 3);
+}
+
+.skeleton--animated .skeleton__line:nth-child(5) {
+	animation-delay: calc(var(--skeleton-stagger) * 4);
+}
+
+.skeleton--animated .skeleton__line:nth-child(6) {
+	animation-delay: calc(var(--skeleton-stagger) * 5);
+}
+
+.skeleton__line:last-child:not(:only-child) {
+	width: var(--skeleton-line-last-width);
+}

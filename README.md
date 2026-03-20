@@ -9,11 +9,7 @@ A modern, themeable Svelte 5 component library with a powerful three-layer token
 
 Components v1
 
-- Card
-- Accordion
-- Avatar
 - Table / Pagination
-- Breadcrumbs
 - Skeleton
 
 ## Features

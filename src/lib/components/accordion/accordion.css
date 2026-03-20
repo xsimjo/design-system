@@ -1,0 +1,94 @@
+[data-theme] {
+	--accordion-border: var(--ui-border);
+	--accordion-border-width: var(--ui-border-width);
+	--accordion-trigger-color: var(--ui-surface-foreground);
+	--accordion-trigger-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 90%);
+	--accordion-content-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 25%);
+	--accordion-padding-x: calc(var(--ui-base-spacing) * 2);
+	--accordion-padding-y: calc(var(--ui-base-spacing) * 1.5);
+	--accordion-duration: var(--ui-base-duration);
+	--accordion-easing: var(--ui-base-easing);
+}
+
+.accordion {
+	display: block;
+}
+
+.accordion-item {
+	border-bottom: var(--accordion-border-width) solid var(--accordion-border);
+}
+
+.accordion-item:last-child {
+	border-bottom: none;
+}
+
+.accordion-item__heading {
+	margin: 0;
+}
+
+.accordion-item__trigger {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: calc(var(--accordion-padding-y) * 2) calc(var(--accordion-padding-x) * 2);
+	background: none;
+	border: none;
+	cursor: pointer;
+	text-align: left;
+	font-size: var(--ui-text-base);
+	font-weight: var(--ui-weight-medium);
+	color: var(--accordion-trigger-color);
+	font-family: inherit;
+	line-height: var(--ui-leading-tight);
+	transition: background-color var(--accordion-duration) var(--accordion-easing);
+}
+
+.accordion-item__trigger:hover:not(:disabled) {
+	background-color: var(--accordion-trigger-hover-bg);
+}
+
+.accordion-item__trigger:focus-visible {
+	outline: var(--ui-ring-width) solid var(--ui-primary);
+	outline-offset: calc(var(--ui-ring-offset) * -1);
+	position: relative;
+	z-index: 1;
+}
+
+.accordion-item__trigger:disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+
+.accordion-item__chevron {
+	display: flex;
+	flex-shrink: 0;
+	color: color-mix(in oklch, var(--accordion-trigger-color), transparent 40%);
+	transition: transform var(--accordion-duration) var(--accordion-easing);
+}
+
+.accordion-item--open .accordion-item__chevron {
+	transform: rotate(180deg);
+}
+
+.accordion-item__panel {
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows var(--accordion-duration) var(--accordion-easing);
+}
+
+.accordion-item--open .accordion-item__panel {
+	grid-template-rows: 1fr;
+}
+
+.accordion-item__panel-inner {
+	overflow: hidden;
+}
+
+.accordion-item__content {
+	padding: calc(var(--accordion-padding-y) * 0.75) calc(var(--accordion-padding-x) * 2)
+		calc(var(--accordion-padding-y) * 2);
+	font-size: var(--ui-text-sm);
+	color: var(--accordion-content-color);
+	line-height: var(--ui-leading-normal);
+}

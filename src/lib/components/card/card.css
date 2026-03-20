@@ -1,0 +1,77 @@
+[data-theme] {
+	--card-bg: var(--ui-surface-raised);
+	--card-foreground: var(--ui-surface-raised-foreground);
+	--card-border-color: var(--ui-border);
+	--card-border-width: var(--ui-border-width);
+	--card-radius: var(--ui-base-radius);
+	--card-divider-color: var(--ui-border);
+	--card-shadow: var(--ui-depth);
+	--card-padding-sm: calc(var(--ui-base-spacing) * 2);
+	--card-padding-md: calc(var(--ui-base-spacing) * 4);
+	--card-padding-lg: calc(var(--ui-base-spacing) * 6);
+	--card-footer-gap: calc(var(--ui-base-spacing) * 2);
+}
+
+.card {
+	background-color: var(--card-bg);
+	color: var(--card-foreground);
+	border-radius: var(--card-radius);
+	padding: var(--_pad, var(--card-padding-md));
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+/* When sub-components are present, they handle padding individually */
+.card:has(.card__header, .card__body, .card__footer) {
+	padding: 0;
+}
+
+/* Variants */
+.card--default {
+	border: var(--card-border-width) solid var(--card-border-color);
+}
+
+.card--outlined {
+	border: calc(var(--card-border-width) * 2) solid var(--card-border-color);
+}
+
+.card--elevated {
+	box-shadow: var(--card-shadow);
+}
+
+/* Padding sizes — sets --_pad which sub-components inherit */
+.card--pad-none {
+	--_pad: 0;
+}
+
+.card--pad-sm {
+	--_pad: var(--card-padding-sm);
+}
+
+.card--pad-md {
+	--_pad: var(--card-padding-md);
+}
+
+.card--pad-lg {
+	--_pad: var(--card-padding-lg);
+}
+
+/* Sub-components */
+.card__header,
+.card__body,
+.card__footer {
+	padding: var(--_pad);
+}
+
+.card__header + .card__body,
+.card__header + .card__footer,
+.card__body + .card__footer {
+	border-top: var(--card-border-width) solid var(--card-divider-color);
+}
+
+.card__footer {
+	display: flex;
+	align-items: center;
+	gap: var(--card-footer-gap);
+}

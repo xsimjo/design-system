@@ -27,8 +27,12 @@
 		{
 			title: 'Components',
 			items: [
+				{ label: 'Accordion', href: '/docs/accordion' },
 				{ label: 'Alert', href: '/docs/alert' },
+				{ label: 'Avatar', href: '/docs/avatar' },
+				{ label: 'Breadcrumbs', href: '/docs/breadcrumbs' },
 				{ label: 'Button', href: '/docs/button' },
+				{ label: 'Card', href: '/docs/card' },
 				{ label: 'Checkbox', href: '/docs/checkbox' },
 				{ label: 'Radio', href: '/docs/radio' },
 				{ label: 'Rating', href: '/docs/rating' },
@@ -48,6 +52,7 @@
 				{ label: 'MultiSelect', href: '/docs/multiselect' },
 				{ label: 'Select', href: '/docs/select' },
 				{ label: 'Slider', href: '/docs/slider' },
+				{ label: 'Skeleton', href: '/docs/skeleton' },
 				{ label: 'Spinner', href: '/docs/spinner' },
 				{ label: 'Textarea', href: '/docs/textarea' },
 				{ label: 'Toast', href: '/docs/toast' },

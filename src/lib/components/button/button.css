@@ -324,7 +324,7 @@
 	background-color: color-mix(in oklch, var(--_color), transparent 100%);
 	color: var(--_color);
 	border-color: transparent;
-	text-decoration: underline;
+	text-decoration: none;
 	box-shadow: none;
 }
 
@@ -334,6 +334,7 @@
 
 .button--link:hover:not(:disabled):not([aria-disabled='true']) {
 	color: color-mix(in oklch, var(--_color), var(--button-mix-hover) var(--button-mix-hover-amount));
+	text-decoration: underline;
 }
 
 .button--link:active:not(:disabled):not([aria-disabled='true']) {

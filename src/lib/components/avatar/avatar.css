@@ -1,0 +1,139 @@
+[data-theme] {
+	--avatar-size-sm: calc(var(--ui-base-spacing) * 3);
+	--avatar-size-md: calc(var(--ui-base-spacing) * 4);
+	--avatar-size-lg: calc(var(--ui-base-spacing) * 6);
+	--avatar-size-xl: calc(var(--ui-base-spacing) * 8);
+
+	--avatar-font-size-sm: var(--ui-text-xs);
+	--avatar-font-size-md: var(--ui-text-sm);
+	--avatar-font-size-lg: var(--ui-text-base);
+	--avatar-font-size-xl: var(--ui-text-lg);
+
+	--avatar-radius-circle: 9999px;
+	--avatar-radius-square: var(--ui-base-radius);
+
+	--avatar-bg-primary: var(--ui-primary);
+	--avatar-fg-primary: var(--ui-primary-foreground);
+	--avatar-bg-secondary: var(--ui-secondary);
+	--avatar-fg-secondary: var(--ui-secondary-foreground);
+	--avatar-bg-neutral: color-mix(in oklch, var(--ui-neutral), transparent 70%);
+	--avatar-fg-neutral: var(--ui-surface-foreground);
+
+	--avatar-border-width: var(--ui-border-width);
+	--avatar-border-color: var(--ui-border);
+
+	--avatar-status-size: calc(var(--ui-base-spacing) * 1.5);
+	--avatar-status-border-width: calc(var(--ui-border-width) * 2);
+	--avatar-status-border-color: var(--ui-surface);
+	--avatar-status-online: var(--ui-success);
+	--avatar-status-offline: color-mix(in oklch, var(--ui-neutral), transparent 40%);
+	--avatar-status-away: var(--ui-warning);
+	--avatar-status-busy: var(--ui-danger);
+}
+
+/* Wrapper owns the positioning context for the status dot */
+.avatar-wrapper {
+	position: relative;
+	display: inline-flex;
+	flex-shrink: 0;
+}
+
+.avatar {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	border: var(--avatar-border-width) solid var(--avatar-border-color);
+	font-weight: var(--ui-weight-medium);
+	font-family: var(--ui-font-sans);
+	user-select: none;
+}
+
+/* Sizes */
+.avatar--sm {
+	width: var(--avatar-size-sm);
+	height: var(--avatar-size-sm);
+	font-size: var(--avatar-font-size-sm);
+}
+
+.avatar--md {
+	width: var(--avatar-size-md);
+	height: var(--avatar-size-md);
+	font-size: var(--avatar-font-size-md);
+}
+
+.avatar--lg {
+	width: var(--avatar-size-lg);
+	height: var(--avatar-size-lg);
+	font-size: var(--avatar-font-size-lg);
+}
+
+.avatar--xl {
+	width: var(--avatar-size-xl);
+	height: var(--avatar-size-xl);
+	font-size: var(--avatar-font-size-xl);
+}
+
+/* Shapes */
+.avatar--circle {
+	border-radius: var(--avatar-radius-circle);
+}
+
+.avatar--square {
+	border-radius: var(--avatar-radius-square);
+}
+
+/* Color variants (for initials / icon fallback) */
+.avatar--primary {
+	background-color: var(--avatar-bg-primary);
+	color: var(--avatar-fg-primary);
+}
+
+.avatar--secondary {
+	background-color: var(--avatar-bg-secondary);
+	color: var(--avatar-fg-secondary);
+}
+
+.avatar--neutral {
+	background-color: var(--avatar-bg-neutral);
+	color: var(--avatar-fg-neutral);
+}
+
+.avatar__image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.avatar__initials {
+	line-height: var(--ui-leading-none);
+	letter-spacing: 0.02em;
+}
+
+/* Status dot — sibling of .avatar inside .avatar-wrapper, outside overflow clip */
+.avatar__status {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: var(--avatar-status-size);
+	height: var(--avatar-status-size);
+	border-radius: 9999px;
+	border: var(--avatar-status-border-width) solid var(--avatar-status-border-color);
+}
+
+.avatar__status--online {
+	background-color: var(--avatar-status-online);
+}
+
+.avatar__status--offline {
+	background-color: var(--avatar-status-offline);
+}
+
+.avatar__status--away {
+	background-color: var(--avatar-status-away);
+}
+
+.avatar__status--busy {
+	background-color: var(--avatar-status-busy);
+}
