@@ -7,10 +7,7 @@ A modern, themeable Svelte 5 component library with a powerful three-layer token
 - Hover on the switch
 - Timepircker defaults to 00:00 when click (annoying)
 
-Components v1
-
-- Table / Pagination
-- Skeleton
+Components v1 2. Add Tabs component — most commonly needed missing piece 3. Add Drawer/Sheet — essential for mobile patterns 4. Add prefers-reduced-motion support across all animations
 
 ## Features
 

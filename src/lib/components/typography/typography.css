@@ -1,0 +1,264 @@
+[data-theme] {
+	/* ---------- Colors ---------- */
+	--typography-color: var(--ui-surface-foreground);
+	--typography-color-muted: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
+	--typography-color-primary: var(--ui-primary);
+	--typography-color-secondary: var(--ui-secondary);
+	--typography-color-success: var(--ui-success);
+	--typography-color-danger: var(--ui-danger);
+	--typography-color-warning: var(--ui-warning);
+	--typography-color-info: var(--ui-info);
+
+	/* ---------- Heading sizes ---------- */
+	--typography-h1-size: var(--ui-text-4xl);
+	--typography-h1-weight: var(--ui-weight-bold);
+	--typography-h1-leading: var(--ui-leading-tight);
+	--typography-h1-tracking: -0.025em;
+
+	--typography-h2-size: var(--ui-text-3xl);
+	--typography-h2-weight: var(--ui-weight-bold);
+	--typography-h2-leading: var(--ui-leading-tight);
+	--typography-h2-tracking: -0.02em;
+
+	--typography-h3-size: var(--ui-text-2xl);
+	--typography-h3-weight: var(--ui-weight-semibold);
+	--typography-h3-leading: var(--ui-leading-tight);
+	--typography-h3-tracking: -0.015em;
+
+	--typography-h4-size: var(--ui-text-xl);
+	--typography-h4-weight: var(--ui-weight-semibold);
+	--typography-h4-leading: var(--ui-leading-tight);
+	--typography-h4-tracking: -0.01em;
+
+	--typography-h5-size: var(--ui-text-lg);
+	--typography-h5-weight: var(--ui-weight-semibold);
+	--typography-h5-leading: var(--ui-leading-tight);
+	--typography-h5-tracking: 0;
+
+	--typography-h6-size: var(--ui-text-base);
+	--typography-h6-weight: var(--ui-weight-semibold);
+	--typography-h6-leading: var(--ui-leading-tight);
+	--typography-h6-tracking: 0;
+
+	/* ---------- Body sizes ---------- */
+	--typography-body-lg-size: var(--ui-text-lg);
+	--typography-body-base-size: var(--ui-text-base);
+	--typography-body-sm-size: var(--ui-text-sm);
+	--typography-body-xs-size: var(--ui-text-xs);
+	--typography-body-weight: var(--ui-weight-normal);
+	--typography-body-leading: var(--ui-leading-normal);
+
+	/* ---------- Label sizes ---------- */
+	--typography-label-lg-size: var(--ui-text-base);
+	--typography-label-base-size: var(--ui-text-sm);
+	--typography-label-sm-size: var(--ui-text-xs);
+	--typography-label-weight: var(--ui-weight-medium);
+	--typography-label-leading: var(--ui-leading-tight);
+
+	/* ---------- Code ---------- */
+	--typography-code-font: var(--ui-font-mono);
+	--typography-code-bg: color-mix(in oklch, var(--ui-neutral), transparent 85%);
+	--typography-code-radius: calc(var(--ui-base-radius) * 0.5);
+	--typography-code-padding-x: calc(var(--ui-base-spacing) * 0.75);
+	--typography-code-padding-y: calc(var(--ui-base-spacing) * 0.25);
+	--typography-code-size: 0.875em;
+
+	/* ---------- Weight overrides ---------- */
+	--typography-weight-normal: var(--ui-weight-normal);
+	--typography-weight-medium: var(--ui-weight-medium);
+	--typography-weight-semibold: var(--ui-weight-semibold);
+	--typography-weight-bold: var(--ui-weight-bold);
+
+	/* ---------- Shared ---------- */
+	--typography-font-family: var(--ui-font-sans);
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+.typography {
+	font-family: var(--typography-font-family);
+	color: var(--typography-color);
+	margin: 0;
+}
+
+/* ==========================================================================
+   VARIANTS
+   ========================================================================== */
+
+/* Headings */
+.typography--h1 {
+	font-size: var(--typography-h1-size);
+	font-weight: var(--typography-h1-weight);
+	line-height: var(--typography-h1-leading);
+	letter-spacing: var(--typography-h1-tracking);
+}
+
+.typography--h2 {
+	font-size: var(--typography-h2-size);
+	font-weight: var(--typography-h2-weight);
+	line-height: var(--typography-h2-leading);
+	letter-spacing: var(--typography-h2-tracking);
+}
+
+.typography--h3 {
+	font-size: var(--typography-h3-size);
+	font-weight: var(--typography-h3-weight);
+	line-height: var(--typography-h3-leading);
+	letter-spacing: var(--typography-h3-tracking);
+}
+
+.typography--h4 {
+	font-size: var(--typography-h4-size);
+	font-weight: var(--typography-h4-weight);
+	line-height: var(--typography-h4-leading);
+	letter-spacing: var(--typography-h4-tracking);
+}
+
+.typography--h5 {
+	font-size: var(--typography-h5-size);
+	font-weight: var(--typography-h5-weight);
+	line-height: var(--typography-h5-leading);
+	letter-spacing: var(--typography-h5-tracking);
+}
+
+.typography--h6 {
+	font-size: var(--typography-h6-size);
+	font-weight: var(--typography-h6-weight);
+	line-height: var(--typography-h6-leading);
+	letter-spacing: var(--typography-h6-tracking);
+}
+
+/* Body */
+.typography--body-lg {
+	font-size: var(--typography-body-lg-size);
+	font-weight: var(--typography-body-weight);
+	line-height: var(--typography-body-leading);
+}
+
+.typography--body {
+	font-size: var(--typography-body-base-size);
+	font-weight: var(--typography-body-weight);
+	line-height: var(--typography-body-leading);
+}
+
+.typography--body-sm {
+	font-size: var(--typography-body-sm-size);
+	font-weight: var(--typography-body-weight);
+	line-height: var(--typography-body-leading);
+}
+
+.typography--body-xs {
+	font-size: var(--typography-body-xs-size);
+	font-weight: var(--typography-body-weight);
+	line-height: var(--typography-body-leading);
+}
+
+/* Label */
+.typography--label-lg {
+	font-size: var(--typography-label-lg-size);
+	font-weight: var(--typography-label-weight);
+	line-height: var(--typography-label-leading);
+}
+
+.typography--label {
+	font-size: var(--typography-label-base-size);
+	font-weight: var(--typography-label-weight);
+	line-height: var(--typography-label-leading);
+}
+
+.typography--label-sm {
+	font-size: var(--typography-label-sm-size);
+	font-weight: var(--typography-label-weight);
+	line-height: var(--typography-label-leading);
+}
+
+/* Code */
+.typography--code {
+	font-family: var(--typography-code-font);
+	font-size: var(--typography-code-size);
+	background: var(--typography-code-bg);
+	border-radius: var(--typography-code-radius);
+	padding: var(--typography-code-padding-y) var(--typography-code-padding-x);
+}
+
+/* ==========================================================================
+   COLOR MODIFIERS
+   ========================================================================== */
+.typography--muted {
+	color: var(--typography-color-muted);
+}
+
+.typography--primary {
+	color: var(--typography-color-primary);
+}
+
+.typography--secondary {
+	color: var(--typography-color-secondary);
+}
+
+.typography--success {
+	color: var(--typography-color-success);
+}
+
+.typography--danger {
+	color: var(--typography-color-danger);
+}
+
+.typography--warning {
+	color: var(--typography-color-warning);
+}
+
+.typography--info {
+	color: var(--typography-color-info);
+}
+
+/* ==========================================================================
+   WEIGHT OVERRIDES
+   ========================================================================== */
+.typography--weight-normal {
+	font-weight: var(--typography-weight-normal);
+}
+
+.typography--weight-medium {
+	font-weight: var(--typography-weight-medium);
+}
+
+.typography--weight-semibold {
+	font-weight: var(--typography-weight-semibold);
+}
+
+.typography--weight-bold {
+	font-weight: var(--typography-weight-bold);
+}
+
+/* ==========================================================================
+   ALIGNMENT
+   ========================================================================== */
+.typography--align-left {
+	text-align: left;
+}
+
+.typography--align-center {
+	text-align: center;
+}
+
+.typography--align-right {
+	text-align: right;
+}
+
+/* ==========================================================================
+   TRUNCATION
+   ========================================================================== */
+.typography--truncate {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* ==========================================================================
+   ITALIC
+   ========================================================================== */
+.typography--italic {
+	font-style: italic;
+}

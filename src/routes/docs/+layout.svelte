@@ -56,9 +56,11 @@
 				{ label: 'Skeleton', href: '/docs/skeleton' },
 				{ label: 'Spinner', href: '/docs/spinner' },
 				{ label: 'Table', href: '/docs/table' },
+				{ label: 'Tabs', href: '/docs/tabs' },
 				{ label: 'Textarea', href: '/docs/textarea' },
 				{ label: 'Toast', href: '/docs/toast' },
-				{ label: 'Tooltip', href: '/docs/tooltip' }
+				{ label: 'Tooltip', href: '/docs/tooltip' },
+				{ label: 'Typography', href: '/docs/typography' }
 			]
 		}
 	];

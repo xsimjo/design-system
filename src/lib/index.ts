@@ -59,6 +59,11 @@ export { default as Progress } from './components/progress/Progress.svelte';
 export { default as Skeleton } from './components/skeleton/Skeleton.svelte';
 export { default as Toast } from './components/toast/Toast.svelte';
 export { default as Toaster } from './components/toast/Toaster.svelte';
+export { default as Tabs } from './components/tabs/Tabs.svelte';
+export { default as TabList } from './components/tabs/TabList.svelte';
+export { default as Tab } from './components/tabs/Tab.svelte';
+export { default as TabPanel } from './components/tabs/TabPanel.svelte';
+export { default as Typography } from './components/typography/Typography.svelte';
 export { toast } from './components/toast/toast.svelte.js';
 export type {
 	ToastOptions,
