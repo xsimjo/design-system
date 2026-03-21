@@ -3,9 +3,10 @@
 	import { getContext } from 'svelte';
 	import { FIELD_KEY } from '$lib/components/field/context.js';
 	import type { FieldContext } from '$lib/components/field/context.js';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import Badge from '$lib/components/badge/Badge.svelte';
 
-	interface Props {
+	interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
 		tags?: string[];
 		placeholder?: string;
 		fullWidth?: boolean;
@@ -38,7 +39,8 @@
 		transform,
 		validate,
 		onadd,
-		onremove
+		onremove,
+		...restProps
 	}: Props = $props();
 
 	const field = getContext<FieldContext>(FIELD_KEY);
@@ -131,6 +133,7 @@
 	class="badge-input"
 	class:badge-input--full-width={fullWidth}
 	aria-label="{tags.length} tag{tags.length !== 1 ? 's' : ''}"
+	{...restProps}
 >
 	<div
 		role="none"

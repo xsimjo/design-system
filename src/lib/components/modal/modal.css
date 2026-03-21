@@ -10,7 +10,7 @@
 	--modal-border: var(--ui-border);
 	--modal-border-width: var(--ui-border-width);
 	--modal-border-radius: calc(var(--ui-base-radius) * 1.5);
-	--modal-shadow: 0 25px 50px -12px oklch(0% 0 0 / 0.25);
+	--modal-shadow: var(--ui-depth);
 
 	--modal-padding: calc(var(--ui-base-spacing) * 3);
 	--modal-footer-padding-top: calc(var(--ui-base-spacing) * 2);
@@ -30,6 +30,9 @@
 	--modal-close-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 88%);
 	--modal-close-size: calc(var(--ui-base-spacing) * 4);
 	--modal-close-border-radius: var(--ui-base-radius);
+	--modal-close-focus-color: var(--ui-primary);
+	--modal-close-focus-ring-width: var(--ui-ring-width);
+	--modal-close-focus-ring-offset: var(--ui-ring-offset);
 
 	--modal-divider-color: var(--ui-border);
 
@@ -155,8 +158,9 @@
 }
 
 .modal__close:focus-visible {
-	outline: var(--ui-ring-width) solid var(--ui-primary);
-	outline-offset: 1px;
+	outline: var(--modal-close-focus-ring-width) solid
+		color-mix(in oklch, var(--modal-close-focus-color), transparent 70%);
+	outline-offset: var(--modal-close-focus-ring-offset);
 }
 
 /* Body */

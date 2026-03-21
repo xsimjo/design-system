@@ -96,12 +96,12 @@
 	font-size: var(--select-font-size);
 }
 
-.select__trigger:hover:not(:disabled):not(.select__trigger--open) {
+.select__trigger:hover:not(:disabled):not([aria-disabled='true']):not(.select__trigger--open) {
 	border-color: var(--select-hover-border);
 }
 
 .select__trigger:focus-visible,
-.select__trigger--open:not(:disabled) {
+.select__trigger--open:not(:disabled):not([aria-disabled='true']) {
 	border-color: var(--select-focus-color);
 	outline-color: color-mix(in oklch, var(--select-focus-color), transparent 70%);
 }
@@ -110,17 +110,20 @@
 	border-color: var(--select-error-color);
 }
 
-.select__trigger--error:hover:not(:disabled):not(.select__trigger--open) {
+.select__trigger--error:hover:not(:disabled):not([aria-disabled='true']):not(
+		.select__trigger--open
+	) {
 	border-color: var(--select-error-color);
 }
 
 .select__trigger--error:focus-visible,
-.select__trigger--error.select__trigger--open:not(:disabled) {
+.select__trigger--error.select__trigger--open:not(:disabled):not([aria-disabled='true']) {
 	border-color: var(--select-error-color);
 	outline-color: color-mix(in oklch, var(--select-error-color), transparent 70%);
 }
 
-.select__trigger:disabled {
+.select__trigger:disabled,
+.select__trigger[aria-disabled='true'] {
 	background-color: var(--select-disabled-bg);
 	color: var(--select-disabled-fg);
 	border-color: var(--select-disabled-border);

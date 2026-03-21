@@ -142,7 +142,8 @@
 	color: var(--combobox-placeholder);
 }
 
-.combobox__input:disabled {
+.combobox__input:disabled,
+.combobox__input[aria-disabled='true'] {
 	cursor: not-allowed;
 }
 

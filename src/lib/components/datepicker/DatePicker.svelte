@@ -3,6 +3,7 @@
 	import { getContext, tick } from 'svelte';
 	import { FIELD_KEY } from '$lib/components/field/context.js';
 	import type { FieldContext } from '$lib/components/field/context.js';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import CalendarIcon from '$lib/icons/CalendarIcon.svelte';
 	import DatePickerPanel from '$lib/internal/DatePickerPanel.svelte';
 	import { isDateOutOfRange, normalizeToDay } from '$lib/internal/dateUtils.js';
@@ -15,7 +16,7 @@
 		yearPlaceholder?: string;
 	}
 
-	interface Props {
+	interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
 		value?: Date;
 		fullWidth?: boolean;
 		disabled?: boolean;
@@ -34,7 +35,8 @@
 		name,
 		min,
 		max,
-		locale
+		locale,
+		...restProps
 	}: Props = $props();
 
 	const field = getContext<FieldContext>(FIELD_KEY);
@@ -311,6 +313,7 @@
 	class="datepicker"
 	class:datepicker--full-width={fullWidth}
 	class:datepicker--disabled={isDisabled}
+	{...restProps}
 >
 	<div
 		bind:this={triggerEl}

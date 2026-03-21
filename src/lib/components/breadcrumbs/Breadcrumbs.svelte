@@ -3,8 +3,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { Snippet } from 'svelte';
 	import { setContext } from 'svelte';
-
-	export type BreadcrumbsContext = { getSeparator: () => 'chevron' | 'slash' };
+	import { BREADCRUMBS_KEY, type BreadcrumbsContext } from './context.js';
 
 	interface Props extends Omit<HTMLAttributes<HTMLElement>, 'children'> {
 		separator?: 'chevron' | 'slash';
@@ -13,7 +12,7 @@
 
 	let { separator = 'chevron', children, ...restProps }: Props = $props();
 
-	setContext<BreadcrumbsContext>('breadcrumbs', { getSeparator: () => separator });
+	setContext<BreadcrumbsContext>(BREADCRUMBS_KEY, { getSeparator: () => separator });
 </script>
 
 <nav aria-label="Breadcrumb" {...restProps}>

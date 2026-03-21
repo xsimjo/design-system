@@ -79,6 +79,7 @@ export { default as CalendarIcon } from './icons/CalendarIcon.svelte';
 export { default as ClockIcon } from './icons/ClockIcon.svelte';
 export { default as CircleCheckIcon } from './icons/CircleCheckIcon.svelte';
 export { default as ClipboardListIcon } from './icons/ClipboardListIcon.svelte';
+export { default as SparklesIcon } from './icons/SparklesIcon.svelte';
 export { default as CircleXIcon } from './icons/CircleXIcon.svelte';
 export { default as TriangleAlertIcon } from './icons/TriangleAlertIcon.svelte';
 export { default as InfoIcon } from './icons/InfoIcon.svelte';

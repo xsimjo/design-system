@@ -5,6 +5,7 @@
 @import './themes/dark.css';
 @import './themes/dev.css';
 @import './themes/formbuilder.css';
+@import './themes/clean.css';
 
 [data-theme] {
 	--header-height: 64px;
@@ -22,4 +23,14 @@ body {
 	line-height: var(--ui-leading-normal);
 	background-color: var(--ui-surface);
 	color: var(--ui-surface-foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+	}
 }

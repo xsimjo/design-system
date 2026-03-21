@@ -36,6 +36,10 @@
 	--dropdown-divider-color: var(--ui-border);
 	--dropdown-divider-margin: calc(var(--ui-base-spacing) * 0.5);
 
+	--dropdown-focus-color: var(--ui-primary);
+	--dropdown-focus-ring-width: var(--ui-ring-width);
+	--dropdown-focus-ring-offset: var(--ui-ring-offset);
+
 	--dropdown-transition: var(--ui-base-duration) var(--ui-base-easing);
 	--dropdown-z-index: var(--ui-z-overlay);
 	--dropdown-enter-offset: var(--ui-enter-offset);
@@ -100,7 +104,9 @@
 }
 
 .dropdown-item:focus-visible {
-	outline: none;
+	outline: var(--dropdown-focus-ring-width) solid
+		color-mix(in oklch, var(--dropdown-focus-color), transparent 70%);
+	outline-offset: calc(var(--dropdown-focus-ring-offset) * -1);
 	background: var(--dropdown-item-hover-bg);
 }
 
@@ -122,6 +128,7 @@
 }
 
 .dropdown-item--destructive:focus-visible {
+	outline-color: color-mix(in oklch, var(--ui-danger), transparent 70%);
 	background: var(--dropdown-item-destructive-hover-bg);
 }
 
@@ -133,9 +140,11 @@
 	background: var(--dropdown-item-destructive-active-bg);
 }
 
-.dropdown-item--disabled {
+.dropdown-item--disabled,
+.dropdown-item[aria-disabled='true'] {
 	opacity: var(--dropdown-item-disabled-opacity);
 	cursor: not-allowed;
+	pointer-events: none;
 }
 
 .dropdown-item__icon,

@@ -3,11 +3,12 @@
 	import { getContext } from 'svelte';
 	import { FIELD_KEY } from '$lib/components/field/context.js';
 	import type { FieldContext } from '$lib/components/field/context.js';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import CloudUploadIcon from '$lib/icons/CloudUploadIcon.svelte';
 	import FileUpIcon from '$lib/icons/FileUpIcon.svelte';
 	import XIcon from '$lib/icons/XIcon.svelte';
 
-	interface Props {
+	interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'onchange'> {
 		files?: FileList | null;
 		placeholder?: string;
 		hint?: string;
@@ -34,7 +35,8 @@
 		success = false,
 		id,
 		name,
-		onchange
+		onchange,
+		...restProps
 	}: Props = $props();
 
 	const field = getContext<FieldContext>(FIELD_KEY);
@@ -115,7 +117,7 @@
 	}
 </script>
 
-<div class="file-input" class:file-input--full-width={fullWidth}>
+<div class="file-input" class:file-input--full-width={fullWidth} {...restProps}>
 	<input
 		bind:this={inputEl}
 		id={inputId}

@@ -2,7 +2,7 @@
 	import type { HTMLAttributes, HTMLAnchorAttributes } from 'svelte/elements';
 	import type { Snippet } from 'svelte';
 	import { getContext } from 'svelte';
-	import type { BreadcrumbsContext } from './Breadcrumbs.svelte';
+	import { BREADCRUMBS_KEY, type BreadcrumbsContext } from './context.js';
 	import ChevronRightIcon from '$lib/icons/ChevronRightIcon.svelte';
 
 	type AnchorProps = Omit<HTMLAnchorAttributes, 'children'> & { href: string };
@@ -11,7 +11,7 @@
 
 	let { href, children, ...restProps }: Props = $props();
 
-	const ctx = getContext<BreadcrumbsContext>('breadcrumbs');
+	const ctx = getContext<BreadcrumbsContext>(BREADCRUMBS_KEY);
 	const separator = $derived(ctx?.getSeparator() ?? 'chevron');
 </script>
 

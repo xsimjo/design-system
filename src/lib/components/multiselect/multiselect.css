@@ -166,7 +166,8 @@
 	color: var(--multiselect-placeholder);
 }
 
-.multiselect__input:disabled {
+.multiselect__input:disabled,
+.multiselect__input[aria-disabled='true'] {
 	cursor: not-allowed;
 }
 

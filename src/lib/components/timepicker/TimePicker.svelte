@@ -3,6 +3,7 @@
 	import { getContext, tick } from 'svelte';
 	import { FIELD_KEY } from '$lib/components/field/context.js';
 	import type { FieldContext } from '$lib/components/field/context.js';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import ClockIcon from '$lib/icons/ClockIcon.svelte';
 	import { useFloatingPanel } from '$lib/internal/useFloatingPanel.svelte.js';
 	import TimePickerPanel from '$lib/internal/TimePickerPanel.svelte';
@@ -14,7 +15,7 @@
 		secondPlaceholder?: string;
 	}
 
-	interface Props {
+	interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
 		value?: string; // "HH:MM" or "HH:MM:SS" in 24-hour
 		fullWidth?: boolean;
 		disabled?: boolean;
@@ -31,7 +32,8 @@
 		id,
 		name,
 		seconds = false,
-		locale
+		locale,
+		...restProps
 	}: Props = $props();
 
 	const field = getContext<FieldContext>(FIELD_KEY);
@@ -265,6 +267,7 @@
 	class="timepicker"
 	class:timepicker--full-width={fullWidth}
 	class:timepicker--disabled={isDisabled}
+	{...restProps}
 >
 	<div
 		bind:this={triggerEl}

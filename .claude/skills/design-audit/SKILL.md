@@ -25,7 +25,7 @@ Read source files directly every time. Never rely on prior analysis or memory.
 
 Before running any checks, read these files once and keep them as reference throughout:
 
-- `src/lib/styles/themes/light.css` — canonical token vocabulary (all 42 `--ui-*` tokens)
+- `src/lib/styles/themes/light.css` — canonical token vocabulary (all 55 `--ui-*` tokens)
 - `src/lib/styles/primitives.css` — primitive layer (never referenced by components)
 
 For each component being audited, read:
@@ -42,7 +42,7 @@ For each component being audited, read:
 
 For each component `.css` file:
 
-1. **No raw color values** — no hex (`#abc`), rgb, hsl, or oklch literals. Colors must come from `--ui-*` tokens or `color-mix()` expressions built on them.
+1. **No raw color values** — no hex (`#abc`), rgb, hsl, or oklch literals. Colors must come from `--ui-*` tokens or `color-mix(in oklch, ...)` expressions built on them.
 2. **No raw pixel spacing** — spacing values (padding, margin, gap, width, height for sized elements) must use `calc(var(--ui-base-spacing) * N)`. Exception: `1px` border widths or `0` are acceptable literals.
 3. **No primitive references** — no `--color-*`, `--space-*`, `--shadow-*`, `--radius-*`, `--font-size-*`, `--font-weight-*`, `--line-height-*`, `--z-*`, `--transition-*`, `--opacity-*`, `--border-width-*` tokens in component files.
 4. **Component tokens defined in `[data-theme]`** — the token definition block must be scoped to `[data-theme]`, never `:root`.
@@ -86,7 +86,7 @@ For each component:
 
 1. **Foreground on background** — any color that renders text or an icon on a colored surface must pair a `*-foreground` token with its matching background token (e.g. `--ui-primary` background → `--ui-primary-foreground` text).
 2. **Semantic intent alignment** — a "danger" action should use `--ui-danger`; a neutral/ghost action should use `--ui-neutral` or surface tokens. Flag mismatches (e.g. using `--ui-success` for a default state button).
-3. **Interactive states** — hover and active color darkening must use `--ui-hover-mix` / `--ui-hover-amount` via `color-mix()`. Hardcoded darken values are a violation.
+3. **Interactive states** — hover and active color darkening must use `--ui-hover-mix` / `--ui-hover-amount` via `color-mix(in oklch, ...)`. Hardcoded darken values (including `filter: brightness()`, raw `rgba()`, or `oklch()` literals) are a violation.
 4. **Disabled state** — disabled appearance must use the semantic disabled pattern (typically muted versions of surface and foreground tokens, not a random color).
 5. **Border color** — borders should use `--ui-border` unless there is a clear semantic reason (e.g. a danger input uses `--ui-danger`).
 
@@ -150,19 +150,22 @@ Required states for interactive components (buttons, inputs, links, dropdowns, e
 - **Hover** — visible change using `--ui-hover-mix` / `--ui-hover-amount` pattern
 - **Focus** — focus ring using `--ui-ring` color and `--ui-ring-width` width, with a reasonable `outline-offset`
 - **Active** — perceivable press state (typically deeper darkening than hover)
-- **Disabled** — visually muted; must use `cursor: not-allowed`; must not respond to hover/active styles
+- **Disabled** — visually muted; must use `cursor: not-allowed`; must not respond to hover/active styles; must style both `:disabled` and `[aria-disabled='true']`
 
 For each interactive component:
 
 1. Check the `.svelte` template and `.css` for all five state rules.
 2. Verify the focus ring uses `--ui-ring` and `--ui-ring-width` (not hardcoded colors or widths).
-3. Verify transitions use `--ui-base-duration` (not a hardcoded duration like `150ms` or `300ms`).
-4. Verify disabled state suppresses hover/active styles (check for `:not(:disabled)` guards or similar).
+3. Verify transitions use `--ui-base-duration` and `--ui-base-easing` (not hardcoded durations like `150ms` or `300ms`, or hardcoded easing functions).
+4. Verify disabled state suppresses hover/active styles (check for `:not(:disabled)` guards or similar) and covers both `:disabled` and `[aria-disabled='true']` selectors.
+5. Verify `prefers-reduced-motion: reduce` is respected — animations and transitions should be disabled or minimized within that media query.
 
 **Severity**:
 
 - Missing focus ring or focus ring not using `--ui-ring` tokens → FAIL (accessibility regression)
-- Hardcoded transition duration → WARN
+- Disabled state missing `:disabled` or `[aria-disabled='true']` coverage → FAIL
+- Missing `prefers-reduced-motion: reduce` handling → WARN
+- Hardcoded transition duration or easing → WARN
 - Disabled state does not suppress interactive styles → WARN
 - Missing hover or active state on an interactive component → WARN
 
@@ -198,7 +201,7 @@ For each component:
 1. **CSS scoping** — component tokens defined in `[data-theme]` block (not `:root`, not a class).
 2. **Token naming** — all component-level tokens follow `--{component-name}-*` naming convention.
 3. **Export** — component is exported from `src/lib/index.ts` (read the file to verify).
-4. **BEM class pattern** — modifier classes follow `{component}--{modifier}` (e.g. `button--primary`, `button--sm`). No camelCase or random class names.
+4. **BEM class pattern** — block `.component`, modifiers `.component--variant`, elements `.component__child` (e.g. `button--primary`, `badge-input__field`). No camelCase or random class names.
 5. **CSS import** — the `.svelte` file imports its own `.css` file (not a shared or global file).
 6. **No theme-specific hardcoding** — no values in component files that only work in one theme (e.g. hardcoded `white` text that would fail in a dark theme).
 

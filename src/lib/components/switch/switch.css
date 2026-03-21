@@ -24,14 +24,15 @@
 	);
 
 	/* Size */
-	--switch-track-width: 36px;
-	--switch-track-height: 20px;
-	--switch-thumb-size: 16px;
-	--switch-thumb-travel: 16px;
+	--switch-track-width: calc(var(--ui-base-spacing) * 4.5);
+	--switch-track-height: calc(var(--ui-base-spacing) * 2.5);
+	--switch-thumb-size: calc(var(--ui-base-spacing) * 2);
+	--switch-thumb-travel: calc(var(--ui-base-spacing) * 2);
+	--switch-thumb-offset: calc(var(--ui-base-spacing) * 0.25);
 
 	/* Style */
 	--switch-border-radius: 9999px;
-	--switch-thumb-shadow: 0 1px 3px oklch(0% 0 0 / 0.25);
+	--switch-thumb-shadow: 0 1px 3px color-mix(in oklch, var(--ui-hover-mix) 25%, transparent);
 	--switch-transition: var(--ui-base-duration) var(--ui-base-easing);
 }
 
@@ -80,7 +81,7 @@
 .switch__thumb {
 	position: absolute;
 	top: 50%;
-	left: 2px;
+	left: var(--switch-thumb-offset);
 	transform: translateY(-50%);
 	width: var(--_thumb-size);
 	height: var(--_thumb-size);
@@ -114,6 +115,13 @@
 	outline: var(--switch-focus-ring-width) solid
 		color-mix(in oklch, var(--switch-focus-color), transparent 70%);
 	outline-offset: var(--switch-focus-ring-offset);
+}
+
+/* Disabled */
+.switch__input:disabled + .switch__track,
+.switch__input[aria-disabled='true'] + .switch__track {
+	opacity: 0.5;
+	cursor: not-allowed;
 }
 
 /* Error */

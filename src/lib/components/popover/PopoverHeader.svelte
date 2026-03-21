@@ -4,6 +4,7 @@
 	import Button from '$lib/components/button/Button.svelte';
 	import { getContext } from 'svelte';
 	import type { Snippet } from 'svelte';
+	import { POPOVER_KEY, type PopoverContext } from './context.js';
 
 	interface Props {
 		showClose?: boolean;
@@ -12,7 +13,7 @@
 
 	let { showClose = true, children }: Props = $props();
 
-	const popover = getContext<{ close: () => void } | undefined>('popover');
+	const popover = getContext<PopoverContext | undefined>(POPOVER_KEY);
 </script>
 
 <div class="popover__header">

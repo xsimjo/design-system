@@ -6,8 +6,12 @@
 	--accordion-content-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 25%);
 	--accordion-padding-x: calc(var(--ui-base-spacing) * 2);
 	--accordion-padding-y: calc(var(--ui-base-spacing) * 1.5);
+	--accordion-focus-color: var(--ui-primary);
+	--accordion-focus-ring-width: var(--ui-ring-width);
+	--accordion-focus-ring-offset: var(--ui-ring-offset);
 	--accordion-duration: var(--ui-base-duration);
 	--accordion-easing: var(--ui-base-easing);
+	--accordion-disabled-opacity: 0.45;
 }
 
 .accordion {
@@ -44,19 +48,21 @@
 	transition: background-color var(--accordion-duration) var(--accordion-easing);
 }
 
-.accordion-item__trigger:hover:not(:disabled) {
+.accordion-item__trigger:hover:not(:disabled):not([aria-disabled='true']) {
 	background-color: var(--accordion-trigger-hover-bg);
 }
 
 .accordion-item__trigger:focus-visible {
-	outline: var(--ui-ring-width) solid var(--ui-primary);
-	outline-offset: calc(var(--ui-ring-offset) * -1);
+	outline: var(--accordion-focus-ring-width) solid
+		color-mix(in oklch, var(--accordion-focus-color), transparent 70%);
+	outline-offset: calc(var(--accordion-focus-ring-offset) * -1);
 	position: relative;
 	z-index: 1;
 }
 
-.accordion-item__trigger:disabled {
-	opacity: 0.45;
+.accordion-item__trigger:disabled,
+.accordion-item__trigger[aria-disabled='true'] {
+	opacity: var(--accordion-disabled-opacity);
 	cursor: not-allowed;
 }
 

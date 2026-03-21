@@ -10,6 +10,7 @@
 		autoUpdate
 	} from '@floating-ui/dom';
 	import type { Middleware } from '@floating-ui/dom';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import { FIELD_KEY } from '$lib/components/field/context.js';
 	import type { FieldContext } from '$lib/components/field/context.js';
 	import Badge from '$lib/components/badge/Badge.svelte';
@@ -20,7 +21,7 @@
 		disabled?: boolean;
 	}
 
-	interface Props {
+	interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
 		values?: string[];
 		options: MultiSelectOption[];
 		placeholder?: string;
@@ -43,7 +44,8 @@
 		name,
 		max,
 		emptyText = 'No results',
-		filterFn
+		filterFn,
+		...restProps
 	}: Props = $props();
 
 	const field = getContext<FieldContext>(FIELD_KEY);
@@ -278,7 +280,7 @@
 	}
 </script>
 
-<div class="multiselect" class:multiselect--full-width={fullWidth}>
+<div class="multiselect" class:multiselect--full-width={fullWidth} {...restProps}>
 	<div
 		bind:this={triggerEl}
 		role="none"

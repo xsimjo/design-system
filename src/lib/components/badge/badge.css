@@ -23,42 +23,42 @@
 }
 
 /* Variants */
-.badge--secondary {
+[data-theme] .badge--secondary {
 	--badge-bg: color-mix(in oklch, var(--ui-secondary), transparent 88%);
 	--badge-fg: var(--ui-secondary);
 	--badge-border: color-mix(in oklch, var(--ui-secondary), transparent 75%);
 	--badge-remove-hover-bg: color-mix(in oklch, var(--ui-secondary), transparent 70%);
 }
 
-.badge--success {
+[data-theme] .badge--success {
 	--badge-bg: color-mix(in oklch, var(--ui-success), transparent 88%);
 	--badge-fg: var(--ui-success);
 	--badge-border: color-mix(in oklch, var(--ui-success), transparent 75%);
 	--badge-remove-hover-bg: color-mix(in oklch, var(--ui-success), transparent 70%);
 }
 
-.badge--danger {
+[data-theme] .badge--danger {
 	--badge-bg: color-mix(in oklch, var(--ui-danger), transparent 88%);
 	--badge-fg: var(--ui-danger);
 	--badge-border: color-mix(in oklch, var(--ui-danger), transparent 75%);
 	--badge-remove-hover-bg: color-mix(in oklch, var(--ui-danger), transparent 70%);
 }
 
-.badge--warning {
+[data-theme] .badge--warning {
 	--badge-bg: color-mix(in oklch, var(--ui-warning), transparent 88%);
 	--badge-fg: color-mix(in oklch, var(--ui-warning), transparent 10%);
 	--badge-border: color-mix(in oklch, var(--ui-warning), transparent 75%);
 	--badge-remove-hover-bg: color-mix(in oklch, var(--ui-warning), transparent 70%);
 }
 
-.badge--info {
+[data-theme] .badge--info {
 	--badge-bg: color-mix(in oklch, var(--ui-info), transparent 88%);
 	--badge-fg: var(--ui-info);
 	--badge-border: color-mix(in oklch, var(--ui-info), transparent 75%);
 	--badge-remove-hover-bg: color-mix(in oklch, var(--ui-info), transparent 70%);
 }
 
-.badge--neutral {
+[data-theme] .badge--neutral {
 	--badge-bg: color-mix(in oklch, var(--ui-neutral), transparent 88%);
 	--badge-fg: var(--ui-surface-foreground);
 	--badge-border: color-mix(in oklch, var(--ui-neutral), transparent 70%);
@@ -135,7 +135,7 @@
 	transition: background-color var(--badge-transition);
 }
 
-.badge__remove:hover:not(:disabled) {
+.badge__remove:hover:not(:disabled):not([aria-disabled='true']) {
 	background-color: var(--badge-remove-hover-bg);
 }
 
@@ -144,6 +144,7 @@
 	outline-offset: 1px;
 }
 
-.badge__remove:disabled {
+.badge__remove:disabled,
+.badge__remove[aria-disabled='true'] {
 	cursor: not-allowed;
 }

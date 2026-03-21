@@ -92,7 +92,7 @@
 }
 
 .button:focus-visible {
-	outline: var(--button-focus-ring-width) solid var(--_color);
+	outline: var(--button-focus-ring-width) solid color-mix(in oklch, var(--_color), transparent 70%);
 	outline-offset: var(--button-focus-ring-offset);
 }
 

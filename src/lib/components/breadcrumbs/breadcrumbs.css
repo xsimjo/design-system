@@ -5,6 +5,10 @@
 	--breadcrumbs-link-hover-color: var(--ui-surface-foreground);
 	--breadcrumbs-current-color: var(--ui-surface-foreground);
 	--breadcrumbs-separator-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 60%);
+	--breadcrumbs-focus-color: var(--ui-primary);
+	--breadcrumbs-focus-ring-width: var(--ui-ring-width);
+	--breadcrumbs-focus-ring-offset: var(--ui-ring-offset);
+	--breadcrumbs-focus-radius: calc(var(--ui-base-radius) * 0.25);
 }
 
 .breadcrumbs {
@@ -59,9 +63,10 @@
 }
 
 .breadcrumbs__link:focus-visible {
-	outline: var(--ui-ring-width) solid var(--ui-primary);
-	outline-offset: var(--ui-ring-offset);
-	border-radius: 2px;
+	outline: var(--breadcrumbs-focus-ring-width) solid
+		color-mix(in oklch, var(--breadcrumbs-focus-color), transparent 70%);
+	outline-offset: var(--breadcrumbs-focus-ring-offset);
+	border-radius: var(--breadcrumbs-focus-radius);
 }
 
 .breadcrumbs__current {

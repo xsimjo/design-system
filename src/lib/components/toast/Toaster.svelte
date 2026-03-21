@@ -3,9 +3,10 @@
 	import { computePosition, offset, shift, autoUpdate } from '@floating-ui/dom';
 	import type { Placement } from '@floating-ui/dom';
 	import { toast, type ToastPosition } from './toast.svelte.js';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import ToastItem from './Toast.svelte';
 
-	interface Props {
+	interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
 		position?: ToastPosition;
 		/** Gap between the toast container and the viewport edge in px. */
 		margin?: number;
@@ -22,7 +23,8 @@
 		margin = 16,
 		ariaLabel = 'Notifications',
 		showBorder = false,
-		showProgress = true
+		showProgress = true,
+		...restProps
 	}: Props = $props();
 
 	let anchorEl: HTMLElement | null = $state(null);
@@ -70,6 +72,7 @@
 	style="position: fixed; top: 0; left: 0;"
 	role="region"
 	aria-label={ariaLabel}
+	{...restProps}
 >
 	{#each toast.items as item (item.id)}
 		<ToastItem

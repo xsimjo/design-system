@@ -10,6 +10,7 @@
 		autoUpdate
 	} from '@floating-ui/dom';
 	import type { Middleware } from '@floating-ui/dom';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import { FIELD_KEY } from '$lib/components/field/context.js';
 	import type { FieldContext } from '$lib/components/field/context.js';
 
@@ -19,7 +20,7 @@
 		disabled?: boolean;
 	}
 
-	interface Props {
+	interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
 		value?: string;
 		options: SelectOption[];
 		placeholder?: string;
@@ -36,7 +37,8 @@
 		fullWidth = false,
 		disabled = false,
 		id,
-		name
+		name,
+		...restProps
 	}: Props = $props();
 
 	const field = getContext<FieldContext>(FIELD_KEY);
@@ -203,7 +205,7 @@
 	}
 </script>
 
-<div class="select" class:select--full-width={fullWidth}>
+<div class="select" class:select--full-width={fullWidth} {...restProps}>
 	<button
 		bind:this={triggerEl}
 		id={selectId}

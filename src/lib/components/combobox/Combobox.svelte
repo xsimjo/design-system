@@ -10,6 +10,7 @@
 		autoUpdate
 	} from '@floating-ui/dom';
 	import type { Middleware } from '@floating-ui/dom';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import { FIELD_KEY } from '$lib/components/field/context.js';
 	import type { FieldContext } from '$lib/components/field/context.js';
 
@@ -19,7 +20,7 @@
 		disabled?: boolean;
 	}
 
-	interface Props {
+	interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
 		value?: string;
 		options: ComboboxOption[];
 		placeholder?: string;
@@ -40,7 +41,8 @@
 		id,
 		name,
 		emptyText = 'No results',
-		filterFn
+		filterFn,
+		...restProps
 	}: Props = $props();
 
 	const field = getContext<FieldContext>(FIELD_KEY);
@@ -234,7 +236,7 @@
 	}
 </script>
 
-<div class="combobox" class:combobox--full-width={fullWidth}>
+<div class="combobox" class:combobox--full-width={fullWidth} {...restProps}>
 	<div
 		bind:this={triggerEl}
 		class="combobox__trigger"

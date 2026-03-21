@@ -18,13 +18,15 @@ Run all checks below in order. Track each as PASS / WARN / FAIL / FIXED.
 
 ### Check 1 — Token Consistency
 
-Read all three theme files:
+Read all five theme files:
 
 - `src/lib/styles/themes/light.css`
 - `src/lib/styles/themes/dark.css`
 - `src/lib/styles/themes/dev.css`
+- `src/lib/styles/themes/formbuilder.css`
+- `src/lib/styles/themes/clean.css`
 
-Count all `--ui-*` custom properties in each. All three must define the exact same set.
+Count all `--ui-*` custom properties in each. All five must define the exact same set (55 tokens).
 
 - Same count → PASS
 - Different count or missing tokens → FAIL (list which tokens are missing from which theme)
@@ -101,7 +103,10 @@ Run: `npm run build:mcp`
 
 Always run this last, after any SPEC.md fixes, so the MCP server reflects the final state.
 
-- Passes → PASS
+After a successful build, verify that `packages/mcp/src/data/tokens.json` contains entries for all five themes (light, dark, dev, formbuilder, clean). The `clean` theme is a known gap — if missing, flag it as WARN.
+
+- Passes and all themes present → PASS
+- Passes but themes missing from tokens.json → WARN (list missing themes)
 - Fails → FAIL (show errors)
 
 ---

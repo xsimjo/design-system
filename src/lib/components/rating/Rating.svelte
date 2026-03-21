@@ -1,7 +1,8 @@
 <script lang="ts">
 	import './rating.css';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props {
+	interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
 		value?: number;
 		max?: number;
 		readonly?: boolean;
@@ -16,7 +17,8 @@
 		readonly = false,
 		disabled = false,
 		label = 'Rating',
-		name
+		name,
+		...restProps
 	}: Props = $props();
 
 	let hoverValue = $state(0);
@@ -72,6 +74,7 @@
 	aria-label={label}
 	aria-disabled={disabled || undefined}
 	onkeydown={handleKeydown}
+	{...restProps}
 >
 	{#if name}
 		<input type="hidden" {name} {value} />

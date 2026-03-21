@@ -119,7 +119,8 @@
 	color: var(--badge-input-placeholder);
 }
 
-.badge-input__input:disabled {
+.badge-input__input:disabled,
+.badge-input__input[aria-disabled='true'] {
 	cursor: not-allowed;
 }
 

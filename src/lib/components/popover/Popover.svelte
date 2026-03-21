@@ -4,6 +4,7 @@
 	import type { Placement } from '@floating-ui/dom';
 	import type { Snippet } from 'svelte';
 	import { setContext } from 'svelte';
+	import { POPOVER_KEY, type PopoverContext } from './context.js';
 
 	interface Props {
 		open?: boolean;
@@ -46,7 +47,7 @@
 			.join('; ')
 	);
 
-	setContext('popover', { close: () => startClose() });
+	setContext<PopoverContext>(POPOVER_KEY, { close: () => startClose() });
 
 	async function updatePosition() {
 		if (!triggerEl || !popoverEl) return;
@@ -160,6 +161,7 @@
 	onclick={toggle}
 	aria-expanded={shown && !closing}
 	aria-controls={popoverId}
+	aria-haspopup="dialog"
 >
 	{@render children()}
 </span>
