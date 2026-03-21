@@ -35,6 +35,10 @@ export type { MultiSelectOption } from './components/multiselect/MultiSelect.sve
 export { default as BadgeInput } from './components/badge-input/BadgeInput.svelte';
 export { default as FileInput } from './components/file-input/FileInput.svelte';
 export { default as Modal } from './components/modal/Modal.svelte';
+export { default as Drawer } from './components/drawer/Drawer.svelte';
+export { default as DrawerHeader } from './components/drawer/DrawerHeader.svelte';
+export { default as DrawerBody } from './components/drawer/DrawerBody.svelte';
+export { default as DrawerFooter } from './components/drawer/DrawerFooter.svelte';
 export { default as Popover } from './components/popover/Popover.svelte';
 export { default as PopoverHeader } from './components/popover/PopoverHeader.svelte';
 export { default as PopoverContent } from './components/popover/PopoverContent.svelte';

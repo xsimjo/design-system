@@ -1,0 +1,257 @@
+@import '../../styles/animations.css';
+
+[data-theme] {
+	--drawer-backdrop-color: var(--ui-backdrop);
+	--drawer-backdrop-blur: var(--ui-backdrop-blur);
+
+	--drawer-surface: var(--ui-surface-overlay);
+	--drawer-surface-foreground: var(--ui-surface-overlay-foreground);
+
+	--drawer-border: var(--ui-border);
+	--drawer-border-width: var(--ui-border-width);
+	--drawer-shadow: var(--ui-depth);
+
+	--drawer-padding: calc(var(--ui-base-spacing) * 3);
+	--drawer-footer-gap: calc(var(--ui-base-spacing) * 1.5);
+
+	--drawer-sm-width: calc(var(--ui-base-spacing) * 50);
+	--drawer-md-width: calc(var(--ui-base-spacing) * 64);
+	--drawer-lg-width: calc(var(--ui-base-spacing) * 80);
+	--drawer-xl-width: calc(var(--ui-base-spacing) * 96);
+
+	--drawer-title-size: var(--ui-text-lg);
+	--drawer-title-weight: var(--ui-weight-semibold);
+	--drawer-title-line-height: var(--ui-leading-tight);
+
+	--drawer-close-color: color-mix(in oklch, var(--ui-surface-overlay-foreground), transparent 40%);
+	--drawer-close-hover-color: var(--ui-surface-overlay-foreground);
+	--drawer-close-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 88%);
+	--drawer-close-size: calc(var(--ui-base-spacing) * 4);
+	--drawer-close-border-radius: var(--ui-base-radius);
+	--drawer-close-focus-color: var(--ui-primary);
+	--drawer-close-focus-ring-width: var(--ui-ring-width);
+	--drawer-close-focus-ring-offset: var(--ui-ring-offset);
+
+	--drawer-divider-color: var(--ui-border);
+
+	--drawer-transition: var(--ui-base-duration) var(--ui-base-easing);
+}
+
+/* Keyframes */
+@keyframes drawer-enter-right {
+	from {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes drawer-leave-right {
+	from {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+}
+
+@keyframes drawer-enter-left {
+	from {
+		opacity: 0;
+		transform: translateX(-100%);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes drawer-leave-left {
+	from {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateX(-100%);
+	}
+}
+
+/* Base dialog */
+.drawer {
+	position: fixed;
+	inset: 0;
+	z-index: var(--ui-z-overlay);
+	width: 100%;
+	height: 100vh;
+	max-width: 100%;
+	max-height: 100vh;
+	padding: 0;
+	border: none;
+	background: transparent;
+	overflow: visible;
+}
+
+.drawer[open] {
+	display: flex;
+}
+
+.drawer::backdrop {
+	opacity: 0;
+	background: var(--drawer-backdrop-color);
+	backdrop-filter: blur(var(--drawer-backdrop-blur));
+	animation: modal-backdrop-enter var(--drawer-transition) forwards;
+}
+
+/* Panel */
+.drawer__panel {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: var(--drawer-md-width);
+	max-width: 100%;
+	height: 100%;
+	background: var(--drawer-surface);
+	color: var(--drawer-surface-foreground);
+	border: var(--drawer-border-width) solid var(--drawer-border);
+	box-shadow: var(--drawer-shadow);
+	overflow: hidden;
+}
+
+/* Placement — right (default) */
+.drawer--right {
+	justify-content: flex-end;
+}
+
+.drawer--right .drawer__panel {
+	border-left: var(--drawer-border-width) solid var(--drawer-border);
+	border-right: none;
+	opacity: 0;
+	transform: translateX(100%);
+	animation: drawer-enter-right var(--drawer-transition) forwards;
+}
+
+/* Placement — left */
+.drawer--left {
+	justify-content: flex-start;
+}
+
+.drawer--left .drawer__panel {
+	border-right: var(--drawer-border-width) solid var(--drawer-border);
+	border-left: none;
+	opacity: 0;
+	transform: translateX(-100%);
+	animation: drawer-enter-left var(--drawer-transition) forwards;
+}
+
+/* Closing animations */
+.drawer--closing.drawer--right .drawer__panel {
+	animation: drawer-leave-right var(--drawer-transition) forwards;
+}
+
+.drawer--closing.drawer--left .drawer__panel {
+	animation: drawer-leave-left var(--drawer-transition) forwards;
+}
+
+.drawer--closing::backdrop {
+	animation: modal-backdrop-leave var(--drawer-transition) forwards;
+}
+
+/* Size variants */
+.drawer--sm .drawer__panel {
+	width: var(--drawer-sm-width);
+}
+
+.drawer--md .drawer__panel {
+	width: var(--drawer-md-width);
+}
+
+.drawer--lg .drawer__panel {
+	width: var(--drawer-lg-width);
+}
+
+.drawer--xl .drawer__panel {
+	width: var(--drawer-xl-width);
+}
+
+/* Header */
+.drawer__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: calc(var(--ui-base-spacing) * 2);
+	padding: var(--drawer-padding);
+	border-bottom: var(--drawer-border-width) solid var(--drawer-divider-color);
+	flex-shrink: 0;
+}
+
+.drawer__title {
+	font-size: var(--drawer-title-size);
+	font-weight: var(--drawer-title-weight);
+	line-height: var(--drawer-title-line-height);
+	color: var(--drawer-surface-foreground);
+	margin: 0;
+}
+
+.drawer__close {
+	all: unset;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: var(--drawer-close-size);
+	height: var(--drawer-close-size);
+	color: var(--drawer-close-color);
+	border-radius: var(--drawer-close-border-radius);
+	cursor: pointer;
+	transition:
+		background var(--drawer-transition),
+		color var(--drawer-transition);
+}
+
+.drawer__close:hover {
+	background: var(--drawer-close-hover-bg);
+	color: var(--drawer-close-hover-color);
+}
+
+.drawer__close:focus-visible {
+	outline: var(--drawer-close-focus-ring-width) solid
+		color-mix(in oklch, var(--drawer-close-focus-color), transparent 70%);
+	outline-offset: var(--drawer-close-focus-ring-offset);
+}
+
+/* Body */
+.drawer__body {
+	flex: 1;
+	overflow-y: auto;
+	padding: var(--drawer-padding);
+	font-family: var(--ui-font-sans);
+	font-size: var(--ui-text-sm);
+	line-height: var(--ui-leading-normal);
+	color: var(--drawer-surface-foreground);
+}
+
+/* Footer */
+.drawer__footer {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: var(--drawer-footer-gap);
+	padding: var(--drawer-padding);
+	border-top: var(--drawer-border-width) solid var(--drawer-divider-color);
+	flex-shrink: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	.drawer__panel,
+	.drawer::backdrop {
+		animation-duration: 1ms !important;
+	}
+}

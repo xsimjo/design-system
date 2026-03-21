@@ -37,6 +37,7 @@
 				{ label: 'Radio', href: '/docs/radio' },
 				{ label: 'Rating', href: '/docs/rating' },
 				{ label: 'Switch', href: '/docs/switch' },
+				{ label: 'Drawer', href: '/docs/drawer' },
 				{ label: 'Dropdown', href: '/docs/dropdown' },
 				{ label: 'Modal', href: '/docs/modal' },
 				{ label: 'Pagination', href: '/docs/pagination' },
