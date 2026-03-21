@@ -1,6 +1,7 @@
 export { default as BarChartIcon } from './BarChartIcon.svelte';
 export { default as CalendarIcon } from './CalendarIcon.svelte';
 export { default as CheckIcon } from './CheckIcon.svelte';
+export { default as ClipboardListIcon } from './ClipboardListIcon.svelte';
 export { default as ChevronDownIcon } from './ChevronDownIcon.svelte';
 export { default as ChevronLeftIcon } from './ChevronLeftIcon.svelte';
 export { default as ChevronRightIcon } from './ChevronRightIcon.svelte';

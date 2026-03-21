@@ -6,6 +6,7 @@
 	import SunIcon from '$lib/icons/SunIcon.svelte';
 	import MoonIcon from '$lib/icons/MoonIcon.svelte';
 	import CodeIcon from '$lib/icons/CodeIcon.svelte';
+	import ClipboardListIcon from '$lib/icons/ClipboardListIcon.svelte';
 	import CheckIcon from '$lib/icons/CheckIcon.svelte';
 	import type { Component } from 'svelte';
 
@@ -18,7 +19,8 @@
 	const themes: ThemeConfig[] = [
 		{ id: 'light', label: 'Light', icon: SunIcon },
 		{ id: 'dark', label: 'Dark', icon: MoonIcon },
-		{ id: 'dev', label: 'Developer', icon: CodeIcon }
+		{ id: 'dev', label: 'Developer', icon: CodeIcon },
+		{ id: 'formbuilder', label: 'Form Builder', icon: ClipboardListIcon }
 	];
 
 	let currentTheme = $state('light');
