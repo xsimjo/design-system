@@ -3,10 +3,11 @@
 	import { computePosition, flip, shift, offset, arrow, autoUpdate } from '@floating-ui/dom';
 	import type { Placement } from '@floating-ui/dom';
 	import type { Snippet } from 'svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import { setContext } from 'svelte';
 	import { POPOVER_KEY, type PopoverContext } from './context.js';
 
-	interface Props {
+	interface Props extends Omit<HTMLAttributes<HTMLSpanElement>, 'children'> {
 		open?: boolean;
 		placement?: Placement;
 		showArrow?: boolean;
@@ -29,7 +30,8 @@
 		closeOnClickOutside = true,
 		closeOnEscape = true,
 		content,
-		children
+		children,
+		...restProps
 	}: Props = $props();
 
 	let triggerEl: HTMLElement | null = $state(null);
@@ -153,8 +155,6 @@
 
 <svelte:window onpointerdown={handleOutsidePointerdown} onkeydown={handleKeydown} />
 
-<!-- svelte-ignore a11y_no_static_element_interactions -->
-<!-- svelte-ignore a11y_click_events_have_key_events -->
 <span
 	bind:this={triggerEl}
 	class="popover-trigger"
@@ -162,6 +162,7 @@
 	aria-expanded={shown && !closing}
 	aria-controls={popoverId}
 	aria-haspopup="dialog"
+	{...restProps}
 >
 	{@render children()}
 </span>

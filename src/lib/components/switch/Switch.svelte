@@ -14,7 +14,7 @@
 	let { checked = $bindable(false), disabled = false, id, ...restProps }: Props = $props();
 
 	const field = getContext<FieldContext>(FIELD_KEY);
-	const uniqueId = `switch-${Math.random().toString(36).slice(2)}`;
+	const uniqueId = `switch-${Math.random().toString(36).slice(2, 9)}`;
 	const switchId = $derived(id ?? field?.id ?? uniqueId);
 	const isDisabled = $derived(disabled || !!field?.disabled);
 	const hasError = $derived(!!field?.error);

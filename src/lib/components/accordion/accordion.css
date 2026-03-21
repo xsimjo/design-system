@@ -98,3 +98,13 @@
 	color: var(--accordion-content-color);
 	line-height: var(--ui-leading-normal);
 }
+
+@media (prefers-reduced-motion: reduce) {
+	.accordion__content-grid {
+		transition: none;
+	}
+
+	.accordion__chevron {
+		transition: none;
+	}
+}

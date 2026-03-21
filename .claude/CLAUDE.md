@@ -78,6 +78,7 @@ All public components, icons, and types must be exported from `src/lib/index.ts`
 ## MCP Package (`packages/mcp/`)
 
 AI assistant integration server. Extracts component specs and tokens into JSON for tooling.
+
 - `npm run build:mcp` — extract data + build (run after adding/changing SPEC.md files)
 - Data files: `packages/mcp/src/data/tokens.json` and `components.json`
 

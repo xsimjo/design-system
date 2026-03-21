@@ -9,6 +9,7 @@
 	--breadcrumbs-focus-ring-width: var(--ui-ring-width);
 	--breadcrumbs-focus-ring-offset: var(--ui-ring-offset);
 	--breadcrumbs-focus-radius: calc(var(--ui-base-radius) * 0.25);
+	--breadcrumbs-transition: var(--ui-base-duration) var(--ui-base-easing);
 }
 
 .breadcrumbs {
@@ -51,7 +52,7 @@
 .breadcrumbs__link {
 	color: var(--breadcrumbs-link-color);
 	text-decoration: none;
-	transition: color var(--ui-base-duration) var(--ui-base-easing);
+	transition: color var(--breadcrumbs-transition);
 }
 
 .breadcrumbs__link:hover {

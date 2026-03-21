@@ -1,14 +1,15 @@
 <script lang="ts">
 	import './popover.css';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import type { Snippet } from 'svelte';
 
-	interface Props {
+	interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
 		children: Snippet;
 	}
 
-	let { children }: Props = $props();
+	let { children, ...restProps }: Props = $props();
 </script>
 
-<div class="popover__footer">
+<div class="popover__footer" {...restProps}>
 	{@render children()}
 </div>

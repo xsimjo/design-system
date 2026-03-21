@@ -3,9 +3,9 @@
 	--skeleton-shimmer-color: color-mix(in oklch, var(--ui-neutral-foreground), transparent 75%);
 	--skeleton-radius: var(--ui-base-radius);
 	--skeleton-radius-circle: 9999px;
-	--skeleton-duration: 1.5s;
-	--skeleton-easing: ease-in-out;
-	--skeleton-stagger: 0.15s;
+	--skeleton-duration: calc(var(--ui-base-duration) * 5);
+	--skeleton-easing: var(--ui-base-easing);
+	--skeleton-stagger: calc(var(--ui-base-duration) * 0.5);
 	--skeleton-line-height: calc(var(--ui-base-spacing) * 2);
 	--skeleton-line-gap: calc(var(--ui-base-spacing) * 1.5);
 	--skeleton-line-last-width: 70%;
@@ -81,4 +81,10 @@
 
 .skeleton__line:last-child:not(:only-child) {
 	width: var(--skeleton-line-last-width);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.skeleton {
+		animation: none;
+	}
 }

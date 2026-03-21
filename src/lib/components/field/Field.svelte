@@ -27,7 +27,7 @@
 		...restProps
 	}: Props = $props();
 
-	const uniqueId = `field-${Math.random().toString(36).slice(2)}`;
+	const uniqueId = `field-${Math.random().toString(36).slice(2, 9)}`;
 	const fieldId = $derived(id ?? uniqueId);
 
 	let descriptionIds = $state<string[]>([]);

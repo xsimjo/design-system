@@ -179,7 +179,7 @@ async function handleSubmit() {
 			language="svelte"
 		/>
 		<div class="demo">
-			<Button loading>Saving...</Button>
+			<Button isLoading>Saving...</Button>
 			<Button>Normal</Button>
 		</div>
 	</section>

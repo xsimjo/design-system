@@ -1,18 +1,17 @@
 <script lang="ts">
 	import './combobox.css';
 	import { getContext } from 'svelte';
-	import {
-		computePosition,
-		flip,
-		shift,
-		offset,
-		size as floatingSize,
-		autoUpdate
-	} from '@floating-ui/dom';
-	import type { Middleware } from '@floating-ui/dom';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { FIELD_KEY } from '$lib/components/field/context.js';
 	import type { FieldContext } from '$lib/components/field/context.js';
+	import { useFloatingPanel } from '$lib/internal/useFloatingPanel.svelte.js';
+	import {
+		moveActiveIndex,
+		findLastEnabledIndex,
+		scrollActiveIntoView
+	} from '$lib/internal/listbox-utils.js';
+	import ChevronDownIcon from '$lib/icons/ChevronDownIcon.svelte';
+	import CheckIcon from '$lib/icons/CheckIcon.svelte';
 
 	export interface ComboboxOption {
 		value: string;
@@ -76,59 +75,22 @@
 
 	const activeOptionId = $derived(activeIndex >= 0 ? `${uid}-option-${activeIndex}` : undefined);
 
-	async function updatePosition() {
-		if (!triggerEl || !listboxEl) return;
-
-		const middleware: Middleware[] = [
-			offset(4),
-			flip({ padding: 8 }),
-			shift({ padding: 8 }),
-			floatingSize({
-				apply({
-					rects,
-					elements
-				}: {
-					rects: { reference: { width: number } };
-					elements: { floating: HTMLElement };
-				}) {
-					Object.assign(elements.floating.style, {
-						width: `${rects.reference.width}px`
-					});
-				}
-			})
-		];
-
-		const { x, y } = await computePosition(triggerEl, listboxEl, {
-			placement: 'bottom-start',
-			strategy: 'fixed',
-			middleware
-		});
-
-		listboxEl.style.left = `${x}px`;
-		listboxEl.style.top = `${y}px`;
+	function closeListbox() {
+		open = false;
+		// Revert query to selected label
+		query = selectedLabel;
 	}
 
-	$effect(() => {
-		if (open && triggerEl && listboxEl) {
-			return autoUpdate(triggerEl, listboxEl, updatePosition);
-		}
-	});
+	useFloatingPanel(
+		() => triggerEl,
+		() => listboxEl,
+		() => open,
+		closeListbox,
+		{ matchTriggerWidth: true }
+	);
 
 	$effect(() => {
-		if (!open) return;
-		function handleClickOutside(e: MouseEvent) {
-			if (!triggerEl?.contains(e.target as Node) && !listboxEl?.contains(e.target as Node)) {
-				closeListbox();
-			}
-		}
-		document.addEventListener('mousedown', handleClickOutside);
-		return () => document.removeEventListener('mousedown', handleClickOutside);
-	});
-
-	$effect(() => {
-		if (!listboxEl || activeIndex < 0) return;
-		const el = listboxEl.querySelector<HTMLElement>(`[data-index="${activeIndex}"]`);
-		el?.scrollIntoView({ block: 'nearest' });
+		scrollActiveIntoView(listboxEl, activeIndex);
 	});
 
 	function openListbox() {
@@ -136,12 +98,6 @@
 		const selectedIdx = value ? filteredOptions.findIndex((o) => o.value === value) : -1;
 		activeIndex = selectedIdx >= 0 ? selectedIdx : -1;
 		open = true;
-	}
-
-	function closeListbox() {
-		open = false;
-		// Revert query to selected label
-		query = selectedLabel;
 	}
 
 	function selectOption(option: ComboboxOption) {
@@ -153,16 +109,7 @@
 	}
 
 	function moveActive(direction: 1 | -1) {
-		const total = filteredOptions.length;
-		if (total === 0) return;
-		let next = activeIndex < 0 ? (direction === 1 ? 0 : total - 1) : activeIndex + direction;
-		next = ((next % total) + total) % total;
-		const start = next;
-		while (filteredOptions[next]?.disabled) {
-			next = (next + direction + total) % total;
-			if (next === start) return;
-		}
-		activeIndex = next;
+		activeIndex = moveActiveIndex(filteredOptions, activeIndex, direction);
 	}
 
 	function handleInput(e: Event) {
@@ -213,16 +160,10 @@
 				e.preventDefault();
 				activeIndex = filteredOptions.findIndex((o) => !o.disabled);
 				break;
-			case 'End': {
+			case 'End':
 				e.preventDefault();
-				for (let i = filteredOptions.length - 1; i >= 0; i--) {
-					if (!filteredOptions[i].disabled) {
-						activeIndex = i;
-						break;
-					}
-				}
+				activeIndex = findLastEnabledIndex(filteredOptions);
 				break;
-			}
 			case 'Enter':
 				e.preventDefault();
 				if (activeIndex >= 0 && !filteredOptions[activeIndex]?.disabled) {
@@ -266,20 +207,11 @@
 			onblur={handleBlur}
 			onkeydown={handleKeydown}
 		/>
-		<svg
-			class="combobox__chevron"
-			class:combobox__chevron--open={open}
+		<ChevronDownIcon
+			class="combobox__chevron{open ? ' combobox__chevron--open' : ''}"
 			aria-hidden="true"
-			xmlns="http://www.w3.org/2000/svg"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="2"
-			stroke-linecap="round"
-			stroke-linejoin="round"
-		>
-			<path d="m6 9 6 6 6-6" />
-		</svg>
+			size={16}
+		/>
 	</div>
 
 	{#if name && value}
@@ -318,19 +250,7 @@
 					>
 						<span class="combobox__option-label">{option.label}</span>
 						{#if option.value === value}
-							<svg
-								class="combobox__option-check"
-								aria-hidden="true"
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							>
-								<path d="M20 6 9 17l-5-5" />
-							</svg>
+							<CheckIcon class="combobox__option-check" aria-hidden="true" size={16} />
 						{/if}
 					</div>
 				{/each}

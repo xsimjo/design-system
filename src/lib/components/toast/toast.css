@@ -120,7 +120,7 @@
 	);
 
 	--toast-transition-enter: var(--ui-base-duration) var(--ui-base-easing);
-	--toast-transition-exit: 200ms var(--ui-base-easing);
+	--toast-transition-exit: var(--ui-base-duration) var(--ui-base-easing);
 
 	/* Variant defaults (neutral) */
 	--toast-accent: var(--ui-neutral);

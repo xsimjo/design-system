@@ -13,7 +13,7 @@
 		editM: number;
 		editS: number;
 		seconds: boolean;
-		onCommit: () => void;
+		oncommit: () => void;
 	}
 
 	let {
@@ -26,7 +26,7 @@
 		editM = $bindable(0),
 		editS = $bindable(0),
 		seconds,
-		onCommit
+		oncommit
 	}: Props = $props();
 
 	const hourValues = Array.from({ length: 24 }, (_, i) => i);
@@ -60,7 +60,7 @@
 
 	function selectCol(col: Col, val: number) {
 		setVal(col, val);
-		onCommit();
+		oncommit();
 		scrollToItem(getListEl(col), getVal(col), 'smooth');
 	}
 

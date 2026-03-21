@@ -119,16 +119,6 @@
 		};
 	});
 
-	$effect(() => {
-		if (dayInputEl) dayInputEl.value = editD ? String(editD).padStart(2, '0') : '';
-	});
-	$effect(() => {
-		if (monthInputEl) monthInputEl.value = editM ? String(editM).padStart(2, '0') : '';
-	});
-	$effect(() => {
-		if (yearInputEl) yearInputEl.value = editY ? String(editY).padStart(4, '0') : '';
-	});
-
 	function syncFromValue() {
 		if (value) {
 			editD = value.getDate();
@@ -412,8 +402,8 @@
 			{max}
 			{today}
 			locale={effectiveLocale}
-			onSelect={handlePanelSelect}
-			onClose={closePanel}
+			onselect={handlePanelSelect}
+			onclose={closePanel}
 		/>
 	{/if}
 </div>

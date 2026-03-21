@@ -20,7 +20,7 @@
 		/** Visual size of the pagination control. */
 		size?: 'sm' | 'md' | 'lg';
 		/** Called whenever the page changes. */
-		onPageChange?: (page: number) => void;
+		onpagechange?: (page: number) => void;
 	}
 
 	let {
@@ -30,7 +30,7 @@
 		siblingCount = 1,
 		showFirstLast = true,
 		size = 'md',
-		onPageChange,
+		onpagechange,
 		...restProps
 	}: Props = $props();
 
@@ -79,7 +79,7 @@
 	function goTo(p: number) {
 		if (p < 1 || p > totalPages || p === page) return;
 		page = p;
-		onPageChange?.(p);
+		onpagechange?.(p);
 	}
 
 	// Clamp page if totalPages shrinks (e.g. pageSize or total changed).

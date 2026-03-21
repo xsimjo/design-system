@@ -15,7 +15,7 @@
 	let { group = $bindable(), value, disabled = false, id, ...restProps }: Props = $props();
 
 	const field = getContext<FieldContext>(FIELD_KEY);
-	const uniqueId = `radio-${Math.random().toString(36).slice(2)}`;
+	const uniqueId = `radio-${Math.random().toString(36).slice(2, 9)}`;
 	const radioId = $derived(id ?? field?.id ?? uniqueId);
 	const isDisabled = $derived(disabled || !!field?.disabled);
 	const hasError = $derived(!!field?.error);

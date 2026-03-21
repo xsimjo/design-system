@@ -33,7 +33,7 @@
 
 	const field = getContext<FieldContext>(FIELD_KEY);
 
-	const uniqueId = `slider-${Math.random().toString(36).slice(2)}`;
+	const uniqueId = `slider-${Math.random().toString(36).slice(2, 9)}`;
 	const sliderId = $derived(id ?? field?.id ?? uniqueId);
 	const isDisabled = $derived(disabled || !!field?.disabled);
 	const hasError = $derived(!!field?.error);

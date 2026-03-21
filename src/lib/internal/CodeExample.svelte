@@ -48,7 +48,7 @@
 				variant="ghost"
 				color={copied ? 'success' : 'secondary'}
 				size="sm"
-				icon
+				isIcon
 				onclick={copyToClipboard}
 			>
 				{#if copied}

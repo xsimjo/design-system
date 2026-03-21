@@ -27,17 +27,19 @@
 		...restProps
 	}: Props = $props();
 
+	const POSITION_TO_PLACEMENT: Record<ToastPosition, Placement> = {
+		'top-left': 'bottom-start',
+		'top-center': 'bottom',
+		'top-right': 'bottom-end',
+		'bottom-left': 'top-start',
+		'bottom-center': 'top',
+		'bottom-right': 'top-end'
+	};
+
 	let anchorEl: HTMLElement | null = $state(null);
 	let containerEl: HTMLElement | null = $state(null);
 
-	const floatingPlacement = $derived.by<Placement>(() => {
-		const isBottom = position.startsWith('bottom');
-		const isRight = position.endsWith('right');
-		const isCenter = position.endsWith('center');
-		const side = isBottom ? 'top' : 'bottom';
-		const align = isRight ? 'end' : isCenter ? '' : 'start';
-		return (align ? `${side}-${align}` : side) as Placement;
-	});
+	const floatingPlacement = $derived(POSITION_TO_PLACEMENT[position]);
 
 	$effect(() => {
 		const anchor = anchorEl;

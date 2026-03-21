@@ -1,4 +1,5 @@
 <script lang="ts">
+	import './breadcrumbs.css';
 	import type { HTMLAttributes, HTMLAnchorAttributes } from 'svelte/elements';
 	import type { Snippet } from 'svelte';
 	import { getContext } from 'svelte';

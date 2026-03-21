@@ -1,8 +1,9 @@
 <script lang="ts">
 	import './badge.css';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import XIcon from '$lib/icons/XIcon.svelte';
 
-	interface Props {
+	interface Props extends Omit<HTMLAttributes<HTMLSpanElement>, 'children'> {
 		label: string;
 		variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral';
 		size?: 'sm' | 'md' | 'lg';
@@ -10,13 +11,21 @@
 		onremove?: () => void;
 	}
 
-	let { label, variant = 'primary', size = 'md', disabled = false, onremove }: Props = $props();
+	let {
+		label,
+		variant = 'primary',
+		size = 'md',
+		disabled = false,
+		onremove,
+		...restProps
+	}: Props = $props();
 </script>
 
 <span
 	class="badge badge--{variant} badge--{size}"
 	class:badge--has-remove={!!onremove}
 	class:badge--disabled={disabled}
+	{...restProps}
 >
 	<span class="badge__label">{label}</span>
 	{#if onremove}

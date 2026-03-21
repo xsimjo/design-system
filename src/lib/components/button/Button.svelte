@@ -8,8 +8,8 @@
 		variant?: 'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash';
 		color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral';
 		size?: 'sm' | 'md' | 'lg';
-		icon?: boolean;
-		loading?: boolean;
+		isIcon?: boolean;
+		isLoading?: boolean;
 		fullWidth?: boolean;
 		children: Snippet;
 	}
@@ -18,31 +18,31 @@
 		variant = 'filled',
 		color = 'primary',
 		size = 'md',
-		icon = false,
-		loading = false,
+		isIcon = false,
+		isLoading = false,
 		fullWidth = false,
 		disabled = false,
 		children,
 		...restProps
 	}: Props = $props();
 
-	const isDisabled = $derived(disabled || loading);
+	const isDisabled = $derived(disabled || isLoading);
 </script>
 
 <button
 	class="button button--{variant} button--{color} button--{size}"
-	class:button--icon={icon}
-	class:button--loading={loading}
+	class:button--icon={isIcon}
+	class:button--loading={isLoading}
 	class:button--full-width={fullWidth}
 	disabled={isDisabled}
 	{...restProps}
 >
-	{#if loading}
+	{#if isLoading}
 		<span class="button__loader">
 			<Spinner />
 		</span>
 	{/if}
-	<span class="button__content" class:button__content--hidden={loading && icon}>
+	<span class="button__content" class:button__content--hidden={isLoading && isIcon}>
 		{@render children()}
 	</span>
 </button>

@@ -122,13 +122,6 @@
 		listEl.scrollTo({ top, behavior });
 	}
 
-	// Keep segment inputs in sync with state
-	$effect(() => {
-		if (hourInputEl) hourInputEl.value = showValues ? String(editH).padStart(2, '0') : '';
-		if (minuteInputEl) minuteInputEl.value = showValues ? String(editM).padStart(2, '0') : '';
-		if (secondInputEl) secondInputEl.value = showValues ? String(editS).padStart(2, '0') : '';
-	});
-
 	function syncFromValue() {
 		const p = parseTimeString(value);
 		editH = p.h;
@@ -363,7 +356,7 @@
 			bind:editM
 			bind:editS
 			{seconds}
-			onCommit={commitValue}
+			oncommit={commitValue}
 		/>
 	{/if}
 </div>

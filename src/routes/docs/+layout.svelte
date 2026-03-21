@@ -91,7 +91,7 @@
 					variant="ghost"
 					color="secondary"
 					size="sm"
-					icon
+					isIcon
 					onclick={() => window.open('https://github.com', '_blank')}
 				>
 					<GithubIcon size={18} />

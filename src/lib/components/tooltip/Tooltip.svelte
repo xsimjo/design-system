@@ -3,8 +3,9 @@
 	import { computePosition, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import type { Placement } from '@floating-ui/dom';
 	import type { Snippet } from 'svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props {
+	interface Props extends Omit<HTMLAttributes<HTMLSpanElement>, 'children'> {
 		text?: string;
 		content?: Snippet;
 		placement?: Placement;
@@ -19,7 +20,8 @@
 		placement = 'top',
 		showArrow = true,
 		tooltipOffset = 12,
-		children
+		children,
+		...restProps
 	}: Props = $props();
 
 	let triggerEl: HTMLElement | null = $state(null);
@@ -95,7 +97,6 @@
 	}
 </script>
 
-<!-- svelte-ignore a11y_no_static_element_interactions -->
 <span
 	bind:this={triggerEl}
 	class="tooltip-trigger"
@@ -105,6 +106,7 @@
 	onfocusout={hide}
 	onkeydown={handleKeydown}
 	aria-describedby={visible ? tooltipId : undefined}
+	{...restProps}
 >
 	{@render children()}
 </span>

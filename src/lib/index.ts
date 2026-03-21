@@ -91,3 +91,4 @@ export { default as ArrowUpIcon } from './icons/ArrowUpIcon.svelte';
 export { default as ArrowDownIcon } from './icons/ArrowDownIcon.svelte';
 export { default as ArrowUpDownIcon } from './icons/ArrowUpDownIcon.svelte';
 export { default as UserIcon } from './icons/UserIcon.svelte';
+export { default as StarIcon } from './icons/StarIcon.svelte';

@@ -82,3 +82,9 @@
 .rating--disabled .rating__star {
 	cursor: default;
 }
+
+.rating__star:disabled,
+.rating__star[aria-disabled='true'] {
+	cursor: default;
+	opacity: 0.5;
+}

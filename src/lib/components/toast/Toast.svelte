@@ -31,7 +31,9 @@
 		info: InfoIcon
 	} as const;
 
-	const IconComponent = $derived(VARIANT_ICONS[variant as keyof typeof VARIANT_ICONS] ?? null);
+	const IconComponent = $derived(
+		variant in VARIANT_ICONS ? VARIANT_ICONS[variant as keyof typeof VARIANT_ICONS] : null
+	);
 
 	let exiting = $state(false);
 	let progressValue = $state(100);

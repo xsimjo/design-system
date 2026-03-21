@@ -13,7 +13,7 @@
 	let { variant, children, ...restProps }: Props = $props();
 
 	const field = getContext<FieldContext>(FIELD_KEY);
-	const descId = `field-desc-${Math.random().toString(36).slice(2)}`;
+	const descId = `field-desc-${Math.random().toString(36).slice(2, 9)}`;
 
 	const isError = $derived(variant === 'error' || (!variant && !!field?.error));
 

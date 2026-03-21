@@ -14,7 +14,7 @@
 	--progress-transition-duration: var(--ui-base-duration);
 	--progress-transition-easing: var(--ui-base-easing);
 	--progress-indeterminate-duration: calc(var(--ui-base-duration) * 10);
-	--progress-indeterminate-easing: ease-in-out;
+	--progress-indeterminate-easing: var(--ui-base-easing);
 	--progress-indeterminate-fill-width: 40%;
 	--progress-value-font-size: var(--ui-text-sm);
 	--progress-value-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 30%);

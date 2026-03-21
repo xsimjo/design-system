@@ -44,7 +44,7 @@
 
 <Dropdown placement="bottom-end">
 	{#snippet trigger()}
-		<Button variant="ghost" color="secondary" size="sm" icon>
+		<Button variant="ghost" color="secondary" size="sm" isIcon>
 			<currentThemeConfig.icon size={18} />
 		</Button>
 	{/snippet}

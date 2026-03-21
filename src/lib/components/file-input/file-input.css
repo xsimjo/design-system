@@ -149,6 +149,12 @@
 	cursor: not-allowed;
 }
 
+.file-input__zone[aria-disabled='true'] {
+	cursor: default;
+	opacity: 0.6;
+	pointer-events: none;
+}
+
 /* Zone icon */
 .file-input__icon {
 	color: var(--file-input-icon-fg);

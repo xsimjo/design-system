@@ -1,4 +1,5 @@
 <script lang="ts">
+	import './card.css';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { Snippet } from 'svelte';
 

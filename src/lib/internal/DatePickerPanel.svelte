@@ -12,8 +12,8 @@
 		locale: string;
 		today: Date;
 		panelEl?: HTMLDivElement | null;
-		onSelect: (date: Date) => void;
-		onClose: () => void;
+		onselect: (date: Date) => void;
+		onclose: () => void;
 	}
 
 	let {
@@ -24,8 +24,8 @@
 		locale,
 		today,
 		panelEl = $bindable(null),
-		onSelect,
-		onClose
+		onselect,
+		onclose
 	}: Props = $props();
 
 	type View = 'days' | 'months' | 'years';
@@ -110,7 +110,7 @@
 
 	function selectDate(date: Date) {
 		if (isOutOfRange(date)) return;
-		onSelect(new Date(date));
+		onselect(new Date(date));
 	}
 
 	function selectMonth(month: number) {
@@ -164,7 +164,7 @@
 	onkeydown={(e) => {
 		if (e.key === 'Escape') {
 			e.preventDefault();
-			onClose();
+			onclose();
 		}
 	}}
 >

@@ -37,8 +37,8 @@
 {#if visible}
 	<div
 		class="alert alert--{variant}"
-		role="alert"
-		aria-live="polite"
+		role={variant === 'danger' ? 'alert' : 'status'}
+		aria-live={variant === 'danger' ? 'assertive' : 'polite'}
 		aria-atomic="true"
 		{...restProps}
 	>
@@ -69,7 +69,7 @@
 					variant="ghost"
 					color="neutral"
 					size="sm"
-					icon
+					isIcon
 					aria-label="Dismiss alert"
 					onclick={dismiss}
 				>

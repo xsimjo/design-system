@@ -124,18 +124,18 @@
 				<h3>Icon Only</h3>
 				<p class="example-desc">Square buttons for icon-only actions.</p>
 				<CodeExample
-					code={`<Button icon size="sm"><PlusIcon /></Button>
-<Button icon size="md"><HeartIcon /></Button>
-<Button icon size="lg"><SettingsIcon /></Button>
-<Button icon variant="outline"><DownloadIcon /></Button>
-<Button icon variant="ghost"><SendIcon /></Button>`}
+					code={`<Button isIcon size="sm"><PlusIcon /></Button>
+<Button isIcon size="md"><HeartIcon /></Button>
+<Button isIcon size="lg"><SettingsIcon /></Button>
+<Button isIcon variant="outline"><DownloadIcon /></Button>
+<Button isIcon variant="ghost"><SendIcon /></Button>`}
 					previewClass="aligned"
 				>
-					<Button icon size="sm"><PlusIcon /></Button>
-					<Button icon size="md"><HeartIcon /></Button>
-					<Button icon size="lg"><SettingsIcon /></Button>
-					<Button icon variant="outline"><DownloadIcon /></Button>
-					<Button icon variant="ghost"><SendIcon /></Button>
+					<Button isIcon size="sm"><PlusIcon /></Button>
+					<Button isIcon size="md"><HeartIcon /></Button>
+					<Button isIcon size="lg"><SettingsIcon /></Button>
+					<Button isIcon variant="outline"><DownloadIcon /></Button>
+					<Button isIcon variant="ghost"><SendIcon /></Button>
 				</CodeExample>
 			</div>
 
@@ -144,11 +144,11 @@
 				<p class="example-desc">Interactive states for user feedback.</p>
 				<CodeExample
 					code={`<Button>Default</Button>
-<Button loading>Loading</Button>
+<Button isLoading>Loading</Button>
 <Button disabled>Disabled</Button>`}
 				>
 					<Button>Default</Button>
-					<Button loading>Loading</Button>
+					<Button isLoading>Loading</Button>
 					<Button disabled>Disabled</Button>
 				</CodeExample>
 			</div>

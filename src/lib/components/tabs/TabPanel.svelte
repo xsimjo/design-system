@@ -1,4 +1,5 @@
 <script lang="ts">
+	import './tabs.css';
 	import { getContext } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { Snippet } from 'svelte';
