@@ -5,7 +5,6 @@
 @import './themes/dark.css';
 @import './themes/dev.css';
 @import './themes/formbuilder.css';
-@import './themes/clean.css';
 
 [data-theme] {
 	--header-height: 64px;

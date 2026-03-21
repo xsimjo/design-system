@@ -25,7 +25,7 @@ Read source files directly every time. Never rely on prior analysis or memory.
 
 Before running any checks, read these files once and keep them as reference throughout:
 
-- `src/lib/styles/themes/light.css` — canonical token vocabulary (all 55 `--ui-*` tokens)
+- `src/lib/styles/themes/light.css` — canonical token vocabulary (all 57 `--ui-*` tokens)
 - `src/lib/styles/primitives.css` — primitive layer (never referenced by components)
 
 For each component being audited, read:
