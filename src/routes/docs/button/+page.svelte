@@ -9,12 +9,21 @@
 	import SettingsIcon from '$lib/icons/SettingsIcon.svelte';
 
 	type Variant = 'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash';
-	type Color = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral';
+	type Color =
+		| 'primary'
+		| 'secondary'
+		| 'accent'
+		| 'success'
+		| 'danger'
+		| 'warning'
+		| 'info'
+		| 'neutral';
 
 	const variants: Variant[] = ['filled', 'outline', 'ghost', 'soft', 'link', 'dash'];
 	const colors: Color[] = [
 		'primary',
 		'secondary',
+		'accent',
 		'success',
 		'danger',
 		'warning',
@@ -79,6 +88,7 @@
 				<CodeExample
 					code={`<Button color="primary">Primary</Button>
 <Button color="secondary">Secondary</Button>
+<Button color="accent">Accent</Button>
 <Button color="success">Success</Button>
 <Button color="danger">Danger</Button>
 <Button color="warning">Warning</Button>
@@ -206,7 +216,8 @@
 							<td><code>color</code></td>
 							<td
 								><code
-									>'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral'</code
+									>'primary' | 'secondary' | 'accent' | 'success' | 'danger' | 'warning' | 'info' |
+									'neutral'</code
 								></td
 							>
 							<td><code>'primary'</code></td>
@@ -280,6 +291,11 @@
 							<td><code>--button-color-secondary</code></td>
 							<td>var(--ui-secondary)</td>
 							<td>Secondary button color</td>
+						</tr>
+						<tr>
+							<td><code>--button-color-accent</code></td>
+							<td>var(--ui-accent)</td>
+							<td>Accent button color</td>
 						</tr>
 						<tr>
 							<td><code>--button-color-success</code></td>

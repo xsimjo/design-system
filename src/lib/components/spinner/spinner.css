@@ -11,6 +11,7 @@
 	--spinner-track-color: var(--ui-border);
 	--spinner-color-primary: var(--ui-primary);
 	--spinner-color-secondary: var(--ui-secondary);
+	--spinner-color-accent: var(--ui-accent);
 	--spinner-color-success: var(--ui-success);
 	--spinner-color-warning: var(--ui-warning);
 	--spinner-color-danger: var(--ui-danger);
@@ -107,6 +108,10 @@
 
 .spinner--secondary .spinner__indicator {
 	border-top-color: var(--spinner-color-secondary);
+}
+
+.spinner--accent .spinner__indicator {
+	border-top-color: var(--spinner-color-accent);
 }
 
 .spinner--success .spinner__indicator {

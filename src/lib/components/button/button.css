@@ -3,6 +3,8 @@
 	--button-color-primary-foreground: var(--ui-primary-foreground);
 	--button-color-secondary: var(--ui-secondary);
 	--button-color-secondary-foreground: var(--ui-secondary-foreground);
+	--button-color-accent: var(--ui-accent);
+	--button-color-accent-foreground: var(--ui-accent-foreground);
 	--button-color-success: var(--ui-success);
 	--button-color-success-foreground: var(--ui-success-foreground);
 	--button-color-danger: var(--ui-danger);
@@ -111,6 +113,10 @@
 .button--secondary {
 	--_color: var(--button-color-secondary);
 	--_foreground: var(--button-color-secondary-foreground);
+}
+.button--accent {
+	--_color: var(--button-color-accent);
+	--_foreground: var(--button-color-accent-foreground);
 }
 .button--success {
 	--_color: var(--button-color-success);

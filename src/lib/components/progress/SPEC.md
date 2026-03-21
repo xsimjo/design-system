@@ -4,15 +4,15 @@ A progress bar component for displaying completion status or loading state. Supp
 
 ## Props
 
-| Prop            | Type                                                                     | Default      | Description                                     |
-| --------------- | ------------------------------------------------------------------------ | ------------ | ----------------------------------------------- |
-| `value`         | `number`                                                                 | `0`          | Current progress value                          |
-| `max`           | `number`                                                                 | `100`        | Maximum value                                   |
-| `size`          | `'xs' \| 'sm' \| 'md' \| 'lg'`                                           | `'md'`       | Height of the progress bar                      |
-| `variant`       | `'primary' \| 'success' \| 'danger' \| 'warning' \| 'info' \| 'neutral'` | `'primary'`  | Fill color variant                              |
-| `label`         | `string`                                                                 | `'Progress'` | Accessible label for screen readers             |
-| `showValue`     | `boolean`                                                                | `false`      | Display percentage text above the bar           |
-| `indeterminate` | `boolean`                                                                | `false`      | Animated indeterminate state (unknown progress) |
+| Prop            | Type                                                                                 | Default      | Description                                     |
+| --------------- | ------------------------------------------------------------------------------------ | ------------ | ----------------------------------------------- |
+| `value`         | `number`                                                                             | `0`          | Current progress value                          |
+| `max`           | `number`                                                                             | `100`        | Maximum value                                   |
+| `size`          | `'xs' \| 'sm' \| 'md' \| 'lg'`                                                       | `'md'`       | Height of the progress bar                      |
+| `variant`       | `'primary' \| 'accent' \| 'success' \| 'danger' \| 'warning' \| 'info' \| 'neutral'` | `'primary'`  | Fill color variant                              |
+| `label`         | `string`                                                                             | `'Progress'` | Accessible label for screen readers             |
+| `showValue`     | `boolean`                                                                            | `false`      | Display percentage text above the bar           |
+| `indeterminate` | `boolean`                                                                            | `false`      | Animated indeterminate state (unknown progress) |
 
 Extends `HTMLAttributes<HTMLDivElement>`.
 

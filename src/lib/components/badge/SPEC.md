@@ -1,16 +1,16 @@
 # Badge
 
-Inline label component for status, category, or tag display. Supports 7 color variants, 3 sizes, and an optional remove button.
+Inline label component for status, category, or tag display. Supports 8 color variants, 3 sizes, and an optional remove button.
 
 ## Props
 
-| Prop       | Type                                                                                    | Default     | Description                                           |
-| ---------- | --------------------------------------------------------------------------------------- | ----------- | ----------------------------------------------------- |
-| `label`    | `string`                                                                                | required    | Text content of the badge                             |
-| `variant`  | `'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning' \| 'info' \| 'neutral'` | `'primary'` | Color variant                                         |
-| `size`     | `'sm' \| 'md' \| 'lg'`                                                                  | `'md'`      | Controls height, padding, and font size               |
-| `disabled` | `boolean`                                                                               | `false`     | Reduces opacity and prevents remove interaction       |
-| `onremove` | `() => void`                                                                            | `—`         | If provided, renders a remove button inside the badge |
+| Prop       | Type                                                                                                | Default     | Description                                           |
+| ---------- | --------------------------------------------------------------------------------------------------- | ----------- | ----------------------------------------------------- |
+| `label`    | `string`                                                                                            | required    | Text content of the badge                             |
+| `variant`  | `'primary' \| 'secondary' \| 'accent' \| 'success' \| 'danger' \| 'warning' \| 'info' \| 'neutral'` | `'primary'` | Color variant                                         |
+| `size`     | `'sm' \| 'md' \| 'lg'`                                                                              | `'md'`      | Controls height, padding, and font size               |
+| `disabled` | `boolean`                                                                                           | `false`     | Reduces opacity and prevents remove interaction       |
+| `onremove` | `() => void`                                                                                        | `—`         | If provided, renders a remove button inside the badge |
 
 ## Usage
 

@@ -4,15 +4,15 @@ Primary action component with multiple variants, colors, and sizes.
 
 ## Props
 
-| Prop        | Type                                                                                    | Default     | Description                                                        |
-| ----------- | --------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------ |
-| `variant`   | `'filled' \| 'outline' \| 'ghost' \| 'soft' \| 'link' \| 'dash'`                        | `'filled'`  | Visual style; `link` is visual only — always renders as `<button>` |
-| `color`     | `'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning' \| 'info' \| 'neutral'` | `'primary'` | Color theme                                                        |
-| `size`      | `'sm' \| 'md' \| 'lg'`                                                                  | `'md'`      | Button size                                                        |
-| `icon`      | `boolean`                                                                               | `false`     | Square button for icon-only content                                |
-| `loading`   | `boolean`                                                                               | `false`     | Shows spinner and disables button                                  |
-| `fullWidth` | `boolean`                                                                               | `false`     | Makes button take full width                                       |
-| `disabled`  | `boolean`                                                                               | `false`     | Disables interaction                                               |
+| Prop        | Type                                                                                                | Default     | Description                                                        |
+| ----------- | --------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------ |
+| `variant`   | `'filled' \| 'outline' \| 'ghost' \| 'soft' \| 'link' \| 'dash'`                                    | `'filled'`  | Visual style; `link` is visual only — always renders as `<button>` |
+| `color`     | `'primary' \| 'secondary' \| 'accent' \| 'success' \| 'danger' \| 'warning' \| 'info' \| 'neutral'` | `'primary'` | Color theme                                                        |
+| `size`      | `'sm' \| 'md' \| 'lg'`                                                                              | `'md'`      | Button size                                                        |
+| `icon`      | `boolean`                                                                                           | `false`     | Square button for icon-only content                                |
+| `loading`   | `boolean`                                                                                           | `false`     | Shows spinner and disables button                                  |
+| `fullWidth` | `boolean`                                                                                           | `false`     | Makes button take full width                                       |
+| `disabled`  | `boolean`                                                                                           | `false`     | Disables interaction                                               |
 
 ## Slots
 
@@ -102,8 +102,8 @@ Primary action component with multiple variants, colors, and sizes.
 
 This component uses the following semantic tokens:
 
-- `--button-color-{primary|secondary|success|danger|warning|info|neutral}` - Color per theme
-- `--button-color-{primary|secondary|success|danger|warning|info|neutral}-foreground` - Foreground per color
+- `--button-color-{primary|secondary|accent|success|danger|warning|info|neutral}` - Color per theme
+- `--button-color-{primary|secondary|accent|success|danger|warning|info|neutral}-foreground` - Foreground per color
 - `--button-secondary-text` - Text color for secondary variant
 - `--button-{sm|md|lg}-height` - Height per size
 - `--button-{sm|md|lg}-padding-x` - Horizontal padding per size

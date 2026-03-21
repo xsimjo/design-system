@@ -79,6 +79,7 @@
 				<CodeExample
 					code={`<Spinner size="md" variant="primary" />
 <Spinner size="md" variant="secondary" />
+<Spinner size="md" variant="accent" />
 <Spinner size="md" variant="success" />
 <Spinner size="md" variant="warning" />
 <Spinner size="md" variant="danger" />`}
@@ -86,6 +87,7 @@
 				>
 					<Spinner size="md" variant="primary" />
 					<Spinner size="md" variant="secondary" />
+					<Spinner size="md" variant="accent" />
 					<Spinner size="md" variant="success" />
 					<Spinner size="md" variant="warning" />
 					<Spinner size="md" variant="danger" />
@@ -116,7 +118,10 @@
 						</tr>
 						<tr>
 							<td><code>variant</code></td>
-							<td><code>'primary' | 'secondary' | 'success' | 'warning' | 'danger'</code></td>
+							<td
+								><code>'primary' | 'secondary' | 'accent' | 'success' | 'warning' | 'danger'</code
+								></td
+							>
 							<td><code>—</code></td>
 							<td>Color variant</td>
 						</tr>
@@ -205,6 +210,11 @@
 							<td><code>--spinner-color-secondary</code></td>
 							<td>var(--color-secondary)</td>
 							<td>Secondary variant color</td>
+						</tr>
+						<tr>
+							<td><code>--spinner-color-accent</code></td>
+							<td>var(--ui-accent)</td>
+							<td>Accent variant color</td>
 						</tr>
 						<tr>
 							<td><code>--spinner-color-success</code></td>

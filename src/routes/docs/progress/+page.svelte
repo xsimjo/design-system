@@ -63,6 +63,7 @@
 				<p class="example-desc">Semantic color variants to communicate context.</p>
 				<CodeExample
 					code={`<Progress value={80} variant="primary" />
+<Progress value={70} variant="accent" />
 <Progress value={65} variant="success" />
 <Progress value={30} variant="danger" />
 <Progress value={55} variant="warning" />
@@ -71,6 +72,7 @@
 					previewClass="stacked"
 				>
 					<Progress value={80} variant="primary" />
+					<Progress value={70} variant="accent" />
 					<Progress value={65} variant="success" />
 					<Progress value={30} variant="danger" />
 					<Progress value={55} variant="warning" />
@@ -156,7 +158,10 @@
 						</tr>
 						<tr>
 							<td><code>variant</code></td>
-							<td><code>'primary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral'</code></td
+							<td
+								><code
+									>'primary' | 'accent' | 'success' | 'danger' | 'warning' | 'info' | 'neutral'</code
+								></td
 							>
 							<td><code>'primary'</code></td>
 							<td>Fill color variant</td>
@@ -248,6 +253,11 @@
 							<td><code>--progress-fill-primary</code></td>
 							<td>var(--ui-primary)</td>
 							<td>Fill color for primary variant</td>
+						</tr>
+						<tr>
+							<td><code>--progress-fill-accent</code></td>
+							<td>var(--ui-accent)</td>
+							<td>Fill color for accent variant</td>
 						</tr>
 						<tr>
 							<td><code>--progress-fill-success</code></td>

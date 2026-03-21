@@ -4,11 +4,11 @@ Loading indicator component with multiple sizes and color variants.
 
 ## Props
 
-| Prop      | Type                                                                                    | Default     | Description                               |
-| --------- | --------------------------------------------------------------------------------------- | ----------- | ----------------------------------------- |
-| `size`    | `'sm' \| 'md' \| 'lg'`                                                                  | `undefined` | Spinner size (defaults to 1em)            |
-| `variant` | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger' \| 'info' \| 'neutral'` | `undefined` | Color variant (defaults to current color) |
-| `label`   | `string`                                                                                | `'Loading'` | Accessible label for screen readers       |
+| Prop      | Type                                                                                                | Default     | Description                               |
+| --------- | --------------------------------------------------------------------------------------------------- | ----------- | ----------------------------------------- |
+| `size`    | `'sm' \| 'md' \| 'lg'`                                                                              | `undefined` | Spinner size (defaults to 1em)            |
+| `variant` | `'primary' \| 'secondary' \| 'accent' \| 'success' \| 'warning' \| 'danger' \| 'info' \| 'neutral'` | `undefined` | Color variant (defaults to current color) |
+| `label`   | `string`                                                                                            | `'Loading'` | Accessible label for screen readers       |
 
 Extends `HTMLAttributes<HTMLDivElement>`.
 

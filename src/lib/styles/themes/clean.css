@@ -1,12 +1,15 @@
 [data-theme='clean'] {
 	/* ==========================================================================
-	   COLORS (7 pairs = 14 tokens)
+	   COLORS (8 pairs = 16 tokens)
 	   ========================================================================== */
 	--ui-primary: oklch(0.42 0.21 262.81);
 	--ui-primary-foreground: oklch(100% 0 0);
 
 	--ui-secondary: oklch(0.38 0.08 262);
 	--ui-secondary-foreground: oklch(100% 0 0);
+
+	--ui-accent: oklch(0.45 0.2 300);
+	--ui-accent-foreground: oklch(100% 0 0);
 
 	--ui-success: oklch(0.52 0.14 150);
 	--ui-success-foreground: oklch(100% 0 0);

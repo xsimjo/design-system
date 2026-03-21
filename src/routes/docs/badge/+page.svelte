@@ -45,10 +45,11 @@
 
 			<div id="variants" class="example-block">
 				<h3>Variants</h3>
-				<p class="example-desc">Seven color variants matching the design system palette.</p>
+				<p class="example-desc">Eight color variants matching the design system palette.</p>
 				<CodeExample
 					code={`<Badge label="Primary" variant="primary" />
 <Badge label="Secondary" variant="secondary" />
+<Badge label="Accent" variant="accent" />
 <Badge label="Success" variant="success" />
 <Badge label="Danger" variant="danger" />
 <Badge label="Warning" variant="warning" />
@@ -58,6 +59,7 @@
 					<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
 						<Badge label="Primary" variant="primary" />
 						<Badge label="Secondary" variant="secondary" />
+						<Badge label="Accent" variant="accent" />
 						<Badge label="Success" variant="success" />
 						<Badge label="Danger" variant="danger" />
 						<Badge label="Warning" variant="warning" />
@@ -140,7 +142,8 @@
 							<td><code>variant</code></td>
 							<td
 								><code
-									>'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral'</code
+									>'primary' | 'secondary' | 'accent' | 'success' | 'danger' | 'warning' | 'info' |
+									'neutral'</code
 								></td
 							>
 							<td><code>'primary'</code></td>

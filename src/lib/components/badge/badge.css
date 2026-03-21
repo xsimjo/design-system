@@ -30,6 +30,13 @@
 	--badge-remove-hover-bg: color-mix(in oklch, var(--ui-secondary), transparent 70%);
 }
 
+[data-theme] .badge--accent {
+	--badge-bg: color-mix(in oklch, var(--ui-accent), transparent 88%);
+	--badge-fg: var(--ui-accent);
+	--badge-border: color-mix(in oklch, var(--ui-accent), transparent 75%);
+	--badge-remove-hover-bg: color-mix(in oklch, var(--ui-accent), transparent 70%);
+}
+
 [data-theme] .badge--success {
 	--badge-bg: color-mix(in oklch, var(--ui-success), transparent 88%);
 	--badge-fg: var(--ui-success);

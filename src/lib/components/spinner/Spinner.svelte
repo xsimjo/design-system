@@ -4,7 +4,15 @@
 
 	interface Props extends HTMLAttributes<HTMLDivElement> {
 		size?: 'sm' | 'md' | 'lg';
-		variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'neutral';
+		variant?:
+			| 'primary'
+			| 'secondary'
+			| 'accent'
+			| 'success'
+			| 'warning'
+			| 'danger'
+			| 'info'
+			| 'neutral';
 		label?: string;
 	}
 
@@ -18,6 +26,7 @@
 	class:spinner--lg={size === 'lg'}
 	class:spinner--primary={variant === 'primary'}
 	class:spinner--secondary={variant === 'secondary'}
+	class:spinner--accent={variant === 'accent'}
 	class:spinner--success={variant === 'success'}
 	class:spinner--warning={variant === 'warning'}
 	class:spinner--danger={variant === 'danger'}

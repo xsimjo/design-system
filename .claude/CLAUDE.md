@@ -22,7 +22,7 @@ After making changes, ALWAYS run validation before considering work complete:
 Three layers — never skip or cross them:
 
 1. **Primitives** (`styles/primitives.css`) — raw values, `:root` scope. Never referenced by components.
-2. **Semantic** (`styles/themes/*.css`) — 55 `--ui-*` tokens per theme, scoped to `[data-theme='...']`. All five themes (light, dark, dev, formbuilder, clean) must define the same 55 tokens.
+2. **Semantic** (`styles/themes/*.css`) — 57 `--ui-*` tokens per theme, scoped to `[data-theme='...']`. All five themes (light, dark, dev, formbuilder, clean) must define the same 57 tokens.
 3. **Component** (`components/{name}/{name}.css`) — `--{component}-*` tokens, derived from `--ui-*`. Scoped to `[data-theme]`.
 
 **Rule**: components use component tokens or `--ui-*` directly. Never `--color-*`, `--space-*`, `--shadow-*`, or any other primitive.
@@ -102,7 +102,7 @@ Both `@xsimjo/design-system` and `@xsimjo/design-system-mcp` publish to GitHub P
 - Destructure with defaults and `...restProps`: `let { variant = 'filled', ...restProps }: Props = $props()`
 - Two-way state uses `$bindable()`: `value = $bindable('')`, `open = $bindable(false)`
 - Parent notifications use optional callbacks: `onchange?: (value: string) => void`, called via `onchange?.(value)`
-- Variant unions: sizes are `'sm' | 'md' | 'lg'`, colors are `'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral'`
+- Variant unions: sizes are `'sm' | 'md' | 'lg'`, colors are `'primary' | 'secondary' | 'accent' | 'success' | 'danger' | 'warning' | 'info' | 'neutral'`
 
 ### Component Structure
 

@@ -6,7 +6,7 @@
 		value?: number;
 		max?: number;
 		size?: 'xs' | 'sm' | 'md' | 'lg';
-		variant?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'neutral';
+		variant?: 'primary' | 'accent' | 'success' | 'danger' | 'warning' | 'info' | 'neutral';
 		label?: string;
 		showValue?: boolean;
 		indeterminate?: boolean;

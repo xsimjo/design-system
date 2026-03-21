@@ -6,6 +6,7 @@
 	--progress-border-radius: 9999px;
 	--progress-track-color: color-mix(in oklch, var(--ui-neutral), transparent 75%);
 	--progress-fill-primary: var(--ui-primary);
+	--progress-fill-accent: var(--ui-accent);
 	--progress-fill-success: var(--ui-success);
 	--progress-fill-danger: var(--ui-danger);
 	--progress-fill-warning: var(--ui-warning);
@@ -74,6 +75,10 @@
 
 .progress--primary .progress__fill {
 	background-color: var(--progress-fill-primary);
+}
+
+.progress--accent .progress__fill {
+	background-color: var(--progress-fill-accent);
 }
 
 .progress--success .progress__fill {
