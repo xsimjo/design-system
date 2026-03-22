@@ -39,6 +39,7 @@
 				{ label: 'Switch', href: '/docs/switch' },
 				{ label: 'Drawer', href: '/docs/drawer' },
 				{ label: 'Dropdown', href: '/docs/dropdown' },
+				{ label: 'SideNav', href: '/docs/side-nav' },
 				{ label: 'Modal', href: '/docs/modal' },
 				{ label: 'Pagination', href: '/docs/pagination' },
 				{ label: 'Popover', href: '/docs/popover' },

@@ -34,6 +34,11 @@ export { default as MultiSelect } from './components/multiselect/MultiSelect.sve
 export type { MultiSelectOption } from './components/multiselect/MultiSelect.svelte';
 export { default as BadgeInput } from './components/badge-input/BadgeInput.svelte';
 export { default as FileInput } from './components/file-input/FileInput.svelte';
+export { default as SideNav } from './components/side-nav/SideNav.svelte';
+export { default as SideNavGroup } from './components/side-nav/SideNavGroup.svelte';
+export { default as SideNavItem } from './components/side-nav/SideNavItem.svelte';
+export { default as SideNavLabel } from './components/side-nav/SideNavLabel.svelte';
+export { default as SideNavDivider } from './components/side-nav/SideNavDivider.svelte';
 export { default as Modal } from './components/modal/Modal.svelte';
 export { default as Drawer } from './components/drawer/Drawer.svelte';
 export { default as DrawerHeader } from './components/drawer/DrawerHeader.svelte';
