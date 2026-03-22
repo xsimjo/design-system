@@ -1,14 +1,8 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import Button from '$lib/components/button/Button.svelte';
-	import Header from '$lib/internal/Header.svelte';
-	import Tooltip from '$lib/internal/Tooltip.svelte';
-	import ThemeSwitcher from '$lib/internal/ThemeSwitcher.svelte';
+	import SiteHeader from '$lib/internal/SiteHeader.svelte';
+	import MobileMenu from '$lib/internal/MobileMenu.svelte';
 	import DocsSidebar from '$lib/internal/DocsSidebar.svelte';
-	import GithubIcon from '$lib/icons/GithubIcon.svelte';
-	import PaletteIcon from '$lib/icons/PaletteIcon.svelte';
-	import MenuIcon from '$lib/icons/MenuIcon.svelte';
-	import XIcon from '$lib/icons/XIcon.svelte';
 
 	interface Props {
 		children: Snippet;
@@ -17,14 +11,6 @@
 	let { children }: Props = $props();
 
 	let isMobileMenuOpen = $state(false);
-
-	function closeMobileMenu() {
-		isMobileMenuOpen = false;
-	}
-
-	function toggleMobileMenu() {
-		isMobileMenuOpen = !isMobileMenuOpen;
-	}
 
 	const navGroups = [
 		{
@@ -49,6 +35,7 @@
 				{ label: 'Slider', href: '/docs/slider' },
 				{ label: 'Rating', href: '/docs/rating' },
 				{ label: 'Field', href: '/docs/field' },
+				{ label: 'ColorPicker', href: '/docs/color-picker' },
 				{ label: 'Combobox', href: '/docs/combobox' },
 				{ label: 'DatePicker', href: '/docs/datepicker' },
 				{ label: 'TimePicker', href: '/docs/timepicker' },
@@ -105,63 +92,23 @@
 </svelte:head>
 
 <div class="docs">
-	<Header sticky maxWidth="1400px">
+	<SiteHeader>
 		{#snippet hamburger()}
-			<Button
-				variant="ghost"
-				color="secondary"
-				size="sm"
-				isIcon
-				onclick={toggleMobileMenu}
-				aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-				aria-expanded={isMobileMenuOpen}
-			>
-				{#if isMobileMenuOpen}
-					<XIcon size={20} />
-				{:else}
-					<MenuIcon size={20} />
-				{/if}
-			</Button>
+			<MobileMenu bind:isOpen={isMobileMenuOpen} />
 		{/snippet}
-		{#snippet logo()}
-			<a href="/" class="logo-link">
-				<PaletteIcon size={28} />
-				<span class="header-title">Greenfield</span>
-				<span class="header-subtitle">UI</span>
-			</a>
-		{/snippet}
-		{#snippet nav()}
-			<a href="/"><Button variant="ghost" color="secondary" size="sm">Home</Button></a>
-			<a href="/docs"><Button variant="ghost" color="secondary" size="sm">Documentation</Button></a>
-			<a href="/docs/button"
-				><Button variant="ghost" color="secondary" size="sm">Components</Button></a
-			>
-		{/snippet}
-		{#snippet actions()}
-			<Tooltip text="View on GitHub" position="bottom">
-				<Button
-					variant="ghost"
-					color="secondary"
-					size="sm"
-					isIcon
-					onclick={() => window.open('https://github.com', '_blank')}
-				>
-					<GithubIcon size={18} />
-				</Button>
-			</Tooltip>
-			<ThemeSwitcher />
-			<Button variant="outline" color="secondary" size="sm">v0.0.22</Button>
-		{/snippet}
-	</Header>
+	</SiteHeader>
 
 	<div class="layout">
 		{#if isMobileMenuOpen}
-			<button class="mobile-backdrop" onclick={closeMobileMenu} aria-label="Close navigation"
+			<button
+				class="mobile-backdrop"
+				onclick={() => (isMobileMenuOpen = false)}
+				aria-label="Close navigation"
 			></button>
 		{/if}
 
 		<aside class="sidebar-container" class:sidebar-container--open={isMobileMenuOpen}>
-			<DocsSidebar groups={navGroups} onclose={closeMobileMenu} />
+			<DocsSidebar groups={navGroups} onclose={() => (isMobileMenuOpen = false)} />
 		</aside>
 
 		<main class="content">
@@ -178,32 +125,10 @@
 		flex-direction: column;
 	}
 
-	.logo-link {
-		display: flex;
-		align-items: center;
-		gap: var(--space-2);
-		color: var(--ui-surface-foreground);
-		text-decoration: none;
-	}
-
-	.header-title {
-		font-size: var(--font-size-xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		letter-spacing: -0.02em;
-	}
-
-	.header-subtitle {
-		font-size: var(--font-size-xl);
-		font-weight: var(--ui-weight-normal);
-		color: var(--ui-primary);
-		letter-spacing: -0.02em;
-	}
-
 	.layout {
 		display: flex;
 		flex: 1;
-		max-width: 1400px;
+		max-width: 1500px;
 		margin: 0 auto;
 		width: 100%;
 		min-height: calc(100vh - var(--header-height));
@@ -221,7 +146,7 @@
 
 	.content {
 		flex: 1;
-		max-width: 1150px;
+		max-width: 1240px;
 		padding: var(--space-8);
 		display: flex;
 		flex-direction: column;

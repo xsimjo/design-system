@@ -1,7 +1,6 @@
 <script lang="ts">
-	import Header from '$lib/internal/Header.svelte';
-	import Tooltip from '$lib/internal/Tooltip.svelte';
-	import ThemeSwitcher from '$lib/internal/ThemeSwitcher.svelte';
+	import SiteHeader from '$lib/internal/SiteHeader.svelte';
+	import MobileMenu from '$lib/internal/MobileMenu.svelte';
 	import Button from '$lib/components/button/Button.svelte';
 	import Card from '$lib/components/card/Card.svelte';
 	import CardHeader from '$lib/components/card/CardHeader.svelte';
@@ -17,7 +16,6 @@
 	import Avatar from '$lib/components/avatar/Avatar.svelte';
 	import Checkbox from '$lib/components/checkbox/Checkbox.svelte';
 	import ArrowRightIcon from '$lib/icons/ArrowRightIcon.svelte';
-	import GithubIcon from '$lib/icons/GithubIcon.svelte';
 	import PaletteIcon from '$lib/icons/PaletteIcon.svelte';
 	import CodeIcon from '$lib/icons/CodeIcon.svelte';
 	import AccessibilityIcon from '$lib/icons/AccessibilityIcon.svelte';
@@ -27,8 +25,6 @@
 	import CheckIcon from '$lib/icons/CheckIcon.svelte';
 	import SendIcon from '$lib/icons/SendIcon.svelte';
 	import HeartIcon from '$lib/icons/HeartIcon.svelte';
-	import MenuIcon from '$lib/icons/MenuIcon.svelte';
-	import XIcon from '$lib/icons/XIcon.svelte';
 	import Footer from '$lib/internal/Footer.svelte';
 
 	const installCommand = 'npm install @xsimjo/design-system';
@@ -38,14 +34,6 @@
 	let isMobileMenuOpen = $state(false);
 	let switchValue = $state(true);
 	let checkboxValue = $state(true);
-
-	function closeMobileMenu() {
-		isMobileMenuOpen = false;
-	}
-
-	function toggleMobileMenu() {
-		isMobileMenuOpen = !isMobileMenuOpen;
-	}
 
 	async function copyInstall() {
 		await navigator.clipboard.writeText(installCommand);
@@ -98,66 +86,18 @@
 
 <div class="landing">
 	<!-- Header -->
-	<Header sticky maxWidth="1200px">
+	<SiteHeader>
 		{#snippet hamburger()}
-			<Button
-				variant="ghost"
-				color="secondary"
-				size="sm"
-				isIcon
-				onclick={toggleMobileMenu}
-				aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-				aria-expanded={isMobileMenuOpen}
-			>
-				{#if isMobileMenuOpen}
-					<XIcon size={20} />
-				{:else}
-					<MenuIcon size={20} />
-				{/if}
-			</Button>
+			<MobileMenu bind:isOpen={isMobileMenuOpen}>
+				{#snippet links()}
+					<a href="/docs">Documentation</a>
+					<a href="/docs/button">Components</a>
+					<a href="/docs/theming">Theming</a>
+					<a href="/docs/installation">Installation</a>
+				{/snippet}
+			</MobileMenu>
 		{/snippet}
-		{#snippet logo()}
-			<a href="/" class="logo-link">
-				<PaletteIcon size={28} />
-				<span class="header-title">Greenfield</span>
-				<span class="header-accent">UI</span>
-			</a>
-		{/snippet}
-		{#snippet nav()}
-			<a href="/docs"><Button variant="ghost" color="secondary" size="sm">Docs</Button></a>
-			<a href="/docs/button"
-				><Button variant="ghost" color="secondary" size="sm">Components</Button></a
-			>
-			<a href="/docs/theming"
-				><Button variant="ghost" color="secondary" size="sm">Theming</Button></a
-			>
-		{/snippet}
-		{#snippet actions()}
-			<Tooltip text="View on GitHub" position="bottom">
-				<Button
-					variant="ghost"
-					color="secondary"
-					size="sm"
-					isIcon
-					onclick={() => window.open('https://github.com', '_blank')}
-				>
-					<GithubIcon size={18} />
-				</Button>
-			</Tooltip>
-			<ThemeSwitcher />
-		{/snippet}
-	</Header>
-
-	{#if isMobileMenuOpen}
-		<button class="mobile-backdrop" onclick={closeMobileMenu} aria-label="Close navigation">
-		</button>
-		<nav class="mobile-nav">
-			<a href="/docs" onclick={closeMobileMenu}>Documentation</a>
-			<a href="/docs/button" onclick={closeMobileMenu}>Components</a>
-			<a href="/docs/theming" onclick={closeMobileMenu}>Theming</a>
-			<a href="/docs/installation" onclick={closeMobileMenu}>Installation</a>
-		</nav>
-	{/if}
+	</SiteHeader>
 
 	<!-- Hero -->
 	<section class="hero">
@@ -393,7 +333,7 @@
 	</section>
 
 	<!-- Footer -->
-	<Footer maxWidth="1100px" />
+	<Footer maxWidth="1500px" />
 </div>
 
 <style>
@@ -405,38 +345,6 @@
 		background-color: var(--ui-surface);
 		display: flex;
 		flex-direction: column;
-	}
-
-	/* ---- Header ---- */
-	.logo-link {
-		display: flex;
-		align-items: center;
-		gap: var(--space-2);
-		color: var(--ui-surface-foreground);
-		text-decoration: none;
-	}
-
-	.header-title {
-		font-size: var(--font-size-xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		letter-spacing: -0.02em;
-	}
-
-	.header-accent {
-		font-size: var(--font-size-xl);
-		font-weight: var(--ui-weight-normal);
-		color: var(--ui-primary);
-		letter-spacing: -0.02em;
-	}
-
-	/* ---- Mobile Nav ---- */
-	.mobile-backdrop {
-		display: none;
-	}
-
-	.mobile-nav {
-		display: none;
 	}
 
 	/* ---- Hero ---- */
@@ -608,7 +516,7 @@
 
 	/* ---- Sections (shared) ---- */
 	.section-inner {
-		max-width: 1100px;
+		max-width: 1500px;
 		margin: 0 auto;
 		padding: 0 var(--space-6);
 	}
@@ -898,48 +806,6 @@
 	}
 
 	@media (max-width: 768px) {
-		.mobile-backdrop {
-			display: block;
-			position: fixed;
-			inset: 0;
-			top: var(--header-height);
-			background-color: color-mix(in oklch, var(--ui-surface-foreground) 50%, transparent);
-			z-index: calc(var(--z-dropdown) - 1);
-			border: none;
-			cursor: default;
-		}
-
-		.mobile-nav {
-			display: flex;
-			flex-direction: column;
-			position: fixed;
-			top: var(--header-height);
-			left: 0;
-			width: 260px;
-			height: calc(100vh - var(--header-height));
-			background-color: var(--ui-surface);
-			border-right: 1px solid var(--ui-border);
-			z-index: var(--z-dropdown);
-			padding: var(--space-4);
-			gap: var(--space-1);
-			overflow-y: auto;
-			animation: slideIn 200ms var(--ui-base-easing);
-		}
-
-		.mobile-nav a {
-			display: block;
-			padding: var(--space-2) var(--space-3);
-			font-size: var(--ui-text-sm);
-			color: var(--ui-surface-foreground);
-			text-decoration: none;
-			border-radius: var(--ui-base-radius);
-			transition: background-color var(--ui-base-duration) var(--ui-base-easing);
-		}
-
-		.mobile-nav a:hover {
-			background-color: color-mix(in oklch, var(--ui-surface-foreground) 6%, transparent);
-		}
-
 		.hero {
 			padding: var(--space-16) var(--space-4) var(--space-10);
 		}
@@ -967,15 +833,6 @@
 		.install-box {
 			font-size: var(--ui-text-xs);
 			padding: var(--space-2) var(--space-3);
-		}
-	}
-
-	@keyframes slideIn {
-		from {
-			transform: translateX(-100%);
-		}
-		to {
-			transform: translateX(0);
 		}
 	}
 

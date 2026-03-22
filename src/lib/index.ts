@@ -10,6 +10,7 @@ export { default as CardHeader } from './components/card/CardHeader.svelte';
 export { default as CardBody } from './components/card/CardBody.svelte';
 export { default as CardFooter } from './components/card/CardFooter.svelte';
 export { default as Checkbox } from './components/checkbox/Checkbox.svelte';
+export { default as ColorPicker } from './components/color-picker/ColorPicker.svelte';
 export { default as Radio } from './components/radio/Radio.svelte';
 export { default as Rating } from './components/rating/Rating.svelte';
 export { default as Switch } from './components/switch/Switch.svelte';

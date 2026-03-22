@@ -1,14 +1,15 @@
 <script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
 	import PaletteIcon from '$lib/icons/PaletteIcon.svelte';
 
-	interface Props {
+	interface Props extends HTMLAttributes<HTMLElement> {
 		maxWidth?: string;
 	}
 
-	let { maxWidth = '1100px' }: Props = $props();
+	let { maxWidth = '1500px', ...restProps }: Props = $props();
 </script>
 
-<footer class="footer">
+<footer class="footer" {...restProps}>
 	<div class="footer-inner" style:max-width={maxWidth}>
 		<div class="footer-brand">
 			<div class="footer-logo">
