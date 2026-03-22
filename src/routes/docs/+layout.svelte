@@ -16,7 +16,7 @@
 
 	const navGroups = [
 		{
-			title: 'Docs',
+			title: 'Getting Started',
 			items: [
 				{ label: 'Introduction', href: '/docs' },
 				{ label: 'Installation', href: '/docs/installation' },
@@ -25,44 +25,64 @@
 			]
 		},
 		{
-			title: 'Components',
+			title: 'Form',
 			items: [
-				{ label: 'Accordion', href: '/docs/accordion' },
-				{ label: 'Alert', href: '/docs/alert' },
-				{ label: 'Avatar', href: '/docs/avatar' },
-				{ label: 'Breadcrumbs', href: '/docs/breadcrumbs' },
 				{ label: 'Button', href: '/docs/button' },
-				{ label: 'Card', href: '/docs/card' },
+				{ label: 'Input', href: '/docs/input' },
+				{ label: 'Textarea', href: '/docs/textarea' },
+				{ label: 'Select', href: '/docs/select' },
 				{ label: 'Checkbox', href: '/docs/checkbox' },
 				{ label: 'Radio', href: '/docs/radio' },
-				{ label: 'Rating', href: '/docs/rating' },
 				{ label: 'Switch', href: '/docs/switch' },
-				{ label: 'Drawer', href: '/docs/drawer' },
-				{ label: 'Dropdown', href: '/docs/dropdown' },
-				{ label: 'SideNav', href: '/docs/side-nav' },
-				{ label: 'Modal', href: '/docs/modal' },
-				{ label: 'Pagination', href: '/docs/pagination' },
-				{ label: 'Popover', href: '/docs/popover' },
-				{ label: 'Progress', href: '/docs/progress' },
+				{ label: 'Slider', href: '/docs/slider' },
+				{ label: 'Rating', href: '/docs/rating' },
 				{ label: 'Field', href: '/docs/field' },
-				{ label: 'Input', href: '/docs/input' },
-				{ label: 'Badge', href: '/docs/badge' },
-				{ label: 'BadgeInput', href: '/docs/badge-input' },
-				{ label: 'FileInput', href: '/docs/file-input' },
 				{ label: 'Combobox', href: '/docs/combobox' },
 				{ label: 'DatePicker', href: '/docs/datepicker' },
 				{ label: 'TimePicker', href: '/docs/timepicker' },
 				{ label: 'MultiSelect', href: '/docs/multiselect' },
-				{ label: 'Select', href: '/docs/select' },
-				{ label: 'Slider', href: '/docs/slider' },
-				{ label: 'Skeleton', href: '/docs/skeleton' },
-				{ label: 'Spinner', href: '/docs/spinner' },
+				{ label: 'FileInput', href: '/docs/file-input' },
+				{ label: 'BadgeInput', href: '/docs/badge-input' }
+			]
+		},
+		{
+			title: 'Data Display',
+			items: [
+				{ label: 'Avatar', href: '/docs/avatar' },
+				{ label: 'Badge', href: '/docs/badge' },
+				{ label: 'Card', href: '/docs/card' },
 				{ label: 'Table', href: '/docs/table' },
-				{ label: 'Tabs', href: '/docs/tabs' },
-				{ label: 'Textarea', href: '/docs/textarea' },
+				{ label: 'Typography', href: '/docs/typography' },
+				{ label: 'Skeleton', href: '/docs/skeleton' }
+			]
+		},
+		{
+			title: 'Feedback',
+			items: [
+				{ label: 'Alert', href: '/docs/alert' },
+				{ label: 'Progress', href: '/docs/progress' },
+				{ label: 'Spinner', href: '/docs/spinner' },
 				{ label: 'Toast', href: '/docs/toast' },
-				{ label: 'Tooltip', href: '/docs/tooltip' },
-				{ label: 'Typography', href: '/docs/typography' }
+				{ label: 'Tooltip', href: '/docs/tooltip' }
+			]
+		},
+		{
+			title: 'Overlay',
+			items: [
+				{ label: 'Drawer', href: '/docs/drawer' },
+				{ label: 'Dropdown', href: '/docs/dropdown' },
+				{ label: 'Modal', href: '/docs/modal' },
+				{ label: 'Popover', href: '/docs/popover' }
+			]
+		},
+		{
+			title: 'Navigation',
+			items: [
+				{ label: 'Accordion', href: '/docs/accordion' },
+				{ label: 'Breadcrumbs', href: '/docs/breadcrumbs' },
+				{ label: 'Pagination', href: '/docs/pagination' },
+				{ label: 'SideNav', href: '/docs/side-nav' },
+				{ label: 'Tabs', href: '/docs/tabs' }
 			]
 		}
 	];
@@ -156,9 +176,11 @@
 	.sidebar-container {
 		position: sticky;
 		top: var(--header-height);
+		width: 260px;
 		height: calc(100vh - var(--header-height));
 		overflow-y: auto;
 		flex-shrink: 0;
+		padding-left: var(--space-3);
 	}
 
 	.content {
