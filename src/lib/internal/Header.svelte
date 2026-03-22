@@ -8,13 +8,20 @@
 		logo?: Snippet;
 		nav?: Snippet;
 		actions?: Snippet;
+		hamburger?: Snippet;
 	}
 
-	let { sticky = true, fixed = false, maxWidth, logo, nav, actions }: Props = $props();
+	let { sticky = true, fixed = false, maxWidth, logo, nav, actions, hamburger }: Props = $props();
 </script>
 
 <header class="header" class:header--sticky={sticky && !fixed} class:header--fixed={fixed}>
 	<div class="header-inner" style:max-width={maxWidth}>
+		{#if hamburger}
+			<div class="header-hamburger">
+				{@render hamburger()}
+			</div>
+		{/if}
+
 		{#if logo}
 			<div class="header-logo">
 				{@render logo()}
@@ -41,6 +48,7 @@
 		width: 100%;
 		height: var(--header-height);
 		background-color: var(--ui-surface);
+		border-bottom: 1px solid var(--ui-border);
 		z-index: var(--z-sticky);
 	}
 
@@ -86,5 +94,24 @@
 		align-items: center;
 		gap: var(--space-2);
 		margin-left: auto;
+	}
+
+	.header-hamburger {
+		display: none;
+	}
+
+	@media (max-width: 768px) {
+		.header-hamburger {
+			display: flex;
+			align-items: center;
+		}
+
+		.header-nav {
+			display: none;
+		}
+
+		.header-inner {
+			padding: 0 var(--space-4);
+		}
 	}
 </style>

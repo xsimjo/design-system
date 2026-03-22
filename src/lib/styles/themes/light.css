@@ -1,74 +1,79 @@
 [data-theme='light'] {
 	/* ==========================================================================
 	   COLORS (8 pairs = 16 tokens)
+	   Minimal, business-oriented palette. Cool slate primary with restrained
+	   chroma — professional without being sterile.
 	   ========================================================================== */
-	--ui-primary: oklch(55% 0.26 262);
+	--ui-primary: oklch(45% 0.03 260);
 	--ui-primary-foreground: oklch(100% 0 0);
 
-	--ui-secondary: oklch(50% 0.06 262);
+	--ui-secondary: oklch(62% 0.02 260);
 	--ui-secondary-foreground: oklch(100% 0 0);
 
-	--ui-accent: oklch(55% 0.24 300);
+	--ui-accent: oklch(48% 0.12 300);
 	--ui-accent-foreground: oklch(100% 0 0);
 
-	--ui-success: oklch(62% 0.18 150);
+	--ui-success: oklch(58% 0.14 150);
 	--ui-success-foreground: oklch(100% 0 0);
 
-	--ui-warning: oklch(72% 0.16 72);
+	--ui-warning: oklch(72% 0.14 72);
 	--ui-warning-foreground: oklch(22% 0.05 72);
 
-	--ui-danger: oklch(60% 0.22 25);
+	--ui-danger: oklch(58% 0.18 25);
 	--ui-danger-foreground: oklch(100% 0 0);
 
-	--ui-info: oklch(58% 0.21 218);
+	--ui-info: oklch(56% 0.12 240);
 	--ui-info-foreground: oklch(100% 0 0);
 
-	--ui-neutral: oklch(52% 0.015 265);
+	--ui-neutral: oklch(55% 0.01 260);
 	--ui-neutral-foreground: oklch(100% 0 0);
 
 	/* ==========================================================================
 	   SURFACES (3 pairs = 6 tokens)
+	   Very light, nearly white backgrounds — clean canvas for form fields.
 	   ========================================================================== */
-	--ui-surface: oklch(97% 0.008 250);
-	--ui-surface-foreground: oklch(18% 0.018 265);
+	--ui-surface: oklch(98.5% 0.002 260);
+	--ui-surface-foreground: oklch(25% 0.015 260);
 
 	--ui-surface-raised: oklch(100% 0 0);
-	--ui-surface-raised-foreground: oklch(18% 0.018 265);
+	--ui-surface-raised-foreground: oklch(25% 0.015 260);
 
 	--ui-surface-overlay: oklch(100% 0 0);
-	--ui-surface-overlay-foreground: oklch(18% 0.018 265);
+	--ui-surface-overlay-foreground: oklch(25% 0.015 260);
 
 	/* ==========================================================================
 	   BACKDROP (2 tokens)
 	   ========================================================================== */
-	--ui-backdrop: oklch(0% 0 0 / 0.2);
-	--ui-backdrop-blur: 6px;
+	--ui-backdrop: oklch(0% 0 0 / 0.15);
+	--ui-backdrop-blur: 8px;
 
 	/* ==========================================================================
 	   BORDER (2 tokens)
+	   Subtle, low-contrast borders — form fields feel spacious.
 	   ========================================================================== */
-	--ui-border: oklch(87% 0.014 262);
+	--ui-border: oklch(90% 0.006 260);
 	--ui-border-width: 1px;
 
 	/* ==========================================================================
 	   TYPOGRAPHY (10 tokens)
+	   System-native sans-serif for a clean, lightweight feel.
 	   ========================================================================== */
-	--ui-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	--ui-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
 	--ui-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Monaco', 'Courier New', monospace;
 
-	--ui-text-xs: 12px;
-	--ui-text-sm: 14px;
-	--ui-text-base: 16px;
-	--ui-text-lg: 18px;
-	--ui-text-xl: 20px;
-	--ui-text-2xl: 24px;
-	--ui-text-3xl: 30px;
-	--ui-text-4xl: 36px;
+	--ui-text-xs: 11px;
+	--ui-text-sm: 13px;
+	--ui-text-base: 14px;
+	--ui-text-lg: 16px;
+	--ui-text-xl: 18px;
+	--ui-text-2xl: 22px;
+	--ui-text-3xl: 28px;
+	--ui-text-4xl: 34px;
 
 	--ui-leading-none: 1;
-	--ui-leading-tight: 1.25;
+	--ui-leading-tight: 1.3;
 	--ui-leading-normal: 1.5;
-	--ui-leading-relaxed: 1.75;
+	--ui-leading-relaxed: 1.7;
 
 	--ui-weight-normal: 400;
 	--ui-weight-medium: 500;
@@ -77,33 +82,37 @@
 
 	/* ==========================================================================
 	   RADIUS (1 token)
+	   Small radius — clean and precise, not rounded-bubbly.
 	   ========================================================================== */
-	--ui-base-radius: 8px;
+	--ui-base-radius: 6px;
 
 	/* ==========================================================================
 	   DEPTH (1 token)
+	   Very subtle shadow — flat-first with just a hint of lift.
 	   ========================================================================== */
-	--ui-depth: 0 1px 2px 0 oklch(0% 0 0 / 0.04), 0 2px 6px 0 oklch(0% 0 0 / 0.06);
+	--ui-depth: 0 1px 3px 0 oklch(0% 0 0 / 0.03), 0 1px 2px -1px oklch(0% 0 0 / 0.03);
 
 	/* ==========================================================================
 	   FOCUS (2 tokens)
 	   ========================================================================== */
-	--ui-ring-width: 3px;
-	--ui-ring-offset: 3px;
+	--ui-ring-width: 2px;
+	--ui-ring-offset: 2px;
 
 	/* ==========================================================================
 	   INTERACTION (3 tokens)
+	   Gentle hover — minimalist feel.
 	   ========================================================================== */
 	--ui-hover-mix: black;
-	--ui-hover-amount: 10%;
-	--ui-active-amount: 18%;
+	--ui-hover-amount: 6%;
+	--ui-active-amount: 12%;
 
 	/* ==========================================================================
 	   MOTION (3 tokens)
+	   Quick, snappy transitions — business tools should feel instant.
 	   ========================================================================== */
-	--ui-base-duration: 150ms;
-	--ui-base-easing: cubic-bezier(0.4, 0, 0.2, 1);
-	--ui-enter-offset: -4px;
+	--ui-base-duration: 120ms;
+	--ui-base-easing: cubic-bezier(0.25, 0.1, 0.25, 1);
+	--ui-enter-offset: -3px;
 
 	/* ==========================================================================
 	   SPACING (1 token)
@@ -111,7 +120,7 @@
 	--ui-base-spacing: 8px;
 
 	/* ==========================================================================
-	   Z-INDEX (1 token)
+	   Z-INDEX (2 tokens)
 	   ========================================================================== */
 	--ui-z-overlay: 1000;
 	--ui-z-tooltip: 1500;

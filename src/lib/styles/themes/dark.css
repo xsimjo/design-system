@@ -1,74 +1,79 @@
 [data-theme='dark'] {
 	/* ==========================================================================
 	   COLORS (8 pairs = 16 tokens)
+	   Muted, professional palette — restrained chroma matching the light theme's
+	   business-oriented feel, lifted slightly for dark-background legibility.
 	   ========================================================================== */
-	--ui-primary: oklch(62% 0.19 260);
-	--ui-primary-foreground: oklch(100% 0 0);
+	--ui-primary: oklch(72% 0.03 260);
+	--ui-primary-foreground: oklch(15% 0.01 260);
 
-	--ui-secondary: oklch(52% 0.04 255);
-	--ui-secondary-foreground: oklch(100% 0 0);
+	--ui-secondary: oklch(65% 0.02 260);
+	--ui-secondary-foreground: oklch(15% 0.01 260);
 
-	--ui-accent: oklch(65% 0.22 300);
-	--ui-accent-foreground: oklch(100% 0 0);
+	--ui-accent: oklch(70% 0.1 300);
+	--ui-accent-foreground: oklch(15% 0.01 260);
 
-	--ui-success: oklch(65% 0.18 148);
-	--ui-success-foreground: oklch(100% 0 0);
+	--ui-success: oklch(68% 0.12 150);
+	--ui-success-foreground: oklch(15% 0.01 260);
 
-	--ui-warning: oklch(70% 0.17 61);
-	--ui-warning-foreground: oklch(20% 0.05 61);
+	--ui-warning: oklch(74% 0.12 72);
+	--ui-warning-foreground: oklch(20% 0.05 72);
 
-	--ui-danger: oklch(63% 0.19 25);
+	--ui-danger: oklch(68% 0.14 25);
 	--ui-danger-foreground: oklch(100% 0 0);
 
-	--ui-info: oklch(66% 0.18 220);
-	--ui-info-foreground: oklch(100% 0 0);
+	--ui-info: oklch(68% 0.1 240);
+	--ui-info-foreground: oklch(15% 0.01 260);
 
-	--ui-neutral: oklch(54% 0.01 270);
-	--ui-neutral-foreground: oklch(100% 0 0);
+	--ui-neutral: oklch(60% 0.01 260);
+	--ui-neutral-foreground: oklch(15% 0.01 260);
 
 	/* ==========================================================================
 	   SURFACES (3 pairs = 6 tokens)
+	   Cool-neutral dark surfaces with minimal chroma — professional, not flashy.
 	   ========================================================================== */
-	--ui-surface: oklch(21% 0.03 266);
-	--ui-surface-foreground: oklch(98% 0.003 248);
+	--ui-surface: oklch(18% 0.01 260);
+	--ui-surface-foreground: oklch(92% 0.004 260);
 
-	--ui-surface-raised: oklch(28% 0.028 265);
-	--ui-surface-raised-foreground: oklch(98% 0.003 248);
+	--ui-surface-raised: oklch(23% 0.01 260);
+	--ui-surface-raised-foreground: oklch(92% 0.004 260);
 
-	--ui-surface-overlay: oklch(35% 0.022 265);
-	--ui-surface-overlay-foreground: oklch(98% 0.003 248);
+	--ui-surface-overlay: oklch(28% 0.01 260);
+	--ui-surface-overlay-foreground: oklch(92% 0.004 260);
 
 	/* ==========================================================================
 	   BACKDROP (2 tokens)
 	   ========================================================================== */
-	--ui-backdrop: oklch(0% 0 0 / 0.7);
-	--ui-backdrop-blur: 4px;
+	--ui-backdrop: oklch(0% 0 0 / 0.55);
+	--ui-backdrop-blur: 8px;
 
 	/* ==========================================================================
 	   BORDER (2 tokens)
+	   Low-contrast borders — subtle separation without harshness.
 	   ========================================================================== */
-	--ui-border: oklch(45% 0.026 265);
+	--ui-border: oklch(32% 0.008 260);
 	--ui-border-width: 1px;
 
 	/* ==========================================================================
 	   TYPOGRAPHY (10 tokens)
+	   Matches light theme sizing and font stack.
 	   ========================================================================== */
-	--ui-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	--ui-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
 	--ui-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Monaco', 'Courier New', monospace;
 
-	--ui-text-xs: 12px;
-	--ui-text-sm: 14px;
-	--ui-text-base: 16px;
-	--ui-text-lg: 18px;
-	--ui-text-xl: 20px;
-	--ui-text-2xl: 24px;
-	--ui-text-3xl: 30px;
-	--ui-text-4xl: 36px;
+	--ui-text-xs: 11px;
+	--ui-text-sm: 13px;
+	--ui-text-base: 14px;
+	--ui-text-lg: 16px;
+	--ui-text-xl: 18px;
+	--ui-text-2xl: 22px;
+	--ui-text-3xl: 28px;
+	--ui-text-4xl: 34px;
 
 	--ui-leading-none: 1;
-	--ui-leading-tight: 1.25;
+	--ui-leading-tight: 1.3;
 	--ui-leading-normal: 1.5;
-	--ui-leading-relaxed: 1.75;
+	--ui-leading-relaxed: 1.7;
 
 	--ui-weight-normal: 400;
 	--ui-weight-medium: 500;
@@ -77,33 +82,37 @@
 
 	/* ==========================================================================
 	   RADIUS (1 token)
+	   Matches light theme — clean and precise.
 	   ========================================================================== */
 	--ui-base-radius: 6px;
 
 	/* ==========================================================================
 	   DEPTH (1 token)
+	   Deeper shadow on dark backgrounds for perceptible lift.
 	   ========================================================================== */
-	--ui-depth: 0 1px 2px 0 oklch(0% 0 0 / 0.3);
+	--ui-depth: 0 1px 3px 0 oklch(0% 0 0 / 0.25), 0 1px 2px -1px oklch(0% 0 0 / 0.2);
 
 	/* ==========================================================================
 	   FOCUS (2 tokens)
 	   ========================================================================== */
-	--ui-ring-width: 3px;
-	--ui-ring-offset: 3px;
+	--ui-ring-width: 2px;
+	--ui-ring-offset: 2px;
 
 	/* ==========================================================================
 	   INTERACTION (3 tokens)
+	   Gentle hover with white mix for dark backgrounds.
 	   ========================================================================== */
 	--ui-hover-mix: white;
-	--ui-hover-amount: 12%;
-	--ui-active-amount: 20%;
+	--ui-hover-amount: 8%;
+	--ui-active-amount: 14%;
 
 	/* ==========================================================================
 	   MOTION (3 tokens)
+	   Quick, snappy transitions — matches light theme.
 	   ========================================================================== */
-	--ui-base-duration: 150ms;
-	--ui-base-easing: cubic-bezier(0.4, 0, 0.2, 1);
-	--ui-enter-offset: -4px;
+	--ui-base-duration: 120ms;
+	--ui-base-easing: cubic-bezier(0.25, 0.1, 0.25, 1);
+	--ui-enter-offset: -3px;
 
 	/* ==========================================================================
 	   SPACING (1 token)
@@ -111,7 +120,7 @@
 	--ui-base-spacing: 8px;
 
 	/* ==========================================================================
-	   Z-INDEX (1 token)
+	   Z-INDEX (2 tokens)
 	   ========================================================================== */
 	--ui-z-overlay: 1000;
 	--ui-z-tooltip: 1500;

@@ -16,9 +16,10 @@
 
 	interface Props {
 		groups: NavGroup[];
+		onclose?: () => void;
 	}
 
-	let { groups }: Props = $props();
+	let { groups, onclose }: Props = $props();
 
 	const pathname = $derived($page.url.pathname);
 </script>
@@ -29,7 +30,7 @@
 			{group.title}
 		</SideNavLabel>
 		{#each group.items as item (item.href)}
-			<SideNavItem href={item.href} isActive={pathname === item.href}>
+			<SideNavItem href={item.href} isActive={pathname === item.href} onclick={() => onclose?.()}>
 				{item.label}
 			</SideNavItem>
 		{/each}

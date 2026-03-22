@@ -7,12 +7,24 @@
 	import DocsSidebar from '$lib/internal/DocsSidebar.svelte';
 	import GithubIcon from '$lib/icons/GithubIcon.svelte';
 	import PaletteIcon from '$lib/icons/PaletteIcon.svelte';
+	import MenuIcon from '$lib/icons/MenuIcon.svelte';
+	import XIcon from '$lib/icons/XIcon.svelte';
 
 	interface Props {
 		children: Snippet;
 	}
 
 	let { children }: Props = $props();
+
+	let isMobileMenuOpen = $state(false);
+
+	function closeMobileMenu() {
+		isMobileMenuOpen = false;
+	}
+
+	function toggleMobileMenu() {
+		isMobileMenuOpen = !isMobileMenuOpen;
+	}
 
 	const navGroups = [
 		{
@@ -94,6 +106,23 @@
 
 <div class="docs">
 	<Header sticky maxWidth="1400px">
+		{#snippet hamburger()}
+			<Button
+				variant="ghost"
+				color="secondary"
+				size="sm"
+				isIcon
+				onclick={toggleMobileMenu}
+				aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+				aria-expanded={isMobileMenuOpen}
+			>
+				{#if isMobileMenuOpen}
+					<XIcon size={20} />
+				{:else}
+					<MenuIcon size={20} />
+				{/if}
+			</Button>
+		{/snippet}
 		{#snippet logo()}
 			<a href="/" class="logo-link">
 				<PaletteIcon size={28} />
@@ -104,8 +133,9 @@
 		{#snippet nav()}
 			<a href="/"><Button variant="ghost" color="secondary" size="sm">Home</Button></a>
 			<a href="/docs"><Button variant="ghost" color="secondary" size="sm">Documentation</Button></a>
-			<Button variant="ghost" color="secondary" size="sm">Components</Button>
-			<Button variant="ghost" color="secondary" size="sm">Themes</Button>
+			<a href="/docs/button"
+				><Button variant="ghost" color="secondary" size="sm">Components</Button></a
+			>
 		{/snippet}
 		{#snippet actions()}
 			<Tooltip text="View on GitHub" position="bottom">
@@ -120,13 +150,18 @@
 				</Button>
 			</Tooltip>
 			<ThemeSwitcher />
-			<Button variant="outline" color="secondary" size="sm">v0.1.0</Button>
+			<Button variant="outline" color="secondary" size="sm">v0.0.22</Button>
 		{/snippet}
 	</Header>
 
 	<div class="layout">
-		<aside class="sidebar-container">
-			<DocsSidebar groups={navGroups} />
+		{#if isMobileMenuOpen}
+			<button class="mobile-backdrop" onclick={closeMobileMenu} aria-label="Close navigation"
+			></button>
+		{/if}
+
+		<aside class="sidebar-container" class:sidebar-container--open={isMobileMenuOpen}>
+			<DocsSidebar groups={navGroups} onclose={closeMobileMenu} />
 		</aside>
 
 		<main class="content">
@@ -170,6 +205,7 @@
 		flex: 1;
 		max-width: 1400px;
 		margin: 0 auto;
+		width: 100%;
 		min-height: calc(100vh - var(--header-height));
 	}
 
@@ -190,5 +226,45 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-6);
+	}
+
+	.mobile-backdrop {
+		display: none;
+	}
+
+	@media (max-width: 768px) {
+		.sidebar-container {
+			position: fixed;
+			top: var(--header-height);
+			left: 0;
+			width: 280px;
+			height: calc(100vh - var(--header-height));
+			background-color: var(--ui-surface);
+			z-index: var(--z-overlay, 40);
+			transform: translateX(-100%);
+			transition: transform var(--ui-base-duration) var(--ui-base-easing);
+			padding-left: var(--space-3);
+			border-right: 1px solid var(--ui-border);
+			overflow-y: auto;
+		}
+
+		.sidebar-container--open {
+			transform: translateX(0);
+		}
+
+		.mobile-backdrop {
+			display: block;
+			position: fixed;
+			inset: 0;
+			top: var(--header-height);
+			background-color: color-mix(in oklch, var(--ui-surface-foreground) 50%, transparent);
+			z-index: calc(var(--z-overlay, 40) - 1);
+			border: none;
+			cursor: default;
+		}
+
+		.content {
+			padding: var(--space-4);
+		}
 	}
 </style>

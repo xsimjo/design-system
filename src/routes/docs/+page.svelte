@@ -2,8 +2,73 @@
 	import CodeBlock from '$lib/internal/CodeBlock.svelte';
 	import DocsPage from '$lib/internal/DocsPage.svelte';
 	import PageHeader from '$lib/internal/PageHeader.svelte';
+	import DocSection from '$lib/internal/DocSection.svelte';
 	import Button from '$lib/components/button/Button.svelte';
 	import ArrowRightIcon from '$lib/icons/ArrowRightIcon.svelte';
+
+	const componentCategories = [
+		{
+			title: 'Form',
+			items: [
+				{ label: 'Button', href: '/docs/button' },
+				{ label: 'Input', href: '/docs/input' },
+				{ label: 'Textarea', href: '/docs/textarea' },
+				{ label: 'Select', href: '/docs/select' },
+				{ label: 'Checkbox', href: '/docs/checkbox' },
+				{ label: 'Radio', href: '/docs/radio' },
+				{ label: 'Switch', href: '/docs/switch' },
+				{ label: 'Slider', href: '/docs/slider' },
+				{ label: 'Rating', href: '/docs/rating' },
+				{ label: 'Field', href: '/docs/field' },
+				{ label: 'Combobox', href: '/docs/combobox' },
+				{ label: 'DatePicker', href: '/docs/datepicker' },
+				{ label: 'TimePicker', href: '/docs/timepicker' },
+				{ label: 'MultiSelect', href: '/docs/multiselect' },
+				{ label: 'FileInput', href: '/docs/file-input' },
+				{ label: 'BadgeInput', href: '/docs/badge-input' }
+			]
+		},
+		{
+			title: 'Data Display',
+			items: [
+				{ label: 'Avatar', href: '/docs/avatar' },
+				{ label: 'Badge', href: '/docs/badge' },
+				{ label: 'Card', href: '/docs/card' },
+				{ label: 'Table', href: '/docs/table' },
+				{ label: 'Typography', href: '/docs/typography' },
+				{ label: 'Skeleton', href: '/docs/skeleton' }
+			]
+		},
+		{
+			title: 'Feedback',
+			items: [
+				{ label: 'Alert', href: '/docs/alert' },
+				{ label: 'Progress', href: '/docs/progress' },
+				{ label: 'Spinner', href: '/docs/spinner' },
+				{ label: 'Toast', href: '/docs/toast' },
+				{ label: 'Tooltip', href: '/docs/tooltip' }
+			]
+		},
+		{
+			title: 'Overlay',
+			items: [
+				{ label: 'Drawer', href: '/docs/drawer' },
+				{ label: 'Dropdown', href: '/docs/dropdown' },
+				{ label: 'Modal', href: '/docs/modal' },
+				{ label: 'Popover', href: '/docs/popover' }
+			]
+		},
+		{
+			title: 'Navigation',
+			items: [
+				{ label: 'Accordion', href: '/docs/accordion' },
+				{ label: 'Breadcrumbs', href: '/docs/breadcrumbs' },
+				{ label: 'Pagination', href: '/docs/pagination' },
+				{ label: 'SideNav', href: '/docs/side-nav' },
+				{ label: 'Tabs', href: '/docs/tabs' }
+			]
+		}
+	];
 </script>
 
 <svelte:head>
@@ -17,8 +82,7 @@
 		isBordered
 	/>
 
-	<section class="section">
-		<h2>Why Greenfield UI?</h2>
+	<DocSection id="why" title="Why Greenfield UI?">
 		<div class="principles">
 			<div class="principle">
 				<h3>Pure CSS</h3>
@@ -26,7 +90,7 @@
 			</div>
 			<div class="principle">
 				<h3>Themeable</h3>
-				<p>Override ~45 variables to customize everything. Dark mode works out of the box.</p>
+				<p>Override 57 variables to customize everything. Dark mode works out of the box.</p>
 			</div>
 			<div class="principle">
 				<h3>Accessible</h3>
@@ -39,10 +103,9 @@
 				<p>Built with runes, snippets, and modern patterns. Extends native HTML attributes.</p>
 			</div>
 		</div>
-	</section>
+	</DocSection>
 
-	<section class="section">
-		<h2>Quick Start</h2>
+	<DocSection id="quick-start" title="Quick Start">
 		<CodeBlock code="npm install @xsimjo/design-system" language="bash" />
 		<p class="hint">Then import styles and components in your layout.</p>
 		<CodeBlock
@@ -56,10 +119,9 @@ ${'</' + 'script>'}
 </html>`}
 			language="svelte"
 		/>
-	</section>
+	</DocSection>
 
-	<section class="section">
-		<h2>Token Architecture</h2>
+	<DocSection id="token-architecture" title="Token Architecture">
 		<p class="section-intro">
 			The styling system has three layers. You only need to touch the top layer to customize your
 			theme.
@@ -68,7 +130,7 @@ ${'</' + 'script>'}
 			<div class="layer layer--user">
 				<span class="layer-label">You customize</span>
 				<span class="layer-name">Theme Variables</span>
-				<span class="layer-desc">~45 simple variables like colors, radii, spacing</span>
+				<span class="layer-desc">57 semantic variables like colors, radii, spacing</span>
 			</div>
 			<div class="layer-arrow"></div>
 			<div class="layer layer--auto">
@@ -83,54 +145,37 @@ ${'</' + 'script>'}
 				<span class="layer-desc">Full color palettes, type scale, spacing</span>
 			</div>
 		</div>
-	</section>
+	</DocSection>
 
-	<section class="section">
-		<h2>Components</h2>
-		<p class="section-intro">Production-ready components.</p>
+	<DocSection id="components" title="Components">
+		<p class="section-intro">
+			{componentCategories.reduce((sum, cat) => sum + cat.items.length, 0)} production-ready components
+			across {componentCategories.length} categories.
+		</p>
 		<div class="component-grid">
-			<div class="component-group">
-				<h4>Form</h4>
-				<ul>
-					<li>Button</li>
-				</ul>
-			</div>
-			<div class="component-group">
-				<h4>Feedback</h4>
-				<ul>
-					<li>Spinner</li>
-				</ul>
-			</div>
+			{#each componentCategories as category (category.title)}
+				<div class="component-group">
+					<h4>{category.title} ({category.items.length})</h4>
+					<ul>
+						{#each category.items as item (item.href)}
+							<li><a href={item.href}>{item.label}</a></li>
+						{/each}
+					</ul>
+				</div>
+			{/each}
 		</div>
-	</section>
+	</DocSection>
 
-	<section class="section">
-		<h2>Next Steps</h2>
+	<DocSection id="next-steps" title="Next Steps">
 		<div class="next-steps">
 			<a href="/docs/installation"><Button>Installation <ArrowRightIcon size={16} /></Button></a>
 			<a href="/docs/usage"><Button variant="outline" color="secondary">Usage Guide</Button></a>
 			<a href="/docs/theming"><Button variant="outline" color="secondary">Theming</Button></a>
 		</div>
-	</section>
+	</DocSection>
 </DocsPage>
 
 <style>
-	.section {
-		margin-bottom: var(--space-10);
-	}
-
-	.section-intro {
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		margin-bottom: var(--space-4);
-	}
-
-	h2 {
-		font-size: var(--font-size-xl);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin-bottom: var(--space-4);
-	}
-
 	.hint {
 		font-size: var(--ui-text-sm);
 		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
@@ -221,7 +266,7 @@ ${'</' + 'script>'}
 
 	.component-grid {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 		gap: var(--space-4);
 	}
 
@@ -241,8 +286,17 @@ ${'</' + 'script>'}
 
 	.component-group li {
 		font-size: var(--ui-text-sm);
-		color: var(--ui-surface-foreground);
 		padding: var(--space-1) 0;
+	}
+
+	.component-group a {
+		color: var(--ui-surface-foreground);
+		text-decoration: none;
+		transition: color var(--ui-base-duration) var(--ui-base-easing);
+	}
+
+	.component-group a:hover {
+		color: var(--ui-primary);
 	}
 
 	.next-steps {
@@ -251,11 +305,17 @@ ${'</' + 'script>'}
 		flex-wrap: wrap;
 	}
 
-	@media (max-width: 640px) {
+	@media (max-width: 768px) {
 		.principles {
 			grid-template-columns: 1fr;
 		}
 
+		.component-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 480px) {
 		.component-grid {
 			grid-template-columns: 1fr;
 		}

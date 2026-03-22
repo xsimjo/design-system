@@ -47,7 +47,7 @@ function extractTokens() {
 	const themeBaseContent = readFileSync(themeBasePath, 'utf-8');
 	const semantic = parseSemanticTokens(themeBaseContent);
 
-	const themes = ['light', 'dark', 'dev', 'formbuilder'];
+	const themes = ['light', 'dark', 'dev'];
 	const themeVariables = {};
 
 	for (const theme of themes) {
