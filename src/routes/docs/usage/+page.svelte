@@ -1,5 +1,7 @@
 <script lang="ts">
 	import CodeBlock from '$lib/internal/CodeBlock.svelte';
+	import DocsPage from '$lib/internal/DocsPage.svelte';
+	import PageHeader from '$lib/internal/PageHeader.svelte';
 	import Button from '$lib/components/button/Button.svelte';
 	import ArrowRightIcon from '$lib/icons/ArrowRightIcon.svelte';
 </script>
@@ -8,11 +10,12 @@
 	<title>Usage - Greenfield UI</title>
 </svelte:head>
 
-<article class="docs-page">
-	<header class="page-header">
-		<h1>Usage</h1>
-		<p class="lead">Learn the component API patterns and how to compose them in your app.</p>
-	</header>
+<DocsPage>
+	<PageHeader
+		title="Usage"
+		description="Learn the component API patterns and how to compose them in your app."
+		isBordered
+	/>
 
 	<section class="section">
 		<h2>Importing components</h2>
@@ -222,32 +225,9 @@ function showSuccess() {
 		<p class="section-intro">Learn how to customize colors, spacing, and component styles.</p>
 		<a href="/docs/theming"><Button>Theming Guide <ArrowRightIcon size={16} /></Button></a>
 	</section>
-</article>
+</DocsPage>
 
 <style>
-	.docs-page {
-		max-width: 100%;
-	}
-
-	.page-header {
-		margin-bottom: var(--space-8);
-		border-bottom: 1px solid var(--ui-border);
-		padding-bottom: var(--space-6);
-	}
-
-	h1 {
-		font-size: var(--font-size-3xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin-bottom: var(--space-3);
-	}
-
-	.lead {
-		font-size: var(--ui-text-lg);
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		line-height: var(--line-height-relaxed);
-	}
-
 	.section {
 		margin-bottom: var(--space-8);
 	}
@@ -296,7 +276,6 @@ function showSuccess() {
 		font-size: 0.85em;
 	}
 
-	/* Prop table */
 	.prop-table {
 		margin-top: var(--space-4);
 	}
@@ -334,7 +313,6 @@ function showSuccess() {
 		font-size: 0.85em;
 	}
 
-	/* Demo */
 	.demo {
 		display: flex;
 		gap: var(--space-3);
@@ -344,7 +322,6 @@ function showSuccess() {
 		border-radius: calc(var(--ui-base-radius) * 0.75);
 	}
 
-	/* A11y list */
 	.a11y-list {
 		list-style: none;
 		padding: 0;

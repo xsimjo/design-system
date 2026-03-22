@@ -5,6 +5,11 @@
 	import FieldDescription from '$lib/components/field/FieldDescription.svelte';
 	import CodeExample from '$lib/internal/CodeExample.svelte';
 	import TableOfContents from '$lib/internal/TableOfContents.svelte';
+	import DocsPage from '$lib/internal/DocsPage.svelte';
+	import PageHeader from '$lib/internal/PageHeader.svelte';
+	import DocSection from '$lib/internal/DocSection.svelte';
+	import ExampleBlock from '$lib/internal/ExampleBlock.svelte';
+	import PropsTable from '$lib/internal/PropsTable.svelte';
 
 	let basic = $state<string | undefined>(undefined);
 	let controlled = $state<string | undefined>('14:30');
@@ -32,36 +37,30 @@
 	<title>TimePicker - Greenfield UI</title>
 </svelte:head>
 
-<div class="docs-layout">
-	<article class="docs-content">
-		<header class="page-header">
-			<h1>TimePicker</h1>
-			<p class="lead">
-				Popover for selecting a time of day. Click a segment to type a value directly, or scroll the
-				column lists to choose. Value is always a 24-hour <code>"HH:MM"</code> string. Supports optional
-				seconds and configurable minute steps.
-			</p>
-		</header>
+<DocsPage>
+	<PageHeader title="TimePicker">
+		<p class="lead">
+			Popover for selecting a time of day. Click a segment to type a value directly, or scroll the
+			column lists to choose. Value is always a 24-hour <code>"HH:MM"</code> string. Supports optional
+			seconds and configurable minute steps.
+		</p>
+	</PageHeader>
 
-		<section id="examples" class="doc-section">
-			<h2>Examples</h2>
+	<DocSection id="examples" title="Examples">
+		<ExampleBlock
+			id="basic"
+			title="Basic"
+			description="Click to open. Click a number to type it, or click any row in the list to select. Use arrow keys to increment within inputs."
+		>
+			<CodeExample code={`<TimePicker bind:value={time} />`}>
+				<TimePicker bind:value={basic} />
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="basic" class="example-block">
-				<h3>Basic</h3>
-				<p class="example-desc">
-					Click to open. Click a number to type it, or click any row in the list to select. Use
-					arrow keys to increment within inputs.
-				</p>
-				<CodeExample code={`<TimePicker bind:value={time} />`}>
-					<TimePicker bind:value={basic} />
-				</CodeExample>
-			</div>
-
-			<div id="with-field" class="example-block">
-				<h3>With Field</h3>
-				<p class="example-desc">Wrap with <code>Field</code> to wire label, hints, and errors.</p>
-				<CodeExample
-					code={`<Field>
+		<ExampleBlock id="with-field" title="With Field">
+			<p class="example-desc">Wrap with <code>Field</code> to wire label, hints, and errors.</p>
+			<CodeExample
+				code={`<Field>
   <FieldLabel>Start time</FieldLabel>
   <TimePicker bind:value={time} />
 </Field>
@@ -71,33 +70,30 @@
   <TimePicker />
   <FieldDescription>Enter a time in 24-hour format.</FieldDescription>
 </Field>`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Start time</FieldLabel>
-						<TimePicker bind:value={basic} />
-					</Field>
-					<Field error="A time is required.">
-						<FieldLabel>End time (error)</FieldLabel>
-						<TimePicker />
-						<FieldDescription>Enter a valid time.</FieldDescription>
-					</Field>
-				</CodeExample>
-			</div>
+				previewClass="column"
+			>
+				<Field>
+					<FieldLabel>Start time</FieldLabel>
+					<TimePicker bind:value={basic} />
+				</Field>
+				<Field error="A time is required.">
+					<FieldLabel>End time (error)</FieldLabel>
+					<TimePicker />
+					<FieldDescription>Enter a valid time.</FieldDescription>
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="with-seconds" class="example-block">
-				<h3>With Seconds</h3>
-				<p class="example-desc">Add a seconds column with the <code>seconds</code> prop.</p>
-				<CodeExample code={`<TimePicker seconds bind:value={time} />`}>
-					<TimePicker seconds bind:value={basic} />
-				</CodeExample>
-			</div>
+		<ExampleBlock id="with-seconds" title="With Seconds">
+			<p class="example-desc">Add a seconds column with the <code>seconds</code> prop.</p>
+			<CodeExample code={`<TimePicker seconds bind:value={time} />`}>
+				<TimePicker seconds bind:value={basic} />
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="states" class="example-block">
-				<h3>States</h3>
-				<p class="example-desc">Active and disabled states.</p>
-				<CodeExample
-					code={`<Field>
+		<ExampleBlock id="states" title="States" description="Active and disabled states.">
+			<CodeExample
+				code={`<Field>
   <FieldLabel>Active</FieldLabel>
   <TimePicker />
 </Field>
@@ -105,277 +101,91 @@
   <FieldLabel>Disabled</FieldLabel>
   <TimePicker />
 </Field>`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Active</FieldLabel>
-						<TimePicker />
-					</Field>
-					<Field disabled>
-						<FieldLabel>Disabled</FieldLabel>
-						<TimePicker />
-					</Field>
-				</CodeExample>
-			</div>
+				previewClass="column"
+			>
+				<Field>
+					<FieldLabel>Active</FieldLabel>
+					<TimePicker />
+				</Field>
+				<Field disabled>
+					<FieldLabel>Disabled</FieldLabel>
+					<TimePicker />
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="controlled" class="example-block">
-				<h3>Controlled</h3>
-				<p class="example-desc">Use <code>bind:value</code> to read or set the time externally.</p>
-				<CodeExample
-					code={`let time = $state('14:30');
+		<ExampleBlock id="controlled" title="Controlled">
+			<p class="example-desc">Use <code>bind:value</code> to read or set the time externally.</p>
+			<CodeExample
+				code={`let time = $state('14:30');
 <p>Selected: {time}</p>
 <TimePicker bind:value={time} />`}
-				>
-					<div class="controlled-example">
-						<p class="controlled-label">
-							Selected: <strong>{controlled ?? 'none'}</strong>
-						</p>
-						<TimePicker bind:value={controlled} />
-					</div>
-				</CodeExample>
-			</div>
-			<div id="locales" class="example-block">
-				<h3>Locales</h3>
-				<p class="example-desc">
-					Pass a BCP 47 locale tag via <code>locale.tag</code> to automatically use locale-appropriate
-					placeholder abbreviations. Individual placeholders can still be overridden.
-				</p>
-				<CodeExample
-					code={`<TimePicker locale={{ tag: 'en' }} />
+			>
+				<div class="controlled-example">
+					<p class="controlled-label">
+						Selected: <strong>{controlled ?? 'none'}</strong>
+					</p>
+					<TimePicker bind:value={controlled} />
+				</div>
+			</CodeExample>
+		</ExampleBlock>
+
+		<ExampleBlock id="locales" title="Locales">
+			<p class="example-desc">
+				Pass a BCP 47 locale tag via <code>locale.tag</code> to automatically use locale-appropriate placeholder
+				abbreviations. Individual placeholders can still be overridden.
+			</p>
+			<CodeExample
+				code={`<TimePicker locale={{ tag: 'en' }} />
 <TimePicker locale={{ tag: 'de' }} />
 <TimePicker locale={{ tag: 'ru' }} />
 <TimePicker locale={{ tag: 'ja-JP' }} />`}
-					previewClass="column"
-				>
-					{#each localeExamples as ex (ex.label)}
-						<Field>
-							<FieldLabel
-								>{ex.label}{#if ex.note}&nbsp;<span class="locale-note">{ex.note}</span
-									>{/if}</FieldLabel
-							>
-							<TimePicker locale={{ tag: ex.tag }} />
-						</Field>
-					{/each}
-				</CodeExample>
-			</div>
-		</section>
+				previewClass="column"
+			>
+				{#each localeExamples as ex (ex.label)}
+					<Field>
+						<FieldLabel
+							>{ex.label}{#if ex.note}&nbsp;<span class="locale-note">{ex.note}</span
+								>{/if}</FieldLabel
+						>
+						<TimePicker locale={{ tag: ex.tag }} />
+					</Field>
+				{/each}
+			</CodeExample>
+		</ExampleBlock>
+	</DocSection>
 
-		<section id="api" class="doc-section">
-			<h2>API</h2>
-			<div class="api-table">
-				<h3>TimePicker Props</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>value</code></td>
-							<td><code>string</code></td>
-							<td><code>undefined</code></td>
-							<td>Bindable time value in 24-hour <code>"HH:MM"</code> or <code>"HH:MM:SS"</code></td
-							>
-						</tr>
-						<tr>
-							<td><code>size</code></td>
-							<td><code>'sm' | 'md' | 'lg'</code></td>
-							<td><code>'md'</code></td>
-							<td>Controls trigger height, padding, and font size</td>
-						</tr>
-						<tr>
-							<td><code>fullWidth</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Stretches trigger to 100% of container</td>
-						</tr>
-						<tr>
-							<td><code>disabled</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Disables the picker (also inherited from Field)</td>
-						</tr>
-						<tr>
-							<td><code>id</code></td>
-							<td><code>string</code></td>
-							<td><code>—</code></td>
-							<td>Custom ID; auto-generated from Field context if omitted</td>
-						</tr>
-						<tr>
-							<td><code>name</code></td>
-							<td><code>string</code></td>
-							<td><code>—</code></td>
-							<td>Form field name; emits a hidden input with the raw time string</td>
-						</tr>
-						<tr>
-							<td><code>seconds</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Show a seconds column; value becomes <code>"HH:MM:SS"</code></td>
-						</tr>
-						<tr>
-							<td><code>locale</code></td>
-							<td><code>TimePickerLocale</code></td>
-							<td><code>—</code></td>
-							<td
-								>BCP 47 <code>tag</code> for automatic placeholders; override individually with
-								<code>hourPlaceholder</code>, <code>minutePlaceholder</code>,
-								<code>secondPlaceholder</code></td
-							>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
-	</article>
+	<DocSection id="api" title="API">
+		<PropsTable
+			title="TimePicker Props"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['value', 'string', 'undefined', 'Bindable time value in 24-hour "HH:MM" or "HH:MM:SS"'],
+				['size', "'sm' | 'md' | 'lg'", "'md'", 'Controls trigger height, padding, and font size'],
+				['fullWidth', 'boolean', 'false', 'Stretches trigger to 100% of container'],
+				['disabled', 'boolean', 'false', 'Disables the picker (also inherited from Field)'],
+				['id', 'string', '—', 'Custom ID; auto-generated from Field context if omitted'],
+				['name', 'string', '—', 'Form field name; emits a hidden input with the raw time string'],
+				['seconds', 'boolean', 'false', 'Show a seconds column; value becomes "HH:MM:SS"'],
+				[
+					'locale',
+					'TimePickerLocale',
+					'—',
+					'BCP 47 tag for automatic placeholders; override individually with hourPlaceholder, minutePlaceholder, secondPlaceholder'
+				]
+			]}
+		/>
+	</DocSection>
 
-	<TableOfContents sections={tocSections} />
-</div>
+	{#snippet sidebar()}
+		<TableOfContents sections={tocSections} />
+	{/snippet}
+</DocsPage>
 
 <style>
-	.docs-layout {
-		display: grid;
-		grid-template-columns: 1fr 180px;
-		gap: var(--space-12);
-	}
-
-	.docs-content {
-		min-width: 0;
-	}
-
-	.page-header {
-		margin-bottom: var(--space-8);
-	}
-
-	h1 {
-		font-size: var(--font-size-3xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-3) 0;
-	}
-
-	.lead {
-		font-size: var(--ui-text-lg);
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		line-height: var(--line-height-relaxed);
-		margin: 0;
-	}
-
-	.lead code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	.doc-section {
-		margin-bottom: var(--space-12);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.doc-section h2 {
-		font-size: var(--font-size-2xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-6) 0;
-		padding-bottom: var(--space-3);
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.example-block {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-4);
-		margin-bottom: var(--space-8);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.example-block h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.example-desc {
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		margin: 0;
-	}
-
-	.example-desc code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	.controlled-example {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-3);
-	}
-
-	.controlled-label {
-		font-size: var(--ui-text-sm);
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 30%);
-		margin: 0;
-	}
-
 	.locale-note {
 		font-size: var(--ui-text-xs);
 		font-weight: 400;
 		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 45%);
-	}
-
-	.api-table {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-3);
-		margin-bottom: var(--space-6);
-	}
-
-	.api-table h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.props-table {
-		width: 100%;
-		border-collapse: collapse;
-		font-size: var(--ui-text-sm);
-	}
-
-	.props-table th,
-	.props-table td {
-		padding: var(--space-2) var(--space-3);
-		text-align: left;
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.props-table th {
-		font-weight: 600;
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-	}
-
-	.props-table code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	@media (max-width: 1024px) {
-		.docs-layout {
-			grid-template-columns: 1fr;
-		}
 	}
 </style>

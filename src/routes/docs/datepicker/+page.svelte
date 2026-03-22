@@ -5,6 +5,11 @@
 	import FieldDescription from '$lib/components/field/FieldDescription.svelte';
 	import CodeExample from '$lib/internal/CodeExample.svelte';
 	import TableOfContents from '$lib/internal/TableOfContents.svelte';
+	import DocsPage from '$lib/internal/DocsPage.svelte';
+	import PageHeader from '$lib/internal/PageHeader.svelte';
+	import DocSection from '$lib/internal/DocSection.svelte';
+	import ExampleBlock from '$lib/internal/ExampleBlock.svelte';
+	import PropsTable from '$lib/internal/PropsTable.svelte';
 
 	let basic = $state<Date | undefined>(undefined);
 	let withField = $state<Date | undefined>(undefined);
@@ -39,36 +44,29 @@
 	<title>DatePicker - Greenfield UI</title>
 </svelte:head>
 
-<div class="docs-layout">
-	<article class="docs-content">
-		<header class="page-header">
-			<h1>DatePicker</h1>
-			<p class="lead">
-				Calendar popover for selecting a single date. Uses native <code>Date</code> +
-				<code>Intl.DateTimeFormat</code> — no extra dependencies. Keyboard accessible and locale-aware.
+<DocsPage>
+	<PageHeader
+		title="DatePicker"
+		description="Calendar popover for selecting a single date. Uses native Date + Intl.DateTimeFormat — no extra dependencies. Keyboard accessible and locale-aware."
+	/>
+
+	<DocSection id="examples" title="Examples">
+		<ExampleBlock
+			id="basic"
+			title="Basic"
+			description="Click or press Enter to open the calendar. Keyboard navigate and press Enter to select."
+		>
+			<CodeExample code={`<DatePicker bind:value={date} />`}>
+				<DatePicker bind:value={basic} />
+			</CodeExample>
+		</ExampleBlock>
+
+		<ExampleBlock id="with-field" title="With Field">
+			<p class="example-desc">
+				Wrap with <code>Field</code> to wire label, hints, and error states.
 			</p>
-		</header>
-
-		<section id="examples" class="doc-section">
-			<h2>Examples</h2>
-
-			<div id="basic" class="example-block">
-				<h3>Basic</h3>
-				<p class="example-desc">
-					Click or press Enter to open the calendar. Keyboard navigate and press Enter to select.
-				</p>
-				<CodeExample code={`<DatePicker bind:value={date} />`}>
-					<DatePicker bind:value={basic} />
-				</CodeExample>
-			</div>
-
-			<div id="with-field" class="example-block">
-				<h3>With Field</h3>
-				<p class="example-desc">
-					Wrap with <code>Field</code> to wire label, hints, and error states.
-				</p>
-				<CodeExample
-					code={`<Field>
+			<CodeExample
+				code={`<Field>
   <FieldLabel>Appointment date</FieldLabel>
   <DatePicker bind:value={date} />
 </Field>
@@ -78,25 +76,23 @@
   <DatePicker />
   <FieldDescription>Select a date for this task.</FieldDescription>
 </Field>`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Appointment date</FieldLabel>
-						<DatePicker bind:value={withField} />
-					</Field>
-					<Field error="A date is required.">
-						<FieldLabel>Due date (error)</FieldLabel>
-						<DatePicker />
-						<FieldDescription>Select a date for this task.</FieldDescription>
-					</Field>
-				</CodeExample>
-			</div>
+				previewClass="column"
+			>
+				<Field>
+					<FieldLabel>Appointment date</FieldLabel>
+					<DatePicker bind:value={withField} />
+				</Field>
+				<Field error="A date is required.">
+					<FieldLabel>Due date (error)</FieldLabel>
+					<DatePicker />
+					<FieldDescription>Select a date for this task.</FieldDescription>
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="states" class="example-block">
-				<h3>States</h3>
-				<p class="example-desc">Active and disabled states.</p>
-				<CodeExample
-					code={`<Field>
+		<ExampleBlock id="states" title="States" description="Active and disabled states.">
+			<CodeExample
+				code={`<Field>
   <FieldLabel>Active</FieldLabel>
   <DatePicker />
 </Field>
@@ -104,285 +100,93 @@
   <FieldLabel>Disabled</FieldLabel>
   <DatePicker />
 </Field>`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Active</FieldLabel>
-						<DatePicker />
-					</Field>
-					<Field disabled>
-						<FieldLabel>Disabled</FieldLabel>
-						<DatePicker />
-					</Field>
-				</CodeExample>
-			</div>
+				previewClass="column"
+			>
+				<Field>
+					<FieldLabel>Active</FieldLabel>
+					<DatePicker />
+				</Field>
+				<Field disabled>
+					<FieldLabel>Disabled</FieldLabel>
+					<DatePicker />
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="min-max" class="example-block">
-				<h3>Min &amp; Max</h3>
-				<p class="example-desc">
-					Constrain the selectable range. Days outside the range are visually disabled.
-				</p>
-				<CodeExample code={`<DatePicker min={today} max={nextMonth} bind:value={date} />`}>
-					<DatePicker min={today} max={nextMonth} bind:value={basic} />
-				</CodeExample>
-			</div>
+		<ExampleBlock
+			id="min-max"
+			title="Min & Max"
+			description="Constrain the selectable range. Days outside the range are visually disabled."
+		>
+			<CodeExample code={`<DatePicker min={today} max={nextMonth} bind:value={date} />`}>
+				<DatePicker min={today} max={nextMonth} bind:value={basic} />
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="controlled" class="example-block">
-				<h3>Controlled</h3>
-				<p class="example-desc">
-					Use <code>bind:value</code> to read or set the selection from outside.
-				</p>
-				<CodeExample
-					code={`let date = $state(new Date(2026, 5, 15));
+		<ExampleBlock id="controlled" title="Controlled">
+			<p class="example-desc">
+				Use <code>bind:value</code> to read or set the selection from outside.
+			</p>
+			<CodeExample
+				code={`let date = $state(new Date(2026, 5, 15));
 <p>Selected: {date?.toDateString()}</p>
 <DatePicker bind:value={date} />`}
-				>
-					<div class="controlled-example">
-						<p class="controlled-label">
-							Selected: <strong>{controlled?.toDateString() ?? 'none'}</strong>
-						</p>
-						<DatePicker bind:value={controlled} />
-					</div>
-				</CodeExample>
-			</div>
-			<div id="locales" class="example-block">
-				<h3>Locales</h3>
-				<p class="example-desc">
-					Segment order and placeholders adapt to the locale. Pass a <code>locale</code> prop to override
-					the browser default.
-				</p>
-				<CodeExample
-					code={`<DatePicker locale={{ tag: 'en-US' }} />
+			>
+				<div class="controlled-example">
+					<p class="controlled-label">
+						Selected: <strong>{controlled?.toDateString() ?? 'none'}</strong>
+					</p>
+					<DatePicker bind:value={controlled} />
+				</div>
+			</CodeExample>
+		</ExampleBlock>
+
+		<ExampleBlock id="locales" title="Locales">
+			<p class="example-desc">
+				Segment order and placeholders adapt to the locale. Pass a <code>locale</code> prop to override
+				the browser default.
+			</p>
+			<CodeExample
+				code={`<DatePicker locale={{ tag: 'en-US' }} />
 <DatePicker locale={{ tag: 'fr-FR' }} />
 <DatePicker locale={{ tag: 'de-DE' }} />
 <DatePicker locale={{ tag: 'ja-JP' }} />`}
-					previewClass="column"
-				>
-					{#each localeExamples as { tag, label } (tag)}
-						<Field>
-							<FieldLabel>{label} — <code>{tag}</code></FieldLabel>
-							<DatePicker locale={{ tag }} />
-						</Field>
-					{/each}
-				</CodeExample>
-			</div>
-		</section>
+				previewClass="column"
+			>
+				{#each localeExamples as { tag, label } (tag)}
+					<Field>
+						<FieldLabel>{label} — <code>{tag}</code></FieldLabel>
+						<DatePicker locale={{ tag }} />
+					</Field>
+				{/each}
+			</CodeExample>
+		</ExampleBlock>
+	</DocSection>
 
-		<section id="api" class="doc-section">
-			<h2>API</h2>
-			<div class="api-table">
-				<h3>DatePicker Props</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>value</code></td>
-							<td><code>Date</code></td>
-							<td><code>undefined</code></td>
-							<td>Bindable selected date</td>
-						</tr>
-						<tr>
-							<td><code>size</code></td>
-							<td><code>'sm' | 'md' | 'lg'</code></td>
-							<td><code>'md'</code></td>
-							<td>Controls height, padding, and font size</td>
-						</tr>
-						<tr>
-							<td><code>fullWidth</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Stretches trigger to 100% of container</td>
-						</tr>
-						<tr>
-							<td><code>disabled</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Disables the picker (also inherited from Field)</td>
-						</tr>
-						<tr>
-							<td><code>id</code></td>
-							<td><code>string</code></td>
-							<td><code>—</code></td>
-							<td>Custom ID; auto-generated from Field context if omitted</td>
-						</tr>
-						<tr>
-							<td><code>name</code></td>
-							<td><code>string</code></td>
-							<td><code>—</code></td>
-							<td>Form field name; emits hidden input with <code>YYYY-MM-DD</code> value</td>
-						</tr>
-						<tr>
-							<td><code>min</code></td>
-							<td><code>Date</code></td>
-							<td><code>—</code></td>
-							<td>Minimum selectable date (inclusive)</td>
-						</tr>
-						<tr>
-							<td><code>max</code></td>
-							<td><code>Date</code></td>
-							<td><code>—</code></td>
-							<td>Maximum selectable date (inclusive)</td>
-						</tr>
-						<tr>
-							<td><code>locale</code></td>
-							<td><code>DatePickerLocale</code></td>
-							<td><code>undefined</code></td>
-							<td
-								>Locale options: <code>tag</code> (BCP 47, defaults to
-								<code>navigator.language</code>), <code>dayPlaceholder</code>,
-								<code>monthPlaceholder</code>, <code>yearPlaceholder</code></td
-							>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
-	</article>
+	<DocSection id="api" title="API">
+		<PropsTable
+			title="DatePicker Props"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['value', 'Date', 'undefined', 'Bindable selected date'],
+				['size', "'sm' | 'md' | 'lg'", "'md'", 'Controls height, padding, and font size'],
+				['fullWidth', 'boolean', 'false', 'Stretches trigger to 100% of container'],
+				['disabled', 'boolean', 'false', 'Disables the picker (also inherited from Field)'],
+				['id', 'string', '\u2014', 'Custom ID; auto-generated from Field context if omitted'],
+				['name', 'string', '\u2014', 'Form field name; emits hidden input with YYYY-MM-DD value'],
+				['min', 'Date', '\u2014', 'Minimum selectable date (inclusive)'],
+				['max', 'Date', '\u2014', 'Maximum selectable date (inclusive)'],
+				[
+					'locale',
+					'DatePickerLocale',
+					'undefined',
+					'Locale options: tag (BCP 47, defaults to navigator.language), dayPlaceholder, monthPlaceholder, yearPlaceholder'
+				]
+			]}
+		/>
+	</DocSection>
 
-	<TableOfContents sections={tocSections} />
-</div>
-
-<style>
-	.docs-layout {
-		display: grid;
-		grid-template-columns: 1fr 180px;
-		gap: var(--space-12);
-	}
-
-	.docs-content {
-		min-width: 0;
-	}
-
-	.page-header {
-		margin-bottom: var(--space-8);
-	}
-
-	h1 {
-		font-size: var(--font-size-3xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-3) 0;
-	}
-
-	.lead {
-		font-size: var(--ui-text-lg);
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		line-height: var(--line-height-relaxed);
-		margin: 0;
-	}
-
-	.lead code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	.doc-section {
-		margin-bottom: var(--space-12);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.doc-section h2 {
-		font-size: var(--font-size-2xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-6) 0;
-		padding-bottom: var(--space-3);
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.example-block {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-4);
-		margin-bottom: var(--space-8);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.example-block h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.example-desc {
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		margin: 0;
-	}
-
-	.example-desc code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	.controlled-example {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-3);
-	}
-
-	.controlled-label {
-		font-size: var(--ui-text-sm);
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 30%);
-		margin: 0;
-	}
-
-	.api-table {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-3);
-		margin-bottom: var(--space-6);
-	}
-
-	.api-table h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.props-table {
-		width: 100%;
-		border-collapse: collapse;
-		font-size: var(--ui-text-sm);
-	}
-
-	.props-table th,
-	.props-table td {
-		padding: var(--space-2) var(--space-3);
-		text-align: left;
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.props-table th {
-		font-weight: 600;
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-	}
-
-	.props-table code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	@media (max-width: 1024px) {
-		.docs-layout {
-			grid-template-columns: 1fr;
-		}
-	}
-</style>
+	{#snippet sidebar()}
+		<TableOfContents sections={tocSections} />
+	{/snippet}
+</DocsPage>

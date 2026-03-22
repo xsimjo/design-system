@@ -19,6 +19,11 @@
 	import FileInput from '$lib/components/file-input/FileInput.svelte';
 	import CodeExample from '$lib/internal/CodeExample.svelte';
 	import TableOfContents from '$lib/internal/TableOfContents.svelte';
+	import DocsPage from '$lib/internal/DocsPage.svelte';
+	import PageHeader from '$lib/internal/PageHeader.svelte';
+	import DocSection from '$lib/internal/DocSection.svelte';
+	import ExampleBlock from '$lib/internal/ExampleBlock.svelte';
+	import PropsTable from '$lib/internal/PropsTable.svelte';
 
 	let demoSlider = $state(40);
 	let demoCheckbox = $state(false);
@@ -66,212 +71,197 @@
 	<title>Field - Greenfield UI</title>
 </svelte:head>
 
-<div class="docs-layout">
-	<article class="docs-content">
-		<header class="page-header">
-			<h1>Field</h1>
-			<p class="lead">
-				A composable set of primitives for building accessible form fields. <code>Field</code>
-				provides context that wires up labels, descriptions, and error states automatically — no manual
-				<code>id</code> or <code>aria-*</code> plumbing required.
-			</p>
-		</header>
+<DocsPage>
+	<PageHeader
+		title="Field"
+		description="A composable set of primitives for building accessible form fields. Field provides context that wires up labels, descriptions, and error states automatically — no manual id or aria-* plumbing required."
+	/>
 
-		<section id="overview" class="doc-section">
-			<h2>Overview</h2>
-			<p class="section-intro">
-				The field system is built from seven components that compose together. Each one has a single
-				responsibility.
-			</p>
+	<DocSection id="overview" title="Overview">
+		<p class="section-intro">
+			The field system is built from seven components that compose together. Each one has a single
+			responsibility.
+		</p>
 
-			<div class="component-list">
-				<div class="component-row">
-					<code class="component-name">Field</code>
-					<span class="component-desc"
-						>Root container. Manages shared state (id, error, required, disabled) and provides it to
-						children via context.</span
-					>
-				</div>
-				<div class="component-row">
-					<code class="component-name">FieldLabel</code>
-					<span class="component-desc"
-						>Renders a <code>&lt;label&gt;</code> linked to the field's input via the shared
-						<code>id</code> from context. Shows a required indicator when <code>required</code> is set.</span
-					>
-				</div>
-				<div class="component-row">
-					<code class="component-name">FieldDescription</code>
-					<span class="component-desc"
-						>Renders helper text or error messages. Registers its ID into context so the input gets
-						a correct <code>aria-describedby</code>. Automatically switches to error styling when
-						the field has an error.</span
-					>
-				</div>
-				<div class="component-row">
-					<code class="component-name">FieldGroup</code>
-					<span class="component-desc"
-						>A flex container for grouping multiple fields side-by-side or in a column. No semantic
-						meaning — use <code>FieldSet</code> when grouping requires accessibility semantics.</span
-					>
-				</div>
-				<div class="component-row">
-					<code class="component-name">FieldSet</code>
-					<span class="component-desc"
-						>Renders a <code>&lt;fieldset&gt;</code> for semantically grouping related inputs such as
-						radio buttons or checkboxes.</span
-					>
-				</div>
-				<div class="component-row">
-					<code class="component-name">FieldLegend</code>
-					<span class="component-desc"
-						>Renders a <code>&lt;legend&gt;</code> inside a <code>FieldSet</code>. Provides the
-						accessible group label for screen readers.</span
-					>
-				</div>
-				<div class="component-row">
-					<code class="component-name">FieldSeparator</code>
-					<span class="component-desc">A styled <code>&lt;hr&gt;</code> divider.</span>
-				</div>
+		<div class="component-list">
+			<div class="component-row">
+				<code class="component-name">Field</code>
+				<span class="component-desc"
+					>Root container. Manages shared state (id, error, required, disabled) and provides it to
+					children via context.</span
+				>
 			</div>
-		</section>
+			<div class="component-row">
+				<code class="component-name">FieldLabel</code>
+				<span class="component-desc"
+					>Renders a <code>&lt;label&gt;</code> linked to the field's input via the shared
+					<code>id</code> from context. Shows a required indicator when <code>required</code> is set.</span
+				>
+			</div>
+			<div class="component-row">
+				<code class="component-name">FieldDescription</code>
+				<span class="component-desc"
+					>Renders helper text or error messages. Registers its ID into context so the input gets a
+					correct <code>aria-describedby</code>. Automatically switches to error styling when the
+					field has an error.</span
+				>
+			</div>
+			<div class="component-row">
+				<code class="component-name">FieldGroup</code>
+				<span class="component-desc"
+					>A flex container for grouping multiple fields side-by-side or in a column. No semantic
+					meaning — use <code>FieldSet</code> when grouping requires accessibility semantics.</span
+				>
+			</div>
+			<div class="component-row">
+				<code class="component-name">FieldSet</code>
+				<span class="component-desc"
+					>Renders a <code>&lt;fieldset&gt;</code> for semantically grouping related inputs such as radio
+					buttons or checkboxes.</span
+				>
+			</div>
+			<div class="component-row">
+				<code class="component-name">FieldLegend</code>
+				<span class="component-desc"
+					>Renders a <code>&lt;legend&gt;</code> inside a <code>FieldSet</code>. Provides the
+					accessible group label for screen readers.</span
+				>
+			</div>
+			<div class="component-row">
+				<code class="component-name">FieldSeparator</code>
+				<span class="component-desc">A styled <code>&lt;hr&gt;</code> divider.</span>
+			</div>
+		</div>
+	</DocSection>
 
-		<section id="examples" class="doc-section">
-			<h2>Examples</h2>
-
-			<div id="basic" class="example-block">
-				<h3>Basic</h3>
-				<p class="example-desc">
-					Wrap any input with <code>Field</code> and <code>FieldLabel</code>. The label's
-					<code>for</code> attribute and the input's <code>id</code> are wired automatically.
-				</p>
-				<CodeExample
-					code={`<Field>
+	<DocSection id="examples" title="Examples">
+		<ExampleBlock id="basic" title="Basic">
+			<p class="example-desc">
+				Wrap any input with <code>Field</code> and <code>FieldLabel</code>. The label's
+				<code>for</code> attribute and the input's <code>id</code> are wired automatically.
+			</p>
+			<CodeExample
+				code={`<Field>
   <FieldLabel>Full name</FieldLabel>
   <Input placeholder="Jane Smith" />
 </Field>`}
-				>
-					<Field>
-						<FieldLabel>Full name</FieldLabel>
-						<Input placeholder="Jane Smith" />
-					</Field>
-				</CodeExample>
-			</div>
+			>
+				<Field>
+					<FieldLabel>Full name</FieldLabel>
+					<Input placeholder="Jane Smith" />
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="description" class="example-block">
-				<h3>Description</h3>
-				<p class="example-desc">
-					<code>FieldDescription</code> renders helper text below the input and automatically wires
-					<code>aria-describedby</code> on the control.
-				</p>
-				<CodeExample
-					code={`<Field>
+		<ExampleBlock id="description" title="Description">
+			<p class="example-desc">
+				<code>FieldDescription</code> renders helper text below the input and automatically wires
+				<code>aria-describedby</code> on the control.
+			</p>
+			<CodeExample
+				code={`<Field>
   <FieldLabel>Username</FieldLabel>
   <Input placeholder="cool_user_42" />
   <FieldDescription>Letters, numbers, and underscores only.</FieldDescription>
 </Field>`}
-				>
-					<Field>
-						<FieldLabel>Username</FieldLabel>
-						<Input placeholder="cool_user_42" />
-						<FieldDescription>Letters, numbers, and underscores only.</FieldDescription>
-					</Field>
-				</CodeExample>
-			</div>
+			>
+				<Field>
+					<FieldLabel>Username</FieldLabel>
+					<Input placeholder="cool_user_42" />
+					<FieldDescription>Letters, numbers, and underscores only.</FieldDescription>
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="description-above" class="example-block">
-				<h3>Description Above</h3>
-				<p class="example-desc">
-					<code>FieldDescription</code> can appear anywhere in the composition — including between the
-					label and the input — for instructional text that should be read before interaction.
-				</p>
-				<CodeExample
-					code={`<Field>
+		<ExampleBlock id="description-above" title="Description Above">
+			<p class="example-desc">
+				<code>FieldDescription</code> can appear anywhere in the composition — including between the label
+				and the input — for instructional text that should be read before interaction.
+			</p>
+			<CodeExample
+				code={`<Field>
   <FieldLabel>API key</FieldLabel>
   <FieldDescription>Found in your account settings under Developer.</FieldDescription>
   <Input placeholder="sk-..." />
 </Field>`}
-				>
-					<Field>
-						<FieldLabel>API key</FieldLabel>
-						<FieldDescription>Found in your account settings under Developer.</FieldDescription>
-						<Input placeholder="sk-..." />
-					</Field>
-				</CodeExample>
-			</div>
+			>
+				<Field>
+					<FieldLabel>API key</FieldLabel>
+					<FieldDescription>Found in your account settings under Developer.</FieldDescription>
+					<Input placeholder="sk-..." />
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="error" class="example-block">
-				<h3>Error State</h3>
-				<p class="example-desc">
-					Set <code>error</code> on <code>Field</code> to propagate error state to the input and all
-					<code>FieldDescription</code> children. The input gets <code>aria-invalid</code> and
-					<code>FieldDescription</code> automatically switches to the error color.
-				</p>
-				<CodeExample
-					code={`<Field error="Please enter a valid email address.">
+		<ExampleBlock id="error" title="Error State">
+			<p class="example-desc">
+				Set <code>error</code> on <code>Field</code> to propagate error state to the input and all
+				<code>FieldDescription</code> children. The input gets <code>aria-invalid</code> and
+				<code>FieldDescription</code> automatically switches to the error color.
+			</p>
+			<CodeExample
+				code={`<Field error="Please enter a valid email address.">
   <FieldLabel>Email</FieldLabel>
   <Input value="not-an-email" />
   <FieldDescription>Please enter a valid email address.</FieldDescription>
 </Field>`}
-				>
-					<Field error="Please enter a valid email address.">
-						<FieldLabel>Email</FieldLabel>
-						<Input value="not-an-email" />
-						<FieldDescription>Please enter a valid email address.</FieldDescription>
-					</Field>
-				</CodeExample>
-			</div>
+			>
+				<Field error="Please enter a valid email address.">
+					<FieldLabel>Email</FieldLabel>
+					<Input value="not-an-email" />
+					<FieldDescription>Please enter a valid email address.</FieldDescription>
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="required" class="example-block">
-				<h3>Required</h3>
-				<p class="example-desc">
-					<code>required</code> on <code>Field</code> adds a visual indicator to the label and sets
-					<code>aria-required</code> on the input.
-				</p>
-				<CodeExample
-					code={`<Field required>
+		<ExampleBlock id="required" title="Required">
+			<p class="example-desc">
+				<code>required</code> on <code>Field</code> adds a visual indicator to the label and sets
+				<code>aria-required</code> on the input.
+			</p>
+			<CodeExample
+				code={`<Field required>
   <FieldLabel>Password</FieldLabel>
   <Input type="password" placeholder="••••••••" />
   <FieldDescription>Must be at least 8 characters.</FieldDescription>
 </Field>`}
-				>
-					<Field required>
-						<FieldLabel>Password</FieldLabel>
-						<Input type="password" placeholder="••••••••" />
-						<FieldDescription>Must be at least 8 characters.</FieldDescription>
-					</Field>
-				</CodeExample>
-			</div>
+			>
+				<Field required>
+					<FieldLabel>Password</FieldLabel>
+					<Input type="password" placeholder="••••••••" />
+					<FieldDescription>Must be at least 8 characters.</FieldDescription>
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="disabled" class="example-block">
-				<h3>Disabled</h3>
-				<p class="example-desc">
-					<code>disabled</code> on <code>Field</code> propagates to the input automatically via context
-					— no need to set it on each child.
-				</p>
-				<CodeExample
-					code={`<Field disabled>
+		<ExampleBlock id="disabled" title="Disabled">
+			<p class="example-desc">
+				<code>disabled</code> on <code>Field</code> propagates to the input automatically via context
+				— no need to set it on each child.
+			</p>
+			<CodeExample
+				code={`<Field disabled>
   <FieldLabel>Account email</FieldLabel>
   <Input value="jane@example.com" />
   <FieldDescription>Contact support to change your email.</FieldDescription>
 </Field>`}
-				>
-					<Field disabled>
-						<FieldLabel>Account email</FieldLabel>
-						<Input value="jane@example.com" />
-						<FieldDescription>Contact support to change your email.</FieldDescription>
-					</Field>
-				</CodeExample>
-			</div>
+			>
+				<Field disabled>
+					<FieldLabel>Account email</FieldLabel>
+					<Input value="jane@example.com" />
+					<FieldDescription>Contact support to change your email.</FieldDescription>
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="group" class="example-block">
-				<h3>FieldGroup</h3>
-				<p class="example-desc">
-					Group multiple fields side-by-side with <code>FieldGroup</code>. Use
-					<code>direction="row"</code> (default) for horizontal layouts or
-					<code>direction="column"</code> for vertical stacks.
-				</p>
-				<CodeExample
-					code={`<FieldGroup>
+		<ExampleBlock id="group" title="FieldGroup">
+			<p class="example-desc">
+				Group multiple fields side-by-side with <code>FieldGroup</code>. Use
+				<code>direction="row"</code> (default) for horizontal layouts or
+				<code>direction="column"</code> for vertical stacks.
+			</p>
+			<CodeExample
+				code={`<FieldGroup>
   <Field fullWidth>
     <FieldLabel>First name</FieldLabel>
     <Input fullWidth placeholder="Jane" />
@@ -281,29 +271,28 @@
     <Input fullWidth placeholder="Smith" />
   </Field>
 </FieldGroup>`}
-				>
-					<FieldGroup>
-						<Field fullWidth>
-							<FieldLabel>First name</FieldLabel>
-							<Input fullWidth placeholder="Jane" />
-						</Field>
-						<Field fullWidth>
-							<FieldLabel>Last name</FieldLabel>
-							<Input fullWidth placeholder="Smith" />
-						</Field>
-					</FieldGroup>
-				</CodeExample>
-			</div>
+			>
+				<FieldGroup>
+					<Field fullWidth>
+						<FieldLabel>First name</FieldLabel>
+						<Input fullWidth placeholder="Jane" />
+					</Field>
+					<Field fullWidth>
+						<FieldLabel>Last name</FieldLabel>
+						<Input fullWidth placeholder="Smith" />
+					</Field>
+				</FieldGroup>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="fieldset" class="example-block">
-				<h3>FieldSet + FieldLegend</h3>
-				<p class="example-desc">
-					Use <code>FieldSet</code> and <code>FieldLegend</code> when grouping semantically related
-					fields. The <code>&lt;fieldset&gt;</code>/<code>&lt;legend&gt;</code> pair is announced by screen
-					readers as a group label.
-				</p>
-				<CodeExample
-					code={`<FieldSet>
+		<ExampleBlock id="fieldset" title="FieldSet + FieldLegend">
+			<p class="example-desc">
+				Use <code>FieldSet</code> and <code>FieldLegend</code> when grouping semantically related
+				fields. The <code>&lt;fieldset&gt;</code>/<code>&lt;legend&gt;</code> pair is announced by screen
+				readers as a group label.
+			</p>
+			<CodeExample
+				code={`<FieldSet>
   <FieldLegend>Shipping address</FieldLegend>
   <FieldGroup>
     <Field fullWidth>
@@ -324,36 +313,38 @@
     <Input fullWidth placeholder="Montreal" />
   </Field>
 </FieldSet>`}
-				>
-					<FieldSet>
-						<FieldLegend>Shipping address</FieldLegend>
-						<FieldGroup>
-							<Field fullWidth>
-								<FieldLabel>First name</FieldLabel>
-								<Input fullWidth placeholder="Jane" />
-							</Field>
-							<Field fullWidth>
-								<FieldLabel>Last name</FieldLabel>
-								<Input fullWidth placeholder="Smith" />
-							</Field>
-						</FieldGroup>
+			>
+				<FieldSet>
+					<FieldLegend>Shipping address</FieldLegend>
+					<FieldGroup>
 						<Field fullWidth>
-							<FieldLabel>Street</FieldLabel>
-							<Input fullWidth placeholder="123 Main St" />
+							<FieldLabel>First name</FieldLabel>
+							<Input fullWidth placeholder="Jane" />
 						</Field>
 						<Field fullWidth>
-							<FieldLabel>City</FieldLabel>
-							<Input fullWidth placeholder="Montreal" />
+							<FieldLabel>Last name</FieldLabel>
+							<Input fullWidth placeholder="Smith" />
 						</Field>
-					</FieldSet>
-				</CodeExample>
-			</div>
+					</FieldGroup>
+					<Field fullWidth>
+						<FieldLabel>Street</FieldLabel>
+						<Input fullWidth placeholder="123 Main St" />
+					</Field>
+					<Field fullWidth>
+						<FieldLabel>City</FieldLabel>
+						<Input fullWidth placeholder="Montreal" />
+					</Field>
+				</FieldSet>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="separator" class="example-block">
-				<h3>FieldSeparator</h3>
-				<p class="example-desc">A visual divider between fields or sections of a form.</p>
-				<CodeExample
-					code={`<Field fullWidth>
+		<ExampleBlock
+			id="separator"
+			title="FieldSeparator"
+			description="A visual divider between fields or sections of a form."
+		>
+			<CodeExample
+				code={`<Field fullWidth>
   <FieldLabel>Email</FieldLabel>
   <Input fullWidth type="email" placeholder="jane@example.com" />
 </Field>
@@ -362,30 +353,29 @@
   <FieldLabel>Password</FieldLabel>
   <Input fullWidth type="password" placeholder="••••••••" />
 </Field>`}
-					previewClass="column"
-				>
-					<Field fullWidth>
-						<FieldLabel>Email</FieldLabel>
-						<Input fullWidth type="email" placeholder="jane@example.com" />
-					</Field>
-					<FieldSeparator />
-					<Field fullWidth>
-						<FieldLabel>Password</FieldLabel>
-						<Input fullWidth type="password" placeholder="••••••••" />
-					</Field>
-				</CodeExample>
-			</div>
-		</section>
+				previewClass="column"
+			>
+				<Field fullWidth>
+					<FieldLabel>Email</FieldLabel>
+					<Input fullWidth type="email" placeholder="jane@example.com" />
+				</Field>
+				<FieldSeparator />
+				<Field fullWidth>
+					<FieldLabel>Password</FieldLabel>
+					<Input fullWidth type="password" placeholder="••••••••" />
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
+	</DocSection>
 
-		<section id="components" class="doc-section">
-			<h2>Compatible Components</h2>
-			<p class="section-intro">
-				Every component that reads from <code>Field</code> context. Drop any of these inside a
-				<code>Field</code> and labels, errors, and disabled state wire up automatically.
-			</p>
+	<DocSection id="components" title="Compatible Components">
+		<p class="section-intro">
+			Every component that reads from <code>Field</code> context. Drop any of these inside a
+			<code>Field</code> and labels, errors, and disabled state wire up automatically.
+		</p>
 
-			<CodeExample
-				code={`<Field fullWidth>
+		<CodeExample
+			code={`<Field fullWidth>
   <FieldLabel>Full name</FieldLabel>
   <Input fullWidth placeholder="Jane Smith" />
 </Field>
@@ -446,552 +436,234 @@
   <Switch bind:checked={notifications} />
   <FieldLabel>Email notifications</FieldLabel>
 </Field>`}
-				previewClass="column"
-			>
-				<Field fullWidth>
-					<FieldLabel>Full name</FieldLabel>
-					<Input fullWidth placeholder="Jane Smith" />
-				</Field>
+			previewClass="column"
+		>
+			<Field fullWidth>
+				<FieldLabel>Full name</FieldLabel>
+				<Input fullWidth placeholder="Jane Smith" />
+			</Field>
 
-				<Field fullWidth>
-					<FieldLabel>Bio</FieldLabel>
-					<Textarea fullWidth placeholder="Tell us about yourself" />
-				</Field>
+			<Field fullWidth>
+				<FieldLabel>Bio</FieldLabel>
+				<Textarea fullWidth placeholder="Tell us about yourself" />
+			</Field>
 
-				<Field fullWidth>
-					<FieldLabel>Role</FieldLabel>
-					<Select fullWidth options={roleOptions} bind:value={demoSelect} />
-				</Field>
+			<Field fullWidth>
+				<FieldLabel>Role</FieldLabel>
+				<Select fullWidth options={roleOptions} bind:value={demoSelect} />
+			</Field>
 
-				<Field fullWidth>
-					<FieldLabel>Skills</FieldLabel>
-					<MultiSelect fullWidth options={skillOptions} bind:values={demoMulti} />
-				</Field>
+			<Field fullWidth>
+				<FieldLabel>Skills</FieldLabel>
+				<MultiSelect fullWidth options={skillOptions} bind:values={demoMulti} />
+			</Field>
 
-				<Field fullWidth>
-					<FieldLabel>City</FieldLabel>
-					<Combobox
-						fullWidth
-						options={skillOptions}
-						bind:value={demoCombobox}
-						placeholder="Search…"
-					/>
-				</Field>
+			<Field fullWidth>
+				<FieldLabel>City</FieldLabel>
+				<Combobox
+					fullWidth
+					options={skillOptions}
+					bind:value={demoCombobox}
+					placeholder="Search…"
+				/>
+			</Field>
 
-				<Field fullWidth>
-					<FieldLabel>Tags</FieldLabel>
-					<BadgeInput fullWidth bind:tags={demoTags} placeholder="Add a tag…" />
-				</Field>
+			<Field fullWidth>
+				<FieldLabel>Tags</FieldLabel>
+				<BadgeInput fullWidth bind:tags={demoTags} placeholder="Add a tag…" />
+			</Field>
 
-				<Field fullWidth>
-					<FieldLabel>Resume</FieldLabel>
-					<FileInput fullWidth />
-				</Field>
+			<Field fullWidth>
+				<FieldLabel>Resume</FieldLabel>
+				<FileInput fullWidth />
+			</Field>
 
-				<Field fullWidth>
-					<FieldLabel>Volume</FieldLabel>
-					<Slider fullWidth bind:value={demoSlider} showValue />
-				</Field>
+			<Field fullWidth>
+				<FieldLabel>Volume</FieldLabel>
+				<Slider fullWidth bind:value={demoSlider} showValue />
+			</Field>
 
+			<Field inline>
+				<Checkbox bind:checked={demoCheckbox} />
+				<FieldLabel>Agree to terms</FieldLabel>
+			</Field>
+
+			<FieldSet>
+				<FieldLegend>Availability</FieldLegend>
 				<Field inline>
-					<Checkbox bind:checked={demoCheckbox} />
-					<FieldLabel>Agree to terms</FieldLabel>
+					<Radio bind:group={demoRadio} value="full" name="avail-demo" />
+					<FieldLabel>Full-time</FieldLabel>
 				</Field>
-
-				<FieldSet>
-					<FieldLegend>Availability</FieldLegend>
-					<Field inline>
-						<Radio bind:group={demoRadio} value="full" name="avail-demo" />
-						<FieldLabel>Full-time</FieldLabel>
-					</Field>
-					<Field inline>
-						<Radio bind:group={demoRadio} value="part" name="avail-demo" />
-						<FieldLabel>Part-time</FieldLabel>
-					</Field>
-				</FieldSet>
-
 				<Field inline>
-					<Switch bind:checked={demoSwitch} />
-					<FieldLabel>Email notifications</FieldLabel>
+					<Radio bind:group={demoRadio} value="part" name="avail-demo" />
+					<FieldLabel>Part-time</FieldLabel>
 				</Field>
-			</CodeExample>
-		</section>
+			</FieldSet>
 
-		<section id="api" class="doc-section">
-			<h2>API</h2>
+			<Field inline>
+				<Switch bind:checked={demoSwitch} />
+				<FieldLabel>Email notifications</FieldLabel>
+			</Field>
+		</CodeExample>
+	</DocSection>
 
-			<div class="api-table">
-				<h3>Field</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>id</code></td>
-							<td><code>string</code></td>
-							<td><code>—</code></td>
-							<td>Custom ID for the field; auto-generated if omitted</td>
-						</tr>
-						<tr>
-							<td><code>error</code></td>
-							<td><code>string</code></td>
-							<td><code>—</code></td>
-							<td
-								>Triggers error styling on child inputs and <code>FieldDescription</code>; sets
-								<code>aria-invalid</code></td
-							>
-						</tr>
-						<tr>
-							<td><code>required</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td
-								>Shows required indicator on <code>FieldLabel</code>; sets
-								<code>aria-required</code></td
-							>
-						</tr>
-						<tr>
-							<td><code>disabled</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Propagates disabled state to child inputs via context</td>
-						</tr>
-						<tr>
-							<td><code>fullWidth</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Stretches the field container to 100% width</td>
-						</tr>
-						<tr>
-							<td><code>children</code></td>
-							<td><code>Snippet</code></td>
-							<td><code>—</code></td>
-							<td>Field contents</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+	<DocSection id="api" title="API">
+		<PropsTable
+			title="Field"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['id', 'string', '—', 'Custom ID for the field; auto-generated if omitted'],
+				[
+					'error',
+					'string',
+					'—',
+					'Triggers error styling on child inputs and FieldDescription; sets aria-invalid'
+				],
+				[
+					'required',
+					'boolean',
+					'false',
+					'Shows required indicator on FieldLabel; sets aria-required'
+				],
+				['disabled', 'boolean', 'false', 'Propagates disabled state to child inputs via context'],
+				['fullWidth', 'boolean', 'false', 'Stretches the field container to 100% width'],
+				['children', 'Snippet', '—', 'Field contents']
+			]}
+		/>
 
-			<div class="api-table">
-				<h3>FieldLabel</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>children</code></td>
-							<td><code>Snippet</code></td>
-							<td><code>—</code></td>
-							<td>Label text</td>
-						</tr>
-						<tr>
-							<td><code>...restProps</code></td>
-							<td><code>HTMLLabelAttributes</code></td>
-							<td><code>—</code></td>
-							<td
-								>All native label attributes; <code>for</code> is set automatically from context</td
-							>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="FieldLabel"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['children', 'Snippet', '—', 'Label text'],
+				[
+					'...restProps',
+					'HTMLLabelAttributes',
+					'—',
+					'All native label attributes; for is set automatically from context'
+				]
+			]}
+		/>
 
-			<div class="api-table">
-				<h3>FieldDescription</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>variant</code></td>
-							<td><code>'hint' | 'error'</code></td>
-							<td><code>—</code></td>
-							<td
-								>Controls color. When omitted, automatically applies error styling if the parent
-								<code>Field</code> has an error</td
-							>
-						</tr>
-						<tr>
-							<td><code>children</code></td>
-							<td><code>Snippet</code></td>
-							<td><code>—</code></td>
-							<td>Description text</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="FieldDescription"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				[
+					'variant',
+					"'hint' | 'error'",
+					'—',
+					'Controls color. When omitted, automatically applies error styling if the parent Field has an error'
+				],
+				['children', 'Snippet', '—', 'Description text']
+			]}
+		/>
 
-			<div class="api-table">
-				<h3>FieldGroup</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>direction</code></td>
-							<td><code>'row' | 'column'</code></td>
-							<td><code>'row'</code></td>
-							<td>Flex direction of the group</td>
-						</tr>
-						<tr>
-							<td><code>children</code></td>
-							<td><code>Snippet</code></td>
-							<td><code>—</code></td>
-							<td>Field children</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="FieldGroup"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['direction', "'row' | 'column'", "'row'", 'Flex direction of the group'],
+				['children', 'Snippet', '—', 'Field children']
+			]}
+		/>
 
-			<div class="api-table">
-				<h3>FieldSet</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>children</code></td>
-							<td><code>Snippet</code></td>
-							<td><code>—</code></td>
-							<td>Contents (typically <code>FieldLegend</code> + <code>Field</code> children)</td>
-						</tr>
-						<tr>
-							<td><code>...restProps</code></td>
-							<td><code>HTMLFieldsetAttributes</code></td>
-							<td><code>—</code></td>
-							<td>All native fieldset attributes</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="FieldSet"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['children', 'Snippet', '—', 'Contents (typically FieldLegend + Field children)'],
+				['...restProps', 'HTMLFieldsetAttributes', '—', 'All native fieldset attributes']
+			]}
+		/>
 
-			<div class="api-table">
-				<h3>FieldLegend</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>children</code></td>
-							<td><code>Snippet</code></td>
-							<td><code>—</code></td>
-							<td>Legend text</td>
-						</tr>
-						<tr>
-							<td><code>...restProps</code></td>
-							<td><code>HTMLAttributes&lt;HTMLLegendElement&gt;</code></td>
-							<td><code>—</code></td>
-							<td>All native legend attributes</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
+		<PropsTable
+			title="FieldLegend"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['children', 'Snippet', '—', 'Legend text'],
+				['...restProps', 'HTMLAttributes<HTMLLegendElement>', '—', 'All native legend attributes']
+			]}
+		/>
+	</DocSection>
 
-		<section id="css-tokens" class="doc-section">
-			<h2>CSS Tokens</h2>
-			<p class="section-intro">
-				All field tokens are defined in a single <code>field.css</code> file scoped to
-				<code>[data-theme]</code>.
-			</p>
+	<DocSection id="css-tokens" title="CSS Tokens">
+		<p class="section-intro">
+			All field tokens are defined in a single <code>field.css</code> file scoped to
+			<code>[data-theme]</code>.
+		</p>
 
-			<div class="token-group">
-				<h3>Field</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--field-gap</code></td>
-							<td>12px</td>
-							<td>Spacing between Field children (label, input, description)</td>
-						</tr>
-						<tr>
-							<td><code>--field-font-family</code></td>
-							<td>var(--ui-font-sans)</td>
-							<td>Font family for all field text</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="Field"
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--field-gap', '12px', 'Spacing between Field children (label, input, description)'],
+				['--field-font-family', 'var(--ui-font-sans)', 'Font family for all field text']
+			]}
+		/>
 
-			<div class="token-group">
-				<h3>FieldLabel</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--field-label-font-size</code></td>
-							<td>var(--ui-text-sm)</td>
-							<td>Label font size</td>
-						</tr>
-						<tr>
-							<td><code>--field-label-font-weight</code></td>
-							<td>var(--ui-weight-medium)</td>
-							<td>Label font weight</td>
-						</tr>
-						<tr>
-							<td><code>--field-label-color</code></td>
-							<td>var(--ui-surface-foreground)</td>
-							<td>Label text color</td>
-						</tr>
-						<tr>
-							<td><code>--field-required-color</code></td>
-							<td>var(--ui-danger)</td>
-							<td>Color of the required asterisk</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="FieldLabel"
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--field-label-font-size', 'var(--ui-text-sm)', 'Label font size'],
+				['--field-label-font-weight', 'var(--ui-weight-medium)', 'Label font weight'],
+				['--field-label-color', 'var(--ui-surface-foreground)', 'Label text color'],
+				['--field-required-color', 'var(--ui-danger)', 'Color of the required asterisk']
+			]}
+		/>
 
-			<div class="token-group">
-				<h3>FieldDescription</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--field-description-font-size</code></td>
-							<td>var(--ui-text-sm)</td>
-							<td>Description font size</td>
-						</tr>
-						<tr>
-							<td><code>--field-description-color</code></td>
-							<td>color-mix(…fg 55% transparent)</td>
-							<td>Default (hint) text color</td>
-						</tr>
-						<tr>
-							<td><code>--field-description-error-color</code></td>
-							<td>var(--ui-danger)</td>
-							<td>Error text color</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="FieldDescription"
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--field-description-font-size', 'var(--ui-text-sm)', 'Description font size'],
+				[
+					'--field-description-color',
+					'color-mix(…fg 55% transparent)',
+					'Default (hint) text color'
+				],
+				['--field-description-error-color', 'var(--ui-danger)', 'Error text color']
+			]}
+		/>
 
-			<div class="token-group">
-				<h3>FieldGroup</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--field-group-gap</code></td>
-							<td>16px</td>
-							<td>Gap between fields in a group</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="FieldGroup"
+			columns={['Token', 'Default', 'Description']}
+			rows={[['--field-group-gap', '16px', 'Gap between fields in a group']]}
+		/>
 
-			<div class="token-group">
-				<h3>FieldSet + FieldLegend</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--field-set-gap</code></td>
-							<td>16px</td>
-							<td>Gap between fields inside the fieldset</td>
-						</tr>
-						<tr>
-							<td><code>--field-set-border</code></td>
-							<td>var(--ui-border)</td>
-							<td>Fieldset border color</td>
-						</tr>
-						<tr>
-							<td><code>--field-set-border-width</code></td>
-							<td>var(--ui-border-width)</td>
-							<td>Fieldset border thickness</td>
-						</tr>
-						<tr>
-							<td><code>--field-set-border-radius</code></td>
-							<td>var(--ui-base-radius)</td>
-							<td>Fieldset corner roundness</td>
-						</tr>
-						<tr>
-							<td><code>--field-set-padding</code></td>
-							<td>16px</td>
-							<td>Fieldset inner padding</td>
-						</tr>
-						<tr>
-							<td><code>--field-legend-font-size</code></td>
-							<td>var(--ui-text-sm)</td>
-							<td>Legend font size</td>
-						</tr>
-						<tr>
-							<td><code>--field-legend-font-weight</code></td>
-							<td>var(--ui-weight-medium)</td>
-							<td>Legend font weight</td>
-						</tr>
-						<tr>
-							<td><code>--field-legend-color</code></td>
-							<td>var(--ui-surface-foreground)</td>
-							<td>Legend text color</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="FieldSet + FieldLegend"
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--field-set-gap', '16px', 'Gap between fields inside the fieldset'],
+				['--field-set-border', 'var(--ui-border)', 'Fieldset border color'],
+				['--field-set-border-width', 'var(--ui-border-width)', 'Fieldset border thickness'],
+				['--field-set-border-radius', 'var(--ui-base-radius)', 'Fieldset corner roundness'],
+				['--field-set-padding', '16px', 'Fieldset inner padding'],
+				['--field-legend-font-size', 'var(--ui-text-sm)', 'Legend font size'],
+				['--field-legend-font-weight', 'var(--ui-weight-medium)', 'Legend font weight'],
+				['--field-legend-color', 'var(--ui-surface-foreground)', 'Legend text color']
+			]}
+		/>
 
-			<div class="token-group">
-				<h3>FieldSeparator</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--field-separator-color</code></td>
-							<td>var(--ui-border)</td>
-							<td>Separator line color</td>
-						</tr>
-						<tr>
-							<td><code>--field-separator-width</code></td>
-							<td>var(--ui-border-width)</td>
-							<td>Separator line thickness</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
-	</article>
+		<PropsTable
+			title="FieldSeparator"
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--field-separator-color', 'var(--ui-border)', 'Separator line color'],
+				['--field-separator-width', 'var(--ui-border-width)', 'Separator line thickness']
+			]}
+		/>
+	</DocSection>
 
-	<TableOfContents sections={tocSections} />
-</div>
+	{#snippet sidebar()}
+		<TableOfContents sections={tocSections} />
+	{/snippet}
+</DocsPage>
 
 <style>
-	.docs-layout {
-		display: grid;
-		grid-template-columns: 1fr 180px;
-		gap: var(--space-12);
-	}
-
-	.docs-content {
-		min-width: 0;
-	}
-
-	.page-header {
-		margin-bottom: var(--space-8);
-	}
-
-	h1 {
-		font-size: var(--font-size-3xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-3) 0;
-	}
-
-	.lead {
-		font-size: var(--ui-text-lg);
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		line-height: var(--line-height-relaxed);
-		margin: 0;
-	}
-
-	.lead code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	.doc-section {
-		margin-bottom: var(--space-12);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.doc-section h2 {
-		font-size: var(--font-size-2xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-6) 0;
-		padding-bottom: var(--space-3);
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.section-intro {
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		font-size: var(--ui-text-base);
-		line-height: var(--line-height-relaxed);
-		margin: 0 0 var(--space-6) 0;
-	}
-
-	.section-intro code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
 	.component-list {
 		display: flex;
 		flex-direction: column;
@@ -1039,81 +711,7 @@
 		border-radius: calc(var(--ui-base-radius) * 0.5);
 	}
 
-	.example-block {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-4);
-		margin-bottom: var(--space-8);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.example-block h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.example-desc {
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		margin: 0;
-	}
-
-	.example-desc code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	.api-table,
-	.token-group {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-3);
-		margin-bottom: var(--space-6);
-	}
-
-	.api-table h3,
-	.token-group h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.props-table {
-		width: 100%;
-		border-collapse: collapse;
-		font-size: var(--ui-text-sm);
-	}
-
-	.props-table th,
-	.props-table td {
-		padding: var(--space-2) var(--space-3);
-		text-align: left;
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.props-table th {
-		font-weight: 600;
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-	}
-
-	.props-table code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
 	@media (max-width: 1024px) {
-		.docs-layout {
-			grid-template-columns: 1fr;
-		}
-
 		.component-row {
 			grid-template-columns: 1fr;
 			gap: var(--space-2);

@@ -2,6 +2,11 @@
 	import Skeleton from '$lib/components/skeleton/Skeleton.svelte';
 	import CodeExample from '$lib/internal/CodeExample.svelte';
 	import TableOfContents from '$lib/internal/TableOfContents.svelte';
+	import DocsPage from '$lib/internal/DocsPage.svelte';
+	import PageHeader from '$lib/internal/PageHeader.svelte';
+	import DocSection from '$lib/internal/DocSection.svelte';
+	import ExampleBlock from '$lib/internal/ExampleBlock.svelte';
+	import PropsTable from '$lib/internal/PropsTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -19,78 +24,71 @@
 	<title>Skeleton - Greenfield UI</title>
 </svelte:head>
 
-<div class="docs-layout">
-	<article class="docs-content">
-		<header class="page-header">
-			<h1>Skeleton</h1>
-			<p class="lead">
-				Loading placeholder that mimics the shape of content before it loads. Renders a pulsing
-				shimmer animation to prevent layout shift.
+<DocsPage>
+	<PageHeader
+		title="Skeleton"
+		description="Loading placeholder that mimics the shape of content before it loads. Renders a pulsing shimmer animation to prevent layout shift."
+	/>
+
+	<DocSection id="examples" title="Examples">
+		<ExampleBlock id="rect" title="Rectangle">
+			<p class="example-desc">
+				Default <code>shape="rect"</code>. Use <code>width</code> and <code>height</code> to size the
+				block.
 			</p>
-		</header>
-
-		<section id="examples" class="doc-section">
-			<h2>Examples</h2>
-
-			<div id="rect" class="example-block">
-				<h3>Rectangle</h3>
-				<p class="example-desc">
-					Default <code>shape="rect"</code>. Use <code>width</code> and <code>height</code> to size the
-					block.
-				</p>
-				<CodeExample
-					code={`<Skeleton height="48px" />
+			<CodeExample
+				code={`<Skeleton height="48px" />
 <Skeleton width="60%" height="24px" />
 <Skeleton width="120px" height="120px" />`}
-					previewClass="column"
-				>
-					<Skeleton height="48px" />
-					<Skeleton width="60%" height="24px" />
-					<Skeleton width="120px" height="120px" />
-				</CodeExample>
-			</div>
+				previewClass="column"
+			>
+				<Skeleton height="48px" />
+				<Skeleton width="60%" height="24px" />
+				<Skeleton width="120px" height="120px" />
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="circle" class="example-block">
-				<h3>Circle</h3>
-				<p class="example-desc">
-					Use <code>shape="circle"</code> for avatar and icon placeholders. Set equal
-					<code>width</code> and <code>height</code>.
-				</p>
-				<CodeExample
-					code={`<Skeleton shape="circle" width="32px" height="32px" />
+		<ExampleBlock id="circle" title="Circle">
+			<p class="example-desc">
+				Use <code>shape="circle"</code> for avatar and icon placeholders. Set equal
+				<code>width</code> and <code>height</code>.
+			</p>
+			<CodeExample
+				code={`<Skeleton shape="circle" width="32px" height="32px" />
 <Skeleton shape="circle" width="40px" height="40px" />
 <Skeleton shape="circle" width="56px" height="56px" />
 <Skeleton shape="circle" width="72px" height="72px" />`}
-					previewClass="row"
-				>
-					<Skeleton shape="circle" width="32px" height="32px" />
-					<Skeleton shape="circle" width="40px" height="40px" />
-					<Skeleton shape="circle" width="56px" height="56px" />
-					<Skeleton shape="circle" width="72px" height="72px" />
-				</CodeExample>
-			</div>
+				previewClass="row"
+			>
+				<Skeleton shape="circle" width="32px" height="32px" />
+				<Skeleton shape="circle" width="40px" height="40px" />
+				<Skeleton shape="circle" width="56px" height="56px" />
+				<Skeleton shape="circle" width="72px" height="72px" />
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="text" class="example-block">
-				<h3>Text Lines</h3>
-				<p class="example-desc">
-					Use <code>shape="text"</code> to render multiple line placeholders. The last line is shorter
-					to mimic natural text.
-				</p>
-				<CodeExample
-					code={`<Skeleton shape="text" lines={2} />
+		<ExampleBlock id="text" title="Text Lines">
+			<p class="example-desc">
+				Use <code>shape="text"</code> to render multiple line placeholders. The last line is shorter to
+				mimic natural text.
+			</p>
+			<CodeExample
+				code={`<Skeleton shape="text" lines={2} />
 <Skeleton shape="text" lines={4} />`}
-					previewClass="column"
-				>
-					<Skeleton shape="text" lines={2} />
-					<Skeleton shape="text" lines={4} />
-				</CodeExample>
-			</div>
+				previewClass="column"
+			>
+				<Skeleton shape="text" lines={2} />
+				<Skeleton shape="text" lines={4} />
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="composed" class="example-block">
-				<h3>Composed</h3>
-				<p class="example-desc">Combine shapes to mirror the layout of real content.</p>
-				<CodeExample
-					code={`<div class="card-skeleton">
+		<ExampleBlock
+			id="composed"
+			title="Composed"
+			description="Combine shapes to mirror the layout of real content."
+		>
+			<CodeExample
+				code={`<div class="card-skeleton">
   <Skeleton shape="circle" width="40px" height="40px" />
   <div class="card-skeleton__body">
     <Skeleton height="16px" width="50%" />
@@ -114,274 +112,77 @@
     gap: 10px;
   }
 </style>`}
-				>
-					<div class="card-skeleton">
-						<Skeleton shape="circle" width="40px" height="40px" />
-						<div class="card-skeleton__body">
-							<Skeleton height="16px" width="50%" />
-							<Skeleton shape="text" lines={2} />
-						</div>
+			>
+				<div class="card-skeleton">
+					<Skeleton shape="circle" width="40px" height="40px" />
+					<div class="card-skeleton__body">
+						<Skeleton height="16px" width="50%" />
+						<Skeleton shape="text" lines={2} />
 					</div>
-				</CodeExample>
-			</div>
+				</div>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="static" class="example-block">
-				<h3>Static</h3>
-				<p class="example-desc">
-					Set <code>animated={`{false}`}</code> to disable the shimmer animation.
-				</p>
-				<CodeExample
-					code={`<Skeleton height="48px" animated={false} />
-<Skeleton shape="text" lines={3} animated={false} />`}
-					previewClass="column"
-				>
-					<Skeleton height="48px" animated={false} />
-					<Skeleton shape="text" lines={3} animated={false} />
-				</CodeExample>
-			</div>
-		</section>
-
-		<section id="api" class="doc-section">
-			<h2>API</h2>
-			<div class="api-table">
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>shape</code></td>
-							<td><code>'rect' | 'circle' | 'text'</code></td>
-							<td><code>'rect'</code></td>
-							<td>Shape of the skeleton placeholder</td>
-						</tr>
-						<tr>
-							<td><code>width</code></td>
-							<td><code>string</code></td>
-							<td><code>undefined</code></td>
-							<td>Inline CSS width (e.g. <code>'200px'</code>, <code>'100%'</code>)</td>
-						</tr>
-						<tr>
-							<td><code>height</code></td>
-							<td><code>string</code></td>
-							<td><code>undefined</code></td>
-							<td>Inline CSS height (e.g. <code>'48px'</code>)</td>
-						</tr>
-						<tr>
-							<td><code>lines</code></td>
-							<td><code>number</code></td>
-							<td><code>3</code></td>
-							<td>Number of lines when <code>shape="text"</code></td>
-						</tr>
-						<tr>
-							<td><code>animated</code></td>
-							<td><code>boolean</code></td>
-							<td><code>true</code></td>
-							<td>Enables the shimmer animation</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<p class="api-note">
-				All standard <code>HTMLSpanElement</code> attributes are forwarded to the root element. The
-				root element is always <code>aria-hidden="true"</code>.
+		<ExampleBlock id="static" title="Static">
+			<p class="example-desc">
+				Set <code>animated={`{false}`}</code> to disable the shimmer animation.
 			</p>
-		</section>
+			<CodeExample
+				code={`<Skeleton height="48px" animated={false} />
+<Skeleton shape="text" lines={3} animated={false} />`}
+				previewClass="column"
+			>
+				<Skeleton height="48px" animated={false} />
+				<Skeleton shape="text" lines={3} animated={false} />
+			</CodeExample>
+		</ExampleBlock>
+	</DocSection>
 
-		<section id="css-tokens" class="doc-section">
-			<h2>CSS Tokens</h2>
-			<div class="api-table">
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--skeleton-bg</code></td>
-							<td><code>color-mix(--ui-neutral, transparent 78%)</code></td>
-							<td>Base background color</td>
-						</tr>
-						<tr>
-							<td><code>--skeleton-shimmer-color</code></td>
-							<td><code>color-mix(--ui-neutral-foreground, transparent 75%)</code></td>
-							<td>Highlight color for the shimmer wave (light in all themes)</td>
-						</tr>
-						<tr>
-							<td><code>--skeleton-radius</code></td>
-							<td><code>var(--ui-base-radius)</code></td>
-							<td>Border radius for rect and text shapes</td>
-						</tr>
-						<tr>
-							<td><code>--skeleton-radius-circle</code></td>
-							<td><code>9999px</code></td>
-							<td>Border radius for circle shape</td>
-						</tr>
-						<tr>
-							<td><code>--skeleton-duration</code></td>
-							<td><code>1.5s</code></td>
-							<td>Duration of one shimmer cycle</td>
-						</tr>
-						<tr>
-							<td><code>--skeleton-easing</code></td>
-							<td><code>ease-in-out</code></td>
-							<td>Easing function for the shimmer animation</td>
-						</tr>
-						<tr>
-							<td><code>--skeleton-stagger</code></td>
-							<td><code>0.15s</code></td>
-							<td>Delay increment between text lines for cascading shimmer</td>
-						</tr>
-						<tr>
-							<td><code>--skeleton-line-height</code></td>
-							<td><code>calc(var(--ui-base-spacing) * 2)</code></td>
-							<td>Height of each text line</td>
-						</tr>
-						<tr>
-							<td><code>--skeleton-line-gap</code></td>
-							<td><code>calc(var(--ui-base-spacing) * 1.5)</code></td>
-							<td>Gap between text lines</td>
-						</tr>
-						<tr>
-							<td><code>--skeleton-line-last-width</code></td>
-							<td><code>70%</code></td>
-							<td>Width of the last text line</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
-	</article>
+	<DocSection id="api" title="API">
+		<PropsTable
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['shape', "'rect' | 'circle' | 'text'", "'rect'", 'Shape of the skeleton placeholder'],
+				['width', 'string', 'undefined', "Inline CSS width (e.g. '200px', '100%')"],
+				['height', 'string', 'undefined', "Inline CSS height (e.g. '48px')"],
+				['lines', 'number', '3', 'Number of lines when shape="text"'],
+				['animated', 'boolean', 'true', 'Enables the shimmer animation']
+			]}
+		/>
+		<p class="api-note">
+			All standard <code>HTMLSpanElement</code> attributes are forwarded to the root element. The
+			root element is always <code>aria-hidden="true"</code>.
+		</p>
+	</DocSection>
 
-	<TableOfContents sections={tocSections} />
-</div>
+	<DocSection id="css-tokens" title="CSS Tokens">
+		<PropsTable
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--skeleton-bg', 'color-mix(--ui-neutral, transparent 78%)', 'Base background color'],
+				[
+					'--skeleton-shimmer-color',
+					'color-mix(--ui-neutral-foreground, transparent 75%)',
+					'Highlight color for the shimmer wave (light in all themes)'
+				],
+				['--skeleton-radius', 'var(--ui-base-radius)', 'Border radius for rect and text shapes'],
+				['--skeleton-radius-circle', '9999px', 'Border radius for circle shape'],
+				['--skeleton-duration', '1.5s', 'Duration of one shimmer cycle'],
+				['--skeleton-easing', 'ease-in-out', 'Easing function for the shimmer animation'],
+				['--skeleton-stagger', '0.15s', 'Delay increment between text lines for cascading shimmer'],
+				['--skeleton-line-height', 'calc(var(--ui-base-spacing) * 2)', 'Height of each text line'],
+				['--skeleton-line-gap', 'calc(var(--ui-base-spacing) * 1.5)', 'Gap between text lines'],
+				['--skeleton-line-last-width', '70%', 'Width of the last text line']
+			]}
+		/>
+	</DocSection>
+
+	{#snippet sidebar()}
+		<TableOfContents sections={tocSections} />
+	{/snippet}
+</DocsPage>
 
 <style>
-	.docs-layout {
-		display: grid;
-		grid-template-columns: 1fr 180px;
-		gap: var(--space-12);
-	}
-
-	.docs-content {
-		min-width: 0;
-	}
-
-	.page-header {
-		margin-bottom: var(--space-8);
-	}
-
-	h1 {
-		font-size: var(--font-size-3xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-3) 0;
-	}
-
-	.lead {
-		font-size: var(--ui-text-lg);
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		line-height: var(--line-height-relaxed);
-		margin: 0;
-	}
-
-	.doc-section {
-		margin-bottom: var(--space-12);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.doc-section h2 {
-		font-size: var(--font-size-2xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-6) 0;
-		padding-bottom: var(--space-3);
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.example-block {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-4);
-		margin-bottom: var(--space-8);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.example-block h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.example-desc {
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		margin: 0;
-	}
-
-	.example-desc code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	.api-table {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-3);
-		margin-bottom: var(--space-6);
-	}
-
-	.api-note {
-		font-size: var(--ui-text-sm);
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		margin: 0;
-	}
-
-	.api-note code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	.props-table {
-		width: 100%;
-		border-collapse: collapse;
-		font-size: var(--ui-text-sm);
-	}
-
-	.props-table th,
-	.props-table td {
-		padding: var(--space-2) var(--space-3);
-		text-align: left;
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.props-table th {
-		font-weight: 600;
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-	}
-
-	.props-table code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
 	.card-skeleton {
 		display: flex;
 		gap: 12px;
@@ -398,11 +199,5 @@
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
-	}
-
-	@media (max-width: 1024px) {
-		.docs-layout {
-			grid-template-columns: 1fr;
-		}
 	}
 </style>

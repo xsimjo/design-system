@@ -5,6 +5,11 @@
 	import FieldDescription from '$lib/components/field/FieldDescription.svelte';
 	import CodeExample from '$lib/internal/CodeExample.svelte';
 	import TableOfContents from '$lib/internal/TableOfContents.svelte';
+	import DocsPage from '$lib/internal/DocsPage.svelte';
+	import PageHeader from '$lib/internal/PageHeader.svelte';
+	import DocSection from '$lib/internal/DocSection.svelte';
+	import ExampleBlock from '$lib/internal/ExampleBlock.svelte';
+	import PropsTable from '$lib/internal/PropsTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -22,51 +27,46 @@
 	<title>Checkbox - Greenfield UI</title>
 </svelte:head>
 
-<div class="docs-layout">
-	<article class="docs-content">
-		<header class="page-header">
-			<h1>Checkbox</h1>
-			<p class="lead">
-				Accessible checkbox with checked and indeterminate states. Compose with <code>Field</code>,
-				<code>FieldLabel</code>, and <code>FieldDescription</code> to add labels, hints, and error messages.
-				Fully themeable through CSS variables, with three sizes.
-			</p>
-		</header>
+<DocsPage>
+	<PageHeader title="Checkbox">
+		<p class="lead">
+			Accessible checkbox with checked and indeterminate states. Compose with <code>Field</code>,
+			<code>FieldLabel</code>, and <code>FieldDescription</code> to add labels, hints, and error messages.
+			Fully themeable through CSS variables, with three sizes.
+		</p>
+	</PageHeader>
 
-		<section id="examples" class="doc-section">
-			<h2>Examples</h2>
+	<DocSection id="examples" title="Examples">
+		<ExampleBlock id="basic" title="Basic" description="A minimal checkbox.">
+			<CodeExample code="<Checkbox />">
+				<Checkbox />
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="basic" class="example-block">
-				<h3>Basic</h3>
-				<p class="example-desc">A minimal checkbox.</p>
-				<CodeExample code="<Checkbox />">
-					<Checkbox />
-				</CodeExample>
-			</div>
-
-			<div id="states" class="example-block">
-				<h3>States</h3>
-				<p class="example-desc">Unchecked, checked, and indeterminate states.</p>
-				<CodeExample
-					code={`<Checkbox />
+		<ExampleBlock
+			id="states"
+			title="States"
+			description="Unchecked, checked, and indeterminate states."
+		>
+			<CodeExample
+				code={`<Checkbox />
 <Checkbox checked={true} />
 <Checkbox indeterminate={true} />`}
-					previewClass="aligned"
-				>
-					<Checkbox />
-					<Checkbox checked={true} />
-					<Checkbox indeterminate={true} />
-				</CodeExample>
-			</div>
+				previewClass="aligned"
+			>
+				<Checkbox />
+				<Checkbox checked={true} />
+				<Checkbox indeterminate={true} />
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="label" class="example-block">
-				<h3>With Label</h3>
-				<p class="example-desc">
-					Use <code>inline</code> on <code>Field</code> to place the checkbox and label on one row. The
-					label is linked to the checkbox automatically via context.
-				</p>
-				<CodeExample
-					code={`<Field inline>
+		<ExampleBlock id="label" title="With Label">
+			<p class="example-desc">
+				Use <code>inline</code> on <code>Field</code> to place the checkbox and label on one row. The
+				label is linked to the checkbox automatically via context.
+			</p>
+			<CodeExample
+				code={`<Field inline>
   <Checkbox />
   <FieldLabel>Accept terms and conditions</FieldLabel>
 </Field>
@@ -74,50 +74,49 @@
   <Checkbox />
   <FieldLabel>Subscribe to newsletter</FieldLabel>
 </Field>`}
-					previewClass="column"
-				>
-					<Field inline>
-						<Checkbox />
-						<FieldLabel>Accept terms and conditions</FieldLabel>
-					</Field>
-					<Field inline>
-						<Checkbox />
-						<FieldLabel>Subscribe to newsletter</FieldLabel>
-					</Field>
-				</CodeExample>
-			</div>
+				previewClass="column"
+			>
+				<Field inline>
+					<Checkbox />
+					<FieldLabel>Accept terms and conditions</FieldLabel>
+				</Field>
+				<Field inline>
+					<Checkbox />
+					<FieldLabel>Subscribe to newsletter</FieldLabel>
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="error" class="example-block">
-				<h3>With Error</h3>
-				<p class="example-desc">
-					Set <code>error</code> on <code>Field</code> to apply error styling.
-					<code>FieldDescription</code> automatically renders in the error color when the field has an
-					error.
-				</p>
-				<CodeExample
-					code={`<Field inline error="You must accept the terms to continue.">
+		<ExampleBlock id="error" title="With Error">
+			<p class="example-desc">
+				Set <code>error</code> on <code>Field</code> to apply error styling.
+				<code>FieldDescription</code> automatically renders in the error color when the field has an error.
+			</p>
+			<CodeExample
+				code={`<Field inline error="You must accept the terms to continue.">
   <Checkbox />
   <FieldLabel>Accept terms and conditions</FieldLabel>
 </Field>
 <FieldDescription>You must accept the terms to continue.</FieldDescription>`}
-				>
-					<div style="display: flex; flex-direction: column; gap: 6px;">
-						<Field inline error="You must accept the terms to continue.">
-							<Checkbox />
-							<FieldLabel>Accept terms and conditions</FieldLabel>
-						</Field>
-						<FieldDescription variant="error"
-							>You must accept the terms to continue.</FieldDescription
-						>
-					</div>
-				</CodeExample>
-			</div>
+			>
+				<div style="display: flex; flex-direction: column; gap: 6px;">
+					<Field inline error="You must accept the terms to continue.">
+						<Checkbox />
+						<FieldLabel>Accept terms and conditions</FieldLabel>
+					</Field>
+					<FieldDescription variant="error">You must accept the terms to continue.</FieldDescription
+					>
+				</div>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="disabled" class="example-block">
-				<h3>Disabled</h3>
-				<p class="example-desc">Disabled checkboxes prevent interaction and apply muted styling.</p>
-				<CodeExample
-					code={`<Field inline disabled>
+		<ExampleBlock
+			id="disabled"
+			title="Disabled"
+			description="Disabled checkboxes prevent interaction and apply muted styling."
+		>
+			<CodeExample
+				code={`<Field inline disabled>
   <Checkbox />
   <FieldLabel>Unchecked</FieldLabel>
 </Field>
@@ -129,393 +128,140 @@
   <Checkbox indeterminate={true} />
   <FieldLabel>Indeterminate</FieldLabel>
 </Field>`}
-					previewClass="column"
-				>
-					<Field inline disabled>
-						<Checkbox />
-						<FieldLabel>Unchecked</FieldLabel>
-					</Field>
-					<Field inline disabled>
-						<Checkbox checked={true} />
-						<FieldLabel>Checked</FieldLabel>
-					</Field>
-					<Field inline disabled>
-						<Checkbox indeterminate={true} />
-						<FieldLabel>Indeterminate</FieldLabel>
-					</Field>
-				</CodeExample>
-			</div>
-		</section>
+				previewClass="column"
+			>
+				<Field inline disabled>
+					<Checkbox />
+					<FieldLabel>Unchecked</FieldLabel>
+				</Field>
+				<Field inline disabled>
+					<Checkbox checked={true} />
+					<FieldLabel>Checked</FieldLabel>
+				</Field>
+				<Field inline disabled>
+					<Checkbox indeterminate={true} />
+					<FieldLabel>Indeterminate</FieldLabel>
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
+	</DocSection>
 
-		<section id="api" class="doc-section">
-			<h2>API</h2>
+	<DocSection id="api" title="API">
+		<PropsTable
+			title="Checkbox Props"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['checked', 'boolean', 'false', 'Bindable checked state'],
+				[
+					'indeterminate',
+					'boolean',
+					'false',
+					'Bindable indeterminate state; takes visual precedence over checked'
+				],
+				[
+					'size',
+					"'sm' | 'md' | 'lg'",
+					"'md'",
+					'Controls the width and height (14px / 16px / 20px)'
+				],
+				[
+					'disabled',
+					'boolean',
+					'false',
+					'Disables the checkbox (also inherited from Field context)'
+				],
+				['id', 'string', '\u2014', 'Custom ID; auto-generated from Field context if omitted'],
+				[
+					'...restProps',
+					'HTMLInputAttributes',
+					'\u2014',
+					'All other native input attributes (e.g. name, value)'
+				]
+			]}
+		/>
 
-			<div class="api-table">
-				<h3>Checkbox Props</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>checked</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Bindable checked state</td>
-						</tr>
-						<tr>
-							<td><code>indeterminate</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Bindable indeterminate state; takes visual precedence over checked</td>
-						</tr>
-						<tr>
-							<td><code>size</code></td>
-							<td><code>'sm' | 'md' | 'lg'</code></td>
-							<td><code>'md'</code></td>
-							<td>Controls the width and height (14px / 16px / 20px)</td>
-						</tr>
-						<tr>
-							<td><code>disabled</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Disables the checkbox (also inherited from Field context)</td>
-						</tr>
-						<tr>
-							<td><code>id</code></td>
-							<td><code>string</code></td>
-							<td><code>—</code></td>
-							<td>Custom ID; auto-generated from Field context if omitted</td>
-						</tr>
-						<tr>
-							<td><code>...restProps</code></td>
-							<td><code>HTMLInputAttributes</code></td>
-							<td><code>—</code></td>
-							<td>All other native input attributes (e.g. <code>name</code>, <code>value</code>)</td
-							>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="Field Props"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['error', 'string', '\u2014', 'Triggers error styling on Checkbox and FieldDescription'],
+				[
+					'required',
+					'boolean',
+					'false',
+					'Shows required indicator on FieldLabel; sets aria-required'
+				],
+				['disabled', 'boolean', 'false', 'Propagates disabled state to child Checkbox'],
+				['fullWidth', 'boolean', 'false', 'Stretches the field container to 100% width']
+			]}
+		/>
+	</DocSection>
 
-			<div class="api-table">
-				<h3>Field Props</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>error</code></td>
-							<td><code>string</code></td>
-							<td><code>—</code></td>
-							<td>Triggers error styling on Checkbox and FieldDescription</td>
-						</tr>
-						<tr>
-							<td><code>required</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Shows required indicator on FieldLabel; sets aria-required</td>
-						</tr>
-						<tr>
-							<td><code>disabled</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Propagates disabled state to child Checkbox</td>
-						</tr>
-						<tr>
-							<td><code>fullWidth</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Stretches the field container to 100% width</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
+	<DocSection id="css-tokens" title="CSS Tokens">
+		<p class="section-intro">
+			Override these tokens to adapt Checkbox to your brand or to create specialized variants.
+		</p>
 
-		<section id="css-tokens" class="doc-section">
-			<h2>CSS Tokens</h2>
-			<p class="section-intro">
-				Override these tokens to adapt Checkbox to your brand or to create specialized variants.
-			</p>
+		<PropsTable
+			title="Color Tokens"
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--checkbox-bg', 'var(--ui-surface)', 'Default background color'],
+				['--checkbox-border', 'var(--ui-border)', 'Default border color'],
+				['--checkbox-border-width', 'var(--ui-border-width)', 'Border thickness'],
+				['--checkbox-checked-bg', 'var(--ui-primary)', 'Background when checked or indeterminate'],
+				[
+					'--checkbox-checked-border',
+					'var(--ui-primary)',
+					'Border color when checked or indeterminate'
+				],
+				['--checkbox-hover-border', 'color-mix(\u2026border+hover 10%)', 'Border color on hover'],
+				['--checkbox-focus-color', 'var(--ui-primary)', 'Border and focus ring color when focused'],
+				['--checkbox-focus-ring-width', 'var(--ui-ring-width)', 'Width of the focus ring outline'],
+				[
+					'--checkbox-focus-ring-offset',
+					'var(--ui-ring-offset)',
+					'Offset of the focus ring from the border'
+				],
+				[
+					'--checkbox-error-color',
+					'var(--ui-danger)',
+					'Border and background color in error state'
+				],
+				[
+					'--checkbox-disabled-bg',
+					'color-mix(\u2026neutral 80% transparent)',
+					'Background when disabled'
+				],
+				['--checkbox-disabled-border', 'var(--ui-border)', 'Border color when disabled']
+			]}
+		/>
 
-			<div class="token-group">
-				<h3>Color Tokens</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--checkbox-bg</code></td>
-							<td>var(--ui-surface)</td>
-							<td>Default background color</td>
-						</tr>
-						<tr>
-							<td><code>--checkbox-border</code></td>
-							<td>var(--ui-border)</td>
-							<td>Default border color</td>
-						</tr>
-						<tr>
-							<td><code>--checkbox-border-width</code></td>
-							<td>var(--ui-border-width)</td>
-							<td>Border thickness</td>
-						</tr>
-						<tr>
-							<td><code>--checkbox-checked-bg</code></td>
-							<td>var(--ui-primary)</td>
-							<td>Background when checked or indeterminate</td>
-						</tr>
-						<tr>
-							<td><code>--checkbox-checked-border</code></td>
-							<td>var(--ui-primary)</td>
-							<td>Border color when checked or indeterminate</td>
-						</tr>
-						<tr>
-							<td><code>--checkbox-hover-border</code></td>
-							<td>color-mix(…border+hover 10%)</td>
-							<td>Border color on hover</td>
-						</tr>
-						<tr>
-							<td><code>--checkbox-focus-color</code></td>
-							<td>var(--ui-primary)</td>
-							<td>Border and focus ring color when focused</td>
-						</tr>
-						<tr>
-							<td><code>--checkbox-focus-ring-width</code></td>
-							<td>var(--ui-ring-width)</td>
-							<td>Width of the focus ring outline</td>
-						</tr>
-						<tr>
-							<td><code>--checkbox-focus-ring-offset</code></td>
-							<td>var(--ui-ring-offset)</td>
-							<td>Offset of the focus ring from the border</td>
-						</tr>
-						<tr>
-							<td><code>--checkbox-error-color</code></td>
-							<td>var(--ui-danger)</td>
-							<td>Border and background color in error state</td>
-						</tr>
-						<tr>
-							<td><code>--checkbox-disabled-bg</code></td>
-							<td>color-mix(…neutral 80% transparent)</td>
-							<td>Background when disabled</td>
-						</tr>
-						<tr>
-							<td><code>--checkbox-disabled-border</code></td>
-							<td>var(--ui-border)</td>
-							<td>Border color when disabled</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="Size Tokens"
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--checkbox-size-sm', '14px', 'Width and height for sm size'],
+				['--checkbox-size-md', '16px', 'Width and height for md size'],
+				['--checkbox-size-lg', '20px', 'Width and height for lg size']
+			]}
+		/>
 
-			<div class="token-group">
-				<h3>Size Tokens</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--checkbox-size-sm</code></td>
-							<td>14px</td>
-							<td>Width and height for sm size</td>
-						</tr>
-						<tr>
-							<td><code>--checkbox-size-md</code></td>
-							<td>16px</td>
-							<td>Width and height for md size</td>
-						</tr>
-						<tr>
-							<td><code>--checkbox-size-lg</code></td>
-							<td>20px</td>
-							<td>Width and height for lg size</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="Style Tokens"
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--checkbox-border-radius', '4px', 'Corner roundness'],
+				[
+					'--checkbox-transition',
+					'var(--ui-base-duration) var(--ui-base-easing)',
+					'Transition for border and background'
+				]
+			]}
+		/>
+	</DocSection>
 
-			<div class="token-group">
-				<h3>Style Tokens</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--checkbox-border-radius</code></td>
-							<td>4px</td>
-							<td>Corner roundness</td>
-						</tr>
-						<tr>
-							<td><code>--checkbox-transition</code></td>
-							<td>var(--ui-base-duration) var(--ui-base-easing)</td>
-							<td>Transition for border and background</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
-	</article>
-
-	<TableOfContents sections={tocSections} />
-</div>
-
-<style>
-	.docs-layout {
-		display: grid;
-		grid-template-columns: 1fr 180px;
-		gap: var(--space-12);
-	}
-
-	.docs-content {
-		min-width: 0;
-	}
-
-	.page-header {
-		margin-bottom: var(--space-8);
-	}
-
-	h1 {
-		font-size: var(--font-size-3xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-3) 0;
-	}
-
-	.lead {
-		font-size: var(--ui-text-lg);
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		line-height: var(--line-height-relaxed);
-		margin: 0;
-	}
-
-	.lead code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	.doc-section {
-		margin-bottom: var(--space-12);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.doc-section h2 {
-		font-size: var(--font-size-2xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-6) 0;
-		padding-bottom: var(--space-3);
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.section-intro {
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		font-size: var(--ui-text-base);
-		line-height: var(--line-height-relaxed);
-		margin: 0 0 var(--space-6) 0;
-	}
-
-	.example-block {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-4);
-		margin-bottom: var(--space-8);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.example-block h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.example-desc {
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		margin: 0;
-	}
-
-	.example-desc code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	.api-table,
-	.token-group {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-3);
-		margin-bottom: var(--space-6);
-	}
-
-	.api-table h3,
-	.token-group h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.props-table {
-		width: 100%;
-		border-collapse: collapse;
-		font-size: var(--ui-text-sm);
-	}
-
-	.props-table th,
-	.props-table td {
-		padding: var(--space-2) var(--space-3);
-		text-align: left;
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.props-table th {
-		font-weight: 600;
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-	}
-
-	.props-table code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	@media (max-width: 1024px) {
-		.docs-layout {
-			grid-template-columns: 1fr;
-		}
-	}
-</style>
+	{#snippet sidebar()}
+		<TableOfContents sections={tocSections} />
+	{/snippet}
+</DocsPage>

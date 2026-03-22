@@ -5,6 +5,11 @@
 	import FieldDescription from '$lib/components/field/FieldDescription.svelte';
 	import CodeExample from '$lib/internal/CodeExample.svelte';
 	import TableOfContents from '$lib/internal/TableOfContents.svelte';
+	import DocsPage from '$lib/internal/DocsPage.svelte';
+	import PageHeader from '$lib/internal/PageHeader.svelte';
+	import DocSection from '$lib/internal/DocSection.svelte';
+	import ExampleBlock from '$lib/internal/ExampleBlock.svelte';
+	import PropsTable from '$lib/internal/PropsTable.svelte';
 
 	const basicCode = '<BadgeInput bind:tags placeholder="Add tag and press Enter…" />';
 
@@ -28,62 +33,55 @@
 	<title>BadgeInput - Greenfield UI</title>
 </svelte:head>
 
-<div class="docs-layout">
-	<article class="docs-content">
-		<header class="page-header">
-			<h1>BadgeInput</h1>
-			<p class="lead">
-				Free-form tag entry. Type and press <kbd>Enter</kbd> to commit a tag. Tags render as badge
-				pills inside the input. Supports validation, transform, and duplicate prevention. No options
-				list — use <code>MultiSelect</code> for predefined choices.
+<DocsPage>
+	<PageHeader title="BadgeInput">
+		<p class="lead">
+			Free-form tag entry. Type and press <kbd>Enter</kbd> to commit a tag. Tags render as badge
+			pills inside the input. Supports validation, transform, and duplicate prevention. No options
+			list — use <code>MultiSelect</code> for predefined choices.
+		</p>
+	</PageHeader>
+
+	<DocSection id="examples" title="Examples">
+		<ExampleBlock id="basic" title="Basic">
+			<p class="example-desc">
+				Type a value and press <kbd>Enter</kbd> to add it. Press <kbd>Backspace</kbd> on empty input to
+				focus the last tag's remove button.
 			</p>
-		</header>
+			<CodeExample code={basicCode}>
+				<BadgeInput bind:tags placeholder="Add tag and press Enter…" />
+			</CodeExample>
+		</ExampleBlock>
 
-		<section id="examples" class="doc-section">
-			<h2>Examples</h2>
-
-			<div id="basic" class="example-block">
-				<h3>Basic</h3>
-				<p class="example-desc">
-					Type a value and press <kbd>Enter</kbd> to add it. Press <kbd>Backspace</kbd> on empty input
-					to focus the last tag's remove button.
-				</p>
-				<CodeExample code={basicCode}>
-					<BadgeInput bind:tags placeholder="Add tag and press Enter…" />
-				</CodeExample>
-			</div>
-
-			<div id="with-field" class="example-block">
-				<h3>With Field</h3>
-				<p class="example-desc">Integrates with <code>Field</code> for label and error state.</p>
-				<CodeExample
-					code={`<Field>
+		<ExampleBlock id="with-field" title="With Field">
+			<p class="example-desc">Integrates with <code>Field</code> for label and error state.</p>
+			<CodeExample
+				code={`<Field>
   <FieldLabel>Tags</FieldLabel>
   <BadgeInput bind:tags placeholder="Add tag…" />
   <FieldDescription>Press Enter to add each tag.</FieldDescription>
 </Field>`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Tags</FieldLabel>
-						<BadgeInput bind:tags placeholder="Add tag…" />
-						<FieldDescription>Press Enter to add each tag.</FieldDescription>
-					</Field>
-					<Field error="Tags are required.">
-						<FieldLabel>Tags (error)</FieldLabel>
-						<BadgeInput placeholder="Add tag…" />
-					</Field>
-				</CodeExample>
-			</div>
+				previewClass="column"
+			>
+				<Field>
+					<FieldLabel>Tags</FieldLabel>
+					<BadgeInput bind:tags placeholder="Add tag…" />
+					<FieldDescription>Press Enter to add each tag.</FieldDescription>
+				</Field>
+				<Field error="Tags are required.">
+					<FieldLabel>Tags (error)</FieldLabel>
+					<BadgeInput placeholder="Add tag…" />
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="validation" class="example-block">
-				<h3>Validation</h3>
-				<p class="example-desc">
-					Pass a <code>validate</code> function. Return <code>true</code> to accept, or a string error
-					message to reject.
-				</p>
-				<CodeExample
-					code={`function validateEmail(tag) {
+		<ExampleBlock id="validation" title="Validation">
+			<p class="example-desc">
+				Pass a <code>validate</code> function. Return <code>true</code> to accept, or a string error message
+				to reject.
+			</p>
+			<CodeExample
+				code={`function validateEmail(tag) {
   return tag.includes('@') || 'Must be a valid email address';
 }
 
@@ -92,279 +90,68 @@
   validate={validateEmail}
   placeholder="Add email address…"
 />`}
-				>
-					<Field>
-						<FieldLabel>Email addresses</FieldLabel>
-						<BadgeInput
-							bind:tags={emailTags}
-							validate={validateEmail}
-							placeholder="Add email address…"
-						/>
-					</Field>
-				</CodeExample>
-			</div>
-		</section>
+			>
+				<Field>
+					<FieldLabel>Email addresses</FieldLabel>
+					<BadgeInput
+						bind:tags={emailTags}
+						validate={validateEmail}
+						placeholder="Add email address…"
+					/>
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
+	</DocSection>
 
-		<section id="api" class="doc-section">
-			<h2>API</h2>
-			<div class="api-table">
-				<h3>BadgeInput Props</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>tags</code></td>
-							<td><code>string[]</code></td>
-							<td><code>[]</code></td>
-							<td>Bindable array of committed tags</td>
-						</tr>
-						<tr>
-							<td><code>placeholder</code></td>
-							<td><code>string</code></td>
-							<td><code>'Add tag…'</code></td>
-							<td>Input placeholder text</td>
-						</tr>
-						<tr>
-							<td><code>size</code></td>
-							<td><code>'sm' | 'md' | 'lg'</code></td>
-							<td><code>'md'</code></td>
-							<td>Controls min-height, padding, and font size</td>
-						</tr>
-						<tr>
-							<td><code>fullWidth</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Stretches to 100% of container</td>
-						</tr>
-						<tr>
-							<td><code>disabled</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Disables input and badge removal</td>
-						</tr>
-						<tr>
-							<td><code>max</code></td>
-							<td><code>number</code></td>
-							<td><code>—</code></td>
-							<td>Maximum number of tags allowed</td>
-						</tr>
-						<tr>
-							<td><code>maxLength</code></td>
-							<td><code>number</code></td>
-							<td><code>—</code></td>
-							<td>Maximum character length per tag input</td>
-						</tr>
-						<tr>
-							<td><code>delimiters</code></td>
-							<td><code>string[]</code></td>
-							<td><code>['Enter']</code></td>
-							<td>Keys that commit the current input as a tag</td>
-						</tr>
-						<tr>
-							<td><code>addOnBlur</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Commits current input value when focus leaves the field</td>
-						</tr>
-						<tr>
-							<td><code>allowDuplicates</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Allows adding the same tag value more than once</td>
-						</tr>
-						<tr>
-							<td><code>transform</code></td>
-							<td><code>(tag: string) => string</code></td>
-							<td><code>—</code></td>
-							<td>Transform raw input before validation and commit (e.g. lowercase)</td>
-						</tr>
-						<tr>
-							<td><code>validate</code></td>
-							<td><code>(tag: string) => boolean | string</code></td>
-							<td><code>—</code></td>
-							<td>Return <code>true</code> to accept; string becomes the error message</td>
-						</tr>
-						<tr>
-							<td><code>onadd</code></td>
-							<td><code>(tag: string) => void</code></td>
-							<td><code>—</code></td>
-							<td>Called after a tag is committed</td>
-						</tr>
-						<tr>
-							<td><code>onremove</code></td>
-							<td><code>(tag, index) => void</code></td>
-							<td><code>—</code></td>
-							<td>Called after a tag is removed</td>
-						</tr>
-						<tr>
-							<td><code>name</code></td>
-							<td><code>string</code></td>
-							<td><code>—</code></td>
-							<td>Submits as <code>name[]</code> hidden inputs</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+	<DocSection id="api" title="API">
+		<PropsTable
+			title="BadgeInput Props"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['tags', 'string[]', '[]', 'Bindable array of committed tags'],
+				['placeholder', 'string', "'Add tag…'", 'Input placeholder text'],
+				['size', "'sm' | 'md' | 'lg'", "'md'", 'Controls min-height, padding, and font size'],
+				['fullWidth', 'boolean', 'false', 'Stretches to 100% of container'],
+				['disabled', 'boolean', 'false', 'Disables input and badge removal'],
+				['max', 'number', '\u2014', 'Maximum number of tags allowed'],
+				['maxLength', 'number', '\u2014', 'Maximum character length per tag input'],
+				['delimiters', 'string[]', "['Enter']", 'Keys that commit the current input as a tag'],
+				[
+					'addOnBlur',
+					'boolean',
+					'false',
+					'Commits current input value when focus leaves the field'
+				],
+				['allowDuplicates', 'boolean', 'false', 'Allows adding the same tag value more than once'],
+				[
+					'transform',
+					'(tag: string) => string',
+					'\u2014',
+					'Transform raw input before validation and commit (e.g. lowercase)'
+				],
+				[
+					'validate',
+					'(tag: string) => boolean | string',
+					'\u2014',
+					'Return true to accept; string becomes the error message'
+				],
+				['onadd', '(tag: string) => void', '\u2014', 'Called after a tag is committed'],
+				['onremove', '(tag, index) => void', '\u2014', 'Called after a tag is removed'],
+				['name', 'string', '\u2014', 'Submits as name[] hidden inputs']
+			]}
+		/>
 
-			<div class="api-table">
-				<h3>Keyboard Interaction</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Key</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><kbd>Enter</kbd> (default delimiter)</td>
-							<td>Commit current input as a tag</td>
-						</tr>
-						<tr>
-							<td><kbd>Backspace</kbd> (empty input)</td>
-							<td>Move DOM focus to the last badge's remove button</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
-	</article>
+		<PropsTable
+			title="Keyboard Interaction"
+			columns={['Key', 'Action']}
+			rows={[
+				['Enter (default delimiter)', 'Commit current input as a tag'],
+				['Backspace (empty input)', "Move DOM focus to the last badge's remove button"]
+			]}
+		/>
+	</DocSection>
 
-	<TableOfContents sections={tocSections} />
-</div>
-
-<style>
-	.docs-layout {
-		display: grid;
-		grid-template-columns: 1fr 180px;
-		gap: var(--space-12);
-	}
-
-	.docs-content {
-		min-width: 0;
-	}
-
-	.page-header {
-		margin-bottom: var(--space-8);
-	}
-
-	h1 {
-		font-size: var(--font-size-3xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-3) 0;
-	}
-
-	.lead {
-		font-size: var(--ui-text-lg);
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		line-height: var(--line-height-relaxed);
-		margin: 0;
-	}
-
-	.lead code,
-	.lead kbd {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	.doc-section {
-		margin-bottom: var(--space-12);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.doc-section h2 {
-		font-size: var(--font-size-2xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-6) 0;
-		padding-bottom: var(--space-3);
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.example-block {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-4);
-		margin-bottom: var(--space-8);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.example-block h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.example-desc {
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		margin: 0;
-	}
-
-	.example-desc code,
-	.example-desc kbd {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	.api-table {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-3);
-		margin-bottom: var(--space-6);
-	}
-
-	.api-table h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.props-table {
-		width: 100%;
-		border-collapse: collapse;
-		font-size: var(--ui-text-sm);
-	}
-
-	.props-table th,
-	.props-table td {
-		padding: var(--space-2) var(--space-3);
-		text-align: left;
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.props-table th {
-		font-weight: 600;
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-	}
-
-	.props-table code,
-	.props-table kbd {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	@media (max-width: 1024px) {
-		.docs-layout {
-			grid-template-columns: 1fr;
-		}
-	}
-</style>
+	{#snippet sidebar()}
+		<TableOfContents sections={tocSections} />
+	{/snippet}
+</DocsPage>

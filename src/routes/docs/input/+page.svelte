@@ -5,6 +5,11 @@
 	import FieldDescription from '$lib/components/field/FieldDescription.svelte';
 	import CodeExample from '$lib/internal/CodeExample.svelte';
 	import TableOfContents from '$lib/internal/TableOfContents.svelte';
+	import DocsPage from '$lib/internal/DocsPage.svelte';
+	import PageHeader from '$lib/internal/PageHeader.svelte';
+	import DocSection from '$lib/internal/DocSection.svelte';
+	import ExampleBlock from '$lib/internal/ExampleBlock.svelte';
+	import PropsTable from '$lib/internal/PropsTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -24,36 +29,26 @@
 	<title>Input - Greenfield UI</title>
 </svelte:head>
 
-<div class="docs-layout">
-	<article class="docs-content">
-		<header class="page-header">
-			<h1>Input</h1>
-			<p class="lead">
-				Accessible text input. Compose with <code>Field</code>, <code>FieldLabel</code>, and
-				<code>FieldDescription</code> to add labels, hints, and error messages. Fully themeable through
-				CSS variables, with three sizes and support for all native input types.
+<DocsPage>
+	<PageHeader
+		title="Input"
+		description="Accessible text input. Compose with Field, FieldLabel, and FieldDescription to add labels, hints, and error messages. Fully themeable through CSS variables, with three sizes and support for all native input types."
+	/>
+
+	<DocSection id="examples" title="Examples">
+		<ExampleBlock id="basic" title="Basic" description="A minimal input with a placeholder.">
+			<CodeExample code="<Input placeholder=&quot;Enter text...&quot; />">
+				<Input placeholder="Enter text..." />
+			</CodeExample>
+		</ExampleBlock>
+
+		<ExampleBlock id="label" title="With Label">
+			<p class="example-desc">
+				Wrap with <code>Field</code> and <code>FieldLabel</code> — the label is linked to the input automatically
+				via context.
 			</p>
-		</header>
-
-		<section id="examples" class="doc-section">
-			<h2>Examples</h2>
-
-			<div id="basic" class="example-block">
-				<h3>Basic</h3>
-				<p class="example-desc">A minimal input with a placeholder.</p>
-				<CodeExample code="<Input placeholder=&quot;Enter text...&quot; />">
-					<Input placeholder="Enter text..." />
-				</CodeExample>
-			</div>
-
-			<div id="label" class="example-block">
-				<h3>With Label</h3>
-				<p class="example-desc">
-					Wrap with <code>Field</code> and <code>FieldLabel</code> — the label is linked to the input
-					automatically via context.
-				</p>
-				<CodeExample
-					code={`<Field>
+			<CodeExample
+				code={`<Field>
   <FieldLabel>Full name</FieldLabel>
   <Input placeholder="Jane Smith" />
 </Field>
@@ -61,66 +56,65 @@
   <FieldLabel>Email address</FieldLabel>
   <Input placeholder="jane@example.com" />
 </Field>`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Full name</FieldLabel>
-						<Input placeholder="Jane Smith" />
-					</Field>
-					<Field>
-						<FieldLabel>Email address</FieldLabel>
-						<Input placeholder="jane@example.com" />
-					</Field>
-				</CodeExample>
-			</div>
+				previewClass="column"
+			>
+				<Field>
+					<FieldLabel>Full name</FieldLabel>
+					<Input placeholder="Jane Smith" />
+				</Field>
+				<Field>
+					<FieldLabel>Email address</FieldLabel>
+					<Input placeholder="jane@example.com" />
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="hint" class="example-block">
-				<h3>With Hint</h3>
-				<p class="example-desc">
-					<code>FieldDescription</code> can appear before or after the input.
-				</p>
-				<CodeExample
-					code={`<Field>
+		<ExampleBlock id="hint" title="With Hint">
+			<p class="example-desc">
+				<code>FieldDescription</code> can appear before or after the input.
+			</p>
+			<CodeExample
+				code={`<Field>
   <FieldLabel>Username</FieldLabel>
   <Input placeholder="cool_user_42" />
   <FieldDescription>Letters, numbers, and underscores only.</FieldDescription>
 </Field>`}
-				>
-					<Field>
-						<FieldLabel>Username</FieldLabel>
-						<Input placeholder="cool_user_42" />
-						<FieldDescription>Letters, numbers, and underscores only.</FieldDescription>
-					</Field>
-				</CodeExample>
-			</div>
+			>
+				<Field>
+					<FieldLabel>Username</FieldLabel>
+					<Input placeholder="cool_user_42" />
+					<FieldDescription>Letters, numbers, and underscores only.</FieldDescription>
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="error" class="example-block">
-				<h3>With Error</h3>
-				<p class="example-desc">
-					Set <code>error</code> on <code>Field</code> to apply error styling.
-					<code>FieldDescription</code> automatically renders in the error color when the field has an
-					error.
-				</p>
-				<CodeExample
-					code={`<Field error="Please enter a valid email address.">
+		<ExampleBlock id="error" title="With Error">
+			<p class="example-desc">
+				Set <code>error</code> on <code>Field</code> to apply error styling.
+				<code>FieldDescription</code> automatically renders in the error color when the field has an error.
+			</p>
+			<CodeExample
+				code={`<Field error="Please enter a valid email address.">
   <FieldLabel>Email address</FieldLabel>
   <Input value="not-an-email" />
   <FieldDescription>Please enter a valid email address.</FieldDescription>
 </Field>`}
-				>
-					<Field error="Please enter a valid email address.">
-						<FieldLabel>Email address</FieldLabel>
-						<Input value="not-an-email" />
-						<FieldDescription>Please enter a valid email address.</FieldDescription>
-					</Field>
-				</CodeExample>
-			</div>
+			>
+				<Field error="Please enter a valid email address.">
+					<FieldLabel>Email address</FieldLabel>
+					<Input value="not-an-email" />
+					<FieldDescription>Please enter a valid email address.</FieldDescription>
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="states" class="example-block">
-				<h3>States</h3>
-				<p class="example-desc">Disabled inputs prevent interaction and apply muted styling.</p>
-				<CodeExample
-					code={`<Field>
+		<ExampleBlock
+			id="states"
+			title="States"
+			description="Disabled inputs prevent interaction and apply muted styling."
+		>
+			<CodeExample
+				code={`<Field>
   <FieldLabel>Active</FieldLabel>
   <Input placeholder="Interact with me" />
 </Field>
@@ -128,42 +122,43 @@
   <FieldLabel>Disabled</FieldLabel>
   <Input value="Can't touch this" />
 </Field>`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Active</FieldLabel>
-						<Input placeholder="Interact with me" />
-					</Field>
-					<Field disabled>
-						<FieldLabel>Disabled</FieldLabel>
-						<Input value="Can't touch this" />
-					</Field>
-				</CodeExample>
-			</div>
+				previewClass="column"
+			>
+				<Field>
+					<FieldLabel>Active</FieldLabel>
+					<Input placeholder="Interact with me" />
+				</Field>
+				<Field disabled>
+					<FieldLabel>Disabled</FieldLabel>
+					<Input value="Can't touch this" />
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="full-width" class="example-block">
-				<h3>Full Width</h3>
-				<p class="example-desc">Stretches the field to fill its container.</p>
-				<CodeExample
-					code={`<Field fullWidth>
+		<ExampleBlock
+			id="full-width"
+			title="Full Width"
+			description="Stretches the field to fill its container."
+		>
+			<CodeExample
+				code={`<Field fullWidth>
   <FieldLabel>Search</FieldLabel>
   <Input fullWidth placeholder="Search the docs..." />
 </Field>`}
-				>
-					<Field fullWidth>
-						<FieldLabel>Search</FieldLabel>
-						<Input fullWidth placeholder="Search the docs..." />
-					</Field>
-				</CodeExample>
-			</div>
+			>
+				<Field fullWidth>
+					<FieldLabel>Search</FieldLabel>
+					<Input fullWidth placeholder="Search the docs..." />
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="types" class="example-block">
-				<h3>Input Types</h3>
-				<p class="example-desc">
-					All native HTML input types are supported via <code>restProps</code>.
-				</p>
-				<CodeExample
-					code={`<Field>
+		<ExampleBlock id="types" title="Input Types">
+			<p class="example-desc">
+				All native HTML input types are supported via <code>restProps</code>.
+			</p>
+			<CodeExample
+				code={`<Field>
   <FieldLabel>Password</FieldLabel>
   <Input type="password" placeholder="••••••••" />
 </Field>
@@ -175,419 +170,122 @@
   <FieldLabel>Date</FieldLabel>
   <Input type="date" />
 </Field>`}
-					previewClass="column"
-				>
-					<Field>
-						<FieldLabel>Password</FieldLabel>
-						<Input type="password" placeholder="••••••••" />
-					</Field>
-					<Field>
-						<FieldLabel>Number</FieldLabel>
-						<Input type="number" placeholder="42" />
-					</Field>
-					<Field>
-						<FieldLabel>Date</FieldLabel>
-						<Input type="date" />
-					</Field>
-				</CodeExample>
-			</div>
-		</section>
+				previewClass="column"
+			>
+				<Field>
+					<FieldLabel>Password</FieldLabel>
+					<Input type="password" placeholder="••••••••" />
+				</Field>
+				<Field>
+					<FieldLabel>Number</FieldLabel>
+					<Input type="number" placeholder="42" />
+				</Field>
+				<Field>
+					<FieldLabel>Date</FieldLabel>
+					<Input type="date" />
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
+	</DocSection>
 
-		<section id="api" class="doc-section">
-			<h2>API</h2>
+	<DocSection id="api" title="API">
+		<PropsTable
+			title="Input Props"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['value', 'string | number', "''", 'Bindable input value'],
+				['size', "'sm' | 'md' | 'lg'", "'md'", 'Controls height, padding, and font size'],
+				['fullWidth', 'boolean', 'false', 'Stretches the input to 100% of its container'],
+				['disabled', 'boolean', 'false', 'Disables the input (also inherited from Field context)'],
+				['id', 'string', '—', 'Custom ID; auto-generated from Field context if omitted'],
+				[
+					'...restProps',
+					'HTMLInputAttributes',
+					'—',
+					'All other native input attributes (e.g. type, placeholder, autocomplete)'
+				]
+			]}
+		/>
 
-			<div class="api-table">
-				<h3>Input Props</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>value</code></td>
-							<td><code>string | number</code></td>
-							<td><code>''</code></td>
-							<td>Bindable input value</td>
-						</tr>
-						<tr>
-							<td><code>size</code></td>
-							<td><code>'sm' | 'md' | 'lg'</code></td>
-							<td><code>'md'</code></td>
-							<td>Controls height, padding, and font size</td>
-						</tr>
-						<tr>
-							<td><code>fullWidth</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Stretches the input to 100% of its container</td>
-						</tr>
-						<tr>
-							<td><code>disabled</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Disables the input (also inherited from Field context)</td>
-						</tr>
-						<tr>
-							<td><code>id</code></td>
-							<td><code>string</code></td>
-							<td><code>—</code></td>
-							<td>Custom ID; auto-generated from Field context if omitted</td>
-						</tr>
-						<tr>
-							<td><code>...restProps</code></td>
-							<td><code>HTMLInputAttributes</code></td>
-							<td><code>—</code></td>
-							<td
-								>All other native input attributes (e.g. <code>type</code>,
-								<code>placeholder</code>, <code>autocomplete</code>)</td
-							>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="Field Props"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['error', 'string', '—', 'Triggers error styling on Input and FieldDescription'],
+				[
+					'required',
+					'boolean',
+					'false',
+					'Shows required indicator on FieldLabel; sets aria-required'
+				],
+				['disabled', 'boolean', 'false', 'Propagates disabled state to child Input'],
+				['fullWidth', 'boolean', 'false', 'Stretches the field container to 100% width']
+			]}
+		/>
+	</DocSection>
 
-			<div class="api-table">
-				<h3>Field Props</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>error</code></td>
-							<td><code>string</code></td>
-							<td><code>—</code></td>
-							<td>Triggers error styling on Input and FieldDescription</td>
-						</tr>
-						<tr>
-							<td><code>required</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Shows required indicator on FieldLabel; sets aria-required</td>
-						</tr>
-						<tr>
-							<td><code>disabled</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Propagates disabled state to child Input</td>
-						</tr>
-						<tr>
-							<td><code>fullWidth</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Stretches the field container to 100% width</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
+	<DocSection id="css-tokens" title="CSS Tokens">
+		<p class="section-intro">
+			Override these tokens to adapt Input to your brand or to create specialized variants.
+		</p>
 
-		<section id="css-tokens" class="doc-section">
-			<h2>CSS Tokens</h2>
-			<p class="section-intro">
-				Override these tokens to adapt Input to your brand or to create specialized variants.
-			</p>
+		<PropsTable
+			title="Color Tokens"
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--input-bg', 'var(--ui-surface)', 'Input background'],
+				['--input-fg', 'var(--ui-surface-foreground)', 'Input text color'],
+				['--input-border', 'var(--ui-border)', 'Default border color'],
+				['--input-border-width', 'var(--ui-border-width)', 'Border thickness'],
+				['--input-placeholder', 'color-mix(…55% transparent)', 'Placeholder text color'],
+				['--input-hover-border', 'color-mix(…border+fg 25%)', 'Border color on hover'],
+				['--input-focus-color', 'var(--ui-primary)', 'Border and focus ring color when focused'],
+				['--input-focus-ring-width', 'var(--ui-ring-width)', 'Width of the focus ring outline'],
+				[
+					'--input-focus-ring-offset',
+					'var(--ui-ring-offset)',
+					'Offset of the focus ring from the border'
+				],
+				['--input-error-color', 'var(--ui-danger)', 'Border color in error state'],
+				['--input-disabled-bg', 'color-mix(…neutral 80% transparent)', 'Background when disabled'],
+				['--input-disabled-fg', 'color-mix(…fg 50% transparent)', 'Text color when disabled'],
+				['--input-disabled-border', 'var(--ui-border)', 'Border color when disabled']
+			]}
+		/>
 
-			<div class="token-group">
-				<h3>Color Tokens</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--input-bg</code></td>
-							<td>var(--ui-surface)</td>
-							<td>Input background</td>
-						</tr>
-						<tr>
-							<td><code>--input-fg</code></td>
-							<td>var(--ui-surface-foreground)</td>
-							<td>Input text color</td>
-						</tr>
-						<tr>
-							<td><code>--input-border</code></td>
-							<td>var(--ui-border)</td>
-							<td>Default border color</td>
-						</tr>
-						<tr>
-							<td><code>--input-border-width</code></td>
-							<td>var(--ui-border-width)</td>
-							<td>Border thickness</td>
-						</tr>
-						<tr>
-							<td><code>--input-placeholder</code></td>
-							<td>color-mix(…55% transparent)</td>
-							<td>Placeholder text color</td>
-						</tr>
-						<tr>
-							<td><code>--input-hover-border</code></td>
-							<td>color-mix(…border+fg 25%)</td>
-							<td>Border color on hover</td>
-						</tr>
-						<tr>
-							<td><code>--input-focus-color</code></td>
-							<td>var(--ui-primary)</td>
-							<td>Border and focus ring color when focused</td>
-						</tr>
-						<tr>
-							<td><code>--input-focus-ring-width</code></td>
-							<td>var(--ui-ring-width)</td>
-							<td>Width of the focus ring outline</td>
-						</tr>
-						<tr>
-							<td><code>--input-focus-ring-offset</code></td>
-							<td>var(--ui-ring-offset)</td>
-							<td>Offset of the focus ring from the border</td>
-						</tr>
-						<tr>
-							<td><code>--input-error-color</code></td>
-							<td>var(--ui-danger)</td>
-							<td>Border color in error state</td>
-						</tr>
-						<tr>
-							<td><code>--input-disabled-bg</code></td>
-							<td>color-mix(…neutral 80% transparent)</td>
-							<td>Background when disabled</td>
-						</tr>
-						<tr>
-							<td><code>--input-disabled-fg</code></td>
-							<td>color-mix(…fg 50% transparent)</td>
-							<td>Text color when disabled</td>
-						</tr>
-						<tr>
-							<td><code>--input-disabled-border</code></td>
-							<td>var(--ui-border)</td>
-							<td>Border color when disabled</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="Size Tokens"
+			columns={['Token', 'SM', 'MD', 'LG']}
+			rows={[
+				['--input-{size}-height', '32px', '40px', '48px'],
+				['--input-{size}-padding-x', '12px', '16px', '24px'],
+				[
+					'--input-{size}-font-size',
+					'var(--ui-text-sm)',
+					'var(--ui-text-base)',
+					'var(--ui-text-lg)'
+				]
+			]}
+		/>
 
-			<div class="token-group">
-				<h3>Size Tokens</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>SM</th>
-							<th>MD</th>
-							<th>LG</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--input-{'{size}'}-height</code></td>
-							<td>32px</td>
-							<td>40px</td>
-							<td>48px</td>
-						</tr>
-						<tr>
-							<td><code>--input-{'{size}'}-padding-x</code></td>
-							<td>12px</td>
-							<td>16px</td>
-							<td>24px</td>
-						</tr>
-						<tr>
-							<td><code>--input-{'{size}'}-font-size</code></td>
-							<td>var(--ui-text-sm)</td>
-							<td>var(--ui-text-base)</td>
-							<td>var(--ui-text-lg)</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="Style Tokens"
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--input-border-radius', 'var(--ui-base-radius)', 'Corner roundness'],
+				['--input-font-family', 'var(--ui-font-sans)', 'Font family'],
+				['--input-font-weight', 'var(--ui-weight-normal)', 'Input text weight'],
+				['--input-line-height', 'var(--ui-leading-normal)', 'Input line height'],
+				[
+					'--input-transition',
+					'var(--ui-base-duration) var(--ui-base-easing)',
+					'Transition for border and background'
+				]
+			]}
+		/>
+	</DocSection>
 
-			<div class="token-group">
-				<h3>Style Tokens</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--input-border-radius</code></td>
-							<td>var(--ui-base-radius)</td>
-							<td>Corner roundness</td>
-						</tr>
-						<tr>
-							<td><code>--input-font-family</code></td>
-							<td>var(--ui-font-sans)</td>
-							<td>Font family</td>
-						</tr>
-						<tr>
-							<td><code>--input-font-weight</code></td>
-							<td>var(--ui-weight-normal)</td>
-							<td>Input text weight</td>
-						</tr>
-						<tr>
-							<td><code>--input-line-height</code></td>
-							<td>var(--ui-leading-normal)</td>
-							<td>Input line height</td>
-						</tr>
-						<tr>
-							<td><code>--input-transition</code></td>
-							<td>var(--ui-base-duration) var(--ui-base-easing)</td>
-							<td>Transition for border and background</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
-	</article>
-
-	<TableOfContents sections={tocSections} />
-</div>
-
-<style>
-	.docs-layout {
-		display: grid;
-		grid-template-columns: 1fr 180px;
-		gap: var(--space-12);
-	}
-
-	.docs-content {
-		min-width: 0;
-	}
-
-	.page-header {
-		margin-bottom: var(--space-8);
-	}
-
-	h1 {
-		font-size: var(--font-size-3xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-3) 0;
-	}
-
-	.lead {
-		font-size: var(--ui-text-lg);
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		line-height: var(--line-height-relaxed);
-		margin: 0;
-	}
-
-	.lead code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	.doc-section {
-		margin-bottom: var(--space-12);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.doc-section h2 {
-		font-size: var(--font-size-2xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-6) 0;
-		padding-bottom: var(--space-3);
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.section-intro {
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		font-size: var(--ui-text-base);
-		line-height: var(--line-height-relaxed);
-		margin: 0 0 var(--space-6) 0;
-	}
-
-	.example-block {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-4);
-		margin-bottom: var(--space-8);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.example-block h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.example-desc {
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		margin: 0;
-	}
-
-	.example-desc code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	.api-table,
-	.token-group {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-3);
-		margin-bottom: var(--space-6);
-	}
-
-	.api-table h3,
-	.token-group h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.props-table {
-		width: 100%;
-		border-collapse: collapse;
-		font-size: var(--ui-text-sm);
-	}
-
-	.props-table th,
-	.props-table td {
-		padding: var(--space-2) var(--space-3);
-		text-align: left;
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.props-table th {
-		font-weight: 600;
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-	}
-
-	.props-table code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	@media (max-width: 1024px) {
-		.docs-layout {
-			grid-template-columns: 1fr;
-		}
-	}
-</style>
+	{#snippet sidebar()}
+		<TableOfContents sections={tocSections} />
+	{/snippet}
+</DocsPage>

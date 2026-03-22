@@ -5,6 +5,11 @@
 	import Button from '$lib/components/button/Button.svelte';
 	import CodeExample from '$lib/internal/CodeExample.svelte';
 	import TableOfContents from '$lib/internal/TableOfContents.svelte';
+	import DocsPage from '$lib/internal/DocsPage.svelte';
+	import PageHeader from '$lib/internal/PageHeader.svelte';
+	import DocSection from '$lib/internal/DocSection.svelte';
+	import ExampleBlock from '$lib/internal/ExampleBlock.svelte';
+	import PropsTable from '$lib/internal/PropsTable.svelte';
 	import ChevronDownIcon from '$lib/icons/ChevronDownIcon.svelte';
 	import SettingsIcon from '$lib/icons/SettingsIcon.svelte';
 	import TrashIcon from '$lib/icons/TrashIcon.svelte';
@@ -37,27 +42,20 @@
 	<title>Dropdown - Greenfield UI</title>
 </svelte:head>
 
-<div class="docs-layout">
-	<article class="docs-content">
-		<header class="page-header">
-			<h1>Dropdown</h1>
-			<p class="lead">
-				A customizable dropdown menu component with floating positioning, keyboard navigation, and
-				accessibility features. Built with floating-ui for reliable positioning.
+<DocsPage>
+	<PageHeader
+		title="Dropdown"
+		description="A customizable dropdown menu component with floating positioning, keyboard navigation, and accessibility features. Built with floating-ui for reliable positioning."
+	/>
+
+	<DocSection id="examples" title="Examples">
+		<ExampleBlock id="basic" title="Basic Usage">
+			<p class="example-desc">
+				The trigger snippet accepts any element — Button, link, avatar, icon, or any custom element.
+				ARIA attributes are applied automatically to the first interactive child.
 			</p>
-		</header>
-
-		<section id="examples" class="doc-section">
-			<h2>Examples</h2>
-
-			<div id="basic" class="example-block">
-				<h3>Basic Usage</h3>
-				<p class="example-desc">
-					The trigger snippet accepts any element — Button, link, avatar, icon, or any custom
-					element. ARIA attributes are applied automatically to the first interactive child.
-				</p>
-				<CodeExample
-					code={`<Dropdown>
+			<CodeExample
+				code={`<Dropdown>
   {#snippet trigger({ open })}
     <Button>
       Options
@@ -68,103 +66,104 @@
   <DropdownItem>Duplicate</DropdownItem>
   <DropdownItem>Archive</DropdownItem>
 </Dropdown>`}
-				>
-					<Dropdown>
-						{#snippet trigger()}
-							<Button>
-								Options
-								<ChevronDownIcon />
-							</Button>
-						{/snippet}
-						<DropdownItem>Edit</DropdownItem>
-						<DropdownItem>Duplicate</DropdownItem>
-						<DropdownItem>Archive</DropdownItem>
-					</Dropdown>
-				</CodeExample>
-			</div>
+			>
+				<Dropdown>
+					{#snippet trigger()}
+						<Button>
+							Options
+							<ChevronDownIcon />
+						</Button>
+					{/snippet}
+					<DropdownItem>Edit</DropdownItem>
+					<DropdownItem>Duplicate</DropdownItem>
+					<DropdownItem>Archive</DropdownItem>
+				</Dropdown>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="placement" class="example-block">
-				<h3>Placement</h3>
-				<p class="example-desc">
-					Dropdown supports 12 placement options. The menu will flip automatically if there's not
-					enough space.
-				</p>
-				<CodeExample
-					code={`<Dropdown placement="bottom-start">...</Dropdown>
+		<ExampleBlock
+			id="placement"
+			title="Placement"
+			description="Dropdown supports 12 placement options. The menu will flip automatically if there's not enough space."
+		>
+			<CodeExample
+				code={`<Dropdown placement="bottom-start">...</Dropdown>
 <Dropdown placement="bottom-end">...</Dropdown>
 <Dropdown placement="top-start">...</Dropdown>
 <Dropdown placement="right-start">...</Dropdown>`}
-				>
-					<Dropdown placement="bottom-start">
-						{#snippet trigger()}
-							<Button variant="outline">bottom-start</Button>
-						{/snippet}
-						<DropdownItem>Item 1</DropdownItem>
-						<DropdownItem>Item 2</DropdownItem>
-					</Dropdown>
-					<Dropdown placement="bottom-end">
-						{#snippet trigger()}
-							<Button variant="outline">bottom-end</Button>
-						{/snippet}
-						<DropdownItem>Item 1</DropdownItem>
-						<DropdownItem>Item 2</DropdownItem>
-					</Dropdown>
-					<Dropdown placement="top-start">
-						{#snippet trigger()}
-							<Button variant="outline">top-start</Button>
-						{/snippet}
-						<DropdownItem>Item 1</DropdownItem>
-						<DropdownItem>Item 2</DropdownItem>
-					</Dropdown>
-					<Dropdown placement="right-start">
-						{#snippet trigger()}
-							<Button variant="outline">right-start</Button>
-						{/snippet}
-						<DropdownItem>Item 1</DropdownItem>
-						<DropdownItem>Item 2</DropdownItem>
-					</Dropdown>
-				</CodeExample>
-			</div>
+			>
+				<Dropdown placement="bottom-start">
+					{#snippet trigger()}
+						<Button variant="outline">bottom-start</Button>
+					{/snippet}
+					<DropdownItem>Item 1</DropdownItem>
+					<DropdownItem>Item 2</DropdownItem>
+				</Dropdown>
+				<Dropdown placement="bottom-end">
+					{#snippet trigger()}
+						<Button variant="outline">bottom-end</Button>
+					{/snippet}
+					<DropdownItem>Item 1</DropdownItem>
+					<DropdownItem>Item 2</DropdownItem>
+				</Dropdown>
+				<Dropdown placement="top-start">
+					{#snippet trigger()}
+						<Button variant="outline">top-start</Button>
+					{/snippet}
+					<DropdownItem>Item 1</DropdownItem>
+					<DropdownItem>Item 2</DropdownItem>
+				</Dropdown>
+				<Dropdown placement="right-start">
+					{#snippet trigger()}
+						<Button variant="outline">right-start</Button>
+					{/snippet}
+					<DropdownItem>Item 1</DropdownItem>
+					<DropdownItem>Item 2</DropdownItem>
+				</Dropdown>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="width-options" class="example-block">
-				<h3>Width Options</h3>
-				<p class="example-desc">
-					Control the menu width: auto (default), match trigger width, or set a custom pixel value.
-				</p>
-				<CodeExample
-					code={`<Dropdown width="auto">...</Dropdown>
+		<ExampleBlock
+			id="width-options"
+			title="Width Options"
+			description="Control the menu width: auto (default), match trigger width, or set a custom pixel value."
+		>
+			<CodeExample
+				code={`<Dropdown width="auto">...</Dropdown>
 <Dropdown width="trigger">...</Dropdown>
 <Dropdown width={300}>...</Dropdown>`}
-				>
-					<Dropdown width="auto">
-						{#snippet trigger()}
-							<Button variant="outline">Auto Width</Button>
-						{/snippet}
-						<DropdownItem>Short</DropdownItem>
-						<DropdownItem>Much longer item text</DropdownItem>
-					</Dropdown>
-					<Dropdown width="trigger">
-						{#snippet trigger()}
-							<Button variant="outline" fullWidth>Match Trigger Width</Button>
-						{/snippet}
-						<DropdownItem>Item 1</DropdownItem>
-						<DropdownItem>Item 2</DropdownItem>
-					</Dropdown>
-					<Dropdown width={250}>
-						{#snippet trigger()}
-							<Button variant="outline">Fixed 250px</Button>
-						{/snippet}
-						<DropdownItem>Item 1</DropdownItem>
-						<DropdownItem>Item 2</DropdownItem>
-					</Dropdown>
-				</CodeExample>
-			</div>
+			>
+				<Dropdown width="auto">
+					{#snippet trigger()}
+						<Button variant="outline">Auto Width</Button>
+					{/snippet}
+					<DropdownItem>Short</DropdownItem>
+					<DropdownItem>Much longer item text</DropdownItem>
+				</Dropdown>
+				<Dropdown width="trigger">
+					{#snippet trigger()}
+						<Button variant="outline" fullWidth>Match Trigger Width</Button>
+					{/snippet}
+					<DropdownItem>Item 1</DropdownItem>
+					<DropdownItem>Item 2</DropdownItem>
+				</Dropdown>
+				<Dropdown width={250}>
+					{#snippet trigger()}
+						<Button variant="outline">Fixed 250px</Button>
+					{/snippet}
+					<DropdownItem>Item 1</DropdownItem>
+					<DropdownItem>Item 2</DropdownItem>
+				</Dropdown>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="with-icons" class="example-block">
-				<h3>With Icons</h3>
-				<p class="example-desc">Add leading or trailing icons to dropdown items.</p>
-				<CodeExample
-					code={`<DropdownItem>
+		<ExampleBlock
+			id="with-icons"
+			title="With Icons"
+			description="Add leading or trailing icons to dropdown items."
+		>
+			<CodeExample
+				code={`<DropdownItem>
   {#snippet leadingIcon()}<EditIcon />{/snippet}
   Edit
 </DropdownItem>
@@ -172,35 +171,37 @@
   {#snippet leadingIcon()}<CopyIcon />{/snippet}
   Duplicate
 </DropdownItem>`}
-				>
-					<Dropdown>
-						{#snippet trigger()}
-							<Button>
-								Actions
-								<ChevronDownIcon />
-							</Button>
-						{/snippet}
-						<DropdownItem>
-							{#snippet leadingIcon()}<EditIcon size={16} />{/snippet}
-							Edit
-						</DropdownItem>
-						<DropdownItem>
-							{#snippet leadingIcon()}<CopyIcon size={16} />{/snippet}
-							Duplicate
-						</DropdownItem>
-						<DropdownItem>
-							{#snippet leadingIcon()}<SettingsIcon size={16} />{/snippet}
-							Settings
-						</DropdownItem>
-					</Dropdown>
-				</CodeExample>
-			</div>
+			>
+				<Dropdown>
+					{#snippet trigger()}
+						<Button>
+							Actions
+							<ChevronDownIcon />
+						</Button>
+					{/snippet}
+					<DropdownItem>
+						{#snippet leadingIcon()}<EditIcon size={16} />{/snippet}
+						Edit
+					</DropdownItem>
+					<DropdownItem>
+						{#snippet leadingIcon()}<CopyIcon size={16} />{/snippet}
+						Duplicate
+					</DropdownItem>
+					<DropdownItem>
+						{#snippet leadingIcon()}<SettingsIcon size={16} />{/snippet}
+						Settings
+					</DropdownItem>
+				</Dropdown>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="with-dividers" class="example-block">
-				<h3>With Dividers</h3>
-				<p class="example-desc">Use dividers to group related items.</p>
-				<CodeExample
-					code={`<Dropdown>
+		<ExampleBlock
+			id="with-dividers"
+			title="With Dividers"
+			description="Use dividers to group related items."
+		>
+			<CodeExample
+				code={`<Dropdown>
   {#snippet trigger()}
     <Button>File <ChevronDownIcon /></Button>
   {/snippet}
@@ -212,461 +213,170 @@
   <DropdownDivider />
   <DropdownItem destructive>Delete</DropdownItem>
 </Dropdown>`}
-				>
-					<Dropdown>
-						{#snippet trigger()}
-							<Button>
-								File
-								<ChevronDownIcon />
-							</Button>
-						{/snippet}
-						<DropdownItem>New File</DropdownItem>
-						<DropdownItem>Open</DropdownItem>
-						<DropdownDivider />
-						<DropdownItem>Save</DropdownItem>
-						<DropdownItem>Save As</DropdownItem>
-						<DropdownDivider />
-						<DropdownItem destructive>
-							{#snippet leadingIcon()}<TrashIcon size={16} />{/snippet}
-							Delete
-						</DropdownItem>
-					</Dropdown>
-				</CodeExample>
-			</div>
+			>
+				<Dropdown>
+					{#snippet trigger()}
+						<Button>
+							File
+							<ChevronDownIcon />
+						</Button>
+					{/snippet}
+					<DropdownItem>New File</DropdownItem>
+					<DropdownItem>Open</DropdownItem>
+					<DropdownDivider />
+					<DropdownItem>Save</DropdownItem>
+					<DropdownItem>Save As</DropdownItem>
+					<DropdownDivider />
+					<DropdownItem destructive>
+						{#snippet leadingIcon()}<TrashIcon size={16} />{/snippet}
+						Delete
+					</DropdownItem>
+				</Dropdown>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="destructive" class="example-block">
-				<h3>Destructive Actions</h3>
-				<p class="example-desc">Highlight dangerous actions with the destructive prop.</p>
-				<CodeExample
-					code={`<DropdownItem>Edit</DropdownItem>
+		<ExampleBlock
+			id="destructive"
+			title="Destructive Actions"
+			description="Highlight dangerous actions with the destructive prop."
+		>
+			<CodeExample
+				code={`<DropdownItem>Edit</DropdownItem>
 <DropdownItem>Duplicate</DropdownItem>
 <DropdownDivider />
 <DropdownItem destructive>Delete</DropdownItem>`}
-				>
-					<Dropdown>
+			>
+				<Dropdown>
+					{#snippet trigger()}
+						<Button color="danger" variant="outline">
+							Danger Menu
+							<ChevronDownIcon />
+						</Button>
+					{/snippet}
+					<DropdownItem>Edit</DropdownItem>
+					<DropdownItem>Duplicate</DropdownItem>
+					<DropdownDivider />
+					<DropdownItem destructive>
+						{#snippet leadingIcon()}<TrashIcon size={16} />{/snippet}
+						Delete permanently
+					</DropdownItem>
+				</Dropdown>
+			</CodeExample>
+		</ExampleBlock>
+
+		<ExampleBlock
+			id="controlled"
+			title="Controlled State"
+			description="Control the dropdown state externally with bind:open."
+		>
+			<CodeExample code={controlledExampleCode}>
+				<div class="controlled-example">
+					<Button variant="ghost" onclick={() => (controlledOpen = !controlledOpen)}>
+						Toggle externally ({controlledOpen ? 'Open' : 'Closed'})
+					</Button>
+					<Dropdown bind:open={controlledOpen}>
 						{#snippet trigger()}
-							<Button color="danger" variant="outline">
-								Danger Menu
+							<Button>
+								Controlled
 								<ChevronDownIcon />
 							</Button>
 						{/snippet}
-						<DropdownItem>Edit</DropdownItem>
-						<DropdownItem>Duplicate</DropdownItem>
-						<DropdownDivider />
-						<DropdownItem destructive>
-							{#snippet leadingIcon()}<TrashIcon size={16} />{/snippet}
-							Delete permanently
-						</DropdownItem>
+						<DropdownItem onclick={() => (controlledOpen = false)}>Close menu</DropdownItem>
+						<DropdownItem>Stay open</DropdownItem>
 					</Dropdown>
-				</CodeExample>
-			</div>
+				</div>
+			</CodeExample>
+		</ExampleBlock>
+	</DocSection>
 
-			<div id="controlled" class="example-block">
-				<h3>Controlled State</h3>
-				<p class="example-desc">Control the dropdown state externally with bind:open.</p>
-				<CodeExample code={controlledExampleCode}>
-					<div class="controlled-example">
-						<Button variant="ghost" onclick={() => (controlledOpen = !controlledOpen)}>
-							Toggle externally ({controlledOpen ? 'Open' : 'Closed'})
-						</Button>
-						<Dropdown bind:open={controlledOpen}>
-							{#snippet trigger()}
-								<Button>
-									Controlled
-									<ChevronDownIcon />
-								</Button>
-							{/snippet}
-							<DropdownItem onclick={() => (controlledOpen = false)}>Close menu</DropdownItem>
-							<DropdownItem>Stay open</DropdownItem>
-						</Dropdown>
-					</div>
-				</CodeExample>
-			</div>
-		</section>
+	<DocSection id="api" title="API">
+		<PropsTable
+			title="Dropdown Props"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['open', 'boolean', 'false', 'Bindable open state'],
+				['placement', 'Placement', "'bottom-start'", 'Menu position relative to trigger'],
+				['offset', 'number', '4', 'Distance from trigger in pixels'],
+				['width', "'auto' | 'trigger' | number", "'auto'", 'Menu width behavior'],
+				['closeOnSelect', 'boolean', 'true', 'Close when item is clicked'],
+				['closeOnClickOutside', 'boolean', 'true', 'Close on outside click'],
+				['closeOnEscape', 'boolean', 'true', 'Close on Escape key'],
+				['disabled', 'boolean', 'false', 'Disable the dropdown'],
+				[
+					'trigger',
+					'Snippet<[{open: boolean}]>',
+					'required',
+					'Any element to use as trigger. ARIA attributes are applied to the first focusable child automatically.'
+				],
+				['children', 'Snippet', 'required', 'Menu content']
+			]}
+		/>
 
-		<section id="api" class="doc-section">
-			<h2>API</h2>
+		<PropsTable
+			title="DropdownItem Props"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['disabled', 'boolean', 'false', 'Disable the item'],
+				['destructive', 'boolean', 'false', 'Red/danger styling'],
+				['selected', 'boolean', 'false', 'Selected state styling'],
+				['leadingIcon', 'Snippet', '\u2014', 'Icon before content'],
+				['trailingIcon', 'Snippet', '\u2014', 'Icon after content'],
+				['children', 'Snippet', 'required', 'Item content']
+			]}
+		/>
+	</DocSection>
 
-			<div id="dropdown-props" class="api-table">
-				<h3>Dropdown Props</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>open</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Bindable open state</td>
-						</tr>
-						<tr>
-							<td><code>placement</code></td>
-							<td><code>Placement</code></td>
-							<td><code>'bottom-start'</code></td>
-							<td>Menu position relative to trigger</td>
-						</tr>
-						<tr>
-							<td><code>offset</code></td>
-							<td><code>number</code></td>
-							<td><code>4</code></td>
-							<td>Distance from trigger in pixels</td>
-						</tr>
-						<tr>
-							<td><code>width</code></td>
-							<td><code>'auto' | 'trigger' | number</code></td>
-							<td><code>'auto'</code></td>
-							<td>Menu width behavior</td>
-						</tr>
-						<tr>
-							<td><code>closeOnSelect</code></td>
-							<td><code>boolean</code></td>
-							<td><code>true</code></td>
-							<td>Close when item is clicked</td>
-						</tr>
-						<tr>
-							<td><code>closeOnClickOutside</code></td>
-							<td><code>boolean</code></td>
-							<td><code>true</code></td>
-							<td>Close on outside click</td>
-						</tr>
-						<tr>
-							<td><code>closeOnEscape</code></td>
-							<td><code>boolean</code></td>
-							<td><code>true</code></td>
-							<td>Close on Escape key</td>
-						</tr>
-						<tr>
-							<td><code>disabled</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Disable the dropdown</td>
-						</tr>
-						<tr>
-							<td><code>trigger</code></td>
-							<td><code>Snippet&lt;[&#123;open: boolean&#125;]&gt;</code></td>
-							<td><code>required</code></td>
-							<td
-								>Any element to use as trigger. ARIA attributes are applied to the first focusable
-								child automatically.</td
-							>
-						</tr>
-						<tr>
-							<td><code>children</code></td>
-							<td><code>Snippet</code></td>
-							<td><code>required</code></td>
-							<td>Menu content</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+	<DocSection id="css-tokens" title="CSS Tokens">
+		<p class="section-intro">
+			Customize dropdown appearance through CSS variables. Override these tokens to match your
+			design system.
+		</p>
 
-			<div id="dropdownitem-props" class="api-table">
-				<h3>DropdownItem Props</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>disabled</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Disable the item</td>
-						</tr>
-						<tr>
-							<td><code>destructive</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Red/danger styling</td>
-						</tr>
-						<tr>
-							<td><code>selected</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Selected state styling</td>
-						</tr>
-						<tr>
-							<td><code>leadingIcon</code></td>
-							<td><code>Snippet</code></td>
-							<td><code>—</code></td>
-							<td>Icon before content</td>
-						</tr>
-						<tr>
-							<td><code>trailingIcon</code></td>
-							<td><code>Snippet</code></td>
-							<td><code>—</code></td>
-							<td>Icon after content</td>
-						</tr>
-						<tr>
-							<td><code>children</code></td>
-							<td><code>Snippet</code></td>
-							<td><code>required</code></td>
-							<td>Item content</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
+		<PropsTable
+			title="Container Tokens"
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--dropdown-surface', 'var(--ui-surface-overlay)', 'Menu background'],
+				['--dropdown-surface-foreground', 'var(--ui-surface-overlay-foreground)', 'Text color'],
+				['--dropdown-border', 'var(--ui-border)', 'Border color'],
+				['--dropdown-border-radius', 'var(--ui-base-radius)', 'Corner roundness'],
+				['--dropdown-shadow', 'var(--shadow-lg)', 'Box shadow'],
+				['--dropdown-min-width', '180px', 'Minimum width'],
+				['--dropdown-max-height', '320px', 'Max height before scroll']
+			]}
+		/>
 
-		<section id="css-tokens" class="doc-section">
-			<h2>CSS Tokens</h2>
-			<p class="section-intro">
-				Customize dropdown appearance through CSS variables. Override these tokens to match your
-				design system.
-			</p>
+		<PropsTable
+			title="Item Tokens"
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--dropdown-item-height', '36px', 'Item height'],
+				['--dropdown-item-padding-x', '12px', 'Horizontal padding'],
+				['--dropdown-item-hover-bg', 'color-mix(...)', 'Hover background'],
+				['--dropdown-item-destructive-color', 'var(--ui-danger)', 'Destructive text color'],
+				['--dropdown-item-disabled-opacity', '0.5', 'Disabled opacity']
+			]}
+		/>
 
-			<div class="token-group">
-				<h3>Container Tokens</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--dropdown-surface</code></td>
-							<td>var(--ui-surface-overlay)</td>
-							<td>Menu background</td>
-						</tr>
-						<tr>
-							<td><code>--dropdown-surface-foreground</code></td>
-							<td>var(--ui-surface-overlay-foreground)</td>
-							<td>Text color</td>
-						</tr>
-						<tr>
-							<td><code>--dropdown-border</code></td>
-							<td>var(--ui-border)</td>
-							<td>Border color</td>
-						</tr>
-						<tr>
-							<td><code>--dropdown-border-radius</code></td>
-							<td>var(--ui-base-radius)</td>
-							<td>Corner roundness</td>
-						</tr>
-						<tr>
-							<td><code>--dropdown-shadow</code></td>
-							<td>var(--shadow-lg)</td>
-							<td>Box shadow</td>
-						</tr>
-						<tr>
-							<td><code>--dropdown-min-width</code></td>
-							<td>180px</td>
-							<td>Minimum width</td>
-						</tr>
-						<tr>
-							<td><code>--dropdown-max-height</code></td>
-							<td>320px</td>
-							<td>Max height before scroll</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="Divider Tokens"
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--dropdown-divider-color', 'var(--ui-border)', 'Divider line color'],
+				['--dropdown-divider-margin', '4px', 'Vertical spacing']
+			]}
+		/>
+	</DocSection>
 
-			<div class="token-group">
-				<h3>Item Tokens</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--dropdown-item-height</code></td>
-							<td>36px</td>
-							<td>Item height</td>
-						</tr>
-						<tr>
-							<td><code>--dropdown-item-padding-x</code></td>
-							<td>12px</td>
-							<td>Horizontal padding</td>
-						</tr>
-						<tr>
-							<td><code>--dropdown-item-hover-bg</code></td>
-							<td>color-mix(...)</td>
-							<td>Hover background</td>
-						</tr>
-						<tr>
-							<td><code>--dropdown-item-destructive-color</code></td>
-							<td>var(--ui-danger)</td>
-							<td>Destructive text color</td>
-						</tr>
-						<tr>
-							<td><code>--dropdown-item-disabled-opacity</code></td>
-							<td>0.5</td>
-							<td>Disabled opacity</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-
-			<div class="token-group">
-				<h3>Divider Tokens</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--dropdown-divider-color</code></td>
-							<td>var(--ui-border)</td>
-							<td>Divider line color</td>
-						</tr>
-						<tr>
-							<td><code>--dropdown-divider-margin</code></td>
-							<td>4px</td>
-							<td>Vertical spacing</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
-	</article>
-
-	<TableOfContents sections={tocSections} />
-</div>
+	{#snippet sidebar()}
+		<TableOfContents sections={tocSections} />
+	{/snippet}
+</DocsPage>
 
 <style>
-	.docs-layout {
-		display: grid;
-		grid-template-columns: 1fr 180px;
-		gap: var(--space-12);
-	}
-
-	.docs-content {
-		min-width: 0;
-	}
-
-	.page-header {
-		margin-bottom: var(--space-8);
-	}
-
-	h1 {
-		font-size: var(--font-size-3xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-3) 0;
-	}
-
-	.lead {
-		font-size: var(--ui-text-lg);
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		line-height: var(--line-height-relaxed);
-		margin: 0;
-	}
-
-	.doc-section {
-		margin-bottom: var(--space-12);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.doc-section h2 {
-		font-size: var(--font-size-2xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-6) 0;
-		padding-bottom: var(--space-3);
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.section-intro {
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		font-size: var(--ui-text-base);
-		line-height: var(--line-height-relaxed);
-		margin: 0 0 var(--space-6) 0;
-	}
-
-	.example-block {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-4);
-		margin-bottom: var(--space-8);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.example-block h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.example-desc {
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		margin: 0;
-	}
-
 	.controlled-example {
 		display: flex;
 		gap: var(--space-4);
 		align-items: center;
-	}
-
-	.api-table,
-	.token-group {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-3);
-		margin-bottom: var(--space-6);
-	}
-
-	.api-table h3,
-	.token-group h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.props-table {
-		width: 100%;
-		border-collapse: collapse;
-		font-size: var(--ui-text-sm);
-	}
-
-	.props-table th,
-	.props-table td {
-		padding: var(--space-2) var(--space-3);
-		text-align: left;
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.props-table th {
-		font-weight: 600;
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-	}
-
-	.props-table code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	@media (max-width: 1024px) {
-		.docs-layout {
-			grid-template-columns: 1fr;
-		}
 	}
 </style>

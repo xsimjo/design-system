@@ -5,6 +5,11 @@
 	import FieldDescription from '$lib/components/field/FieldDescription.svelte';
 	import CodeExample from '$lib/internal/CodeExample.svelte';
 	import TableOfContents from '$lib/internal/TableOfContents.svelte';
+	import DocsPage from '$lib/internal/DocsPage.svelte';
+	import PageHeader from '$lib/internal/PageHeader.svelte';
+	import DocSection from '$lib/internal/DocSection.svelte';
+	import ExampleBlock from '$lib/internal/ExampleBlock.svelte';
+	import PropsTable from '$lib/internal/PropsTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -22,49 +27,37 @@
 	<title>Switch - Greenfield UI</title>
 </svelte:head>
 
-<div class="docs-layout">
-	<article class="docs-content">
-		<header class="page-header">
-			<h1>Switch</h1>
-			<p class="lead">
-				A pill-shaped toggle for boolean on/off states. Compose with <code>Field</code>,
-				<code>FieldLabel</code>, and <code>FieldDescription</code> to add labels and error messages. Fully
-				themeable through CSS variables, with three sizes.
-			</p>
-		</header>
+<DocsPage>
+	<PageHeader
+		title="Switch"
+		description="A pill-shaped toggle for boolean on/off states. Compose with Field, FieldLabel, and FieldDescription to add labels and error messages. Fully themeable through CSS variables, with three sizes."
+	/>
 
-		<section id="examples" class="doc-section">
-			<h2>Examples</h2>
+	<DocSection id="examples" title="Examples">
+		<ExampleBlock id="basic" title="Basic" description="A minimal switch.">
+			<CodeExample code="<Switch />">
+				<Switch />
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="basic" class="example-block">
-				<h3>Basic</h3>
-				<p class="example-desc">A minimal switch.</p>
-				<CodeExample code="<Switch />">
-					<Switch />
-				</CodeExample>
-			</div>
-
-			<div id="states" class="example-block">
-				<h3>States</h3>
-				<p class="example-desc">Off and on states.</p>
-				<CodeExample
-					code={`<Switch />
+		<ExampleBlock id="states" title="States" description="Off and on states.">
+			<CodeExample
+				code={`<Switch />
 <Switch checked={true} />`}
-					previewClass="aligned"
-				>
-					<Switch />
-					<Switch checked={true} />
-				</CodeExample>
-			</div>
+				previewClass="aligned"
+			>
+				<Switch />
+				<Switch checked={true} />
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="label" class="example-block">
-				<h3>With Label</h3>
-				<p class="example-desc">
-					Use <code>inline</code> on <code>Field</code> to place the switch and label on one row. The
-					label is linked to the switch automatically via context.
-				</p>
-				<CodeExample
-					code={`<Field inline>
+		<ExampleBlock id="label" title="With Label">
+			<p class="example-desc">
+				Use <code>inline</code> on <code>Field</code> to place the switch and label on one row. The label
+				is linked to the switch automatically via context.
+			</p>
+			<CodeExample
+				code={`<Field inline>
   <Switch />
   <FieldLabel>Enable notifications</FieldLabel>
 </Field>
@@ -72,48 +65,48 @@
   <Switch checked={true} />
   <FieldLabel>Dark mode</FieldLabel>
 </Field>`}
-					previewClass="column"
-				>
-					<Field inline>
-						<Switch />
-						<FieldLabel>Enable notifications</FieldLabel>
-					</Field>
-					<Field inline>
-						<Switch checked={true} />
-						<FieldLabel>Dark mode</FieldLabel>
-					</Field>
-				</CodeExample>
-			</div>
+				previewClass="column"
+			>
+				<Field inline>
+					<Switch />
+					<FieldLabel>Enable notifications</FieldLabel>
+				</Field>
+				<Field inline>
+					<Switch checked={true} />
+					<FieldLabel>Dark mode</FieldLabel>
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="error" class="example-block">
-				<h3>With Error</h3>
-				<p class="example-desc">
-					Set <code>error</code> on <code>Field</code> to apply error styling to the switch track.
-				</p>
-				<CodeExample
-					code={`<Field inline error="You must accept the terms to continue.">
+		<ExampleBlock id="error" title="With Error">
+			<p class="example-desc">
+				Set <code>error</code> on <code>Field</code> to apply error styling to the switch track.
+			</p>
+			<CodeExample
+				code={`<Field inline error="You must accept the terms to continue.">
   <Switch />
   <FieldLabel>Accept terms and conditions</FieldLabel>
 </Field>
 <FieldDescription variant="error">You must accept the terms to continue.</FieldDescription>`}
-				>
-					<div style="display: flex; flex-direction: column; gap: 6px;">
-						<Field inline error="You must accept the terms to continue.">
-							<Switch />
-							<FieldLabel>Accept terms and conditions</FieldLabel>
-						</Field>
-						<FieldDescription variant="error"
-							>You must accept the terms to continue.</FieldDescription
-						>
-					</div>
-				</CodeExample>
-			</div>
+			>
+				<div style="display: flex; flex-direction: column; gap: 6px;">
+					<Field inline error="You must accept the terms to continue.">
+						<Switch />
+						<FieldLabel>Accept terms and conditions</FieldLabel>
+					</Field>
+					<FieldDescription variant="error">You must accept the terms to continue.</FieldDescription
+					>
+				</div>
+			</CodeExample>
+		</ExampleBlock>
 
-			<div id="disabled" class="example-block">
-				<h3>Disabled</h3>
-				<p class="example-desc">Disabled switches prevent interaction and apply muted styling.</p>
-				<CodeExample
-					code={`<Field inline disabled>
+		<ExampleBlock
+			id="disabled"
+			title="Disabled"
+			description="Disabled switches prevent interaction and apply muted styling."
+		>
+			<CodeExample
+				code={`<Field inline disabled>
   <Switch />
   <FieldLabel>Off</FieldLabel>
 </Field>
@@ -121,420 +114,123 @@
   <Switch checked={true} />
   <FieldLabel>On</FieldLabel>
 </Field>`}
-					previewClass="column"
-				>
-					<Field inline disabled>
-						<Switch />
-						<FieldLabel>Off</FieldLabel>
-					</Field>
-					<Field inline disabled>
-						<Switch checked={true} />
-						<FieldLabel>On</FieldLabel>
-					</Field>
-				</CodeExample>
-			</div>
-		</section>
+				previewClass="column"
+			>
+				<Field inline disabled>
+					<Switch />
+					<FieldLabel>Off</FieldLabel>
+				</Field>
+				<Field inline disabled>
+					<Switch checked={true} />
+					<FieldLabel>On</FieldLabel>
+				</Field>
+			</CodeExample>
+		</ExampleBlock>
+	</DocSection>
 
-		<section id="api" class="doc-section">
-			<h2>API</h2>
+	<DocSection id="api" title="API">
+		<PropsTable
+			title="Switch Props"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['checked', 'boolean', 'false', 'Bindable on/off state'],
+				['size', "'sm' | 'md' | 'lg'", "'md'", 'Controls track dimensions and thumb size'],
+				['disabled', 'boolean', 'false', 'Disables the switch (also inherited from Field context)'],
+				['id', 'string', '\u2014', 'Custom ID; auto-generated from Field context if omitted'],
+				[
+					'...restProps',
+					'HTMLInputAttributes',
+					'\u2014',
+					'All other native checkbox input attributes (e.g. name, value)'
+				]
+			]}
+		/>
 
-			<div class="api-table">
-				<h3>Switch Props</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>checked</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Bindable on/off state</td>
-						</tr>
-						<tr>
-							<td><code>size</code></td>
-							<td><code>'sm' | 'md' | 'lg'</code></td>
-							<td><code>'md'</code></td>
-							<td>Controls track dimensions and thumb size</td>
-						</tr>
-						<tr>
-							<td><code>disabled</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Disables the switch (also inherited from Field context)</td>
-						</tr>
-						<tr>
-							<td><code>id</code></td>
-							<td><code>string</code></td>
-							<td><code>—</code></td>
-							<td>Custom ID; auto-generated from Field context if omitted</td>
-						</tr>
-						<tr>
-							<td><code>...restProps</code></td>
-							<td><code>HTMLInputAttributes</code></td>
-							<td><code>—</code></td>
-							<td
-								>All other native checkbox input attributes (e.g. <code>name</code>,
-								<code>value</code>)</td
-							>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="Field Props"
+			columns={['Prop', 'Type', 'Default', 'Description']}
+			rows={[
+				['error', 'string', '\u2014', 'Triggers error styling on Switch and FieldDescription'],
+				[
+					'required',
+					'boolean',
+					'false',
+					'Shows required indicator on FieldLabel; sets aria-required'
+				],
+				['disabled', 'boolean', 'false', 'Propagates disabled state to child Switch'],
+				['fullWidth', 'boolean', 'false', 'Stretches the field container to 100% width']
+			]}
+		/>
+	</DocSection>
 
-			<div class="api-table">
-				<h3>Field Props</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Prop</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>error</code></td>
-							<td><code>string</code></td>
-							<td><code>—</code></td>
-							<td>Triggers error styling on Switch and FieldDescription</td>
-						</tr>
-						<tr>
-							<td><code>required</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Shows required indicator on FieldLabel; sets aria-required</td>
-						</tr>
-						<tr>
-							<td><code>disabled</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Propagates disabled state to child Switch</td>
-						</tr>
-						<tr>
-							<td><code>fullWidth</code></td>
-							<td><code>boolean</code></td>
-							<td><code>false</code></td>
-							<td>Stretches the field container to 100% width</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
+	<DocSection id="css-tokens" title="CSS Tokens">
+		<p class="section-intro">
+			Override these tokens to adapt Switch to your brand or to create specialized variants.
+		</p>
 
-		<section id="css-tokens" class="doc-section">
-			<h2>CSS Tokens</h2>
-			<p class="section-intro">
-				Override these tokens to adapt Switch to your brand or to create specialized variants.
-			</p>
+		<PropsTable
+			title="Color Tokens"
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--switch-bg', 'var(--ui-border)', 'Track background in off state'],
+				['--switch-checked-bg', 'var(--ui-primary)', 'Track background in on state'],
+				['--switch-thumb-bg', 'var(--ui-surface)', 'Thumb background color'],
+				[
+					'--switch-hover-bg',
+					'color-mix(\u2026border+hover)',
+					'Track background on hover (off state)'
+				],
+				[
+					'--switch-checked-hover-bg',
+					'color-mix(\u2026primary+hover)',
+					'Track background on hover (on state)'
+				],
+				['--switch-focus-color', 'var(--ui-primary)', 'Focus ring color'],
+				['--switch-focus-ring-width', 'var(--ui-ring-width)', 'Width of the focus ring outline'],
+				[
+					'--switch-focus-ring-offset',
+					'var(--ui-ring-offset)',
+					'Offset of the focus ring from the track'
+				],
+				['--switch-error-bg', 'var(--ui-danger)', 'Track background in error state']
+			]}
+		/>
 
-			<div class="token-group">
-				<h3>Color Tokens</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--switch-bg</code></td>
-							<td>var(--ui-border)</td>
-							<td>Track background in off state</td>
-						</tr>
-						<tr>
-							<td><code>--switch-checked-bg</code></td>
-							<td>var(--ui-primary)</td>
-							<td>Track background in on state</td>
-						</tr>
-						<tr>
-							<td><code>--switch-thumb-bg</code></td>
-							<td>var(--ui-surface)</td>
-							<td>Thumb background color</td>
-						</tr>
-						<tr>
-							<td><code>--switch-hover-bg</code></td>
-							<td>color-mix(…border+hover)</td>
-							<td>Track background on hover (off state)</td>
-						</tr>
-						<tr>
-							<td><code>--switch-checked-hover-bg</code></td>
-							<td>color-mix(…primary+hover)</td>
-							<td>Track background on hover (on state)</td>
-						</tr>
-						<tr>
-							<td><code>--switch-focus-color</code></td>
-							<td>var(--ui-primary)</td>
-							<td>Focus ring color</td>
-						</tr>
-						<tr>
-							<td><code>--switch-focus-ring-width</code></td>
-							<td>var(--ui-ring-width)</td>
-							<td>Width of the focus ring outline</td>
-						</tr>
-						<tr>
-							<td><code>--switch-focus-ring-offset</code></td>
-							<td>var(--ui-ring-offset)</td>
-							<td>Offset of the focus ring from the track</td>
-						</tr>
-						<tr>
-							<td><code>--switch-error-bg</code></td>
-							<td>var(--ui-danger)</td>
-							<td>Track background in error state</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="Size Tokens"
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--switch-track-width-sm', '28px', 'Track width for sm'],
+				['--switch-track-height-sm', '16px', 'Track height for sm'],
+				['--switch-thumb-size-sm', '12px', 'Thumb diameter for sm'],
+				['--switch-thumb-travel-sm', '12px', 'Thumb translation distance for sm'],
+				['--switch-track-width-md', '36px', 'Track width for md'],
+				['--switch-track-height-md', '20px', 'Track height for md'],
+				['--switch-thumb-size-md', '16px', 'Thumb diameter for md'],
+				['--switch-thumb-travel-md', '16px', 'Thumb translation distance for md'],
+				['--switch-track-width-lg', '44px', 'Track width for lg'],
+				['--switch-track-height-lg', '24px', 'Track height for lg'],
+				['--switch-thumb-size-lg', '20px', 'Thumb diameter for lg'],
+				['--switch-thumb-travel-lg', '20px', 'Thumb translation distance for lg']
+			]}
+		/>
 
-			<div class="token-group">
-				<h3>Size Tokens</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--switch-track-width-sm</code></td>
-							<td>28px</td>
-							<td>Track width for sm</td>
-						</tr>
-						<tr>
-							<td><code>--switch-track-height-sm</code></td>
-							<td>16px</td>
-							<td>Track height for sm</td>
-						</tr>
-						<tr>
-							<td><code>--switch-thumb-size-sm</code></td>
-							<td>12px</td>
-							<td>Thumb diameter for sm</td>
-						</tr>
-						<tr>
-							<td><code>--switch-thumb-travel-sm</code></td>
-							<td>12px</td>
-							<td>Thumb translation distance for sm</td>
-						</tr>
-						<tr>
-							<td><code>--switch-track-width-md</code></td>
-							<td>36px</td>
-							<td>Track width for md</td>
-						</tr>
-						<tr>
-							<td><code>--switch-track-height-md</code></td>
-							<td>20px</td>
-							<td>Track height for md</td>
-						</tr>
-						<tr>
-							<td><code>--switch-thumb-size-md</code></td>
-							<td>16px</td>
-							<td>Thumb diameter for md</td>
-						</tr>
-						<tr>
-							<td><code>--switch-thumb-travel-md</code></td>
-							<td>16px</td>
-							<td>Thumb translation distance for md</td>
-						</tr>
-						<tr>
-							<td><code>--switch-track-width-lg</code></td>
-							<td>44px</td>
-							<td>Track width for lg</td>
-						</tr>
-						<tr>
-							<td><code>--switch-track-height-lg</code></td>
-							<td>24px</td>
-							<td>Track height for lg</td>
-						</tr>
-						<tr>
-							<td><code>--switch-thumb-size-lg</code></td>
-							<td>20px</td>
-							<td>Thumb diameter for lg</td>
-						</tr>
-						<tr>
-							<td><code>--switch-thumb-travel-lg</code></td>
-							<td>20px</td>
-							<td>Thumb translation distance for lg</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		<PropsTable
+			title="Style Tokens"
+			columns={['Token', 'Default', 'Description']}
+			rows={[
+				['--switch-border-radius', '9999px', 'Pill shape for track and thumb'],
+				['--switch-thumb-shadow', '0 1px 3px oklch(0% 0 0 / 0.25)', 'Drop shadow on thumb'],
+				[
+					'--switch-transition',
+					'var(--ui-base-duration) var(--ui-base-easing)',
+					'Transition for track background and thumb position'
+				]
+			]}
+		/>
+	</DocSection>
 
-			<div class="token-group">
-				<h3>Style Tokens</h3>
-				<table class="props-table">
-					<thead>
-						<tr>
-							<th>Token</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>--switch-border-radius</code></td>
-							<td>9999px</td>
-							<td>Pill shape for track and thumb</td>
-						</tr>
-						<tr>
-							<td><code>--switch-thumb-shadow</code></td>
-							<td>0 1px 3px oklch(0% 0 0 / 0.25)</td>
-							<td>Drop shadow on thumb</td>
-						</tr>
-						<tr>
-							<td><code>--switch-transition</code></td>
-							<td>var(--ui-base-duration) var(--ui-base-easing)</td>
-							<td>Transition for track background and thumb position</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
-	</article>
-
-	<TableOfContents sections={tocSections} />
-</div>
-
-<style>
-	.docs-layout {
-		display: grid;
-		grid-template-columns: 1fr 180px;
-		gap: var(--space-12);
-	}
-
-	.docs-content {
-		min-width: 0;
-	}
-
-	.page-header {
-		margin-bottom: var(--space-8);
-	}
-
-	h1 {
-		font-size: var(--font-size-3xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-3) 0;
-	}
-
-	.lead {
-		font-size: var(--ui-text-lg);
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		line-height: var(--line-height-relaxed);
-		margin: 0;
-	}
-
-	.lead code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	.doc-section {
-		margin-bottom: var(--space-12);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.doc-section h2 {
-		font-size: var(--font-size-2xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin: 0 0 var(--space-6) 0;
-		padding-bottom: var(--space-3);
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.section-intro {
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		font-size: var(--ui-text-base);
-		line-height: var(--line-height-relaxed);
-		margin: 0 0 var(--space-6) 0;
-	}
-
-	.example-block {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-4);
-		margin-bottom: var(--space-8);
-		scroll-margin-top: var(--space-4);
-	}
-
-	.example-block h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.example-desc {
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		margin: 0;
-	}
-
-	.example-desc code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	.api-table,
-	.token-group {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-3);
-		margin-bottom: var(--space-6);
-	}
-
-	.api-table h3,
-	.token-group h3 {
-		font-size: var(--ui-text-lg);
-		font-weight: 600;
-		color: var(--ui-surface-foreground);
-		margin: 0;
-	}
-
-	.props-table {
-		width: 100%;
-		border-collapse: collapse;
-		font-size: var(--ui-text-sm);
-	}
-
-	.props-table th,
-	.props-table td {
-		padding: var(--space-2) var(--space-3);
-		text-align: left;
-		border-bottom: 1px solid var(--ui-border);
-	}
-
-	.props-table th {
-		font-weight: 600;
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-	}
-
-	.props-table code {
-		font-family: var(--ui-font-mono);
-		font-size: var(--font-size-xs);
-		background: color-mix(in oklch, var(--ui-neutral), transparent 85%);
-		padding: 2px 6px;
-		border-radius: calc(var(--ui-base-radius) * 0.5);
-	}
-
-	@media (max-width: 1024px) {
-		.docs-layout {
-			grid-template-columns: 1fr;
-		}
-	}
-</style>
+	{#snippet sidebar()}
+		<TableOfContents sections={tocSections} />
+	{/snippet}
+</DocsPage>

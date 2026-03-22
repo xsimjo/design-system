@@ -1,5 +1,7 @@
 <script lang="ts">
 	import CodeBlock from '$lib/internal/CodeBlock.svelte';
+	import DocsPage from '$lib/internal/DocsPage.svelte';
+	import PageHeader from '$lib/internal/PageHeader.svelte';
 	import Button from '$lib/components/button/Button.svelte';
 	import ArrowRightIcon from '$lib/icons/ArrowRightIcon.svelte';
 </script>
@@ -8,14 +10,12 @@
 	<title>Introduction - Greenfield UI</title>
 </svelte:head>
 
-<article class="docs-page">
-	<header class="page-header">
-		<h1>Introduction</h1>
-		<p class="lead">
-			Greenfield UI is a component library for Svelte 5. It provides accessible, themeable
-			components with a token-based styling system that makes customization simple.
-		</p>
-	</header>
+<DocsPage>
+	<PageHeader
+		title="Introduction"
+		description="Greenfield UI is a component library for Svelte 5. It provides accessible, themeable components with a token-based styling system that makes customization simple."
+		isBordered
+	/>
 
 	<section class="section">
 		<h2>Why Greenfield UI?</h2>
@@ -112,33 +112,9 @@ ${'</' + 'script>'}
 			<a href="/docs/theming"><Button variant="outline" color="secondary">Theming</Button></a>
 		</div>
 	</section>
-</article>
+</DocsPage>
 
 <style>
-	.docs-page {
-		max-width: 100%;
-	}
-
-	.page-header {
-		margin-bottom: var(--space-8);
-		border-bottom: 1px solid var(--ui-border);
-		padding-bottom: var(--space-6);
-	}
-
-	h1 {
-		font-size: var(--font-size-3xl);
-		font-weight: var(--ui-weight-bold);
-		color: var(--ui-surface-foreground);
-		margin-bottom: var(--space-3);
-	}
-
-	.lead {
-		font-size: var(--ui-text-lg);
-		color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
-		line-height: var(--line-height-relaxed);
-		max-width: 640px;
-	}
-
 	.section {
 		margin-bottom: var(--space-10);
 	}
