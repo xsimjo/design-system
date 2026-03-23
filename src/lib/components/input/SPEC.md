@@ -1,6 +1,6 @@
 # Input
 
-Text input component with full-width support and deep Field context integration for accessible form composition.
+Text input component with icon support, clearable option, full-width support, and deep Field context integration for accessible form composition.
 
 ## Props
 
@@ -10,6 +10,9 @@ Text input component with full-width support and deep Field context integration 
 | `fullWidth` | `boolean`          | `false`     | Stretches input to 100% width                                    |
 | `disabled`  | `boolean`          | `false`     | Disables interaction; also inherited from parent `Field` context |
 | `id`        | `string`           | `undefined` | Custom ID; auto-set from `Field` context if omitted              |
+| `icon`      | `Snippet`          | `undefined` | Icon snippet rendered on the left side of the input              |
+| `clearable` | `boolean`          | `false`     | Shows a clear button when the input has a value                  |
+| `onclear`   | `() => void`       | `undefined` | Optional callback fired when the clear button is clicked         |
 
 Extends `HTMLInputAttributes` (excluding `value` which is redefined). All native input attributes (`type`, `placeholder`, `required`, `autocomplete`, etc.) are forwarded via `...restProps`.
 
@@ -35,6 +38,48 @@ When placed inside a `<Field>`, `Input` automatically:
 
 ```svelte
 <Input fullWidth placeholder="Spans full container width" />
+```
+
+### With Icon
+
+```svelte
+<script>
+	import { Input } from '@xsimjo/design-system';
+	import SearchIcon from '@xsimjo/design-system/icons/SearchIcon.svelte';
+</script>
+
+<Input placeholder="Search...">
+	{#snippet icon()}
+		<SearchIcon size={16} />
+	{/snippet}
+</Input>
+```
+
+### Clearable
+
+```svelte
+<script>
+	import { Input } from '@xsimjo/design-system';
+	let query = $state('');
+</script>
+
+<Input bind:value={query} clearable placeholder="Type to search..." />
+```
+
+### With Icon and Clearable
+
+```svelte
+<script>
+	import { Input } from '@xsimjo/design-system';
+	import SearchIcon from '@xsimjo/design-system/icons/SearchIcon.svelte';
+	let query = $state('');
+</script>
+
+<Input bind:value={query} clearable placeholder="Search...">
+	{#snippet icon()}
+		<SearchIcon size={16} />
+	{/snippet}
+</Input>
 ```
 
 ### Bindable Value
@@ -74,6 +119,9 @@ When placed inside a `<Field>`, `Input` automatically:
 - `aria-describedby` is composed from all `FieldDescription` IDs in context
 - `aria-required` and `aria-invalid` are driven by `Field` context props
 - Disabled state is communicated via both `disabled` attribute and `aria-disabled` patterns through the native element
+- The icon container has `aria-hidden="true"` since it is decorative
+- The clear button has `aria-label="Clear input"` for screen readers
+- The clear button uses `tabindex="-1"` to avoid disrupting tab flow — users can clear with keyboard via selecting all text
 
 ## Tokens
 
@@ -100,3 +148,7 @@ When placed inside a `<Field>`, `Input` automatically:
 | `--input-line-height`       | Input line height                        |
 | `--input-border-radius`     | Input border radius                      |
 | `--input-transition`        | Transition timing for interactive states |
+| `--input-icon-color`        | Icon color                               |
+| `--input-icon-size`         | Icon container size                      |
+| `--input-clear-color`       | Clear button color                       |
+| `--input-clear-hover-color` | Clear button hover color                 |

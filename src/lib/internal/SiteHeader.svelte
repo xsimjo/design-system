@@ -25,6 +25,9 @@
 	{/snippet}
 	{#snippet nav()}
 		<a href="/docs"><Button variant="ghost" color="secondary" size="sm">Documentation</Button></a>
+		<a href="/theme-builder"
+			><Button variant="ghost" color="secondary" size="sm">Theme Builder</Button></a
+		>
 		<a href="/showcase"><Button variant="ghost" color="secondary" size="sm">Showcase</Button></a>
 	{/snippet}
 	{#snippet actions()}

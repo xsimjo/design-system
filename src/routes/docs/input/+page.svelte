@@ -3,6 +3,9 @@
 	import Field from '$lib/components/field/Field.svelte';
 	import FieldLabel from '$lib/components/field/FieldLabel.svelte';
 	import FieldDescription from '$lib/components/field/FieldDescription.svelte';
+	import SearchIcon from '$lib/icons/SearchIcon.svelte';
+	import MailIcon from '$lib/icons/MailIcon.svelte';
+	import UserIcon from '$lib/icons/UserIcon.svelte';
 	import CodeExample from '$lib/internal/CodeExample.svelte';
 	import TableOfContents from '$lib/internal/TableOfContents.svelte';
 	import DocsPage from '$lib/internal/DocsPage.svelte';
@@ -11,10 +14,16 @@
 	import ExampleBlock from '$lib/internal/ExampleBlock.svelte';
 	import PropsTable from '$lib/internal/PropsTable.svelte';
 
+	let searchValue = $state('');
+	let clearableValue = $state('Some text');
+
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
 		{ id: 'basic', label: 'Basic', indent: true },
 		{ id: 'label', label: 'With Label', indent: true },
+		{ id: 'icon', label: 'With Icon', indent: true },
+		{ id: 'clearable', label: 'Clearable', indent: true },
+		{ id: 'icon-clearable', label: 'Icon + Clearable', indent: true },
 		{ id: 'hint', label: 'With Hint', indent: true },
 		{ id: 'error', label: 'With Error', indent: true },
 		{ id: 'states', label: 'States', indent: true },
@@ -66,6 +75,79 @@
 					<FieldLabel>Email address</FieldLabel>
 					<Input placeholder="jane@example.com" />
 				</Field>
+			</CodeExample>
+		</ExampleBlock>
+
+		<ExampleBlock
+			id="icon"
+			title="With Icon"
+			description="Pass a snippet to the icon prop to render an icon on the left side of the input."
+		>
+			<CodeExample
+				code={`<Input placeholder="Search...">
+  {#snippet icon()}
+    <SearchIcon size={16} />
+  {/snippet}
+</Input>
+<Input placeholder="Enter your name">
+  {#snippet icon()}
+    <UserIcon size={16} />
+  {/snippet}
+</Input>
+<Input type="email" placeholder="jane@example.com">
+  {#snippet icon()}
+    <MailIcon size={16} />
+  {/snippet}
+</Input>`}
+				previewClass="column"
+			>
+				<Input placeholder="Search...">
+					{#snippet icon()}
+						<SearchIcon size={16} />
+					{/snippet}
+				</Input>
+				<Input placeholder="Enter your name">
+					{#snippet icon()}
+						<UserIcon size={16} />
+					{/snippet}
+				</Input>
+				<Input type="email" placeholder="jane@example.com">
+					{#snippet icon()}
+						<MailIcon size={16} />
+					{/snippet}
+				</Input>
+			</CodeExample>
+		</ExampleBlock>
+
+		<ExampleBlock
+			id="clearable"
+			title="Clearable"
+			description="Add clearable to show a clear button when the input has a value."
+		>
+			<CodeExample
+				code={`<Input bind:value={clearableValue} clearable placeholder="Type something..." />`}
+			>
+				<Input bind:value={clearableValue} clearable placeholder="Type something..." />
+			</CodeExample>
+		</ExampleBlock>
+
+		<ExampleBlock
+			id="icon-clearable"
+			title="Icon + Clearable"
+			description="Combine an icon with the clearable option for a search-style input."
+		>
+			<CodeExample
+				code={`<Input bind:value={searchValue} clearable fullWidth placeholder="Search...">
+  {#snippet icon()}
+    <SearchIcon size={16} />
+  {/snippet}
+</Input>`}
+			>
+				<Input bind:value={searchValue} clearable fullWidth placeholder="Search...">
+					{#snippet icon()}
+						<SearchIcon size={16} />
+					{/snippet}
+				</Input>
 			</CodeExample>
 		</ExampleBlock>
 
@@ -194,10 +276,12 @@
 			columns={['Prop', 'Type', 'Default', 'Description']}
 			rows={[
 				['value', 'string | number', "''", 'Bindable input value'],
-				['size', "'sm' | 'md' | 'lg'", "'md'", 'Controls height, padding, and font size'],
 				['fullWidth', 'boolean', 'false', 'Stretches the input to 100% of its container'],
 				['disabled', 'boolean', 'false', 'Disables the input (also inherited from Field context)'],
 				['id', 'string', '—', 'Custom ID; auto-generated from Field context if omitted'],
+				['icon', 'Snippet', '—', 'Icon snippet rendered on the left side of the input'],
+				['clearable', 'boolean', 'false', 'Shows a clear button when the input has a value'],
+				['onclear', '() => void', '—', 'Callback fired when the clear button is clicked'],
 				[
 					'...restProps',
 					'HTMLInputAttributes',
@@ -249,7 +333,11 @@
 				['--input-error-color', 'var(--ui-danger)', 'Border color in error state'],
 				['--input-disabled-bg', 'color-mix(…neutral 80% transparent)', 'Background when disabled'],
 				['--input-disabled-fg', 'color-mix(…fg 50% transparent)', 'Text color when disabled'],
-				['--input-disabled-border', 'var(--ui-border)', 'Border color when disabled']
+				['--input-disabled-border', 'var(--ui-border)', 'Border color when disabled'],
+				['--input-icon-color', 'color-mix(…fg 40% transparent)', 'Icon color'],
+				['--input-icon-size', 'calc(spacing * 2.5)', 'Icon container size'],
+				['--input-clear-color', 'color-mix(…fg 40% transparent)', 'Clear button color'],
+				['--input-clear-hover-color', 'var(--ui-surface-foreground)', 'Clear button hover color']
 			]}
 		/>
 

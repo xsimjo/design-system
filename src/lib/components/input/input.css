@@ -24,14 +24,35 @@
 	--input-line-height: var(--ui-leading-normal);
 	--input-border-radius: var(--ui-base-radius);
 	--input-transition: var(--ui-base-duration) var(--ui-base-easing);
+	--input-icon-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
+	--input-clear-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
+	--input-clear-hover-color: var(--ui-surface-foreground);
+	--input-icon-size: calc(var(--ui-base-spacing) * 2.5);
 }
 
+/* Wrapper */
+
+.input {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+}
+
+.input--full-width {
+	width: 100%;
+}
+
+/* Field */
+
 .input__field {
+	height: var(--input-height);
+	padding: 0 var(--input-padding-x);
 	background-color: var(--input-bg);
 	color: var(--input-fg);
 	border: var(--input-border-width) solid var(--input-border);
 	border-radius: var(--input-border-radius);
 	font-family: var(--input-font-family);
+	font-size: var(--input-font-size);
 	font-weight: var(--input-font-weight);
 	line-height: var(--input-line-height);
 	outline: var(--input-focus-ring-width) solid transparent;
@@ -41,14 +62,16 @@
 		background-color var(--input-transition);
 }
 
-.input__field {
-	height: var(--input-height);
-	padding: 0 var(--input-padding-x);
-	font-size: var(--input-font-size);
-}
-
 .input__field--full-width {
 	width: 100%;
+}
+
+.input__field--has-icon {
+	padding-left: calc(var(--input-padding-x) + var(--input-icon-size) + var(--ui-base-spacing));
+}
+
+.input__field--has-clear {
+	padding-right: calc(var(--input-padding-x) + var(--input-icon-size) + var(--ui-base-spacing));
 }
 
 .input__field::placeholder {
@@ -71,6 +94,8 @@
 	outline-color: color-mix(in oklch, var(--input-focus-color), transparent 70%);
 }
 
+/* Error */
+
 .input__field--error {
 	border-color: var(--input-error-color);
 }
@@ -88,6 +113,8 @@
 	outline-color: color-mix(in oklch, var(--input-error-color), transparent 70%);
 }
 
+/* Disabled */
+
 .input__field:disabled,
 .input__field[aria-disabled='true'] {
 	background-color: var(--input-disabled-bg);
@@ -99,4 +126,70 @@
 .input__field:disabled::placeholder,
 .input__field[aria-disabled='true']::placeholder {
 	color: var(--input-disabled-fg);
+}
+
+/* Icon */
+
+.input__icon {
+	position: absolute;
+	left: var(--input-padding-x);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--input-icon-size);
+	height: var(--input-icon-size);
+	color: var(--input-icon-color);
+	pointer-events: none;
+}
+
+/* Clear button */
+
+.input__clear {
+	position: absolute;
+	right: var(--input-padding-x);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--input-icon-size);
+	height: var(--input-icon-size);
+	padding: 0;
+	border: none;
+	background: none;
+	color: var(--input-clear-color);
+	cursor: pointer;
+	border-radius: var(--ui-base-radius);
+	transition: color var(--input-transition);
+}
+
+.input__clear:hover {
+	color: var(--input-clear-hover-color);
+}
+
+.input__clear:active {
+	color: var(--input-focus-color);
+}
+
+.input__clear:focus-visible {
+	outline: var(--input-focus-ring-width) solid
+		color-mix(in oklch, var(--input-focus-color), transparent 70%);
+	outline-offset: var(--input-focus-ring-offset);
+}
+
+/* Disabled icon */
+
+.input:has(.input__field:disabled) .input__icon,
+.input:has(.input__field[aria-disabled='true']) .input__icon {
+	color: var(--input-disabled-fg);
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+	.input__field {
+		transition: none;
+	}
+
+	.input__clear {
+		transition: none;
+	}
 }
