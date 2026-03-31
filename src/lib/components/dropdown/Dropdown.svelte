@@ -17,6 +17,7 @@
 		placement?: Placement;
 		offset?: number;
 		width?: 'auto' | 'trigger' | number;
+		fullWidth?: boolean;
 		closeOnSelect?: boolean;
 		closeOnClickOutside?: boolean;
 		closeOnEscape?: boolean;
@@ -30,6 +31,7 @@
 		placement = 'bottom-start',
 		offset: offsetValue = 4,
 		width = 'auto',
+		fullWidth = false,
 		closeOnSelect = true,
 		closeOnClickOutside = true,
 		closeOnEscape = true,
@@ -252,7 +254,13 @@
 	}
 </script>
 
-<div bind:this={containerEl} class="dropdown" class:dropdown--disabled={disabled} {...restProps}>
+<div
+	bind:this={containerEl}
+	class="dropdown"
+	class:dropdown--disabled={disabled}
+	class:dropdown--full-width={fullWidth}
+	{...restProps}
+>
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<span
 		bind:this={triggerWrapperEl}

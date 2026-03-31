@@ -14,18 +14,19 @@ Floating menu component with keyboard navigation, positioning via Floating UI, a
 
 ### Dropdown
 
-| Prop                  | Type                            | Default          | Description                                        |
-| --------------------- | ------------------------------- | ---------------- | -------------------------------------------------- |
-| `open`                | `boolean` (bindable)            | `false`          | Controls open state                                |
-| `placement`           | `Placement` (Floating UI)       | `'bottom-start'` | Preferred menu placement                           |
-| `offset`              | `number`                        | `4`              | Pixel gap between trigger and menu                 |
-| `width`               | `'auto' \| 'trigger' \| number` | `'auto'`         | Menu width strategy                                |
-| `closeOnSelect`       | `boolean`                       | `true`           | Close menu when a menu item is clicked             |
-| `closeOnClickOutside` | `boolean`                       | `true`           | Close menu on outside click                        |
-| `closeOnEscape`       | `boolean`                       | `true`           | Close menu on Escape key                           |
-| `disabled`            | `boolean`                       | `false`          | Disables the trigger                               |
-| `trigger`             | `Snippet<[{ open: boolean }]>`  | required         | Trigger element; receives `open` state             |
-| `children`            | `Snippet`                       | required         | Menu content (DropdownItem, DropdownDivider, etc.) |
+| Prop                  | Type                            | Default          | Description                                              |
+| --------------------- | ------------------------------- | ---------------- | -------------------------------------------------------- |
+| `open`                | `boolean` (bindable)            | `false`          | Controls open state                                      |
+| `placement`           | `Placement` (Floating UI)       | `'bottom-start'` | Preferred menu placement                                 |
+| `offset`              | `number`                        | `4`              | Pixel gap between trigger and menu                       |
+| `width`               | `'auto' \| 'trigger' \| number` | `'auto'`         | Menu width strategy                                      |
+| `fullWidth`           | `boolean`                       | `false`          | Makes the dropdown container and trigger fill 100% width |
+| `closeOnSelect`       | `boolean`                       | `true`           | Close menu when a menu item is clicked                   |
+| `closeOnClickOutside` | `boolean`                       | `true`           | Close menu on outside click                              |
+| `closeOnEscape`       | `boolean`                       | `true`           | Close menu on Escape key                                 |
+| `disabled`            | `boolean`                       | `false`          | Disables the trigger                                     |
+| `trigger`             | `Snippet<[{ open: boolean }]>`  | required         | Trigger element; receives `open` state                   |
+| `children`            | `Snippet`                       | required         | Menu content (DropdownItem, DropdownDivider, etc.)       |
 
 Extends `HTMLAttributes<HTMLDivElement>`.
 

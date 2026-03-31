@@ -50,6 +50,16 @@
 	display: inline-block;
 }
 
+.dropdown--full-width {
+	display: block;
+	width: 100%;
+}
+
+.dropdown--full-width .dropdown__trigger {
+	display: flex;
+	width: 100%;
+}
+
 .dropdown__trigger {
 	display: inline-flex;
 }

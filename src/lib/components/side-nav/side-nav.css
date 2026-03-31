@@ -1,6 +1,6 @@
 [data-theme] {
 	/* Layout */
-	--side-nav-padding: calc(var(--ui-base-spacing) * 0.5);
+	--side-nav-padding: 0;
 	--side-nav-gap: calc(var(--ui-base-spacing) * 0.5);
 
 	/* Item */
