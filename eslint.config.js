@@ -39,7 +39,7 @@ export default defineConfig(
 		}
 	},
 	{
-		files: ['src/lib/**/*.svelte', 'src/routes/**/*.svelte'],
+		files: ['src/lib/**/*.svelte', 'src/routes/**/*.svelte', 'src/internal/**/*.svelte'],
 		rules: {
 			'svelte/no-navigation-without-resolve': 'off'
 		}

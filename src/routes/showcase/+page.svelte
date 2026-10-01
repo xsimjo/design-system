@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SiteHeader from '$lib/internal/SiteHeader.svelte';
+	import SiteHeader from '$internal/SiteHeader.svelte';
 	import Toaster from '$lib/components/toast/Toaster.svelte';
 	import type { ToastPosition } from '$lib/components/toast/toast.svelte.js';
 	import FormSection from './sections/FormSection.svelte';

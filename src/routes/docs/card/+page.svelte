@@ -5,13 +5,13 @@
 	import CardFooter from '$lib/components/card/CardFooter.svelte';
 	import Button from '$lib/components/button/Button.svelte';
 	import Badge from '$lib/components/badge/Badge.svelte';
-	import CodeExample from '$lib/internal/CodeExample.svelte';
-	import TableOfContents from '$lib/internal/TableOfContents.svelte';
-	import DocsPage from '$lib/internal/DocsPage.svelte';
-	import PageHeader from '$lib/internal/PageHeader.svelte';
-	import DocSection from '$lib/internal/DocSection.svelte';
-	import ExampleBlock from '$lib/internal/ExampleBlock.svelte';
-	import PropsTable from '$lib/internal/PropsTable.svelte';
+	import CodeExample from '$internal/CodeExample.svelte';
+	import TableOfContents from '$internal/TableOfContents.svelte';
+	import DocsPage from '$internal/DocsPage.svelte';
+	import PageHeader from '$internal/PageHeader.svelte';
+	import DocSection from '$internal/DocSection.svelte';
+	import ExampleBlock from '$internal/ExampleBlock.svelte';
+	import PropsTable from '$internal/PropsTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },

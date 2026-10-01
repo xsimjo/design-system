@@ -1,7 +1,7 @@
 <script lang="ts">
-	import CodeBlock from '$lib/internal/CodeBlock.svelte';
-	import DocsPage from '$lib/internal/DocsPage.svelte';
-	import PageHeader from '$lib/internal/PageHeader.svelte';
+	import CodeBlock from '$internal/CodeBlock.svelte';
+	import DocsPage from '$internal/DocsPage.svelte';
+	import PageHeader from '$internal/PageHeader.svelte';
 	import Button from '$lib/components/button/Button.svelte';
 	import ArrowRightIcon from '$lib/icons/ArrowRightIcon.svelte';
 </script>

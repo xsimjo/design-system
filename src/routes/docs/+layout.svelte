@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import SiteHeader from '$lib/internal/SiteHeader.svelte';
-	import MobileMenu from '$lib/internal/MobileMenu.svelte';
-	import DocsSidebar from '$lib/internal/DocsSidebar.svelte';
+	import SiteHeader from '$internal/SiteHeader.svelte';
+	import MobileMenu from '$internal/MobileMenu.svelte';
+	import DocsSidebar from '$internal/DocsSidebar.svelte';
 
 	interface Props {
 		children: Snippet;

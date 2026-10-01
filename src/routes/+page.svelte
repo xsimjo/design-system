@@ -1,6 +1,6 @@
 <script lang="ts">
-	import SiteHeader from '$lib/internal/SiteHeader.svelte';
-	import MobileMenu from '$lib/internal/MobileMenu.svelte';
+	import SiteHeader from '$internal/SiteHeader.svelte';
+	import MobileMenu from '$internal/MobileMenu.svelte';
 	import Button from '$lib/components/button/Button.svelte';
 	import Card from '$lib/components/card/Card.svelte';
 	import CardHeader from '$lib/components/card/CardHeader.svelte';
@@ -25,7 +25,7 @@
 	import CheckIcon from '$lib/icons/CheckIcon.svelte';
 	import SendIcon from '$lib/icons/SendIcon.svelte';
 	import HeartIcon from '$lib/icons/HeartIcon.svelte';
-	import Footer from '$lib/internal/Footer.svelte';
+	import Footer from '$internal/Footer.svelte';
 
 	const installCommand = 'npm install @xsimjo/design-system';
 	const importExample = "import { Button } from '@xsimjo/design-system'";

@@ -6,13 +6,13 @@
 	import SearchIcon from '$lib/icons/SearchIcon.svelte';
 	import MailIcon from '$lib/icons/MailIcon.svelte';
 	import UserIcon from '$lib/icons/UserIcon.svelte';
-	import CodeExample from '$lib/internal/CodeExample.svelte';
-	import TableOfContents from '$lib/internal/TableOfContents.svelte';
-	import DocsPage from '$lib/internal/DocsPage.svelte';
-	import PageHeader from '$lib/internal/PageHeader.svelte';
-	import DocSection from '$lib/internal/DocSection.svelte';
-	import ExampleBlock from '$lib/internal/ExampleBlock.svelte';
-	import PropsTable from '$lib/internal/PropsTable.svelte';
+	import CodeExample from '$internal/CodeExample.svelte';
+	import TableOfContents from '$internal/TableOfContents.svelte';
+	import DocsPage from '$internal/DocsPage.svelte';
+	import PageHeader from '$internal/PageHeader.svelte';
+	import DocSection from '$internal/DocSection.svelte';
+	import ExampleBlock from '$internal/ExampleBlock.svelte';
+	import PropsTable from '$internal/PropsTable.svelte';
 
 	let searchValue = $state('');
 	let clearableValue = $state('Some text');

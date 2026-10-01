@@ -44,8 +44,7 @@
 		"./styles/themes/dev": "./dist/styles/themes/dev.css"
 	},
 	"peerDependencies": {
-		"svelte": "^5.0.0",
-		"shiki": "^3.20.0"
+		"svelte": "^5.0.0"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
@@ -63,6 +62,7 @@
 		"prettier-plugin-svelte": "^3.4.0",
 		"publint": "^0.3.15",
 		"release-it": "^19.1.0",
+		"shiki": "^3.20.0",
 		"svelte": "^5.45.6",
 		"svelte-check": "^4.3.4",
 		"typescript": "^5.9.3",

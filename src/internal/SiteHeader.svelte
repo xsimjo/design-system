@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
-	import Header from '$lib/internal/Header.svelte';
-	import Tooltip from '$lib/internal/Tooltip.svelte';
-	import ThemeSwitcher from '$lib/internal/ThemeSwitcher.svelte';
+	import Header from '$internal/Header.svelte';
+	import Tooltip from '$internal/Tooltip.svelte';
+	import ThemeSwitcher from '$internal/ThemeSwitcher.svelte';
 	import Button from '$lib/components/button/Button.svelte';
 	import GithubIcon from '$lib/icons/GithubIcon.svelte';
 	import PaletteIcon from '$lib/icons/PaletteIcon.svelte';

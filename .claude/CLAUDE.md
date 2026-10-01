@@ -31,7 +31,7 @@ Themes switch via `data-theme` attribute on `<html>`.
 
 ## Components
 
-Each component lives in `src/lib/components/{name}/` with a `.svelte` file and a `.css` file. The `.svelte` file imports its own `.css`. Internal doc/demo components live in `src/lib/internal/` and are not exported.
+Each component lives in `src/lib/components/{name}/` with a `.svelte` file and a `.css` file. The `.svelte` file imports its own `.css`. Shared internals that shipped components depend on (e.g. `DatePickerPanel`, `useFloatingPanel`) live in `src/lib/internal/` and are not exported. Docs-site-only components live in `src/internal/` (imported via the `$internal` alias) — that directory is outside `src/lib`, so `svelte-package` never publishes it. Keep docs-only UI there so consumers don't inherit its dependencies.
 
 ## Adding a Component
 
@@ -89,7 +89,7 @@ Both `@xsimjo/design-system` and `@xsimjo/design-system-mcp` publish to GitHub P
 
 ## Gotchas
 
-- `shiki` is a peer dependency — consumers must install it alongside this package
+- `shiki` is a dev dependency only — it is used by the docs site, not by any shipped component, so consumers do not install it
 - Only light, dark, and dev themes are exported in `package.json` `exports`
 - `npm run build:mcp` must be run from the project root, not from inside `packages/mcp/`
 

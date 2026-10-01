@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SiteHeader from '$lib/internal/SiteHeader.svelte';
+	import SiteHeader from '$internal/SiteHeader.svelte';
 	import EditorPanel from './components/EditorPanel.svelte';
 	import PreviewPanel from './components/PreviewPanel.svelte';
 	import CssOutput from './components/CssOutput.svelte';

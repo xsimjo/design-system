@@ -1,13 +1,13 @@
 <script lang="ts">
 	import Breadcrumbs from '$lib/components/breadcrumbs/Breadcrumbs.svelte';
 	import BreadcrumbItem from '$lib/components/breadcrumbs/BreadcrumbItem.svelte';
-	import CodeExample from '$lib/internal/CodeExample.svelte';
-	import TableOfContents from '$lib/internal/TableOfContents.svelte';
-	import DocsPage from '$lib/internal/DocsPage.svelte';
-	import PageHeader from '$lib/internal/PageHeader.svelte';
-	import DocSection from '$lib/internal/DocSection.svelte';
-	import ExampleBlock from '$lib/internal/ExampleBlock.svelte';
-	import PropsTable from '$lib/internal/PropsTable.svelte';
+	import CodeExample from '$internal/CodeExample.svelte';
+	import TableOfContents from '$internal/TableOfContents.svelte';
+	import DocsPage from '$internal/DocsPage.svelte';
+	import PageHeader from '$internal/PageHeader.svelte';
+	import DocSection from '$internal/DocSection.svelte';
+	import ExampleBlock from '$internal/ExampleBlock.svelte';
+	import PropsTable from '$internal/PropsTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
