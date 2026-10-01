@@ -4,8 +4,8 @@
 	--accordion-trigger-color: var(--ui-surface-foreground);
 	--accordion-trigger-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 90%);
 	--accordion-content-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 25%);
-	--accordion-padding-x: calc(var(--ui-base-spacing) * 2);
-	--accordion-padding-y: calc(var(--ui-base-spacing) * 1.5);
+	--accordion-padding-x: calc(var(--ui-base-spacing) * 4);
+	--accordion-padding-y: calc(var(--ui-base-spacing) * 3);
 	--accordion-focus-color: var(--ui-primary);
 	--accordion-focus-ring-width: var(--ui-ring-width);
 	--accordion-focus-ring-offset: var(--ui-ring-offset);
@@ -35,7 +35,7 @@
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-	padding: calc(var(--accordion-padding-y) * 2) calc(var(--accordion-padding-x) * 2);
+	padding: var(--accordion-padding-y) var(--accordion-padding-x);
 	background: none;
 	border: none;
 	cursor: pointer;
@@ -92,8 +92,8 @@
 }
 
 .accordion-item__content {
-	padding: calc(var(--accordion-padding-y) * 0.75) calc(var(--accordion-padding-x) * 2)
-		calc(var(--accordion-padding-y) * 2);
+	padding: calc(var(--accordion-padding-y) * 0.5) var(--accordion-padding-x)
+		var(--accordion-padding-y);
 	font-size: var(--ui-text-sm);
 	color: var(--accordion-content-color);
 	line-height: var(--ui-leading-normal);

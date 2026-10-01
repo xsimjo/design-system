@@ -11,13 +11,14 @@
 	--drawer-border-width: var(--ui-border-width);
 	--drawer-shadow: var(--ui-depth);
 
-	--drawer-padding: calc(var(--ui-base-spacing) * 3);
-	--drawer-footer-gap: calc(var(--ui-base-spacing) * 1.5);
+	--drawer-padding: calc(var(--ui-base-spacing) * 6);
+	--drawer-footer-padding-top: calc(var(--ui-base-spacing) * 4);
+	--drawer-footer-gap: calc(var(--ui-base-spacing) * 3);
 
-	--drawer-sm-width: calc(var(--ui-base-spacing) * 50);
-	--drawer-md-width: calc(var(--ui-base-spacing) * 64);
-	--drawer-lg-width: calc(var(--ui-base-spacing) * 80);
-	--drawer-xl-width: calc(var(--ui-base-spacing) * 96);
+	--drawer-sm-width: calc(var(--ui-base-spacing) * 100);
+	--drawer-md-width: calc(var(--ui-base-spacing) * 128);
+	--drawer-lg-width: calc(var(--ui-base-spacing) * 160);
+	--drawer-xl-width: calc(var(--ui-base-spacing) * 192);
 
 	--drawer-title-size: var(--ui-text-lg);
 	--drawer-title-weight: var(--ui-weight-semibold);
@@ -26,7 +27,7 @@
 	--drawer-close-color: color-mix(in oklch, var(--ui-surface-overlay-foreground), transparent 40%);
 	--drawer-close-hover-color: var(--ui-surface-overlay-foreground);
 	--drawer-close-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 88%);
-	--drawer-close-size: calc(var(--ui-base-spacing) * 4);
+	--drawer-close-size: calc(var(--ui-base-spacing) * 8);
 	--drawer-close-border-radius: var(--ui-base-radius);
 	--drawer-close-focus-color: var(--ui-primary);
 	--drawer-close-focus-ring-width: var(--ui-ring-width);
@@ -184,7 +185,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: calc(var(--ui-base-spacing) * 2);
+	gap: calc(var(--ui-base-spacing) * 4);
 	padding: var(--drawer-padding);
 	border-bottom: var(--drawer-border-width) solid var(--drawer-divider-color);
 	flex-shrink: 0;
@@ -243,7 +244,7 @@
 	align-items: center;
 	justify-content: flex-end;
 	gap: var(--drawer-footer-gap);
-	padding: var(--drawer-padding);
+	padding: var(--drawer-footer-padding-top) var(--drawer-padding) var(--drawer-padding);
 	border-top: var(--drawer-border-width) solid var(--drawer-divider-color);
 	flex-shrink: 0;
 }

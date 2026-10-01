@@ -16,17 +16,20 @@
 	--tabs-radius: var(--ui-base-radius);
 	--tabs-duration: var(--ui-base-duration);
 	--tabs-easing: var(--ui-base-easing);
-	--tabs-gap: calc(var(--ui-base-spacing) * 0.5);
-	--tabs-sm-height: calc(var(--ui-base-spacing) * 4);
-	--tabs-sm-padding-x: calc(var(--ui-base-spacing) * 1.5);
+	--tabs-gap: calc(var(--ui-base-spacing) * 1);
+	--tabs-sm-height: calc(var(--ui-base-spacing) * 8);
+	--tabs-sm-padding-x: calc(var(--ui-base-spacing) * 3);
 	--tabs-sm-font-size: var(--ui-text-xs);
-	--tabs-md-height: calc(var(--ui-base-spacing) * 5);
-	--tabs-md-padding-x: calc(var(--ui-base-spacing) * 2);
+	--tabs-sm-gap: calc(var(--ui-base-spacing) * 1.5);
+	--tabs-md-height: calc(var(--ui-base-spacing) * 10);
+	--tabs-md-padding-x: calc(var(--ui-base-spacing) * 4);
 	--tabs-md-font-size: var(--ui-text-sm);
-	--tabs-lg-height: calc(var(--ui-base-spacing) * 6);
-	--tabs-lg-padding-x: calc(var(--ui-base-spacing) * 3);
+	--tabs-md-gap: var(--ui-base-spacing);
+	--tabs-lg-height: calc(var(--ui-base-spacing) * 12);
+	--tabs-lg-padding-x: calc(var(--ui-base-spacing) * 6);
 	--tabs-lg-font-size: var(--ui-text-base);
-	--tabs-panel-padding: calc(var(--ui-base-spacing) * 2);
+	--tabs-lg-gap: calc(var(--ui-base-spacing) * 2.5);
+	--tabs-panel-padding: calc(var(--ui-base-spacing) * 4);
 }
 
 /* ── Tabs container ── */
@@ -57,8 +60,8 @@
 .tabs--enclosed > .tabs__list {
 	background: var(--tabs-bg-enclosed-list);
 	border-radius: var(--tabs-radius);
-	padding: calc(var(--ui-base-spacing) * 0.5);
-	gap: calc(var(--ui-base-spacing) * 0.5);
+	padding: calc(var(--ui-base-spacing) * 1);
+	gap: calc(var(--ui-base-spacing) * 1);
 }
 
 /* full width */
@@ -76,7 +79,7 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	gap: calc(var(--ui-base-spacing) * 0.75);
+	gap: var(--tabs-md-gap);
 	white-space: nowrap;
 	font-family: var(--tabs-font-family);
 	font-weight: var(--ui-weight-medium);
@@ -95,18 +98,21 @@
 	height: var(--tabs-sm-height);
 	padding: 0 var(--tabs-sm-padding-x);
 	font-size: var(--tabs-sm-font-size);
+	gap: var(--tabs-sm-gap);
 }
 
 .tabs__tab--md {
 	height: var(--tabs-md-height);
 	padding: 0 var(--tabs-md-padding-x);
 	font-size: var(--tabs-md-font-size);
+	gap: var(--tabs-md-gap);
 }
 
 .tabs__tab--lg {
 	height: var(--tabs-lg-height);
 	padding: 0 var(--tabs-lg-padding-x);
 	font-size: var(--tabs-lg-font-size);
+	gap: var(--tabs-lg-gap);
 }
 
 /* ── Underline variant states ── */

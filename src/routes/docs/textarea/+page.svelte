@@ -319,7 +319,7 @@
 			rows={[
 				[
 					'--textarea-min-height',
-					'calc(var(--ui-base-spacing) * 10)',
+					'calc(var(--ui-base-spacing) * 20)',
 					'Minimum height of the textarea'
 				],
 				['--textarea-border-radius', 'var(--ui-base-radius)', 'Corner roundness'],

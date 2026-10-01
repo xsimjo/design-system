@@ -1,6 +1,6 @@
 [data-theme] {
 	/* Field */
-	--field-gap: calc(var(--ui-base-spacing) * 1.5);
+	--field-gap: calc(var(--ui-base-spacing) * 3);
 	--field-font-family: var(--ui-font-sans);
 
 	/* FieldLabel */
@@ -17,10 +17,10 @@
 	--field-description-line-height: var(--ui-leading-tight);
 
 	/* FieldGroup */
-	--field-group-gap: calc(var(--ui-base-spacing) * 2);
+	--field-group-gap: calc(var(--ui-base-spacing) * 4);
 
 	/* FieldSet */
-	--field-set-gap: calc(var(--ui-base-spacing) * 2);
+	--field-set-gap: calc(var(--ui-base-spacing) * 4);
 
 	/* FieldLegend */
 	--field-legend-font-size: var(--ui-text-base);
@@ -66,7 +66,7 @@
 
 .field-label__required {
 	color: var(--field-required-color);
-	margin-inline-start: 2px;
+	margin-inline-start: calc(var(--ui-base-spacing) * 0.5);
 }
 
 /* =========================================================================

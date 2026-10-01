@@ -123,19 +123,19 @@ toast.info('Auto-saving…', { dismissible: false, duration: 2000 });
 | Token                      | Default                                                   | Description                     |
 | -------------------------- | --------------------------------------------------------- | ------------------------------- |
 | `--toast-width`            | `360px`                                                   | Max width of a single toast     |
-| `--toast-gap`              | `calc(var(--ui-base-spacing) * 1)`                        | Vertical gap between toasts     |
+| `--toast-gap`              | `calc(var(--ui-base-spacing) * 2)`                        | Vertical gap between toasts     |
 | `--toast-surface`          | `var(--ui-surface-overlay)`                               | Toast background                |
 | `--toast-foreground`       | `var(--ui-surface-overlay-foreground)`                    | Toast text color                |
 | `--toast-border`           | `var(--ui-border)`                                        | Toast border color              |
 | `--toast-border-width`     | `var(--ui-border-width)`                                  | Toast border thickness          |
 | `--toast-border-radius`    | `var(--ui-base-radius)`                                   | Toast corner radius             |
 | `--toast-shadow`           | `var(--ui-depth)`                                         | Toast box shadow                |
-| `--toast-padding-x`        | `calc(var(--ui-base-spacing) * 2)`                        | Horizontal padding              |
-| `--toast-padding-y`        | `calc(var(--ui-base-spacing) * 1.75)`                     | Vertical padding                |
+| `--toast-padding-x`        | `calc(var(--ui-base-spacing) * 4)`                        | Horizontal padding              |
+| `--toast-padding-y`        | `calc(var(--ui-base-spacing) * 3.5)`                      | Vertical padding                |
 | `--toast-message-size`     | `var(--ui-text-sm)`                                       | Message font size               |
 | `--toast-message-weight`   | `var(--ui-weight-medium)`                                 | Message font weight             |
 | `--toast-description-size` | `var(--ui-text-xs)`                                       | Description font size           |
-| `--toast-dismiss-size`     | `calc(var(--ui-base-spacing) * 3.5)`                      | Dismiss button size             |
+| `--toast-dismiss-size`     | `calc(var(--ui-base-spacing) * 7)`                        | Dismiss button size             |
 | `--toast-dismiss-hover-bg` | `color-mix(in oklch, var(--ui-neutral), transparent 88%)` | Dismiss button hover background |
 | `--toast-accent`           | `var(--ui-neutral)` (overridden per variant)              | Left-border accent color        |
 | `--toast-icon-color`       | `var(--ui-surface-foreground)` (overridden per variant)   | Icon color                      |

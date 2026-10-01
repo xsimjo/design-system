@@ -303,14 +303,10 @@
 				],
 				[
 					'--accordion-padding-x',
-					'calc(var(--ui-base-spacing) * 2)',
+					'calc(var(--ui-base-spacing) * 4)',
 					'Base horizontal padding unit'
 				],
-				[
-					'--accordion-padding-y',
-					'calc(var(--ui-base-spacing) * 1.5)',
-					'Base vertical padding unit'
-				],
+				['--accordion-padding-y', 'calc(var(--ui-base-spacing) * 3)', 'Base vertical padding unit'],
 				['--accordion-duration', 'var(--ui-base-duration)', 'Transition duration'],
 				['--accordion-easing', 'var(--ui-base-easing)', 'Transition easing function']
 			]}

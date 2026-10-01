@@ -19,18 +19,18 @@
 		var(--ui-border),
 		var(--ui-hover-mix) var(--ui-hover-amount)
 	);
-	--multiselect-gap: calc(var(--ui-base-spacing) * 0.75);
+	--multiselect-gap: calc(var(--ui-base-spacing) * 1.5);
 
-	--multiselect-min-height: calc(var(--ui-base-spacing) * 5);
-	--multiselect-padding-x: calc(var(--ui-base-spacing) * 2);
-	--multiselect-padding-y: calc(var(--ui-base-spacing) * 0.75);
+	--multiselect-min-height: calc(var(--ui-base-spacing) * 10);
+	--multiselect-padding-x: calc(var(--ui-base-spacing) * 4);
+	--multiselect-padding-y: calc(var(--ui-base-spacing) * 1.5);
 	--multiselect-font-size: var(--ui-text-base);
 
 	--multiselect-font-family: var(--ui-font-sans);
 	--multiselect-font-weight: var(--ui-weight-normal);
 	--multiselect-border-radius: var(--ui-base-radius);
 	--multiselect-transition: var(--ui-base-duration) var(--ui-base-easing);
-	--multiselect-chevron-size: calc(var(--ui-base-spacing) * 2);
+	--multiselect-chevron-size: calc(var(--ui-base-spacing) * 4);
 	--multiselect-chevron-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 35%);
 
 	/* Listbox */
@@ -38,21 +38,21 @@
 	--multiselect-listbox-fg: var(--ui-surface-overlay-foreground);
 	--multiselect-listbox-border: var(--ui-border);
 	--multiselect-listbox-shadow: var(--ui-depth);
-	--multiselect-listbox-padding: calc(var(--ui-base-spacing) * 0.5);
-	--multiselect-listbox-max-height: calc(var(--ui-base-spacing) * 40);
+	--multiselect-listbox-padding: calc(var(--ui-base-spacing) * 1);
+	--multiselect-listbox-max-height: calc(var(--ui-base-spacing) * 80);
 	--multiselect-listbox-z-index: var(--ui-z-overlay);
 	--multiselect-listbox-enter-offset: var(--ui-enter-offset);
 
 	/* Options */
-	--multiselect-option-height: calc(var(--ui-base-spacing) * 5);
-	--multiselect-option-padding-x: calc(var(--ui-base-spacing) * 1.5);
+	--multiselect-option-height: calc(var(--ui-base-spacing) * 10);
+	--multiselect-option-padding-x: calc(var(--ui-base-spacing) * 3);
 	--multiselect-option-font-size: var(--ui-text-sm);
 	--multiselect-option-border-radius: calc(var(--ui-base-radius) * 0.5);
 	--multiselect-option-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 90%);
 	--multiselect-option-selected-bg: color-mix(in oklch, var(--ui-primary), transparent 90%);
 	--multiselect-option-selected-hover-bg: color-mix(in oklch, var(--ui-primary), transparent 84%);
 	--multiselect-option-selected-fg: var(--ui-primary);
-	--multiselect-option-check-size: calc(var(--ui-base-spacing) * 2);
+	--multiselect-option-check-size: calc(var(--ui-base-spacing) * 4);
 	--multiselect-option-disabled-opacity: 0.5;
 
 	/* Badge highlight */
@@ -209,7 +209,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: calc(var(--ui-base-spacing) * 1.5);
+	gap: calc(var(--ui-base-spacing) * 3);
 	min-height: var(--multiselect-option-height);
 	padding: 0 var(--multiselect-option-padding-x);
 	font-family: var(--multiselect-font-family);

@@ -67,11 +67,11 @@
 	.theme-builder__body {
 		display: grid;
 		grid-template-columns: 420px 1fr;
-		gap: calc(var(--ui-base-spacing) * 3);
+		gap: calc(var(--ui-base-spacing) * 6);
 		max-width: 1500px;
 		width: 100%;
 		margin: 0 auto;
-		padding: calc(var(--ui-base-spacing) * 3);
+		padding: calc(var(--ui-base-spacing) * 6);
 	}
 
 	.theme-builder__editor {
@@ -84,13 +84,13 @@
 	.theme-builder__preview {
 		display: flex;
 		flex-direction: column;
-		gap: calc(var(--ui-base-spacing) * 3);
+		gap: calc(var(--ui-base-spacing) * 6);
 	}
 
 	@media (max-width: 1024px) {
 		.theme-builder__body {
 			grid-template-columns: 1fr;
-			padding: calc(var(--ui-base-spacing) * 2);
+			padding: calc(var(--ui-base-spacing) * 4);
 		}
 
 		.theme-builder__editor {

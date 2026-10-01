@@ -118,7 +118,7 @@ All standard `HTMLDivElement` attributes are forwarded to the item's root `<div>
 | `--accordion-trigger-color`    | `var(--ui-surface-foreground)`                             | Trigger button text color    |
 | `--accordion-trigger-hover-bg` | `color-mix(var(--ui-neutral), transparent 90%)`            | Trigger hover background     |
 | `--accordion-content-color`    | `color-mix(var(--ui-surface-foreground), transparent 25%)` | Panel content text color     |
-| `--accordion-padding-x`        | `calc(var(--ui-base-spacing) * 2)`                         | Base horizontal padding unit |
-| `--accordion-padding-y`        | `calc(var(--ui-base-spacing) * 1.5)`                       | Base vertical padding unit   |
+| `--accordion-padding-x`        | `calc(var(--ui-base-spacing) * 4)`                         | Base horizontal padding unit |
+| `--accordion-padding-y`        | `calc(var(--ui-base-spacing) * 3)`                         | Base vertical padding unit   |
 | `--accordion-duration`         | `var(--ui-base-duration)`                                  | Transition duration          |
 | `--accordion-easing`           | `var(--ui-base-easing)`                                    | Transition easing function   |

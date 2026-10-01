@@ -200,14 +200,14 @@ All standard `HTMLDivElement` attributes are forwarded to the `<div role="tabpan
 | `--tabs-radius`           | `var(--ui-base-radius)`                                    | Border radius                     |
 | `--tabs-duration`         | `var(--ui-base-duration)`                                  | Transition duration               |
 | `--tabs-easing`           | `var(--ui-base-easing)`                                    | Transition easing                 |
-| `--tabs-gap`              | `calc(var(--ui-base-spacing) * 0.5)`                       | Gap between tabs (pills/enclosed) |
-| `--tabs-sm-height`        | `calc(var(--ui-base-spacing) * 4)`                         | Small tab height                  |
-| `--tabs-sm-padding-x`     | `calc(var(--ui-base-spacing) * 1.5)`                       | Small tab horizontal padding      |
+| `--tabs-gap`              | `calc(var(--ui-base-spacing) * 1)`                         | Gap between tabs (pills/enclosed) |
+| `--tabs-sm-height`        | `calc(var(--ui-base-spacing) * 8)`                         | Small tab height                  |
+| `--tabs-sm-padding-x`     | `calc(var(--ui-base-spacing) * 3)`                         | Small tab horizontal padding      |
 | `--tabs-sm-font-size`     | `var(--ui-text-xs)`                                        | Small tab font size               |
-| `--tabs-md-height`        | `calc(var(--ui-base-spacing) * 5)`                         | Medium tab height                 |
-| `--tabs-md-padding-x`     | `calc(var(--ui-base-spacing) * 2)`                         | Medium tab horizontal padding     |
+| `--tabs-md-height`        | `calc(var(--ui-base-spacing) * 10)`                        | Medium tab height                 |
+| `--tabs-md-padding-x`     | `calc(var(--ui-base-spacing) * 4)`                         | Medium tab horizontal padding     |
 | `--tabs-md-font-size`     | `var(--ui-text-sm)`                                        | Medium tab font size              |
-| `--tabs-lg-height`        | `calc(var(--ui-base-spacing) * 6)`                         | Large tab height                  |
-| `--tabs-lg-padding-x`     | `calc(var(--ui-base-spacing) * 3)`                         | Large tab horizontal padding      |
+| `--tabs-lg-height`        | `calc(var(--ui-base-spacing) * 12)`                        | Large tab height                  |
+| `--tabs-lg-padding-x`     | `calc(var(--ui-base-spacing) * 6)`                         | Large tab horizontal padding      |
 | `--tabs-lg-font-size`     | `var(--ui-text-base)`                                      | Large tab font size               |
-| `--tabs-panel-padding`    | `calc(var(--ui-base-spacing) * 2)`                         | Panel top/bottom padding          |
+| `--tabs-panel-padding`    | `calc(var(--ui-base-spacing) * 4)`                         | Panel top/bottom padding          |

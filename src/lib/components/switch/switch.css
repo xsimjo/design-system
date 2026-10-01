@@ -24,11 +24,11 @@
 	);
 
 	/* Size */
-	--switch-track-width: calc(var(--ui-base-spacing) * 4.5);
-	--switch-track-height: calc(var(--ui-base-spacing) * 2.5);
-	--switch-thumb-size: calc(var(--ui-base-spacing) * 2);
-	--switch-thumb-travel: calc(var(--ui-base-spacing) * 2);
-	--switch-thumb-offset: calc(var(--ui-base-spacing) * 0.25);
+	--switch-track-width: calc(var(--ui-base-spacing) * 9);
+	--switch-track-height: calc(var(--ui-base-spacing) * 5);
+	--switch-thumb-size: calc(var(--ui-base-spacing) * 4);
+	--switch-thumb-travel: calc(var(--ui-base-spacing) * 4);
+	--switch-thumb-offset: calc(var(--ui-base-spacing) * 0.5);
 
 	/* Style */
 	--switch-border-radius: 9999px;

@@ -98,16 +98,17 @@
 	--toast-border-radius: var(--ui-base-radius);
 	--toast-shadow: var(--ui-depth);
 
-	--toast-padding-x: calc(var(--ui-base-spacing) * 2);
-	--toast-padding-y: calc(var(--ui-base-spacing) * 1.5);
-	--toast-icon-size: calc(var(--ui-base-spacing) * 2);
-	--toast-gap-inner: calc(var(--ui-base-spacing) * 1.5);
+	--toast-padding-x: calc(var(--ui-base-spacing) * 4);
+	--toast-padding-y: calc(var(--ui-base-spacing) * 3);
+	--toast-icon-size: calc(var(--ui-base-spacing) * 4);
+	--toast-gap-inner: calc(var(--ui-base-spacing) * 3);
+	--toast-body-gap: calc(var(--ui-base-spacing) * 1);
 
 	--toast-message-size: var(--ui-text-sm);
 	--toast-message-weight: var(--ui-weight-medium);
 	--toast-description-size: var(--ui-text-xs);
 
-	--toast-dismiss-size: calc(var(--ui-base-spacing) * 3);
+	--toast-dismiss-size: calc(var(--ui-base-spacing) * 6);
 	--toast-dismiss-hover-bg: color-mix(
 		in oklch,
 		transparent,
@@ -275,7 +276,7 @@
 	min-width: 0;
 	display: flex;
 	flex-direction: column;
-	gap: calc(var(--ui-base-spacing) * 0.5);
+	gap: var(--toast-body-gap);
 }
 
 .toast__message {
@@ -303,7 +304,7 @@
 	color: color-mix(in oklch, var(--toast-foreground), transparent 40%);
 	cursor: pointer;
 	transition: background-color var(--toast-transition-exit);
-	margin-top: -2px;
+	margin-top: calc(var(--ui-base-spacing) * -0.5);
 }
 
 .toast__dismiss:hover {

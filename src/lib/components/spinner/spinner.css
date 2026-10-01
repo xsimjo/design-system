@@ -1,7 +1,7 @@
 [data-theme] {
-	--spinner-sm-size: calc(var(--ui-base-spacing) * 2);
-	--spinner-md-size: calc(var(--ui-base-spacing) * 3);
-	--spinner-lg-size: calc(var(--ui-base-spacing) * 4);
+	--spinner-sm-size: calc(var(--ui-base-spacing) * 4);
+	--spinner-md-size: calc(var(--ui-base-spacing) * 6);
+	--spinner-lg-size: calc(var(--ui-base-spacing) * 8);
 	--spinner-default-size: 1em;
 	--spinner-sm-border-width: calc(var(--ui-border-width) * 2);
 	--spinner-md-border-width: calc(var(--ui-border-width) * 3);

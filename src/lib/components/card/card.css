@@ -6,10 +6,10 @@
 	--card-radius: var(--ui-base-radius);
 	--card-divider-color: var(--ui-border);
 	--card-shadow: var(--ui-depth);
-	--card-padding-sm: calc(var(--ui-base-spacing) * 2);
-	--card-padding-md: calc(var(--ui-base-spacing) * 4);
-	--card-padding-lg: calc(var(--ui-base-spacing) * 6);
-	--card-footer-gap: calc(var(--ui-base-spacing) * 2);
+	--card-padding-sm: calc(var(--ui-base-spacing) * 4);
+	--card-padding-md: calc(var(--ui-base-spacing) * 8);
+	--card-padding-lg: calc(var(--ui-base-spacing) * 12);
+	--card-footer-gap: calc(var(--ui-base-spacing) * 4);
 }
 
 .card {

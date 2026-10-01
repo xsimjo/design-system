@@ -137,7 +137,7 @@ When placed inside a `Field` component, Combobox automatically reads:
 | `--combobox-font-weight`       | `var(--ui-weight-normal)`                       | Font weight                    |
 | `--combobox-border-radius`     | `var(--ui-base-radius)`                         | Corner roundness               |
 | `--combobox-transition`        | `var(--ui-base-duration) var(--ui-base-easing)` | Transition                     |
-| `--combobox-chevron-size`      | `calc(var(--ui-base-spacing) * 2)`              | Chevron icon size              |
+| `--combobox-chevron-size`      | `calc(var(--ui-base-spacing) * 4)`              | Chevron icon size              |
 | `--combobox-chevron-color`     | `color-mix(…fg 35% transparent)`                | Chevron icon color             |
 
 ### Sizes
@@ -156,8 +156,8 @@ When placed inside a `Field` component, Combobox automatically reads:
 | `--combobox-listbox-fg`           | `var(--ui-surface-overlay-foreground)` | Listbox text color                  |
 | `--combobox-listbox-border`       | `var(--ui-border)`                     | Listbox border color                |
 | `--combobox-listbox-shadow`       | `var(--ui-depth)`                      | Listbox box shadow                  |
-| `--combobox-listbox-padding`      | `calc(var(--ui-base-spacing) * 0.5)`   | Inner padding around options        |
-| `--combobox-listbox-max-height`   | `calc(var(--ui-base-spacing) * 40)`    | Maximum height before scroll        |
+| `--combobox-listbox-padding`      | `calc(var(--ui-base-spacing) * 1)`     | Inner padding around options        |
+| `--combobox-listbox-max-height`   | `calc(var(--ui-base-spacing) * 80)`    | Maximum height before scroll        |
 | `--combobox-listbox-z-index`      | `var(--ui-z-overlay)`                  | Z-index of the floating listbox     |
 | `--combobox-listbox-enter-offset` | `var(--ui-enter-offset)`               | Transform offset for open animation |
 
@@ -165,13 +165,13 @@ When placed inside a `Field` component, Combobox automatically reads:
 
 | Token                                 | Default                               | Description                         |
 | ------------------------------------- | ------------------------------------- | ----------------------------------- |
-| `--combobox-option-height`            | `calc(var(--ui-base-spacing) * 5)`    | Minimum option height               |
-| `--combobox-option-padding-x`         | `calc(var(--ui-base-spacing) * 1.5)`  | Horizontal option padding           |
+| `--combobox-option-height`            | `calc(var(--ui-base-spacing) * 10)`   | Minimum option height               |
+| `--combobox-option-padding-x`         | `calc(var(--ui-base-spacing) * 3)`    | Horizontal option padding           |
 | `--combobox-option-font-size`         | `var(--ui-text-sm)`                   | Option font size                    |
 | `--combobox-option-border-radius`     | `calc(var(--ui-base-radius) * 0.5)`   | Option corner roundness             |
 | `--combobox-option-hover-bg`          | `color-mix(…neutral 90% transparent)` | Hover / keyboard-focus background   |
 | `--combobox-option-selected-bg`       | `color-mix(…primary 90% transparent)` | Selected option background          |
 | `--combobox-option-selected-hover-bg` | `color-mix(…primary 84% transparent)` | Selected option background on hover |
 | `--combobox-option-selected-fg`       | `var(--ui-primary)`                   | Selected option text color          |
-| `--combobox-option-check-size`        | `calc(var(--ui-base-spacing) * 2)`    | Checkmark icon size                 |
+| `--combobox-option-check-size`        | `calc(var(--ui-base-spacing) * 4)`    | Checkmark icon size                 |
 | `--combobox-option-disabled-opacity`  | `0.5`                                 | Opacity for disabled options        |

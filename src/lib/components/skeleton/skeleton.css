@@ -6,8 +6,8 @@
 	--skeleton-duration: calc(var(--ui-base-duration) * 5);
 	--skeleton-easing: var(--ui-base-easing);
 	--skeleton-stagger: calc(var(--ui-base-duration) * 0.5);
-	--skeleton-line-height: calc(var(--ui-base-spacing) * 2);
-	--skeleton-line-gap: calc(var(--ui-base-spacing) * 1.5);
+	--skeleton-line-height: calc(var(--ui-base-spacing) * 4);
+	--skeleton-line-gap: calc(var(--ui-base-spacing) * 3);
 	--skeleton-line-last-width: 70%;
 }
 

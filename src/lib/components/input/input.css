@@ -16,8 +16,8 @@
 		var(--ui-border),
 		var(--ui-hover-mix) var(--ui-hover-amount)
 	);
-	--input-height: calc(var(--ui-base-spacing) * 5);
-	--input-padding-x: calc(var(--ui-base-spacing) * 2);
+	--input-height: calc(var(--ui-base-spacing) * 10);
+	--input-padding-x: calc(var(--ui-base-spacing) * 4);
 	--input-font-size: var(--ui-text-base);
 	--input-font-family: var(--ui-font-sans);
 	--input-font-weight: var(--ui-weight-normal);
@@ -27,7 +27,7 @@
 	--input-icon-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
 	--input-clear-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
 	--input-clear-hover-color: var(--ui-surface-foreground);
-	--input-icon-size: calc(var(--ui-base-spacing) * 2.5);
+	--input-icon-size: calc(var(--ui-base-spacing) * 5);
 }
 
 /* Wrapper */

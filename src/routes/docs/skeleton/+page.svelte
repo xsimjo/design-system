@@ -170,8 +170,8 @@
 				['--skeleton-duration', '1.5s', 'Duration of one shimmer cycle'],
 				['--skeleton-easing', 'ease-in-out', 'Easing function for the shimmer animation'],
 				['--skeleton-stagger', '0.15s', 'Delay increment between text lines for cascading shimmer'],
-				['--skeleton-line-height', 'calc(var(--ui-base-spacing) * 2)', 'Height of each text line'],
-				['--skeleton-line-gap', 'calc(var(--ui-base-spacing) * 1.5)', 'Gap between text lines'],
+				['--skeleton-line-height', 'calc(var(--ui-base-spacing) * 4)', 'Height of each text line'],
+				['--skeleton-line-gap', 'calc(var(--ui-base-spacing) * 3)', 'Gap between text lines'],
 				['--skeleton-line-last-width', '70%', 'Width of the last text line']
 			]}
 		/>

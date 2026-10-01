@@ -138,7 +138,7 @@
 				['--breadcrumbs-font-size', 'var(--ui-text-sm)', 'Font size of all items'],
 				[
 					'--breadcrumbs-gap',
-					'calc(var(--ui-base-spacing) * 1.5)',
+					'calc(var(--ui-base-spacing) * 3)',
 					'Gap between items and separators'
 				],
 				['--breadcrumbs-current-color', 'var(--ui-surface-foreground)', 'Current page text color'],

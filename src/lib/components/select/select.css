@@ -20,15 +20,15 @@
 		var(--ui-hover-mix) var(--ui-hover-amount)
 	);
 
-	--select-height: calc(var(--ui-base-spacing) * 5);
-	--select-padding-x: calc(var(--ui-base-spacing) * 2);
+	--select-height: calc(var(--ui-base-spacing) * 10);
+	--select-padding-x: calc(var(--ui-base-spacing) * 4);
 	--select-font-size: var(--ui-text-base);
 
 	--select-font-family: var(--ui-font-sans);
 	--select-font-weight: var(--ui-weight-normal);
 	--select-border-radius: var(--ui-base-radius);
 	--select-transition: var(--ui-base-duration) var(--ui-base-easing);
-	--select-chevron-size: calc(var(--ui-base-spacing) * 2);
+	--select-chevron-size: calc(var(--ui-base-spacing) * 4);
 	--select-chevron-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 35%);
 
 	/* Listbox */
@@ -36,21 +36,21 @@
 	--select-listbox-fg: var(--ui-surface-overlay-foreground);
 	--select-listbox-border: var(--ui-border);
 	--select-listbox-shadow: var(--ui-depth);
-	--select-listbox-padding: calc(var(--ui-base-spacing) * 0.5);
-	--select-listbox-max-height: calc(var(--ui-base-spacing) * 40);
+	--select-listbox-padding: calc(var(--ui-base-spacing) * 1);
+	--select-listbox-max-height: calc(var(--ui-base-spacing) * 80);
 	--select-listbox-z-index: var(--ui-z-overlay);
 	--select-listbox-enter-offset: var(--ui-enter-offset);
 
 	/* Options */
-	--select-option-height: calc(var(--ui-base-spacing) * 5);
-	--select-option-padding-x: calc(var(--ui-base-spacing) * 1.5);
+	--select-option-height: calc(var(--ui-base-spacing) * 10);
+	--select-option-padding-x: calc(var(--ui-base-spacing) * 3);
 	--select-option-font-size: var(--ui-text-sm);
 	--select-option-border-radius: calc(var(--ui-base-radius) * 0.5);
 	--select-option-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 90%);
 	--select-option-selected-bg: color-mix(in oklch, var(--ui-primary), transparent 90%);
 	--select-option-selected-hover-bg: color-mix(in oklch, var(--ui-primary), transparent 84%);
 	--select-option-selected-fg: var(--ui-primary);
-	--select-option-check-size: calc(var(--ui-base-spacing) * 2);
+	--select-option-check-size: calc(var(--ui-base-spacing) * 4);
 	--select-option-disabled-opacity: 0.5;
 }
 
@@ -71,7 +71,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: calc(var(--ui-base-spacing) * 1);
+	gap: calc(var(--ui-base-spacing) * 2);
 	width: 100%;
 	background-color: var(--select-bg);
 	color: var(--select-fg);
@@ -190,7 +190,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: calc(var(--ui-base-spacing) * 1.5);
+	gap: calc(var(--ui-base-spacing) * 3);
 	min-height: var(--select-option-height);
 	padding: 0 var(--select-option-padding-x);
 	font-family: var(--select-font-family);

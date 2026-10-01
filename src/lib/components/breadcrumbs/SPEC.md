@@ -79,6 +79,6 @@ Link items use `Button` CSS classes (`button--link button--secondary button--sm`
 | Token                           | Default                                                              | Description                      |
 | ------------------------------- | -------------------------------------------------------------------- | -------------------------------- |
 | `--breadcrumbs-font-size`       | `var(--ui-text-sm)`                                                  | Font size of all items           |
-| `--breadcrumbs-gap`             | `calc(var(--ui-base-spacing) * 1.5)`                                 | Gap between items and separators |
+| `--breadcrumbs-gap`             | `calc(var(--ui-base-spacing) * 3)`                                   | Gap between items and separators |
 | `--breadcrumbs-current-color`   | `var(--ui-surface-foreground)`                                       | Current page text color          |
 | `--breadcrumbs-separator-color` | `color-mix(in oklch, var(--ui-surface-foreground), transparent 60%)` | Separator icon/text color        |

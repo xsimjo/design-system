@@ -20,21 +20,21 @@
 	--popover-border-radius: var(--ui-base-radius);
 	--popover-shadow: var(--ui-depth);
 
-	--popover-padding: calc(var(--ui-base-spacing) * 2);
-	--popover-min-width: calc(var(--ui-base-spacing) * 28);
-	--popover-max-width: calc(var(--ui-base-spacing) * 52);
+	--popover-padding: calc(var(--ui-base-spacing) * 4);
+	--popover-min-width: calc(var(--ui-base-spacing) * 56);
+	--popover-max-width: calc(var(--ui-base-spacing) * 104);
 	--popover-z-index: var(--ui-z-overlay);
 
-	--popover-arrow-size: calc(var(--ui-base-spacing) * 1);
-	--popover-enter-offset: calc(var(--ui-base-spacing) * 0.75);
+	--popover-arrow-size: calc(var(--ui-base-spacing) * 2);
+	--popover-enter-offset: calc(var(--ui-base-spacing) * 1.5);
 
 	--popover-title-size: var(--ui-text-sm);
 	--popover-title-weight: var(--ui-weight-semibold);
 	--popover-body-size: var(--ui-text-sm);
 
-	--popover-header-padding-bottom: calc(var(--ui-base-spacing) * 1.5);
-	--popover-footer-padding-top: calc(var(--ui-base-spacing) * 1.5);
-	--popover-footer-gap: calc(var(--ui-base-spacing) * 1.5);
+	--popover-header-padding-bottom: calc(var(--ui-base-spacing) * 3);
+	--popover-footer-padding-top: calc(var(--ui-base-spacing) * 3);
+	--popover-footer-gap: calc(var(--ui-base-spacing) * 3);
 
 	--popover-duration: var(--ui-base-duration);
 	--popover-easing: var(--ui-base-easing);
@@ -74,7 +74,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: calc(var(--ui-base-spacing) * 2);
+	gap: calc(var(--ui-base-spacing) * 4);
 	padding: var(--popover-padding) var(--popover-padding) var(--popover-header-padding-bottom);
 	border-bottom: var(--popover-border-width) solid var(--popover-border);
 }

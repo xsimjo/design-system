@@ -33,14 +33,14 @@
 	--file-input-remove-fg: var(--ui-neutral);
 	--file-input-remove-hover-fg: var(--ui-danger);
 
-	--file-input-padding-y: calc(var(--ui-base-spacing) * 3);
-	--file-input-padding-x: calc(var(--ui-base-spacing) * 3);
+	--file-input-padding-y: calc(var(--ui-base-spacing) * 6);
+	--file-input-padding-x: calc(var(--ui-base-spacing) * 6);
 	--file-input-font-size: var(--ui-text-base);
 
 	--file-input-font-family: var(--ui-font-sans);
 	--file-input-font-weight: var(--ui-weight-normal);
 	--file-input-transition: var(--ui-base-duration) var(--ui-base-easing);
-	--file-input-gap: calc(var(--ui-base-spacing) * 1);
+	--file-input-gap: calc(var(--ui-base-spacing) * 2);
 }
 
 /* Wrapper */
@@ -75,7 +75,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: calc(var(--ui-base-spacing) * 0.75);
+	gap: calc(var(--ui-base-spacing) * 1.5);
 	width: 100%;
 	background-color: var(--file-input-bg);
 	color: var(--file-input-fg);
@@ -179,15 +179,15 @@
 	padding: 0;
 	display: flex;
 	flex-direction: column;
-	gap: calc(var(--ui-base-spacing) * 0.5);
+	gap: calc(var(--ui-base-spacing) * 1);
 }
 
 .file-input__file-item {
 	box-sizing: border-box;
 	display: flex;
 	align-items: center;
-	gap: calc(var(--ui-base-spacing) * 1.5);
-	padding: calc(var(--ui-base-spacing) * 1) calc(var(--ui-base-spacing) * 1.5);
+	gap: calc(var(--ui-base-spacing) * 3);
+	padding: calc(var(--ui-base-spacing) * 2) calc(var(--ui-base-spacing) * 3);
 	background-color: var(--file-input-file-bg);
 	border: var(--file-input-border-width) solid var(--file-input-file-border);
 	border-radius: var(--file-input-border-radius);

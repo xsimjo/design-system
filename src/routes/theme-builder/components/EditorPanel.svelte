@@ -58,7 +58,7 @@
 	.editor-panel {
 		display: flex;
 		flex-direction: column;
-		gap: calc(var(--ui-base-spacing) * 2);
+		gap: calc(var(--ui-base-spacing) * 4);
 	}
 
 	.editor-panel__base-theme {

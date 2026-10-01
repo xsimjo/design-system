@@ -35,9 +35,9 @@
 	--table-stripe-bg: color-mix(in oklch, var(--ui-neutral), transparent 93%);
 
 	/* Cell sizing */
-	--table-cell-sm-padding: calc(var(--ui-base-spacing) * 1) calc(var(--ui-base-spacing) * 1.5);
-	--table-cell-md-padding: calc(var(--ui-base-spacing) * 1.5) calc(var(--ui-base-spacing) * 2);
-	--table-cell-lg-padding: calc(var(--ui-base-spacing) * 2) calc(var(--ui-base-spacing) * 3);
+	--table-cell-sm-padding: calc(var(--ui-base-spacing) * 2) calc(var(--ui-base-spacing) * 3);
+	--table-cell-md-padding: calc(var(--ui-base-spacing) * 3) calc(var(--ui-base-spacing) * 4);
+	--table-cell-lg-padding: calc(var(--ui-base-spacing) * 4) calc(var(--ui-base-spacing) * 6);
 	--table-font-sm: var(--ui-text-xs);
 	--table-font-md: var(--ui-text-sm);
 	--table-font-lg: var(--ui-text-base);
@@ -59,10 +59,10 @@
 	--table-transition: var(--ui-base-duration) var(--ui-base-easing);
 
 	/* Truncate */
-	--table-truncate-max-width: calc(var(--ui-base-spacing) * 25);
+	--table-truncate-max-width: calc(var(--ui-base-spacing) * 50);
 
 	/* Sticky max-height (overridable per-instance via inline style) */
-	--table-max-height: calc(var(--ui-base-spacing) * 50);
+	--table-max-height: calc(var(--ui-base-spacing) * 100);
 }
 
 /* ============================================================
@@ -115,7 +115,7 @@
 .table__caption {
 	font-size: var(--table-caption-font-size);
 	color: var(--table-caption-color);
-	padding: calc(var(--ui-base-spacing) * 1.5) calc(var(--ui-base-spacing) * 2);
+	padding: calc(var(--ui-base-spacing) * 3) calc(var(--ui-base-spacing) * 4);
 	text-align: center;
 	line-height: var(--ui-leading-normal);
 }
@@ -169,7 +169,7 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: calc(var(--ui-base-spacing) * 0.75);
+	gap: calc(var(--ui-base-spacing) * 1.5);
 	width: 100%;
 	padding: var(--_cell-padding);
 	background: transparent;

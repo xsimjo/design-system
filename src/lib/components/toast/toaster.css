@@ -1,6 +1,6 @@
 [data-theme] {
-	--toast-width: 360px;
-	--toast-gap: calc(var(--ui-base-spacing) * 1);
+	--toast-width: calc(var(--ui-base-spacing) * 90);
+	--toast-gap: calc(var(--ui-base-spacing) * 2);
 	--toast-z-index: var(--ui-z-tooltip);
 }
 
@@ -35,7 +35,7 @@
 	flex-direction: column;
 	gap: var(--toast-gap);
 	width: var(--toast-width);
-	max-width: calc(100vw - 32px);
+	max-width: calc(100vw - var(--ui-base-spacing) * 4);
 	z-index: var(--toast-z-index);
 	pointer-events: none;
 }

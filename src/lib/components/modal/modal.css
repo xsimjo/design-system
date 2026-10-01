@@ -12,14 +12,14 @@
 	--modal-border-radius: calc(var(--ui-base-radius) * 1.5);
 	--modal-shadow: var(--ui-depth);
 
-	--modal-padding: calc(var(--ui-base-spacing) * 3);
-	--modal-footer-padding-top: calc(var(--ui-base-spacing) * 2);
-	--modal-footer-gap: calc(var(--ui-base-spacing) * 1.5);
+	--modal-padding: calc(var(--ui-base-spacing) * 6);
+	--modal-footer-padding-top: calc(var(--ui-base-spacing) * 4);
+	--modal-footer-gap: calc(var(--ui-base-spacing) * 3);
 
-	--modal-sm-width: calc(var(--ui-base-spacing) * 50);
-	--modal-md-width: calc(var(--ui-base-spacing) * 64);
-	--modal-lg-width: calc(var(--ui-base-spacing) * 80);
-	--modal-xl-width: calc(var(--ui-base-spacing) * 96);
+	--modal-sm-width: calc(var(--ui-base-spacing) * 100);
+	--modal-md-width: calc(var(--ui-base-spacing) * 128);
+	--modal-lg-width: calc(var(--ui-base-spacing) * 160);
+	--modal-xl-width: calc(var(--ui-base-spacing) * 192);
 
 	--modal-title-size: var(--ui-text-lg);
 	--modal-title-weight: var(--ui-weight-semibold);
@@ -28,7 +28,7 @@
 	--modal-close-color: color-mix(in oklch, var(--ui-surface-overlay-foreground), transparent 40%);
 	--modal-close-hover-color: var(--ui-surface-overlay-foreground);
 	--modal-close-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 88%);
-	--modal-close-size: calc(var(--ui-base-spacing) * 4);
+	--modal-close-size: calc(var(--ui-base-spacing) * 8);
 	--modal-close-border-radius: var(--ui-base-radius);
 	--modal-close-focus-color: var(--ui-primary);
 	--modal-close-focus-ring-width: var(--ui-ring-width);
@@ -37,7 +37,7 @@
 	--modal-divider-color: var(--ui-border);
 
 	--modal-transition: var(--ui-base-duration) var(--ui-base-easing);
-	--modal-enter-offset: calc(var(--ui-base-spacing) * 1.5);
+	--modal-enter-offset: calc(var(--ui-base-spacing) * 3);
 	--modal-enter-scale: 0.97;
 }
 
@@ -50,7 +50,7 @@
 	width: 100%;
 	max-width: 100%;
 	max-height: 100%;
-	padding: calc(var(--ui-base-spacing) * 2);
+	padding: calc(var(--ui-base-spacing) * 4);
 	border: none;
 	background: transparent;
 	overflow: visible;
@@ -121,7 +121,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: calc(var(--ui-base-spacing) * 2);
+	gap: calc(var(--ui-base-spacing) * 4);
 	padding: var(--modal-padding);
 	border-bottom: var(--modal-border-width) solid var(--modal-divider-color);
 	flex-shrink: 0;

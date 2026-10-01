@@ -59,8 +59,8 @@
 	--typography-code-font: var(--ui-font-mono);
 	--typography-code-bg: color-mix(in oklch, var(--ui-neutral), transparent 85%);
 	--typography-code-radius: calc(var(--ui-base-radius) * 0.5);
-	--typography-code-padding-x: calc(var(--ui-base-spacing) * 0.75);
-	--typography-code-padding-y: calc(var(--ui-base-spacing) * 0.25);
+	--typography-code-padding-x: calc(var(--ui-base-spacing) * 1.5);
+	--typography-code-padding-y: calc(var(--ui-base-spacing) * 0.5);
 	--typography-code-size: 0.875em;
 
 	/* ---------- Weight overrides ---------- */

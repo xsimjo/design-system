@@ -17,12 +17,12 @@
 		var(--ui-border),
 		var(--ui-hover-mix) var(--ui-hover-amount)
 	);
-	--badge-input-gap: calc(var(--ui-base-spacing) * 0.75);
+	--badge-input-gap: calc(var(--ui-base-spacing) * 1.5);
 	--badge-input-validation-error-fg: var(--ui-danger);
 
-	--badge-input-min-height: calc(var(--ui-base-spacing) * 5);
-	--badge-input-padding-x: calc(var(--ui-base-spacing) * 2);
-	--badge-input-padding-y: calc(var(--ui-base-spacing) * 0.75);
+	--badge-input-min-height: calc(var(--ui-base-spacing) * 10);
+	--badge-input-padding-x: calc(var(--ui-base-spacing) * 4);
+	--badge-input-padding-y: calc(var(--ui-base-spacing) * 1.5);
 	--badge-input-font-size: var(--ui-text-base);
 
 	--badge-input-font-family: var(--ui-font-sans);
@@ -35,7 +35,7 @@
 .badge-input {
 	display: inline-flex;
 	flex-direction: column;
-	gap: calc(var(--ui-base-spacing) * 1);
+	gap: calc(var(--ui-base-spacing) * 2);
 }
 
 .badge-input--full-width {

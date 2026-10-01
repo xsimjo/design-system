@@ -165,7 +165,7 @@ The listbox is positioned with `@floating-ui/dom`:
 | `--select-error-color`       | `var(--ui-danger)`                              | Border color in error state     |
 | `--select-disabled-bg`       | `color-mix(…neutral 80% transparent)`           | Background when disabled        |
 | `--select-disabled-fg`       | `color-mix(…fg 50% transparent)`                | Text color when disabled        |
-| `--select-chevron-size`      | `calc(var(--ui-base-spacing) * 2)`              | Chevron icon size               |
+| `--select-chevron-size`      | `calc(var(--ui-base-spacing) * 4)`              | Chevron icon size               |
 | `--select-chevron-color`     | `color-mix(…fg 35% transparent)`                | Chevron icon color              |
 | `--select-border-radius`     | `var(--ui-base-radius)`                         | Corner roundness                |
 | `--select-font-family`       | `var(--ui-font-sans)`                           | Trigger font family             |
@@ -189,8 +189,8 @@ The listbox is positioned with `@floating-ui/dom`:
 | `--select-listbox-fg`           | `var(--ui-surface-overlay-foreground)` | Listbox text color                  |
 | `--select-listbox-border`       | `var(--ui-border)`                     | Listbox border color                |
 | `--select-listbox-shadow`       | `var(--ui-depth)`                      | Listbox box shadow                  |
-| `--select-listbox-padding`      | `calc(var(--ui-base-spacing) * 0.5)`   | Inner padding around options        |
-| `--select-listbox-max-height`   | `calc(var(--ui-base-spacing) * 40)`    | Maximum height before scroll        |
+| `--select-listbox-padding`      | `calc(var(--ui-base-spacing) * 1)`     | Inner padding around options        |
+| `--select-listbox-max-height`   | `calc(var(--ui-base-spacing) * 80)`    | Maximum height before scroll        |
 | `--select-listbox-z-index`      | `var(--ui-z-overlay)`                  | Z-index of the floating listbox     |
 | `--select-listbox-enter-offset` | `var(--ui-enter-offset)`               | Transform offset for open animation |
 
@@ -198,13 +198,13 @@ The listbox is positioned with `@floating-ui/dom`:
 
 | Token                               | Default                               | Description                         |
 | ----------------------------------- | ------------------------------------- | ----------------------------------- |
-| `--select-option-height`            | `calc(var(--ui-base-spacing) * 5)`    | Minimum option height               |
-| `--select-option-padding-x`         | `calc(var(--ui-base-spacing) * 1.5)`  | Horizontal option padding           |
+| `--select-option-height`            | `calc(var(--ui-base-spacing) * 10)`   | Minimum option height               |
+| `--select-option-padding-x`         | `calc(var(--ui-base-spacing) * 3)`    | Horizontal option padding           |
 | `--select-option-font-size`         | `var(--ui-text-sm)`                   | Option font size                    |
 | `--select-option-border-radius`     | `calc(var(--ui-base-radius) * 0.5)`   | Option corner roundness             |
 | `--select-option-hover-bg`          | `color-mix(…neutral 90% transparent)` | Hover / keyboard-focus background   |
 | `--select-option-selected-bg`       | `color-mix(…primary 90% transparent)` | Selected option background          |
 | `--select-option-selected-hover-bg` | `color-mix(…primary 84% transparent)` | Selected option background on hover |
 | `--select-option-selected-fg`       | `var(--ui-primary)`                   | Selected option text color          |
-| `--select-option-check-size`        | `calc(var(--ui-base-spacing) * 2)`    | Checkmark icon size                 |
+| `--select-option-check-size`        | `calc(var(--ui-base-spacing) * 4)`    | Checkmark icon size                 |
 | `--select-option-disabled-opacity`  | `0.5`                                 | Opacity for disabled options        |

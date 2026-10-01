@@ -7,18 +7,19 @@
 	--badge-remove-hover-bg: color-mix(in oklch, var(--ui-primary), transparent 70%);
 
 	/* Sizes */
-	--badge-height-sm: calc(var(--ui-base-spacing) * 3);
-	--badge-height-md: calc(var(--ui-base-spacing) * 3.5);
-	--badge-height-lg: calc(var(--ui-base-spacing) * 4);
-	--badge-padding-x-sm: calc(var(--ui-base-spacing) * 1.25);
-	--badge-padding-x-md: calc(var(--ui-base-spacing) * 1.5);
-	--badge-padding-x-lg: calc(var(--ui-base-spacing) * 2);
+	--badge-height-sm: calc(var(--ui-base-spacing) * 6);
+	--badge-height-md: calc(var(--ui-base-spacing) * 7);
+	--badge-height-lg: calc(var(--ui-base-spacing) * 8);
+	--badge-padding-x-sm: calc(var(--ui-base-spacing) * 2.5);
+	--badge-padding-x-md: calc(var(--ui-base-spacing) * 3);
+	--badge-padding-x-lg: calc(var(--ui-base-spacing) * 4);
 	--badge-font-size-sm: var(--ui-text-xs);
 	--badge-font-size-md: var(--ui-text-sm);
 	--badge-font-size-lg: var(--ui-text-base);
 
+	--badge-gap: calc(var(--ui-base-spacing) * 1);
 	--badge-border-radius: calc(var(--ui-base-radius) * 10);
-	--badge-remove-size: calc(var(--ui-base-spacing) * 2.5);
+	--badge-remove-size: calc(var(--ui-base-spacing) * 5);
 	--badge-transition: var(--ui-base-duration) var(--ui-base-easing);
 }
 
@@ -75,7 +76,7 @@
 .badge {
 	display: inline-flex;
 	align-items: center;
-	gap: calc(var(--ui-base-spacing) * 0.5);
+	gap: var(--badge-gap);
 	max-width: 100%;
 	background-color: var(--badge-bg);
 	color: var(--badge-fg);

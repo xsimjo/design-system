@@ -20,15 +20,15 @@
 		var(--ui-hover-mix) var(--ui-hover-amount)
 	);
 
-	--timepicker-height: calc(var(--ui-base-spacing) * 5);
-	--timepicker-padding-x: calc(var(--ui-base-spacing) * 2);
+	--timepicker-height: calc(var(--ui-base-spacing) * 10);
+	--timepicker-padding-x: calc(var(--ui-base-spacing) * 4);
 	--timepicker-font-size: var(--ui-text-base);
 
 	--timepicker-font-family: var(--ui-font-sans);
 	--timepicker-font-weight: var(--ui-weight-normal);
 	--timepicker-border-radius: var(--ui-base-radius);
 	--timepicker-transition: var(--ui-base-duration) var(--ui-base-easing);
-	--timepicker-icon-size: calc(var(--ui-base-spacing) * 2);
+	--timepicker-icon-size: calc(var(--ui-base-spacing) * 4);
 	--timepicker-icon-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 35%);
 
 	/* Panel */
@@ -40,8 +40,8 @@
 	--timepicker-panel-enter-offset: var(--ui-enter-offset);
 
 	/* Columns */
-	--timepicker-col-width: calc(var(--ui-base-spacing) * 7);
-	--timepicker-col-item-height: calc(var(--ui-base-spacing) * 5);
+	--timepicker-col-width: calc(var(--ui-base-spacing) * 14);
+	--timepicker-col-item-height: calc(var(--ui-base-spacing) * 10);
 	--timepicker-col-list-height: calc(var(--timepicker-col-item-height) * 5);
 	--timepicker-col-item-selected-bg: color-mix(in oklch, var(--ui-primary), transparent 90%);
 	--timepicker-col-item-selected-fg: var(--ui-primary);
@@ -77,7 +77,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: calc(var(--ui-base-spacing) * 1);
+	gap: calc(var(--ui-base-spacing) * 2);
 	width: 100%;
 	background-color: var(--timepicker-bg);
 	color: var(--timepicker-fg);
@@ -197,7 +197,7 @@
 	flex-shrink: 0;
 	cursor: pointer;
 	border-radius: calc(var(--timepicker-border-radius) * 0.5);
-	padding: calc(var(--ui-base-spacing) * 0.25);
+	padding: calc(var(--ui-base-spacing) * 0.5);
 	color: var(--timepicker-icon-color);
 	transition: color var(--timepicker-transition);
 }

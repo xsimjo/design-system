@@ -57,7 +57,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: calc(var(--ui-base-spacing) * 1.5) calc(var(--ui-base-spacing) * 2);
+		padding: calc(var(--ui-base-spacing) * 3) calc(var(--ui-base-spacing) * 4);
 		border-bottom: 1px solid var(--ui-border);
 		background: var(--ui-surface-raised);
 	}
@@ -69,7 +69,7 @@
 	}
 
 	.css-output__code {
-		padding: calc(var(--ui-base-spacing) * 2);
+		padding: calc(var(--ui-base-spacing) * 4);
 		margin: 0;
 		overflow-x: auto;
 		font-family: var(--ui-font-mono);

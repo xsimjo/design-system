@@ -19,8 +19,8 @@
 	--radio-disabled-border: var(--ui-border);
 
 	/* Size */
-	--radio-size: calc(var(--ui-base-spacing) * 2.25);
-	--radio-dot-radius: 4px;
+	--radio-size: calc(var(--ui-base-spacing) * 4);
+	--radio-dot-radius: calc(var(--ui-base-spacing) * 1);
 
 	/* Style */
 	--radio-transition: var(--ui-base-duration) var(--ui-base-easing);

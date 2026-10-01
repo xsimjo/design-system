@@ -20,15 +20,15 @@
 		var(--ui-hover-mix) var(--ui-hover-amount)
 	);
 
-	--datepicker-height: calc(var(--ui-base-spacing) * 5);
-	--datepicker-padding-x: calc(var(--ui-base-spacing) * 2);
+	--datepicker-height: calc(var(--ui-base-spacing) * 10);
+	--datepicker-padding-x: calc(var(--ui-base-spacing) * 4);
 	--datepicker-font-size: var(--ui-text-base);
 
 	--datepicker-font-family: var(--ui-font-sans);
 	--datepicker-font-weight: var(--ui-weight-normal);
 	--datepicker-border-radius: var(--ui-base-radius);
 	--datepicker-transition: var(--ui-base-duration) var(--ui-base-easing);
-	--datepicker-icon-size: calc(var(--ui-base-spacing) * 2);
+	--datepicker-icon-size: calc(var(--ui-base-spacing) * 4);
 	--datepicker-icon-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 35%);
 
 	/* Segment inputs */
@@ -42,15 +42,15 @@
 	--datepicker-panel-fg: var(--ui-surface-overlay-foreground);
 	--datepicker-panel-border: var(--ui-border);
 	--datepicker-panel-shadow: var(--ui-depth);
-	--datepicker-panel-padding: calc(var(--ui-base-spacing) * 1.5);
-	--datepicker-panel-width: calc(var(--ui-base-spacing) * 35);
+	--datepicker-panel-padding: calc(var(--ui-base-spacing) * 3);
+	--datepicker-panel-width: calc(var(--ui-base-spacing) * 70);
 	--datepicker-panel-z-index: var(--ui-z-overlay);
 	--datepicker-panel-enter-offset: var(--ui-enter-offset);
 
 	/* Header */
 	--datepicker-header-font-size: var(--ui-text-sm);
 	--datepicker-header-font-weight: var(--ui-weight-semibold);
-	--datepicker-nav-btn-size: calc(var(--ui-base-spacing) * 3.5);
+	--datepicker-nav-btn-size: calc(var(--ui-base-spacing) * 7);
 	--datepicker-nav-btn-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 85%);
 
 	/* Grid */
@@ -60,7 +60,7 @@
 		transparent 45%
 	);
 	--datepicker-weekday-font-size: var(--ui-text-xs);
-	--datepicker-day-size: calc(var(--ui-base-spacing) * 4.5);
+	--datepicker-day-size: calc(var(--ui-base-spacing) * 9);
 	--datepicker-day-border-radius: var(--ui-base-radius);
 	--datepicker-day-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 85%);
 	--datepicker-day-selected-bg: var(--ui-primary);
@@ -93,7 +93,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: calc(var(--ui-base-spacing) * 1);
+	gap: calc(var(--ui-base-spacing) * 2);
 	width: 100%;
 	background-color: var(--datepicker-bg);
 	color: var(--datepicker-fg);
@@ -216,7 +216,7 @@
 	flex-shrink: 0;
 	cursor: pointer;
 	border-radius: calc(var(--datepicker-border-radius) * 0.5);
-	padding: calc(var(--ui-base-spacing) * 0.25);
+	padding: calc(var(--ui-base-spacing) * 0.5);
 	color: var(--datepicker-icon-color);
 	transition: color var(--datepicker-transition);
 }
@@ -254,14 +254,14 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: calc(var(--ui-base-spacing) * 0.5);
-	margin-bottom: calc(var(--ui-base-spacing) * 1);
+	gap: calc(var(--ui-base-spacing) * 1);
+	margin-bottom: calc(var(--ui-base-spacing) * 2);
 }
 
 .datepicker__header-center {
 	display: flex;
 	align-items: center;
-	gap: calc(var(--ui-base-spacing) * 0.5);
+	gap: calc(var(--ui-base-spacing) * 1);
 	flex: 1;
 	justify-content: center;
 }
@@ -278,7 +278,7 @@
 	font-family: var(--datepicker-font-family);
 	font-size: var(--datepicker-header-font-size);
 	font-weight: var(--datepicker-header-font-weight);
-	padding: calc(var(--ui-base-spacing) * 0.25) calc(var(--ui-base-spacing) * 0.5);
+	padding: calc(var(--ui-base-spacing) * 0.5) calc(var(--ui-base-spacing) * 1);
 	border-radius: calc(var(--datepicker-border-radius) * 0.5);
 	cursor: pointer;
 	transition: background-color var(--datepicker-transition);
@@ -318,8 +318,8 @@
 }
 
 .datepicker__nav-icon {
-	width: calc(var(--ui-base-spacing) * 1.75);
-	height: calc(var(--ui-base-spacing) * 1.75);
+	width: calc(var(--ui-base-spacing) * 3.5);
+	height: calc(var(--ui-base-spacing) * 3.5);
 }
 
 /* Grid */
@@ -330,7 +330,7 @@
 .datepicker__weekdays {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	margin-bottom: calc(var(--ui-base-spacing) * 0.5);
+	margin-bottom: calc(var(--ui-base-spacing) * 1);
 }
 
 .datepicker__weekday {
@@ -363,7 +363,7 @@
 	justify-content: center;
 	font-family: var(--datepicker-font-family);
 	border-radius: var(--datepicker-day-border-radius);
-	border: 1px solid transparent;
+	border: var(--datepicker-border-width) solid transparent;
 	cursor: pointer;
 	transition: background-color var(--datepicker-transition);
 }
@@ -408,12 +408,12 @@
 .datepicker__month-grid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: calc(var(--ui-base-spacing) * 0.5);
-	padding: calc(var(--ui-base-spacing) * 0.5) 0;
+	gap: calc(var(--ui-base-spacing) * 1);
+	padding: calc(var(--ui-base-spacing) * 1) 0;
 }
 
 .datepicker__month-btn {
-	height: calc(var(--ui-base-spacing) * 5);
+	height: calc(var(--ui-base-spacing) * 10);
 	font-size: var(--datepicker-header-font-size);
 }
 
@@ -421,11 +421,11 @@
 .datepicker__year-grid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: calc(var(--ui-base-spacing) * 0.5);
-	padding: calc(var(--ui-base-spacing) * 0.5) 0;
+	gap: calc(var(--ui-base-spacing) * 1);
+	padding: calc(var(--ui-base-spacing) * 1) 0;
 }
 
 .datepicker__year-btn {
-	height: calc(var(--ui-base-spacing) * 5);
+	height: calc(var(--ui-base-spacing) * 10);
 	font-size: var(--datepicker-header-font-size);
 }

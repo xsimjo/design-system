@@ -16,9 +16,9 @@
 	--slider-value-font-size: var(--ui-text-sm);
 
 	/* Size tokens */
-	--slider-track-height: calc(var(--ui-base-spacing) * 0.75);
-	--slider-thumb-size: calc(var(--ui-base-spacing) * 2.5);
-	--slider-min-width: calc(var(--ui-base-spacing) * 20);
+	--slider-track-height: calc(var(--ui-base-spacing) * 1.5);
+	--slider-thumb-size: calc(var(--ui-base-spacing) * 5);
+	--slider-min-width: calc(var(--ui-base-spacing) * 40);
 	--slider-thumb-border-width: var(--ui-border-width);
 
 	/* Style tokens */
@@ -34,7 +34,7 @@
 .slider__wrapper {
 	display: flex;
 	align-items: center;
-	gap: calc(var(--ui-base-spacing) * 1.5);
+	gap: calc(var(--ui-base-spacing) * 3);
 }
 
 .slider__wrapper--full-width {

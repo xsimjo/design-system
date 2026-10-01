@@ -60,7 +60,7 @@ For each component `.css` file:
 
 **Goal**: spacing should feel rhythmic and intentional, not arbitrary.
 
-The base unit is `--ui-base-spacing` (8px). All spatial values — padding, gap, margin, size — should be clean multiples: `× 0.5`, `× 0.75`, `× 1`, `× 1.25`, `× 1.5`, `× 2`, `× 3`, `× 4`, `× 6`. Fractional or irregular multiples suggest an off-scale value.
+The base unit is `--ui-base-spacing` (4px). All spatial values — padding, gap, margin, size — should be clean multiples: `× 1`, `× 1.5`, `× 2`, `× 2.5`, `× 3`, `× 4`, `× 6`, `× 8`, `× 12`. Fractional or irregular multiples suggest an off-scale value.
 
 For each component:
 

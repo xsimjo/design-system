@@ -404,7 +404,7 @@ Creating a custom theme requires defining exactly 42 `--ui-*` tokens:
 	--ui-base-duration: 150ms;
 
 	/* Spacing */
-	--ui-base-spacing: 8px;
+	--ui-base-spacing: 4px;
 }
 ```
 

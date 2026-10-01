@@ -184,11 +184,11 @@ No custom props. All standard `HTMLHRElement` attributes are forwarded.
 
 | Token                            | Default                                                    | Description                   |
 | -------------------------------- | ---------------------------------------------------------- | ----------------------------- |
-| `--side-nav-padding`             | `calc(var(--ui-base-spacing) * 0.5)`                       | Container padding             |
-| `--side-nav-gap`                 | `calc(var(--ui-base-spacing) * 0.25)`                      | Gap between items             |
-| `--side-nav-item-height`         | `calc(var(--ui-base-spacing) * 4.5)`                       | Minimum item height           |
-| `--side-nav-item-padding-x`      | `calc(var(--ui-base-spacing) * 1.5)`                       | Item horizontal padding       |
-| `--side-nav-item-indent`         | `calc(var(--ui-base-spacing) * 2)`                         | Indentation per nesting level |
+| `--side-nav-padding`             | `calc(var(--ui-base-spacing) * 1)`                         | Container padding             |
+| `--side-nav-gap`                 | `calc(var(--ui-base-spacing) * 0.5)`                       | Gap between items             |
+| `--side-nav-item-height`         | `calc(var(--ui-base-spacing) * 9)`                         | Minimum item height           |
+| `--side-nav-item-padding-x`      | `calc(var(--ui-base-spacing) * 3)`                         | Item horizontal padding       |
+| `--side-nav-item-indent`         | `calc(var(--ui-base-spacing) * 4)`                         | Indentation per nesting level |
 | `--side-nav-item-font-size`      | `var(--ui-text-sm)`                                        | Item font size                |
 | `--side-nav-item-border-radius`  | `calc(var(--ui-base-radius) * 0.75)`                       | Item border radius            |
 | `--side-nav-item-hover-bg`       | `color-mix(var(--ui-neutral), transparent 90%)`            | Item hover background         |

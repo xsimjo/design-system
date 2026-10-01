@@ -79,12 +79,12 @@ A panel that slides in from the edge of the viewport. Built on the native `<dial
 | `--drawer-surface`            | `var(--ui-surface-overlay)`                     | Panel background         |
 | `--drawer-surface-foreground` | `var(--ui-surface-overlay-foreground)`          | Panel text color         |
 | `--drawer-shadow`             | `var(--ui-depth)`                               | Panel drop shadow        |
-| `--drawer-padding`            | `calc(var(--ui-base-spacing) * 3)`              | Inner padding            |
-| `--drawer-sm-width`           | `calc(var(--ui-base-spacing) * 50)`             | Width for size="sm"      |
-| `--drawer-md-width`           | `calc(var(--ui-base-spacing) * 64)`             | Width for size="md"      |
-| `--drawer-lg-width`           | `calc(var(--ui-base-spacing) * 80)`             | Width for size="lg"      |
-| `--drawer-xl-width`           | `calc(var(--ui-base-spacing) * 96)`             | Width for size="xl"      |
+| `--drawer-padding`            | `calc(var(--ui-base-spacing) * 6)`              | Inner padding            |
+| `--drawer-sm-width`           | `calc(var(--ui-base-spacing) * 100)`            | Width for size="sm"      |
+| `--drawer-md-width`           | `calc(var(--ui-base-spacing) * 128)`            | Width for size="md"      |
+| `--drawer-lg-width`           | `calc(var(--ui-base-spacing) * 160)`            | Width for size="lg"      |
+| `--drawer-xl-width`           | `calc(var(--ui-base-spacing) * 192)`            | Width for size="xl"      |
 | `--drawer-title-size`         | `var(--ui-text-lg)`                             | Title font size          |
 | `--drawer-title-weight`       | `var(--ui-weight-semibold)`                     | Title font weight        |
-| `--drawer-footer-gap`         | `calc(var(--ui-base-spacing) * 1.5)`            | Gap between footer items |
+| `--drawer-footer-gap`         | `calc(var(--ui-base-spacing) * 3)`              | Gap between footer items |
 | `--drawer-transition`         | `var(--ui-base-duration) var(--ui-base-easing)` | Animation timing         |

@@ -91,12 +91,12 @@
 	}
 
 	.preview-panel__viewport {
-		padding: calc(var(--ui-base-spacing) * 3);
+		padding: calc(var(--ui-base-spacing) * 6);
 		background: var(--ui-surface);
 		color: var(--ui-surface-foreground);
 		display: flex;
 		flex-direction: column;
-		gap: calc(var(--ui-base-spacing) * 3);
+		gap: calc(var(--ui-base-spacing) * 6);
 		min-height: 400px;
 	}
 

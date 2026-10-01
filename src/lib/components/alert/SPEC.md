@@ -79,7 +79,7 @@ All standard `HTMLDivElement` attributes are forwarded to the root `<div>` eleme
 | `--alert-content-color`  | `color-mix(var(--ui-surface-foreground), transparent 20%)` | Body content text color          |
 | `--alert-dismiss-color`  | `color-mix(var(--ui-surface-foreground), transparent 40%)` | Dismiss button icon color        |
 | `--alert-radius`         | `var(--ui-base-radius)`                                    | Border radius                    |
-| `--alert-padding-x`      | `calc(var(--ui-base-spacing) * 4)`                         | Horizontal padding               |
-| `--alert-padding-y`      | `calc(var(--ui-base-spacing) * 3)`                         | Vertical padding                 |
-| `--alert-gap`            | `calc(var(--ui-base-spacing) * 3)`                         | Gap between icon, body, dismiss  |
+| `--alert-padding-x`      | `calc(var(--ui-base-spacing) * 8)`                         | Horizontal padding               |
+| `--alert-padding-y`      | `calc(var(--ui-base-spacing) * 6)`                         | Vertical padding                 |
+| `--alert-gap`            | `calc(var(--ui-base-spacing) * 6)`                         | Gap between icon, body, dismiss  |
 | `--alert-border-width`   | `var(--ui-border-width)`                                   | Border width                     |

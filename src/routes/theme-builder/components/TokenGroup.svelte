@@ -52,7 +52,7 @@
 		align-items: center;
 		gap: var(--ui-base-spacing);
 		width: 100%;
-		padding: calc(var(--ui-base-spacing) * 1.5) calc(var(--ui-base-spacing) * 2);
+		padding: calc(var(--ui-base-spacing) * 3) calc(var(--ui-base-spacing) * 4);
 		background: none;
 		border: none;
 		cursor: pointer;
@@ -86,6 +86,6 @@
 	}
 
 	.token-group__body {
-		padding: 0 calc(var(--ui-base-spacing) * 2) calc(var(--ui-base-spacing) * 1.5);
+		padding: 0 calc(var(--ui-base-spacing) * 4) calc(var(--ui-base-spacing) * 3);
 	}
 </style>

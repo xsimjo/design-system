@@ -106,8 +106,8 @@
 	.token-row {
 		display: flex;
 		flex-direction: column;
-		gap: calc(var(--ui-base-spacing) * 0.5);
-		padding: calc(var(--ui-base-spacing) * 1.5) 0;
+		gap: calc(var(--ui-base-spacing) * 1);
+		padding: calc(var(--ui-base-spacing) * 3) 0;
 	}
 
 	.token-row__header {

@@ -4,15 +4,18 @@
 	   ========================================================================== */
 
 	/* Item sizing */
-	--pagination-item-sm: calc(var(--ui-base-spacing) * 4);
-	--pagination-item-md: calc(var(--ui-base-spacing) * 5);
-	--pagination-item-lg: calc(var(--ui-base-spacing) * 6);
+	--pagination-item-sm: calc(var(--ui-base-spacing) * 8);
+	--pagination-item-md: calc(var(--ui-base-spacing) * 10);
+	--pagination-item-lg: calc(var(--ui-base-spacing) * 12);
 	--pagination-font-sm: var(--ui-text-xs);
 	--pagination-font-md: var(--ui-text-sm);
 	--pagination-font-lg: var(--ui-text-base);
-	--pagination-gap-sm: calc(var(--ui-base-spacing) * 0.5);
-	--pagination-gap-md: calc(var(--ui-base-spacing) * 0.75);
+	--pagination-gap-sm: calc(var(--ui-base-spacing) * 1);
+	--pagination-gap-md: calc(var(--ui-base-spacing) * 1.5);
 	--pagination-gap-lg: var(--ui-base-spacing);
+	--pagination-padding-x-sm: calc(var(--ui-base-spacing) * 1);
+	--pagination-padding-x-md: calc(var(--ui-base-spacing) * 1.5);
+	--pagination-padding-x-lg: var(--ui-base-spacing);
 
 	/* Colors */
 	--pagination-item-bg: transparent;
@@ -76,7 +79,7 @@
 	justify-content: center;
 	min-width: var(--pagination-item-md);
 	height: var(--pagination-item-md);
-	padding: 0 calc(var(--ui-base-spacing) * 0.75);
+	padding: 0 var(--pagination-padding-x-md);
 	font-family: var(--ui-font-sans);
 	font-size: var(--pagination-font-md);
 	font-weight: var(--ui-weight-medium);
@@ -160,6 +163,7 @@
 .pagination--sm .pagination__item {
 	min-width: var(--pagination-item-sm);
 	height: var(--pagination-item-sm);
+	padding: 0 var(--pagination-padding-x-sm);
 	font-size: var(--pagination-font-sm);
 }
 
@@ -177,6 +181,7 @@
 .pagination--lg .pagination__item {
 	min-width: var(--pagination-item-lg);
 	height: var(--pagination-item-lg);
+	padding: 0 var(--pagination-padding-x-lg);
 	font-size: var(--pagination-font-lg);
 }
 

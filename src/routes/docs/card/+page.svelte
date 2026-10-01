@@ -183,10 +183,10 @@
 				['--card-radius', 'var(--ui-base-radius)', 'Corner radius'],
 				['--card-divider-color', 'var(--ui-border)', 'Color of dividers between sections'],
 				['--card-shadow', 'var(--ui-depth)', 'Box shadow for the elevated variant'],
-				['--card-padding-sm', 'calc(var(--ui-base-spacing) * 2)', 'Padding for padding="sm"'],
-				['--card-padding-md', 'calc(var(--ui-base-spacing) * 4)', 'Padding for padding="md"'],
-				['--card-padding-lg', 'calc(var(--ui-base-spacing) * 6)', 'Padding for padding="lg"'],
-				['--card-footer-gap', 'calc(var(--ui-base-spacing) * 2)', 'Gap between items in CardFooter']
+				['--card-padding-sm', 'calc(var(--ui-base-spacing) * 4)', 'Padding for padding="sm"'],
+				['--card-padding-md', 'calc(var(--ui-base-spacing) * 8)', 'Padding for padding="md"'],
+				['--card-padding-lg', 'calc(var(--ui-base-spacing) * 12)', 'Padding for padding="lg"'],
+				['--card-footer-gap', 'calc(var(--ui-base-spacing) * 4)', 'Gap between items in CardFooter']
 			]}
 		/>
 	</DocSection>

@@ -53,9 +53,9 @@ All tokens are defined in `[data-theme]` scope in `tooltip.css`.
 | `--tooltip-font-size`     | `--ui-text-xs`                | Label font size                 |
 | `--tooltip-font-weight`   | `--ui-weight-normal`          | Label font weight               |
 | `--tooltip-line-height`   | `--ui-leading-tight`          | Label line height               |
-| `--tooltip-padding-x`     | `--ui-base-spacing × 1.25`    | Horizontal padding (10 px base) |
-| `--tooltip-padding-y`     | `--ui-base-spacing × 0.625`   | Vertical padding (5 px base)    |
-| `--tooltip-max-width`     | `--ui-base-spacing × 32`      | Max width before text wraps     |
+| `--tooltip-padding-x`     | `--ui-base-spacing × 2.5`     | Horizontal padding (10 px base) |
+| `--tooltip-padding-y`     | `--ui-base-spacing × 1.25`    | Vertical padding (5 px base)    |
+| `--tooltip-max-width`     | `--ui-base-spacing × 64`      | Max width before text wraps     |
 | `--tooltip-z-index`       | `--ui-z-overlay`              | Stacking order                  |
 | `--tooltip-arrow-size`    | `8px`                         | Arrow square dimensions         |
 | `--tooltip-transition`    | `--ui-base-duration` + easing | Opacity fade duration           |

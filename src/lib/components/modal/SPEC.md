@@ -86,15 +86,15 @@ All additional HTML attributes are forwarded to the underlying `<dialog>` elemen
 | `--modal-border-width`       | `var(--ui-border-width)`                        | Panel border width              |
 | `--modal-border-radius`      | `calc(var(--ui-base-radius) * 1.5)`             | Panel corner radius             |
 | `--modal-shadow`             | `0 25px 50px -12px ...`                         | Panel drop shadow               |
-| `--modal-padding`            | `calc(var(--ui-base-spacing) * 3)`              | Inner padding                   |
-| `--modal-sm-width`           | `calc(var(--ui-base-spacing) * 50)`             | Width for `size="sm"`           |
-| `--modal-md-width`           | `calc(var(--ui-base-spacing) * 64)`             | Width for `size="md"`           |
-| `--modal-lg-width`           | `calc(var(--ui-base-spacing) * 80)`             | Width for `size="lg"`           |
-| `--modal-xl-width`           | `calc(var(--ui-base-spacing) * 96)`             | Width for `size="xl"`           |
+| `--modal-padding`            | `calc(var(--ui-base-spacing) * 6)`              | Inner padding                   |
+| `--modal-sm-width`           | `calc(var(--ui-base-spacing) * 100)`            | Width for `size="sm"`           |
+| `--modal-md-width`           | `calc(var(--ui-base-spacing) * 128)`            | Width for `size="md"`           |
+| `--modal-lg-width`           | `calc(var(--ui-base-spacing) * 160)`            | Width for `size="lg"`           |
+| `--modal-xl-width`           | `calc(var(--ui-base-spacing) * 192)`            | Width for `size="xl"`           |
 | `--modal-title-size`         | `var(--ui-text-lg)`                             | Title font size                 |
 | `--modal-title-weight`       | `var(--ui-weight-semibold)`                     | Title font weight               |
 | `--modal-close-color`        | `color-mix(...)`                                | Close button icon color         |
 | `--modal-close-hover-bg`     | `color-mix(...)`                                | Close button hover background   |
-| `--modal-close-size`         | `calc(var(--ui-base-spacing) * 4)`              | Close button dimensions         |
-| `--modal-footer-gap`         | `calc(var(--ui-base-spacing) * 1.5)`            | Gap between footer buttons      |
+| `--modal-close-size`         | `calc(var(--ui-base-spacing) * 8)`              | Close button dimensions         |
+| `--modal-footer-gap`         | `calc(var(--ui-base-spacing) * 3)`              | Gap between footer buttons      |
 | `--modal-transition`         | `var(--ui-base-duration) var(--ui-base-easing)` | Enter animation duration/easing |

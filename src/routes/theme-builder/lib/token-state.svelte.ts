@@ -57,7 +57,7 @@ export const BASE_THEME_DEFAULTS: Record<BaseTheme, Record<string, string>> = {
 		'--ui-base-duration': '120ms',
 		'--ui-base-easing': 'cubic-bezier(0.25, 0.1, 0.25, 1)',
 		'--ui-enter-offset': '-3px',
-		'--ui-base-spacing': '8px',
+		'--ui-base-spacing': '4px',
 		'--ui-z-overlay': '1000',
 		'--ui-z-tooltip': '1500'
 	},
@@ -117,7 +117,7 @@ export const BASE_THEME_DEFAULTS: Record<BaseTheme, Record<string, string>> = {
 		'--ui-base-duration': '120ms',
 		'--ui-base-easing': 'cubic-bezier(0.25, 0.1, 0.25, 1)',
 		'--ui-enter-offset': '-3px',
-		'--ui-base-spacing': '8px',
+		'--ui-base-spacing': '4px',
 		'--ui-z-overlay': '1000',
 		'--ui-z-tooltip': '1500'
 	},

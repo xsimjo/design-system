@@ -50,9 +50,9 @@ All tokens are defined in `[data-theme]` scope and can be overridden per-theme o
 | `--popover-border-width`      | `--ui-border-width`                  | Border width                        |
 | `--popover-border-radius`     | `--ui-base-radius`                   | Corner radius                       |
 | `--popover-shadow`            | `--ui-depth`                         | Drop shadow                         |
-| `--popover-padding`           | `--ui-base-spacing × 2`              | Inner padding                       |
-| `--popover-min-width`         | `--ui-base-spacing × 28`             | Minimum panel width                 |
-| `--popover-max-width`         | `--ui-base-spacing × 52`             | Maximum panel width before wrapping |
+| `--popover-padding`           | `--ui-base-spacing × 4`              | Inner padding                       |
+| `--popover-min-width`         | `--ui-base-spacing × 56`             | Minimum panel width                 |
+| `--popover-max-width`         | `--ui-base-spacing × 104`            | Maximum panel width before wrapping |
 | `--popover-z-index`           | `--ui-z-overlay`                     | Stacking order                      |
 | `--popover-arrow-size`        | `8px`                                | Arrow square dimension              |
 | `--popover-title-size`        | `--ui-text-sm`                       | Header title font size              |
@@ -61,7 +61,7 @@ All tokens are defined in `[data-theme]` scope and can be overridden per-theme o
 | `--popover-close-color`       | `--ui-surface-raised-foreground` 40% | Close button icon color             |
 | `--popover-close-hover-color` | `--ui-surface-raised-foreground`     | Close button icon color on hover    |
 | `--popover-close-hover-bg`    | `--ui-neutral` 15% opacity           | Close button background on hover    |
-| `--popover-close-size`        | `--ui-base-spacing × 3`              | Close button hit area size          |
+| `--popover-close-size`        | `--ui-base-spacing × 6`              | Close button hit area size          |
 | `--popover-duration`          | `--ui-base-duration`                 | Enter/leave animation duration      |
 | `--popover-easing`            | `--ui-base-easing`                   | Enter/leave animation easing        |
 

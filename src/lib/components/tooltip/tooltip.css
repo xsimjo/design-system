@@ -6,9 +6,9 @@
 	--tooltip-font-size: var(--ui-text-xs);
 	--tooltip-font-weight: var(--ui-weight-normal);
 	--tooltip-line-height: var(--ui-leading-tight);
-	--tooltip-padding-x: calc(var(--ui-base-spacing) * 1.25);
-	--tooltip-padding-y: calc(var(--ui-base-spacing) * 0.75);
-	--tooltip-max-width: calc(var(--ui-base-spacing) * 32);
+	--tooltip-padding-x: calc(var(--ui-base-spacing) * 2.5);
+	--tooltip-padding-y: calc(var(--ui-base-spacing) * 1.5);
+	--tooltip-max-width: calc(var(--ui-base-spacing) * 64);
 	--tooltip-z-index: var(--ui-z-tooltip);
 	--tooltip-arrow-size: 8px;
 	--tooltip-transition: var(--ui-base-duration) var(--ui-base-easing);

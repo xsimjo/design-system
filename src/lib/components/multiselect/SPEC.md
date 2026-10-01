@@ -134,12 +134,12 @@ When placed inside a `Field` component, MultiSelect automatically reads:
 | `--multiselect-disabled-fg`           | `color-mix(…fg 50% transparent)`                | Text color when disabled           |
 | `--multiselect-disabled-border`       | `var(--ui-border)`                              | Border color when disabled         |
 | `--multiselect-hover-border`          | `color-mix(…border+hover-mix hover-amount)`     | Border color on hover              |
-| `--multiselect-gap`                   | `calc(var(--ui-base-spacing) * 0.75)`           | Gap between badges and input       |
+| `--multiselect-gap`                   | `calc(var(--ui-base-spacing) * 1.5)`            | Gap between badges and input       |
 | `--multiselect-font-family`           | `var(--ui-font-sans)`                           | Font family                        |
 | `--multiselect-font-weight`           | `var(--ui-weight-normal)`                       | Font weight                        |
 | `--multiselect-border-radius`         | `var(--ui-base-radius)`                         | Corner roundness                   |
 | `--multiselect-transition`            | `var(--ui-base-duration) var(--ui-base-easing)` | Transition                         |
-| `--multiselect-chevron-size`          | `calc(var(--ui-base-spacing) * 2)`              | Chevron icon size                  |
+| `--multiselect-chevron-size`          | `calc(var(--ui-base-spacing) * 4)`              | Chevron icon size                  |
 | `--multiselect-chevron-color`         | `color-mix(…fg 35% transparent)`                | Chevron icon color                 |
 | `--multiselect-badge-focused-outline` | `2px solid var(--ui-primary)`                   | Outline for keyboard-focused badge |
 
@@ -160,8 +160,8 @@ When placed inside a `Field` component, MultiSelect automatically reads:
 | `--multiselect-listbox-fg`           | `var(--ui-surface-overlay-foreground)` | Listbox text color                  |
 | `--multiselect-listbox-border`       | `var(--ui-border)`                     | Listbox border color                |
 | `--multiselect-listbox-shadow`       | `var(--ui-depth)`                      | Listbox box shadow                  |
-| `--multiselect-listbox-padding`      | `calc(var(--ui-base-spacing) * 0.5)`   | Inner padding around options        |
-| `--multiselect-listbox-max-height`   | `calc(var(--ui-base-spacing) * 40)`    | Maximum height before scroll        |
+| `--multiselect-listbox-padding`      | `calc(var(--ui-base-spacing) * 1)`     | Inner padding around options        |
+| `--multiselect-listbox-max-height`   | `calc(var(--ui-base-spacing) * 80)`    | Maximum height before scroll        |
 | `--multiselect-listbox-z-index`      | `var(--ui-z-overlay)`                  | Z-index of the floating listbox     |
 | `--multiselect-listbox-enter-offset` | `var(--ui-enter-offset)`               | Transform offset for open animation |
 
@@ -169,13 +169,13 @@ When placed inside a `Field` component, MultiSelect automatically reads:
 
 | Token                                    | Default                               | Description                         |
 | ---------------------------------------- | ------------------------------------- | ----------------------------------- |
-| `--multiselect-option-height`            | `calc(var(--ui-base-spacing) * 5)`    | Minimum option height               |
-| `--multiselect-option-padding-x`         | `calc(var(--ui-base-spacing) * 1.5)`  | Horizontal option padding           |
+| `--multiselect-option-height`            | `calc(var(--ui-base-spacing) * 10)`   | Minimum option height               |
+| `--multiselect-option-padding-x`         | `calc(var(--ui-base-spacing) * 3)`    | Horizontal option padding           |
 | `--multiselect-option-font-size`         | `var(--ui-text-sm)`                   | Option font size                    |
 | `--multiselect-option-border-radius`     | `calc(var(--ui-base-radius) * 0.5)`   | Option corner roundness             |
 | `--multiselect-option-hover-bg`          | `color-mix(…neutral 90% transparent)` | Hover / keyboard-focus background   |
 | `--multiselect-option-selected-bg`       | `color-mix(…primary 90% transparent)` | Selected option background          |
 | `--multiselect-option-selected-hover-bg` | `color-mix(…primary 84% transparent)` | Selected option background on hover |
 | `--multiselect-option-selected-fg`       | `var(--ui-primary)`                   | Selected option text color          |
-| `--multiselect-option-check-size`        | `calc(var(--ui-base-spacing) * 2)`    | Checkmark icon size                 |
+| `--multiselect-option-check-size`        | `calc(var(--ui-base-spacing) * 4)`    | Checkmark icon size                 |
 | `--multiselect-option-disabled-opacity`  | `0.5`                                 | Opacity for disabled options        |

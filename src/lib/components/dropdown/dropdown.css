@@ -9,14 +9,14 @@
 	--dropdown-border-radius: var(--ui-base-radius);
 	--dropdown-shadow: var(--ui-depth);
 
-	--dropdown-padding: calc(var(--ui-base-spacing) * 0.5);
-	--dropdown-min-width: calc(var(--ui-base-spacing) * 23);
-	--dropdown-max-height: calc(var(--ui-base-spacing) * 40);
+	--dropdown-padding: calc(var(--ui-base-spacing) * 1);
+	--dropdown-min-width: calc(var(--ui-base-spacing) * 46);
+	--dropdown-max-height: calc(var(--ui-base-spacing) * 80);
 
-	--dropdown-item-height: calc(var(--ui-base-spacing) * 5);
-	--dropdown-item-padding-x: calc(var(--ui-base-spacing) * 1.5);
-	--dropdown-item-padding-y: calc(var(--ui-base-spacing) * 0.75);
-	--dropdown-item-gap: calc(var(--ui-base-spacing) * 1);
+	--dropdown-item-height: calc(var(--ui-base-spacing) * 10);
+	--dropdown-item-padding-x: calc(var(--ui-base-spacing) * 3);
+	--dropdown-item-padding-y: calc(var(--ui-base-spacing) * 1.5);
+	--dropdown-item-gap: calc(var(--ui-base-spacing) * 2);
 	--dropdown-item-font-size: var(--ui-text-sm);
 	--dropdown-item-font-weight: var(--ui-weight-normal);
 	--dropdown-item-line-height: var(--ui-leading-tight);
@@ -34,7 +34,7 @@
 	--dropdown-item-destructive-active-bg: color-mix(in oklch, var(--ui-danger), transparent 82%);
 
 	--dropdown-divider-color: var(--ui-border);
-	--dropdown-divider-margin: calc(var(--ui-base-spacing) * 0.5);
+	--dropdown-divider-margin: calc(var(--ui-base-spacing) * 1);
 
 	--dropdown-focus-color: var(--ui-primary);
 	--dropdown-focus-ring-width: var(--ui-ring-width);

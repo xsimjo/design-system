@@ -20,15 +20,15 @@
 		var(--ui-hover-mix) var(--ui-hover-amount)
 	);
 
-	--combobox-height: calc(var(--ui-base-spacing) * 5);
-	--combobox-padding-x: calc(var(--ui-base-spacing) * 2);
+	--combobox-height: calc(var(--ui-base-spacing) * 10);
+	--combobox-padding-x: calc(var(--ui-base-spacing) * 4);
 	--combobox-font-size: var(--ui-text-base);
 
 	--combobox-font-family: var(--ui-font-sans);
 	--combobox-font-weight: var(--ui-weight-normal);
 	--combobox-border-radius: var(--ui-base-radius);
 	--combobox-transition: var(--ui-base-duration) var(--ui-base-easing);
-	--combobox-chevron-size: calc(var(--ui-base-spacing) * 2);
+	--combobox-chevron-size: calc(var(--ui-base-spacing) * 4);
 	--combobox-chevron-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 35%);
 
 	/* Listbox */
@@ -36,21 +36,21 @@
 	--combobox-listbox-fg: var(--ui-surface-overlay-foreground);
 	--combobox-listbox-border: var(--ui-border);
 	--combobox-listbox-shadow: var(--ui-depth);
-	--combobox-listbox-padding: calc(var(--ui-base-spacing) * 0.5);
-	--combobox-listbox-max-height: calc(var(--ui-base-spacing) * 40);
+	--combobox-listbox-padding: calc(var(--ui-base-spacing) * 1);
+	--combobox-listbox-max-height: calc(var(--ui-base-spacing) * 80);
 	--combobox-listbox-z-index: var(--ui-z-overlay);
 	--combobox-listbox-enter-offset: var(--ui-enter-offset);
 
 	/* Options */
-	--combobox-option-height: calc(var(--ui-base-spacing) * 5);
-	--combobox-option-padding-x: calc(var(--ui-base-spacing) * 1.5);
+	--combobox-option-height: calc(var(--ui-base-spacing) * 10);
+	--combobox-option-padding-x: calc(var(--ui-base-spacing) * 3);
 	--combobox-option-font-size: var(--ui-text-sm);
 	--combobox-option-border-radius: calc(var(--ui-base-radius) * 0.5);
 	--combobox-option-hover-bg: color-mix(in oklch, var(--ui-neutral), transparent 90%);
 	--combobox-option-selected-bg: color-mix(in oklch, var(--ui-primary), transparent 90%);
 	--combobox-option-selected-hover-bg: color-mix(in oklch, var(--ui-primary), transparent 84%);
 	--combobox-option-selected-fg: var(--ui-primary);
-	--combobox-option-check-size: calc(var(--ui-base-spacing) * 2);
+	--combobox-option-check-size: calc(var(--ui-base-spacing) * 4);
 	--combobox-option-disabled-opacity: 0.5;
 }
 
@@ -72,7 +72,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: calc(var(--ui-base-spacing) * 1);
+	gap: calc(var(--ui-base-spacing) * 2);
 	width: 100%;
 	background-color: var(--combobox-bg);
 	color: var(--combobox-fg);
@@ -184,7 +184,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: calc(var(--ui-base-spacing) * 1.5);
+	gap: calc(var(--ui-base-spacing) * 3);
 	min-height: var(--combobox-option-height);
 	padding: 0 var(--combobox-option-padding-x);
 	font-family: var(--combobox-font-family);

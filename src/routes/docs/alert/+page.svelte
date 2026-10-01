@@ -163,11 +163,11 @@
 					'Border for danger variant'
 				],
 				['--alert-radius', 'var(--ui-base-radius)', 'Border radius'],
-				['--alert-padding-x', 'calc(var(--ui-base-spacing) * 4)', 'Horizontal padding'],
-				['--alert-padding-y', 'calc(var(--ui-base-spacing) * 3)', 'Vertical padding'],
+				['--alert-padding-x', 'calc(var(--ui-base-spacing) * 8)', 'Horizontal padding'],
+				['--alert-padding-y', 'calc(var(--ui-base-spacing) * 6)', 'Vertical padding'],
 				[
 					'--alert-gap',
-					'calc(var(--ui-base-spacing) * 3)',
+					'calc(var(--ui-base-spacing) * 6)',
 					'Gap between icon, body, and dismiss button'
 				]
 			]}

@@ -442,11 +442,11 @@
 				['--tabs-radius', 'var(--ui-base-radius)', 'Border radius'],
 				['--tabs-duration', 'var(--ui-base-duration)', 'Transition duration'],
 				['--tabs-easing', 'var(--ui-base-easing)', 'Transition easing'],
-				['--tabs-gap', 'calc(var(--ui-base-spacing) * 0.5)', 'Gap between tabs'],
-				['--tabs-sm-height', 'calc(var(--ui-base-spacing) * 4)', 'Small tab height'],
-				['--tabs-md-height', 'calc(var(--ui-base-spacing) * 5)', 'Medium tab height'],
-				['--tabs-lg-height', 'calc(var(--ui-base-spacing) * 6)', 'Large tab height'],
-				['--tabs-panel-padding', 'calc(var(--ui-base-spacing) * 2)', 'Panel top/bottom padding']
+				['--tabs-gap', 'calc(var(--ui-base-spacing) * 1)', 'Gap between tabs'],
+				['--tabs-sm-height', 'calc(var(--ui-base-spacing) * 8)', 'Small tab height'],
+				['--tabs-md-height', 'calc(var(--ui-base-spacing) * 10)', 'Medium tab height'],
+				['--tabs-lg-height', 'calc(var(--ui-base-spacing) * 12)', 'Large tab height'],
+				['--tabs-panel-padding', 'calc(var(--ui-base-spacing) * 4)', 'Panel top/bottom padding']
 			]}
 		/>
 	</DocSection>

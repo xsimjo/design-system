@@ -16,15 +16,15 @@
 		var(--ui-border),
 		var(--ui-hover-mix) var(--ui-hover-amount)
 	);
-	--textarea-padding-x: calc(var(--ui-base-spacing) * 2);
-	--textarea-padding-y: calc(var(--ui-base-spacing) * 1.5);
+	--textarea-padding-x: calc(var(--ui-base-spacing) * 4);
+	--textarea-padding-y: calc(var(--ui-base-spacing) * 3);
 	--textarea-font-size: var(--ui-text-base);
 	--textarea-font-family: var(--ui-font-sans);
 	--textarea-font-weight: var(--ui-weight-normal);
 	--textarea-line-height: var(--ui-leading-normal);
 	--textarea-border-radius: var(--ui-base-radius);
 	--textarea-transition: var(--ui-base-duration) var(--ui-base-easing);
-	--textarea-min-height: calc(var(--ui-base-spacing) * 10);
+	--textarea-min-height: calc(var(--ui-base-spacing) * 20);
 }
 
 .textarea__field {

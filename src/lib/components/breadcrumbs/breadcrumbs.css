@@ -1,6 +1,6 @@
 [data-theme] {
 	--breadcrumbs-font-size: var(--ui-text-sm);
-	--breadcrumbs-gap: calc(var(--ui-base-spacing) * 1.5);
+	--breadcrumbs-gap: calc(var(--ui-base-spacing) * 3);
 	--breadcrumbs-link-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 45%);
 	--breadcrumbs-link-hover-color: var(--ui-surface-foreground);
 	--breadcrumbs-current-color: var(--ui-surface-foreground);

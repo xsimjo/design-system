@@ -176,10 +176,10 @@
 		<PropsTable
 			columns={['Token', 'Default', 'Description']}
 			rows={[
-				['--avatar-size-sm', 'calc(var(--ui-base-spacing) * 3)', 'Width and height for sm'],
-				['--avatar-size-md', 'calc(var(--ui-base-spacing) * 4)', 'Width and height for md'],
-				['--avatar-size-lg', 'calc(var(--ui-base-spacing) * 6)', 'Width and height for lg'],
-				['--avatar-size-xl', 'calc(var(--ui-base-spacing) * 8)', 'Width and height for xl'],
+				['--avatar-size-sm', 'calc(var(--ui-base-spacing) * 6)', 'Width and height for sm'],
+				['--avatar-size-md', 'calc(var(--ui-base-spacing) * 8)', 'Width and height for md'],
+				['--avatar-size-lg', 'calc(var(--ui-base-spacing) * 12)', 'Width and height for lg'],
+				['--avatar-size-xl', 'calc(var(--ui-base-spacing) * 16)', 'Width and height for xl'],
 				['--avatar-font-size-sm', 'var(--ui-text-xs)', 'Initials font size for sm'],
 				['--avatar-font-size-md', 'var(--ui-text-sm)', 'Initials font size for md'],
 				['--avatar-font-size-lg', 'var(--ui-text-base)', 'Initials font size for lg'],
@@ -210,7 +210,7 @@
 				],
 				['--avatar-border-width', 'var(--ui-border-width)', 'Border width'],
 				['--avatar-border-color', 'var(--ui-border)', 'Border color'],
-				['--avatar-status-size', 'calc(var(--ui-base-spacing) * 1.5)', 'Status dot diameter'],
+				['--avatar-status-size', 'calc(var(--ui-base-spacing) * 3)', 'Status dot diameter'],
 				[
 					'--avatar-status-border-width',
 					'calc(var(--ui-border-width) * 2)',

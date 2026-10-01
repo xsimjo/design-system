@@ -8,10 +8,10 @@
 	--rating-focus-ring-offset: var(--ui-ring-offset);
 
 	/* Size */
-	--rating-star-size: 24px;
+	--rating-star-size: calc(var(--ui-base-spacing) * 6);
 
 	/* Style */
-	--rating-gap: calc(var(--ui-base-spacing) * 0.25);
+	--rating-gap: calc(var(--ui-base-spacing) * 1);
 	--rating-stroke-width: 1.5;
 	--rating-transition: var(--ui-base-duration) var(--ui-base-easing);
 }

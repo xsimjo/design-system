@@ -1,15 +1,15 @@
 [data-theme] {
 	/* Layout */
 	--side-nav-padding: 0;
-	--side-nav-gap: calc(var(--ui-base-spacing) * 0.5);
+	--side-nav-gap: calc(var(--ui-base-spacing) * 1);
 
 	/* Item */
-	--side-nav-item-height: calc(var(--ui-base-spacing) * 4.5);
-	--side-nav-item-padding-x: calc(var(--ui-base-spacing) * 1.5);
-	--side-nav-item-padding-y: calc(var(--ui-base-spacing) * 0.75);
-	--side-nav-item-indent: calc(var(--ui-base-spacing) * 2);
-	--side-nav-item-icon-size: calc(var(--ui-base-spacing) * 2.25);
-	--side-nav-item-gap: calc(var(--ui-base-spacing) * 1);
+	--side-nav-item-height: calc(var(--ui-base-spacing) * 9);
+	--side-nav-item-padding-x: calc(var(--ui-base-spacing) * 3);
+	--side-nav-item-padding-y: calc(var(--ui-base-spacing) * 1.5);
+	--side-nav-item-indent: calc(var(--ui-base-spacing) * 4);
+	--side-nav-item-icon-size: calc(var(--ui-base-spacing) * 4.5);
+	--side-nav-item-gap: calc(var(--ui-base-spacing) * 2);
 	--side-nav-item-font-size: var(--ui-text-sm);
 	--side-nav-item-font-weight: var(--ui-weight-medium);
 	--side-nav-item-line-height: var(--ui-leading-tight);
@@ -46,21 +46,21 @@
 	);
 	--side-nav-group-rail-color: var(--ui-border);
 	--side-nav-group-rail-width: var(--ui-border-width);
-	--side-nav-group-rail-inset-y: calc(var(--ui-base-spacing) * 0.5);
+	--side-nav-group-rail-inset-y: calc(var(--ui-base-spacing) * 1);
 	--side-nav-group-trigger-active-bg: color-mix(in oklch, var(--ui-neutral), transparent 82%);
 
 	/* Label */
 	--side-nav-label-font-size: var(--ui-text-xs);
 	--side-nav-label-font-weight: var(--ui-weight-semibold);
 	--side-nav-label-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 50%);
-	--side-nav-label-padding-x: calc(var(--ui-base-spacing) * 1.5);
-	--side-nav-label-padding-y: calc(var(--ui-base-spacing) * 1);
+	--side-nav-label-padding-x: calc(var(--ui-base-spacing) * 3);
+	--side-nav-label-padding-y: calc(var(--ui-base-spacing) * 2);
 	--side-nav-label-letter-spacing: 0.025em;
 
 	/* Divider */
 	--side-nav-divider-color: var(--ui-border);
 	--side-nav-divider-width: var(--ui-border-width);
-	--side-nav-divider-margin: calc(var(--ui-base-spacing) * 0.5);
+	--side-nav-divider-margin: calc(var(--ui-base-spacing) * 1);
 
 	/* Focus */
 	--side-nav-focus-color: var(--ui-primary);

@@ -18,8 +18,8 @@
 		var(--ui-border),
 		var(--ui-hover-mix) var(--ui-hover-amount)
 	);
-	--color-picker-height: calc(var(--ui-base-spacing) * 5);
-	--color-picker-padding-x: calc(var(--ui-base-spacing) * 1.5);
+	--color-picker-height: calc(var(--ui-base-spacing) * 10);
+	--color-picker-padding-x: calc(var(--ui-base-spacing) * 4);
 	--color-picker-font-size: var(--ui-text-base);
 	--color-picker-font-family: var(--ui-font-sans);
 	--color-picker-font-weight: var(--ui-weight-normal);
@@ -27,7 +27,7 @@
 	--color-picker-transition: var(--ui-base-duration) var(--ui-base-easing);
 
 	/* Swatch */
-	--color-picker-swatch-size: calc(var(--ui-base-spacing) * 3);
+	--color-picker-swatch-size: calc(var(--ui-base-spacing) * 6);
 	--color-picker-swatch-radius: calc(var(--ui-base-radius) * 0.5);
 	--color-picker-swatch-shadow: inset 0 0 0 1px
 		color-mix(in oklch, var(--ui-hover-mix), transparent 85%);
@@ -49,7 +49,7 @@
 	box-sizing: border-box;
 	display: flex;
 	align-items: center;
-	gap: calc(var(--ui-base-spacing) * 1);
+	gap: calc(var(--ui-base-spacing) * 2);
 	width: 100%;
 	min-height: var(--color-picker-height);
 	padding: 0 var(--color-picker-padding-x);

@@ -18,7 +18,7 @@
 	--checkbox-disabled-border: var(--ui-border);
 
 	/* Size */
-	--checkbox-size: calc(var(--ui-base-spacing) * 2);
+	--checkbox-size: calc(var(--ui-base-spacing) * 4);
 
 	/* Style */
 	--checkbox-border-radius: calc(var(--ui-base-radius) * 0.5);

@@ -125,7 +125,7 @@ When placed inside a `Field` component, BadgeInput automatically reads:
 | `--badge-input-disabled-fg`         | `color-mix(…fg 50% transparent)`                | Text color when disabled           |
 | `--badge-input-disabled-border`     | `var(--ui-border)`                              | Border color when disabled         |
 | `--badge-input-hover-border`        | `color-mix(…border+hover-mix hover-amount)`     | Border color on hover              |
-| `--badge-input-gap`                 | `calc(var(--ui-base-spacing) * 0.75)`           | Gap between badges and input       |
+| `--badge-input-gap`                 | `calc(var(--ui-base-spacing) * 1.5)`            | Gap between badges and input       |
 | `--badge-input-validation-error-fg` | `var(--ui-danger)`                              | Inline validation error text color |
 | `--badge-input-font-family`         | `var(--ui-font-sans)`                           | Font family                        |
 | `--badge-input-font-weight`         | `var(--ui-weight-normal)`                       | Font weight                        |

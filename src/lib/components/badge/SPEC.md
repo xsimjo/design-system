@@ -69,15 +69,15 @@ Inline label component for status, category, or tag display. Supports 8 color va
 | `--badge-border`          | `color-mix(in oklch, var(--ui-primary), transparent 75%)` | Badge border color             |
 | `--badge-border-width`    | `var(--ui-border-width)`                                  | Border thickness               |
 | `--badge-remove-hover-bg` | `color-mix(in oklch, var(--ui-primary), transparent 70%)` | Remove button hover background |
-| `--badge-height-sm`       | `calc(var(--ui-base-spacing) * 3)`                        | Height for sm size             |
-| `--badge-height-md`       | `calc(var(--ui-base-spacing) * 3.5)`                      | Height for md size             |
-| `--badge-height-lg`       | `calc(var(--ui-base-spacing) * 4)`                        | Height for lg size             |
-| `--badge-padding-x-sm`    | `calc(var(--ui-base-spacing) * 1.25)`                     | Horizontal padding for sm      |
-| `--badge-padding-x-md`    | `calc(var(--ui-base-spacing) * 1.5)`                      | Horizontal padding for md      |
-| `--badge-padding-x-lg`    | `calc(var(--ui-base-spacing) * 2)`                        | Horizontal padding for lg      |
+| `--badge-height-sm`       | `calc(var(--ui-base-spacing) * 6)`                        | Height for sm size             |
+| `--badge-height-md`       | `calc(var(--ui-base-spacing) * 7)`                        | Height for md size             |
+| `--badge-height-lg`       | `calc(var(--ui-base-spacing) * 8)`                        | Height for lg size             |
+| `--badge-padding-x-sm`    | `calc(var(--ui-base-spacing) * 2.5)`                      | Horizontal padding for sm      |
+| `--badge-padding-x-md`    | `calc(var(--ui-base-spacing) * 3)`                        | Horizontal padding for md      |
+| `--badge-padding-x-lg`    | `calc(var(--ui-base-spacing) * 4)`                        | Horizontal padding for lg      |
 | `--badge-font-size-sm`    | `var(--ui-text-xs)`                                       | Font size for sm               |
 | `--badge-font-size-md`    | `var(--ui-text-sm)`                                       | Font size for md               |
 | `--badge-font-size-lg`    | `var(--ui-text-base)`                                     | Font size for lg               |
 | `--badge-border-radius`   | `calc(var(--ui-base-radius) * 10)`                        | Pill-shaped corner radius      |
-| `--badge-remove-size`     | `calc(var(--ui-base-spacing) * 2.5)`                      | Remove button width/height     |
+| `--badge-remove-size`     | `calc(var(--ui-base-spacing) * 5)`                        | Remove button width/height     |
 | `--badge-transition`      | `var(--ui-base-duration) var(--ui-base-easing)`           | Transition for remove button   |

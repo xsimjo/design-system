@@ -18,12 +18,13 @@
 	--alert-content-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 20%);
 
 	--alert-radius: var(--ui-base-radius);
-	--alert-padding-x: calc(var(--ui-base-spacing) * 4);
-	--alert-padding-y: calc(var(--ui-base-spacing) * 3);
+	--alert-padding-x: calc(var(--ui-base-spacing) * 8);
+	--alert-padding-y: calc(var(--ui-base-spacing) * 6);
 	--alert-border-width: var(--ui-border-width);
-	--alert-gap: calc(var(--ui-base-spacing) * 3);
-	--alert-dismiss-margin-top: calc(var(--ui-base-spacing) * -0.75);
-	--alert-dismiss-margin-right: calc(var(--ui-base-spacing) * -1);
+	--alert-gap: calc(var(--ui-base-spacing) * 6);
+	--alert-body-gap: var(--ui-base-spacing);
+	--alert-dismiss-margin-top: calc(var(--ui-base-spacing) * -1.5);
+	--alert-dismiss-margin-right: calc(var(--ui-base-spacing) * -2);
 }
 
 .alert {
@@ -74,7 +75,7 @@
 	min-width: 0;
 	display: flex;
 	flex-direction: column;
-	gap: calc(var(--ui-base-spacing) * 1);
+	gap: var(--alert-body-gap);
 }
 
 .alert__title {

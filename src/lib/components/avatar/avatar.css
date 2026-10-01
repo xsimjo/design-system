@@ -1,8 +1,8 @@
 [data-theme] {
-	--avatar-size-sm: calc(var(--ui-base-spacing) * 3);
-	--avatar-size-md: calc(var(--ui-base-spacing) * 4);
-	--avatar-size-lg: calc(var(--ui-base-spacing) * 6);
-	--avatar-size-xl: calc(var(--ui-base-spacing) * 8);
+	--avatar-size-sm: calc(var(--ui-base-spacing) * 6);
+	--avatar-size-md: calc(var(--ui-base-spacing) * 8);
+	--avatar-size-lg: calc(var(--ui-base-spacing) * 12);
+	--avatar-size-xl: calc(var(--ui-base-spacing) * 16);
 
 	--avatar-font-size-sm: var(--ui-text-xs);
 	--avatar-font-size-md: var(--ui-text-sm);
@@ -22,7 +22,7 @@
 	--avatar-border-width: var(--ui-border-width);
 	--avatar-border-color: var(--ui-border);
 
-	--avatar-status-size: calc(var(--ui-base-spacing) * 1.5);
+	--avatar-status-size: calc(var(--ui-base-spacing) * 3);
 	--avatar-status-border-width: calc(var(--ui-border-width) * 2);
 	--avatar-status-border-color: var(--ui-surface);
 	--avatar-status-online: var(--ui-success);
