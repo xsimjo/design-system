@@ -20,14 +20,7 @@
 		| 'code';
 
 	type Color =
-		| 'default'
-		| 'muted'
-		| 'primary'
-		| 'secondary'
-		| 'success'
-		| 'danger'
-		| 'warning'
-		| 'info';
+		'default' | 'muted' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
 	type Weight = 'normal' | 'medium' | 'semibold' | 'bold';
 	type Align = 'left' | 'center' | 'right';
 

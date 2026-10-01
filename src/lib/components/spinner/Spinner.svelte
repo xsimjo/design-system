@@ -5,14 +5,7 @@
 	interface Props extends HTMLAttributes<HTMLDivElement> {
 		size?: 'sm' | 'md' | 'lg';
 		variant?:
-			| 'primary'
-			| 'secondary'
-			| 'accent'
-			| 'success'
-			| 'warning'
-			| 'danger'
-			| 'info'
-			| 'neutral';
+			'primary' | 'secondary' | 'accent' | 'success' | 'warning' | 'danger' | 'info' | 'neutral';
 		label?: string;
 	}
 

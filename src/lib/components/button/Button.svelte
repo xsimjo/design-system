@@ -7,14 +7,7 @@
 	interface Props extends Omit<HTMLButtonAttributes, 'children'> {
 		variant?: 'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash';
 		color?:
-			| 'primary'
-			| 'secondary'
-			| 'accent'
-			| 'success'
-			| 'danger'
-			| 'warning'
-			| 'info'
-			| 'neutral';
+			'primary' | 'secondary' | 'accent' | 'success' | 'danger' | 'warning' | 'info' | 'neutral';
 		size?: 'sm' | 'md' | 'lg';
 		isIcon?: boolean;
 		isLoading?: boolean;

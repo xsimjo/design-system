@@ -10,7 +10,7 @@ Navigation control for paged data. Renders a `<nav>` with numbered page buttons 
 | `total`         | `number`                 | —       | Total number of items. Controls how many pages exist.      |
 | `pageSize`      | `number`                 | `10`    | Items per page. `totalPages = Math.ceil(total / pageSize)` |
 | `siblingCount`  | `number`                 | `1`     | Pages shown on each side of the current page button        |
-| `showFirstLast` | `boolean`                | `true`  | Show ⏮/⏭ buttons to jump to the first and last page      |
+| `showFirstLast` | `boolean`                | `true`  | Show ⏮/⏭ buttons to jump to the first and last page        |
 | `size`          | `'sm' \| 'md' \| 'lg'`   | `'md'`  | Visual size of all buttons                                 |
 | `onPageChange`  | `(page: number) => void` | —       | Callback fired on every page change                        |
 

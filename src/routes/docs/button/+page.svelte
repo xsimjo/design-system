@@ -15,14 +15,7 @@
 
 	type Variant = 'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash';
 	type Color =
-		| 'primary'
-		| 'secondary'
-		| 'accent'
-		| 'success'
-		| 'danger'
-		| 'warning'
-		| 'info'
-		| 'neutral';
+		'primary' | 'secondary' | 'accent' | 'success' | 'danger' | 'warning' | 'info' | 'neutral';
 
 	const variants: Variant[] = ['filled', 'outline', 'ghost', 'soft', 'link', 'dash'];
 	const colors: Color[] = [

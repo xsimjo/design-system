@@ -6,14 +6,7 @@
 	interface Props extends Omit<HTMLAttributes<HTMLSpanElement>, 'children'> {
 		label: string;
 		variant?:
-			| 'primary'
-			| 'secondary'
-			| 'accent'
-			| 'success'
-			| 'danger'
-			| 'warning'
-			| 'info'
-			| 'neutral';
+			'primary' | 'secondary' | 'accent' | 'success' | 'danger' | 'warning' | 'info' | 'neutral';
 		size?: 'sm' | 'md' | 'lg';
 		disabled?: boolean;
 		onremove?: () => void;

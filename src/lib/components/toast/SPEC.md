@@ -39,12 +39,7 @@ Mounts the toast container. Place once near the root of your app.
 ```ts
 type ToastVariant = 'success' | 'danger' | 'warning' | 'info' | 'neutral';
 type ToastPosition =
-	| 'top-left'
-	| 'top-center'
-	| 'top-right'
-	| 'bottom-left'
-	| 'bottom-center'
-	| 'bottom-right';
+	'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
 ```
 
 ## Usage
