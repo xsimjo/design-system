@@ -1,0 +1,135 @@
+[data-theme='qr'] {
+	/* ==========================================================================
+	   COLORS (8 pairs = 16 tokens)
+	   Achromatic ink primary. A QR code is pure black-and-white high-contrast
+	   geometry, so the interface stays colourless and the generated code is the
+	   only element with visual weight. One blue carries every interactive accent;
+	   semantic colours are held at low chroma so warnings and errors read as
+	   information rather than decoration.
+	   ========================================================================== */
+	--ui-primary: oklch(24% 0 0);
+	--ui-primary-foreground: oklch(100% 0 0);
+
+	--ui-secondary: oklch(46% 0 0);
+	--ui-secondary-foreground: oklch(100% 0 0);
+
+	--ui-accent: oklch(55% 0.17 250);
+	--ui-accent-foreground: oklch(100% 0 0);
+
+	--ui-success: oklch(55% 0.11 155);
+	--ui-success-foreground: oklch(100% 0 0);
+
+	--ui-warning: oklch(70% 0.12 70);
+	--ui-warning-foreground: oklch(22% 0.04 70);
+
+	--ui-danger: oklch(55% 0.16 25);
+	--ui-danger-foreground: oklch(100% 0 0);
+
+	--ui-info: oklch(55% 0.17 250);
+	--ui-info-foreground: oklch(100% 0 0);
+
+	--ui-neutral: oklch(52% 0 0);
+	--ui-neutral-foreground: oklch(100% 0 0);
+
+	/* ==========================================================================
+	   SURFACES (3 pairs = 6 tokens)
+	   Chroma is exactly 0 — true greys, no blue tint. Keeps a black QR preview
+	   from looking warm or cool against the page.
+	   ========================================================================== */
+	--ui-surface: oklch(99% 0 0);
+	--ui-surface-foreground: oklch(22% 0 0);
+
+	--ui-surface-raised: oklch(100% 0 0);
+	--ui-surface-raised-foreground: oklch(22% 0 0);
+
+	--ui-surface-overlay: oklch(100% 0 0);
+	--ui-surface-overlay-foreground: oklch(22% 0 0);
+
+	/* ==========================================================================
+	   BACKDROP (2 tokens)
+	   Firmer dim, minimal blur — blur is expensive and reads as ornament.
+	   ========================================================================== */
+	--ui-backdrop: oklch(0% 0 0 / 0.4);
+	--ui-backdrop-blur: 2px;
+
+	/* ==========================================================================
+	   BORDER (2 tokens)
+	   Hierarchy is carried by borders rather than shadows.
+	   ========================================================================== */
+	--ui-border: oklch(91% 0 0);
+	--ui-border-width: 1px;
+
+	/* ==========================================================================
+	   TYPOGRAPHY (18 tokens)
+	   Inter first, since a product site should not change face across platforms.
+	   The scale runs slightly larger than `light` at the body end for marketing
+	   copy, and considerably larger at the top end for landing headings.
+	   ========================================================================== */
+	--ui-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	--ui-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Monaco', 'Courier New', monospace;
+
+	--ui-text-xs: 12px;
+	--ui-text-sm: 13px;
+	--ui-text-base: 15px;
+	--ui-text-lg: 17px;
+	--ui-text-xl: 20px;
+	--ui-text-2xl: 25px;
+	--ui-text-3xl: 32px;
+	--ui-text-4xl: 40px;
+
+	--ui-leading-none: 1;
+	--ui-leading-tight: 1.25;
+	--ui-leading-normal: 1.55;
+	--ui-leading-relaxed: 1.75;
+
+	--ui-weight-normal: 400;
+	--ui-weight-medium: 500;
+	--ui-weight-semibold: 600;
+	--ui-weight-bold: 700;
+
+	/* ==========================================================================
+	   RADIUS (1 token)
+	   4px echoes the square modules of a QR code. Derived radii stay crisp:
+	   checkboxes and swatches land on 2px.
+	   ========================================================================== */
+	--ui-base-radius: 4px;
+
+	/* ==========================================================================
+	   DEPTH (1 token)
+	   Effectively flat — one hairline so overlays separate from the page.
+	   ========================================================================== */
+	--ui-depth: 0 1px 2px 0 oklch(0% 0 0 / 0.04);
+
+	/* ==========================================================================
+	   FOCUS (2 tokens)
+	   ========================================================================== */
+	--ui-ring-width: 2px;
+	--ui-ring-offset: 2px;
+
+	/* ==========================================================================
+	   INTERACTION (3 tokens)
+	   Restrained state changes; the ink primary is already high contrast.
+	   ========================================================================== */
+	--ui-hover-mix: black;
+	--ui-hover-amount: 5%;
+	--ui-active-amount: 10%;
+
+	/* ==========================================================================
+	   MOTION (3 tokens)
+	   Faster than `light`. Regenerating a code should feel immediate.
+	   ========================================================================== */
+	--ui-base-duration: 100ms;
+	--ui-base-easing: cubic-bezier(0.2, 0, 0.2, 1);
+	--ui-enter-offset: -2px;
+
+	/* ==========================================================================
+	   SPACING (1 token)
+	   ========================================================================== */
+	--ui-base-spacing: 4px;
+
+	/* ==========================================================================
+	   Z-INDEX (2 tokens)
+	   ========================================================================== */
+	--ui-z-overlay: 1000;
+	--ui-z-tooltip: 1500;
+}

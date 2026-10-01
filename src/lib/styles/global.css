@@ -4,6 +4,7 @@
 @import './themes/light.css';
 @import './themes/dark.css';
 @import './themes/dev.css';
+@import './themes/qr.css';
 [data-theme] {
 	--header-height: 64px;
 }

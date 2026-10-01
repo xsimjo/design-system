@@ -2,6 +2,13 @@
 
 Svelte 5 component library published as `@xsimjo/design-system`. Dev server already running on port 5175 — never run `npm run dev`.
 
+## Critical Analysis & Communication Guidelines
+
+- Maintain a completely neutral, fact-based, and objective tone.
+- Strictly prohibit flattery, overly positive descriptors, or reflexive validation of the user's ideas.
+- Challenge assumptions and misunderstandings explicitly rather than trying to implicitly fix or ignore them.
+- Do not give verbose or conversational fluff responses; prioritize legitimate justification over pleasing the user.
+
 ## Commands
 
 - `npm run lint && npm run format` — run after every change
@@ -39,7 +46,7 @@ Note that most components are single-size and expose no `size` prop; do not inve
 Three layers — never skip or cross them:
 
 1. **Primitives** (`styles/primitives.css`) — raw values, `:root` scope. Never referenced by components.
-2. **Semantic** (`styles/themes/*.css`) — 57 `--ui-*` tokens per theme, scoped to `[data-theme='...']`. All three themes (light, dark, dev) must define the same 57 tokens.
+2. **Semantic** (`styles/themes/*.css`) — 57 `--ui-*` tokens per theme, scoped to `[data-theme='...']`. Every theme (light, dark, dev, qr) must define the same 57 tokens.
 3. **Component** (`components/{name}/{name}.css`) — `--{component}-*` tokens, derived from `--ui-*`. Scoped to `[data-theme]`.
 
 **Rule**: components use component tokens or `--ui-*` directly. Never `--color-*`, `--space-*`, `--shadow-*`, or any other primitive.
@@ -107,7 +114,7 @@ Uses `release-it`. Run `npm run release` — it handles version bump, changelog,
 ## Gotchas
 
 - `shiki` is a dev dependency only — it is used by the docs site, not by any shipped component, so consumers do not install it
-- Only light, dark, and dev themes are exported in `package.json` `exports`
+- A new theme must be registered in five places: `styles/themes/{name}.css`, the `@import` in `styles/global.css`, `package.json` `exports`, the `themes` list in `internal/ThemeSwitcher.svelte`, and the theme-builder (`BaseTheme` plus `BASE_THEME_DEFAULTS` in `token-state.svelte.ts`, and the options in `EditorPanel.svelte`)
 
 ## Code Conventions
 

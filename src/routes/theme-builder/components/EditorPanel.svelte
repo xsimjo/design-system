@@ -27,7 +27,8 @@
 	const themeOptions: SelectOption[] = [
 		{ value: 'light', label: 'Light' },
 		{ value: 'dark', label: 'Dark' },
-		{ value: 'dev', label: 'Developer' }
+		{ value: 'dev', label: 'Developer' },
+		{ value: 'qr', label: 'QR' }
 	];
 
 	const groupedTokens = $derived(
