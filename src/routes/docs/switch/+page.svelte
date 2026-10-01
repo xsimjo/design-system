@@ -10,6 +10,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -168,64 +169,37 @@
 			Override these tokens to adapt Switch to your brand or to create specialized variants.
 		</p>
 
-		<PropsTable
-			title="Color Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--switch-bg', 'var(--ui-border)', 'Track background in off state'],
-				['--switch-checked-bg', 'var(--ui-primary)', 'Track background in on state'],
-				['--switch-thumb-bg', 'var(--ui-surface)', 'Thumb background color'],
-				[
-					'--switch-hover-bg',
-					'color-mix(\u2026border+hover)',
-					'Track background on hover (off state)'
-				],
-				[
-					'--switch-checked-hover-bg',
-					'color-mix(\u2026primary+hover)',
-					'Track background on hover (on state)'
-				],
-				['--switch-focus-color', 'var(--ui-primary)', 'Focus ring color'],
-				['--switch-focus-ring-width', 'var(--ui-ring-width)', 'Width of the focus ring outline'],
-				[
-					'--switch-focus-ring-offset',
-					'var(--ui-ring-offset)',
-					'Offset of the focus ring from the track'
-				],
-				['--switch-error-bg', 'var(--ui-danger)', 'Track background in error state']
+		<TokenTable
+			component="switch"
+			tokens={[
+				['--switch-bg', 'Track background in off state'],
+				['--switch-checked-bg', 'Track background in on state'],
+				['--switch-thumb-bg', 'Thumb background color'],
+				['--switch-hover-bg', 'Track background on hover (off state)'],
+				['--switch-checked-hover-bg', 'Track background on hover (on state)'],
+				['--switch-focus-color', 'Focus ring color'],
+				['--switch-focus-ring-width', 'Width of the focus ring outline'],
+				['--switch-focus-ring-offset', 'Offset of the focus ring from the track'],
+				['--switch-error-bg', 'Track background in error state']
 			]}
 		/>
 
-		<PropsTable
-			title="Size Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--switch-track-width-sm', '28px', 'Track width for sm'],
-				['--switch-track-height-sm', '16px', 'Track height for sm'],
-				['--switch-thumb-size-sm', '12px', 'Thumb diameter for sm'],
-				['--switch-thumb-travel-sm', '12px', 'Thumb translation distance for sm'],
-				['--switch-track-width-md', '36px', 'Track width for md'],
-				['--switch-track-height-md', '20px', 'Track height for md'],
-				['--switch-thumb-size-md', '16px', 'Thumb diameter for md'],
-				['--switch-thumb-travel-md', '16px', 'Thumb translation distance for md'],
-				['--switch-track-width-lg', '44px', 'Track width for lg'],
-				['--switch-track-height-lg', '24px', 'Track height for lg'],
-				['--switch-thumb-size-lg', '20px', 'Thumb diameter for lg'],
-				['--switch-thumb-travel-lg', '20px', 'Thumb translation distance for lg']
+		<TokenTable
+			component="switch"
+			tokens={[
+				['--switch-track-width', 'Track width'],
+				['--switch-track-height', 'Track height'],
+				['--switch-thumb-size', 'Thumb diameter'],
+				['--switch-thumb-travel', 'Thumb translation distance when checked']
 			]}
 		/>
 
-		<PropsTable
-			title="Style Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--switch-border-radius', '9999px', 'Pill shape for track and thumb'],
-				['--switch-thumb-shadow', '0 1px 3px oklch(0% 0 0 / 0.25)', 'Drop shadow on thumb'],
-				[
-					'--switch-transition',
-					'var(--ui-base-duration) var(--ui-base-easing)',
-					'Transition for track background and thumb position'
-				]
+		<TokenTable
+			component="switch"
+			tokens={[
+				['--switch-border-radius', 'Pill shape for track and thumb'],
+				['--switch-thumb-shadow', 'Drop shadow on thumb'],
+				['--switch-transition', 'Transition for track background and thumb position']
 			]}
 		/>
 	</DocSection>

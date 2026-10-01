@@ -118,27 +118,27 @@ When placed inside a `Field` component, Combobox automatically reads:
 
 ### Trigger
 
-| Token                          | Default                                         | Description                    |
-| ------------------------------ | ----------------------------------------------- | ------------------------------ |
-| `--combobox-bg`                | `var(--ui-surface)`                             | Trigger background             |
-| `--combobox-fg`                | `var(--ui-surface-foreground)`                  | Trigger text color             |
-| `--combobox-border`            | `var(--ui-border)`                              | Default border color           |
-| `--combobox-border-width`      | `var(--ui-border-width)`                        | Border thickness               |
-| `--combobox-placeholder`       | `color-mix(…fg 55% transparent)`                | Placeholder text color         |
-| `--combobox-focus-color`       | `var(--ui-primary)`                             | Border color when focused/open |
-| `--combobox-focus-ring-width`  | `var(--ui-ring-width)`                          | Focus ring width               |
-| `--combobox-focus-ring-offset` | `var(--ui-ring-offset)`                         | Focus ring offset              |
-| `--combobox-error-color`       | `var(--ui-danger)`                              | Border color in error state    |
-| `--combobox-disabled-bg`       | `color-mix(…neutral 80% transparent)`           | Background when disabled       |
-| `--combobox-disabled-fg`       | `color-mix(…fg 50% transparent)`                | Text color when disabled       |
-| `--combobox-disabled-border`   | `var(--ui-border)`                              | Border color when disabled     |
-| `--combobox-hover-border`      | `color-mix(…border+hover-mix hover-amount)`     | Border color on hover          |
-| `--combobox-font-family`       | `var(--ui-font-sans)`                           | Font family                    |
-| `--combobox-font-weight`       | `var(--ui-weight-normal)`                       | Font weight                    |
-| `--combobox-border-radius`     | `var(--ui-base-radius)`                         | Corner roundness               |
-| `--combobox-transition`        | `var(--ui-base-duration) var(--ui-base-easing)` | Transition                     |
-| `--combobox-chevron-size`      | `calc(var(--ui-base-spacing) * 4)`              | Chevron icon size              |
-| `--combobox-chevron-color`     | `color-mix(…fg 35% transparent)`                | Chevron icon color             |
+| Token                          | Default                                                                             | Description                    |
+| ------------------------------ | ----------------------------------------------------------------------------------- | ------------------------------ |
+| `--combobox-bg`                | `var(--ui-surface)`                                                                 | Trigger background             |
+| `--combobox-fg`                | `var(--ui-surface-foreground)`                                                      | Trigger text color             |
+| `--combobox-border`            | `var(--ui-border)`                                                                  | Default border color           |
+| `--combobox-border-width`      | `var(--ui-border-width)`                                                            | Border thickness               |
+| `--combobox-placeholder`       | `color-mix(in oklch, var(--ui-surface-foreground), transparent 55%)`                | Placeholder text color         |
+| `--combobox-focus-color`       | `var(--ui-primary)`                                                                 | Border color when focused/open |
+| `--combobox-focus-ring-width`  | `var(--ui-ring-width)`                                                              | Focus ring width               |
+| `--combobox-focus-ring-offset` | `var(--ui-ring-offset)`                                                             | Focus ring offset              |
+| `--combobox-error-color`       | `var(--ui-danger)`                                                                  | Border color in error state    |
+| `--combobox-disabled-bg`       | `color-mix(in oklch, var(--ui-neutral), transparent 80%)`                           | Background when disabled       |
+| `--combobox-disabled-fg`       | `color-mix(in oklch, var(--ui-surface-foreground), transparent 50%)`                | Text color when disabled       |
+| `--combobox-disabled-border`   | `var(--ui-border)`                                                                  | Border color when disabled     |
+| `--combobox-hover-border`      | `color-mix(in oklch, var(--ui-border), var(--ui-hover-mix) var(--ui-hover-amount))` | Border color on hover          |
+| `--combobox-font-family`       | `var(--ui-font-sans)`                                                               | Font family                    |
+| `--combobox-font-weight`       | `var(--ui-weight-normal)`                                                           | Font weight                    |
+| `--combobox-border-radius`     | `var(--ui-base-radius)`                                                             | Corner roundness               |
+| `--combobox-transition`        | `var(--ui-base-duration) var(--ui-base-easing)`                                     | Transition                     |
+| `--combobox-chevron-size`      | `calc(var(--ui-base-spacing) * 4)`                                                  | Chevron icon size              |
+| `--combobox-chevron-color`     | `color-mix(in oklch, var(--ui-surface-foreground), transparent 35%)`                | Chevron icon color             |
 
 ### Sizes
 
@@ -163,15 +163,15 @@ When placed inside a `Field` component, Combobox automatically reads:
 
 ### Options
 
-| Token                                 | Default                               | Description                         |
-| ------------------------------------- | ------------------------------------- | ----------------------------------- |
-| `--combobox-option-height`            | `calc(var(--ui-base-spacing) * 10)`   | Minimum option height               |
-| `--combobox-option-padding-x`         | `calc(var(--ui-base-spacing) * 3)`    | Horizontal option padding           |
-| `--combobox-option-font-size`         | `var(--ui-text-sm)`                   | Option font size                    |
-| `--combobox-option-border-radius`     | `calc(var(--ui-base-radius) * 0.5)`   | Option corner roundness             |
-| `--combobox-option-hover-bg`          | `color-mix(…neutral 90% transparent)` | Hover / keyboard-focus background   |
-| `--combobox-option-selected-bg`       | `color-mix(…primary 90% transparent)` | Selected option background          |
-| `--combobox-option-selected-hover-bg` | `color-mix(…primary 84% transparent)` | Selected option background on hover |
-| `--combobox-option-selected-fg`       | `var(--ui-primary)`                   | Selected option text color          |
-| `--combobox-option-check-size`        | `calc(var(--ui-base-spacing) * 4)`    | Checkmark icon size                 |
-| `--combobox-option-disabled-opacity`  | `0.5`                                 | Opacity for disabled options        |
+| Token                                 | Default                                                   | Description                         |
+| ------------------------------------- | --------------------------------------------------------- | ----------------------------------- |
+| `--combobox-option-height`            | `calc(var(--ui-base-spacing) * 10)`                       | Minimum option height               |
+| `--combobox-option-padding-x`         | `calc(var(--ui-base-spacing) * 3)`                        | Horizontal option padding           |
+| `--combobox-option-font-size`         | `var(--ui-text-sm)`                                       | Option font size                    |
+| `--combobox-option-border-radius`     | `calc(var(--ui-base-radius) * 0.5)`                       | Option corner roundness             |
+| `--combobox-option-hover-bg`          | `color-mix(in oklch, var(--ui-neutral), transparent 90%)` | Hover / keyboard-focus background   |
+| `--combobox-option-selected-bg`       | `color-mix(in oklch, var(--ui-primary), transparent 90%)` | Selected option background          |
+| `--combobox-option-selected-hover-bg` | `color-mix(in oklch, var(--ui-primary), transparent 84%)` | Selected option background on hover |
+| `--combobox-option-selected-fg`       | `var(--ui-primary)`                                       | Selected option text color          |
+| `--combobox-option-check-size`        | `calc(var(--ui-base-spacing) * 4)`                        | Checkmark icon size                 |
+| `--combobox-option-disabled-opacity`  | `0.5`                                                     | Opacity for disabled options        |

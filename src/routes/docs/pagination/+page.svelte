@@ -14,6 +14,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	// Demo state — each example has its own page binding
 	let basicPage = $state(1);
@@ -294,47 +295,44 @@ ${S}script>
 
 	<!-- CSS TOKENS -->
 	<DocSection id="css-tokens" title="CSS Tokens">
-		<PropsTable
-			title="Sizing"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--pagination-item-sm', '32px', 'Item height & min-width at sm'],
-				['--pagination-item-md', '40px', 'Item height & min-width at md'],
-				['--pagination-item-lg', '48px', 'Item height & min-width at lg'],
-				['--pagination-font-sm', 'var(--ui-text-xs)', 'Font size at sm'],
-				['--pagination-font-md', 'var(--ui-text-sm)', 'Font size at md'],
-				['--pagination-font-lg', 'var(--ui-text-base)', 'Font size at lg'],
-				['--pagination-gap-sm', '4px', 'Gap between items at sm'],
-				['--pagination-gap-md', '6px', 'Gap between items at md'],
-				['--pagination-gap-lg', '8px', 'Gap between items at lg']
+		<TokenTable
+			component="pagination"
+			tokens={[
+				['--pagination-item-sm', 'Item height & min-width at sm'],
+				['--pagination-item-md', 'Item height & min-width at md'],
+				['--pagination-item-lg', 'Item height & min-width at lg'],
+				['--pagination-font-sm', 'Font size at sm'],
+				['--pagination-font-md', 'Font size at md'],
+				['--pagination-font-lg', 'Font size at lg'],
+				['--pagination-gap-sm', 'Gap between items at sm'],
+				['--pagination-gap-md', 'Gap between items at md'],
+				['--pagination-gap-lg', 'Gap between items at lg']
 			]}
 		/>
 
-		<PropsTable
-			title="Colors"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--pagination-item-bg', 'transparent', 'Default button background'],
-				['--pagination-item-text', 'var(--ui-surface-foreground)', 'Default button text'],
-				['--pagination-item-border', 'var(--ui-border)', 'Default button border'],
-				['--pagination-item-hover-bg', 'neutral, 18% opacity', 'Hover background'],
-				['--pagination-item-active-bg', 'var(--ui-primary)', 'Current page background'],
-				['--pagination-item-active-text', 'var(--ui-primary-foreground)', 'Current page text'],
-				['--pagination-item-disabled-text', 'foreground, 60% transparent', 'Disabled button text'],
-				['--pagination-dots-color', 'foreground, 60% transparent', 'Ellipsis color']
+		<TokenTable
+			component="pagination"
+			tokens={[
+				['--pagination-item-bg', 'Default button background'],
+				['--pagination-item-text', 'Default button text'],
+				['--pagination-item-border', 'Default button border'],
+				['--pagination-item-hover-bg', 'Hover background'],
+				['--pagination-item-active-bg', 'Current page background'],
+				['--pagination-item-active-text', 'Current page text'],
+				['--pagination-item-disabled-text', 'Disabled button text'],
+				['--pagination-dots-color', 'Ellipsis color']
 			]}
 		/>
 
-		<PropsTable
-			title="Shape & Focus"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--pagination-border-radius', 'var(--ui-base-radius)', 'Button corner radius'],
-				['--pagination-border-width', 'var(--ui-border-width)', 'Button border thickness'],
-				['--pagination-focus-ring-width', 'var(--ui-ring-width)', 'Focus ring width'],
-				['--pagination-focus-ring-color', 'var(--ui-primary)', 'Focus ring color'],
-				['--pagination-focus-ring-offset', 'var(--ui-ring-offset)', 'Focus ring offset'],
-				['--pagination-transition', '150ms ease', 'Animation timing']
+		<TokenTable
+			component="pagination"
+			tokens={[
+				['--pagination-border-radius', 'Button corner radius'],
+				['--pagination-border-width', 'Button border thickness'],
+				['--pagination-focus-ring-width', 'Focus ring width'],
+				['--pagination-focus-ring-color', 'Focus ring color'],
+				['--pagination-focus-ring-offset', 'Focus ring offset'],
+				['--pagination-transition', 'Animation timing']
 			]}
 		/>
 	</DocSection>

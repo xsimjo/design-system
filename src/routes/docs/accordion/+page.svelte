@@ -9,6 +9,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -285,30 +286,18 @@
 	</DocSection>
 
 	<DocSection id="css-tokens" title="CSS Tokens">
-		<PropsTable
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--accordion-border', 'var(--ui-border)', 'Border color'],
-				['--accordion-border-width', 'var(--ui-border-width)', 'Border width'],
-				['--accordion-trigger-color', 'var(--ui-surface-foreground)', 'Trigger button text color'],
-				[
-					'--accordion-trigger-hover-bg',
-					'color-mix(var(--ui-neutral), transparent 90%)',
-					'Trigger hover background'
-				],
-				[
-					'--accordion-content-color',
-					'color-mix(var(--ui-surface-foreground), transparent 25%)',
-					'Panel content text color'
-				],
-				[
-					'--accordion-padding-x',
-					'calc(var(--ui-base-spacing) * 4)',
-					'Base horizontal padding unit'
-				],
-				['--accordion-padding-y', 'calc(var(--ui-base-spacing) * 3)', 'Base vertical padding unit'],
-				['--accordion-duration', 'var(--ui-base-duration)', 'Transition duration'],
-				['--accordion-easing', 'var(--ui-base-easing)', 'Transition easing function']
+		<TokenTable
+			component="accordion"
+			tokens={[
+				['--accordion-border', 'Border color'],
+				['--accordion-border-width', 'Border width'],
+				['--accordion-trigger-color', 'Trigger button text color'],
+				['--accordion-trigger-hover-bg', 'Trigger hover background'],
+				['--accordion-content-color', 'Panel content text color'],
+				['--accordion-padding-x', 'Base horizontal padding unit'],
+				['--accordion-padding-y', 'Base vertical padding unit'],
+				['--accordion-duration', 'Transition duration'],
+				['--accordion-easing', 'Transition easing function']
 			]}
 		/>
 	</DocSection>

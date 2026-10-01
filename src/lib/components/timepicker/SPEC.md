@@ -136,21 +136,21 @@ All tokens are scoped to `[data-theme]` and derived from `--ui-*` semantic token
 
 ### Trigger Tokens
 
-| Token                            | Source                                      |
-| -------------------------------- | ------------------------------------------- |
-| `--timepicker-bg`                | `--ui-surface`                              |
-| `--timepicker-fg`                | `--ui-surface-foreground`                   |
-| `--timepicker-border`            | `--ui-border`                               |
-| `--timepicker-border-width`      | `--ui-border-width`                         |
-| `--timepicker-placeholder`       | `--ui-surface-foreground` + 55% transparent |
-| `--timepicker-focus-color`       | `--ui-primary`                              |
-| `--timepicker-focus-ring-width`  | `--ui-ring-width`                           |
-| `--timepicker-focus-ring-offset` | `--ui-ring-offset`                          |
-| `--timepicker-error-color`       | `--ui-danger`                               |
-| `--timepicker-disabled-bg`       | `--ui-neutral` + 80% transparent            |
-| `--timepicker-disabled-fg`       | `--ui-surface-foreground` + 50% transparent |
-| `--timepicker-disabled-border`   | `--ui-border`                               |
-| `--timepicker-hover-border`      | `--ui-border` + hover mix                   |
+| Token                            | Source                                                                                          |
+| -------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `--timepicker-bg`                | `var(--ui-surface)`                                                                             |
+| `--timepicker-fg`                | `var(--ui-surface-foreground)`                                                                  |
+| `--timepicker-border`            | `var(--ui-border)`                                                                              |
+| `--timepicker-border-width`      | `var(--ui-border-width)`                                                                        |
+| `--timepicker-placeholder`       | `color-mix(in oklch, var(--ui-surface-foreground), transparent 55%)` + 55% transparent          |
+| `--timepicker-focus-color`       | `var(--ui-primary)`                                                                             |
+| `--timepicker-focus-ring-width`  | `var(--ui-ring-width)`                                                                          |
+| `--timepicker-focus-ring-offset` | `var(--ui-ring-offset)`                                                                         |
+| `--timepicker-error-color`       | `var(--ui-danger)`                                                                              |
+| `--timepicker-disabled-bg`       | `color-mix(in oklch, var(--ui-neutral), transparent 80%)` + 80% transparent                     |
+| `--timepicker-disabled-fg`       | `color-mix(in oklch, var(--ui-surface-foreground), transparent 50%)` + 50% transparent          |
+| `--timepicker-disabled-border`   | `var(--ui-border)`                                                                              |
+| `--timepicker-hover-border`      | `color-mix(in oklch, var(--ui-border), var(--ui-hover-mix) var(--ui-hover-amount))` + hover mix |
 
 ### Size Tokens
 
@@ -162,39 +162,39 @@ All tokens are scoped to `[data-theme]` and derived from `--ui-*` semantic token
 
 ### Typography / Layout Tokens
 
-| Token                         | Source                                      |
-| ----------------------------- | ------------------------------------------- |
-| `--timepicker-font-family`    | `--ui-font-sans`                            |
-| `--timepicker-font-weight`    | `--ui-weight-normal`                        |
-| `--timepicker-border-radius`  | `--ui-base-radius`                          |
-| `--timepicker-transition`     | `duration + easing`                         |
-| `--timepicker-icon-size`      | `2 × base-spacing`                          |
-| `--timepicker-icon-color`     | `--ui-surface-foreground` + 35% transparent |
-| `--timepicker-seg-input-size` | `--ui-text-base`                            |
+| Token                         | Source                                                                                 |
+| ----------------------------- | -------------------------------------------------------------------------------------- |
+| `--timepicker-font-family`    | `var(--ui-font-sans)`                                                                  |
+| `--timepicker-font-weight`    | `var(--ui-weight-normal)`                                                              |
+| `--timepicker-border-radius`  | `var(--ui-base-radius)`                                                                |
+| `--timepicker-transition`     | `var(--ui-base-duration) var(--ui-base-easing)`                                        |
+| `--timepicker-icon-size`      | `calc(var(--ui-base-spacing) * 4)`                                                     |
+| `--timepicker-icon-color`     | `color-mix(in oklch, var(--ui-surface-foreground), transparent 35%)` + 35% transparent |
+| `--timepicker-seg-input-size` | `var(--ui-text-base)`                                                                  |
 
 ### Panel Tokens
 
-| Token                             | Value                             |
-| --------------------------------- | --------------------------------- |
-| `--timepicker-panel-bg`           | `--ui-surface-overlay`            |
-| `--timepicker-panel-fg`           | `--ui-surface-overlay-foreground` |
-| `--timepicker-panel-border`       | `--ui-border`                     |
-| `--timepicker-panel-shadow`       | `--ui-depth`                      |
-| `--timepicker-panel-z-index`      | `--ui-z-overlay`                  |
-| `--timepicker-panel-enter-offset` | `--ui-enter-offset`               |
+| Token                             | Value                                  |
+| --------------------------------- | -------------------------------------- |
+| `--timepicker-panel-bg`           | `var(--ui-surface-overlay)`            |
+| `--timepicker-panel-fg`           | `var(--ui-surface-overlay-foreground)` |
+| `--timepicker-panel-border`       | `var(--ui-border)`                     |
+| `--timepicker-panel-shadow`       | `var(--ui-depth)`                      |
+| `--timepicker-panel-z-index`      | `var(--ui-z-overlay)`                  |
+| `--timepicker-panel-enter-offset` | `var(--ui-enter-offset)`               |
 
 ### Column Tokens
 
-| Token                               | Value                                               |
-| ----------------------------------- | --------------------------------------------------- |
-| `--timepicker-col-width`            | `7 × base-spacing` (56px)                           |
-| `--timepicker-col-item-height`      | `5 × base-spacing` (40px)                           |
-| `--timepicker-col-list-height`      | `5 × col-item-height` (shows ~5 items)              |
-| `--timepicker-col-item-selected-bg` | `--ui-primary` + 90% transparent                    |
-| `--timepicker-col-item-selected-fg` | `--ui-primary`                                      |
-| `--timepicker-col-item-hover-bg`    | `--ui-neutral` + 85% transparent                    |
-| `--timepicker-value-size`           | `--ui-text-base`                                    |
-| `--timepicker-value-font-weight`    | `--ui-weight-semibold`                              |
-| `--timepicker-sep-color`            | `--ui-surface-overlay-foreground` + 50% transparent |
-| `--timepicker-divider-color`        | `--ui-border`                                       |
-| `--timepicker-col-sep-color`        | `--ui-border`                                       |
+| Token                               | Value                                                                                          |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `--timepicker-col-width`            | `calc(var(--ui-base-spacing) * 14)` (56px)                                                     |
+| `--timepicker-col-item-height`      | `calc(var(--ui-base-spacing) * 10)` (40px)                                                     |
+| `--timepicker-col-list-height`      | `calc(var(--timepicker-col-item-height) * 5)` (shows ~5 items)                                 |
+| `--timepicker-col-item-selected-bg` | `color-mix(in oklch, var(--ui-primary), transparent 90%)` + 90% transparent                    |
+| `--timepicker-col-item-selected-fg` | `var(--ui-primary)`                                                                            |
+| `--timepicker-col-item-hover-bg`    | `color-mix(in oklch, var(--ui-neutral), transparent 85%)` + 85% transparent                    |
+| `--timepicker-value-size`           | `var(--ui-text-base)`                                                                          |
+| `--timepicker-value-font-weight`    | `var(--ui-weight-semibold)`                                                                    |
+| `--timepicker-sep-color`            | `color-mix(in oklch, var(--ui-surface-overlay-foreground), transparent 50%)` + 50% transparent |
+| `--timepicker-divider-color`        | `var(--ui-border)`                                                                             |
+| `--timepicker-col-sep-color`        | `var(--ui-border)`                                                                             |

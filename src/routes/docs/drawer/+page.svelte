@@ -14,6 +14,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	let basicOpen = $state(false);
 	let withFooterOpen = $state(false);
@@ -289,44 +290,37 @@
 			Override these tokens to customize the drawer's appearance per theme.
 		</p>
 
-		<PropsTable
-			title="Backdrop & Surface"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--drawer-backdrop-color', 'var(--ui-backdrop)', 'Backdrop overlay color'],
-				['--drawer-backdrop-blur', 'var(--ui-backdrop-blur)', 'Backdrop blur amount'],
-				['--drawer-surface', 'var(--ui-surface-overlay)', 'Panel background'],
-				['--drawer-surface-foreground', 'var(--ui-surface-overlay-foreground)', 'Panel text color'],
-				['--drawer-shadow', 'var(--ui-depth)', 'Panel drop shadow']
+		<TokenTable
+			component="drawer"
+			tokens={[
+				['--drawer-backdrop-color', 'Backdrop overlay color'],
+				['--drawer-backdrop-blur', 'Backdrop blur amount'],
+				['--drawer-surface', 'Panel background'],
+				['--drawer-surface-foreground', 'Panel text color'],
+				['--drawer-shadow', 'Panel drop shadow']
 			]}
 		/>
 
-		<PropsTable
-			title="Sizing"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--drawer-sm-width', '400px', 'Width for size="sm"'],
-				['--drawer-md-width', '512px', 'Width for size="md"'],
-				['--drawer-lg-width', '640px', 'Width for size="lg"'],
-				['--drawer-xl-width', '768px', 'Width for size="xl"'],
-				['--drawer-padding', '24px', 'Inner padding for all sections']
+		<TokenTable
+			component="drawer"
+			tokens={[
+				['--drawer-sm-width', 'Width for size="sm"'],
+				['--drawer-md-width', 'Width for size="md"'],
+				['--drawer-lg-width', 'Width for size="lg"'],
+				['--drawer-xl-width', 'Width for size="xl"'],
+				['--drawer-padding', 'Inner padding for all sections']
 			]}
 		/>
 
-		<PropsTable
-			title="Header, Footer & Motion"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--drawer-title-size', 'var(--ui-text-lg)', 'Title font size'],
-				['--drawer-title-weight', 'var(--ui-weight-semibold)', 'Title font weight'],
-				['--drawer-close-color', 'color-mix(...)', 'Close button icon color'],
-				['--drawer-close-hover-bg', 'color-mix(...)', 'Close button hover background'],
-				['--drawer-footer-gap', '12px', 'Gap between footer buttons'],
-				[
-					'--drawer-transition',
-					'var(--ui-base-duration) var(--ui-base-easing)',
-					'Animation duration/easing'
-				]
+		<TokenTable
+			component="drawer"
+			tokens={[
+				['--drawer-title-size', 'Title font size'],
+				['--drawer-title-weight', 'Title font weight'],
+				['--drawer-close-color', 'Close button icon color'],
+				['--drawer-close-hover-bg', 'Close button hover background'],
+				['--drawer-footer-gap', 'Gap between footer buttons'],
+				['--drawer-transition', 'Animation duration/easing']
 			]}
 		/>
 	</DocSection>

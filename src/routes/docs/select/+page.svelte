@@ -10,6 +10,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	let country = $state('');
 	let controlled = $state('banana');
@@ -291,94 +292,61 @@
 			Override these tokens to adapt Select to your brand or to create specialized variants.
 		</p>
 
-		<PropsTable
-			title="Trigger Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--select-bg', 'var(--ui-surface)', 'Trigger background'],
-				['--select-fg', 'var(--ui-surface-foreground)', 'Trigger text color'],
-				['--select-border', 'var(--ui-border)', 'Default border color'],
-				['--select-border-width', 'var(--ui-border-width)', 'Border thickness'],
-				['--select-placeholder', 'color-mix(…55% transparent)', 'Placeholder text color'],
-				['--select-hover-border', 'color-mix(…border+fg 25%)', 'Border color on hover'],
-				[
-					'--select-focus-color',
-					'var(--ui-primary)',
-					'Border and focus ring color when open/focused'
-				],
-				['--select-focus-ring-width', 'var(--ui-ring-width)', 'Focus ring outline width'],
-				['--select-focus-ring-offset', 'var(--ui-ring-offset)', 'Focus ring offset from border'],
-				['--select-error-color', 'var(--ui-danger)', 'Border color in error state'],
-				['--select-disabled-bg', 'color-mix(…neutral 80% transparent)', 'Background when disabled'],
-				['--select-disabled-fg', 'color-mix(…fg 50% transparent)', 'Text color when disabled'],
-				['--select-chevron-size', '16px', 'Width and height of the chevron icon'],
-				['--select-chevron-color', 'color-mix(…fg 35% transparent)', 'Chevron icon color']
+		<TokenTable
+			component="select"
+			tokens={[
+				['--select-bg', 'Trigger background'],
+				['--select-fg', 'Trigger text color'],
+				['--select-border', 'Default border color'],
+				['--select-border-width', 'Border thickness'],
+				['--select-placeholder', 'Placeholder text color'],
+				['--select-hover-border', 'Border color on hover'],
+				['--select-focus-color', 'Border and focus ring color when open/focused'],
+				['--select-focus-ring-width', 'Focus ring outline width'],
+				['--select-focus-ring-offset', 'Focus ring offset from border'],
+				['--select-error-color', 'Border color in error state'],
+				['--select-disabled-bg', 'Background when disabled'],
+				['--select-disabled-fg', 'Text color when disabled'],
+				['--select-chevron-size', 'Width and height of the chevron icon'],
+				['--select-chevron-color', 'Chevron icon color']
 			]}
 		/>
 
-		<PropsTable
+		<TokenTable
+			component="select"
 			title="Size Tokens"
-			columns={['Token', 'SM', 'MD', 'LG']}
-			rows={[
-				["--select-{'{size}'}-height", '32px', '40px', '48px'],
-				["--select-{'{size}'}-padding-x", '12px', '16px', '24px'],
-				[
-					"--select-{'{size}'}-font-size",
-					'var(--ui-text-sm)',
-					'var(--ui-text-base)',
-					'var(--ui-text-lg)'
-				]
+			tokens={[
+				['--select-height', 'Trigger height'],
+				['--select-padding-x', 'Trigger horizontal padding'],
+				['--select-font-size', 'Trigger text size']
+			]}
+		/>
+		<TokenTable
+			component="select"
+			tokens={[
+				['--select-listbox-bg', 'Listbox background'],
+				['--select-listbox-fg', 'Listbox text color'],
+				['--select-listbox-border', 'Listbox border color'],
+				['--select-listbox-shadow', 'Listbox box shadow'],
+				['--select-listbox-max-height', 'Maximum height before scroll'],
+				['--select-listbox-z-index', 'Z-index of the floating listbox'],
+				['--select-listbox-enter-offset', 'Transform offset for the open animation']
 			]}
 		/>
 
-		<PropsTable
-			title="Listbox Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--select-listbox-bg', 'var(--ui-surface-overlay)', 'Listbox background'],
-				['--select-listbox-fg', 'var(--ui-surface-overlay-foreground)', 'Listbox text color'],
-				['--select-listbox-border', 'var(--ui-border)', 'Listbox border color'],
-				['--select-listbox-shadow', 'var(--ui-depth)', 'Listbox box shadow'],
-				['--select-listbox-max-height', '320px', 'Maximum height before scroll'],
-				['--select-listbox-z-index', 'var(--ui-z-overlay)', 'Z-index of the floating listbox'],
-				[
-					'--select-listbox-enter-offset',
-					'var(--ui-enter-offset)',
-					'Transform offset for the open animation'
-				]
-			]}
-		/>
-
-		<PropsTable
-			title="Option Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--select-option-height', '40px', 'Minimum option height'],
-				['--select-option-padding-x', '12px', 'Horizontal option padding'],
-				['--select-option-font-size', 'var(--ui-text-sm)', 'Option font size'],
-				[
-					'--select-option-border-radius',
-					'calc(var(--ui-base-radius) * 0.5)',
-					'Option corner roundness'
-				],
-				[
-					'--select-option-hover-bg',
-					'color-mix(…neutral 90% transparent)',
-					'Hover / keyboard-focus background'
-				],
-				[
-					'--select-option-selected-bg',
-					'color-mix(…primary 90% transparent)',
-					'Selected option background'
-				],
-				[
-					'--select-option-selected-hover-bg',
-					'color-mix(…primary 84% transparent)',
-					'Selected option background on hover'
-				],
-				['--select-option-selected-fg', 'var(--ui-primary)', 'Selected option text color'],
-				['--select-option-check-size', '16px', 'Checkmark icon size'],
-				['--select-option-disabled-opacity', '0.5', 'Opacity for disabled options']
+		<TokenTable
+			component="select"
+			tokens={[
+				['--select-option-height', 'Minimum option height'],
+				['--select-option-padding-x', 'Horizontal option padding'],
+				['--select-option-font-size', 'Option font size'],
+				['--select-option-border-radius', 'Option corner roundness'],
+				['--select-option-hover-bg', 'Hover / keyboard-focus background'],
+				['--select-option-selected-bg', 'Selected option background'],
+				['--select-option-selected-hover-bg', 'Selected option background on hover'],
+				['--select-option-selected-fg', 'Selected option text color'],
+				['--select-option-check-size', 'Checkmark icon size'],
+				['--select-option-disabled-opacity', 'Opacity for disabled options']
 			]}
 		/>
 	</DocSection>

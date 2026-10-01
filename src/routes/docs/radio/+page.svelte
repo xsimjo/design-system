@@ -10,6 +10,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -199,56 +200,35 @@
 			Override these tokens to adapt Radio to your brand or to create specialized variants.
 		</p>
 
-		<PropsTable
-			title="Color Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--radio-bg', 'var(--ui-surface)', 'Background in unselected state'],
-				['--radio-border', 'var(--ui-border)', 'Border color in unselected state'],
-				['--radio-border-width', 'var(--ui-border-width)', 'Border thickness'],
-				['--radio-checked-bg', 'var(--ui-primary)', 'Background when selected'],
-				['--radio-checked-border', 'var(--ui-primary)', 'Border color when selected'],
-				['--radio-hover-border', 'color-mix(\u2026border+hover)', 'Border color on hover'],
-				['--radio-focus-color', 'var(--ui-primary)', 'Border and focus ring color when focused'],
-				['--radio-focus-ring-width', 'var(--ui-ring-width)', 'Width of the focus ring outline'],
-				[
-					'--radio-focus-ring-offset',
-					'var(--ui-ring-offset)',
-					'Offset of the focus ring from the border'
-				],
-				['--radio-error-color', 'var(--ui-danger)', 'Border and background color in error state'],
-				[
-					'--radio-disabled-bg',
-					'color-mix(\u2026neutral 80% transparent)',
-					'Background when disabled'
-				],
-				['--radio-disabled-border', 'var(--ui-border)', 'Border color when disabled']
+		<TokenTable
+			component="radio"
+			tokens={[
+				['--radio-bg', 'Background in unselected state'],
+				['--radio-border', 'Border color in unselected state'],
+				['--radio-border-width', 'Border thickness'],
+				['--radio-checked-bg', 'Background when selected'],
+				['--radio-checked-border', 'Border color when selected'],
+				['--radio-hover-border', 'Border color on hover'],
+				['--radio-focus-color', 'Border and focus ring color when focused'],
+				['--radio-focus-ring-width', 'Width of the focus ring outline'],
+				['--radio-focus-ring-offset', 'Offset of the focus ring from the border'],
+				['--radio-error-color', 'Border and background color in error state'],
+				['--radio-disabled-bg', 'Background when disabled'],
+				['--radio-disabled-border', 'Border color when disabled']
 			]}
 		/>
 
-		<PropsTable
-			title="Size Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--radio-size-sm', '14px', 'Diameter for sm'],
-				['--radio-size-md', '16px', 'Diameter for md'],
-				['--radio-size-lg', '20px', 'Diameter for lg'],
-				['--radio-dot-size-sm', '5px', 'Inner dot size for sm'],
-				['--radio-dot-size-md', '6px', 'Inner dot size for md'],
-				['--radio-dot-size-lg', '8px', 'Inner dot size for lg']
+		<TokenTable
+			component="radio"
+			tokens={[
+				['--radio-size', 'Control diameter'],
+				['--radio-dot-radius', 'Inner dot radius when checked']
 			]}
 		/>
 
-		<PropsTable
-			title="Style Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				[
-					'--radio-transition',
-					'var(--ui-base-duration) var(--ui-base-easing)',
-					'Transition for border and background'
-				]
-			]}
+		<TokenTable
+			component="radio"
+			tokens={[['--radio-transition', 'Transition for border and background']]}
 		/>
 	</DocSection>
 

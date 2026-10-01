@@ -241,36 +241,36 @@ Manage sort state externally; pass `sort` and `onsort` to each `TableHeader`.
 
 ## CSS Tokens
 
-| Token                          | Default                                   | Description                        |
-| ------------------------------ | ----------------------------------------- | ---------------------------------- |
-| `--table-bg`                   | `var(--ui-surface-raised)`                | Wrapper background                 |
-| `--table-border-radius`        | `var(--ui-base-radius)`                   | Wrapper corner radius              |
-| `--table-border-color`         | `var(--ui-border)`                        | Border color                       |
-| `--table-border-width`         | `var(--ui-border-width)`                  | Border thickness                   |
-| `--table-shadow`               | `var(--ui-depth)`                         | Wrapper shadow                     |
-| `--table-header-bg`            | `color-mix(…neutral, transparent 88%)`    | Header cell background             |
-| `--table-header-text`          | `var(--ui-surface-foreground)`            | Header cell text                   |
-| `--table-header-font-weight`   | `var(--ui-weight-semibold)`               | Header font weight                 |
-| `--table-header-hover-bg`      | `color-mix(…neutral, transparent 80%)`    | Sortable header hover bg           |
-| `--table-row-bg`               | `var(--ui-surface-raised)`                | Default row background             |
-| `--table-row-text`             | `var(--ui-surface-raised-foreground)`     | Default row text                   |
-| `--table-row-hover-bg`         | `color-mix(…primary, transparent 94%)`    | Clickable row hover bg             |
-| `--table-row-selected-bg`      | `color-mix(…primary, transparent 88%)`    | Selected row background            |
-| `--table-row-selected-text`    | `var(--ui-surface-foreground)`            | Selected row text                  |
-| `--table-row-cursor-clickable` | `pointer`                                 | Cursor for clickable rows          |
-| `--table-stripe-bg`            | `color-mix(…neutral, transparent 93%)`    | Striped even-row background        |
-| `--table-cell-sm-padding`      | `8px 12px`                                | Small cell padding                 |
-| `--table-cell-md-padding`      | `12px 16px`                               | Medium cell padding                |
-| `--table-cell-lg-padding`      | `16px 24px`                               | Large cell padding                 |
-| `--table-font-sm`              | `var(--ui-text-xs)`                       | Font size at sm                    |
-| `--table-font-md`              | `var(--ui-text-sm)`                       | Font size at md                    |
-| `--table-font-lg`              | `var(--ui-text-base)`                     | Font size at lg                    |
-| `--table-sort-color`           | `color-mix(…foreground, transparent 55%)` | Inactive sort icon color           |
-| `--table-sort-active-color`    | `var(--ui-primary)`                       | Active sort icon color             |
-| `--table-caption-color`        | `color-mix(…foreground, transparent 45%)` | Caption text color                 |
-| `--table-caption-font-size`    | `var(--ui-text-sm)`                       | Caption font size                  |
-| `--table-focus-ring-width`     | `var(--ui-ring-width)`                    | Focus ring width                   |
-| `--table-focus-ring-color`     | `var(--ui-primary)`                       | Focus ring color                   |
-| `--table-focus-ring-offset`    | `var(--ui-ring-offset)`                   | Focus ring offset                  |
-| `--table-transition`           | `var(--ui-base-duration) …`               | Animation timing                   |
-| `--table-max-height`           | `400px`                                   | Default max-height for sticky mode |
+| Token                          | Default                                                              | Description                        |
+| ------------------------------ | -------------------------------------------------------------------- | ---------------------------------- |
+| `--table-bg`                   | `var(--ui-surface-raised)`                                           | Wrapper background                 |
+| `--table-border-radius`        | `var(--ui-base-radius)`                                              | Wrapper corner radius              |
+| `--table-border-color`         | `var(--ui-border)`                                                   | Border color                       |
+| `--table-border-width`         | `var(--ui-border-width)`                                             | Border thickness                   |
+| `--table-shadow`               | `var(--ui-depth)`                                                    | Wrapper shadow                     |
+| `--table-header-bg`            | `color-mix(in oklch, var(--ui-neutral), transparent 88%)`            | Header cell background             |
+| `--table-header-text`          | `var(--ui-surface-foreground)`                                       | Header cell text                   |
+| `--table-header-font-weight`   | `var(--ui-weight-semibold)`                                          | Header font weight                 |
+| `--table-header-hover-bg`      | `color-mix(in oklch, var(--ui-neutral), transparent 80%)`            | Sortable header hover bg           |
+| `--table-row-bg`               | `var(--ui-surface-raised)`                                           | Default row background             |
+| `--table-row-text`             | `var(--ui-surface-raised-foreground)`                                | Default row text                   |
+| `--table-row-hover-bg`         | `color-mix(in oklch, var(--ui-primary), transparent 94%)`            | Clickable row hover bg             |
+| `--table-row-selected-bg`      | `color-mix(in oklch, var(--ui-primary), transparent 88%)`            | Selected row background            |
+| `--table-row-selected-text`    | `var(--ui-surface-foreground)`                                       | Selected row text                  |
+| `--table-row-cursor-clickable` | `pointer`                                                            | Cursor for clickable rows          |
+| `--table-stripe-bg`            | `color-mix(in oklch, var(--ui-neutral), transparent 93%)`            | Striped even-row background        |
+| `--table-cell-sm-padding`      | `calc(var(--ui-base-spacing) * 2) calc(var(--ui-base-spacing) * 3)`  | Small cell padding                 |
+| `--table-cell-md-padding`      | `calc(var(--ui-base-spacing) * 3) calc(var(--ui-base-spacing) * 4)`  | Medium cell padding                |
+| `--table-cell-lg-padding`      | `calc(var(--ui-base-spacing) * 4) calc(var(--ui-base-spacing) * 6)`  | Large cell padding                 |
+| `--table-font-sm`              | `var(--ui-text-xs)`                                                  | Font size at sm                    |
+| `--table-font-md`              | `var(--ui-text-sm)`                                                  | Font size at md                    |
+| `--table-font-lg`              | `var(--ui-text-base)`                                                | Font size at lg                    |
+| `--table-sort-color`           | `color-mix(in oklch, var(--ui-surface-foreground), transparent 55%)` | Inactive sort icon color           |
+| `--table-sort-active-color`    | `var(--ui-primary)`                                                  | Active sort icon color             |
+| `--table-caption-color`        | `color-mix(in oklch, var(--ui-surface-foreground), transparent 45%)` | Caption text color                 |
+| `--table-caption-font-size`    | `var(--ui-text-sm)`                                                  | Caption font size                  |
+| `--table-focus-ring-width`     | `var(--ui-ring-width)`                                               | Focus ring width                   |
+| `--table-focus-ring-color`     | `var(--ui-primary)`                                                  | Focus ring color                   |
+| `--table-focus-ring-offset`    | `var(--ui-ring-offset)`                                              | Focus ring offset                  |
+| `--table-transition`           | `var(--ui-base-duration) var(--ui-base-easing)`                      | Animation timing                   |
+| `--table-max-height`           | `calc(var(--ui-base-spacing) * 100)`                                 | Default max-height for sticky mode |

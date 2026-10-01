@@ -11,6 +11,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 	import TrashIcon from '$lib/icons/TrashIcon.svelte';
 	import TriangleAlertIcon from '$lib/icons/TriangleAlertIcon.svelte';
 
@@ -325,54 +326,46 @@
 			Override these tokens to customize the modal's appearance per theme.
 		</p>
 
-		<PropsTable
-			title="Backdrop & Surface"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--modal-backdrop-color', 'var(--ui-backdrop)', 'Backdrop overlay color'],
-				['--modal-backdrop-blur', 'var(--ui-backdrop-blur)', 'Backdrop blur amount'],
-				['--modal-surface', 'var(--ui-surface-overlay)', 'Panel background'],
-				['--modal-surface-foreground', 'var(--ui-surface-overlay-foreground)', 'Panel text color'],
-				['--modal-shadow', '0 25px 50px -12px ...', 'Panel drop shadow'],
-				['--modal-border-radius', 'calc(var(--ui-base-radius) * 1.5)', 'Panel corner radius']
+		<TokenTable
+			component="modal"
+			tokens={[
+				['--modal-backdrop-color', 'Backdrop overlay color'],
+				['--modal-backdrop-blur', 'Backdrop blur amount'],
+				['--modal-surface', 'Panel background'],
+				['--modal-surface-foreground', 'Panel text color'],
+				['--modal-shadow', 'Panel drop shadow'],
+				['--modal-border-radius', 'Panel corner radius']
 			]}
 		/>
 
-		<PropsTable
-			title="Sizing"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--modal-sm-width', '400px', 'Width for size="sm"'],
-				['--modal-md-width', '512px', 'Width for size="md"'],
-				['--modal-lg-width', '640px', 'Width for size="lg"'],
-				['--modal-xl-width', '768px', 'Width for size="xl"'],
-				['--modal-padding', '24px', 'Inner padding for all sections']
+		<TokenTable
+			component="modal"
+			tokens={[
+				['--modal-sm-width', 'Width for size="sm"'],
+				['--modal-md-width', 'Width for size="md"'],
+				['--modal-lg-width', 'Width for size="lg"'],
+				['--modal-xl-width', 'Width for size="xl"'],
+				['--modal-padding', 'Inner padding for all sections']
 			]}
 		/>
 
-		<PropsTable
-			title="Header & Close Button"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--modal-title-size', 'var(--ui-text-lg)', 'Title font size'],
-				['--modal-title-weight', 'var(--ui-weight-semibold)', 'Title font weight'],
-				['--modal-close-color', 'color-mix(...)', 'Close button icon color'],
-				['--modal-close-hover-bg', 'color-mix(...)', 'Close button hover background'],
-				['--modal-close-size', '32px', 'Close button dimensions']
+		<TokenTable
+			component="modal"
+			tokens={[
+				['--modal-title-size', 'Title font size'],
+				['--modal-title-weight', 'Title font weight'],
+				['--modal-close-color', 'Close button icon color'],
+				['--modal-close-hover-bg', 'Close button hover background'],
+				['--modal-close-size', 'Close button dimensions']
 			]}
 		/>
 
-		<PropsTable
-			title="Footer & Motion"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--modal-footer-gap', '12px', 'Gap between footer buttons'],
-				[
-					'--modal-transition',
-					'var(--ui-base-duration) var(--ui-base-easing)',
-					'Enter animation duration/easing'
-				],
-				['--modal-enter-offset', '12px', 'Panel Y-offset at animation start']
+		<TokenTable
+			component="modal"
+			tokens={[
+				['--modal-footer-gap', 'Gap between footer buttons'],
+				['--modal-transition', 'Enter animation duration/easing'],
+				['--modal-enter-offset', 'Panel Y-offset at animation start']
 			]}
 		/>
 	</DocSection>

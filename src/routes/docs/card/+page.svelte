@@ -12,6 +12,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -169,24 +170,23 @@
 	</DocSection>
 
 	<DocSection id="css-tokens" title="CSS Tokens">
-		<PropsTable
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--card-bg', 'var(--ui-surface-raised)', 'Card background color'],
+		<TokenTable
+			component="card"
+			tokens={[
+				['--card-bg', 'Card background color'],
 				[
 					'--card-foreground',
-					'var(--ui-surface-raised-foreground)',
 					'Card text color; override to change all inherited text inside the card'
 				],
-				['--card-border-color', 'var(--ui-border)', 'Border and divider color'],
-				['--card-border-width', 'var(--ui-border-width)', 'Border width (2x for outlined variant)'],
-				['--card-radius', 'var(--ui-base-radius)', 'Corner radius'],
-				['--card-divider-color', 'var(--ui-border)', 'Color of dividers between sections'],
-				['--card-shadow', 'var(--ui-depth)', 'Box shadow for the elevated variant'],
-				['--card-padding-sm', 'calc(var(--ui-base-spacing) * 4)', 'Padding for padding="sm"'],
-				['--card-padding-md', 'calc(var(--ui-base-spacing) * 8)', 'Padding for padding="md"'],
-				['--card-padding-lg', 'calc(var(--ui-base-spacing) * 12)', 'Padding for padding="lg"'],
-				['--card-footer-gap', 'calc(var(--ui-base-spacing) * 4)', 'Gap between items in CardFooter']
+				['--card-border-color', 'Border and divider color'],
+				['--card-border-width', 'Border width (2x for outlined variant)'],
+				['--card-radius', 'Corner radius'],
+				['--card-divider-color', 'Color of dividers between sections'],
+				['--card-shadow', 'Box shadow for the elevated variant'],
+				['--card-padding-sm', 'Padding for padding="sm"'],
+				['--card-padding-md', 'Padding for padding="md"'],
+				['--card-padding-lg', 'Padding for padding="lg"'],
+				['--card-footer-gap', 'Gap between items in CardFooter']
 			]}
 		/>
 	</DocSection>

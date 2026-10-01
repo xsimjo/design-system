@@ -7,6 +7,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -118,39 +119,36 @@
 	<DocSection id="css-tokens" title="CSS Tokens">
 		<p class="section-intro">Customize the spinner appearance through CSS variables.</p>
 
-		<PropsTable
-			title="Size Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--spinner-sm-size', '16px', 'Small spinner size'],
-				['--spinner-md-size', '24px', 'Medium spinner size'],
-				['--spinner-lg-size', '32px', 'Large spinner size'],
-				['--spinner-sm-border-width', '2px', 'Small border thickness'],
-				['--spinner-md-border-width', '3px', 'Medium border thickness'],
-				['--spinner-lg-border-width', '4px', 'Large border thickness']
+		<TokenTable
+			component="spinner"
+			tokens={[
+				['--spinner-sm-size', 'Small spinner size'],
+				['--spinner-md-size', 'Medium spinner size'],
+				['--spinner-lg-size', 'Large spinner size'],
+				['--spinner-sm-border-width', 'Small border thickness'],
+				['--spinner-md-border-width', 'Medium border thickness'],
+				['--spinner-lg-border-width', 'Large border thickness']
 			]}
 		/>
 
-		<PropsTable
-			title="Color Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--spinner-track-color', 'var(--color-border)', 'Track (background) color'],
-				['--spinner-color-primary', 'var(--ui-primary)', 'Primary variant color'],
-				['--spinner-color-secondary', 'var(--color-secondary)', 'Secondary variant color'],
-				['--spinner-color-accent', 'var(--ui-accent)', 'Accent variant color'],
-				['--spinner-color-success', 'var(--ui-success)', 'Success variant color'],
-				['--spinner-color-warning', 'var(--color-warning)', 'Warning variant color'],
-				['--spinner-color-danger', 'var(--ui-danger)', 'Danger variant color']
+		<TokenTable
+			component="spinner"
+			tokens={[
+				['--spinner-track-color', 'Track (background) color'],
+				['--spinner-color-primary', 'Primary variant color'],
+				['--spinner-color-secondary', 'Secondary variant color'],
+				['--spinner-color-accent', 'Accent variant color'],
+				['--spinner-color-success', 'Success variant color'],
+				['--spinner-color-warning', 'Warning variant color'],
+				['--spinner-color-danger', 'Danger variant color']
 			]}
 		/>
 
-		<PropsTable
-			title="Animation Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--spinner-duration', '800ms', 'Animation duration'],
-				['--spinner-timing', 'linear', 'Animation timing function']
+		<TokenTable
+			component="spinner"
+			tokens={[
+				['--spinner-duration', 'Animation duration'],
+				['--spinner-timing', 'Animation timing function']
 			]}
 		/>
 	</DocSection>

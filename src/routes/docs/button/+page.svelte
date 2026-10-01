@@ -7,6 +7,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 	import HeartIcon from '$lib/icons/HeartIcon.svelte';
 	import DownloadIcon from '$lib/icons/DownloadIcon.svelte';
 	import SendIcon from '$lib/icons/SendIcon.svelte';
@@ -62,39 +63,6 @@
 		['icon', 'boolean', 'false', 'Square button for icon-only'],
 		['fullWidth', 'boolean', 'false', 'Makes button 100% width'],
 		['children', 'Snippet', '—', 'Button content (text/icons)']
-	];
-
-	const colorTokenRows = [
-		['--button-color-primary', 'var(--ui-primary)', 'Primary button color'],
-		['--button-color-secondary', 'var(--ui-secondary)', 'Secondary button color'],
-		['--button-color-accent', 'var(--ui-accent)', 'Accent button color'],
-		['--button-color-success', 'var(--ui-success)', 'Success button color'],
-		['--button-color-danger', 'var(--ui-danger)', 'Danger button color'],
-		['--button-color-warning', 'var(--ui-warning)', 'Warning button color'],
-		['--button-color-info', 'var(--ui-info)', 'Info button color'],
-		['--button-color-neutral', 'var(--ui-neutral)', 'Neutral button color'],
-		['--button-mix-hover-amount', '15%', 'Darken amount on hover'],
-		['--button-mix-active-amount', '25%', 'Darken amount when pressed']
-	];
-
-	const sizeTokenRows = [
-		['--button-{size}-height', '32px', '40px', '48px'],
-		['--button-{size}-padding-x', '8px', '16px', '24px'],
-		['--button-{size}-padding-y', '4px', '8px', '8px'],
-		['--button-{size}-font-size', '14px', '16px', '18px'],
-		['--button-{size}-icon-size', '16px', '20px', '24px']
-	];
-
-	const styleTokenRows = [
-		['--button-border-radius', '6px', 'Corner roundness'],
-		['--button-border-width', '1px', 'Border thickness'],
-		['--button-font-family', 'var(--font-sans)', 'Font family'],
-		['--button-font-weight', '600', 'Font weight'],
-		['--button-shadow', '0 1px 2px...', 'Default shadow'],
-		['--button-shadow-hover', '0 4px 6px...', 'Hover shadow'],
-		['--button-transition', '150ms', 'Animation timing'],
-		['--button-focus-ring-width', '3px', 'Focus ring size'],
-		['--button-opacity-disabled', '0.6', 'Disabled opacity']
 	];
 </script>
 
@@ -257,18 +225,51 @@
 			your brand or create unique button styles.
 		</p>
 
-		<PropsTable
+		<TokenTable
+			component="button"
 			title="Color Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={colorTokenRows}
+			tokens={[
+				['--button-color-primary', 'Primary button color'],
+				['--button-color-secondary', 'Secondary button color'],
+				['--button-color-accent', 'Accent button color'],
+				['--button-color-success', 'Success button color'],
+				['--button-color-danger', 'Danger button color'],
+				['--button-color-warning', 'Warning button color'],
+				['--button-color-info', 'Info button color'],
+				['--button-color-neutral', 'Neutral button color'],
+				['--button-mix-hover-amount', 'Darken amount on hover'],
+				['--button-mix-active-amount', 'Darken amount when pressed']
+			]}
 		/>
 
-		<PropsTable title="Size Tokens" columns={['Token', 'SM', 'MD', 'LG']} rows={sizeTokenRows} />
+		<TokenTable
+			component="button"
+			title="Size Tokens"
+			sizes={['sm', 'md', 'lg']}
+			tokens={[
+				['--button-{size}-height', 'Control height'],
+				['--button-{size}-padding-x', 'Horizontal padding'],
+				['--button-{size}-padding-y', 'Vertical padding'],
+				['--button-{size}-font-size', 'Label font size'],
+				['--button-{size}-gap', 'Gap between icon and label'],
+				['--button-icon-{size}-size', 'Icon-only button dimensions']
+			]}
+		/>
 
-		<PropsTable
+		<TokenTable
+			component="button"
 			title="Style Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={styleTokenRows}
+			tokens={[
+				['--button-border-radius', 'Corner roundness'],
+				['--button-border-width', 'Border thickness'],
+				['--button-font-family', 'Font family'],
+				['--button-font-weight', 'Font weight'],
+				['--button-shadow', 'Default shadow'],
+				['--button-shadow-hover', 'Hover shadow'],
+				['--button-transition', 'Animation timing'],
+				['--button-focus-ring-width', 'Focus ring size'],
+				['--button-opacity-disabled', 'Disabled opacity']
+			]}
 		/>
 	</DocSection>
 

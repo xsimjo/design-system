@@ -10,6 +10,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -193,66 +194,43 @@
 			Override these tokens to adapt ColorPicker to your brand or to create specialized variants.
 		</p>
 
-		<PropsTable
-			title="Trigger Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--color-picker-bg', 'var(--ui-surface)', 'Trigger background color'],
-				['--color-picker-fg', 'var(--ui-surface-foreground)', 'Trigger text color'],
-				['--color-picker-border', 'var(--ui-border)', 'Trigger border color'],
-				['--color-picker-border-width', 'var(--ui-border-width)', 'Trigger border width'],
-				['--color-picker-border-radius', 'var(--ui-base-radius)', 'Trigger border radius'],
-				['--color-picker-height', 'calc(spacing * 5)', 'Trigger min height'],
-				['--color-picker-padding-x', 'calc(spacing * 1.5)', 'Horizontal padding'],
-				['--color-picker-font-size', 'var(--ui-text-base)', 'Text font size'],
-				['--color-picker-font-family', 'var(--ui-font-sans)', 'Text font family'],
-				['--color-picker-font-weight', 'var(--ui-weight-normal)', 'Text font weight'],
-				[
-					'--color-picker-transition',
-					'var(--ui-base-duration) var(--ui-base-easing)',
-					'Transition for border and focus ring'
-				]
+		<TokenTable
+			component="color-picker"
+			tokens={[
+				['--color-picker-bg', 'Trigger background color'],
+				['--color-picker-fg', 'Trigger text color'],
+				['--color-picker-border', 'Trigger border color'],
+				['--color-picker-border-width', 'Trigger border width'],
+				['--color-picker-border-radius', 'Trigger border radius'],
+				['--color-picker-height', 'Trigger min height'],
+				['--color-picker-padding-x', 'Horizontal padding'],
+				['--color-picker-font-size', 'Text font size'],
+				['--color-picker-font-family', 'Text font family'],
+				['--color-picker-font-weight', 'Text font weight'],
+				['--color-picker-transition', 'Transition for border and focus ring']
 			]}
 		/>
 
-		<PropsTable
-			title="State Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--color-picker-focus-color', 'var(--ui-primary)', 'Focus ring color'],
-				[
-					'--color-picker-focus-ring-width',
-					'var(--ui-ring-width)',
-					'Width of the focus ring outline'
-				],
-				[
-					'--color-picker-focus-ring-offset',
-					'var(--ui-ring-offset)',
-					'Offset of the focus ring from the border'
-				],
-				[
-					'--color-picker-error-color',
-					'var(--ui-danger)',
-					'Border and focus ring color in error state'
-				],
-				['--color-picker-disabled-bg', 'color-mix(\u2026neutral 80%)', 'Background when disabled'],
-				[
-					'--color-picker-disabled-fg',
-					'color-mix(\u2026foreground 50%)',
-					'Text color when disabled'
-				],
-				['--color-picker-disabled-border', 'var(--ui-border)', 'Border color when disabled'],
-				['--color-picker-hover-border', 'color-mix(\u2026)', 'Border color on hover']
+		<TokenTable
+			component="color-picker"
+			tokens={[
+				['--color-picker-focus-color', 'Focus ring color'],
+				['--color-picker-focus-ring-width', 'Width of the focus ring outline'],
+				['--color-picker-focus-ring-offset', 'Offset of the focus ring from the border'],
+				['--color-picker-error-color', 'Border and focus ring color in error state'],
+				['--color-picker-disabled-bg', 'Background when disabled'],
+				['--color-picker-disabled-fg', 'Text color when disabled'],
+				['--color-picker-disabled-border', 'Border color when disabled'],
+				['--color-picker-hover-border', 'Border color on hover']
 			]}
 		/>
 
-		<PropsTable
-			title="Swatch Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--color-picker-swatch-size', 'calc(spacing * 3)', 'Width and height of the swatch'],
-				['--color-picker-swatch-radius', 'calc(radius * 0.5)', 'Border radius of the swatch'],
-				['--color-picker-swatch-shadow', 'inset 0 0 0 1px \u2026', 'Inset shadow for depth effect']
+		<TokenTable
+			component="color-picker"
+			tokens={[
+				['--color-picker-swatch-size', 'Width and height of the swatch'],
+				['--color-picker-swatch-radius', 'Border radius of the swatch'],
+				['--color-picker-swatch-shadow', 'Inset shadow for depth effect']
 			]}
 		/>
 	</DocSection>

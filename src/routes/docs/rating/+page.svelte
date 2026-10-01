@@ -7,6 +7,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -118,40 +119,26 @@
 			Override these tokens to adapt Rating to your brand or to create specialized variants.
 		</p>
 
-		<PropsTable
-			title="Color Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--rating-star-color', 'var(--ui-warning)', 'Filled star color'],
-				['--rating-star-empty-color', 'var(--ui-border)', 'Empty (unselected) star color'],
-				['--rating-star-hover-color', 'var(--ui-warning)', 'Star color on hover preview'],
-				['--rating-focus-color', 'var(--ui-primary)', 'Focus ring color'],
-				['--rating-focus-ring-width', 'var(--ui-ring-width)', 'Focus ring width'],
-				['--rating-focus-ring-offset', 'var(--ui-ring-offset)', 'Focus ring offset']
+		<TokenTable
+			component="rating"
+			tokens={[
+				['--rating-star-color', 'Filled star color'],
+				['--rating-star-empty-color', 'Empty (unselected) star color'],
+				['--rating-star-hover-color', 'Star color on hover preview'],
+				['--rating-focus-color', 'Focus ring color'],
+				['--rating-focus-ring-width', 'Focus ring width'],
+				['--rating-focus-ring-offset', 'Focus ring offset']
 			]}
 		/>
 
-		<PropsTable
-			title="Size Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--rating-star-size-sm', '16px', 'Star icon size for sm'],
-				['--rating-star-size-md', '24px', 'Star icon size for md'],
-				['--rating-star-size-lg', '32px', 'Star icon size for lg']
-			]}
-		/>
+		<TokenTable component="rating" tokens={[['--rating-star-size', 'Star icon size']]} />
 
-		<PropsTable
-			title="Style Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--rating-gap', '2px', 'Gap between stars'],
-				['--rating-stroke-width', '1.5', 'SVG stroke width for star outline'],
-				[
-					'--rating-transition',
-					'var(--ui-base-duration) var(--ui-base-easing)',
-					'Color and scale transition'
-				]
+		<TokenTable
+			component="rating"
+			tokens={[
+				['--rating-gap', 'Gap between stars'],
+				['--rating-stroke-width', 'SVG stroke width for star outline'],
+				['--rating-transition', 'Color and scale transition']
 			]}
 		/>
 	</DocSection>

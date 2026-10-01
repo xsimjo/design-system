@@ -7,6 +7,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -173,62 +174,37 @@
 	</DocSection>
 
 	<DocSection id="css-tokens" title="CSS Tokens">
-		<PropsTable
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--avatar-size-sm', 'calc(var(--ui-base-spacing) * 6)', 'Width and height for sm'],
-				['--avatar-size-md', 'calc(var(--ui-base-spacing) * 8)', 'Width and height for md'],
-				['--avatar-size-lg', 'calc(var(--ui-base-spacing) * 12)', 'Width and height for lg'],
-				['--avatar-size-xl', 'calc(var(--ui-base-spacing) * 16)', 'Width and height for xl'],
-				['--avatar-font-size-sm', 'var(--ui-text-xs)', 'Initials font size for sm'],
-				['--avatar-font-size-md', 'var(--ui-text-sm)', 'Initials font size for md'],
-				['--avatar-font-size-lg', 'var(--ui-text-base)', 'Initials font size for lg'],
-				['--avatar-font-size-xl', 'var(--ui-text-lg)', 'Initials font size for xl'],
-				['--avatar-radius-circle', '9999px', 'Border radius for circle shape'],
-				['--avatar-radius-square', 'var(--ui-base-radius)', 'Border radius for square shape'],
-				['--avatar-bg-primary', 'var(--ui-primary)', 'Background for primary color variant'],
-				[
-					'--avatar-fg-primary',
-					'var(--ui-primary-foreground)',
-					'Foreground for primary color variant'
-				],
-				['--avatar-bg-secondary', 'var(--ui-secondary)', 'Background for secondary color variant'],
-				[
-					'--avatar-fg-secondary',
-					'var(--ui-secondary-foreground)',
-					'Foreground for secondary color variant'
-				],
-				[
-					'--avatar-bg-neutral',
-					'color-mix(in oklch, var(--ui-neutral), transparent 70%)',
-					'Background for neutral color variant'
-				],
-				[
-					'--avatar-fg-neutral',
-					'var(--ui-surface-foreground)',
-					'Foreground for neutral color variant'
-				],
-				['--avatar-border-width', 'var(--ui-border-width)', 'Border width'],
-				['--avatar-border-color', 'var(--ui-border)', 'Border color'],
-				['--avatar-status-size', 'calc(var(--ui-base-spacing) * 3)', 'Status dot diameter'],
-				[
-					'--avatar-status-border-width',
-					'calc(var(--ui-border-width) * 2)',
-					'Status dot border width'
-				],
+		<TokenTable
+			component="avatar"
+			tokens={[
+				['--avatar-size-sm', 'Width and height for sm'],
+				['--avatar-size-md', 'Width and height for md'],
+				['--avatar-size-lg', 'Width and height for lg'],
+				['--avatar-size-xl', 'Width and height for xl'],
+				['--avatar-font-size-sm', 'Initials font size for sm'],
+				['--avatar-font-size-md', 'Initials font size for md'],
+				['--avatar-font-size-lg', 'Initials font size for lg'],
+				['--avatar-font-size-xl', 'Initials font size for xl'],
+				['--avatar-radius-circle', 'Border radius for circle shape'],
+				['--avatar-radius-square', 'Border radius for square shape'],
+				['--avatar-bg-primary', 'Background for primary color variant'],
+				['--avatar-fg-primary', 'Foreground for primary color variant'],
+				['--avatar-bg-secondary', 'Background for secondary color variant'],
+				['--avatar-fg-secondary', 'Foreground for secondary color variant'],
+				['--avatar-bg-neutral', 'Background for neutral color variant'],
+				['--avatar-fg-neutral', 'Foreground for neutral color variant'],
+				['--avatar-border-width', 'Border width'],
+				['--avatar-border-color', 'Border color'],
+				['--avatar-status-size', 'Status dot diameter'],
+				['--avatar-status-border-width', 'Status dot border width'],
 				[
 					'--avatar-status-border-color',
-					'var(--ui-surface)',
 					'Status dot border color (matches background for separation)'
 				],
-				['--avatar-status-online', 'var(--ui-success)', 'Online status dot color'],
-				[
-					'--avatar-status-offline',
-					'color-mix(in oklch, var(--ui-neutral), transparent 40%)',
-					'Offline status dot color'
-				],
-				['--avatar-status-away', 'var(--ui-warning)', 'Away status dot color'],
-				['--avatar-status-busy', 'var(--ui-danger)', 'Busy status dot color']
+				['--avatar-status-online', 'Online status dot color'],
+				['--avatar-status-offline', 'Offline status dot color'],
+				['--avatar-status-away', 'Away status dot color'],
+				['--avatar-status-busy', 'Busy status dot color']
 			]}
 		/>
 	</DocSection>

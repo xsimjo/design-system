@@ -24,6 +24,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	let demoSlider = $state(40);
 	let demoCheckbox = $state(false);
@@ -593,67 +594,53 @@
 			<code>[data-theme]</code>.
 		</p>
 
-		<PropsTable
-			title="Field"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--field-gap', '12px', 'Spacing between Field children (label, input, description)'],
-				['--field-font-family', 'var(--ui-font-sans)', 'Font family for all field text']
+		<TokenTable
+			component="field"
+			tokens={[
+				['--field-gap', 'Spacing between Field children (label, input, description)'],
+				['--field-font-family', 'Font family for all field text']
 			]}
 		/>
 
-		<PropsTable
-			title="FieldLabel"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--field-label-font-size', 'var(--ui-text-sm)', 'Label font size'],
-				['--field-label-font-weight', 'var(--ui-weight-medium)', 'Label font weight'],
-				['--field-label-color', 'var(--ui-surface-foreground)', 'Label text color'],
-				['--field-required-color', 'var(--ui-danger)', 'Color of the required asterisk']
+		<TokenTable
+			component="field"
+			tokens={[
+				['--field-label-font-size', 'Label font size'],
+				['--field-label-font-weight', 'Label font weight'],
+				['--field-label-color', 'Label text color'],
+				['--field-required-color', 'Color of the required asterisk']
 			]}
 		/>
 
-		<PropsTable
-			title="FieldDescription"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--field-description-font-size', 'var(--ui-text-sm)', 'Description font size'],
-				[
-					'--field-description-color',
-					'color-mix(…fg 55% transparent)',
-					'Default (hint) text color'
-				],
-				['--field-description-error-color', 'var(--ui-danger)', 'Error text color']
+		<TokenTable
+			component="field"
+			tokens={[
+				['--field-description-font-size', 'Description font size'],
+				['--field-description-color', 'Default (hint) text color'],
+				['--field-description-error-color', 'Error text color']
 			]}
 		/>
 
-		<PropsTable
-			title="FieldGroup"
-			columns={['Token', 'Default', 'Description']}
-			rows={[['--field-group-gap', '16px', 'Gap between fields in a group']]}
+		<TokenTable
+			component="field"
+			tokens={[['--field-group-gap', 'Gap between fields in a group']]}
 		/>
 
-		<PropsTable
-			title="FieldSet + FieldLegend"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--field-set-gap', '16px', 'Gap between fields inside the fieldset'],
-				['--field-set-border', 'var(--ui-border)', 'Fieldset border color'],
-				['--field-set-border-width', 'var(--ui-border-width)', 'Fieldset border thickness'],
-				['--field-set-border-radius', 'var(--ui-base-radius)', 'Fieldset corner roundness'],
-				['--field-set-padding', '16px', 'Fieldset inner padding'],
-				['--field-legend-font-size', 'var(--ui-text-sm)', 'Legend font size'],
-				['--field-legend-font-weight', 'var(--ui-weight-medium)', 'Legend font weight'],
-				['--field-legend-color', 'var(--ui-surface-foreground)', 'Legend text color']
+		<TokenTable
+			component="field"
+			tokens={[
+				['--field-set-gap', 'Gap between fields inside the fieldset'],
+				['--field-legend-font-size', 'Legend font size'],
+				['--field-legend-font-weight', 'Legend font weight'],
+				['--field-legend-color', 'Legend text color']
 			]}
 		/>
 
-		<PropsTable
-			title="FieldSeparator"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--field-separator-color', 'var(--ui-border)', 'Separator line color'],
-				['--field-separator-width', 'var(--ui-border-width)', 'Separator line thickness']
+		<TokenTable
+			component="field"
+			tokens={[
+				['--field-separator-color', 'Separator line color'],
+				['--field-separator-width', 'Separator line thickness']
 			]}
 		/>
 	</DocSection>

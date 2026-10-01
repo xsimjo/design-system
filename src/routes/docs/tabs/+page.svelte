@@ -11,6 +11,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -408,45 +409,29 @@
 	</DocSection>
 
 	<DocSection id="css-tokens" title="CSS Tokens">
-		<PropsTable
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--tabs-border', 'var(--ui-border)', 'Border color (underline variant)'],
-				['--tabs-border-width', 'var(--ui-border-width)', 'Border width'],
-				[
-					'--tabs-color',
-					'color-mix(var(--ui-surface-foreground), transparent 40%)',
-					'Default tab text color'
-				],
-				['--tabs-color-active', 'var(--ui-primary)', 'Active tab text color'],
-				['--tabs-color-hover', 'var(--ui-surface-foreground)', 'Hovered tab text color'],
-				['--tabs-indicator', 'var(--ui-primary)', 'Underline indicator color'],
-				['--tabs-indicator-width', '2px', 'Underline indicator thickness'],
-				[
-					'--tabs-bg-active',
-					'color-mix(var(--ui-primary), transparent 88%)',
-					'Active tab background (pills)'
-				],
-				[
-					'--tabs-bg-hover',
-					'color-mix(var(--ui-neutral), transparent 90%)',
-					'Hovered tab background'
-				],
-				['--tabs-bg-enclosed', 'var(--ui-surface-raised)', 'Active tab background (enclosed)'],
-				[
-					'--tabs-bg-enclosed-list',
-					'color-mix(var(--ui-neutral), transparent 88%)',
-					'Tab list background (enclosed)'
-				],
-				['--tabs-font-family', 'var(--ui-font-sans)', 'Font family'],
-				['--tabs-radius', 'var(--ui-base-radius)', 'Border radius'],
-				['--tabs-duration', 'var(--ui-base-duration)', 'Transition duration'],
-				['--tabs-easing', 'var(--ui-base-easing)', 'Transition easing'],
-				['--tabs-gap', 'calc(var(--ui-base-spacing) * 1)', 'Gap between tabs'],
-				['--tabs-sm-height', 'calc(var(--ui-base-spacing) * 8)', 'Small tab height'],
-				['--tabs-md-height', 'calc(var(--ui-base-spacing) * 10)', 'Medium tab height'],
-				['--tabs-lg-height', 'calc(var(--ui-base-spacing) * 12)', 'Large tab height'],
-				['--tabs-panel-padding', 'calc(var(--ui-base-spacing) * 4)', 'Panel top/bottom padding']
+		<TokenTable
+			component="tabs"
+			tokens={[
+				['--tabs-border', 'Border color (underline variant)'],
+				['--tabs-border-width', 'Border width'],
+				['--tabs-color', 'Default tab text color'],
+				['--tabs-color-active', 'Active tab text color'],
+				['--tabs-color-hover', 'Hovered tab text color'],
+				['--tabs-indicator', 'Underline indicator color'],
+				['--tabs-indicator-width', 'Underline indicator thickness'],
+				['--tabs-bg-active', 'Active tab background (pills)'],
+				['--tabs-bg-hover', 'Hovered tab background'],
+				['--tabs-bg-enclosed', 'Active tab background (enclosed)'],
+				['--tabs-bg-enclosed-list', 'Tab list background (enclosed)'],
+				['--tabs-font-family', 'Font family'],
+				['--tabs-radius', 'Border radius'],
+				['--tabs-duration', 'Transition duration'],
+				['--tabs-easing', 'Transition easing'],
+				['--tabs-gap', 'Gap between tabs'],
+				['--tabs-sm-height', 'Small tab height'],
+				['--tabs-md-height', 'Medium tab height'],
+				['--tabs-lg-height', 'Large tab height'],
+				['--tabs-panel-padding', 'Panel top/bottom padding']
 			]}
 		/>
 	</DocSection>

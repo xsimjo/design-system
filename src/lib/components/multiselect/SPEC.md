@@ -119,29 +119,29 @@ When placed inside a `Field` component, MultiSelect automatically reads:
 
 ### Trigger
 
-| Token                                 | Default                                         | Description                        |
-| ------------------------------------- | ----------------------------------------------- | ---------------------------------- |
-| `--multiselect-bg`                    | `var(--ui-surface)`                             | Trigger background                 |
-| `--multiselect-fg`                    | `var(--ui-surface-foreground)`                  | Trigger text color                 |
-| `--multiselect-border`                | `var(--ui-border)`                              | Default border color               |
-| `--multiselect-border-width`          | `var(--ui-border-width)`                        | Border thickness                   |
-| `--multiselect-placeholder`           | `color-mix(…fg 55% transparent)`                | Placeholder text color             |
-| `--multiselect-focus-color`           | `var(--ui-primary)`                             | Border color when focused/open     |
-| `--multiselect-focus-ring-width`      | `var(--ui-ring-width)`                          | Focus ring width                   |
-| `--multiselect-focus-ring-offset`     | `var(--ui-ring-offset)`                         | Focus ring offset                  |
-| `--multiselect-error-color`           | `var(--ui-danger)`                              | Border color in error state        |
-| `--multiselect-disabled-bg`           | `color-mix(…neutral 80% transparent)`           | Background when disabled           |
-| `--multiselect-disabled-fg`           | `color-mix(…fg 50% transparent)`                | Text color when disabled           |
-| `--multiselect-disabled-border`       | `var(--ui-border)`                              | Border color when disabled         |
-| `--multiselect-hover-border`          | `color-mix(…border+hover-mix hover-amount)`     | Border color on hover              |
-| `--multiselect-gap`                   | `calc(var(--ui-base-spacing) * 1.5)`            | Gap between badges and input       |
-| `--multiselect-font-family`           | `var(--ui-font-sans)`                           | Font family                        |
-| `--multiselect-font-weight`           | `var(--ui-weight-normal)`                       | Font weight                        |
-| `--multiselect-border-radius`         | `var(--ui-base-radius)`                         | Corner roundness                   |
-| `--multiselect-transition`            | `var(--ui-base-duration) var(--ui-base-easing)` | Transition                         |
-| `--multiselect-chevron-size`          | `calc(var(--ui-base-spacing) * 4)`              | Chevron icon size                  |
-| `--multiselect-chevron-color`         | `color-mix(…fg 35% transparent)`                | Chevron icon color                 |
-| `--multiselect-badge-focused-outline` | `2px solid var(--ui-primary)`                   | Outline for keyboard-focused badge |
+| Token                                 | Default                                                                             | Description                        |
+| ------------------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------- |
+| `--multiselect-bg`                    | `var(--ui-surface)`                                                                 | Trigger background                 |
+| `--multiselect-fg`                    | `var(--ui-surface-foreground)`                                                      | Trigger text color                 |
+| `--multiselect-border`                | `var(--ui-border)`                                                                  | Default border color               |
+| `--multiselect-border-width`          | `var(--ui-border-width)`                                                            | Border thickness                   |
+| `--multiselect-placeholder`           | `color-mix(in oklch, var(--ui-surface-foreground), transparent 55%)`                | Placeholder text color             |
+| `--multiselect-focus-color`           | `var(--ui-primary)`                                                                 | Border color when focused/open     |
+| `--multiselect-focus-ring-width`      | `var(--ui-ring-width)`                                                              | Focus ring width                   |
+| `--multiselect-focus-ring-offset`     | `var(--ui-ring-offset)`                                                             | Focus ring offset                  |
+| `--multiselect-error-color`           | `var(--ui-danger)`                                                                  | Border color in error state        |
+| `--multiselect-disabled-bg`           | `color-mix(in oklch, var(--ui-neutral), transparent 80%)`                           | Background when disabled           |
+| `--multiselect-disabled-fg`           | `color-mix(in oklch, var(--ui-surface-foreground), transparent 50%)`                | Text color when disabled           |
+| `--multiselect-disabled-border`       | `var(--ui-border)`                                                                  | Border color when disabled         |
+| `--multiselect-hover-border`          | `color-mix(in oklch, var(--ui-border), var(--ui-hover-mix) var(--ui-hover-amount))` | Border color on hover              |
+| `--multiselect-gap`                   | `calc(var(--ui-base-spacing) * 1.5)`                                                | Gap between badges and input       |
+| `--multiselect-font-family`           | `var(--ui-font-sans)`                                                               | Font family                        |
+| `--multiselect-font-weight`           | `var(--ui-weight-normal)`                                                           | Font weight                        |
+| `--multiselect-border-radius`         | `var(--ui-base-radius)`                                                             | Corner roundness                   |
+| `--multiselect-transition`            | `var(--ui-base-duration) var(--ui-base-easing)`                                     | Transition                         |
+| `--multiselect-chevron-size`          | `calc(var(--ui-base-spacing) * 4)`                                                  | Chevron icon size                  |
+| `--multiselect-chevron-color`         | `color-mix(in oklch, var(--ui-surface-foreground), transparent 35%)`                | Chevron icon color                 |
+| `--multiselect-badge-focused-outline` | `2px solid var(--ui-primary)`                                                       | Outline for keyboard-focused badge |
 
 ### Sizes
 
@@ -167,15 +167,15 @@ When placed inside a `Field` component, MultiSelect automatically reads:
 
 ### Options
 
-| Token                                    | Default                               | Description                         |
-| ---------------------------------------- | ------------------------------------- | ----------------------------------- |
-| `--multiselect-option-height`            | `calc(var(--ui-base-spacing) * 10)`   | Minimum option height               |
-| `--multiselect-option-padding-x`         | `calc(var(--ui-base-spacing) * 3)`    | Horizontal option padding           |
-| `--multiselect-option-font-size`         | `var(--ui-text-sm)`                   | Option font size                    |
-| `--multiselect-option-border-radius`     | `calc(var(--ui-base-radius) * 0.5)`   | Option corner roundness             |
-| `--multiselect-option-hover-bg`          | `color-mix(…neutral 90% transparent)` | Hover / keyboard-focus background   |
-| `--multiselect-option-selected-bg`       | `color-mix(…primary 90% transparent)` | Selected option background          |
-| `--multiselect-option-selected-hover-bg` | `color-mix(…primary 84% transparent)` | Selected option background on hover |
-| `--multiselect-option-selected-fg`       | `var(--ui-primary)`                   | Selected option text color          |
-| `--multiselect-option-check-size`        | `calc(var(--ui-base-spacing) * 4)`    | Checkmark icon size                 |
-| `--multiselect-option-disabled-opacity`  | `0.5`                                 | Opacity for disabled options        |
+| Token                                    | Default                                                   | Description                         |
+| ---------------------------------------- | --------------------------------------------------------- | ----------------------------------- |
+| `--multiselect-option-height`            | `calc(var(--ui-base-spacing) * 10)`                       | Minimum option height               |
+| `--multiselect-option-padding-x`         | `calc(var(--ui-base-spacing) * 3)`                        | Horizontal option padding           |
+| `--multiselect-option-font-size`         | `var(--ui-text-sm)`                                       | Option font size                    |
+| `--multiselect-option-border-radius`     | `calc(var(--ui-base-radius) * 0.5)`                       | Option corner roundness             |
+| `--multiselect-option-hover-bg`          | `color-mix(in oklch, var(--ui-neutral), transparent 90%)` | Hover / keyboard-focus background   |
+| `--multiselect-option-selected-bg`       | `color-mix(in oklch, var(--ui-primary), transparent 90%)` | Selected option background          |
+| `--multiselect-option-selected-hover-bg` | `color-mix(in oklch, var(--ui-primary), transparent 84%)` | Selected option background on hover |
+| `--multiselect-option-selected-fg`       | `var(--ui-primary)`                                       | Selected option text color          |
+| `--multiselect-option-check-size`        | `calc(var(--ui-base-spacing) * 4)`                        | Checkmark icon size                 |
+| `--multiselect-option-disabled-opacity`  | `0.5`                                                     | Opacity for disabled options        |

@@ -181,33 +181,33 @@ All standard `HTMLDivElement` attributes are forwarded to the `<div role="tabpan
 
 ## CSS Tokens
 
-| Token                     | Default                                                    | Description                       |
-| ------------------------- | ---------------------------------------------------------- | --------------------------------- |
-| `--tabs-border`           | `var(--ui-border)`                                         | Border color (underline variant)  |
-| `--tabs-border-width`     | `var(--ui-border-width)`                                   | Border width                      |
-| `--tabs-color`            | `color-mix(var(--ui-surface-foreground), transparent 40%)` | Default tab text color            |
-| `--tabs-color-active`     | `var(--ui-primary)`                                        | Active tab text color             |
-| `--tabs-color-hover`      | `var(--ui-surface-foreground)`                             | Hovered tab text color            |
-| `--tabs-indicator`        | `var(--ui-primary)`                                        | Underline indicator color         |
-| `--tabs-indicator-width`  | `calc(var(--ui-border-width) * 2)`                         | Underline indicator thickness     |
-| `--tabs-bg-active`        | `color-mix(var(--ui-primary), transparent 88%)`            | Active tab background (pills)     |
-| `--tabs-bg-active-press`  | `color-mix(var(--ui-primary), transparent 82%)`            | Active tab press background       |
-| `--tabs-bg-hover`         | `color-mix(var(--ui-neutral), transparent 90%)`            | Hovered tab background            |
-| `--tabs-bg-hover-press`   | `color-mix(var(--ui-neutral), transparent 84%)`            | Tab press background              |
-| `--tabs-bg-enclosed`      | `var(--ui-surface-raised)`                                 | Active tab background (enclosed)  |
-| `--tabs-bg-enclosed-list` | `color-mix(var(--ui-neutral), transparent 88%)`            | Tab list background (enclosed)    |
-| `--tabs-font-family`      | `var(--ui-font-sans)`                                      | Font family                       |
-| `--tabs-radius`           | `var(--ui-base-radius)`                                    | Border radius                     |
-| `--tabs-duration`         | `var(--ui-base-duration)`                                  | Transition duration               |
-| `--tabs-easing`           | `var(--ui-base-easing)`                                    | Transition easing                 |
-| `--tabs-gap`              | `calc(var(--ui-base-spacing) * 1)`                         | Gap between tabs (pills/enclosed) |
-| `--tabs-sm-height`        | `calc(var(--ui-base-spacing) * 8)`                         | Small tab height                  |
-| `--tabs-sm-padding-x`     | `calc(var(--ui-base-spacing) * 3)`                         | Small tab horizontal padding      |
-| `--tabs-sm-font-size`     | `var(--ui-text-xs)`                                        | Small tab font size               |
-| `--tabs-md-height`        | `calc(var(--ui-base-spacing) * 10)`                        | Medium tab height                 |
-| `--tabs-md-padding-x`     | `calc(var(--ui-base-spacing) * 4)`                         | Medium tab horizontal padding     |
-| `--tabs-md-font-size`     | `var(--ui-text-sm)`                                        | Medium tab font size              |
-| `--tabs-lg-height`        | `calc(var(--ui-base-spacing) * 12)`                        | Large tab height                  |
-| `--tabs-lg-padding-x`     | `calc(var(--ui-base-spacing) * 6)`                         | Large tab horizontal padding      |
-| `--tabs-lg-font-size`     | `var(--ui-text-base)`                                      | Large tab font size               |
-| `--tabs-panel-padding`    | `calc(var(--ui-base-spacing) * 4)`                         | Panel top/bottom padding          |
+| Token                     | Default                                                              | Description                       |
+| ------------------------- | -------------------------------------------------------------------- | --------------------------------- |
+| `--tabs-border`           | `var(--ui-border)`                                                   | Border color (underline variant)  |
+| `--tabs-border-width`     | `var(--ui-border-width)`                                             | Border width                      |
+| `--tabs-color`            | `color-mix(in oklch, var(--ui-surface-foreground), transparent 40%)` | Default tab text color            |
+| `--tabs-color-active`     | `var(--ui-primary)`                                                  | Active tab text color             |
+| `--tabs-color-hover`      | `var(--ui-surface-foreground)`                                       | Hovered tab text color            |
+| `--tabs-indicator`        | `var(--ui-primary)`                                                  | Underline indicator color         |
+| `--tabs-indicator-width`  | `calc(var(--ui-border-width) * 2)`                                   | Underline indicator thickness     |
+| `--tabs-bg-active`        | `color-mix(in oklch, var(--ui-primary), transparent 88%)`            | Active tab background (pills)     |
+| `--tabs-bg-active-press`  | `color-mix(in oklch, var(--ui-primary), transparent 82%)`            | Active tab press background       |
+| `--tabs-bg-hover`         | `color-mix(in oklch, var(--ui-neutral), transparent 90%)`            | Hovered tab background            |
+| `--tabs-bg-hover-press`   | `color-mix(in oklch, var(--ui-neutral), transparent 84%)`            | Tab press background              |
+| `--tabs-bg-enclosed`      | `var(--ui-surface-raised)`                                           | Active tab background (enclosed)  |
+| `--tabs-bg-enclosed-list` | `color-mix(in oklch, var(--ui-neutral), transparent 88%)`            | Tab list background (enclosed)    |
+| `--tabs-font-family`      | `var(--ui-font-sans)`                                                | Font family                       |
+| `--tabs-radius`           | `var(--ui-base-radius)`                                              | Border radius                     |
+| `--tabs-duration`         | `var(--ui-base-duration)`                                            | Transition duration               |
+| `--tabs-easing`           | `var(--ui-base-easing)`                                              | Transition easing                 |
+| `--tabs-gap`              | `calc(var(--ui-base-spacing) * 1)`                                   | Gap between tabs (pills/enclosed) |
+| `--tabs-sm-height`        | `calc(var(--ui-base-spacing) * 8)`                                   | Small tab height                  |
+| `--tabs-sm-padding-x`     | `calc(var(--ui-base-spacing) * 3)`                                   | Small tab horizontal padding      |
+| `--tabs-sm-font-size`     | `var(--ui-text-xs)`                                                  | Small tab font size               |
+| `--tabs-md-height`        | `calc(var(--ui-base-spacing) * 10)`                                  | Medium tab height                 |
+| `--tabs-md-padding-x`     | `calc(var(--ui-base-spacing) * 4)`                                   | Medium tab horizontal padding     |
+| `--tabs-md-font-size`     | `var(--ui-text-sm)`                                                  | Medium tab font size              |
+| `--tabs-lg-height`        | `calc(var(--ui-base-spacing) * 12)`                                  | Large tab height                  |
+| `--tabs-lg-padding-x`     | `calc(var(--ui-base-spacing) * 6)`                                   | Large tab horizontal padding      |
+| `--tabs-lg-font-size`     | `var(--ui-text-base)`                                                | Large tab font size               |
+| `--tabs-panel-padding`    | `calc(var(--ui-base-spacing) * 4)`                                   | Panel top/bottom padding          |

@@ -122,31 +122,31 @@ Pages ≤ `siblingCount * 2 + 5` are always shown in full without ellipsis.
 
 ## CSS Tokens
 
-| Token                               | Default                                   | Description                    |
-| ----------------------------------- | ----------------------------------------- | ------------------------------ |
-| `--pagination-item-sm`              | `32px`                                    | Height & min-width at sm       |
-| `--pagination-item-md`              | `40px`                                    | Height & min-width at md       |
-| `--pagination-item-lg`              | `48px`                                    | Height & min-width at lg       |
-| `--pagination-font-sm`              | `var(--ui-text-xs)`                       | Font size at sm                |
-| `--pagination-font-md`              | `var(--ui-text-sm)`                       | Font size at md                |
-| `--pagination-font-lg`              | `var(--ui-text-base)`                     | Font size at lg                |
-| `--pagination-gap-sm`               | `4px`                                     | Gap between items at sm        |
-| `--pagination-gap-md`               | `6px`                                     | Gap between items at md        |
-| `--pagination-gap-lg`               | `8px`                                     | Gap between items at lg        |
-| `--pagination-item-bg`              | `transparent`                             | Default button background      |
-| `--pagination-item-text`            | `var(--ui-surface-foreground)`            | Default button text            |
-| `--pagination-item-border`          | `var(--ui-border)`                        | Default button border          |
-| `--pagination-item-hover-bg`        | `color-mix(…neutral, transparent 82%)`    | Hover background               |
-| `--pagination-item-hover-border`    | `var(--ui-border)`                        | Hover border                   |
-| `--pagination-item-active-bg`       | `var(--ui-primary)`                       | Active/current page background |
-| `--pagination-item-active-text`     | `var(--ui-primary-foreground)`            | Active/current page text       |
-| `--pagination-item-active-border`   | `var(--ui-primary)`                       | Active/current page border     |
-| `--pagination-item-disabled-text`   | `color-mix(…foreground, transparent 60%)` | Disabled button text           |
-| `--pagination-item-disabled-border` | `color-mix(…border, transparent 40%)`     | Disabled button border         |
-| `--pagination-dots-color`           | `color-mix(…foreground, transparent 40%)` | Ellipsis color                 |
-| `--pagination-border-radius`        | `var(--ui-base-radius)`                   | Button corner radius           |
-| `--pagination-border-width`         | `var(--ui-border-width)`                  | Button border thickness        |
-| `--pagination-focus-ring-width`     | `var(--ui-ring-width)`                    | Focus ring width               |
-| `--pagination-focus-ring-color`     | `var(--ui-primary)`                       | Focus ring color               |
-| `--pagination-focus-ring-offset`    | `var(--ui-ring-offset)`                   | Focus ring offset              |
-| `--pagination-transition`           | `var(--ui-base-duration) …`               | Animation timing               |
+| Token                               | Default                                                              | Description                    |
+| ----------------------------------- | -------------------------------------------------------------------- | ------------------------------ |
+| `--pagination-item-sm`              | `calc(var(--ui-base-spacing) * 8)`                                   | Height & min-width at sm       |
+| `--pagination-item-md`              | `calc(var(--ui-base-spacing) * 10)`                                  | Height & min-width at md       |
+| `--pagination-item-lg`              | `calc(var(--ui-base-spacing) * 12)`                                  | Height & min-width at lg       |
+| `--pagination-font-sm`              | `var(--ui-text-xs)`                                                  | Font size at sm                |
+| `--pagination-font-md`              | `var(--ui-text-sm)`                                                  | Font size at md                |
+| `--pagination-font-lg`              | `var(--ui-text-base)`                                                | Font size at lg                |
+| `--pagination-gap-sm`               | `calc(var(--ui-base-spacing) * 1)`                                   | Gap between items at sm        |
+| `--pagination-gap-md`               | `calc(var(--ui-base-spacing) * 1.5)`                                 | Gap between items at md        |
+| `--pagination-gap-lg`               | `var(--ui-base-spacing)`                                             | Gap between items at lg        |
+| `--pagination-item-bg`              | `transparent`                                                        | Default button background      |
+| `--pagination-item-text`            | `var(--ui-surface-foreground)`                                       | Default button text            |
+| `--pagination-item-border`          | `var(--ui-border)`                                                   | Default button border          |
+| `--pagination-item-hover-bg`        | `color-mix(in oklch, var(--ui-neutral), transparent 82%)`            | Hover background               |
+| `--pagination-item-hover-border`    | `var(--ui-border)`                                                   | Hover border                   |
+| `--pagination-item-active-bg`       | `var(--ui-primary)`                                                  | Active/current page background |
+| `--pagination-item-active-text`     | `var(--ui-primary-foreground)`                                       | Active/current page text       |
+| `--pagination-item-active-border`   | `var(--ui-primary)`                                                  | Active/current page border     |
+| `--pagination-item-disabled-text`   | `color-mix(in oklch, var(--ui-surface-foreground), transparent 60%)` | Disabled button text           |
+| `--pagination-item-disabled-border` | `color-mix(in oklch, var(--ui-border), transparent 40%)`             | Disabled button border         |
+| `--pagination-dots-color`           | `color-mix(in oklch, var(--ui-surface-foreground), transparent 40%)` | Ellipsis color                 |
+| `--pagination-border-radius`        | `var(--ui-base-radius)`                                              | Button corner radius           |
+| `--pagination-border-width`         | `var(--ui-border-width)`                                             | Button border thickness        |
+| `--pagination-focus-ring-width`     | `var(--ui-ring-width)`                                               | Focus ring width               |
+| `--pagination-focus-ring-color`     | `var(--ui-primary)`                                                  | Focus ring color               |
+| `--pagination-focus-ring-offset`    | `var(--ui-ring-offset)`                                              | Focus ring offset              |
+| `--pagination-transition`           | `var(--ui-base-duration) var(--ui-base-easing)`                      | Animation timing               |

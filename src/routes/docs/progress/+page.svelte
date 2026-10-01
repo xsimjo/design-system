@@ -7,6 +7,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -149,62 +150,46 @@
 	<DocSection id="css-tokens" title="CSS Tokens">
 		<p class="section-intro">Customize the progress bar through CSS variables.</p>
 
-		<PropsTable
-			title="Size Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--progress-height-xs', '2px', 'Track height for extra-small size'],
-				['--progress-height-sm', '4px', 'Track height for small size'],
-				['--progress-height-md', '8px', 'Track height for medium size'],
-				['--progress-height-lg', '12px', 'Track height for large size'],
-				['--progress-border-radius', '9999px', 'Border radius of track and fill']
+		<TokenTable
+			component="progress"
+			tokens={[
+				['--progress-height-xs', 'Track height for extra-small size'],
+				['--progress-height-sm', 'Track height for small size'],
+				['--progress-height-md', 'Track height for medium size'],
+				['--progress-height-lg', 'Track height for large size'],
+				['--progress-border-radius', 'Border radius of track and fill']
 			]}
 		/>
 
-		<PropsTable
-			title="Color Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				[
-					'--progress-track-color',
-					'neutral @ 75% transparent',
-					'Background (unfilled) track color'
-				],
-				['--progress-fill-primary', 'var(--ui-primary)', 'Fill color for primary variant'],
-				['--progress-fill-accent', 'var(--ui-accent)', 'Fill color for accent variant'],
-				['--progress-fill-success', 'var(--ui-success)', 'Fill color for success variant'],
-				['--progress-fill-danger', 'var(--ui-danger)', 'Fill color for danger variant'],
-				['--progress-fill-warning', 'var(--ui-warning)', 'Fill color for warning variant'],
-				['--progress-fill-info', 'var(--ui-info)', 'Fill color for info variant'],
-				['--progress-fill-neutral', 'var(--ui-neutral)', 'Fill color for neutral variant']
+		<TokenTable
+			component="progress"
+			tokens={[
+				['--progress-track-color', 'Background (unfilled) track color'],
+				['--progress-fill-primary', 'Fill color for primary variant'],
+				['--progress-fill-accent', 'Fill color for accent variant'],
+				['--progress-fill-success', 'Fill color for success variant'],
+				['--progress-fill-danger', 'Fill color for danger variant'],
+				['--progress-fill-warning', 'Fill color for warning variant'],
+				['--progress-fill-info', 'Fill color for info variant'],
+				['--progress-fill-neutral', 'Fill color for neutral variant']
 			]}
 		/>
 
-		<PropsTable
-			title="Animation Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--progress-transition-duration', '150ms', 'Width transition duration'],
-				['--progress-transition-easing', 'ease', 'Width transition easing function'],
-				['--progress-indeterminate-duration', '1.5s', 'Indeterminate animation duration']
+		<TokenTable
+			component="progress"
+			tokens={[
+				['--progress-transition-duration', 'Width transition duration'],
+				['--progress-transition-easing', 'Width transition easing function'],
+				['--progress-indeterminate-duration', 'Indeterminate animation duration']
 			]}
 		/>
 
-		<PropsTable
-			title="Label Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--progress-value-font-size', 'var(--ui-text-sm)', 'Font size of the percentage label'],
-				[
-					'--progress-value-color',
-					'surface-foreground @ 30% transparent',
-					'Text color of the percentage label'
-				],
-				[
-					'--progress-value-font-weight',
-					'var(--ui-weight-medium)',
-					'Font weight of the percentage label'
-				]
+		<TokenTable
+			component="progress"
+			tokens={[
+				['--progress-value-font-size', 'Font size of the percentage label'],
+				['--progress-value-color', 'Text color of the percentage label'],
+				['--progress-value-font-weight', 'Font weight of the percentage label']
 			]}
 		/>
 	</DocSection>

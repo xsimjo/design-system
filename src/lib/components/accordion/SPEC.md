@@ -111,14 +111,14 @@ All standard `HTMLDivElement` attributes are forwarded to the item's root `<div>
 
 ## CSS Tokens
 
-| Token                          | Default                                                    | Description                  |
-| ------------------------------ | ---------------------------------------------------------- | ---------------------------- |
-| `--accordion-border`           | `var(--ui-border)`                                         | Border color                 |
-| `--accordion-border-width`     | `var(--ui-border-width)`                                   | Border width                 |
-| `--accordion-trigger-color`    | `var(--ui-surface-foreground)`                             | Trigger button text color    |
-| `--accordion-trigger-hover-bg` | `color-mix(var(--ui-neutral), transparent 90%)`            | Trigger hover background     |
-| `--accordion-content-color`    | `color-mix(var(--ui-surface-foreground), transparent 25%)` | Panel content text color     |
-| `--accordion-padding-x`        | `calc(var(--ui-base-spacing) * 4)`                         | Base horizontal padding unit |
-| `--accordion-padding-y`        | `calc(var(--ui-base-spacing) * 3)`                         | Base vertical padding unit   |
-| `--accordion-duration`         | `var(--ui-base-duration)`                                  | Transition duration          |
-| `--accordion-easing`           | `var(--ui-base-easing)`                                    | Transition easing function   |
+| Token                          | Default                                                              | Description                  |
+| ------------------------------ | -------------------------------------------------------------------- | ---------------------------- |
+| `--accordion-border`           | `var(--ui-border)`                                                   | Border color                 |
+| `--accordion-border-width`     | `var(--ui-border-width)`                                             | Border width                 |
+| `--accordion-trigger-color`    | `var(--ui-surface-foreground)`                                       | Trigger button text color    |
+| `--accordion-trigger-hover-bg` | `color-mix(in oklch, var(--ui-neutral), transparent 90%)`            | Trigger hover background     |
+| `--accordion-content-color`    | `color-mix(in oklch, var(--ui-surface-foreground), transparent 25%)` | Panel content text color     |
+| `--accordion-padding-x`        | `calc(var(--ui-base-spacing) * 4)`                                   | Base horizontal padding unit |
+| `--accordion-padding-y`        | `calc(var(--ui-base-spacing) * 3)`                                   | Base vertical padding unit   |
+| `--accordion-duration`         | `var(--ui-base-duration)`                                            | Transition duration          |
+| `--accordion-easing`           | `var(--ui-base-easing)`                                              | Transition easing function   |

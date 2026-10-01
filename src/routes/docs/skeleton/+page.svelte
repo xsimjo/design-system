@@ -7,6 +7,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -156,23 +157,19 @@
 	</DocSection>
 
 	<DocSection id="css-tokens" title="CSS Tokens">
-		<PropsTable
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--skeleton-bg', 'color-mix(--ui-neutral, transparent 78%)', 'Base background color'],
-				[
-					'--skeleton-shimmer-color',
-					'color-mix(--ui-neutral-foreground, transparent 75%)',
-					'Highlight color for the shimmer wave (light in all themes)'
-				],
-				['--skeleton-radius', 'var(--ui-base-radius)', 'Border radius for rect and text shapes'],
-				['--skeleton-radius-circle', '9999px', 'Border radius for circle shape'],
-				['--skeleton-duration', '1.5s', 'Duration of one shimmer cycle'],
-				['--skeleton-easing', 'ease-in-out', 'Easing function for the shimmer animation'],
-				['--skeleton-stagger', '0.15s', 'Delay increment between text lines for cascading shimmer'],
-				['--skeleton-line-height', 'calc(var(--ui-base-spacing) * 4)', 'Height of each text line'],
-				['--skeleton-line-gap', 'calc(var(--ui-base-spacing) * 3)', 'Gap between text lines'],
-				['--skeleton-line-last-width', '70%', 'Width of the last text line']
+		<TokenTable
+			component="skeleton"
+			tokens={[
+				['--skeleton-bg', 'Base background color'],
+				['--skeleton-shimmer-color', 'Highlight color for the shimmer wave (light in all themes)'],
+				['--skeleton-radius', 'Border radius for rect and text shapes'],
+				['--skeleton-radius-circle', 'Border radius for circle shape'],
+				['--skeleton-duration', 'Duration of one shimmer cycle'],
+				['--skeleton-easing', 'Easing function for the shimmer animation'],
+				['--skeleton-stagger', 'Delay increment between text lines for cascading shimmer'],
+				['--skeleton-line-height', 'Height of each text line'],
+				['--skeleton-line-gap', 'Gap between text lines'],
+				['--skeleton-line-last-width', 'Width of the last text line']
 			]}
 		/>
 	</DocSection>

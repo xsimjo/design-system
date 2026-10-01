@@ -10,6 +10,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -225,72 +226,41 @@
 			Override these tokens to adapt Slider to your brand or to create specialized variants.
 		</p>
 
-		<PropsTable
-			title="Color Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				[
-					'--slider-track-bg',
-					'color-mix(\u2026neutral 70% transparent)',
-					'Unfilled track background'
-				],
-				['--slider-fill-color', 'var(--ui-primary)', 'Filled track and thumb border color'],
-				['--slider-thumb-bg', 'var(--ui-surface-raised)', 'Thumb background color'],
-				['--slider-thumb-border', 'var(--ui-primary)', 'Thumb border color'],
-				['--slider-focus-color', 'var(--ui-primary)', 'Focus ring color'],
-				['--slider-focus-ring-width', 'var(--ui-ring-width)', 'Width of the focus ring outline'],
-				[
-					'--slider-focus-ring-offset',
-					'var(--ui-ring-offset)',
-					'Offset of the focus ring from the border'
-				],
-				['--slider-error-color', 'var(--ui-danger)', 'Fill and thumb border color in error state'],
-				[
-					'--slider-disabled-track-bg',
-					'color-mix(\u2026neutral 80% transparent)',
-					'Unfilled track when disabled'
-				],
-				[
-					'--slider-disabled-fill-color',
-					'color-mix(\u2026neutral 50% transparent)',
-					'Filled track when disabled'
-				],
-				[
-					'--slider-disabled-thumb-bg',
-					'color-mix(\u2026neutral 60% transparent)',
-					'Thumb background when disabled'
-				],
-				[
-					'--slider-disabled-thumb-border',
-					'color-mix(\u2026neutral 40% transparent)',
-					'Thumb border when disabled'
-				],
-				['--slider-value-fg', 'var(--ui-surface-foreground)', 'Color of the value display text'],
-				['--slider-value-font-size', 'var(--ui-text-sm)', 'Font size of the value display']
+		<TokenTable
+			component="slider"
+			tokens={[
+				['--slider-track-bg', 'Unfilled track background'],
+				['--slider-fill-color', 'Filled track and thumb border color'],
+				['--slider-thumb-bg', 'Thumb background color'],
+				['--slider-thumb-border', 'Thumb border color'],
+				['--slider-focus-color', 'Focus ring color'],
+				['--slider-focus-ring-width', 'Width of the focus ring outline'],
+				['--slider-focus-ring-offset', 'Offset of the focus ring from the border'],
+				['--slider-error-color', 'Fill and thumb border color in error state'],
+				['--slider-disabled-track-bg', 'Unfilled track when disabled'],
+				['--slider-disabled-fill-color', 'Filled track when disabled'],
+				['--slider-disabled-thumb-bg', 'Thumb background when disabled'],
+				['--slider-disabled-thumb-border', 'Thumb border when disabled'],
+				['--slider-value-fg', 'Color of the value display text'],
+				['--slider-value-font-size', 'Font size of the value display']
 			]}
 		/>
 
-		<PropsTable
+		<TokenTable
+			component="slider"
 			title="Size Tokens"
-			columns={['Token', 'SM', 'MD', 'LG']}
-			rows={[
-				["--slider-{'{size}'}-track-height", '4px', '6px', '8px'],
-				["--slider-{'{size}'}-thumb-size", '16px', '20px', '24px']
+			tokens={[
+				['--slider-track-height', 'Track thickness'],
+				['--slider-thumb-size', 'Thumb diameter']
 			]}
 		/>
-
-		<PropsTable
-			title="Style Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--slider-track-radius', '9999px', 'Track corner roundness (pill-shaped by default)'],
-				['--slider-thumb-radius', '50%', 'Thumb corner roundness (circular by default)'],
-				['--slider-thumb-shadow', '0 1px 3px \u2026', 'Box shadow on the thumb'],
-				[
-					'--slider-transition',
-					'var(--ui-base-duration) var(--ui-base-easing)',
-					'Transition for thumb transform and focus ring'
-				]
+		<TokenTable
+			component="slider"
+			tokens={[
+				['--slider-track-radius', 'Track corner roundness (pill-shaped by default)'],
+				['--slider-thumb-radius', 'Thumb corner roundness (circular by default)'],
+				['--slider-thumb-shadow', 'Box shadow on the thumb'],
+				['--slider-transition', 'Transition for thumb transform and focus ring']
 			]}
 		/>
 	</DocSection>

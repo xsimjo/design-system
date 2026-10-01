@@ -8,6 +8,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -132,21 +133,13 @@
 				>button--link button--secondary button--sm</code
 			>) and inherit all button link token overrides.
 		</p>
-		<PropsTable
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--breadcrumbs-font-size', 'var(--ui-text-sm)', 'Font size of all items'],
-				[
-					'--breadcrumbs-gap',
-					'calc(var(--ui-base-spacing) * 3)',
-					'Gap between items and separators'
-				],
-				['--breadcrumbs-current-color', 'var(--ui-surface-foreground)', 'Current page text color'],
-				[
-					'--breadcrumbs-separator-color',
-					'color-mix(in oklch, var(--ui-surface-foreground), transparent 60%)',
-					'Separator icon/text color'
-				]
+		<TokenTable
+			component="breadcrumbs"
+			tokens={[
+				['--breadcrumbs-font-size', 'Font size of all items'],
+				['--breadcrumbs-gap', 'Gap between items and separators'],
+				['--breadcrumbs-current-color', 'Current page text color'],
+				['--breadcrumbs-separator-color', 'Separator icon/text color']
 			]}
 		/>
 	</DocSection>

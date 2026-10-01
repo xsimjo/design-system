@@ -96,6 +96,6 @@ Clicking an already-selected star deselects it (sets value to 0).
 
 | Token                   | Default                                         | Description                       |
 | ----------------------- | ----------------------------------------------- | --------------------------------- |
-| `--rating-gap`          | `2px`                                           | Gap between stars                 |
+| `--rating-gap`          | `calc(var(--ui-base-spacing) * 1)`              | Gap between stars                 |
 | `--rating-stroke-width` | `1.5`                                           | SVG stroke width for star outline |
 | `--rating-transition`   | `var(--ui-base-duration) var(--ui-base-easing)` | Color and scale transition        |

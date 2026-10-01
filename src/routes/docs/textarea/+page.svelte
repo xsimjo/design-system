@@ -10,6 +10,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -270,67 +271,45 @@
 			Override these tokens to adapt Textarea to your brand or to create specialized variants.
 		</p>
 
-		<PropsTable
-			title="Color Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--textarea-bg', 'var(--ui-surface)', 'Textarea background'],
-				['--textarea-fg', 'var(--ui-surface-foreground)', 'Textarea text color'],
-				['--textarea-border', 'var(--ui-border)', 'Default border color'],
-				['--textarea-border-width', 'var(--ui-border-width)', 'Border thickness'],
-				['--textarea-placeholder', 'color-mix(…55% transparent)', 'Placeholder text color'],
-				['--textarea-hover-border', 'color-mix(…border+fg 25%)', 'Border color on hover'],
-				['--textarea-focus-color', 'var(--ui-primary)', 'Border and focus ring color when focused'],
-				['--textarea-focus-ring-width', 'var(--ui-ring-width)', 'Width of the focus ring outline'],
-				[
-					'--textarea-focus-ring-offset',
-					'var(--ui-ring-offset)',
-					'Offset of the focus ring from the border'
-				],
-				['--textarea-error-color', 'var(--ui-danger)', 'Border color in error state'],
-				[
-					'--textarea-disabled-bg',
-					'color-mix(…neutral 80% transparent)',
-					'Background when disabled'
-				],
-				['--textarea-disabled-fg', 'color-mix(…fg 50% transparent)', 'Text color when disabled'],
-				['--textarea-disabled-border', 'var(--ui-border)', 'Border color when disabled']
+		<TokenTable
+			component="textarea"
+			tokens={[
+				['--textarea-bg', 'Textarea background'],
+				['--textarea-fg', 'Textarea text color'],
+				['--textarea-border', 'Default border color'],
+				['--textarea-border-width', 'Border thickness'],
+				['--textarea-placeholder', 'Placeholder text color'],
+				['--textarea-hover-border', 'Border color on hover'],
+				['--textarea-focus-color', 'Border and focus ring color when focused'],
+				['--textarea-focus-ring-width', 'Width of the focus ring outline'],
+				['--textarea-focus-ring-offset', 'Offset of the focus ring from the border'],
+				['--textarea-error-color', 'Border color in error state'],
+				['--textarea-disabled-bg', 'Background when disabled'],
+				['--textarea-disabled-fg', 'Text color when disabled'],
+				['--textarea-disabled-border', 'Border color when disabled']
 			]}
 		/>
 
-		<PropsTable
-			title="Size Tokens"
-			columns={['Token', 'SM', 'MD', 'LG']}
-			rows={[
-				['--textarea-{size}-padding-x', '12px', '16px', '24px'],
-				['--textarea-{size}-padding-y', '8px', '12px', '16px'],
-				[
-					'--textarea-{size}-font-size',
-					'var(--ui-text-sm)',
-					'var(--ui-text-base)',
-					'var(--ui-text-lg)'
-				]
+		<TokenTable
+			component="textarea"
+			tokens={[
+				['--textarea-padding-x', 'Horizontal padding'],
+				['--textarea-padding-y', 'Vertical padding'],
+				['--textarea-font-size', 'Text size'],
+				['--textarea-line-height', 'Text line height'],
+				['--textarea-min-height', 'Minimum height']
 			]}
 		/>
 
-		<PropsTable
-			title="Style Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				[
-					'--textarea-min-height',
-					'calc(var(--ui-base-spacing) * 20)',
-					'Minimum height of the textarea'
-				],
-				['--textarea-border-radius', 'var(--ui-base-radius)', 'Corner roundness'],
-				['--textarea-font-family', 'var(--ui-font-sans)', 'Font family'],
-				['--textarea-font-weight', 'var(--ui-weight-normal)', 'Text weight'],
-				['--textarea-line-height', 'var(--ui-leading-normal)', 'Line height'],
-				[
-					'--textarea-transition',
-					'var(--ui-base-duration) var(--ui-base-easing)',
-					'Transition for border and background'
-				]
+		<TokenTable
+			component="textarea"
+			tokens={[
+				['--textarea-min-height', 'Minimum height of the textarea'],
+				['--textarea-border-radius', 'Corner roundness'],
+				['--textarea-font-family', 'Font family'],
+				['--textarea-font-weight', 'Text weight'],
+				['--textarea-line-height', 'Line height'],
+				['--textarea-transition', 'Transition for border and background']
 			]}
 		/>
 	</DocSection>

@@ -8,6 +8,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -168,22 +169,22 @@
 		<p class="example-desc" style="margin-bottom: var(--space-4)">
 			All tokens are defined in <code>[data-theme]</code> scope and can be overridden per-theme or locally.
 		</p>
-		<PropsTable
-			columns={['Token', 'Default value', 'Description']}
-			rows={[
-				['--tooltip-bg', '--ui-surface-foreground', 'Background color (inverted surface)'],
-				['--tooltip-color', '--ui-surface', 'Text color (inverted surface)'],
-				['--tooltip-border-radius', '--ui-base-radius × 0.5', 'Corner radius'],
-				['--tooltip-shadow', '--ui-depth', 'Drop shadow'],
-				['--tooltip-font-size', '--ui-text-xs', 'Label font size'],
-				['--tooltip-font-weight', '--ui-weight-normal', 'Label font weight'],
-				['--tooltip-line-height', '--ui-leading-tight', 'Label line height'],
-				['--tooltip-padding-x', '--ui-base-spacing × 1.25', 'Horizontal padding'],
-				['--tooltip-padding-y', '--ui-base-spacing × 0.625', 'Vertical padding'],
-				['--tooltip-max-width', '--ui-base-spacing × 32', 'Maximum width before text wraps'],
-				['--tooltip-z-index', '--ui-z-overlay', 'Stacking order'],
-				['--tooltip-arrow-size', '8px', 'Arrow square dimensions'],
-				['--tooltip-transition', '--ui-base-duration + easing', 'Opacity fade duration and easing']
+		<TokenTable
+			component="tooltip"
+			tokens={[
+				['--tooltip-bg', 'Background color (inverted surface)'],
+				['--tooltip-color', 'Text color (inverted surface)'],
+				['--tooltip-border-radius', 'Corner radius'],
+				['--tooltip-shadow', 'Drop shadow'],
+				['--tooltip-font-size', 'Label font size'],
+				['--tooltip-font-weight', 'Label font weight'],
+				['--tooltip-line-height', 'Label line height'],
+				['--tooltip-padding-x', 'Horizontal padding'],
+				['--tooltip-padding-y', 'Vertical padding'],
+				['--tooltip-max-width', 'Maximum width before text wraps'],
+				['--tooltip-z-index', 'Stacking order'],
+				['--tooltip-arrow-size', 'Arrow square dimensions'],
+				['--tooltip-transition', 'Opacity fade duration and easing']
 			]}
 		/>
 	</DocSection>

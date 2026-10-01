@@ -13,6 +13,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 	import HomeIcon from '$lib/icons/HomeIcon.svelte';
 	import SettingsIcon from '$lib/icons/SettingsIcon.svelte';
 	import UsersIcon from '$lib/icons/UsersIcon.svelte';
@@ -648,41 +649,21 @@
 	</DocSection>
 
 	<DocSection id="css-tokens" title="CSS Tokens">
-		<PropsTable
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--side-nav-padding', 'calc(var(--ui-base-spacing) * 1)', 'Container padding'],
-				['--side-nav-gap', 'calc(var(--ui-base-spacing) * 0.5)', 'Gap between items'],
-				['--side-nav-item-height', 'calc(var(--ui-base-spacing) * 9)', 'Minimum item height'],
-				[
-					'--side-nav-item-padding-x',
-					'calc(var(--ui-base-spacing) * 3)',
-					'Item horizontal padding'
-				],
-				[
-					'--side-nav-item-indent',
-					'calc(var(--ui-base-spacing) * 4)',
-					'Indentation per nesting level'
-				],
-				['--side-nav-item-font-size', 'var(--ui-text-sm)', 'Item font size'],
-				[
-					'--side-nav-item-border-radius',
-					'calc(var(--ui-base-radius) * 0.75)',
-					'Item border radius'
-				],
-				[
-					'--side-nav-item-hover-bg',
-					'color-mix(var(--ui-neutral), transparent 90%)',
-					'Item hover background'
-				],
-				[
-					'--side-nav-item-selected-bg',
-					'color-mix(var(--ui-primary), transparent 88%)',
-					'Active item background'
-				],
-				['--side-nav-item-selected-color', 'var(--ui-primary)', 'Active item text color'],
-				['--side-nav-duration', 'var(--ui-base-duration)', 'Transition duration'],
-				['--side-nav-easing', 'var(--ui-base-easing)', 'Transition easing function']
+		<TokenTable
+			component="side-nav"
+			tokens={[
+				['--side-nav-padding', 'Container padding'],
+				['--side-nav-gap', 'Gap between items'],
+				['--side-nav-item-height', 'Minimum item height'],
+				['--side-nav-item-padding-x', 'Item horizontal padding'],
+				['--side-nav-item-indent', 'Indentation per nesting level'],
+				['--side-nav-item-font-size', 'Item font size'],
+				['--side-nav-item-border-radius', 'Item border radius'],
+				['--side-nav-item-hover-bg', 'Item hover background'],
+				['--side-nav-item-selected-bg', 'Active item background'],
+				['--side-nav-item-selected-color', 'Active item text color'],
+				['--side-nav-duration', 'Transition duration'],
+				['--side-nav-easing', 'Transition easing function']
 			]}
 		/>
 	</DocSection>

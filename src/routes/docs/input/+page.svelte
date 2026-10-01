@@ -13,6 +13,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	let searchValue = $state('');
 	let clearableValue = $state('Some text');
@@ -313,62 +314,47 @@
 			Override these tokens to adapt Input to your brand or to create specialized variants.
 		</p>
 
-		<PropsTable
-			title="Color Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--input-bg', 'var(--ui-surface)', 'Input background'],
-				['--input-fg', 'var(--ui-surface-foreground)', 'Input text color'],
-				['--input-border', 'var(--ui-border)', 'Default border color'],
-				['--input-border-width', 'var(--ui-border-width)', 'Border thickness'],
-				['--input-placeholder', 'color-mix(…55% transparent)', 'Placeholder text color'],
-				['--input-hover-border', 'color-mix(…border+fg 25%)', 'Border color on hover'],
-				['--input-focus-color', 'var(--ui-primary)', 'Border and focus ring color when focused'],
-				['--input-focus-ring-width', 'var(--ui-ring-width)', 'Width of the focus ring outline'],
-				[
-					'--input-focus-ring-offset',
-					'var(--ui-ring-offset)',
-					'Offset of the focus ring from the border'
-				],
-				['--input-error-color', 'var(--ui-danger)', 'Border color in error state'],
-				['--input-disabled-bg', 'color-mix(…neutral 80% transparent)', 'Background when disabled'],
-				['--input-disabled-fg', 'color-mix(…fg 50% transparent)', 'Text color when disabled'],
-				['--input-disabled-border', 'var(--ui-border)', 'Border color when disabled'],
-				['--input-icon-color', 'color-mix(…fg 40% transparent)', 'Icon color'],
-				['--input-icon-size', 'calc(spacing * 2.5)', 'Icon container size'],
-				['--input-clear-color', 'color-mix(…fg 40% transparent)', 'Clear button color'],
-				['--input-clear-hover-color', 'var(--ui-surface-foreground)', 'Clear button hover color']
+		<TokenTable
+			component="input"
+			tokens={[
+				['--input-bg', 'Input background'],
+				['--input-fg', 'Input text color'],
+				['--input-border', 'Default border color'],
+				['--input-border-width', 'Border thickness'],
+				['--input-placeholder', 'Placeholder text color'],
+				['--input-hover-border', 'Border color on hover'],
+				['--input-focus-color', 'Border and focus ring color when focused'],
+				['--input-focus-ring-width', 'Width of the focus ring outline'],
+				['--input-focus-ring-offset', 'Offset of the focus ring from the border'],
+				['--input-error-color', 'Border color in error state'],
+				['--input-disabled-bg', 'Background when disabled'],
+				['--input-disabled-fg', 'Text color when disabled'],
+				['--input-disabled-border', 'Border color when disabled'],
+				['--input-icon-color', 'Icon color'],
+				['--input-icon-size', 'Icon container size'],
+				['--input-clear-color', 'Clear button color'],
+				['--input-clear-hover-color', 'Clear button hover color']
 			]}
 		/>
 
-		<PropsTable
-			title="Size Tokens"
-			columns={['Token', 'SM', 'MD', 'LG']}
-			rows={[
-				['--input-{size}-height', '32px', '40px', '48px'],
-				['--input-{size}-padding-x', '12px', '16px', '24px'],
-				[
-					'--input-{size}-font-size',
-					'var(--ui-text-sm)',
-					'var(--ui-text-base)',
-					'var(--ui-text-lg)'
-				]
+		<TokenTable
+			component="input"
+			tokens={[
+				['--input-height', 'Control height'],
+				['--input-padding-x', 'Horizontal padding'],
+				['--input-font-size', 'Text size'],
+				['--input-line-height', 'Text line height']
 			]}
 		/>
 
-		<PropsTable
-			title="Style Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--input-border-radius', 'var(--ui-base-radius)', 'Corner roundness'],
-				['--input-font-family', 'var(--ui-font-sans)', 'Font family'],
-				['--input-font-weight', 'var(--ui-weight-normal)', 'Input text weight'],
-				['--input-line-height', 'var(--ui-leading-normal)', 'Input line height'],
-				[
-					'--input-transition',
-					'var(--ui-base-duration) var(--ui-base-easing)',
-					'Transition for border and background'
-				]
+		<TokenTable
+			component="input"
+			tokens={[
+				['--input-border-radius', 'Corner roundness'],
+				['--input-font-family', 'Font family'],
+				['--input-font-weight', 'Input text weight'],
+				['--input-line-height', 'Input line height'],
+				['--input-transition', 'Transition for border and background']
 			]}
 		/>
 	</DocSection>

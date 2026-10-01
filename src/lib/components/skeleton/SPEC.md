@@ -60,15 +60,15 @@ All standard `HTMLSpanElement` attributes are forwarded to the root element.
 
 ## CSS Tokens
 
-| Token                        | Default                                                    | Description                                                |
-| ---------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `--skeleton-bg`              | `color-mix(var(--ui-neutral), transparent 78%)`            | Base background color                                      |
-| `--skeleton-shimmer-color`   | `color-mix(var(--ui-neutral-foreground), transparent 75%)` | Highlight color for the shimmer wave (light in all themes) |
-| `--skeleton-radius`          | `var(--ui-base-radius)`                                    | Border radius for `rect` and `text` shapes                 |
-| `--skeleton-radius-circle`   | `9999px`                                                   | Border radius for `circle` shape                           |
-| `--skeleton-duration`        | `1.5s`                                                     | Duration of one shimmer cycle                              |
-| `--skeleton-easing`          | `ease-in-out`                                              | Easing function for the shimmer animation                  |
-| `--skeleton-stagger`         | `0.15s`                                                    | Delay increment between text lines                         |
-| `--skeleton-line-height`     | `calc(var(--ui-base-spacing) * 4)`                         | Height of each text line                                   |
-| `--skeleton-line-gap`        | `calc(var(--ui-base-spacing) * 3)`                         | Gap between text lines                                     |
-| `--skeleton-line-last-width` | `70%`                                                      | Width of the last text line                                |
+| Token                        | Default                                                              | Description                                                |
+| ---------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------- |
+| `--skeleton-bg`              | `color-mix(in oklch, var(--ui-neutral), transparent 78%)`            | Base background color                                      |
+| `--skeleton-shimmer-color`   | `color-mix(in oklch, var(--ui-neutral-foreground), transparent 75%)` | Highlight color for the shimmer wave (light in all themes) |
+| `--skeleton-radius`          | `var(--ui-base-radius)`                                              | Border radius for `rect` and `text` shapes                 |
+| `--skeleton-radius-circle`   | `9999px`                                                             | Border radius for `circle` shape                           |
+| `--skeleton-duration`        | `calc(var(--ui-base-duration) * 5)`                                  | Duration of one shimmer cycle                              |
+| `--skeleton-easing`          | `var(--ui-base-easing)`                                              | Easing function for the shimmer animation                  |
+| `--skeleton-stagger`         | `calc(var(--ui-base-duration) * 0.5)`                                | Delay increment between text lines                         |
+| `--skeleton-line-height`     | `calc(var(--ui-base-spacing) * 4)`                                   | Height of each text line                                   |
+| `--skeleton-line-gap`        | `calc(var(--ui-base-spacing) * 3)`                                   | Gap between text lines                                     |
+| `--skeleton-line-last-width` | `70%`                                                                | Width of the last text line                                |

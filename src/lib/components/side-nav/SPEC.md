@@ -182,19 +182,19 @@ No custom props. All standard `HTMLHRElement` attributes are forwarded.
 
 ## CSS Tokens
 
-| Token                            | Default                                                    | Description                   |
-| -------------------------------- | ---------------------------------------------------------- | ----------------------------- |
-| `--side-nav-padding`             | `calc(var(--ui-base-spacing) * 1)`                         | Container padding             |
-| `--side-nav-gap`                 | `calc(var(--ui-base-spacing) * 0.5)`                       | Gap between items             |
-| `--side-nav-item-height`         | `calc(var(--ui-base-spacing) * 9)`                         | Minimum item height           |
-| `--side-nav-item-padding-x`      | `calc(var(--ui-base-spacing) * 3)`                         | Item horizontal padding       |
-| `--side-nav-item-indent`         | `calc(var(--ui-base-spacing) * 4)`                         | Indentation per nesting level |
-| `--side-nav-item-font-size`      | `var(--ui-text-sm)`                                        | Item font size                |
-| `--side-nav-item-border-radius`  | `calc(var(--ui-base-radius) * 0.75)`                       | Item border radius            |
-| `--side-nav-item-hover-bg`       | `color-mix(var(--ui-neutral), transparent 90%)`            | Item hover background         |
-| `--side-nav-item-selected-bg`    | `color-mix(var(--ui-primary), transparent 88%)`            | Active item background        |
-| `--side-nav-item-selected-color` | `var(--ui-primary)`                                        | Active item text color        |
-| `--side-nav-divider-color`       | `var(--ui-border)`                                         | Divider color                 |
-| `--side-nav-label-color`         | `color-mix(var(--ui-surface-foreground), transparent 50%)` | Label text color              |
-| `--side-nav-duration`            | `var(--ui-base-duration)`                                  | Transition duration           |
-| `--side-nav-easing`              | `var(--ui-base-easing)`                                    | Transition easing function    |
+| Token                            | Default                                                              | Description                   |
+| -------------------------------- | -------------------------------------------------------------------- | ----------------------------- |
+| `--side-nav-padding`             | `0`                                                                  | Container padding             |
+| `--side-nav-gap`                 | `calc(var(--ui-base-spacing) * 1)`                                   | Gap between items             |
+| `--side-nav-item-height`         | `calc(var(--ui-base-spacing) * 9)`                                   | Minimum item height           |
+| `--side-nav-item-padding-x`      | `calc(var(--ui-base-spacing) * 3)`                                   | Item horizontal padding       |
+| `--side-nav-item-indent`         | `calc(var(--ui-base-spacing) * 4)`                                   | Indentation per nesting level |
+| `--side-nav-item-font-size`      | `var(--ui-text-sm)`                                                  | Item font size                |
+| `--side-nav-item-border-radius`  | `calc(var(--ui-base-radius) * 0.75)`                                 | Item border radius            |
+| `--side-nav-item-hover-bg`       | `color-mix(in oklch, var(--ui-neutral), transparent 90%)`            | Item hover background         |
+| `--side-nav-item-selected-bg`    | `color-mix(in oklch, var(--ui-primary), transparent 88%)`            | Active item background        |
+| `--side-nav-item-selected-color` | `var(--ui-primary)`                                                  | Active item text color        |
+| `--side-nav-divider-color`       | `var(--ui-border)`                                                   | Divider color                 |
+| `--side-nav-label-color`         | `color-mix(in oklch, var(--ui-surface-foreground), transparent 50%)` | Label text color              |
+| `--side-nav-duration`            | `var(--ui-base-duration)`                                            | Transition duration           |
+| `--side-nav-easing`              | `var(--ui-base-easing)`                                              | Transition easing function    |

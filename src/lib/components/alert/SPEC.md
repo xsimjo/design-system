@@ -61,25 +61,24 @@ All standard `HTMLDivElement` attributes are forwarded to the root `<div>` eleme
 
 ## CSS Tokens
 
-| Token                    | Default                                                    | Description                      |
-| ------------------------ | ---------------------------------------------------------- | -------------------------------- |
-| `--alert-bg-info`        | `color-mix(var(--ui-info), transparent 88%)`               | Background for info variant      |
-| `--alert-bg-success`     | `color-mix(var(--ui-success), transparent 88%)`            | Background for success variant   |
-| `--alert-bg-warning`     | `color-mix(var(--ui-warning), transparent 88%)`            | Background for warning variant   |
-| `--alert-bg-danger`      | `color-mix(var(--ui-danger), transparent 88%)`             | Background for danger variant    |
-| `--alert-border-info`    | `color-mix(var(--ui-info), transparent 60%)`               | Border color for info variant    |
-| `--alert-border-success` | `color-mix(var(--ui-success), transparent 60%)`            | Border color for success variant |
-| `--alert-border-warning` | `color-mix(var(--ui-warning), transparent 60%)`            | Border color for warning variant |
-| `--alert-border-danger`  | `color-mix(var(--ui-danger), transparent 60%)`             | Border color for danger variant  |
-| `--alert-icon-info`      | `var(--ui-info)`                                           | Icon color for info variant      |
-| `--alert-icon-success`   | `var(--ui-success)`                                        | Icon color for success variant   |
-| `--alert-icon-warning`   | `var(--ui-warning)`                                        | Icon color for warning variant   |
-| `--alert-icon-danger`    | `var(--ui-danger)`                                         | Icon color for danger variant    |
-| `--alert-title-color`    | `var(--ui-surface-foreground)`                             | Title text color                 |
-| `--alert-content-color`  | `color-mix(var(--ui-surface-foreground), transparent 20%)` | Body content text color          |
-| `--alert-dismiss-color`  | `color-mix(var(--ui-surface-foreground), transparent 40%)` | Dismiss button icon color        |
-| `--alert-radius`         | `var(--ui-base-radius)`                                    | Border radius                    |
-| `--alert-padding-x`      | `calc(var(--ui-base-spacing) * 8)`                         | Horizontal padding               |
-| `--alert-padding-y`      | `calc(var(--ui-base-spacing) * 6)`                         | Vertical padding                 |
-| `--alert-gap`            | `calc(var(--ui-base-spacing) * 6)`                         | Gap between icon, body, dismiss  |
-| `--alert-border-width`   | `var(--ui-border-width)`                                   | Border width                     |
+| Token                    | Default                                                              | Description                      |
+| ------------------------ | -------------------------------------------------------------------- | -------------------------------- |
+| `--alert-bg-info`        | `color-mix(in oklch, var(--ui-info), transparent 88%)`               | Background for info variant      |
+| `--alert-bg-success`     | `color-mix(in oklch, var(--ui-success), transparent 88%)`            | Background for success variant   |
+| `--alert-bg-warning`     | `color-mix(in oklch, var(--ui-warning), transparent 88%)`            | Background for warning variant   |
+| `--alert-bg-danger`      | `color-mix(in oklch, var(--ui-danger), transparent 88%)`             | Background for danger variant    |
+| `--alert-border-info`    | `color-mix(in oklch, var(--ui-info), transparent 60%)`               | Border color for info variant    |
+| `--alert-border-success` | `color-mix(in oklch, var(--ui-success), transparent 60%)`            | Border color for success variant |
+| `--alert-border-warning` | `color-mix(in oklch, var(--ui-warning), transparent 60%)`            | Border color for warning variant |
+| `--alert-border-danger`  | `color-mix(in oklch, var(--ui-danger), transparent 60%)`             | Border color for danger variant  |
+| `--alert-icon-info`      | `var(--ui-info)`                                                     | Icon color for info variant      |
+| `--alert-icon-success`   | `var(--ui-success)`                                                  | Icon color for success variant   |
+| `--alert-icon-warning`   | `var(--ui-warning)`                                                  | Icon color for warning variant   |
+| `--alert-icon-danger`    | `var(--ui-danger)`                                                   | Icon color for danger variant    |
+| `--alert-title-color`    | `var(--ui-surface-foreground)`                                       | Title text color                 |
+| `--alert-content-color`  | `color-mix(in oklch, var(--ui-surface-foreground), transparent 20%)` | Body content text color          |
+| `--alert-radius`         | `var(--ui-base-radius)`                                              | Border radius                    |
+| `--alert-padding-x`      | `calc(var(--ui-base-spacing) * 8)`                                   | Horizontal padding               |
+| `--alert-padding-y`      | `calc(var(--ui-base-spacing) * 6)`                                   | Vertical padding                 |
+| `--alert-gap`            | `calc(var(--ui-base-spacing) * 6)`                                   | Gap between icon, body, dismiss  |
+| `--alert-border-width`   | `var(--ui-border-width)`                                             | Border width                     |

@@ -110,27 +110,27 @@ When placed inside a `Field` component, BadgeInput automatically reads:
 
 ## Tokens
 
-| Token                               | Default                                         | Description                        |
-| ----------------------------------- | ----------------------------------------------- | ---------------------------------- |
-| `--badge-input-bg`                  | `var(--ui-surface)`                             | Trigger background                 |
-| `--badge-input-fg`                  | `var(--ui-surface-foreground)`                  | Trigger text color                 |
-| `--badge-input-border`              | `var(--ui-border)`                              | Default border color               |
-| `--badge-input-border-width`        | `var(--ui-border-width)`                        | Border thickness                   |
-| `--badge-input-placeholder`         | `color-mix(…fg 55% transparent)`                | Placeholder text color             |
-| `--badge-input-focus-color`         | `var(--ui-primary)`                             | Border color when focused          |
-| `--badge-input-focus-ring-width`    | `var(--ui-ring-width)`                          | Focus ring width                   |
-| `--badge-input-focus-ring-offset`   | `var(--ui-ring-offset)`                         | Focus ring offset                  |
-| `--badge-input-error-color`         | `var(--ui-danger)`                              | Border color in error state        |
-| `--badge-input-disabled-bg`         | `color-mix(…neutral 80% transparent)`           | Background when disabled           |
-| `--badge-input-disabled-fg`         | `color-mix(…fg 50% transparent)`                | Text color when disabled           |
-| `--badge-input-disabled-border`     | `var(--ui-border)`                              | Border color when disabled         |
-| `--badge-input-hover-border`        | `color-mix(…border+hover-mix hover-amount)`     | Border color on hover              |
-| `--badge-input-gap`                 | `calc(var(--ui-base-spacing) * 1.5)`            | Gap between badges and input       |
-| `--badge-input-validation-error-fg` | `var(--ui-danger)`                              | Inline validation error text color |
-| `--badge-input-font-family`         | `var(--ui-font-sans)`                           | Font family                        |
-| `--badge-input-font-weight`         | `var(--ui-weight-normal)`                       | Font weight                        |
-| `--badge-input-border-radius`       | `var(--ui-base-radius)`                         | Corner roundness                   |
-| `--badge-input-transition`          | `var(--ui-base-duration) var(--ui-base-easing)` | Transition for border and outline  |
+| Token                               | Default                                                                             | Description                        |
+| ----------------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------- |
+| `--badge-input-bg`                  | `var(--ui-surface)`                                                                 | Trigger background                 |
+| `--badge-input-fg`                  | `var(--ui-surface-foreground)`                                                      | Trigger text color                 |
+| `--badge-input-border`              | `var(--ui-border)`                                                                  | Default border color               |
+| `--badge-input-border-width`        | `var(--ui-border-width)`                                                            | Border thickness                   |
+| `--badge-input-placeholder`         | `color-mix(in oklch, var(--ui-surface-foreground), transparent 55%)`                | Placeholder text color             |
+| `--badge-input-focus-color`         | `var(--ui-primary)`                                                                 | Border color when focused          |
+| `--badge-input-focus-ring-width`    | `var(--ui-ring-width)`                                                              | Focus ring width                   |
+| `--badge-input-focus-ring-offset`   | `var(--ui-ring-offset)`                                                             | Focus ring offset                  |
+| `--badge-input-error-color`         | `var(--ui-danger)`                                                                  | Border color in error state        |
+| `--badge-input-disabled-bg`         | `color-mix(in oklch, var(--ui-neutral), transparent 80%)`                           | Background when disabled           |
+| `--badge-input-disabled-fg`         | `color-mix(in oklch, var(--ui-surface-foreground), transparent 50%)`                | Text color when disabled           |
+| `--badge-input-disabled-border`     | `var(--ui-border)`                                                                  | Border color when disabled         |
+| `--badge-input-hover-border`        | `color-mix(in oklch, var(--ui-border), var(--ui-hover-mix) var(--ui-hover-amount))` | Border color on hover              |
+| `--badge-input-gap`                 | `calc(var(--ui-base-spacing) * 1.5)`                                                | Gap between badges and input       |
+| `--badge-input-validation-error-fg` | `var(--ui-danger)`                                                                  | Inline validation error text color |
+| `--badge-input-font-family`         | `var(--ui-font-sans)`                                                               | Font family                        |
+| `--badge-input-font-weight`         | `var(--ui-weight-normal)`                                                           | Font weight                        |
+| `--badge-input-border-radius`       | `var(--ui-base-radius)`                                                             | Corner roundness                   |
+| `--badge-input-transition`          | `var(--ui-base-duration) var(--ui-base-easing)`                                     | Transition for border and outline  |
 
 ### Sizes
 

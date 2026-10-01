@@ -42,28 +42,24 @@ A click-triggered floating panel for displaying rich content (titles, descriptio
 
 All tokens are defined in `[data-theme]` scope and can be overridden per-theme or locally on any ancestor element.
 
-| Token                         | Default                              | Description                         |
-| ----------------------------- | ------------------------------------ | ----------------------------------- |
-| `--popover-bg`                | `--ui-surface-raised`                | Panel background color              |
-| `--popover-color`             | `--ui-surface-raised-foreground`     | Panel text color                    |
-| `--popover-border`            | `--ui-border`                        | Border color                        |
-| `--popover-border-width`      | `--ui-border-width`                  | Border width                        |
-| `--popover-border-radius`     | `--ui-base-radius`                   | Corner radius                       |
-| `--popover-shadow`            | `--ui-depth`                         | Drop shadow                         |
-| `--popover-padding`           | `--ui-base-spacing × 4`              | Inner padding                       |
-| `--popover-min-width`         | `--ui-base-spacing × 56`             | Minimum panel width                 |
-| `--popover-max-width`         | `--ui-base-spacing × 104`            | Maximum panel width before wrapping |
-| `--popover-z-index`           | `--ui-z-overlay`                     | Stacking order                      |
-| `--popover-arrow-size`        | `8px`                                | Arrow square dimension              |
-| `--popover-title-size`        | `--ui-text-sm`                       | Header title font size              |
-| `--popover-title-weight`      | `--ui-weight-semibold`               | Header title font weight            |
-| `--popover-body-size`         | `--ui-text-sm`                       | Body text font size                 |
-| `--popover-close-color`       | `--ui-surface-raised-foreground` 40% | Close button icon color             |
-| `--popover-close-hover-color` | `--ui-surface-raised-foreground`     | Close button icon color on hover    |
-| `--popover-close-hover-bg`    | `--ui-neutral` 15% opacity           | Close button background on hover    |
-| `--popover-close-size`        | `--ui-base-spacing × 6`              | Close button hit area size          |
-| `--popover-duration`          | `--ui-base-duration`                 | Enter/leave animation duration      |
-| `--popover-easing`            | `--ui-base-easing`                   | Enter/leave animation easing        |
+| Token                     | Default                               | Description                         |
+| ------------------------- | ------------------------------------- | ----------------------------------- |
+| `--popover-bg`            | `var(--ui-surface-raised)`            | Panel background color              |
+| `--popover-color`         | `var(--ui-surface-raised-foreground)` | Panel text color                    |
+| `--popover-border`        | `var(--ui-border)`                    | Border color                        |
+| `--popover-border-width`  | `var(--ui-border-width)`              | Border width                        |
+| `--popover-border-radius` | `var(--ui-base-radius)`               | Corner radius                       |
+| `--popover-shadow`        | `var(--ui-depth)`                     | Drop shadow                         |
+| `--popover-padding`       | `calc(var(--ui-base-spacing) * 4)`    | Inner padding                       |
+| `--popover-min-width`     | `calc(var(--ui-base-spacing) * 56)`   | Minimum panel width                 |
+| `--popover-max-width`     | `calc(var(--ui-base-spacing) * 104)`  | Maximum panel width before wrapping |
+| `--popover-z-index`       | `var(--ui-z-overlay)`                 | Stacking order                      |
+| `--popover-arrow-size`    | `calc(var(--ui-base-spacing) * 2)`    | Arrow square dimension              |
+| `--popover-title-size`    | `var(--ui-text-sm)`                   | Header title font size              |
+| `--popover-title-weight`  | `var(--ui-weight-semibold)`           | Header title font weight            |
+| `--popover-body-size`     | `var(--ui-text-sm)`                   | Body text font size                 |
+| `--popover-duration`      | `var(--ui-base-duration)`             | Enter/leave animation duration      |
+| `--popover-easing`        | `var(--ui-base-easing)`               | Enter/leave animation easing        |
 
 ## Placement
 

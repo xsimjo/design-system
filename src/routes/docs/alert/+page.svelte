@@ -7,6 +7,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -127,49 +128,21 @@
 	</DocSection>
 
 	<DocSection id="css-tokens" title="CSS Tokens">
-		<PropsTable
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--alert-bg-info', 'color-mix(--ui-info, transparent 88%)', 'Background for info variant'],
-				[
-					'--alert-bg-success',
-					'color-mix(--ui-success, transparent 88%)',
-					'Background for success variant'
-				],
-				[
-					'--alert-bg-warning',
-					'color-mix(--ui-warning, transparent 88%)',
-					'Background for warning variant'
-				],
-				[
-					'--alert-bg-danger',
-					'color-mix(--ui-danger, transparent 88%)',
-					'Background for danger variant'
-				],
-				['--alert-border-info', 'color-mix(--ui-info, transparent 60%)', 'Border for info variant'],
-				[
-					'--alert-border-success',
-					'color-mix(--ui-success, transparent 60%)',
-					'Border for success variant'
-				],
-				[
-					'--alert-border-warning',
-					'color-mix(--ui-warning, transparent 60%)',
-					'Border for warning variant'
-				],
-				[
-					'--alert-border-danger',
-					'color-mix(--ui-danger, transparent 60%)',
-					'Border for danger variant'
-				],
-				['--alert-radius', 'var(--ui-base-radius)', 'Border radius'],
-				['--alert-padding-x', 'calc(var(--ui-base-spacing) * 8)', 'Horizontal padding'],
-				['--alert-padding-y', 'calc(var(--ui-base-spacing) * 6)', 'Vertical padding'],
-				[
-					'--alert-gap',
-					'calc(var(--ui-base-spacing) * 6)',
-					'Gap between icon, body, and dismiss button'
-				]
+		<TokenTable
+			component="alert"
+			tokens={[
+				['--alert-bg-info', 'Background for info variant'],
+				['--alert-bg-success', 'Background for success variant'],
+				['--alert-bg-warning', 'Background for warning variant'],
+				['--alert-bg-danger', 'Background for danger variant'],
+				['--alert-border-info', 'Border for info variant'],
+				['--alert-border-success', 'Border for success variant'],
+				['--alert-border-warning', 'Border for warning variant'],
+				['--alert-border-danger', 'Border for danger variant'],
+				['--alert-radius', 'Border radius'],
+				['--alert-padding-x', 'Horizontal padding'],
+				['--alert-padding-y', 'Vertical padding'],
+				['--alert-gap', 'Gap between icon, body, and dismiss button']
 			]}
 		/>
 	</DocSection>

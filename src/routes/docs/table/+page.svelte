@@ -15,6 +15,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	interface Employee {
 		id: number;
@@ -729,56 +730,52 @@ ${S}script>
 	</DocSection>
 
 	<DocSection id="css-tokens" title="CSS Tokens">
-		<PropsTable
-			title="Layout & Structure"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--table-bg', 'var(--ui-surface-raised)', 'Wrapper background'],
-				['--table-border-radius', 'var(--ui-base-radius)', 'Corner radius'],
-				['--table-border-color', 'var(--ui-border)', 'Border color'],
-				['--table-border-width', 'var(--ui-border-width)', 'Border thickness'],
-				['--table-shadow', 'var(--ui-depth)', 'Wrapper shadow'],
-				['--table-max-height', '400px', 'Max-height in sticky mode']
+		<TokenTable
+			component="table"
+			tokens={[
+				['--table-bg', 'Wrapper background'],
+				['--table-border-radius', 'Corner radius'],
+				['--table-border-color', 'Border color'],
+				['--table-border-width', 'Border thickness'],
+				['--table-shadow', 'Wrapper shadow'],
+				['--table-max-height', 'Max-height in sticky mode']
 			]}
 		/>
 
-		<PropsTable
-			title="Header & Rows"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--table-header-bg', 'neutral, 12% opacity', 'Header background'],
-				['--table-header-text', 'var(--ui-surface-foreground)', 'Header text color'],
-				['--table-header-font-weight', 'var(--ui-weight-semibold)', 'Header font weight'],
-				['--table-row-bg', 'var(--ui-surface-raised)', 'Default row background'],
-				['--table-row-hover-bg', 'primary, 6% opacity', 'Clickable row hover background'],
-				['--table-row-selected-bg', 'primary, 12% opacity', 'Selected row background'],
-				['--table-stripe-bg', 'neutral, 7% opacity', 'Even-row background in striped variant']
+		<TokenTable
+			component="table"
+			tokens={[
+				['--table-header-bg', 'Header background'],
+				['--table-header-text', 'Header text color'],
+				['--table-header-font-weight', 'Header font weight'],
+				['--table-row-bg', 'Default row background'],
+				['--table-row-hover-bg', 'Clickable row hover background'],
+				['--table-row-selected-bg', 'Selected row background'],
+				['--table-stripe-bg', 'Even-row background in striped variant']
 			]}
 		/>
 
-		<PropsTable
-			title="Sizing & Typography"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--table-cell-sm-padding', '8px 12px', 'Cell padding at sm'],
-				['--table-cell-md-padding', '12px 16px', 'Cell padding at md'],
-				['--table-cell-lg-padding', '16px 24px', 'Cell padding at lg'],
-				['--table-font-sm', 'var(--ui-text-xs)', 'Font size at sm'],
-				['--table-font-md', 'var(--ui-text-sm)', 'Font size at md'],
-				['--table-font-lg', 'var(--ui-text-base)', 'Font size at lg']
+		<TokenTable
+			component="table"
+			tokens={[
+				['--table-cell-sm-padding', 'Cell padding at sm'],
+				['--table-cell-md-padding', 'Cell padding at md'],
+				['--table-cell-lg-padding', 'Cell padding at lg'],
+				['--table-font-sm', 'Font size at sm'],
+				['--table-font-md', 'Font size at md'],
+				['--table-font-lg', 'Font size at lg']
 			]}
 		/>
 
-		<PropsTable
-			title="Sort, Caption & Focus"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--table-sort-color', 'foreground, 45% opacity', 'Inactive sort icon color'],
-				['--table-sort-active-color', 'var(--ui-primary)', 'Active sort icon color'],
-				['--table-caption-color', 'foreground, 55% opacity', 'Caption text color'],
-				['--table-focus-ring-width', 'var(--ui-ring-width)', 'Focus ring width'],
-				['--table-focus-ring-color', 'var(--ui-primary)', 'Focus ring color'],
-				['--table-transition', '150ms ease', 'Animation timing']
+		<TokenTable
+			component="table"
+			tokens={[
+				['--table-sort-color', 'Inactive sort icon color'],
+				['--table-sort-active-color', 'Active sort icon color'],
+				['--table-caption-color', 'Caption text color'],
+				['--table-focus-ring-width', 'Focus ring width'],
+				['--table-focus-ring-color', 'Focus ring color'],
+				['--table-transition', 'Animation timing']
 			]}
 		/>
 	</DocSection>

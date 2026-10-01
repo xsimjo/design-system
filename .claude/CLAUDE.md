@@ -17,6 +17,23 @@ After making changes, ALWAYS run validation before considering work complete:
 2. `npm run check` — must pass with 0 errors
 3. Fix any issues before moving on — do not skip or suppress warnings
 
+## Documenting Tokens (never hand-write values)
+
+A component token's value is declared once, in its CSS. Docs pages and SPEC.md must
+never restate it:
+
+- **Docs pages** use `TokenTable`, not `PropsTable`, for token tables. Pass
+  `component` (the folder name) and `[token, description]` pairs — the value is read
+  from the generated module. For a component with real per-size tokens (only Button),
+  pass `sizes={['sm', 'md', 'lg']}` and a `{size}` pattern in the token name.
+- **SPEC.md** token tables are rewritten by `npm run build:mcp`; write the
+  description and let the value column be filled in.
+- A token that does not exist in CSS renders as `(not defined in CSS)` in the docs
+  and warns during `build:mcp`, so drift is visible instead of silent.
+
+Note that most components are single-size and expose no `size` prop; do not invent
+`-sm`/`-md`/`-lg` token variants for them.
+
 ## Token System (critical)
 
 Three layers — never skip or cross them:
@@ -79,8 +96,12 @@ All public components, icons, and types must be exported from `src/lib/index.ts`
 
 AI assistant integration server. Extracts component specs and tokens into JSON for tooling.
 
-- `npm run build:mcp` — extract data + build (run after adding/changing SPEC.md files)
+- `npm run build:mcp` — extract data + build (run after adding/changing SPEC.md files or component CSS)
 - Data files: `packages/mcp/src/data/tokens.json` and `components.json`
+
+It also regenerates `src/internal/generated/component-tokens.ts` from the component
+CSS and rewrites the value column of every SPEC.md token table to match. It warns
+about any SPEC.md row naming a token that no longer exists in CSS.
 
 ## Releasing
 

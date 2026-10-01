@@ -151,27 +151,27 @@ The listbox is positioned with `@floating-ui/dom`:
 
 ### Trigger
 
-| Token                        | Default                                         | Description                     |
-| ---------------------------- | ----------------------------------------------- | ------------------------------- |
-| `--select-bg`                | `var(--ui-surface)`                             | Trigger background              |
-| `--select-fg`                | `var(--ui-surface-foreground)`                  | Trigger text color              |
-| `--select-border`            | `var(--ui-border)`                              | Default border color            |
-| `--select-border-width`      | `var(--ui-border-width)`                        | Border thickness                |
-| `--select-placeholder`       | `color-mix(…55% transparent)`                   | Placeholder text color          |
-| `--select-hover-border`      | `color-mix(…border+fg 25%)`                     | Border color on hover           |
-| `--select-focus-color`       | `var(--ui-primary)`                             | Border and focus ring when open |
-| `--select-focus-ring-width`  | `var(--ui-ring-width)`                          | Focus ring width                |
-| `--select-focus-ring-offset` | `var(--ui-ring-offset)`                         | Focus ring offset               |
-| `--select-error-color`       | `var(--ui-danger)`                              | Border color in error state     |
-| `--select-disabled-bg`       | `color-mix(…neutral 80% transparent)`           | Background when disabled        |
-| `--select-disabled-fg`       | `color-mix(…fg 50% transparent)`                | Text color when disabled        |
-| `--select-chevron-size`      | `calc(var(--ui-base-spacing) * 4)`              | Chevron icon size               |
-| `--select-chevron-color`     | `color-mix(…fg 35% transparent)`                | Chevron icon color              |
-| `--select-border-radius`     | `var(--ui-base-radius)`                         | Corner roundness                |
-| `--select-font-family`       | `var(--ui-font-sans)`                           | Trigger font family             |
-| `--select-font-weight`       | `var(--ui-weight-normal)`                       | Trigger font weight             |
-| `--select-disabled-border`   | `var(--ui-border)`                              | Border color when disabled      |
-| `--select-transition`        | `var(--ui-base-duration) var(--ui-base-easing)` | Border and outline transition   |
+| Token                        | Default                                                                             | Description                     |
+| ---------------------------- | ----------------------------------------------------------------------------------- | ------------------------------- |
+| `--select-bg`                | `var(--ui-surface)`                                                                 | Trigger background              |
+| `--select-fg`                | `var(--ui-surface-foreground)`                                                      | Trigger text color              |
+| `--select-border`            | `var(--ui-border)`                                                                  | Default border color            |
+| `--select-border-width`      | `var(--ui-border-width)`                                                            | Border thickness                |
+| `--select-placeholder`       | `color-mix(in oklch, var(--ui-surface-foreground), transparent 55%)`                | Placeholder text color          |
+| `--select-hover-border`      | `color-mix(in oklch, var(--ui-border), var(--ui-hover-mix) var(--ui-hover-amount))` | Border color on hover           |
+| `--select-focus-color`       | `var(--ui-primary)`                                                                 | Border and focus ring when open |
+| `--select-focus-ring-width`  | `var(--ui-ring-width)`                                                              | Focus ring width                |
+| `--select-focus-ring-offset` | `var(--ui-ring-offset)`                                                             | Focus ring offset               |
+| `--select-error-color`       | `var(--ui-danger)`                                                                  | Border color in error state     |
+| `--select-disabled-bg`       | `color-mix(in oklch, var(--ui-neutral), transparent 80%)`                           | Background when disabled        |
+| `--select-disabled-fg`       | `color-mix(in oklch, var(--ui-surface-foreground), transparent 50%)`                | Text color when disabled        |
+| `--select-chevron-size`      | `calc(var(--ui-base-spacing) * 4)`                                                  | Chevron icon size               |
+| `--select-chevron-color`     | `color-mix(in oklch, var(--ui-surface-foreground), transparent 35%)`                | Chevron icon color              |
+| `--select-border-radius`     | `var(--ui-base-radius)`                                                             | Corner roundness                |
+| `--select-font-family`       | `var(--ui-font-sans)`                                                               | Trigger font family             |
+| `--select-font-weight`       | `var(--ui-weight-normal)`                                                           | Trigger font weight             |
+| `--select-disabled-border`   | `var(--ui-border)`                                                                  | Border color when disabled      |
+| `--select-transition`        | `var(--ui-base-duration) var(--ui-base-easing)`                                     | Border and outline transition   |
 
 ### Sizes
 
@@ -196,15 +196,15 @@ The listbox is positioned with `@floating-ui/dom`:
 
 ### Options
 
-| Token                               | Default                               | Description                         |
-| ----------------------------------- | ------------------------------------- | ----------------------------------- |
-| `--select-option-height`            | `calc(var(--ui-base-spacing) * 10)`   | Minimum option height               |
-| `--select-option-padding-x`         | `calc(var(--ui-base-spacing) * 3)`    | Horizontal option padding           |
-| `--select-option-font-size`         | `var(--ui-text-sm)`                   | Option font size                    |
-| `--select-option-border-radius`     | `calc(var(--ui-base-radius) * 0.5)`   | Option corner roundness             |
-| `--select-option-hover-bg`          | `color-mix(…neutral 90% transparent)` | Hover / keyboard-focus background   |
-| `--select-option-selected-bg`       | `color-mix(…primary 90% transparent)` | Selected option background          |
-| `--select-option-selected-hover-bg` | `color-mix(…primary 84% transparent)` | Selected option background on hover |
-| `--select-option-selected-fg`       | `var(--ui-primary)`                   | Selected option text color          |
-| `--select-option-check-size`        | `calc(var(--ui-base-spacing) * 4)`    | Checkmark icon size                 |
-| `--select-option-disabled-opacity`  | `0.5`                                 | Opacity for disabled options        |
+| Token                               | Default                                                   | Description                         |
+| ----------------------------------- | --------------------------------------------------------- | ----------------------------------- |
+| `--select-option-height`            | `calc(var(--ui-base-spacing) * 10)`                       | Minimum option height               |
+| `--select-option-padding-x`         | `calc(var(--ui-base-spacing) * 3)`                        | Horizontal option padding           |
+| `--select-option-font-size`         | `var(--ui-text-sm)`                                       | Option font size                    |
+| `--select-option-border-radius`     | `calc(var(--ui-base-radius) * 0.5)`                       | Option corner roundness             |
+| `--select-option-hover-bg`          | `color-mix(in oklch, var(--ui-neutral), transparent 90%)` | Hover / keyboard-focus background   |
+| `--select-option-selected-bg`       | `color-mix(in oklch, var(--ui-primary), transparent 90%)` | Selected option background          |
+| `--select-option-selected-hover-bg` | `color-mix(in oklch, var(--ui-primary), transparent 84%)` | Selected option background on hover |
+| `--select-option-selected-fg`       | `var(--ui-primary)`                                       | Selected option text color          |
+| `--select-option-check-size`        | `calc(var(--ui-base-spacing) * 4)`                        | Checkmark icon size                 |
+| `--select-option-disabled-opacity`  | `0.5`                                                     | Opacity for disabled options        |

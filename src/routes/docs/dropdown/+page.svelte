@@ -10,6 +10,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 	import ChevronDownIcon from '$lib/icons/ChevronDownIcon.svelte';
 	import SettingsIcon from '$lib/icons/SettingsIcon.svelte';
 	import TrashIcon from '$lib/icons/TrashIcon.svelte';
@@ -332,38 +333,35 @@
 			design system.
 		</p>
 
-		<PropsTable
-			title="Container Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--dropdown-surface', 'var(--ui-surface-overlay)', 'Menu background'],
-				['--dropdown-surface-foreground', 'var(--ui-surface-overlay-foreground)', 'Text color'],
-				['--dropdown-border', 'var(--ui-border)', 'Border color'],
-				['--dropdown-border-radius', 'var(--ui-base-radius)', 'Corner roundness'],
-				['--dropdown-shadow', 'var(--shadow-lg)', 'Box shadow'],
-				['--dropdown-min-width', '180px', 'Minimum width'],
-				['--dropdown-max-height', '320px', 'Max height before scroll']
+		<TokenTable
+			component="dropdown"
+			tokens={[
+				['--dropdown-surface', 'Menu background'],
+				['--dropdown-surface-foreground', 'Text color'],
+				['--dropdown-border', 'Border color'],
+				['--dropdown-border-radius', 'Corner roundness'],
+				['--dropdown-shadow', 'Box shadow'],
+				['--dropdown-min-width', 'Minimum width'],
+				['--dropdown-max-height', 'Max height before scroll']
 			]}
 		/>
 
-		<PropsTable
-			title="Item Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--dropdown-item-height', '36px', 'Item height'],
-				['--dropdown-item-padding-x', '12px', 'Horizontal padding'],
-				['--dropdown-item-hover-bg', 'color-mix(...)', 'Hover background'],
-				['--dropdown-item-destructive-color', 'var(--ui-danger)', 'Destructive text color'],
-				['--dropdown-item-disabled-opacity', '0.5', 'Disabled opacity']
+		<TokenTable
+			component="dropdown"
+			tokens={[
+				['--dropdown-item-height', 'Item height'],
+				['--dropdown-item-padding-x', 'Horizontal padding'],
+				['--dropdown-item-hover-bg', 'Hover background'],
+				['--dropdown-item-destructive-color', 'Destructive text color'],
+				['--dropdown-item-disabled-opacity', 'Disabled opacity']
 			]}
 		/>
 
-		<PropsTable
-			title="Divider Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--dropdown-divider-color', 'var(--ui-border)', 'Divider line color'],
-				['--dropdown-divider-margin', '4px', 'Vertical spacing']
+		<TokenTable
+			component="dropdown"
+			tokens={[
+				['--dropdown-divider-color', 'Divider line color'],
+				['--dropdown-divider-margin', 'Vertical spacing']
 			]}
 		/>
 	</DocSection>

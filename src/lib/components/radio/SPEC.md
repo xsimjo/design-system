@@ -81,21 +81,21 @@ Radio reads from the `Field` context when composed inside a `<Field>` wrapper:
 
 ### Color Tokens
 
-| Token                       | Default                               | Description                              |
-| --------------------------- | ------------------------------------- | ---------------------------------------- |
-| `--radio-bg`                | `var(--ui-surface)`                   | Background in unselected state           |
-| `--radio-border`            | `var(--ui-border)`                    | Border color in unselected state         |
-| `--radio-border-width`      | `var(--ui-border-width)`              | Border thickness                         |
-| `--radio-checked-bg`        | `var(--ui-primary)`                   | Background when selected                 |
-| `--radio-checked-border`    | `var(--ui-primary)`                   | Border color when selected               |
-| `--radio-checked-dot`       | `var(--ui-surface)`                   | Inner dot color when selected            |
-| `--radio-hover-border`      | `color-mix(…border+hover)`            | Border color on hover                    |
-| `--radio-focus-color`       | `var(--ui-primary)`                   | Border and focus ring color when focused |
-| `--radio-focus-ring-width`  | `var(--ui-ring-width)`                | Focus ring width                         |
-| `--radio-focus-ring-offset` | `var(--ui-ring-offset)`               | Focus ring offset                        |
-| `--radio-error-color`       | `var(--ui-danger)`                    | Border and background in error state     |
-| `--radio-disabled-bg`       | `color-mix(…neutral 80% transparent)` | Background when disabled                 |
-| `--radio-disabled-border`   | `var(--ui-border)`                    | Border when disabled                     |
+| Token                       | Default                                                                             | Description                              |
+| --------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------- |
+| `--radio-bg`                | `var(--ui-surface)`                                                                 | Background in unselected state           |
+| `--radio-border`            | `var(--ui-border)`                                                                  | Border color in unselected state         |
+| `--radio-border-width`      | `var(--ui-border-width)`                                                            | Border thickness                         |
+| `--radio-checked-bg`        | `var(--ui-primary)`                                                                 | Background when selected                 |
+| `--radio-checked-border`    | `var(--ui-primary)`                                                                 | Border color when selected               |
+| `--radio-checked-dot`       | `var(--ui-surface)`                                                                 | Inner dot color when selected            |
+| `--radio-hover-border`      | `color-mix(in oklch, var(--ui-border), var(--ui-hover-mix) var(--ui-hover-amount))` | Border color on hover                    |
+| `--radio-focus-color`       | `var(--ui-primary)`                                                                 | Border and focus ring color when focused |
+| `--radio-focus-ring-width`  | `var(--ui-ring-width)`                                                              | Focus ring width                         |
+| `--radio-focus-ring-offset` | `var(--ui-ring-offset)`                                                             | Focus ring offset                        |
+| `--radio-error-color`       | `var(--ui-danger)`                                                                  | Border and background in error state     |
+| `--radio-disabled-bg`       | `color-mix(in oklch, var(--ui-neutral), transparent 80%)`                           | Background when disabled                 |
+| `--radio-disabled-border`   | `var(--ui-border)`                                                                  | Border when disabled                     |
 
 ### Size Tokens
 

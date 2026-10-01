@@ -10,6 +10,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -202,61 +203,31 @@
 			Override these tokens to adapt Checkbox to your brand or to create specialized variants.
 		</p>
 
-		<PropsTable
-			title="Color Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--checkbox-bg', 'var(--ui-surface)', 'Default background color'],
-				['--checkbox-border', 'var(--ui-border)', 'Default border color'],
-				['--checkbox-border-width', 'var(--ui-border-width)', 'Border thickness'],
-				['--checkbox-checked-bg', 'var(--ui-primary)', 'Background when checked or indeterminate'],
-				[
-					'--checkbox-checked-border',
-					'var(--ui-primary)',
-					'Border color when checked or indeterminate'
-				],
-				['--checkbox-hover-border', 'color-mix(\u2026border+hover 10%)', 'Border color on hover'],
-				['--checkbox-focus-color', 'var(--ui-primary)', 'Border and focus ring color when focused'],
-				['--checkbox-focus-ring-width', 'var(--ui-ring-width)', 'Width of the focus ring outline'],
-				[
-					'--checkbox-focus-ring-offset',
-					'var(--ui-ring-offset)',
-					'Offset of the focus ring from the border'
-				],
-				[
-					'--checkbox-error-color',
-					'var(--ui-danger)',
-					'Border and background color in error state'
-				],
-				[
-					'--checkbox-disabled-bg',
-					'color-mix(\u2026neutral 80% transparent)',
-					'Background when disabled'
-				],
-				['--checkbox-disabled-border', 'var(--ui-border)', 'Border color when disabled']
+		<TokenTable
+			component="checkbox"
+			tokens={[
+				['--checkbox-bg', 'Default background color'],
+				['--checkbox-border', 'Default border color'],
+				['--checkbox-border-width', 'Border thickness'],
+				['--checkbox-checked-bg', 'Background when checked or indeterminate'],
+				['--checkbox-checked-border', 'Border color when checked or indeterminate'],
+				['--checkbox-hover-border', 'Border color on hover'],
+				['--checkbox-focus-color', 'Border and focus ring color when focused'],
+				['--checkbox-focus-ring-width', 'Width of the focus ring outline'],
+				['--checkbox-focus-ring-offset', 'Offset of the focus ring from the border'],
+				['--checkbox-error-color', 'Border and background color in error state'],
+				['--checkbox-disabled-bg', 'Background when disabled'],
+				['--checkbox-disabled-border', 'Border color when disabled']
 			]}
 		/>
 
-		<PropsTable
-			title="Size Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--checkbox-size-sm', '14px', 'Width and height for sm size'],
-				['--checkbox-size-md', '16px', 'Width and height for md size'],
-				['--checkbox-size-lg', '20px', 'Width and height for lg size']
-			]}
-		/>
+		<TokenTable component="checkbox" tokens={[['--checkbox-size', 'Control width and height']]} />
 
-		<PropsTable
-			title="Style Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--checkbox-border-radius', '4px', 'Corner roundness'],
-				[
-					'--checkbox-transition',
-					'var(--ui-base-duration) var(--ui-base-easing)',
-					'Transition for border and background'
-				]
+		<TokenTable
+			component="checkbox"
+			tokens={[
+				['--checkbox-border-radius', 'Corner roundness'],
+				['--checkbox-transition', 'Transition for border and background']
 			]}
 		/>
 	</DocSection>

@@ -44,21 +44,21 @@ A non-interactive floating label that appears on hover or focus. Used to provide
 
 All tokens are defined in `[data-theme]` scope in `tooltip.css`.
 
-| Token                     | Derived from                  | Purpose                         |
-| ------------------------- | ----------------------------- | ------------------------------- |
-| `--tooltip-bg`            | `--ui-surface-foreground`     | Background (inverted surface)   |
-| `--tooltip-color`         | `--ui-surface`                | Text color (inverted surface)   |
-| `--tooltip-border-radius` | `--ui-base-radius × 0.5`      | Rounded corners                 |
-| `--tooltip-shadow`        | `--ui-depth`                  | Drop shadow                     |
-| `--tooltip-font-size`     | `--ui-text-xs`                | Label font size                 |
-| `--tooltip-font-weight`   | `--ui-weight-normal`          | Label font weight               |
-| `--tooltip-line-height`   | `--ui-leading-tight`          | Label line height               |
-| `--tooltip-padding-x`     | `--ui-base-spacing × 2.5`     | Horizontal padding (10 px base) |
-| `--tooltip-padding-y`     | `--ui-base-spacing × 1.25`    | Vertical padding (5 px base)    |
-| `--tooltip-max-width`     | `--ui-base-spacing × 64`      | Max width before text wraps     |
-| `--tooltip-z-index`       | `--ui-z-overlay`              | Stacking order                  |
-| `--tooltip-arrow-size`    | `8px`                         | Arrow square dimensions         |
-| `--tooltip-transition`    | `--ui-base-duration` + easing | Opacity fade duration           |
+| Token                     | Derived from                                             | Purpose                         |
+| ------------------------- | -------------------------------------------------------- | ------------------------------- |
+| `--tooltip-bg`            | `var(--ui-neutral)`                                      | Background (inverted surface)   |
+| `--tooltip-color`         | `var(--ui-neutral-foreground)`                           | Text color (inverted surface)   |
+| `--tooltip-border-radius` | `calc(var(--ui-base-radius) * 0.5)`                      | Rounded corners                 |
+| `--tooltip-shadow`        | `var(--ui-depth)`                                        | Drop shadow                     |
+| `--tooltip-font-size`     | `var(--ui-text-xs)`                                      | Label font size                 |
+| `--tooltip-font-weight`   | `var(--ui-weight-normal)`                                | Label font weight               |
+| `--tooltip-line-height`   | `var(--ui-leading-tight)`                                | Label line height               |
+| `--tooltip-padding-x`     | `calc(var(--ui-base-spacing) * 2.5)`                     | Horizontal padding (10 px base) |
+| `--tooltip-padding-y`     | `calc(var(--ui-base-spacing) * 1.5)`                     | Vertical padding (5 px base)    |
+| `--tooltip-max-width`     | `calc(var(--ui-base-spacing) * 64)`                      | Max width before text wraps     |
+| `--tooltip-z-index`       | `var(--ui-z-tooltip)`                                    | Stacking order                  |
+| `--tooltip-arrow-size`    | `8px`                                                    | Arrow square dimensions         |
+| `--tooltip-transition`    | `var(--ui-base-duration) var(--ui-base-easing)` + easing | Opacity fade duration           |
 
 ## Usage
 

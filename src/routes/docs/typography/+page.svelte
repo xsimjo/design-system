@@ -7,6 +7,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -257,57 +258,45 @@
 	</DocSection>
 
 	<DocSection id="css-tokens" title="CSS Tokens">
-		<PropsTable
-			title="Heading Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--typography-h1-size', 'var(--ui-text-4xl)', 'H1 font size'],
-				['--typography-h1-weight', 'var(--ui-weight-bold)', 'H1 font weight'],
-				['--typography-h1-leading', 'var(--ui-leading-tight)', 'H1 line height'],
-				['--typography-h1-tracking', '-0.025em', 'H1 letter spacing'],
-				['--typography-h2-size', 'var(--ui-text-3xl)', 'H2 font size'],
-				['--typography-h3-size', 'var(--ui-text-2xl)', 'H3 font size'],
-				['--typography-h4-size', 'var(--ui-text-xl)', 'H4 font size']
+		<TokenTable
+			component="typography"
+			tokens={[
+				['--typography-h1-size', 'H1 font size'],
+				['--typography-h1-weight', 'H1 font weight'],
+				['--typography-h1-leading', 'H1 line height'],
+				['--typography-h1-tracking', 'H1 letter spacing'],
+				['--typography-h2-size', 'H2 font size'],
+				['--typography-h3-size', 'H3 font size'],
+				['--typography-h4-size', 'H4 font size']
 			]}
 		/>
 
-		<PropsTable
-			title="Body & Label Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--typography-body-lg-size', 'var(--ui-text-lg)', 'Body large font size'],
-				['--typography-body-base-size', 'var(--ui-text-base)', 'Body base font size'],
-				['--typography-body-sm-size', 'var(--ui-text-sm)', 'Body small font size'],
-				['--typography-body-xs-size', 'var(--ui-text-xs)', 'Body extra-small font size'],
-				['--typography-label-weight', 'var(--ui-weight-medium)', 'Label font weight']
+		<TokenTable
+			component="typography"
+			tokens={[
+				['--typography-body-lg-size', 'Body large font size'],
+				['--typography-body-base-size', 'Body base font size'],
+				['--typography-body-sm-size', 'Body small font size'],
+				['--typography-body-xs-size', 'Body extra-small font size'],
+				['--typography-label-weight', 'Label font weight']
 			]}
 		/>
 
-		<PropsTable
-			title="Color Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--typography-color', 'var(--ui-surface-foreground)', 'Default text color'],
-				[
-					'--typography-color-muted',
-					'color-mix(--ui-surface-foreground, transparent 40%)',
-					'Muted text color'
-				],
-				['--typography-color-primary', 'var(--ui-primary)', 'Primary text color']
+		<TokenTable
+			component="typography"
+			tokens={[
+				['--typography-color', 'Default text color'],
+				['--typography-color-muted', 'Muted text color'],
+				['--typography-color-primary', 'Primary text color']
 			]}
 		/>
 
-		<PropsTable
-			title="Code Tokens"
-			columns={['Token', 'Default', 'Description']}
-			rows={[
-				['--typography-code-font', 'var(--ui-font-mono)', 'Code font family'],
-				[
-					'--typography-code-bg',
-					'color-mix(--ui-neutral, transparent 85%)',
-					'Code background color'
-				],
-				['--typography-code-radius', 'calc(var(--ui-base-radius) * 0.5)', 'Code border radius']
+		<TokenTable
+			component="typography"
+			tokens={[
+				['--typography-code-font', 'Code font family'],
+				['--typography-code-bg', 'Code background color'],
+				['--typography-code-radius', 'Code border radius']
 			]}
 		/>
 	</DocSection>

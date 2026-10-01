@@ -11,6 +11,7 @@
 	import DocSection from '$internal/DocSection.svelte';
 	import ExampleBlock from '$internal/ExampleBlock.svelte';
 	import PropsTable from '$internal/PropsTable.svelte';
+	import TokenTable from '$internal/TokenTable.svelte';
 	import type { Placement } from '@floating-ui/dom';
 
 	const topPlacements: Placement[] = ['top-start', 'top', 'top-end'];
@@ -370,30 +371,25 @@
 		<p class="example-desc" style="margin-bottom: var(--space-4)">
 			All tokens are defined in <code>[data-theme]</code> scope and can be overridden per-theme or locally.
 		</p>
-		<PropsTable
-			columns={['Token', 'Default value', 'Description']}
-			rows={[
-				['--popover-bg', '--ui-surface-raised', 'Panel background color'],
-				['--popover-color', '--ui-surface-raised-foreground', 'Panel text color'],
-				['--popover-border', '--ui-border', 'Border color'],
-				['--popover-border-width', '--ui-border-width', 'Border width'],
-				['--popover-border-radius', '--ui-base-radius', 'Corner radius'],
-				['--popover-shadow', '--ui-depth', 'Drop shadow'],
-				['--popover-padding', '--ui-base-spacing \u00d7 2', 'Inner padding'],
-				['--popover-min-width', '--ui-base-spacing \u00d7 28', 'Minimum panel width'],
-				[
-					'--popover-max-width',
-					'--ui-base-spacing \u00d7 52',
-					'Maximum panel width before text wraps'
-				],
-				['--popover-z-index', '--ui-z-overlay', 'Stacking order'],
-				['--popover-arrow-size', '8px', 'Arrow square dimension'],
-				['--popover-title-size', '--ui-text-sm', 'Header title font size'],
-				['--popover-title-weight', '--ui-weight-semibold', 'Header title font weight'],
-				['--popover-body-size', '--ui-text-sm', 'Body text font size'],
-				['--popover-close-size', '--ui-base-spacing \u00d7 3', 'Close button hit area dimension'],
-				['--popover-duration', '--ui-base-duration', 'Enter/leave animation duration'],
-				['--popover-easing', '--ui-base-easing', 'Enter/leave animation easing function']
+		<TokenTable
+			component="popover"
+			tokens={[
+				['--popover-bg', 'Panel background color'],
+				['--popover-color', 'Panel text color'],
+				['--popover-border', 'Border color'],
+				['--popover-border-width', 'Border width'],
+				['--popover-border-radius', 'Corner radius'],
+				['--popover-shadow', 'Drop shadow'],
+				['--popover-padding', 'Inner padding'],
+				['--popover-min-width', 'Minimum panel width'],
+				['--popover-max-width', 'Maximum panel width before text wraps'],
+				['--popover-z-index', 'Stacking order'],
+				['--popover-arrow-size', 'Arrow square dimension'],
+				['--popover-title-size', 'Header title font size'],
+				['--popover-title-weight', 'Header title font weight'],
+				['--popover-body-size', 'Body text font size'],
+				['--popover-duration', 'Enter/leave animation duration'],
+				['--popover-easing', 'Enter/leave animation easing function']
 			]}
 		/>
 	</DocSection>
