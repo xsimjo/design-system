@@ -89,27 +89,28 @@ Create your own theme by overriding ~45 simple variables:
 
 ## Components
 
-| Component     | Description                          |
-| ------------- | ------------------------------------ |
-| `Accordion`   | Expandable content sections          |
-| `Avatar`      | User profile images with fallback    |
-| `Badge`       | Status indicators and labels         |
-| `Breadcrumbs` | Navigation path display              |
-| `Button`      | Primary action element with variants |
-| `Card`        | Content container with sections      |
-| `Checkbox`    | Boolean input control                |
-| `Dialog`      | Modal overlay for confirmations      |
-| `Drawer`      | Slide-out panel                      |
-| `Input`       | Text input with labels and icons     |
-| `ProgressBar` | Progress indicator                   |
-| `Select`      | Dropdown selection with search       |
-| `Sidebar`     | Navigation sidebar with groups       |
-| `Slider`      | Range input control                  |
-| `Table`       | Data table with sorting              |
-| `Tabs`        | Tabbed content navigation            |
-| `Toast`       | Notification messages                |
-| `Tooltip`     | Contextual help text                 |
-| `Typography`  | Consistent text styling              |
+| Component          | Description                                    |
+| ------------------ | ---------------------------------------------- |
+| `Accordion`        | Expandable content sections                    |
+| `Avatar`           | User profile images with fallback              |
+| `Badge`            | Status indicators and labels                   |
+| `Breadcrumbs`      | Navigation path display                        |
+| `Button`           | Primary action element with variants           |
+| `Card`             | Content container with sections                |
+| `Checkbox`         | Boolean input control                          |
+| `Dialog`           | Modal overlay for confirmations                |
+| `Drawer`           | Slide-out panel                                |
+| `Input`            | Text input with labels and icons               |
+| `ProgressBar`      | Progress indicator                             |
+| `SegmentedControl` | Single-choice control with all options visible |
+| `Select`           | Dropdown selection with search                 |
+| `Sidebar`          | Navigation sidebar with groups                 |
+| `Slider`           | Range input control                            |
+| `Table`            | Data table with sorting                        |
+| `Tabs`             | Tabbed content navigation                      |
+| `Toast`            | Notification messages                          |
+| `Tooltip`          | Contextual help text                           |
+| `Typography`       | Consistent text styling                        |
 
 ## Token Architecture
 

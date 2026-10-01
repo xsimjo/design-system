@@ -46,6 +46,12 @@
 
 	const propsRows = [
 		[
+			'href',
+			'string',
+			'undefined',
+			'Renders an anchor instead of a button; ignored while disabled'
+		],
+		[
 			'variant',
 			"'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash'",
 			"'filled'",

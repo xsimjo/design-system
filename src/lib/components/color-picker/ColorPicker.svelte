@@ -19,6 +19,8 @@
 		disabled = false,
 		id,
 		name,
+		'aria-label': ariaLabel,
+		'aria-labelledby': ariaLabelledby,
 		...restProps
 	}: Props = $props();
 
@@ -64,7 +66,8 @@
 		class:color-picker__trigger--error={hasError}
 		class:color-picker__trigger--disabled={isDisabled}
 		role="group"
-		aria-label="Color picker"
+		aria-label={ariaLabelledby ? undefined : (ariaLabel ?? 'Color picker')}
+		aria-labelledby={ariaLabelledby}
 		aria-describedby={describedBy}
 	>
 		<input
@@ -92,7 +95,12 @@
 			placeholder="#000000"
 			maxlength={7}
 			disabled={isDisabled}
-			aria-label="Hex color value"
+			aria-label={ariaLabelledby
+				? undefined
+				: ariaLabel
+					? `${ariaLabel} hex value`
+					: 'Hex color value'}
+			aria-labelledby={ariaLabelledby}
 			aria-required={field?.required || undefined}
 			aria-invalid={hasError || undefined}
 			oninput={handleTextInput}

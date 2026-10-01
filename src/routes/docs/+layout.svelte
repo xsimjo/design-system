@@ -32,6 +32,7 @@
 				{ label: 'Checkbox', href: '/docs/checkbox' },
 				{ label: 'Radio', href: '/docs/radio' },
 				{ label: 'Switch', href: '/docs/switch' },
+				{ label: 'SegmentedControl', href: '/docs/segmented-control' },
 				{ label: 'Slider', href: '/docs/slider' },
 				{ label: 'Rating', href: '/docs/rating' },
 				{ label: 'Field', href: '/docs/field' },

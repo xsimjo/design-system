@@ -6,7 +6,8 @@ Primary action component with multiple variants, colors, and sizes.
 
 | Prop        | Type                                                                                                | Default     | Description                                                        |
 | ----------- | --------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------ |
-| `variant`   | `'filled' \| 'outline' \| 'ghost' \| 'soft' \| 'link' \| 'dash'`                                    | `'filled'`  | Visual style; `link` is visual only — always renders as `<button>` |
+| `href`      | `string`                                                                                            | `undefined` | Renders an `<a>` instead of a `<button>`; ignored while disabled   |
+| `variant`   | `'filled' \| 'outline' \| 'ghost' \| 'soft' \| 'link' \| 'dash'`                                    | `'filled'`  | Visual style; `link` is visual only — pass `href` to get an anchor |
 | `color`     | `'primary' \| 'secondary' \| 'accent' \| 'success' \| 'danger' \| 'warning' \| 'info' \| 'neutral'` | `'primary'` | Color theme                                                        |
 | `size`      | `'sm' \| 'md' \| 'lg'`                                                                              | `'md'`      | Button size                                                        |
 | `icon`      | `boolean`                                                                                           | `false`     | Square button for icon-only content                                |
@@ -21,6 +22,15 @@ Primary action component with multiple variants, colors, and sizes.
 | `default` | Button label and/or icon |
 
 ## Usage
+
+### As a link
+
+```svelte
+<Button href="/pricing" variant="ghost">Pricing</Button>
+```
+
+A disabled `Button` with an `href` falls back to a real disabled `<button>`, so it cannot
+be followed by keyboard or middle-click.
 
 ### Basic
 
