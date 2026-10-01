@@ -37,7 +37,7 @@
 
 	function handleKeydown(e: KeyboardEvent) {
 		if (!isInteractive) return;
-		let next = value;
+		let next: number;
 		switch (e.key) {
 			case 'ArrowRight':
 			case 'ArrowUp':
