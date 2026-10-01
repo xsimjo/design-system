@@ -42,5 +42,4 @@
 	aria-required={field?.required || undefined}
 	aria-invalid={hasError || undefined}
 	bind:value
-	{...restProps}
-></textarea>
+	{...restProps}></textarea>
