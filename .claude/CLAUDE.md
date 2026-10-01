@@ -7,7 +7,7 @@ Svelte 5 component library published as `@xsimjo/design-system`. Dev server alre
 - `npm run lint && npm run format` — run after every change
 - `npm run check` — TypeScript + Svelte type checking
 - `npm run build` — build package for distribution
-- `npm run build:mcp` — rebuild the MCP server package
+- `npm run generate:tokens` — regenerate component token data from the CSS
 
 ## Validation
 
@@ -26,10 +26,10 @@ never restate it:
   `component` (the folder name) and `[token, description]` pairs — the value is read
   from the generated module. For a component with real per-size tokens (only Button),
   pass `sizes={['sm', 'md', 'lg']}` and a `{size}` pattern in the token name.
-- **SPEC.md** token tables are rewritten by `npm run build:mcp`; write the
+- **SPEC.md** token tables are rewritten by `npm run generate:tokens`; write the
   description and let the value column be filled in.
 - A token that does not exist in CSS renders as `(not defined in CSS)` in the docs
-  and warns during `build:mcp`, so drift is visible instead of silent.
+  and warns during `generate:tokens`, so drift is visible instead of silent.
 
 Note that most components are single-size and expose no `size` prop; do not invent
 `-sm`/`-md`/`-lg` token variants for them.
@@ -53,10 +53,10 @@ Each component lives in `src/lib/components/{name}/` with a `.svelte` file and a
 ## Adding a Component
 
 1. Create `src/lib/components/{name}/{name}.svelte` and `{name}.css`
-2. Write a `SPEC.md` in the component directory (used by MCP extraction)
+2. Write a `SPEC.md` in the component directory
 3. Export the component from `src/lib/index.ts`
 4. Create a docs page at `src/routes/docs/{name}/+page.svelte`
-5. Run `npm run build:mcp` to regenerate MCP data after adding specs
+5. Run `npm run generate:tokens` to sync the SPEC.md token table values
 
 ## Svelte 5
 
@@ -92,27 +92,22 @@ All public components, icons, and types must be exported from `src/lib/index.ts`
 2. **get_icon_usage_examples** — get usage examples for the chosen icon
 3. Create wrapper in `src/lib/icons/{Name}Icon.svelte`
 
-## MCP Package (`packages/mcp/`)
+## Token Generation (`scripts/generate-tokens.js`)
 
-AI assistant integration server. Extracts component specs and tokens into JSON for tooling.
-
-- `npm run build:mcp` — extract data + build (run after adding/changing SPEC.md files or component CSS)
-- Data files: `packages/mcp/src/data/tokens.json` and `components.json`
-
-It also regenerates `src/internal/generated/component-tokens.ts` from the component
-CSS and rewrites the value column of every SPEC.md token table to match. It warns
-about any SPEC.md row naming a token that no longer exists in CSS.
+Run `npm run generate:tokens` after changing any component token. It regenerates
+`src/internal/generated/component-tokens.ts` from the component CSS and rewrites
+the value column of every SPEC.md token table to match, warning about any SPEC.md
+row naming a token that no longer exists in CSS.
 
 ## Releasing
 
 Uses `release-it`. Run `npm run release` — it handles version bump, changelog, git tag, and npm publish.
-Both `@xsimjo/design-system` and `@xsimjo/design-system-mcp` publish to GitHub Packages.
+`@xsimjo/design-system` publishes to GitHub Packages.
 
 ## Gotchas
 
 - `shiki` is a dev dependency only — it is used by the docs site, not by any shipped component, so consumers do not install it
 - Only light, dark, and dev themes are exported in `package.json` `exports`
-- `npm run build:mcp` must be run from the project root, not from inside `packages/mcp/`
 
 ## Code Conventions
 

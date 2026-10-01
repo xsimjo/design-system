@@ -95,16 +95,15 @@ Run: `npm run build`
 
 ---
 
-### Check 8 — MCP Data Rebuild
+### Check 8 — Token Generation
 
-Run: `npm run build:mcp`
+Run: `npm run generate:tokens`
 
-Always run this last, after any SPEC.md fixes, so the MCP server reflects the final state.
+Always run this last, after any SPEC.md fixes, so the generated token data and the
+SPEC.md token tables reflect the final state.
 
-After a successful build, verify that `packages/mcp/src/data/tokens.json` contains entries for all three themes (light, dark, dev).
-
-- Passes and all themes present → PASS
-- Passes but themes missing from tokens.json → WARN (list missing themes)
+- Passes with no warnings → PASS
+- Passes but warns that a SPEC.md row names a token absent from the CSS → WARN (list them)
 - Fails → FAIL (show errors)
 
 ---
@@ -125,7 +124,7 @@ After all checks, output a single consolidated report:
 | 5 | Lint & format          | 🔧 FIXED | Ran npm run format |
 | 6 | Type check             | ✅ PASS |       |
 | 7 | Package build          | ✅ PASS |       |
-| 8 | MCP data rebuild       | ✅ PASS |       |
+| 8 | Token generation       | ✅ PASS |       |
 
 ### Result: ✅ READY TO RELEASE
 
@@ -149,5 +148,5 @@ If any check is FAIL (not fixed):
 - Read source files directly — do not rely on memory or previous analysis
 - Auto-fix only safe, mechanical changes (formatting, SPEC.md generation, adding export lines)
 - Never auto-fix type errors, token violations, or build failures — surface them clearly
-- Always run Check 8 (MCP rebuild) last, even if other checks were all PASS
+- Always run Check 8 (token generation) last, even if other checks were all PASS
 - If the user runs this on a dirty git branch, note it at the top of the report

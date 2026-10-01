@@ -1,8 +1,7 @@
 {
 	"hooks": {
-		"before:init": ["npm run lint", "npm run build", "npm run build:mcp"],
-		"after:bump": ["cd packages/mcp && npm version ${version} --no-git-tag-version"],
-		"after:release": ["cd packages/mcp && npm publish", "npm run format"]
+		"before:init": ["npm run lint", "npm run build", "npm run generate:tokens"],
+		"after:release": ["npm run format"]
 	},
 	"git": {
 		"commitMessage": "chore: release v${version}"

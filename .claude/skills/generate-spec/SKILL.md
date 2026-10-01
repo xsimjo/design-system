@@ -6,7 +6,7 @@ version: 1.0.0
 
 # SPEC.md Generator
 
-Generates or updates a `SPEC.md` for a design system component by reading its source files directly. The SPEC.md is the source of truth for the MCP server — without it, the component is invisible to AI consumers.
+Generates or updates a `SPEC.md` for a design system component by reading its source files directly. The SPEC.md is the written reference for a component's API and tokens.
 
 ## Workflow
 
@@ -88,7 +88,7 @@ This component uses the following component tokens (defined in `{component-name}
 ### 5. Write and follow up
 
 - Write the file to `src/lib/components/{name}/SPEC.md`
-- Remind the user to run `npm run build:mcp` to make the component visible in the MCP server
+- Remind the user to run `npm run generate:tokens` to fill in the SPEC.md token table values
 
 ## Rules
 
