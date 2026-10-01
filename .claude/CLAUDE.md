@@ -22,7 +22,10 @@ After making changes, ALWAYS run validation before considering work complete:
 
 1. `npm run lint && npm run format` — must produce no errors
 2. `npm run check` — must pass with 0 errors
-3. Fix any issues before moving on — do not skip or suppress warnings
+3. `npm run generate:tokens` — required if any component CSS or theme changed. Neither
+   lint nor check detects stale generated token data, so skipping it is how token
+   documentation silently drifts.
+4. Fix any issues before moving on — do not skip or suppress warnings
 
 ## Documenting Tokens (never hand-write values)
 
@@ -101,10 +104,13 @@ All public components, icons, and types must be exported from `src/lib/index.ts`
 
 ## Token Generation (`scripts/generate-tokens.js`)
 
-Run `npm run generate:tokens` after changing any component token. It regenerates
-`src/internal/generated/component-tokens.ts` from the component CSS and rewrites
-the value column of every SPEC.md token table to match, warning about any SPEC.md
-row naming a token that no longer exists in CSS.
+Run `npm run generate:tokens` after changing any component token or theme. It:
+
+- regenerates `src/internal/generated/component-tokens.ts` from the component CSS
+- rewrites the value column of every SPEC.md token table to match, warning about any
+  SPEC.md row naming a token that no longer exists in CSS
+- verifies every theme declares the same `--ui-*` token set, exiting non-zero and
+  naming the missing tokens if not
 
 ## Releasing
 
@@ -114,7 +120,7 @@ Uses `release-it`. Run `npm run release` — it handles version bump, changelog,
 ## Gotchas
 
 - `shiki` is a dev dependency only — it is used by the docs site, not by any shipped component, so consumers do not install it
-- A new theme must be registered in five places: `styles/themes/{name}.css`, the `@import` in `styles/global.css`, `package.json` `exports`, the `themes` list in `internal/ThemeSwitcher.svelte`, and the theme-builder (`BaseTheme` plus `BASE_THEME_DEFAULTS` in `token-state.svelte.ts`, and the options in `EditorPanel.svelte`)
+- A new theme must be registered in four places: `styles/themes/{name}.css`, the `@import` in `styles/global.css`, `package.json` `exports`, and the `themes` list in `internal/ThemeSwitcher.svelte`
 
 ## Code Conventions
 

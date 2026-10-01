@@ -52,7 +52,7 @@
 			icon: PaletteIcon,
 			title: 'Multi-Theme',
 			description:
-				'Switch between Light, Dark, and Developer themes with a single data attribute. 57 semantic tokens per theme.'
+				'Switch between Light, Dark, Developer, and QR themes with a single data attribute. 57 semantic tokens per theme.'
 		},
 		{
 			icon: AccessibilityIcon,

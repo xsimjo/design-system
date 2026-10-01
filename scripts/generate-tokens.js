@@ -11,6 +11,7 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const COMPONENTS_DIR = join(ROOT, 'src', 'lib', 'components');
+const THEMES_DIR = join(ROOT, 'src', 'lib', 'styles', 'themes');
 
 // Returns the contents of the first `[data-theme] { ... }` block, which is where
 // each component declares its own token defaults. Later blocks are variant
@@ -130,6 +131,44 @@ function syncSpecTokenTables(byComponent) {
 	}
 }
 
+// Every theme must declare the same set of --ui-* tokens: a component reading a
+// token that one theme forgets to define silently falls back to nothing. The rule
+// was previously only checked by hand, so enforce it here.
+function validateThemes() {
+	const files = readdirSync(THEMES_DIR).filter((f) => f.endsWith('.css'));
+	const byTheme = {};
+
+	for (const file of files) {
+		const css = readFileSync(join(THEMES_DIR, file), 'utf-8');
+		const names = new Set();
+		for (const match of css.matchAll(/^\s*(--ui-[a-z0-9-]+):/gm)) names.add(match[1]);
+		byTheme[file.replace(/\.css$/, '')] = names;
+	}
+
+	const names = Object.keys(byTheme);
+	if (names.length === 0) return;
+
+	const union = new Set(names.flatMap((t) => [...byTheme[t]]));
+	const problems = [];
+
+	for (const theme of names) {
+		const missing = [...union].filter((t) => !byTheme[theme].has(t)).sort();
+		if (missing.length > 0) problems.push([theme, missing]);
+	}
+
+	const counts = names.map((t) => `${t} ${byTheme[t].size}`).join(', ');
+	if (problems.length === 0) {
+		console.log(`  Themes consistent: ${union.size} tokens each (${counts})`);
+		return;
+	}
+
+	console.error(`  ERROR: themes declare different token sets (${counts})`);
+	for (const [theme, missing] of problems) {
+		console.error(`    ${theme} is missing ${missing.length}: ${missing.join(', ')}`);
+	}
+	process.exitCode = 1;
+}
+
 function main() {
 	console.log('Generating component tokens from CSS...');
 
@@ -139,6 +178,7 @@ function main() {
 
 	writeGeneratedTokenModule(byComponent);
 	syncSpecTokenTables(byComponent);
+	validateThemes();
 
 	console.log('Done!');
 }
