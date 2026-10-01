@@ -32,16 +32,19 @@ src/
 ├── lib/
 │   ├── components/     # Component source files
 │   │   └── {name}/     # Each component in its own folder
-│   │       └── {Name}.svelte
+│   │       ├── {Name}.svelte
+│   │       ├── {name}.css    # Component tokens, derived from --ui-*
+│   │       └── SPEC.md       # API, tokens and accessibility contract
 │   ├── icons/          # Icon components
 │   │   └── {Name}Icon.svelte
 │   └── styles/
 │       ├── primitives.css    # Raw design values
-│       ├── theme-base.css    # Semantic tokens computed from themes
-│       ├── themes/           # Theme definitions
+│       ├── themes/           # 57 --ui-* semantic tokens per theme
 │       │   ├── light.css
 │       │   ├── dark.css
-│       │   └── dev.css
+│       │   ├── dev.css
+│       │   └── qr.css
+│       ├── animations.css
 │       └── global.css        # Imports and base styles
 ├── routes/             # Showcase/demo pages
 └── index.ts            # Library exports
@@ -66,9 +69,9 @@ src/
 
 - Pure CSS only (no CSS-in-JS)
 - Use the three-layer token system:
-  - Components use semantic tokens from `theme-base.css`
-  - Themes override ~45 simple variables
-  - Primitives provide raw values
+  - Primitives (`primitives.css`) provide raw values, never referenced by components
+  - Themes declare 57 `--ui-*` semantic tokens each
+  - Components declare their own `--{component}-*` tokens derived from `--ui-*`
 - Use `color-mix(in oklch, ...)` for color calculations
 
 ### Icons
@@ -105,12 +108,13 @@ mkdir src/lib/components/my-component
 </style>
 ```
 
-3. Add semantic tokens to `theme-base.css`:
+3. Declare the component's tokens in `src/lib/components/my-component/my-component.css`,
+   deriving every value from `--ui-*` (never from a primitive):
 
 ```css
 [data-theme] {
-	--my-component-bg: var(--color-bg-elevated);
-	--my-component-text: var(--color-text);
+	--my-component-bg: var(--ui-surface-raised);
+	--my-component-fg: var(--ui-surface-raised-foreground);
 	/* ... */
 }
 ```
@@ -127,9 +131,10 @@ export { default as MyComponent } from './components/my-component/MyComponent.sv
 
 When adding new theme variables:
 
-1. Add to all theme files (`light.css`, `dark.css`, `dev.css`)
-2. Add the computed semantic tokens to `theme-base.css`
-3. Document in `docs/design_system.md`
+1. Add the token to every file in `src/lib/styles/themes/` — all themes must declare
+   the same `--ui-*` set
+2. Run `npm run generate:tokens`, which fails and names the gaps if a theme is missing
+   the token
 
 ## Commit Messages
 
