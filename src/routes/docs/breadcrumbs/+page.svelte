@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import Breadcrumbs from '$lib/components/breadcrumbs/Breadcrumbs.svelte';
 	import BreadcrumbItem from '$lib/components/breadcrumbs/BreadcrumbItem.svelte';
 	import CodeExample from '$internal/CodeExample.svelte';
@@ -45,8 +46,8 @@
 				previewClass="column"
 			>
 				<Breadcrumbs>
-					<BreadcrumbItem href="/">Home</BreadcrumbItem>
-					<BreadcrumbItem href="/products">Products</BreadcrumbItem>
+					<BreadcrumbItem href={resolve('/')}>Home</BreadcrumbItem>
+					<BreadcrumbItem href={resolve('/docs/breadcrumbs')}>Products</BreadcrumbItem>
 					<BreadcrumbItem>Wireless Headphones</BreadcrumbItem>
 				</Breadcrumbs>
 			</CodeExample>
@@ -67,9 +68,9 @@
 				previewClass="column"
 			>
 				<Breadcrumbs separator="slash">
-					<BreadcrumbItem href="/">Home</BreadcrumbItem>
-					<BreadcrumbItem href="/docs">Docs</BreadcrumbItem>
-					<BreadcrumbItem href="/docs/components">Components</BreadcrumbItem>
+					<BreadcrumbItem href={resolve('/')}>Home</BreadcrumbItem>
+					<BreadcrumbItem href={resolve('/docs')}>Docs</BreadcrumbItem>
+					<BreadcrumbItem href={resolve('/docs')}>Components</BreadcrumbItem>
 					<BreadcrumbItem>Breadcrumbs</BreadcrumbItem>
 				</Breadcrumbs>
 			</CodeExample>

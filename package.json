@@ -19,7 +19,9 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
-		"release": "release-it"
+		"changeset": "changeset",
+		"version-packages": "changeset version && npm install --package-lock-only --ignore-scripts",
+		"release": "changeset publish"
 	},
 	"files": [
 		"dist",
@@ -48,9 +50,11 @@
 		"svelte": "^5.0.0"
 	},
 	"devDependencies": {
+		"@changesets/changelog-github": "^1.0.1",
+		"@changesets/cli": "^3.0.3",
 		"@eslint/compat": "^2.1.1",
 		"@eslint/js": "^10.0.1",
-		"@sveltejs/adapter-auto": "^7.0.0",
+		"@sveltejs/adapter-static": "^3.0.10",
 		"@sveltejs/kit": "^2.49.1",
 		"@sveltejs/package": "^2.5.7",
 		"@sveltejs/vite-plugin-svelte": "^7.0.0",
@@ -62,7 +66,6 @@
 		"prettier": "^3.7.4",
 		"prettier-plugin-svelte": "^4.1.1",
 		"publint": "^0.3.15",
-		"release-it": "^21.0.3",
 		"shiki": "^4.4.3",
 		"svelte": "^5.45.6",
 		"svelte-check": "^4.3.4",

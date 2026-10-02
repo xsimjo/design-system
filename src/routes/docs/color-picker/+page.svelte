@@ -168,7 +168,19 @@
 				['fullWidth', 'boolean', 'false', 'Stretches the picker to 100% of its container'],
 				['disabled', 'boolean', 'false', 'Disables the picker (also inherited from Field context)'],
 				['id', 'string', '\u2014', 'Custom ID; auto-generated from Field context if omitted'],
-				['name', 'string', '\u2014', 'Name for hidden form input'],
+				['name', 'string', '—', 'Name for hidden form input'],
+				[
+					'aria-label',
+					'string',
+					"'Color picker'",
+					'Names the picker and its hex input; use it when a page has more than one'
+				],
+				[
+					'aria-labelledby',
+					'string',
+					'—',
+					'Names the picker and its hex input from an existing element'
+				],
 				[
 					'...restProps',
 					'HTMLAttributes<HTMLDivElement>',

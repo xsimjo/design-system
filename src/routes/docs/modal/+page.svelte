@@ -306,6 +306,7 @@
 
 	<DocSection id="api" title="API">
 		<PropsTable
+			id="modal-props"
 			title="Modal Props"
 			columns={['Prop', 'Type', 'Default', 'Description']}
 			rows={[

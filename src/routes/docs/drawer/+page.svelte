@@ -260,6 +260,7 @@
 
 	<DocSection id="api" title="API">
 		<PropsTable
+			id="drawer-props"
 			title="Drawer Props"
 			columns={['Prop', 'Type', 'Default', 'Description']}
 			rows={[
@@ -276,6 +277,7 @@
 		/>
 
 		<PropsTable
+			id="drawer-header-props"
 			title="DrawerHeader Props"
 			columns={['Prop', 'Type', 'Default', 'Description']}
 			rows={[

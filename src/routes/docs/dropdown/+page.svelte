@@ -292,6 +292,7 @@
 
 	<DocSection id="api" title="API">
 		<PropsTable
+			id="dropdown-props"
 			title="Dropdown Props"
 			columns={['Prop', 'Type', 'Default', 'Description']}
 			rows={[
@@ -314,6 +315,7 @@
 		/>
 
 		<PropsTable
+			id="dropdownitem-props"
 			title="DropdownItem Props"
 			columns={['Prop', 'Type', 'Default', 'Description']}
 			rows={[

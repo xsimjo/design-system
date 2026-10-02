@@ -93,7 +93,13 @@ Set `error` on `Field` to apply error styling to the trigger border.
 
 ## Accessibility
 
-- The trigger container uses `role="group"` with `aria-label="Color picker"` to group the swatch and text input.
+- The trigger container uses `role="group"` to group the swatch and text input. It is named
+  `Color picker` by default; pass `aria-label` or `aria-labelledby` to name it after the
+  colour it sets, which matters as soon as a page carries more than one picker. Both are
+  forwarded to the hex input as well, and `aria-label` also suffixes the input's own name
+  with `hex value`.
+- A `FieldLabel` cannot name the picker on its own: the group is a `<div>`, so a `<label for>`
+  pointing at it is inert. Pair the label with `aria-labelledby`, or use `aria-label`.
 - The text input accepts typed hex values and is the focusable element for keyboard users.
 - The native `<input type="color">` is visually hidden with `aria-hidden="true"` and `tabindex="-1"` — it is triggered by clicking the swatch.
 - `id` is auto-generated and shared with `Field` context so `FieldLabel` can set its `for` attribute without manual wiring.

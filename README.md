@@ -1,4 +1,7 @@
-re# @xsimjo/design-system
+# @xsimjo/design-system
+
+[![CI](https://github.com/xsimjo/design-system/actions/workflows/ci.yml/badge.svg)](https://github.com/xsimjo/design-system/actions/workflows/ci.yml)
+[![Release](https://github.com/xsimjo/design-system/actions/workflows/release.yml/badge.svg)](https://github.com/xsimjo/design-system/actions/workflows/release.yml)
 
 A modern, themeable Svelte 5 component library with a powerful three-layer token architecture.
 
@@ -20,8 +23,18 @@ Components v1 2. Add Tabs component — most commonly needed missing piece 3. Ad
 
 ## Installation
 
+The package is published to GitHub Packages. GitHub Packages requires authentication even
+for installs, so point the `@xsimjo` scope at it and provide a token with the
+`read:packages` scope (a classic personal access token, or `GITHUB_TOKEN` in Actions):
+
+```ini
+# .npmrc in your project
+@xsimjo:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
+```
+
 ```bash
-npm install @xsimjo/design-system
+NODE_AUTH_TOKEN=<token> npm install @xsimjo/design-system
 ```
 
 ## Quick Start
@@ -89,27 +102,28 @@ Create your own theme by overriding ~45 simple variables:
 
 ## Components
 
-| Component     | Description                          |
-| ------------- | ------------------------------------ |
-| `Accordion`   | Expandable content sections          |
-| `Avatar`      | User profile images with fallback    |
-| `Badge`       | Status indicators and labels         |
-| `Breadcrumbs` | Navigation path display              |
-| `Button`      | Primary action element with variants |
-| `Card`        | Content container with sections      |
-| `Checkbox`    | Boolean input control                |
-| `Dialog`      | Modal overlay for confirmations      |
-| `Drawer`      | Slide-out panel                      |
-| `Input`       | Text input with labels and icons     |
-| `ProgressBar` | Progress indicator                   |
-| `Select`      | Dropdown selection with search       |
-| `Sidebar`     | Navigation sidebar with groups       |
-| `Slider`      | Range input control                  |
-| `Table`       | Data table with sorting              |
-| `Tabs`        | Tabbed content navigation            |
-| `Toast`       | Notification messages                |
-| `Tooltip`     | Contextual help text                 |
-| `Typography`  | Consistent text styling              |
+| Component          | Description                                    |
+| ------------------ | ---------------------------------------------- |
+| `Accordion`        | Expandable content sections                    |
+| `Avatar`           | User profile images with fallback              |
+| `Badge`            | Status indicators and labels                   |
+| `Breadcrumbs`      | Navigation path display                        |
+| `Button`           | Primary action element with variants           |
+| `Card`             | Content container with sections                |
+| `Checkbox`         | Boolean input control                          |
+| `Dialog`           | Modal overlay for confirmations                |
+| `Drawer`           | Slide-out panel                                |
+| `Input`            | Text input with labels and icons               |
+| `ProgressBar`      | Progress indicator                             |
+| `SegmentedControl` | Single-choice control with all options visible |
+| `Select`           | Dropdown selection with search                 |
+| `Sidebar`          | Navigation sidebar with groups                 |
+| `Slider`           | Range input control                            |
+| `Table`            | Data table with sorting                        |
+| `Tabs`             | Tabbed content navigation                      |
+| `Toast`            | Notification messages                          |
+| `Tooltip`          | Contextual help text                           |
+| `Typography`       | Consistent text styling                        |
 
 ## Token Architecture
 
@@ -157,5 +171,7 @@ MIT
 
 ## Links
 
-- [Documentation](./docs/design_system.md)
+- [Documentation site](https://xsimjo.github.io/design-system/)
+- [Design system notes](./docs/design_system.md)
+- [Changelog](./CHANGELOG.md)
 - [GitHub Repository](https://github.com/xsimjo/design-system)

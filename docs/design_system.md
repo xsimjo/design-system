@@ -6,7 +6,6 @@
 - [Architecture](#architecture)
   - [Three-Layer Token System](#three-layer-token-system)
   - [Component Architecture](#component-architecture)
-- [Component Inventory](#component-inventory)
 - [Accessibility Requirements](#accessibility-requirements)
 - [Usage Guidelines](#usage-guidelines)
 - [Design Decisions](#design-decisions)
@@ -222,90 +221,6 @@ src/lib/components/
 
 **Why**: This enables theme switching at runtime. Changing `data-theme` attribute updates all component appearances through the token system.
 
-## Component Inventory
-
-### Button
-
-A foundational interactive element supporting multiple variants, sizes, and states.
-
-**Variants**: filled, outline, ghost, soft, link, dash
-
-**Colors**: primary, secondary, success, danger, warning, info, neutral
-
-**Sizes**: sm, md, lg
-
-**States**: default, hover, active, focus, disabled, loading
-
-**Color-Mix Pattern**: Buttons use bidirectional color-mix for hover/active states. Themes define `--ui-hover-mix` (black or white) and `--ui-hover-amount` to control whether colors darken or lighten on interaction.
-
-### Spinner
-
-A loading indicator component for async operations.
-
-**Sizes**: sm, md, lg
-
-**Variants**: primary, secondary, success, warning, danger
-
-### Tooltip
-
-A floating label that appears on hover/focus to provide additional context.
-
-### Avatar
-
-A circular visual representation of a user or entity.
-
-### Card
-
-A versatile container for grouping related content.
-
-### Header
-
-A persistent navigation component for site-wide navigation.
-
-### Input
-
-A versatile text input field supporting various types and states.
-
-### Checkbox
-
-A form control for toggling between checked/unchecked states.
-
-### Select
-
-A dropdown component for selecting from a list of options.
-
-### Accordion
-
-A vertically stacked set of expandable panels.
-
-### Tabs
-
-A horizontal navigation component for organizing content into separate views.
-
-### Breadcrumbs
-
-A navigation component displaying hierarchical location.
-
-### Badge
-
-A small label for highlighting status, counts, or categories.
-
-### Slider
-
-A form control for selecting a numeric value within a range.
-
-### Typography
-
-A semantic text component for consistent typographic styling.
-
-### Toast
-
-A temporary notification component for feedback.
-
-### TableOfContents
-
-A sticky navigation component for documentation pages.
-
 ## Accessibility Requirements
 
 ### Color Contrast
@@ -433,15 +348,15 @@ Creating a custom theme requires defining exactly 42 `--ui-*` tokens:
 
 **Layer 2 - Semantic Tokens**:
 
-- `src/lib/styles/themes/light.css` - 41 tokens
-- `src/lib/styles/themes/dark.css` - 41 tokens
-- `src/lib/styles/themes/dev.css` - 41 tokens
+One file per theme in `src/lib/styles/themes/`, each declaring the same 57
+`--ui-*` tokens: `light.css`, `dark.css`, `dev.css`, `qr.css`. Parity is enforced
+by `npm run generate:tokens`.
 
 **Layer 3 - Component Tokens**:
 
-- `src/lib/components/button/button.css`
-- `src/lib/components/spinner/spinner.css`
-- (add more as components are created)
+`src/lib/components/{name}/{name}.css`, one per component. Each component's token
+defaults and their descriptions live in its `SPEC.md`; the values are generated from
+the CSS, so this document does not restate them.
 
 ## Design Decisions
 

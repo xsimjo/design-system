@@ -1,0 +1,164 @@
+[data-theme] {
+	--segmented-control-track-bg: color-mix(in oklch, var(--ui-neutral), transparent 88%);
+	--segmented-control-track-padding: calc(var(--ui-base-spacing) * 1);
+	--segmented-control-radius: var(--ui-base-radius);
+	--segmented-control-gap: calc(var(--ui-base-spacing) * 0.5);
+	--segmented-control-border: transparent;
+	--segmented-control-border-error: var(--ui-danger);
+	--segmented-control-border-width: var(--ui-border-width);
+	--segmented-control-focus-color: var(--ui-primary);
+	--segmented-control-focus-ring-width: var(--ui-ring-width);
+	--segmented-control-focus-ring-offset: var(--ui-ring-offset);
+	--segmented-control-font-family: var(--ui-font-sans);
+	--segmented-control-font-weight: var(--ui-weight-medium);
+	--segmented-control-duration: var(--ui-base-duration);
+	--segmented-control-easing: var(--ui-base-easing);
+	--segmented-control-item-direction: row;
+	--segmented-control-item-radius: calc(var(--ui-base-radius) * 0.75);
+	--segmented-control-item-color: color-mix(
+		in oklch,
+		var(--ui-surface-foreground),
+		transparent 35%
+	);
+	--segmented-control-item-color-hover: var(--ui-surface-foreground);
+	--segmented-control-item-color-active: var(--ui-surface-raised-foreground);
+	--segmented-control-item-bg-hover: color-mix(in oklch, var(--ui-neutral), transparent 90%);
+	--segmented-control-item-bg-press: color-mix(in oklch, var(--ui-neutral), transparent 84%);
+	--segmented-control-item-bg-active: var(--ui-surface-raised);
+	--segmented-control-item-depth-active: var(--ui-depth);
+	--segmented-control-sm-height: calc(var(--ui-base-spacing) * 7);
+	--segmented-control-sm-padding-x: calc(var(--ui-base-spacing) * 2.5);
+	--segmented-control-sm-font-size: var(--ui-text-xs);
+	--segmented-control-sm-gap: calc(var(--ui-base-spacing) * 1.5);
+	--segmented-control-md-height: calc(var(--ui-base-spacing) * 9);
+	--segmented-control-md-padding-x: calc(var(--ui-base-spacing) * 3);
+	--segmented-control-md-font-size: var(--ui-text-sm);
+	--segmented-control-md-gap: calc(var(--ui-base-spacing) * 2);
+	--segmented-control-lg-height: calc(var(--ui-base-spacing) * 10);
+	--segmented-control-lg-padding-x: calc(var(--ui-base-spacing) * 4);
+	--segmented-control-lg-font-size: var(--ui-text-base);
+	--segmented-control-lg-gap: calc(var(--ui-base-spacing) * 2.5);
+}
+
+/* ── Track ── */
+.segmented-control {
+	display: inline-flex;
+	max-width: 100%;
+	gap: var(--segmented-control-gap);
+	padding: var(--segmented-control-track-padding);
+	background: var(--segmented-control-track-bg);
+	border: var(--segmented-control-border-width) solid var(--segmented-control-border);
+	border-radius: var(--segmented-control-radius);
+}
+
+.segmented-control--error {
+	border-color: var(--segmented-control-border-error);
+}
+
+.segmented-control--full-width {
+	display: flex;
+	width: 100%;
+}
+
+.segmented-control--full-width .segmented-control__item {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+.segmented-control--disabled {
+	opacity: 0.55;
+}
+
+/* ── Item ── */
+.segmented-control__item {
+	display: inline-flex;
+	flex-direction: var(--segmented-control-item-direction);
+	align-items: center;
+	justify-content: center;
+	white-space: nowrap;
+	font-family: var(--segmented-control-font-family);
+	font-weight: var(--segmented-control-font-weight);
+	color: var(--segmented-control-item-color);
+	background: transparent;
+	border: none;
+	border-radius: var(--segmented-control-item-radius);
+	cursor: pointer;
+	transition:
+		color var(--segmented-control-duration) var(--segmented-control-easing),
+		background-color var(--segmented-control-duration) var(--segmented-control-easing),
+		box-shadow var(--segmented-control-duration) var(--segmented-control-easing);
+}
+
+.segmented-control__item > :global(svg) {
+	flex: none;
+}
+
+/* sizes */
+.segmented-control__item--sm {
+	min-height: var(--segmented-control-sm-height);
+	padding: 0 var(--segmented-control-sm-padding-x);
+	font-size: var(--segmented-control-sm-font-size);
+	gap: var(--segmented-control-sm-gap);
+}
+
+.segmented-control__item--md {
+	min-height: var(--segmented-control-md-height);
+	padding: 0 var(--segmented-control-md-padding-x);
+	font-size: var(--segmented-control-md-font-size);
+	gap: var(--segmented-control-md-gap);
+}
+
+.segmented-control__item--lg {
+	min-height: var(--segmented-control-lg-height);
+	padding: 0 var(--segmented-control-lg-padding-x);
+	font-size: var(--segmented-control-lg-font-size);
+	gap: var(--segmented-control-lg-gap);
+}
+
+/* ── States ── */
+.segmented-control__item:hover:not(:disabled):not([aria-disabled='true']) {
+	color: var(--segmented-control-item-color-hover);
+	background-color: var(--segmented-control-item-bg-hover);
+}
+
+.segmented-control__item:active:not(:disabled):not([aria-disabled='true']) {
+	background-color: var(--segmented-control-item-bg-press);
+}
+
+.segmented-control__item--active,
+.segmented-control__item--active:hover:not(:disabled):not([aria-disabled='true']),
+.segmented-control__item--active:active:not(:disabled):not([aria-disabled='true']) {
+	color: var(--segmented-control-item-color-active);
+	background-color: var(--segmented-control-item-bg-active);
+	box-shadow: var(--segmented-control-item-depth-active);
+}
+
+.segmented-control__item:disabled,
+.segmented-control__item[aria-disabled='true'] {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+
+.segmented-control--disabled .segmented-control__item:disabled,
+.segmented-control--disabled .segmented-control__item[aria-disabled='true'] {
+	opacity: 1;
+}
+
+/* ── Focus ── */
+.segmented-control--error .segmented-control__item:focus-visible {
+	--segmented-control-focus-color: var(--ui-danger);
+}
+
+.segmented-control__item:focus-visible {
+	outline: var(--segmented-control-focus-ring-width) solid
+		color-mix(in oklch, var(--segmented-control-focus-color), transparent 70%);
+	outline-offset: var(--segmented-control-focus-ring-offset);
+	z-index: 1;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+	.segmented-control__item {
+		transition: none;
+	}
+}

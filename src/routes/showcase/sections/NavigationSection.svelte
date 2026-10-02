@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import {
 		ShowcaseCategory,
 		ComponentBlock,
@@ -145,17 +146,17 @@
 	<ComponentBlock id="breadcrumbs" title="Breadcrumbs">
 		<DemoGroup label="Default (Chevron)">
 			<Breadcrumbs>
-				<BreadcrumbItem href="/showcase">Home</BreadcrumbItem>
-				<BreadcrumbItem href="/showcase">Products</BreadcrumbItem>
+				<BreadcrumbItem href={resolve('/showcase')}>Home</BreadcrumbItem>
+				<BreadcrumbItem href={resolve('/showcase')}>Products</BreadcrumbItem>
 				<BreadcrumbItem>Electronics</BreadcrumbItem>
 			</Breadcrumbs>
 		</DemoGroup>
 
 		<DemoGroup label="Slash Separator">
 			<Breadcrumbs separator="slash">
-				<BreadcrumbItem href="/showcase">Dashboard</BreadcrumbItem>
-				<BreadcrumbItem href="/showcase">Settings</BreadcrumbItem>
-				<BreadcrumbItem href="/showcase">Security</BreadcrumbItem>
+				<BreadcrumbItem href={resolve('/showcase')}>Dashboard</BreadcrumbItem>
+				<BreadcrumbItem href={resolve('/showcase')}>Settings</BreadcrumbItem>
+				<BreadcrumbItem href={resolve('/showcase')}>Security</BreadcrumbItem>
 				<BreadcrumbItem>Two-factor auth</BreadcrumbItem>
 			</Breadcrumbs>
 		</DemoGroup>
@@ -198,19 +199,19 @@
 			<div style="width: 260px;">
 				<Card padding="none">
 					<SideNav>
-						<SideNavItem href="/showcase">
+						<SideNavItem href={resolve('/showcase')}>
 							{#snippet icon()}<HomeIcon size={18} />{/snippet}
 							Dashboard
 						</SideNavItem>
-						<SideNavItem href="/showcase">
+						<SideNavItem href={resolve('/showcase')}>
 							{#snippet icon()}<InboxIcon size={18} />{/snippet}
 							Inbox
 						</SideNavItem>
-						<SideNavItem href="/showcase">
+						<SideNavItem href={resolve('/showcase')}>
 							{#snippet icon()}<UsersIcon size={18} />{/snippet}
 							Team
 						</SideNavItem>
-						<SideNavItem href="/showcase">
+						<SideNavItem href={resolve('/showcase')}>
 							{#snippet icon()}<SettingsIcon size={18} />{/snippet}
 							Settings
 						</SideNavItem>
@@ -225,14 +226,14 @@
 					<SideNav>
 						<SideNavGroup label="Analytics">
 							{#snippet icon()}<BarChartIcon size={18} />{/snippet}
-							<SideNavItem href="/showcase">Overview</SideNavItem>
-							<SideNavItem href="/showcase">Reports</SideNavItem>
-							<SideNavItem href="/showcase">Exports</SideNavItem>
+							<SideNavItem href={resolve('/showcase')}>Overview</SideNavItem>
+							<SideNavItem href={resolve('/showcase')}>Reports</SideNavItem>
+							<SideNavItem href={resolve('/showcase')}>Exports</SideNavItem>
 						</SideNavGroup>
 						<SideNavGroup label="Settings">
 							{#snippet icon()}<SettingsIcon size={18} />{/snippet}
-							<SideNavItem href="/showcase">General</SideNavItem>
-							<SideNavItem href="/showcase">Security</SideNavItem>
+							<SideNavItem href={resolve('/showcase')}>General</SideNavItem>
+							<SideNavItem href={resolve('/showcase')}>Security</SideNavItem>
 						</SideNavGroup>
 					</SideNav>
 				</Card>
@@ -243,16 +244,16 @@
 			<div style="width: 260px;">
 				<Card padding="none">
 					<SideNav>
-						<SideNavItem href="/showcase">
+						<SideNavItem href={resolve('/showcase')}>
 							{#snippet icon()}<HomeIcon size={18} />{/snippet}
 							Home
 						</SideNavItem>
 						<SideNavGroup label="Projects">
 							{#snippet icon()}<FolderIcon size={18} />{/snippet}
-							<SideNavItem href="/showcase">Active</SideNavItem>
+							<SideNavItem href={resolve('/showcase')}>Active</SideNavItem>
 							<SideNavGroup label="Archived">
-								<SideNavItem href="/showcase">2024</SideNavItem>
-								<SideNavItem href="/showcase">2023</SideNavItem>
+								<SideNavItem href={resolve('/showcase')}>2024</SideNavItem>
+								<SideNavItem href={resolve('/showcase')}>2023</SideNavItem>
 							</SideNavGroup>
 						</SideNavGroup>
 					</SideNav>
@@ -265,18 +266,18 @@
 				<Card padding="none">
 					<SideNav>
 						<SideNavLabel>Main</SideNavLabel>
-						<SideNavItem href="/showcase">
+						<SideNavItem href={resolve('/showcase')}>
 							{#snippet icon()}<HomeIcon size={18} />{/snippet}
 							Dashboard
 						</SideNavItem>
-						<SideNavItem href="/showcase">
+						<SideNavItem href={resolve('/showcase')}>
 							{#snippet icon()}<InboxIcon size={18} />{/snippet}
 							{#snippet badge()}<Badge label="12" variant="primary" size="sm" />{/snippet}
 							Inbox
 						</SideNavItem>
 						<SideNavDivider />
 						<SideNavLabel>Support</SideNavLabel>
-						<SideNavItem href="/showcase">
+						<SideNavItem href={resolve('/showcase')}>
 							{#snippet icon()}<HelpCircleIcon size={18} />{/snippet}
 							Help Center
 						</SideNavItem>
@@ -292,18 +293,18 @@
 				</button>
 				<Card padding="none">
 					<SideNav collapsed={isCollapsed}>
-						<SideNavItem href="/showcase" aria-label="Home">
+						<SideNavItem href={resolve('/showcase')} aria-label="Home">
 							{#snippet icon()}<HomeIcon size={18} />{/snippet}
 							Home
 						</SideNavItem>
-						<SideNavItem href="/showcase" aria-label="Inbox">
+						<SideNavItem href={resolve('/showcase')} aria-label="Inbox">
 							{#snippet icon()}<InboxIcon size={18} />{/snippet}
 							Inbox
 						</SideNavItem>
 						<SideNavGroup label="Settings">
 							{#snippet icon()}<SettingsIcon size={18} />{/snippet}
-							<SideNavItem href="/showcase">General</SideNavItem>
-							<SideNavItem href="/showcase">Security</SideNavItem>
+							<SideNavItem href={resolve('/showcase')}>General</SideNavItem>
+							<SideNavItem href={resolve('/showcase')}>Security</SideNavItem>
 						</SideNavGroup>
 					</SideNav>
 				</Card>
@@ -314,15 +315,15 @@
 			<div style="width: 260px;">
 				<Card padding="none">
 					<SideNav>
-						<SideNavItem href="/showcase">
+						<SideNavItem href={resolve('/showcase')}>
 							{#snippet icon()}<HomeIcon size={18} />{/snippet}
 							Dashboard
 						</SideNavItem>
-						<SideNavItem href="/showcase" isActive>
+						<SideNavItem href={resolve('/showcase')} isActive>
 							{#snippet icon()}<BarChartIcon size={18} />{/snippet}
 							Analytics
 						</SideNavItem>
-						<SideNavItem href="/showcase" disabled>
+						<SideNavItem href={resolve('/showcase')} disabled>
 							{#snippet icon()}<SettingsIcon size={18} />{/snippet}
 							Settings
 						</SideNavItem>
@@ -336,11 +337,11 @@
 				<Card padding="none">
 					<SideNav>
 						<SideNavLabel>Overview</SideNavLabel>
-						<SideNavItem href="/showcase" isActive>
+						<SideNavItem href={resolve('/showcase')} isActive>
 							{#snippet icon()}<HomeIcon size={18} />{/snippet}
 							Dashboard
 						</SideNavItem>
-						<SideNavItem href="/showcase">
+						<SideNavItem href={resolve('/showcase')}>
 							{#snippet icon()}<InboxIcon size={18} />{/snippet}
 							{#snippet badge()}<Badge label="24" variant="primary" size="sm" />{/snippet}
 							Inbox
@@ -349,21 +350,21 @@
 						<SideNavLabel>Workspace</SideNavLabel>
 						<SideNavGroup label="Projects">
 							{#snippet icon()}<FolderIcon size={18} />{/snippet}
-							<SideNavItem href="/showcase">
+							<SideNavItem href={resolve('/showcase')}>
 								{#snippet icon()}<ZapIcon size={18} />{/snippet}
 								Active
 							</SideNavItem>
-							<SideNavItem href="/showcase">
+							<SideNavItem href={resolve('/showcase')}>
 								{#snippet icon()}<StarIcon size={18} />{/snippet}
 								{#snippet badge()}<Badge label="3" variant="neutral" size="sm" />{/snippet}
 								Starred
 							</SideNavItem>
 							<SideNavGroup label="Archived">
-								<SideNavItem href="/showcase">
+								<SideNavItem href={resolve('/showcase')}>
 									{#snippet icon()}<ClockIcon size={18} />{/snippet}
 									2025
 								</SideNavItem>
-								<SideNavItem href="/showcase">
+								<SideNavItem href={resolve('/showcase')}>
 									{#snippet icon()}<ClockIcon size={18} />{/snippet}
 									2024
 								</SideNavItem>
@@ -373,17 +374,17 @@
 						<SideNavLabel>Account</SideNavLabel>
 						<SideNavGroup label="Settings">
 							{#snippet icon()}<SettingsIcon size={18} />{/snippet}
-							<SideNavItem href="/showcase">General</SideNavItem>
-							<SideNavItem href="/showcase">
+							<SideNavItem href={resolve('/showcase')}>General</SideNavItem>
+							<SideNavItem href={resolve('/showcase')}>
 								{#snippet icon()}<MailIcon size={18} />{/snippet}
 								Notifications
 							</SideNavItem>
 						</SideNavGroup>
-						<SideNavItem href="/showcase">
+						<SideNavItem href={resolve('/showcase')}>
 							{#snippet icon()}<UsersIcon size={18} />{/snippet}
 							Team
 						</SideNavItem>
-						<SideNavItem href="/showcase">
+						<SideNavItem href={resolve('/showcase')}>
 							{#snippet icon()}<HelpCircleIcon size={18} />{/snippet}
 							Help & Support
 						</SideNavItem>

@@ -13,6 +13,7 @@ export { default as HelpCircleIcon } from './HelpCircleIcon.svelte';
 export { default as HomeIcon } from './HomeIcon.svelte';
 export { default as InboxIcon } from './InboxIcon.svelte';
 export { default as InfoIcon } from './InfoIcon.svelte';
+export { default as LinkIcon } from './LinkIcon.svelte';
 export { default as MailIcon } from './MailIcon.svelte';
 export { default as MinusIcon } from './MinusIcon.svelte';
 export { default as PanelLeftCloseIcon } from './PanelLeftCloseIcon.svelte';

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import SiteHeader from '$internal/SiteHeader.svelte';
 	import MobileMenu from '$internal/MobileMenu.svelte';
 	import Button from '$lib/components/button/Button.svelte';
@@ -90,10 +91,10 @@
 		{#snippet hamburger()}
 			<MobileMenu bind:isOpen={isMobileMenuOpen}>
 				{#snippet links()}
-					<a href="/docs">Documentation</a>
-					<a href="/docs/button">Components</a>
-					<a href="/docs/theming">Theming</a>
-					<a href="/docs/installation">Installation</a>
+					<a href={resolve('/docs')}>Documentation</a>
+					<a href={resolve('/docs/button')}>Components</a>
+					<a href={resolve('/docs/theming')}>Theming</a>
+					<a href={resolve('/docs/installation')}>Installation</a>
 				{/snippet}
 			</MobileMenu>
 		{/snippet}
@@ -132,13 +133,13 @@
 			</div>
 
 			<div class="hero-actions">
-				<a href="/docs">
+				<a href={resolve('/docs')}>
 					<Button size="lg">
 						Get Started
 						<ArrowRightIcon size={18} />
 					</Button>
 				</a>
-				<a href="/docs/button">
+				<a href={resolve('/docs/button')}>
 					<Button variant="outline" color="secondary" size="lg">Browse Components</Button>
 				</a>
 			</div>
@@ -320,7 +321,7 @@
 						</div>
 					</div>
 					<div class="install-cta">
-						<a href="/docs/installation">
+						<a href={resolve('/docs/installation')}>
 							<Button>
 								Read the install guide
 								<ArrowRightIcon size={16} />

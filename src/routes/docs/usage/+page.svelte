@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import CodeBlock from '$internal/CodeBlock.svelte';
 	import DocsPage from '$internal/DocsPage.svelte';
 	import PageHeader from '$internal/PageHeader.svelte';
@@ -223,7 +224,9 @@ function showSuccess() {
 	<section class="section next">
 		<h2>Next: Theming</h2>
 		<p class="section-intro">Learn how to customize colors, spacing, and component styles.</p>
-		<a href="/docs/theming"><Button>Theming Guide <ArrowRightIcon size={16} /></Button></a>
+		<a href={resolve('/docs/theming')}
+			><Button>Theming Guide <ArrowRightIcon size={16} /></Button></a
+		>
 	</section>
 </DocsPage>
 

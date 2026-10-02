@@ -129,12 +129,12 @@
 			<CodeExample
 				code={`<Avatar src="https://i.pravatar.cc/150?img=1" alt="Alice" size="lg" />
 <Avatar src="https://i.pravatar.cc/150?img=5" alt="Bob" size="lg" status="online" />
-<Avatar src="/broken-url.jpg" alt="Fallback" initials="FB" size="lg" />`}
+<Avatar src="https://example.invalid/broken.jpg" alt="Fallback" initials="FB" size="lg" />`}
 				previewClass="row"
 			>
 				<Avatar src="https://i.pravatar.cc/150?img=1" alt="Alice" size="lg" />
 				<Avatar src="https://i.pravatar.cc/150?img=5" alt="Bob" size="lg" status="online" />
-				<Avatar src="/broken-url.jpg" alt="Fallback" initials="FB" size="lg" />
+				<Avatar src="https://example.invalid/broken.jpg" alt="Fallback" initials="FB" size="lg" />
 			</CodeExample>
 		</ExampleBlock>
 	</DocSection>

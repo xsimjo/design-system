@@ -1,10 +1,11 @@
 <script lang="ts">
 	import './button.css';
 	import type { Snippet } from 'svelte';
-	import type { HTMLButtonAttributes } from 'svelte/elements';
+	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 	import Spinner from '$lib/components/spinner/Spinner.svelte';
 
-	interface Props extends Omit<HTMLButtonAttributes, 'children'> {
+	interface Props extends Omit<HTMLButtonAttributes & HTMLAnchorAttributes, 'children'> {
+		href?: string;
 		variant?: 'filled' | 'outline' | 'ghost' | 'soft' | 'link' | 'dash';
 		color?:
 			'primary' | 'secondary' | 'accent' | 'success' | 'danger' | 'warning' | 'info' | 'neutral';
@@ -16,6 +17,7 @@
 	}
 
 	let {
+		href,
 		variant = 'filled',
 		color = 'primary',
 		size = 'md',
@@ -28,14 +30,18 @@
 	}: Props = $props();
 
 	const isDisabled = $derived(disabled || isLoading);
+	const isLink = $derived(!!href && !isDisabled);
 </script>
 
-<button
+<svelte:element
+	this={isLink ? 'a' : 'button'}
+	href={isLink ? href : undefined}
 	class="button button--{variant} button--{color} button--{size}"
 	class:button--icon={isIcon}
 	class:button--loading={isLoading}
 	class:button--full-width={fullWidth}
-	disabled={isDisabled}
+	disabled={isLink ? undefined : isDisabled}
+	aria-disabled={href && isDisabled ? 'true' : undefined}
 	{...restProps}
 >
 	{#if isLoading}
@@ -46,4 +52,4 @@
 	<span class="button__content" class:button__content--hidden={isLoading && isIcon}>
 		{@render children()}
 	</span>
-</button>
+</svelte:element>
