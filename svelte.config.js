@@ -1,17 +1,18 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://svelte.dev/docs/kit/integrations
-	// for more information about preprocessors
 	preprocess: vitePreprocess(),
 
 	kit: {
-		// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
-		// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
-		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
-		adapter: adapter(),
+		// The docs site is fully prerendered and deployed to GitHub Pages.
+		adapter: adapter({ fallback: '404.html' }),
+
+		// GitHub Pages serves the site from /design-system; the deploy workflow sets BASE_PATH.
+		paths: {
+			base: process.env.BASE_PATH ?? ''
+		},
 
 		// Docs-site-only components live outside src/lib so that svelte-package
 		// does not publish them to consumers.

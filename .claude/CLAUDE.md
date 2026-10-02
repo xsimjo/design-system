@@ -114,8 +114,28 @@ Run `npm run generate:tokens` after changing any component token or theme. It:
 
 ## Releasing
 
-Uses `release-it`. Run `npm run release` — it handles version bump, changelog, git tag, and npm publish.
-`@xsimjo/design-system` publishes to GitHub Packages.
+Uses Changesets, automated in `.github/workflows/release.yml`. Never bump the version,
+edit CHANGELOG.md, or publish by hand.
+
+1. A PR that changes the published package includes a changeset: `npx changeset`
+   (`patch` fix, `minor` new component/prop/token, `major` breaking API or token change).
+   Docs-site, CI, and tooling-only changes need none.
+2. On merge to `main`, the workflow opens or updates the **Version Packages** PR.
+3. Merging that PR publishes `@xsimjo/design-system` to GitHub Packages, pushes the
+   `vX.Y.Z` tag, and creates the GitHub release.
+
+PRs opened by the release bot don't trigger CI (a `GITHUB_TOKEN` limitation), so merging
+the Version Packages PR requires an admin bypass of the `main` ruleset.
+
+## CI/CD
+
+- `ci.yml` — lint, type check, token drift (`generate:tokens` + `git diff`), and a full
+  build. The build prerenders the docs site with `BASE_PATH=/design-system`, so a broken
+  internal link or `#anchor` fails CI.
+- `docs.yml` — deploys the docs site to GitHub Pages on every push to `main`.
+- Docs-site links must go through `resolve()` from `$app/paths`, never a bare `/docs/...`
+  string, or they break under the Pages base path.
+- Actions are pinned to commit SHAs; Dependabot updates them weekly.
 
 ## Gotchas
 

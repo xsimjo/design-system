@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import Header from '$internal/Header.svelte';
@@ -17,15 +18,19 @@
 
 <Header sticky maxWidth="1500px" {hamburger} {...restProps}>
 	{#snippet logo()}
-		<a href="/" class="logo-link">
+		<a href={resolve('/')} class="logo-link">
 			<PaletteIcon size={28} />
 			<span class="header-title">Greenfield</span>
 			<span class="header-subtitle">UI</span>
 		</a>
 	{/snippet}
 	{#snippet nav()}
-		<a href="/docs"><Button variant="ghost" color="secondary" size="sm">Documentation</Button></a>
-		<a href="/showcase"><Button variant="ghost" color="secondary" size="sm">Showcase</Button></a>
+		<a href={resolve('/docs')}
+			><Button variant="ghost" color="secondary" size="sm">Documentation</Button></a
+		>
+		<a href={resolve('/showcase')}
+			><Button variant="ghost" color="secondary" size="sm">Showcase</Button></a
+		>
 	{/snippet}
 	{#snippet actions()}
 		<Tooltip text="View on GitHub" position="bottom">

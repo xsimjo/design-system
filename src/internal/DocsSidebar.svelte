@@ -1,18 +1,22 @@
+<script lang="ts" module>
+	import type { ResolvedPathname } from '$app/types';
+
+	type NavItem = {
+		label: string;
+		href: ResolvedPathname;
+	};
+
+	export type NavGroup = {
+		title: string;
+		items: NavItem[];
+	};
+</script>
+
 <script lang="ts">
 	import { page } from '$app/stores';
 	import SideNav from '$lib/components/side-nav/SideNav.svelte';
 	import SideNavItem from '$lib/components/side-nav/SideNavItem.svelte';
 	import SideNavLabel from '$lib/components/side-nav/SideNavLabel.svelte';
-
-	type NavItem = {
-		label: string;
-		href: string;
-	};
-
-	type NavGroup = {
-		title: string;
-		items: NavItem[];
-	};
 
 	interface Props {
 		groups: NavGroup[];

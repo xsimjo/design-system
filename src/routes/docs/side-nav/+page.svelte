@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import SideNav from '$lib/components/side-nav/SideNav.svelte';
 	import SideNavGroup from '$lib/components/side-nav/SideNavGroup.svelte';
 	import SideNavItem from '$lib/components/side-nav/SideNavItem.svelte';
@@ -82,10 +83,10 @@
 				<div style="width: 260px;">
 					<Card padding="none">
 						<SideNav>
-							<SideNavItem href="/docs/side-nav">Dashboard</SideNavItem>
-							<SideNavItem href="/docs/side-nav">Projects</SideNavItem>
-							<SideNavItem href="/docs/side-nav">Team</SideNavItem>
-							<SideNavItem href="/docs/side-nav">Settings</SideNavItem>
+							<SideNavItem href={resolve('/docs/side-nav')}>Dashboard</SideNavItem>
+							<SideNavItem href={resolve('/docs/side-nav')}>Projects</SideNavItem>
+							<SideNavItem href={resolve('/docs/side-nav')}>Team</SideNavItem>
+							<SideNavItem href={resolve('/docs/side-nav')}>Settings</SideNavItem>
 						</SideNav>
 					</Card>
 				</div>
@@ -120,19 +121,19 @@
 				<div style="width: 260px;">
 					<Card padding="none">
 						<SideNav>
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<HomeIcon size={18} />{/snippet}
 								Dashboard
 							</SideNavItem>
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<InboxIcon size={18} />{/snippet}
 								Inbox
 							</SideNavItem>
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<UsersIcon size={18} />{/snippet}
 								Team
 							</SideNavItem>
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<SettingsIcon size={18} />{/snippet}
 								Settings
 							</SideNavItem>
@@ -169,15 +170,15 @@
 						<SideNav>
 							<SideNavGroup label="Analytics">
 								{#snippet icon()}<BarChartIcon size={18} />{/snippet}
-								<SideNavItem href="/docs/side-nav">Overview</SideNavItem>
-								<SideNavItem href="/docs/side-nav">Reports</SideNavItem>
-								<SideNavItem href="/docs/side-nav">Exports</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>Overview</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>Reports</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>Exports</SideNavItem>
 							</SideNavGroup>
 							<SideNavGroup label="Settings">
 								{#snippet icon()}<SettingsIcon size={18} />{/snippet}
-								<SideNavItem href="/docs/side-nav">General</SideNavItem>
-								<SideNavItem href="/docs/side-nav">Security</SideNavItem>
-								<SideNavItem href="/docs/side-nav">Notifications</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>General</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>Security</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>Notifications</SideNavItem>
 							</SideNavGroup>
 						</SideNav>
 					</Card>
@@ -210,16 +211,16 @@
 				<div style="width: 260px;">
 					<Card padding="none">
 						<SideNav>
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<HomeIcon size={18} />{/snippet}
 								Home
 							</SideNavItem>
 							<SideNavGroup label="Projects">
 								{#snippet icon()}<FolderIcon size={18} />{/snippet}
-								<SideNavItem href="/docs/side-nav">Active</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>Active</SideNavItem>
 								<SideNavGroup label="Archived">
-									<SideNavItem href="/docs/side-nav">2024</SideNavItem>
-									<SideNavItem href="/docs/side-nav">2023</SideNavItem>
+									<SideNavItem href={resolve('/docs/side-nav')}>2024</SideNavItem>
+									<SideNavItem href={resolve('/docs/side-nav')}>2023</SideNavItem>
 								</SideNavGroup>
 							</SideNavGroup>
 						</SideNav>
@@ -253,13 +254,13 @@
 						<SideNav>
 							<SideNavGroup label="With Rail" open>
 								{#snippet icon()}<FolderIcon size={18} />{/snippet}
-								<SideNavItem href="/docs/side-nav">Alpha</SideNavItem>
-								<SideNavItem href="/docs/side-nav">Beta</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>Alpha</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>Beta</SideNavItem>
 							</SideNavGroup>
 							<SideNavGroup label="Without Rail" open hasRail={false}>
 								{#snippet icon()}<SettingsIcon size={18} />{/snippet}
-								<SideNavItem href="/docs/side-nav">General</SideNavItem>
-								<SideNavItem href="/docs/side-nav">Security</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>General</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>Security</SideNavItem>
 							</SideNavGroup>
 						</SideNav>
 					</Card>
@@ -289,12 +290,12 @@
 				<div style="width: 260px;">
 					<Card padding="none">
 						<SideNav>
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<InboxIcon size={18} />{/snippet}
 								{#snippet badge()}<Badge label="12" variant="primary" size="sm" />{/snippet}
 								Inbox
 							</SideNavItem>
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<MailIcon size={18} />{/snippet}
 								{#snippet badge()}<Badge label="3" variant="neutral" size="sm" />{/snippet}
 								Messages
@@ -335,17 +336,17 @@
 					<Card padding="none">
 						<SideNav>
 							<SideNavLabel>Main</SideNavLabel>
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<HomeIcon size={18} />{/snippet}
 								Dashboard
 							</SideNavItem>
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<BarChartIcon size={18} />{/snippet}
 								Analytics
 							</SideNavItem>
 							<SideNavDivider />
 							<SideNavLabel>Support</SideNavLabel>
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<HelpCircleIcon size={18} />{/snippet}
 								Help Center
 							</SideNavItem>
@@ -383,18 +384,18 @@
 					</button>
 					<Card padding="none">
 						<SideNav collapsed={isCollapsed}>
-							<SideNavItem href="/docs/side-nav" aria-label="Home">
+							<SideNavItem href={resolve('/docs/side-nav')} aria-label="Home">
 								{#snippet icon()}<HomeIcon size={18} />{/snippet}
 								Home
 							</SideNavItem>
-							<SideNavItem href="/docs/side-nav" aria-label="Inbox">
+							<SideNavItem href={resolve('/docs/side-nav')} aria-label="Inbox">
 								{#snippet icon()}<InboxIcon size={18} />{/snippet}
 								Inbox
 							</SideNavItem>
 							<SideNavGroup label="Settings">
 								{#snippet icon()}<SettingsIcon size={18} />{/snippet}
-								<SideNavItem href="/docs/side-nav">General</SideNavItem>
-								<SideNavItem href="/docs/side-nav">Security</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>General</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>Security</SideNavItem>
 							</SideNavGroup>
 						</SideNav>
 					</Card>
@@ -427,15 +428,15 @@
 				<div style="width: 260px;">
 					<Card padding="none">
 						<SideNav>
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<HomeIcon size={18} />{/snippet}
 								Dashboard
 							</SideNavItem>
-							<SideNavItem href="/docs/side-nav" isActive>
+							<SideNavItem href={resolve('/docs/side-nav')} isActive>
 								{#snippet icon()}<BarChartIcon size={18} />{/snippet}
 								Analytics
 							</SideNavItem>
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<SettingsIcon size={18} />{/snippet}
 								Settings
 							</SideNavItem>
@@ -461,11 +462,11 @@
 				<div style="width: 260px;">
 					<Card padding="none">
 						<SideNav>
-							<SideNavItem href="/docs/side-nav">Dashboard</SideNavItem>
-							<SideNavItem href="/docs/side-nav" disabled>Billing</SideNavItem>
+							<SideNavItem href={resolve('/docs/side-nav')}>Dashboard</SideNavItem>
+							<SideNavItem href={resolve('/docs/side-nav')} disabled>Billing</SideNavItem>
 							<SideNavGroup label="Admin" disabled>
-								<SideNavItem href="/docs/side-nav">Users</SideNavItem>
-								<SideNavItem href="/docs/side-nav">Roles</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>Users</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>Roles</SideNavItem>
 							</SideNavGroup>
 						</SideNav>
 					</Card>
@@ -483,15 +484,15 @@
 					<Card padding="none">
 						<SideNav>
 							<SideNavLabel>Overview</SideNavLabel>
-							<SideNavItem href="/docs/side-nav" isActive>
+							<SideNavItem href={resolve('/docs/side-nav')} isActive>
 								{#snippet icon()}<HomeIcon size={18} />{/snippet}
 								Dashboard
 							</SideNavItem>
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<SearchIcon size={18} />{/snippet}
 								Search
 							</SideNavItem>
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<InboxIcon size={18} />{/snippet}
 								{#snippet badge()}<Badge label="24" variant="primary" size="sm" />{/snippet}
 								Inbox
@@ -502,25 +503,25 @@
 							<SideNavLabel>Workspace</SideNavLabel>
 							<SideNavGroup label="Projects">
 								{#snippet icon()}<FolderIcon size={18} />{/snippet}
-								<SideNavItem href="/docs/side-nav">
+								<SideNavItem href={resolve('/docs/side-nav')}>
 									{#snippet icon()}<ZapIcon size={18} />{/snippet}
 									Active
 								</SideNavItem>
-								<SideNavItem href="/docs/side-nav">
+								<SideNavItem href={resolve('/docs/side-nav')}>
 									{#snippet icon()}<StarIcon size={18} />{/snippet}
 									{#snippet badge()}<Badge label="3" variant="neutral" size="sm" />{/snippet}
 									Starred
 								</SideNavItem>
 								<SideNavGroup label="Archived">
-									<SideNavItem href="/docs/side-nav">
+									<SideNavItem href={resolve('/docs/side-nav')}>
 										{#snippet icon()}<ClockIcon size={18} />{/snippet}
 										2025
 									</SideNavItem>
-									<SideNavItem href="/docs/side-nav">
+									<SideNavItem href={resolve('/docs/side-nav')}>
 										{#snippet icon()}<ClockIcon size={18} />{/snippet}
 										2024
 									</SideNavItem>
-									<SideNavItem href="/docs/side-nav">
+									<SideNavItem href={resolve('/docs/side-nav')}>
 										{#snippet icon()}<ClockIcon size={18} />{/snippet}
 										2023
 									</SideNavItem>
@@ -528,28 +529,28 @@
 							</SideNavGroup>
 							<SideNavGroup label="Content">
 								{#snippet icon()}<EditIcon size={18} />{/snippet}
-								<SideNavItem href="/docs/side-nav">
+								<SideNavItem href={resolve('/docs/side-nav')}>
 									{#snippet icon()}<BookOpenIcon size={18} />{/snippet}
 									Pages
 								</SideNavItem>
-								<SideNavItem href="/docs/side-nav">
+								<SideNavItem href={resolve('/docs/side-nav')}>
 									{#snippet icon()}<CodeIcon size={18} />{/snippet}
 									Templates
 								</SideNavItem>
-								<SideNavItem href="/docs/side-nav">
+								<SideNavItem href={resolve('/docs/side-nav')}>
 									{#snippet icon()}<DownloadIcon size={18} />{/snippet}
 									Downloads
 								</SideNavItem>
 							</SideNavGroup>
 							<SideNavGroup label="Analytics">
 								{#snippet icon()}<BarChartIcon size={18} />{/snippet}
-								<SideNavItem href="/docs/side-nav">Overview</SideNavItem>
-								<SideNavItem href="/docs/side-nav">
+								<SideNavItem href={resolve('/docs/side-nav')}>Overview</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>
 									{#snippet badge()}<Badge label="Live" variant="success" size="sm" />{/snippet}
 									Real-time
 								</SideNavItem>
-								<SideNavItem href="/docs/side-nav">Reports</SideNavItem>
-								<SideNavItem href="/docs/side-nav">Exports</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>Reports</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>Exports</SideNavItem>
 							</SideNavGroup>
 
 							<SideNavDivider />
@@ -557,33 +558,33 @@
 							<SideNavLabel>Account</SideNavLabel>
 							<SideNavGroup label="Settings">
 								{#snippet icon()}<SettingsIcon size={18} />{/snippet}
-								<SideNavItem href="/docs/side-nav">General</SideNavItem>
-								<SideNavItem href="/docs/side-nav">Security</SideNavItem>
-								<SideNavItem href="/docs/side-nav">
+								<SideNavItem href={resolve('/docs/side-nav')}>General</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>Security</SideNavItem>
+								<SideNavItem href={resolve('/docs/side-nav')}>
 									{#snippet icon()}<MailIcon size={18} />{/snippet}
 									Notifications
 								</SideNavItem>
-								<SideNavItem href="/docs/side-nav">
+								<SideNavItem href={resolve('/docs/side-nav')}>
 									{#snippet icon()}<PuzzleIcon size={18} />{/snippet}
 									Integrations
 								</SideNavItem>
 							</SideNavGroup>
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<UsersIcon size={18} />{/snippet}
 								Team
 							</SideNavItem>
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<CalendarIcon size={18} />{/snippet}
 								Schedule
 							</SideNavItem>
-							<SideNavItem href="/docs/side-nav" disabled>
+							<SideNavItem href={resolve('/docs/side-nav')} disabled>
 								{#snippet icon()}<TrashIcon size={18} />{/snippet}
 								Trash
 							</SideNavItem>
 
 							<SideNavDivider />
 
-							<SideNavItem href="/docs/side-nav">
+							<SideNavItem href={resolve('/docs/side-nav')}>
 								{#snippet icon()}<HelpCircleIcon size={18} />{/snippet}
 								Help & Support
 							</SideNavItem>

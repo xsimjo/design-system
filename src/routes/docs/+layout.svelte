@@ -1,8 +1,9 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import type { Snippet } from 'svelte';
 	import SiteHeader from '$internal/SiteHeader.svelte';
 	import MobileMenu from '$internal/MobileMenu.svelte';
-	import DocsSidebar from '$internal/DocsSidebar.svelte';
+	import DocsSidebar, { type NavGroup } from '$internal/DocsSidebar.svelte';
 
 	interface Props {
 		children: Snippet;
@@ -12,77 +13,77 @@
 
 	let isMobileMenuOpen = $state(false);
 
-	const navGroups = [
+	const navGroups: NavGroup[] = [
 		{
 			title: 'Getting Started',
 			items: [
-				{ label: 'Introduction', href: '/docs' },
-				{ label: 'Installation', href: '/docs/installation' },
-				{ label: 'Usage', href: '/docs/usage' },
-				{ label: 'Theming', href: '/docs/theming' }
+				{ label: 'Introduction', href: resolve('/docs') },
+				{ label: 'Installation', href: resolve('/docs/installation') },
+				{ label: 'Usage', href: resolve('/docs/usage') },
+				{ label: 'Theming', href: resolve('/docs/theming') }
 			]
 		},
 		{
 			title: 'Form',
 			items: [
-				{ label: 'Button', href: '/docs/button' },
-				{ label: 'Input', href: '/docs/input' },
-				{ label: 'Textarea', href: '/docs/textarea' },
-				{ label: 'Select', href: '/docs/select' },
-				{ label: 'Checkbox', href: '/docs/checkbox' },
-				{ label: 'Radio', href: '/docs/radio' },
-				{ label: 'Switch', href: '/docs/switch' },
-				{ label: 'SegmentedControl', href: '/docs/segmented-control' },
-				{ label: 'Slider', href: '/docs/slider' },
-				{ label: 'Rating', href: '/docs/rating' },
-				{ label: 'Field', href: '/docs/field' },
-				{ label: 'ColorPicker', href: '/docs/color-picker' },
-				{ label: 'Combobox', href: '/docs/combobox' },
-				{ label: 'DatePicker', href: '/docs/datepicker' },
-				{ label: 'TimePicker', href: '/docs/timepicker' },
-				{ label: 'MultiSelect', href: '/docs/multiselect' },
-				{ label: 'FileInput', href: '/docs/file-input' },
-				{ label: 'BadgeInput', href: '/docs/badge-input' }
+				{ label: 'Button', href: resolve('/docs/button') },
+				{ label: 'Input', href: resolve('/docs/input') },
+				{ label: 'Textarea', href: resolve('/docs/textarea') },
+				{ label: 'Select', href: resolve('/docs/select') },
+				{ label: 'Checkbox', href: resolve('/docs/checkbox') },
+				{ label: 'Radio', href: resolve('/docs/radio') },
+				{ label: 'Switch', href: resolve('/docs/switch') },
+				{ label: 'SegmentedControl', href: resolve('/docs/segmented-control') },
+				{ label: 'Slider', href: resolve('/docs/slider') },
+				{ label: 'Rating', href: resolve('/docs/rating') },
+				{ label: 'Field', href: resolve('/docs/field') },
+				{ label: 'ColorPicker', href: resolve('/docs/color-picker') },
+				{ label: 'Combobox', href: resolve('/docs/combobox') },
+				{ label: 'DatePicker', href: resolve('/docs/datepicker') },
+				{ label: 'TimePicker', href: resolve('/docs/timepicker') },
+				{ label: 'MultiSelect', href: resolve('/docs/multiselect') },
+				{ label: 'FileInput', href: resolve('/docs/file-input') },
+				{ label: 'BadgeInput', href: resolve('/docs/badge-input') }
 			]
 		},
 		{
 			title: 'Data Display',
 			items: [
-				{ label: 'Avatar', href: '/docs/avatar' },
-				{ label: 'Badge', href: '/docs/badge' },
-				{ label: 'Card', href: '/docs/card' },
-				{ label: 'Table', href: '/docs/table' },
-				{ label: 'Typography', href: '/docs/typography' },
-				{ label: 'Skeleton', href: '/docs/skeleton' }
+				{ label: 'Avatar', href: resolve('/docs/avatar') },
+				{ label: 'Badge', href: resolve('/docs/badge') },
+				{ label: 'Card', href: resolve('/docs/card') },
+				{ label: 'Table', href: resolve('/docs/table') },
+				{ label: 'Typography', href: resolve('/docs/typography') },
+				{ label: 'Skeleton', href: resolve('/docs/skeleton') }
 			]
 		},
 		{
 			title: 'Feedback',
 			items: [
-				{ label: 'Alert', href: '/docs/alert' },
-				{ label: 'Progress', href: '/docs/progress' },
-				{ label: 'Spinner', href: '/docs/spinner' },
-				{ label: 'Toast', href: '/docs/toast' },
-				{ label: 'Tooltip', href: '/docs/tooltip' }
+				{ label: 'Alert', href: resolve('/docs/alert') },
+				{ label: 'Progress', href: resolve('/docs/progress') },
+				{ label: 'Spinner', href: resolve('/docs/spinner') },
+				{ label: 'Toast', href: resolve('/docs/toast') },
+				{ label: 'Tooltip', href: resolve('/docs/tooltip') }
 			]
 		},
 		{
 			title: 'Overlay',
 			items: [
-				{ label: 'Drawer', href: '/docs/drawer' },
-				{ label: 'Dropdown', href: '/docs/dropdown' },
-				{ label: 'Modal', href: '/docs/modal' },
-				{ label: 'Popover', href: '/docs/popover' }
+				{ label: 'Drawer', href: resolve('/docs/drawer') },
+				{ label: 'Dropdown', href: resolve('/docs/dropdown') },
+				{ label: 'Modal', href: resolve('/docs/modal') },
+				{ label: 'Popover', href: resolve('/docs/popover') }
 			]
 		},
 		{
 			title: 'Navigation',
 			items: [
-				{ label: 'Accordion', href: '/docs/accordion' },
-				{ label: 'Breadcrumbs', href: '/docs/breadcrumbs' },
-				{ label: 'Pagination', href: '/docs/pagination' },
-				{ label: 'SideNav', href: '/docs/side-nav' },
-				{ label: 'Tabs', href: '/docs/tabs' }
+				{ label: 'Accordion', href: resolve('/docs/accordion') },
+				{ label: 'Breadcrumbs', href: resolve('/docs/breadcrumbs') },
+				{ label: 'Pagination', href: resolve('/docs/pagination') },
+				{ label: 'SideNav', href: resolve('/docs/side-nav') },
+				{ label: 'Tabs', href: resolve('/docs/tabs') }
 			]
 		}
 	];

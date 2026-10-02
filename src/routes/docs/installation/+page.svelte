@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import CodeBlock from '$internal/CodeBlock.svelte';
 	import DocsPage from '$internal/DocsPage.svelte';
 	import PageHeader from '$internal/PageHeader.svelte';
@@ -114,7 +115,7 @@ import '@xsimjo/design-system/styles';`}
 	<section class="section next">
 		<h2>Next: Usage</h2>
 		<p class="section-intro">Learn how to use components and understand the API patterns.</p>
-		<a href="/docs/usage"><Button>Usage Guide <ArrowRightIcon size={16} /></Button></a>
+		<a href={resolve('/docs/usage')}><Button>Usage Guide <ArrowRightIcon size={16} /></Button></a>
 	</section>
 </DocsPage>
 

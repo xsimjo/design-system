@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import PaletteIcon from '$lib/icons/PaletteIcon.svelte';
 
@@ -21,10 +22,10 @@
 
 		<nav class="footer-links">
 			<span class="footer-links-title">Resources</span>
-			<a href="/docs">Documentation</a>
-			<a href="/docs/button">Components</a>
-			<a href="/docs/theming">Theming</a>
-			<a href="/docs/installation">Installation</a>
+			<a href={resolve('/docs')}>Documentation</a>
+			<a href={resolve('/docs/button')}>Components</a>
+			<a href={resolve('/docs/theming')}>Theming</a>
+			<a href={resolve('/docs/installation')}>Installation</a>
 		</nav>
 
 		<div class="footer-meta">

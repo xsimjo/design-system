@@ -128,7 +128,7 @@ After all checks, output a single consolidated report:
 
 ### Result: ✅ READY TO RELEASE
 
-All checks passed or were auto-fixed. Safe to run `npm run release`.
+All checks passed or were auto-fixed. Safe to merge the Version Packages PR.
 ```
 
 If any check is FAIL (not fixed):

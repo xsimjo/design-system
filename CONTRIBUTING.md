@@ -160,7 +160,14 @@ chore: update dependencies
 2. Make your changes following the guidelines above
 3. Run linting and formatting: `npm run lint && npm run format`
 4. Test your changes in the showcase app
-5. Submit a pull request with a clear description
+5. If the published package changed, add a changeset: `npx changeset`
+6. Submit a pull request with a clear description. CI must pass before merging.
+
+## Releasing
+
+Releases are automated with [Changesets](https://changesets.dev). Merging to `main`
+opens or updates a **Version Packages** PR that bumps the version and writes the
+CHANGELOG. Merging that PR publishes to GitHub Packages and creates the GitHub release.
 
 ## Accessibility Guidelines
 

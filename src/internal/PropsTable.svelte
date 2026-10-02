@@ -1,11 +1,13 @@
 <script lang="ts">
-	interface Props {
+	import type { HTMLAttributes } from 'svelte/elements';
+
+	interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
 		title?: string;
 		columns: string[];
 		rows: string[][];
 	}
 
-	let { title, columns, rows }: Props = $props();
+	let { title, columns, rows, ...restProps }: Props = $props();
 
 	const hasDescriptionColumn = $derived(columns[columns.length - 1] === 'Description');
 
@@ -14,7 +16,7 @@
 	}
 </script>
 
-<div class="props-group">
+<div class="props-group" {...restProps}>
 	{#if title}
 		<h3>{title}</h3>
 	{/if}

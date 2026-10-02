@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import CodeBlock from '$internal/CodeBlock.svelte';
 	import DocsPage from '$internal/DocsPage.svelte';
 	import PageHeader from '$internal/PageHeader.svelte';
@@ -270,7 +271,7 @@ document.documentElement.dataset.theme = 'dark';`}
 	<section class="section next">
 		<h2>Next: Components</h2>
 		<p class="section-intro">Explore the full component library.</p>
-		<a href="/docs/button"><Button>View Components</Button></a>
+		<a href={resolve('/docs/button')}><Button>View Components</Button></a>
 	</section>
 </DocsPage>
 
