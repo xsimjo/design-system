@@ -1,4 +1,4 @@
-<script module>
+<script lang="ts" module>
 	const iconSizes: Record<string, number> = { sm: 12, md: 16, lg: 24, xl: 32 };
 </script>
 

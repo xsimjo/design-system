@@ -54,7 +54,11 @@
 
 [data-theme] .badge--warning {
 	--badge-bg: color-mix(in oklch, var(--ui-warning), transparent 88%);
-	--badge-fg: color-mix(in oklch, var(--ui-warning), transparent 10%);
+	/* --ui-warning is too light for text on its own tint (~2:1). Mixing toward the
+	   surface foreground darkens it in light themes and lightens it in dark ones.
+	   oklab, not oklch: an oklch mix interpolates hue toward the foreground's and
+	   turns the text red. */
+	--badge-fg: color-mix(in oklab, var(--ui-warning), var(--ui-surface-foreground) 45%);
 	--badge-border: color-mix(in oklch, var(--ui-warning), transparent 75%);
 	--badge-remove-hover-bg: color-mix(in oklch, var(--ui-warning), transparent 70%);
 }

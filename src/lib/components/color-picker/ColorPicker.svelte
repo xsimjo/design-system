@@ -36,22 +36,45 @@
 
 	let colorInputEl = $state<HTMLInputElement | null>(null);
 
-	const hexPattern = /^#[0-9a-fA-F]{6}$/;
+	/** Uncommitted text while the user types; `null` means the field mirrors `value`. */
+	let draft = $state<string | null>(null);
 
-	function handleTextInput(e: Event & { currentTarget: HTMLInputElement }) {
-		const raw = e.currentTarget.value.trim();
-		if (hexPattern.test(raw)) {
-			value = raw.toLowerCase();
+	const displayed = $derived(draft ?? value);
+	const isInvalidDraft = $derived(draft !== null && parseHex(draft) === null);
+
+	/** Accepts `#rgb`, `rgb`, `#rrggbb` or `rrggbb`; returns a lowercase 6-digit hex. */
+	function parseHex(raw: string): string | null {
+		const body = raw.trim().replace(/^#/, '');
+		if (/^[0-9a-f]{3}$/i.test(body)) {
+			return `#${body
+				.split('')
+				.map((c) => c + c)
+				.join('')
+				.toLowerCase()}`;
 		}
+		if (/^[0-9a-f]{6}$/i.test(body)) return `#${body.toLowerCase()}`;
+		return null;
 	}
 
-	function handleTextBlur(e: FocusEvent & { currentTarget: HTMLInputElement }) {
-		e.currentTarget.value = value;
+	function handleTextInput(e: Event & { currentTarget: HTMLInputElement }) {
+		draft = e.currentTarget.value;
+		const parsed = parseHex(draft);
+		if (parsed) value = parsed;
+	}
+
+	function handleTextBlur() {
+		draft = null;
+	}
+
+	function handleNativeInput() {
+		draft = null;
 	}
 
 	function handleSwatchClick() {
 		colorInputEl?.click();
 	}
+
+	const swatchLabel = $derived(ariaLabel ? `${ariaLabel}: choose color` : 'Choose color');
 </script>
 
 <div
@@ -61,14 +84,9 @@
 	{...restProps}
 >
 	<div
-		id={inputId}
 		class="color-picker__trigger"
-		class:color-picker__trigger--error={hasError}
+		class:color-picker__trigger--error={hasError || isInvalidDraft}
 		class:color-picker__trigger--disabled={isDisabled}
-		role="group"
-		aria-label={ariaLabelledby ? undefined : (ariaLabel ?? 'Color picker')}
-		aria-labelledby={ariaLabelledby}
-		aria-describedby={describedBy}
 	>
 		<input
 			bind:this={colorInputEl}
@@ -76,6 +94,7 @@
 			type="color"
 			disabled={isDisabled}
 			bind:value
+			oninput={handleNativeInput}
 			tabindex="-1"
 			aria-hidden="true"
 		/>
@@ -83,26 +102,30 @@
 			type="button"
 			class="color-picker__swatch"
 			style:background-color={value}
-			tabindex="-1"
-			aria-hidden="true"
 			disabled={isDisabled}
+			aria-label={swatchLabel}
+			aria-haspopup="dialog"
 			onclick={handleSwatchClick}
 		></button>
 		<input
+			id={inputId}
 			class="color-picker__text"
 			type="text"
-			{value}
+			value={displayed}
 			placeholder="#000000"
 			maxlength={7}
+			spellcheck="false"
+			autocapitalize="off"
+			autocomplete="off"
+			inputmode="text"
 			disabled={isDisabled}
 			aria-label={ariaLabelledby
 				? undefined
-				: ariaLabel
-					? `${ariaLabel} hex value`
-					: 'Hex color value'}
+				: (ariaLabel ?? (field ? undefined : 'Hex color value'))}
 			aria-labelledby={ariaLabelledby}
+			aria-describedby={describedBy}
 			aria-required={field?.required || undefined}
-			aria-invalid={hasError || undefined}
+			aria-invalid={hasError || isInvalidDraft || undefined}
 			oninput={handleTextInput}
 			onblur={handleTextBlur}
 		/>

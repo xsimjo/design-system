@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { HTMLAttributes } from 'svelte/elements';
+	import type { HTMLTdAttributes } from 'svelte/elements';
 	import type { TableAlign } from './types.js';
 
-	interface Props extends Omit<HTMLAttributes<HTMLTableCellElement>, 'children'> {
+	interface Props extends Omit<HTMLTdAttributes, 'align' | 'children'> {
 		align?: TableAlign;
 		truncate?: boolean;
 		children: Snippet;
