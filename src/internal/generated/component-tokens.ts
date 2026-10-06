@@ -117,27 +117,6 @@ export const componentTokens: Record<string, Record<string, string>> = {
 		'--badge-input-border-radius': 'var(--ui-base-radius)',
 		'--badge-input-transition': 'var(--ui-base-duration) var(--ui-base-easing)'
 	},
-	'bar-chart': {
-		'--bar-chart-height': 'calc(var(--ui-base-spacing) * 40)',
-		'--bar-chart-bar-color': 'var(--ui-primary)',
-		'--bar-chart-bar-active-color': 'color-mix(in oklch, var(--ui-primary), var(--ui-surface) 35%)',
-		'--bar-chart-bar-max-width': '24px',
-		'--bar-chart-bar-radius': '4px',
-		'--bar-chart-bar-gap': '2px',
-		'--bar-chart-slot-active-bg': 'color-mix(in oklch, var(--ui-neutral), transparent 92%)',
-		'--bar-chart-grid-color': 'var(--ui-border)',
-		'--bar-chart-grid-width': 'var(--ui-border-width)',
-		'--bar-chart-axis-font-size': 'var(--ui-text-xs)',
-		'--bar-chart-axis-color': 'color-mix(in oklch, var(--ui-surface-foreground), transparent 40%)',
-		'--bar-chart-readout-value-font-size': 'var(--ui-text-base)',
-		'--bar-chart-readout-value-font-weight': 'var(--ui-weight-semibold)',
-		'--bar-chart-readout-value-color': 'var(--ui-surface-foreground)',
-		'--bar-chart-readout-label-font-size': 'var(--ui-text-sm)',
-		'--bar-chart-readout-label-color':
-			'color-mix(in oklch, var(--ui-surface-foreground), transparent 35%)',
-		'--bar-chart-focus-ring':
-			'var(--ui-ring-width) solid color-mix(in oklch, var(--ui-primary), transparent 70%)'
-	},
 	breadcrumbs: {
 		'--breadcrumbs-font-size': 'var(--ui-text-sm)',
 		'--breadcrumbs-gap': 'calc(var(--ui-base-spacing) * 3)',
@@ -235,6 +214,45 @@ export const componentTokens: Record<string, Record<string, string>> = {
 		'--card-padding-md': 'calc(var(--ui-base-spacing) * 8)',
 		'--card-padding-lg': 'calc(var(--ui-base-spacing) * 12)',
 		'--card-footer-gap': 'calc(var(--ui-base-spacing) * 4)'
+	},
+	chart: {
+		'--chart-height': 'calc(var(--ui-base-spacing) * 60)',
+		'--chart-gap': 'calc(var(--ui-base-spacing) * 3)',
+		'--chart-series-1': 'var(--ui-chart-1)',
+		'--chart-series-2': 'var(--ui-chart-2)',
+		'--chart-series-3': 'var(--ui-chart-3)',
+		'--chart-series-4': 'var(--ui-chart-4)',
+		'--chart-series-5': 'var(--ui-chart-5)',
+		'--chart-series-6': 'var(--ui-chart-6)',
+		'--chart-series-other': 'var(--ui-neutral)',
+		'--chart-surface': 'var(--ui-surface)',
+		'--chart-grid-color': 'var(--ui-border)',
+		'--chart-grid-width': 'var(--ui-border-width)',
+		'--chart-baseline-color': 'color-mix(in oklch, var(--ui-surface-foreground), transparent 65%)',
+		'--chart-axis-font-size': 'var(--ui-text-xs)',
+		'--chart-axis-color': 'color-mix(in oklch, var(--ui-surface-foreground), transparent 40%)',
+		'--chart-legend-font-size': 'var(--ui-text-sm)',
+		'--chart-legend-color': 'color-mix(in oklch, var(--ui-surface-foreground), transparent 20%)',
+		'--chart-wash': 'color-mix(in oklch, var(--ui-neutral), transparent 90%)',
+		'--chart-crosshair-color': 'color-mix(in oklch, var(--ui-surface-foreground), transparent 55%)',
+		'--chart-focus-ring':
+			'var(--ui-ring-width) solid color-mix(in oklch, var(--ui-primary), transparent 70%)',
+		'--chart-bar-max-width': '24px',
+		'--chart-bar-gap': '2px',
+		'--chart-bar-radius': '4px',
+		'--chart-line-width': '2px',
+		'--chart-area-opacity': '0.1',
+		'--chart-marker-radius': '4px',
+		'--chart-marker-ring-width': '2px',
+		'--chart-tooltip-bg': 'var(--ui-surface-overlay)',
+		'--chart-tooltip-color': 'var(--ui-surface-overlay-foreground)',
+		'--chart-tooltip-muted-color':
+			'color-mix(in oklch, var(--ui-surface-overlay-foreground), transparent 35%)',
+		'--chart-tooltip-border': 'var(--ui-border-width) solid var(--ui-border)',
+		'--chart-tooltip-radius': 'var(--ui-base-radius)',
+		'--chart-tooltip-shadow': 'var(--ui-depth)',
+		'--chart-tooltip-font-size': 'var(--ui-text-sm)',
+		'--chart-tooltip-value-weight': 'var(--ui-weight-semibold)'
 	},
 	checkbox: {
 		'--checkbox-bg': 'var(--ui-surface)',

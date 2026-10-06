@@ -1,0 +1,263 @@
+[data-theme] {
+	--chart-height: calc(var(--ui-base-spacing) * 60);
+	--chart-gap: calc(var(--ui-base-spacing) * 3);
+	--chart-series-1: var(--ui-chart-1);
+	--chart-series-2: var(--ui-chart-2);
+	--chart-series-3: var(--ui-chart-3);
+	--chart-series-4: var(--ui-chart-4);
+	--chart-series-5: var(--ui-chart-5);
+	--chart-series-6: var(--ui-chart-6);
+	--chart-series-other: var(--ui-neutral);
+	--chart-surface: var(--ui-surface);
+	--chart-grid-color: var(--ui-border);
+	--chart-grid-width: var(--ui-border-width);
+	--chart-baseline-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 65%);
+	--chart-axis-font-size: var(--ui-text-xs);
+	--chart-axis-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 40%);
+	--chart-legend-font-size: var(--ui-text-sm);
+	--chart-legend-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 20%);
+	--chart-wash: color-mix(in oklch, var(--ui-neutral), transparent 90%);
+	--chart-crosshair-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 55%);
+	--chart-focus-ring: var(--ui-ring-width) solid
+		color-mix(in oklch, var(--ui-primary), transparent 70%);
+	--chart-bar-max-width: 24px;
+	--chart-bar-gap: 2px;
+	--chart-bar-radius: 4px;
+	--chart-line-width: 2px;
+	--chart-area-opacity: 0.1;
+	--chart-marker-radius: 4px;
+	--chart-marker-ring-width: 2px;
+	--chart-tooltip-bg: var(--ui-surface-overlay);
+	--chart-tooltip-color: var(--ui-surface-overlay-foreground);
+	--chart-tooltip-muted-color: color-mix(
+		in oklch,
+		var(--ui-surface-overlay-foreground),
+		transparent 35%
+	);
+	--chart-tooltip-border: var(--ui-border-width) solid var(--ui-border);
+	--chart-tooltip-radius: var(--ui-base-radius);
+	--chart-tooltip-shadow: var(--ui-depth);
+	--chart-tooltip-font-size: var(--ui-text-sm);
+	--chart-tooltip-value-weight: var(--ui-weight-semibold);
+}
+
+.chart {
+	position: relative;
+	display: grid;
+	gap: var(--chart-gap);
+	width: 100%;
+	min-width: 0;
+	font-family: var(--ui-font-sans);
+}
+
+.chart__legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: calc(var(--ui-base-spacing) * 1.5) calc(var(--ui-base-spacing) * 4);
+	margin: 0;
+	padding: 0;
+	font-size: var(--chart-legend-font-size);
+	line-height: var(--ui-leading-tight);
+	color: var(--chart-legend-color);
+	list-style: none;
+}
+
+.chart__legend-item {
+	display: flex;
+	align-items: center;
+	gap: calc(var(--ui-base-spacing) * 1.5);
+}
+
+/* A legend swatch mirrors its mark: a block for bars, a stroke for lines. */
+.chart__swatch {
+	flex: none;
+	width: 10px;
+	height: 10px;
+	border-radius: 2px;
+	background: var(--chart-key-color);
+}
+
+.chart--line .chart__swatch {
+	width: 14px;
+	height: var(--chart-line-width);
+	border-radius: var(--chart-line-width);
+}
+
+.chart__body {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	grid-template-areas:
+		'y-axis plot'
+		'. x-axis';
+	column-gap: calc(var(--ui-base-spacing) * 2);
+	row-gap: calc(var(--ui-base-spacing) * 2);
+	/* The top y label is centered on the top gridline, so half of it sits above the plot.
+	   This keeps it inside the chart, so spacing set around the chart is what you see. */
+	padding-top: calc(var(--chart-axis-font-size) * var(--ui-leading-tight) / 2);
+}
+
+.chart__y-axis,
+.chart__x-axis {
+	position: relative;
+	font-size: var(--chart-axis-font-size);
+	font-variant-numeric: tabular-nums;
+	line-height: var(--ui-leading-tight);
+	color: var(--chart-axis-color);
+	white-space: nowrap;
+}
+
+.chart__y-axis {
+	grid-area: y-axis;
+	text-align: right;
+}
+
+/* Ticks are absolute, so invisible copies give the column its width. */
+.chart__y-sizer {
+	display: block;
+	height: 0;
+	overflow: hidden;
+	visibility: hidden;
+}
+
+.chart__y-tick {
+	position: absolute;
+	right: 0;
+	transform: translateY(-50%);
+}
+
+.chart__x-axis {
+	grid-area: x-axis;
+	height: calc(var(--chart-axis-font-size) * var(--ui-leading-tight));
+}
+
+.chart__x-tick {
+	position: absolute;
+	top: 0;
+}
+
+.chart__plot {
+	grid-area: plot;
+	position: relative;
+	height: var(--chart-height);
+	border-radius: 2px;
+	outline: none;
+	touch-action: pan-y;
+}
+
+.chart__plot:focus-visible {
+	outline: var(--chart-focus-ring);
+	outline-offset: var(--ui-ring-offset);
+}
+
+.chart__svg {
+	position: absolute;
+	inset: 0;
+	display: block;
+	overflow: visible;
+}
+
+.chart__grid {
+	stroke: var(--chart-grid-color);
+	stroke-width: var(--chart-grid-width);
+}
+
+.chart__baseline {
+	stroke: var(--chart-baseline-color);
+	stroke-width: var(--chart-grid-width);
+}
+
+.chart__wash {
+	fill: var(--chart-wash);
+}
+
+.chart__crosshair {
+	stroke: var(--chart-crosshair-color);
+	stroke-width: var(--chart-grid-width);
+}
+
+.chart__line {
+	fill: none;
+	stroke-width: var(--chart-line-width);
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.chart__area {
+	fill-opacity: var(--chart-area-opacity);
+	stroke: none;
+}
+
+/* The ring in the surface color keeps a marker legible where it crosses a line. */
+.chart__marker {
+	r: var(--chart-marker-radius);
+	stroke: var(--chart-surface);
+	stroke-width: var(--chart-marker-ring-width);
+	paint-order: stroke;
+}
+
+.chart__tooltip {
+	position: absolute;
+	top: 0;
+	z-index: 1;
+	display: grid;
+	gap: var(--ui-base-spacing);
+	min-width: max-content;
+	padding: calc(var(--ui-base-spacing) * 2) calc(var(--ui-base-spacing) * 2.5);
+	font-size: var(--chart-tooltip-font-size);
+	line-height: var(--ui-leading-tight);
+	color: var(--chart-tooltip-color);
+	background: var(--chart-tooltip-bg);
+	border: var(--chart-tooltip-border);
+	border-radius: var(--chart-tooltip-radius);
+	box-shadow: var(--chart-tooltip-shadow);
+	pointer-events: none;
+}
+
+.chart__tooltip p {
+	margin: 0;
+}
+
+.chart__tooltip-title {
+	color: var(--chart-tooltip-muted-color);
+}
+
+.chart__tooltip-rows {
+	display: grid;
+	grid-template-columns: auto auto 1fr;
+	gap: var(--ui-base-spacing) calc(var(--ui-base-spacing) * 2);
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.chart__tooltip-row {
+	display: contents;
+}
+
+.chart__tooltip-value {
+	font-weight: var(--chart-tooltip-value-weight);
+	font-variant-numeric: tabular-nums;
+	text-align: right;
+}
+
+.chart__tooltip-series {
+	color: var(--chart-tooltip-muted-color);
+}
+
+/* Tooltip rows are keyed with a short stroke rather than a filled block. */
+.chart__key {
+	width: 12px;
+	height: var(--chart-line-width);
+	border-radius: var(--chart-line-width);
+	background: var(--chart-key-color);
+}
+
+.chart__table {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}

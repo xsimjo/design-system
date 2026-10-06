@@ -6,6 +6,7 @@ export interface TabsContext {
 	variant: () => 'underline' | 'pills' | 'enclosed';
 	size: () => 'sm' | 'md' | 'lg';
 	fullWidth: () => boolean;
+	navigation: () => boolean;
 	getTabId: (value: string) => string;
 	getPanelId: (value: string) => string;
 }

@@ -11,6 +11,8 @@
 		variant?: 'underline' | 'pills' | 'enclosed';
 		size?: 'sm' | 'md' | 'lg';
 		fullWidth?: boolean;
+		/** Tabs are links to pages: the list is a `<nav>`, each `Tab` takes `href`, and there are no panels. */
+		navigation?: boolean;
 		onchange?: (value: string) => void;
 		children: Snippet;
 	}
@@ -20,6 +22,7 @@
 		variant = 'underline',
 		size = 'md',
 		fullWidth = false,
+		navigation = false,
 		onchange,
 		children,
 		...restProps
@@ -46,6 +49,7 @@
 		variant: () => variant,
 		size: () => size,
 		fullWidth: () => fullWidth,
+		navigation: () => navigation,
 		getTabId,
 		getPanelId
 	});

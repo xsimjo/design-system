@@ -49,7 +49,7 @@ Note that most components are single-size and expose no `size` prop; do not inve
 Three layers — never skip or cross them:
 
 1. **Primitives** (`styles/primitives.css`) — raw values, `:root` scope. Never referenced by components.
-2. **Semantic** (`styles/themes/*.css`) — 57 `--ui-*` tokens per theme, scoped to `[data-theme='...']`. Every theme (light, dark, dev, qr) must define the same 57 tokens.
+2. **Semantic** (`styles/themes/*.css`) — 63 `--ui-*` tokens per theme, scoped to `[data-theme='...']`. Every theme (light, dark, dev, qr) must define the same 63 tokens.
 3. **Component** (`components/{name}/{name}.css`) — `--{component}-*` tokens, derived from `--ui-*`. Scoped to `[data-theme]`.
 
 **Rule**: components use component tokens or `--ui-*` directly. Never `--color-*`, `--space-*`, `--shadow-*`, or any other primitive.
@@ -141,6 +141,7 @@ the Version Packages PR requires an admin bypass of the `main` ruleset.
 
 - `shiki` is a dev dependency only — it is used by the docs site, not by any shipped component, so consumers do not install it
 - A new theme must be registered in four places: `styles/themes/{name}.css`, the `@import` in `styles/global.css`, `package.json` `exports`, and the `themes` list in `internal/ThemeSwitcher.svelte`
+- `--ui-chart-1` to `-6` are an ordered set validated together for color-blind separation and 3:1 contrast on each theme's surface. Changing one color or the order means re-validating the whole set, not eyeballing it
 
 ## Code Conventions
 

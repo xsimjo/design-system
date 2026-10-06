@@ -88,6 +88,8 @@
 	border: none;
 	cursor: pointer;
 	position: relative;
+	/* Navigation tabs are links. */
+	text-decoration: none;
 	transition:
 		color var(--tabs-duration) var(--tabs-easing),
 		background-color var(--tabs-duration) var(--tabs-easing);

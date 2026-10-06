@@ -6,14 +6,15 @@ Horizontal tab interface for switching between panels of related content. Suppor
 
 ### Tabs
 
-| Prop        | Type                                   | Default       | Description                                       |
-| ----------- | -------------------------------------- | ------------- | ------------------------------------------------- |
-| `value`     | `string`                               | `''`          | Active tab value. Bind with `bind:value`          |
-| `variant`   | `'underline' \| 'pills' \| 'enclosed'` | `'underline'` | Visual style of the tab triggers                  |
-| `size`      | `'sm' \| 'md' \| 'lg'`                 | `'md'`        | Size of the tab triggers                          |
-| `fullWidth` | `boolean`                              | `false`       | Stretch tabs to fill the available width          |
-| `onchange`  | `(value: string) => void`              | `undefined`   | Called when the active tab changes                |
-| `children`  | `Snippet`                              | required      | A `TabList` and one or more `TabPanel` components |
+| Prop         | Type                                   | Default       | Description                                                                              |
+| ------------ | -------------------------------------- | ------------- | ---------------------------------------------------------------------------------------- |
+| `value`      | `string`                               | `''`          | Active tab value. Bind with `bind:value`                                                 |
+| `variant`    | `'underline' \| 'pills' \| 'enclosed'` | `'underline'` | Visual style of the tab triggers                                                         |
+| `size`       | `'sm' \| 'md' \| 'lg'`                 | `'md'`        | Size of the tab triggers                                                                 |
+| `fullWidth`  | `boolean`                              | `false`       | Stretch tabs to fill the available width                                                 |
+| `navigation` | `boolean`                              | `false`       | Tabs are links to pages: `TabList` renders a `<nav>`, each `Tab` takes `href`, no panels |
+| `onchange`   | `(value: string) => void`              | `undefined`   | Called when the active tab changes                                                       |
+| `children`   | `Snippet`                              | required      | A `TabList` and one or more `TabPanel` components                                        |
 
 All standard `HTMLDivElement` attributes are forwarded to the root `<div>` element.
 
@@ -27,13 +28,14 @@ All standard `HTMLDivElement` attributes are forwarded to the `<div role="tablis
 
 ### Tab
 
-| Prop       | Type      | Default  | Description                             |
-| ---------- | --------- | -------- | --------------------------------------- |
-| `value`    | `string`  | required | Unique identifier matching a `TabPanel` |
-| `disabled` | `boolean` | `false`  | Disables the tab; prevents selection    |
-| `children` | `Snippet` | required | Tab label content                       |
+| Prop       | Type      | Default  | Description                                                |
+| ---------- | --------- | -------- | ---------------------------------------------------------- |
+| `value`    | `string`  | required | Unique identifier matching a `TabPanel`                    |
+| `href`     | `string`  | —        | The page this tab opens, when the `Tabs` have `navigation` |
+| `disabled` | `boolean` | `false`  | Disables the tab; prevents selection                       |
+| `children` | `Snippet` | required | Tab label content                                          |
 
-All standard `HTMLButtonElement` attributes are forwarded to the `<button>` element.
+All standard `HTMLButtonElement` attributes are forwarded to the `<button>` element (the `<a>` element with `navigation`).
 
 ### TabPanel
 
@@ -168,7 +170,22 @@ All standard `HTMLDivElement` attributes are forwarded to the `<div role="tabpan
 </Tabs>
 ```
 
+### Navigation
+
+Each tab is its own page. Set `value` from the current route; the page below is the content.
+
+```svelte
+<Tabs value="account" navigation>
+	<TabList aria-label="Settings">
+		<Tab value="account" href="/settings">Account</Tab>
+		<Tab value="billing" href="/settings/billing">Billing</Tab>
+	</TabList>
+</Tabs>
+```
+
 ## Accessibility
+
+- With `navigation`, the list is a `<nav>` (give it an `aria-label`) of plain links. The active link has `aria-current="page"`; a disabled one has no `href` and `aria-disabled="true"`. Tab moves between links; there are no tab roles or arrow-key handling, since these are not a tablist.
 
 - Uses `role="tablist"` on the tab container with `role="tab"` on each tab trigger and `role="tabpanel"` on each panel.
 - Active tab uses `aria-selected="true"`; inactive tabs use `aria-selected="false"`.

@@ -132,4 +132,16 @@
 	   ========================================================================== */
 	--ui-z-overlay: 1000;
 	--ui-z-tooltip: 1500;
+
+	/* ==========================================================================
+	   CHART (6 tokens)
+	   Same set as the light theme, which was validated against this surface
+	   too. Series need distinct hues even where the interface has none.
+	   ========================================================================== */
+	--ui-chart-1: oklch(57.5% 0.163 256);
+	--ui-chart-2: oklch(66.1% 0.175 41);
+	--ui-chart-3: oklch(62.4% 0.137 162);
+	--ui-chart-4: oklch(64.4% 0.135 75);
+	--ui-chart-5: oklch(66.1% 0.141 357);
+	--ui-chart-6: oklch(52.9% 0.18 142);
 }

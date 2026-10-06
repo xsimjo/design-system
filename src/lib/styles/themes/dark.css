@@ -124,4 +124,18 @@
 	   ========================================================================== */
 	--ui-z-overlay: 1000;
 	--ui-z-tooltip: 1500;
+
+	/* ==========================================================================
+	   CHART (6 tokens)
+	   The light theme's six hues, re-stepped for the dark surface rather than
+	   flipped. Validated as a set for adjacent-pair CVD separation (worst ΔE
+	   8.4), normal-vision separation (worst ΔE 19.3) and >= 3:1 contrast on the
+	   dark surface. Re-validate the set before changing any one of them.
+	   ========================================================================== */
+	--ui-chart-1: oklch(62.2% 0.161 255);
+	--ui-chart-2: oklch(62.2% 0.173 40);
+	--ui-chart-3: oklch(62.1% 0.128 163);
+	--ui-chart-4: oklch(67% 0.143 73);
+	--ui-chart-5: oklch(62.2% 0.171 1);
+	--ui-chart-6: oklch(52.9% 0.178 142);
 }

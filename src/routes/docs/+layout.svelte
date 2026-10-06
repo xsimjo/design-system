@@ -54,6 +54,7 @@
 				{ label: 'BarChart', href: resolve('/docs/bar-chart') },
 				{ label: 'Card', href: resolve('/docs/card') },
 				{ label: 'Highlight', href: resolve('/docs/highlight') },
+				{ label: 'LineChart', href: resolve('/docs/line-chart') },
 				{ label: 'Table', href: resolve('/docs/table') },
 				{ label: 'Typography', href: resolve('/docs/typography') },
 				{ label: 'Skeleton', href: resolve('/docs/skeleton') }

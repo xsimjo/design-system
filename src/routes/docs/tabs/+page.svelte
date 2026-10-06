@@ -23,6 +23,7 @@
 		{ id: 'disabled', label: 'Disabled Tab', indent: true },
 		{ id: 'controlled', label: 'Controlled', indent: true },
 		{ id: 'in-a-card', label: 'In a Card', indent: true },
+		{ id: 'navigation', label: 'Navigation', indent: true },
 		{ id: 'api', label: 'API' },
 		{ id: 'css-tokens', label: 'CSS Tokens' }
 	];
@@ -357,6 +358,31 @@
 				</Card>
 			</CodeExample>
 		</ExampleBlock>
+
+		<ExampleBlock id="navigation" title="Navigation">
+			<p class="example-desc">
+				Set <code>navigation</code> when each tab is its own page. The list renders as a
+				<code>&lt;nav&gt;</code>, each <code>Tab</code> is a link to its <code>href</code>, and the
+				active one gets <code>aria-current="page"</code>. Set <code>value</code> from the current route.
+				There are no panels: the page below the tabs is the content.
+			</p>
+			<CodeExample
+				code={`<Tabs value="account" navigation>
+  <TabList aria-label="Settings">
+    <Tab value="account" href="/settings">Account</Tab>
+    <Tab value="billing" href="/settings/billing">Billing</Tab>
+  </TabList>
+</Tabs>`}
+				previewClass="column"
+			>
+				<Tabs value="account" navigation>
+					<TabList aria-label="Settings">
+						<Tab value="account" href="#navigation">Account</Tab>
+						<Tab value="billing" href="#navigation">Billing</Tab>
+					</TabList>
+				</Tabs>
+			</CodeExample>
+		</ExampleBlock>
 	</DocSection>
 
 	<DocSection id="api" title="API">
@@ -373,6 +399,12 @@
 				],
 				['size', "'sm' | 'md' | 'lg'", "'md'", 'Size of the tab triggers'],
 				['fullWidth', 'boolean', 'false', 'Stretch tabs to fill the available width'],
+				[
+					'navigation',
+					'boolean',
+					'false',
+					'Tabs are links to pages: TabList renders a <nav>, each Tab takes href, no panels'
+				],
 				['onchange', '(value: string) => void', 'undefined', 'Called when the active tab changes'],
 				['children', 'Snippet', 'required', 'A TabList and one or more TabPanel components']
 			]}
@@ -389,6 +421,7 @@
 			columns={['Prop', 'Type', 'Default', 'Description']}
 			rows={[
 				['value', 'string', 'required', 'Unique identifier matching a TabPanel'],
+				['href', 'string', 'undefined', 'The page this tab opens, when the Tabs have navigation'],
 				['disabled', 'boolean', 'false', 'Disables the tab; prevents selection'],
 				['children', 'Snippet', 'required', 'Tab label content']
 			]}
