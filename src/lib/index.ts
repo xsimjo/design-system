@@ -67,8 +67,14 @@ export { default as TableCell } from './components/table/TableCell.svelte';
 export type { TableAlign } from './components/table/types.js';
 export { default as Pagination } from './components/pagination/Pagination.svelte';
 export { default as Progress } from './components/progress/Progress.svelte';
-export { default as BarChart } from './components/bar-chart/BarChart.svelte';
-export type { BarChartDatum } from './components/bar-chart/BarChart.svelte';
+export { default as BarChart } from './components/chart/BarChart.svelte';
+export { default as LineChart } from './components/chart/LineChart.svelte';
+export type {
+	ChartSeries,
+	ChartValueKey,
+	ChartXKey,
+	ChartXValue
+} from './components/chart/types.js';
 export { default as Skeleton } from './components/skeleton/Skeleton.svelte';
 export { default as Toast } from './components/toast/Toast.svelte';
 export { default as Toaster } from './components/toast/Toaster.svelte';

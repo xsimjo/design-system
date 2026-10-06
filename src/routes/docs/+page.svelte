@@ -41,6 +41,7 @@
 				{ label: 'BarChart', href: resolve('/docs/bar-chart') },
 				{ label: 'Card', href: resolve('/docs/card') },
 				{ label: 'Highlight', href: resolve('/docs/highlight') },
+				{ label: 'LineChart', href: resolve('/docs/line-chart') },
 				{ label: 'Table', href: resolve('/docs/table') },
 				{ label: 'Typography', href: resolve('/docs/typography') },
 				{ label: 'Skeleton', href: resolve('/docs/skeleton') }
@@ -97,7 +98,7 @@
 			</div>
 			<div class="principle">
 				<h3>Themeable</h3>
-				<p>Override 57 variables to customize everything. Dark mode works out of the box.</p>
+				<p>Override 63 variables to customize everything. Dark mode works out of the box.</p>
 			</div>
 			<div class="principle">
 				<h3>Accessible</h3>
@@ -137,7 +138,7 @@ ${'</' + 'script>'}
 			<div class="layer layer--user">
 				<span class="layer-label">You customize</span>
 				<span class="layer-name">Theme Variables</span>
-				<span class="layer-desc">57 semantic variables like colors, radii, spacing</span>
+				<span class="layer-desc">63 semantic variables like colors, radii, spacing</span>
 			</div>
 			<div class="layer-arrow"></div>
 			<div class="layer layer--auto">

@@ -58,6 +58,8 @@
 		"@sveltejs/kit": "^2.49.1",
 		"@sveltejs/package": "^2.5.7",
 		"@sveltejs/vite-plugin-svelte": "^7.0.0",
+		"@types/d3-scale": "^4.0.9",
+		"@types/d3-shape": "^3.2.0",
 		"@types/node": "^26.6.3",
 		"eslint": "^10.11.0",
 		"eslint-config-prettier": "^10.1.8",
@@ -77,6 +79,8 @@
 		"svelte"
 	],
 	"dependencies": {
-		"@floating-ui/dom": "^1.7.4"
+		"@floating-ui/dom": "^1.7.4",
+		"d3-scale": "^4.0.2",
+		"d3-shape": "^3.2.0"
 	}
 }

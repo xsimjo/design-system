@@ -6,13 +6,13 @@
 	import { TABS_KEY } from './context.ts';
 	import type { TabsContext } from './context.ts';
 
-	interface Props extends HTMLAttributes<HTMLDivElement> {
+	interface Props extends HTMLAttributes<HTMLElement> {
 		children: Snippet;
 	}
 
 	let { children, ...restProps }: Props = $props();
 
-	getContext<TabsContext>(TABS_KEY);
+	const tabs = getContext<TabsContext>(TABS_KEY);
 
 	function handleKeydown(e: KeyboardEvent) {
 		const list = e.currentTarget as HTMLElement;
@@ -41,6 +41,13 @@
 	}
 </script>
 
-<div class="tabs__list" role="tablist" onkeydown={handleKeydown} {...restProps}>
-	{@render children()}
-</div>
+{#if tabs.navigation()}
+	<!-- Links, not tabs: Tab moves between them, and arrow keys stay with the page. -->
+	<nav class="tabs__list" {...restProps}>
+		{@render children()}
+	</nav>
+{:else}
+	<div class="tabs__list" role="tablist" onkeydown={handleKeydown} {...restProps}>
+		{@render children()}
+	</div>
+{/if}

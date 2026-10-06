@@ -53,7 +53,7 @@
 			icon: PaletteIcon,
 			title: 'Multi-Theme',
 			description:
-				'Switch between Light, Dark, Developer, and QR themes with a single data attribute. 57 semantic tokens per theme.'
+				'Switch between Light, Dark, Developer, and QR themes with a single data attribute. 63 semantic tokens per theme.'
 		},
 		{
 			icon: AccessibilityIcon,
@@ -71,7 +71,7 @@
 
 	const stats = [
 		{ value: '35+', label: 'Components' },
-		{ value: '57', label: 'Design Tokens' },
+		{ value: '63', label: 'Design Tokens' },
 		{ value: '3', label: 'Themes' },
 		{ value: '0', label: 'Runtime Dependencies' }
 	];
@@ -239,7 +239,7 @@
 							</CardHeader>
 							<CardBody>
 								<p class="showcase-card-body">
-									Token-based theming with 57 semantic variables across 3 built-in themes.
+									Token-based theming with 63 semantic variables across 3 built-in themes.
 								</p>
 								<div class="showcase-badge-row">
 									<Badge label="Svelte 5" variant="primary" />

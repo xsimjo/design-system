@@ -124,4 +124,19 @@
 	   ========================================================================== */
 	--ui-z-overlay: 1000;
 	--ui-z-tooltip: 1500;
+
+	/* ==========================================================================
+	   CHART (6 tokens)
+	   Categorical series colors, assigned in this order and never cycled. The
+	   order is what keeps neighbors apart under color blindness: validated as a
+	   set for adjacent-pair CVD separation (worst ΔE 8.8), normal-vision
+	   separation (worst ΔE 17.5) and >= 3:1 contrast on the light, dev and qr
+	   surfaces. Re-validate the set before changing any one of them.
+	   ========================================================================== */
+	--ui-chart-1: oklch(57.5% 0.163 256);
+	--ui-chart-2: oklch(66.1% 0.175 41);
+	--ui-chart-3: oklch(62.4% 0.137 162);
+	--ui-chart-4: oklch(64.4% 0.135 75);
+	--ui-chart-5: oklch(66.1% 0.141 357);
+	--ui-chart-6: oklch(52.9% 0.18 142);
 }
