@@ -117,6 +117,27 @@ export const componentTokens: Record<string, Record<string, string>> = {
 		'--badge-input-border-radius': 'var(--ui-base-radius)',
 		'--badge-input-transition': 'var(--ui-base-duration) var(--ui-base-easing)'
 	},
+	'bar-chart': {
+		'--bar-chart-height': 'calc(var(--ui-base-spacing) * 40)',
+		'--bar-chart-bar-color': 'var(--ui-primary)',
+		'--bar-chart-bar-active-color': 'color-mix(in oklch, var(--ui-primary), var(--ui-surface) 35%)',
+		'--bar-chart-bar-max-width': '24px',
+		'--bar-chart-bar-radius': '4px',
+		'--bar-chart-bar-gap': '2px',
+		'--bar-chart-slot-active-bg': 'color-mix(in oklch, var(--ui-neutral), transparent 92%)',
+		'--bar-chart-grid-color': 'var(--ui-border)',
+		'--bar-chart-grid-width': 'var(--ui-border-width)',
+		'--bar-chart-axis-font-size': 'var(--ui-text-xs)',
+		'--bar-chart-axis-color': 'color-mix(in oklch, var(--ui-surface-foreground), transparent 40%)',
+		'--bar-chart-readout-value-font-size': 'var(--ui-text-base)',
+		'--bar-chart-readout-value-font-weight': 'var(--ui-weight-semibold)',
+		'--bar-chart-readout-value-color': 'var(--ui-surface-foreground)',
+		'--bar-chart-readout-label-font-size': 'var(--ui-text-sm)',
+		'--bar-chart-readout-label-color':
+			'color-mix(in oklch, var(--ui-surface-foreground), transparent 35%)',
+		'--bar-chart-focus-ring':
+			'var(--ui-ring-width) solid color-mix(in oklch, var(--ui-primary), transparent 70%)'
+	},
 	breadcrumbs: {
 		'--breadcrumbs-font-size': 'var(--ui-text-sm)',
 		'--breadcrumbs-gap': 'calc(var(--ui-base-spacing) * 3)',
@@ -261,7 +282,9 @@ export const componentTokens: Record<string, Record<string, string>> = {
 		'--color-picker-swatch-size': 'calc(var(--ui-base-spacing) * 6)',
 		'--color-picker-swatch-radius': 'calc(var(--ui-base-radius) * 0.5)',
 		'--color-picker-swatch-shadow':
-			'inset 0 0 0 1px color-mix(in oklch, var(--ui-hover-mix), transparent 85%)'
+			'inset 0 0 0 1px color-mix(in oklch, var(--ui-hover-mix), transparent 85%)',
+		'--color-picker-swatch-focus-ring-width': 'var(--ui-ring-width)',
+		'--color-picker-swatch-focus-ring-offset': 'var(--ui-ring-offset)'
 	},
 	combobox: {
 		'--combobox-bg': 'var(--ui-surface)',
@@ -491,6 +514,12 @@ export const componentTokens: Record<string, Record<string, string>> = {
 		'--file-input-font-weight': 'var(--ui-weight-normal)',
 		'--file-input-transition': 'var(--ui-base-duration) var(--ui-base-easing)',
 		'--file-input-gap': 'calc(var(--ui-base-spacing) * 2)'
+	},
+	highlight: {
+		'--highlight-bg': 'var(--ui-primary)',
+		'--highlight-fg': 'var(--ui-primary-foreground)',
+		'--highlight-padding-x': '0.2em',
+		'--highlight-radius': 'calc(var(--ui-base-radius) * 0.5)'
 	},
 	input: {
 		'--input-bg': 'var(--ui-surface)',

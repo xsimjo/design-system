@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { HTMLAttributes } from 'svelte/elements';
+	import type { HTMLThAttributes } from 'svelte/elements';
 	import type { TableAlign } from './types.js';
 	import ArrowUpDownIcon from '$lib/icons/ArrowUpDownIcon.svelte';
 	import ArrowUpIcon from '$lib/icons/ArrowUpIcon.svelte';
 	import ArrowDownIcon from '$lib/icons/ArrowDownIcon.svelte';
 
-	interface Props extends Omit<HTMLAttributes<HTMLTableCellElement>, 'children'> {
+	interface Props extends Omit<HTMLThAttributes, 'align' | 'children'> {
 		sortable?: boolean;
 		sort?: 'asc' | 'desc' | undefined;
 		onsort?: () => void;

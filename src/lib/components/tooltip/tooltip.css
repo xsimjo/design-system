@@ -33,6 +33,12 @@
 	font-size: var(--tooltip-font-size);
 	font-weight: var(--tooltip-font-weight);
 	line-height: var(--tooltip-line-height);
+	/* Rendered in place, so reset text properties inherited from the trigger's context */
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: start;
+	text-indent: 0;
+	text-transform: none;
 	white-space: normal;
 	word-break: break-word;
 	pointer-events: none;

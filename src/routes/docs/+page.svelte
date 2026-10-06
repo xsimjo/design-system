@@ -38,7 +38,9 @@
 			items: [
 				{ label: 'Avatar', href: resolve('/docs/avatar') },
 				{ label: 'Badge', href: resolve('/docs/badge') },
+				{ label: 'BarChart', href: resolve('/docs/bar-chart') },
 				{ label: 'Card', href: resolve('/docs/card') },
+				{ label: 'Highlight', href: resolve('/docs/highlight') },
 				{ label: 'Table', href: resolve('/docs/table') },
 				{ label: 'Typography', href: resolve('/docs/typography') },
 				{ label: 'Skeleton', href: resolve('/docs/skeleton') }

@@ -1,0 +1,24 @@
+[data-theme] {
+	/* Colors — solid variant (default) */
+	--highlight-bg: var(--ui-primary);
+	--highlight-fg: var(--ui-primary-foreground);
+
+	/* Shape — em-based so the highlight scales with the text it marks */
+	--highlight-padding-x: 0.2em;
+	--highlight-radius: calc(var(--ui-base-radius) * 0.5);
+}
+
+[data-theme] .highlight--soft {
+	--highlight-bg: color-mix(in oklch, var(--ui-primary), transparent 88%);
+	--highlight-fg: var(--ui-primary);
+}
+
+.highlight {
+	padding-inline: var(--highlight-padding-x);
+	border-radius: var(--highlight-radius);
+	background: var(--highlight-bg);
+	color: var(--highlight-fg);
+	/* Each wrapped line gets its own padding and corners. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}

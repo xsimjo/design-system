@@ -242,7 +242,9 @@
 			tokens={[
 				['--color-picker-swatch-size', 'Width and height of the swatch'],
 				['--color-picker-swatch-radius', 'Border radius of the swatch'],
-				['--color-picker-swatch-shadow', 'Inset shadow for depth effect']
+				['--color-picker-swatch-shadow', 'Inset shadow for depth effect'],
+				['--color-picker-swatch-focus-ring-width', 'Width of the swatch focus ring'],
+				['--color-picker-swatch-focus-ring-offset', 'Offset of the swatch focus ring']
 			]}
 		/>
 	</DocSection>

@@ -2,16 +2,21 @@
 
 Accessible color picker with an input-styled trigger containing a color swatch and editable hex value. Uses the native HTML color input for the picker dialog. Integrates with the Field context system for automatic label linking, error state, and ARIA attribute wiring.
 
+The hex field accepts `#rgb`, `rgb`, `#rrggbb` and `rrggbb` and normalizes to lowercase
+6-digit hex. Text typed but not yet parseable is held as an uncommitted draft: `value` keeps
+its last valid colour, the field shows the error state, and blurring snaps the text back to
+the committed value.
+
 ## Props
 
-| Prop           | Type                             | Default     | Description                                              |
-| -------------- | -------------------------------- | ----------- | -------------------------------------------------------- |
-| `value`        | `string`                         | `'#000000'` | Bindable hex color value (e.g. `'#ff5500'`)              |
-| `fullWidth`    | `boolean`                        | `false`     | Stretches the component to 100% of its container         |
-| `disabled`     | `boolean`                        | `false`     | Disables the picker; also inherited from `Field` context |
-| `id`           | `string`                         | —           | Custom ID; auto-generated from Field context if omitted  |
-| `name`         | `string`                         | —           | Name for hidden form input (included when set)           |
-| `...restProps` | `HTMLAttributes<HTMLDivElement>` | —           | All other attributes spread on the root element          |
+| Prop           | Type                             | Default     | Description                                                                   |
+| -------------- | -------------------------------- | ----------- | ----------------------------------------------------------------------------- |
+| `value`        | `string`                         | `'#000000'` | Bindable hex color, always normalized to lowercase 6-digit (e.g. `'#ff5500'`) |
+| `fullWidth`    | `boolean`                        | `false`     | Stretches the component to 100% of its container                              |
+| `disabled`     | `boolean`                        | `false`     | Disables the picker; also inherited from `Field` context                      |
+| `id`           | `string`                         | —           | Custom ID; auto-generated from Field context if omitted                       |
+| `name`         | `string`                         | —           | Name for hidden form input (included when set)                                |
+| `...restProps` | `HTMLAttributes<HTMLDivElement>` | —           | All other attributes spread on the root element                               |
 
 ## Slots
 
@@ -93,20 +98,25 @@ Set `error` on `Field` to apply error styling to the trigger border.
 
 ## Accessibility
 
-- The trigger container uses `role="group"` to group the swatch and text input. It is named
-  `Color picker` by default; pass `aria-label` or `aria-labelledby` to name it after the
-  colour it sets, which matters as soon as a page carries more than one picker. Both are
-  forwarded to the hex input as well, and `aria-label` also suffixes the input's own name
-  with `hex value`.
-- A `FieldLabel` cannot name the picker on its own: the group is a `<div>`, so a `<label for>`
-  pointing at it is inert. Pair the label with `aria-labelledby`, or use `aria-label`.
-- The text input accepts typed hex values and is the focusable element for keyboard users.
-- The native `<input type="color">` is visually hidden with `aria-hidden="true"` and `tabindex="-1"` — it is triggered by clicking the swatch.
-- `id` is auto-generated and shared with `Field` context so `FieldLabel` can set its `for` attribute without manual wiring.
-- `aria-describedby` is automatically populated with the IDs of any `FieldDescription` children registered in the Field context.
-- `aria-invalid` is set to `true` when the parent `Field` has a non-empty `error` prop.
+- The hex text input carries the component `id`, so a `FieldLabel` names it through its
+  `for` attribute and clicking the label moves focus into the field. No `aria-labelledby`
+  workaround is needed.
+- The swatch is a real `<button>` in the tab order, named `Choose color` (or
+  `<aria-label>: choose color` when `aria-label` is set), with `aria-haspopup="dialog"`.
+  Keyboard users can open the native colour dialog with Enter or Space.
+- The native `<input type="color">` stays visually hidden with `aria-hidden="true"` and
+  `tabindex="-1"` — it is an implementation detail actuated by the swatch button, never a
+  tab stop of its own.
+- Without a `Field` or an explicit `aria-label`, the text input falls back to the
+  accessible name `Hex color value`.
+- `aria-describedby` is automatically populated with the IDs of any `FieldDescription`
+  children registered in the Field context.
+- `aria-invalid` is set when the parent `Field` has a non-empty `error`, and also while the
+  typed text is not a parseable hex value; the trigger border takes the error colour at the
+  same time, giving live feedback that is not colour-only (the ARIA state carries it too).
 - `disabled` state cascades from the Field context.
-- Focus-within on the trigger container shows the focus ring, matching the Input component pattern.
+- The swatch has its own `:focus-visible` ring, and focus anywhere inside the trigger shows
+  the trigger focus ring, matching the Input component pattern.
 
 ## Tokens
 
@@ -151,3 +161,5 @@ This component uses the following component tokens (defined in `color-picker.css
 - `--color-picker-swatch-size` — width and height of the color swatch
 - `--color-picker-swatch-radius` — border radius of the swatch
 - `--color-picker-swatch-shadow` — inset shadow for depth effect
+- `--color-picker-swatch-focus-ring-width` — width of the swatch focus ring
+- `--color-picker-swatch-focus-ring-offset` — offset of the swatch focus ring
