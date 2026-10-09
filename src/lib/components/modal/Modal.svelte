@@ -14,6 +14,7 @@
 		title?: string;
 		closeOnClickOutside?: boolean;
 		closeOnEscape?: boolean;
+		backdropBlur?: boolean;
 		header?: Snippet;
 		footer?: Snippet;
 		children: Snippet;
@@ -25,6 +26,7 @@
 		title,
 		closeOnClickOutside = true,
 		closeOnEscape = true,
+		backdropBlur = true,
 		header,
 		footer,
 		children,
@@ -90,6 +92,7 @@
 	class="modal modal--{size}"
 	class:modal--has-header={hasHeader}
 	class:modal--closing={closing}
+	class:modal--no-blur={!backdropBlur}
 	onclose={handleClose}
 	oncancel={handleCancel}
 	onclick={handleBackdropClick}

@@ -19,6 +19,7 @@
 		title?: string;
 		closeOnClickOutside?: boolean;
 		closeOnEscape?: boolean;
+		backdropBlur?: boolean;
 		header?: Snippet;
 		footer?: Snippet;
 		children: Snippet;
@@ -31,6 +32,7 @@
 		title,
 		closeOnClickOutside = true,
 		closeOnEscape = true,
+		backdropBlur = true,
 		header,
 		footer,
 		children,
@@ -103,6 +105,7 @@
 	bind:this={dialogEl}
 	class="drawer drawer--{placement} drawer--{size}"
 	class:drawer--closing={closing}
+	class:drawer--no-blur={!backdropBlur}
 	onclose={handleClose}
 	oncancel={handleCancel}
 	onclick={handleBackdropClick}

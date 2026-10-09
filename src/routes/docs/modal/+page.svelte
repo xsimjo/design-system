@@ -24,6 +24,7 @@
 	let sizeXlOpen = $state(false);
 	let sizeFullOpen = $state(false);
 	let noEscapeOpen = $state(false);
+	let noBlurOpen = $state(false);
 	let customHeaderOpen = $state(false);
 
 	const tocSections = [
@@ -35,6 +36,7 @@
 		{ id: 'sizes', label: 'Sizes', indent: true },
 		{ id: 'custom-header', label: 'Custom Header', indent: true },
 		{ id: 'behavior', label: 'Behavior Control', indent: true },
+		{ id: 'no-blur', label: 'Without Blur', indent: true },
 		{ id: 'api', label: 'API' },
 		{ id: 'modal-props', label: 'Modal Props', indent: true },
 		{ id: 'css-tokens', label: 'CSS Tokens' }
@@ -302,6 +304,22 @@
 				</Modal>
 			</CodeExample>
 		</ExampleBlock>
+		<ExampleBlock
+			id="no-blur"
+			title="Without Blur"
+			description="Set backdropBlur to false to keep the page behind the backdrop sharp. The backdrop color still dims it."
+		>
+			<CodeExample
+				code={`<Modal bind:open title="No blur" backdropBlur={false}>
+  <p>The page behind is dimmed but not blurred.</p>
+</Modal>`}
+			>
+				<Button onclick={() => (noBlurOpen = true)}>Open without blur</Button>
+				<Modal bind:open={noBlurOpen} title="No blur" backdropBlur={false}>
+					<p>The page behind is dimmed but not blurred.</p>
+				</Modal>
+			</CodeExample>
+		</ExampleBlock>
 	</DocSection>
 
 	<DocSection id="api" title="API">
@@ -315,6 +333,7 @@
 				['title', 'string', '\u2014', 'Renders a default header with title text and close button'],
 				['closeOnClickOutside', 'boolean', 'true', 'Close when clicking the backdrop'],
 				['closeOnEscape', 'boolean', 'true', 'Close on Escape key'],
+				['backdropBlur', 'boolean', 'true', 'Blur the page behind the backdrop'],
 				['header', 'Snippet', '\u2014', 'Custom header content, overrides title'],
 				['footer', 'Snippet', '\u2014', 'Footer content, right-aligned (action buttons)'],
 				['children', 'Snippet', 'required', 'Modal body content']

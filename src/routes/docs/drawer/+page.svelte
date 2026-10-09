@@ -25,6 +25,7 @@
 	let sizeLgOpen = $state(false);
 	let sizeXlOpen = $state(false);
 	let noEscapeOpen = $state(false);
+	let noBlurOpen = $state(false);
 
 	const tocSections = [
 		{ id: 'examples', label: 'Examples' },
@@ -35,6 +36,7 @@
 		{ id: 'form-drawer', label: 'Form Drawer', indent: true },
 		{ id: 'sizes', label: 'Sizes', indent: true },
 		{ id: 'behavior', label: 'Behavior Control', indent: true },
+		{ id: 'no-blur', label: 'Without Blur', indent: true },
 		{ id: 'api', label: 'API' },
 		{ id: 'drawer-props', label: 'Drawer Props', indent: true },
 		{ id: 'drawer-header-props', label: 'DrawerHeader Props', indent: true },
@@ -256,6 +258,22 @@
 				</Drawer>
 			</CodeExample>
 		</ExampleBlock>
+		<ExampleBlock
+			id="no-blur"
+			title="Without Blur"
+			description="Set backdropBlur to false to keep the page behind the backdrop sharp. The backdrop color still dims it."
+		>
+			<CodeExample
+				code={`<Drawer bind:open title="No blur" backdropBlur={false}>
+  <p>The page behind is dimmed but not blurred.</p>
+</Drawer>`}
+			>
+				<Button onclick={() => (noBlurOpen = true)}>Open without blur</Button>
+				<Drawer bind:open={noBlurOpen} title="No blur" backdropBlur={false}>
+					<p>The page behind is dimmed but not blurred.</p>
+				</Drawer>
+			</CodeExample>
+		</ExampleBlock>
 	</DocSection>
 
 	<DocSection id="api" title="API">
@@ -270,6 +288,7 @@
 				['title', 'string', '\u2014', 'Renders a default header with title text and close button'],
 				['closeOnClickOutside', 'boolean', 'true', 'Close when clicking the backdrop'],
 				['closeOnEscape', 'boolean', 'true', 'Close on Escape key'],
+				['backdropBlur', 'boolean', 'true', 'Blur the page behind the backdrop'],
 				['header', 'Snippet', '\u2014', 'Custom header content, overrides title'],
 				['footer', 'Snippet', '\u2014', 'Footer content, right-aligned'],
 				['children', 'Snippet', 'required', 'Drawer body content']

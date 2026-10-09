@@ -94,6 +94,11 @@
 	animation: modal-backdrop-leave var(--modal-transition) forwards;
 }
 
+/* Backdrop without blur */
+.modal--no-blur::backdrop {
+	--modal-backdrop-blur: 0px;
+}
+
 /* Size variants */
 .modal--sm .modal__panel {
 	width: var(--modal-sm-width);
