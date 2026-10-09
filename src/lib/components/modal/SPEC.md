@@ -11,6 +11,7 @@ A dialog overlay component that renders content in a layer above the page. Built
 | `title`               | `string`                                 | `—`      | Title text rendered in the default header with a close button |
 | `closeOnClickOutside` | `boolean`                                | `true`   | Close when clicking the backdrop                              |
 | `closeOnEscape`       | `boolean`                                | `true`   | Close when pressing Escape                                    |
+| `backdropBlur`        | `boolean`                                | `true`   | Blur the page behind the backdrop                             |
 | `header`              | `Snippet`                                | `—`      | Custom header content (overrides `title`)                     |
 | `footer`              | `Snippet`                                | `—`      | Footer content, right-aligned (typically action buttons)      |
 | `children`            | `Snippet`                                | required | Modal body content                                            |

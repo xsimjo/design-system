@@ -163,6 +163,11 @@
 	animation: modal-backdrop-leave var(--drawer-transition) forwards;
 }
 
+/* Backdrop without blur */
+.drawer--no-blur::backdrop {
+	--drawer-backdrop-blur: 0px;
+}
+
 /* Size variants */
 .drawer--sm .drawer__panel {
 	width: var(--drawer-sm-width);

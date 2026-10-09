@@ -14,6 +14,7 @@ A panel that slides in from the edge of the viewport. Built on the native `<dial
 | `title`               | `string`                       | —         | Renders a default header with title and close button |
 | `closeOnClickOutside` | `boolean`                      | `true`    | Close when clicking the backdrop                     |
 | `closeOnEscape`       | `boolean`                      | `true`    | Close on Escape key                                  |
+| `backdropBlur`        | `boolean`                      | `true`    | Blur the page behind the backdrop                    |
 | `header`              | `Snippet`                      | —         | Custom header content, overrides `title`             |
 | `footer`              | `Snippet`                      | —         | Footer content, right-aligned                        |
 | `children`            | `Snippet`                      | required  | Drawer body content                                  |
