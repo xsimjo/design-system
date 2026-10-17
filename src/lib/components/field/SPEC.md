@@ -12,7 +12,7 @@ A composable family of primitives for building accessible form fields. `Field` i
 | `FieldGroup`       | `<div>`      | Flex container for laying out multiple fields side-by-side or stacked.      |
 | `FieldSet`         | `<fieldset>` | Semantic grouping for related fields (e.g. address, radio/checkbox groups). |
 | `FieldLegend`      | `<legend>`   | Accessible group label for a `FieldSet`.                                    |
-| `FieldSeparator`   | `<hr>`       | Visual divider between fields or form sections.                             |
+| `FieldSeparator`   | `<hr>`       | Visual divider between fields or form sections, optionally labeled.         |
 
 ## Props
 
@@ -67,9 +67,10 @@ A composable family of primitives for building accessible form fields. `Field` i
 
 ### FieldSeparator
 
-| Prop           | Type                            | Default | Description              |
-| -------------- | ------------------------------- | ------- | ------------------------ |
-| `...restProps` | `HTMLAttributes<HTMLHRElement>` | —       | All native hr attributes |
+| Prop           | Type                          | Default | Description                                                                  |
+| -------------- | ----------------------------- | ------- | ---------------------------------------------------------------------------- |
+| `children`     | `Snippet`                     | —       | Optional label in the middle of the line, e.g. "or" between two sign-in ways |
+| `...restProps` | `HTMLAttributes<HTMLElement>` | —       | All native attributes                                                        |
 
 ## Slots
 
@@ -198,6 +199,17 @@ import {(Field, FieldLabel, FieldSeparator, Input)} from '@xsimjo/design-system'
 </Field>
 ```
 
+With a label, the line runs out from both sides of it:
+
+```svelte
+<Button variant="outline" fullWidth>Continue with Google</Button>
+<FieldSeparator>or</FieldSeparator>
+<Field fullWidth>
+	<FieldLabel>Email</FieldLabel>
+	<Input fullWidth type="email" />
+</Field>
+```
+
 ## Accessibility
 
 - `Field` generates a unique `id` (or accepts one via prop) and exposes it via Svelte context so `FieldLabel` can set `for` and `Input` can set `id` without any manual wiring.
@@ -205,7 +217,7 @@ import {(Field, FieldLabel, FieldSeparator, Input)} from '@xsimjo/design-system'
 - When `required` is set on `Field`, `FieldLabel` renders a decorative `*` (`aria-hidden="true"`) and inputs receive `aria-required="true"`.
 - When `error` is set on `Field`, inputs receive `aria-invalid="true"` and `FieldDescription` automatically switches to error color.
 - `FieldSet` renders a native `<fieldset>` and `FieldLegend` a native `<legend>`, giving screen readers a group announcement for related controls.
-- `FieldSeparator` renders a native `<hr>` which is announced as a thematic break by screen readers.
+- `FieldSeparator` renders a native `<hr>` which is announced as a thematic break by screen readers. With a label it renders a `<div role="separator">`, so the label text is still read.
 
 ## Tokens
 
@@ -250,3 +262,6 @@ All tokens are defined in `field.css` and scoped to `[data-theme]`.
 
 - `--field-separator-color` — separator line color
 - `--field-separator-width` — separator line thickness
+- `--field-separator-gap` — space between the label and each line
+- `--field-separator-label-font-size` — label font size
+- `--field-separator-label-color` — label text color

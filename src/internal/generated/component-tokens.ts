@@ -494,7 +494,11 @@ export const componentTokens: Record<string, Record<string, string>> = {
 		'--field-legend-color': 'var(--ui-surface-foreground)',
 		'--field-legend-line-height': 'var(--ui-leading-tight)',
 		'--field-separator-color': 'var(--ui-border)',
-		'--field-separator-width': 'var(--ui-border-width)'
+		'--field-separator-width': 'var(--ui-border-width)',
+		'--field-separator-gap': 'calc(var(--ui-base-spacing) * 3)',
+		'--field-separator-label-font-size': 'var(--ui-text-xs)',
+		'--field-separator-label-color':
+			'color-mix(in oklch, var(--ui-surface-foreground), transparent 45%)'
 	},
 	'file-input': {
 		'--file-input-bg': 'var(--ui-surface)',
