@@ -130,7 +130,9 @@
 			</div>
 			<div class="component-row">
 				<code class="component-name">FieldSeparator</code>
-				<span class="component-desc">A styled <code>&lt;hr&gt;</code> divider.</span>
+				<span class="component-desc"
+					>A styled <code>&lt;hr&gt;</code> divider, with an optional label.</span
+				>
 			</div>
 		</div>
 	</DocSection>
@@ -342,7 +344,7 @@
 		<ExampleBlock
 			id="separator"
 			title="FieldSeparator"
-			description="A visual divider between fields or sections of a form."
+			description="A visual divider between fields or sections of a form. Give it a label, like or, to offer a choice."
 		>
 			<CodeExample
 				code={`<Field fullWidth>
@@ -364,6 +366,28 @@
 				<Field fullWidth>
 					<FieldLabel>Password</FieldLabel>
 					<Input fullWidth type="password" placeholder="••••••••" />
+				</Field>
+			</CodeExample>
+			<CodeExample
+				code={`<Field fullWidth>
+  <FieldLabel>Phone</FieldLabel>
+  <Input fullWidth type="tel" placeholder="555 0100" />
+</Field>
+<FieldSeparator>or</FieldSeparator>
+<Field fullWidth>
+  <FieldLabel>Email</FieldLabel>
+  <Input fullWidth type="email" placeholder="jane@example.com" />
+</Field>`}
+				previewClass="column"
+			>
+				<Field fullWidth>
+					<FieldLabel>Phone</FieldLabel>
+					<Input fullWidth type="tel" placeholder="555 0100" />
+				</Field>
+				<FieldSeparator>or</FieldSeparator>
+				<Field fullWidth>
+					<FieldLabel>Email</FieldLabel>
+					<Input fullWidth type="email" placeholder="jane@example.com" />
 				</Field>
 			</CodeExample>
 		</ExampleBlock>
@@ -640,7 +664,10 @@
 			component="field"
 			tokens={[
 				['--field-separator-color', 'Separator line color'],
-				['--field-separator-width', 'Separator line thickness']
+				['--field-separator-width', 'Separator line thickness'],
+				['--field-separator-gap', 'Space between the label and each line'],
+				['--field-separator-label-font-size', 'Label font size'],
+				['--field-separator-label-color', 'Label text color']
 			]}
 		/>
 	</DocSection>

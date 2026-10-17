@@ -31,6 +31,9 @@
 	/* FieldSeparator */
 	--field-separator-color: var(--ui-border);
 	--field-separator-width: var(--ui-border-width);
+	--field-separator-gap: calc(var(--ui-base-spacing) * 3);
+	--field-separator-label-font-size: var(--ui-text-xs);
+	--field-separator-label-color: color-mix(in oklch, var(--ui-surface-foreground), transparent 45%);
 }
 
 /* =========================================================================
@@ -138,4 +141,23 @@
 	border: none;
 	border-top: var(--field-separator-width) solid var(--field-separator-color);
 	margin: 0;
+}
+
+/* With a label, the line runs out from both sides of it. */
+.field-separator--labeled {
+	display: flex;
+	align-items: center;
+	gap: var(--field-separator-gap);
+	border-top: none;
+	font-family: var(--field-font-family);
+	font-size: var(--field-separator-label-font-size);
+	line-height: var(--ui-leading-none);
+	color: var(--field-separator-label-color);
+}
+
+.field-separator--labeled::before,
+.field-separator--labeled::after {
+	content: '';
+	flex: 1;
+	border-top: var(--field-separator-width) solid var(--field-separator-color);
 }
